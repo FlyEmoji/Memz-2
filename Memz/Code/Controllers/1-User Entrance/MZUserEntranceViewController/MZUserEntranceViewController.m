@@ -8,7 +8,6 @@
 
 #import "MZUserEntranceViewController.h"
 #import "MZMainViewController.h"
-#import "MZInjector.h"
 #import "UINavigationController+MemzTransitions.h"
 
 @interface MZUserEntranceViewController ()
@@ -24,14 +23,16 @@
 - (void)goToNavigationController {
 	NSArray *viewControllers = @[[[MZMainViewController alloc] init]];
 
-	UINavigationController *navigationController = [[MZInjector alloc] instanceForClass:[UINavigationController class]];
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Navigation" bundle:nil];
+	UINavigationController *navigationController = [storyboard instantiateInitialViewController];
 	navigationController.viewControllers = viewControllers;
+
 	UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-	UINavigationController *mainNavigationController = (UINavigationController *)mainWindow.rootViewController;
+	UINavigationController *mainNavigationController = [mainWindow.rootViewController safeCastToClass:[UINavigationController class]];
 
 	[mainNavigationController transitionToNewRootViewController:navigationController
 																											options:MZAnimatedTransitionNewRootOptionNone
-																						 transitionOption:UIViewAnimationOptionTransitionFlipFromLeft
+																						 transitionOption:UIViewAnimationOptionTransitionCrossDissolve
 																									 completion:nil];
 }
 
