@@ -38,10 +38,10 @@ const CGFloat kFeedTableViewCellFixedHeight = 200.0f;
 - (void)setupTableViewData {
 	self.tableViewData = @[@{kCellTitleKey: @"Learn how to talk about cooking!",
 													 kCellSubTitleKey: @"Add everything or part of our cooking vocabular selection of words, and become the expert in the kitchen ;)",
-													 kCellPictureURLKey: @"http://blog.chegg.com/wp-content/uploads/2013/02/cooking-college.jpg"},
+													 kCellPictureURLKey: [NSURL URLWithString:@"http://blog.chegg.com/wp-content/uploads/2013/02/cooking-college.jpg"]},
 												 @{kCellTitleKey: @"#$@&%*!",
 													 kCellSubTitleKey: @"Learn the best of the worst swear words in English",
-													 kCellPictureURLKey: @"http://images.medicaldaily.com/sites/medicaldaily.com/files/styles/full_breakpoints_theme_medicaldaily_desktop_1x/public/2015/04/29/science-swearing.jpg"}];
+													 kCellPictureURLKey: [NSURL URLWithString:@"http://images.medicaldaily.com/sites/medicaldaily.com/files/styles/full_breakpoints_theme_medicaldaily_desktop_1x/public/2015/04/29/science-swearing.jpg"]}];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -59,8 +59,10 @@ const CGFloat kFeedTableViewCellFixedHeight = 200.0f;
 																													forIndexPath:indexPath];
 	MZFeedTableViewCell *feedCell = [cell safeCastToClass:[MZFeedTableViewCell class]];
 
-	feedCell.cellTitle.text = self.tableViewData[indexPath.row][kCellTitleKey];
-	feedCell.cellSubTitle.text = self.tableViewData[indexPath.row][kCellSubTitleKey];
+	feedCell.cellTitle = self.tableViewData[indexPath.row][kCellTitleKey];
+	feedCell.cellSubTitle = self.tableViewData[indexPath.row][kCellSubTitleKey];
+	feedCell.backgroundImageURL = self.tableViewData[indexPath.row][kCellPictureURLKey];
+	feedCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	return cell;
 }

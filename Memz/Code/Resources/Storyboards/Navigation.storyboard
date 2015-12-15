@@ -36,41 +36,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4zs-YR-0wX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4zs-YR-0wX">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZFeedTableViewCellIdentifier" rowHeight="150" id="wJI-pg-yZM" customClass="MZFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wJI-pg-yZM" id="Va4-Lm-633">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EvT-m7-RvZ" userLabel="Background Image View">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EvT-m7-RvZ" userLabel="Background Image View">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feed-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Cum-NS-6C1" userLabel="Gradient">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SES-sj-KHm">
-                                                    <rect key="frame" x="8" y="8" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <rect key="frame" x="8" y="8" width="41" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SubTitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPQ-nf-H5x">
-                                                    <rect key="frame" x="14" y="33" width="56" height="18"/>
+                                                    <rect key="frame" x="14" y="35" width="56" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Az9-FL-j9v" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="0.0" y="149" width="600" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="cph-vS-Ra5"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Az9-FL-j9v" firstAttribute="top" secondItem="Cum-NS-6C1" secondAttribute="bottom" id="3Ve-BJ-1b5"/>
                                                 <constraint firstItem="SES-sj-KHm" firstAttribute="top" secondItem="Va4-Lm-633" secondAttribute="top" constant="8" id="5hl-2C-8cO"/>
+                                                <constraint firstItem="Az9-FL-j9v" firstAttribute="leading" secondItem="Va4-Lm-633" secondAttribute="leading" id="5kz-zl-Pen"/>
                                                 <constraint firstItem="EvT-m7-RvZ" firstAttribute="top" secondItem="Va4-Lm-633" secondAttribute="top" id="8Xi-ie-4vr"/>
+                                                <constraint firstAttribute="trailing" secondItem="Az9-FL-j9v" secondAttribute="trailing" id="Aos-yK-SwV"/>
                                                 <constraint firstItem="Cum-NS-6C1" firstAttribute="leading" secondItem="Va4-Lm-633" secondAttribute="leading" id="CjM-O1-gsK"/>
-                                                <constraint firstAttribute="bottom" secondItem="EvT-m7-RvZ" secondAttribute="bottom" id="ExM-lf-Td6"/>
+                                                <constraint firstItem="Az9-FL-j9v" firstAttribute="top" secondItem="EvT-m7-RvZ" secondAttribute="bottom" id="CqH-l1-pMW"/>
                                                 <constraint firstItem="UPQ-nf-H5x" firstAttribute="leading" secondItem="Va4-Lm-633" secondAttribute="leading" constant="14" id="Iu2-An-dfG"/>
                                                 <constraint firstItem="EvT-m7-RvZ" firstAttribute="leading" secondItem="Va4-Lm-633" secondAttribute="leading" id="J0d-C0-zwC"/>
                                                 <constraint firstItem="UPQ-nf-H5x" firstAttribute="top" secondItem="SES-sj-KHm" secondAttribute="bottom" constant="4" id="SGR-MH-6Ak"/>
@@ -78,15 +88,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="EvT-m7-RvZ" secondAttribute="trailing" id="aEp-Jp-BZw"/>
                                                 <constraint firstItem="Cum-NS-6C1" firstAttribute="top" secondItem="Va4-Lm-633" secondAttribute="top" id="cFj-yo-Agw"/>
                                                 <constraint firstItem="SES-sj-KHm" firstAttribute="leading" secondItem="Va4-Lm-633" secondAttribute="leading" constant="8" id="ccE-8a-VMt"/>
-                                                <constraint firstAttribute="bottom" secondItem="Cum-NS-6C1" secondAttribute="bottom" id="l7y-Zc-D4N"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SES-sj-KHm" secondAttribute="trailing" constant="8" id="oP2-aa-fTp"/>
                                                 <constraint firstAttribute="trailing" secondItem="Cum-NS-6C1" secondAttribute="trailing" id="tDt-og-pFg"/>
+                                                <constraint firstAttribute="bottom" secondItem="Az9-FL-j9v" secondAttribute="bottom" id="x8X-5j-17e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backgroundImageView" destination="EvT-m7-RvZ" id="Sg4-Iw-Qwk"/>
-                                            <outlet property="cellSubTitle" destination="UPQ-nf-H5x" id="AKh-5i-e95"/>
-                                            <outlet property="cellTitle" destination="SES-sj-KHm" id="cAA-6v-var"/>
+                                            <outlet property="cellSubTitleLabel" destination="UPQ-nf-H5x" id="9YJ-iU-nT7"/>
+                                            <outlet property="cellTitleLabel" destination="SES-sj-KHm" id="9y1-rY-Bcx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -104,8 +114,7 @@
                             <constraint firstItem="4zs-YR-0wX" firstAttribute="top" secondItem="QrX-Nj-FLO" secondAttribute="bottom" id="vB9-dq-Rm1"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="4zs-YR-0wX" id="jva-ln-eSP"/>
                     </connections>

@@ -10,8 +10,8 @@
 
 @interface MZFeedTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *cellTitle;
-@property (nonatomic, weak) IBOutlet UILabel *cellSubTitle;
-@property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) NSString *cellTitle;
+@property (nonatomic, strong) NSString *cellSubTitle;
+@property (nonatomic, strong) NSURL *backgroundImageURL;
 
 @end
