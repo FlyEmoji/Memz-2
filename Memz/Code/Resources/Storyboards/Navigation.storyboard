@@ -121,7 +121,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxW-Vq-XpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="1036"/>
+            <point key="canvasLocation" x="2250" y="-365"/>
+        </scene>
+        <!--Polls View Controller-->
+        <scene sceneID="j8q-Lq-YSF">
+            <objects>
+                <viewController storyboardIdentifier="MZPollsViewControllerIdentifier" id="c8k-Kd-gHs" customClass="MZPollsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kwp-Qh-85t"/>
+                        <viewControllerLayoutGuide type="bottom" id="R6I-1F-Icc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NSu-Cj-CxK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Du-9g-jpM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZPollsTableViewCellIdentifier" rowHeight="130" id="lB6-x9-Lxu" customClass="MZPollsTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lB6-x9-Lxu" id="Dd1-PB-cAf">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="c8k-Kd-gHs" id="Tqq-4S-VoW"/>
+                                    <outlet property="delegate" destination="c8k-Kd-gHs" id="CuC-LM-2Gp"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ch-X1q" userLabel="Top Shrinkable View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <color key="backgroundColor" red="0.52156862749999999" green="0.41568627450000001" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="21X-4b-UNg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tdN-ch-X1q" firstAttribute="leading" secondItem="NSu-Cj-CxK" secondAttribute="leading" id="Gmq-cL-LSo"/>
+                            <constraint firstItem="3Du-9g-jpM" firstAttribute="top" secondItem="kwp-Qh-85t" secondAttribute="bottom" id="OtG-k9-o4s"/>
+                            <constraint firstAttribute="trailing" secondItem="3Du-9g-jpM" secondAttribute="trailing" id="Rka-pp-YGh"/>
+                            <constraint firstItem="R6I-1F-Icc" firstAttribute="top" secondItem="3Du-9g-jpM" secondAttribute="bottom" id="USp-FS-Cxz"/>
+                            <constraint firstItem="3Du-9g-jpM" firstAttribute="leading" secondItem="NSu-Cj-CxK" secondAttribute="leading" id="bxu-Y5-rwy"/>
+                            <constraint firstAttribute="trailing" secondItem="tdN-ch-X1q" secondAttribute="trailing" id="eai-Jz-PFP"/>
+                            <constraint firstItem="tdN-ch-X1q" firstAttribute="top" secondItem="kwp-Qh-85t" secondAttribute="bottom" id="gSH-my-I4w"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="3Du-9g-jpM" id="gyo-WB-eog"/>
+                        <outlet property="topShrinkableView" destination="tdN-ch-X1q" id="XRC-P2-ogk"/>
+                        <outlet property="topShrinkableViewHeightConstraint" destination="21X-4b-UNg" id="Kh3-0s-ZkT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnU-Zy-Zyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2250" y="330"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mKi-3b-uYu">
