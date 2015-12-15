@@ -65,7 +65,7 @@ static const char kActionInProgressKey;
 		objc_setAssociatedObject(self, &kBackButtonCustomActionBlockKey, actionBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 		return [self setCustomBackButtonTitle:title];
 	} else {
-		UIButton *button = [self setCustomBackButtonWithImage:[UIImage imageNamed:@"Image"]		// TODO: Set default image
+		UIButton *button = [self setCustomBackButtonWithImage:[UIImage imageNamed:@"Navigation-Back"]
 																										title:title
 																							actionBlock:actionBlock];
 		return button;
