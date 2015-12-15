@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MZUserEntranceViewController.h
 //  Memz
 //
 //  Created by Bastien Falcou on 12/15/15.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MZUserEntranceViewController : UIViewController
 
 @end
 

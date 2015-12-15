@@ -9,13 +9,21 @@
 /* Begin PBXBuildFile section */
 		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
 		0CA58BC91C204C7F000E19D4 /* MemzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BC81C204C7F000E19D4 /* MemzUITests.m */; };
-		0CA58BDF1C204FE0000E19D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BDE1C204FE0000E19D4 /* ViewController.m */; };
+		0CA58BDF1C204FE0000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BE21C20501C000E19D4 /* Assets.xcassets */; };
 		0CA58BEA1C205111000E19D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BE71C205111000E19D4 /* main.m */; };
 		0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BEC1C20534E000E19D4 /* AppDelegate.m */; };
 		0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */; };
 		0CA58BF91C205474000E19D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF81C205474000E19D4 /* Main.storyboard */; };
 		0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BFB1C2055DE000E19D4 /* Memz.xcdatamodeld */; };
+		0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C001C20598F000E19D4 /* MZPageViewController.m */; };
+		0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */; };
+		0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C071C206BA5000E19D4 /* MZInjector.m */; };
+		0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */; };
+		0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */; };
+		0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C101C207D6E000E19D4 /* UINavigationController+MemzTransitions.m */; };
+		0CA58C141C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */; };
+		0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +51,8 @@
 		0CA58BC41C204C7F000E19D4 /* MemzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BC81C204C7F000E19D4 /* MemzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzUITests.m; sourceTree = "<group>"; };
 		0CA58BCA1C204C7F000E19D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CA58BDD1C204FE0000E19D4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Code/Controllers/ViewController.h; sourceTree = SOURCE_ROOT; };
-		0CA58BDE1C204FE0000E19D4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Code/Controllers/ViewController.m; sourceTree = SOURCE_ROOT; };
+		0CA58BDD1C204FE0000E19D4 /* MZUserEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZUserEntranceViewController.h; path = Code/Controllers/MZUserEntranceViewController.h; sourceTree = SOURCE_ROOT; };
+		0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserEntranceViewController.m; path = Code/Controllers/MZUserEntranceViewController.m; sourceTree = SOURCE_ROOT; };
 		0CA58BE21C20501C000E19D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Code/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0CA58BE61C205111000E19D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Code/Resources/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		0CA58BE71C205111000E19D4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Code/Resources/Supporting Files/main.m"; sourceTree = SOURCE_ROOT; };
@@ -54,6 +62,22 @@
 		0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Code/Resources/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		0CA58BF81C205474000E19D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Code/Resources/Storyboards/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Memz-Prefiz.pch"; path = "Code/Resources/Supporting Files/Memz-Prefiz.pch"; sourceTree = SOURCE_ROOT; };
+		0CA58BFF1C20598F000E19D4 /* MZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageViewController.h; path = "Code/Controllers/0 - Common/MZPageViewController/MZPageViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C001C20598F000E19D4 /* MZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageViewController.m; path = "Code/Controllers/0 - Common/MZPageViewController/MZPageViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C021C205E8A000E19D4 /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C061C206BA5000E19D4 /* MZInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZInjector.h; path = Code/Helpers/Classes/MZInjector/MZInjector.h; sourceTree = SOURCE_ROOT; };
+		0CA58C071C206BA5000E19D4 /* MZInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZInjector.m; path = Code/Helpers/Classes/MZInjector/MZInjector.m; sourceTree = SOURCE_ROOT; };
+		0CA58C091C20735F000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C0C1C207774000E19D4 /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+MemzAdditions.m"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C0F1C207D6E000E19D4 /* UINavigationController+MemzTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MemzTransitions.h"; path = "Code/Helpers/Categories/UINavigationController+MemzTransitions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C101C207D6E000E19D4 /* UINavigationController+MemzTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MemzTransitions.m"; path = "Code/Helpers/Categories/UINavigationController+MemzTransitions.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C121C2082A1000E19D4 /* UINavigationItem+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationItem+MemzAdditions.h"; path = "Code/Helpers/Categories/UINavigationItem+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+MemzAdditions.m"; path = "Code/Helpers/Categories/UINavigationItem+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C161C208BC0000E19D4 /* UIImage+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemzAdditions.h"; path = "Code/Helpers/Categories/UIImage+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MemzAdditions.m"; path = "Code/Helpers/Categories/UIImage+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +161,8 @@
 		0CA58BD61C204E83000E19D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BDD1C204FE0000E19D4 /* ViewController.h */,
-				0CA58BDE1C204FE0000E19D4 /* ViewController.m */,
+				0CA58BFD1C205936000E19D4 /* 0 - Common */,
+				0CA58C151C20890B000E19D4 /* 1 - User Entrance */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +224,8 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0CA58C051C206B7A000E19D4 /* MZInjector */,
+				0CA58BFE1C205950000E19D4 /* MZPageViewController */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -207,6 +233,16 @@
 		0CA58BE11C204FF4000E19D4 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				0CA58C021C205E8A000E19D4 /* CADisplayLink+MemzBlocks.h */,
+				0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */,
+				0CA58C0C1C207774000E19D4 /* NSAttributedString+MemzAdditions.h */,
+				0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */,
+				0CA58C0F1C207D6E000E19D4 /* UINavigationController+MemzTransitions.h */,
+				0CA58C101C207D6E000E19D4 /* UINavigationController+MemzTransitions.m */,
+				0CA58C121C2082A1000E19D4 /* UINavigationItem+MemzAdditions.h */,
+				0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */,
+				0CA58C161C208BC0000E19D4 /* UIImage+MemzAdditions.h */,
+				0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -217,6 +253,42 @@
 				0CA58BF81C205474000E19D4 /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		0CA58BFD1C205936000E19D4 /* 0 - Common */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C091C20735F000E19D4 /* MZMainViewController.h */,
+				0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */,
+			);
+			name = "0 - Common";
+			sourceTree = "<group>";
+		};
+		0CA58BFE1C205950000E19D4 /* MZPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58BFF1C20598F000E19D4 /* MZPageViewController.h */,
+				0CA58C001C20598F000E19D4 /* MZPageViewController.m */,
+			);
+			name = MZPageViewController;
+			sourceTree = "<group>";
+		};
+		0CA58C051C206B7A000E19D4 /* MZInjector */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C061C206BA5000E19D4 /* MZInjector.h */,
+				0CA58C071C206BA5000E19D4 /* MZInjector.m */,
+			);
+			name = MZInjector;
+			sourceTree = "<group>";
+		};
+		0CA58C151C20890B000E19D4 /* 1 - User Entrance */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58BDD1C204FE0000E19D4 /* MZUserEntranceViewController.h */,
+				0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */,
+			);
+			name = "1 - User Entrance";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,10 +422,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
-				0CA58BDF1C204FE0000E19D4 /* ViewController.m in Sources */,
+				0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */,
+				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
+				0CA58BDF1C204FE0000E19D4 /* MZUserEntranceViewController.m in Sources */,
+				0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */,
+				0CA58C141C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m in Sources */,
+				0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */,
 				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
+				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
+				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
