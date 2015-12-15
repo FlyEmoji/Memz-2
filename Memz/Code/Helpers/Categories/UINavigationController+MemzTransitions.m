@@ -57,8 +57,8 @@ static const char kTransitionOptionKey;
 																										options:(MZAnimatedTransitionNewRootOptions)options
 																					 transitionOption:(UIViewAnimationOptions)transitionOption
 																								 completion:(void (^)(BOOL finished))completionHandler {
-	UIWindow * window = self.view.window ?: [[UIApplication sharedApplication].windows firstObject];
-	UIViewController * resultViewController = nil;
+	UIWindow *window = self.view.window ?: [[UIApplication sharedApplication].windows firstObject];
+	UIViewController *resultViewController = nil;
 
 	if (!!(options & MZAnimatedTransitionNewRootOptionNavigationController)) {
 		NSLog(@"Transition to new root controller (%@), creating a new instance of UINavigationController for it", viewController);

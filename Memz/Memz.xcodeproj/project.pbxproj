@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
+		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
+		0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22EC1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m */; };
 		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
 		0CA58BC91C204C7F000E19D4 /* MemzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BC81C204C7F000E19D4 /* MemzUITests.m */; };
-		0CA58BDF1C204FE0000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BE21C20501C000E19D4 /* Assets.xcassets */; };
 		0CA58BEA1C205111000E19D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BE71C205111000E19D4 /* main.m */; };
 		0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BEC1C20534E000E19D4 /* AppDelegate.m */; };
 		0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */; };
-		0CA58BF91C205474000E19D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF81C205474000E19D4 /* Main.storyboard */; };
+		0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */; };
 		0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BFB1C2055DE000E19D4 /* Memz.xcdatamodeld */; };
-		0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C001C20598F000E19D4 /* MZPageViewController.m */; };
 		0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */; };
 		0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C071C206BA5000E19D4 /* MZInjector.m */; };
-		0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */; };
 		0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */; };
 		0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C101C207D6E000E19D4 /* UINavigationController+MemzTransitions.m */; };
 		0CA58C141C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */; };
 		0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */; };
+		0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */; };
+		0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C211C209D9E000E19D4 /* MZPageViewController.m */; };
+		0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */; };
+		0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C271C209DC7000E19D4 /* MZMainViewController.m */; };
+		0CA58C2D1C20A00E000E19D4 /* NSObject+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */; };
+		67DDE0D0D32BF2E9C95544AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEB74D0462D5B520166C49D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedTableViewCell.m; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
+		0C7A22EB1C20CCE100774B95 /* UIImageView+MemzDownloadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+MemzDownloadImage.h"; path = "Code/Helpers/Categories/UIImageView+MemzDownloadImage.h"; sourceTree = SOURCE_ROOT; };
+		0C7A22EC1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+MemzDownloadImage.m"; path = "Code/Helpers/Categories/UIImageView+MemzDownloadImage.m"; sourceTree = SOURCE_ROOT; };
 		0CA58B9D1C204C7F000E19D4 /* Memz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BB91C204C7F000E19D4 /* MemzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BBD1C204C7F000E19D4 /* MemzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzTests.m; sourceTree = "<group>"; };
@@ -51,8 +62,6 @@
 		0CA58BC41C204C7F000E19D4 /* MemzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BC81C204C7F000E19D4 /* MemzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzUITests.m; sourceTree = "<group>"; };
 		0CA58BCA1C204C7F000E19D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CA58BDD1C204FE0000E19D4 /* MZUserEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZUserEntranceViewController.h; path = Code/Controllers/MZUserEntranceViewController.h; sourceTree = SOURCE_ROOT; };
-		0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserEntranceViewController.m; path = Code/Controllers/MZUserEntranceViewController.m; sourceTree = SOURCE_ROOT; };
 		0CA58BE21C20501C000E19D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Code/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0CA58BE61C205111000E19D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Code/Resources/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
 		0CA58BE71C205111000E19D4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Code/Resources/Supporting Files/main.m"; sourceTree = SOURCE_ROOT; };
@@ -60,16 +69,12 @@
 		0CA58BEC1C20534E000E19D4 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Code/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		0CA58BEF1C205387000E19D4 /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = constants.h; path = "Code/Resources/Supporting Files/constants.h"; sourceTree = SOURCE_ROOT; };
 		0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Code/Resources/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		0CA58BF81C205474000E19D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Code/Resources/Storyboards/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = UserEntrance.storyboard; path = Code/Resources/Storyboards/UserEntrance.storyboard; sourceTree = SOURCE_ROOT; };
 		0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Memz-Prefiz.pch"; path = "Code/Resources/Supporting Files/Memz-Prefiz.pch"; sourceTree = SOURCE_ROOT; };
-		0CA58BFF1C20598F000E19D4 /* MZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageViewController.h; path = "Code/Controllers/0 - Common/MZPageViewController/MZPageViewController.h"; sourceTree = SOURCE_ROOT; };
-		0CA58C001C20598F000E19D4 /* MZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageViewController.m; path = "Code/Controllers/0 - Common/MZPageViewController/MZPageViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C021C205E8A000E19D4 /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C061C206BA5000E19D4 /* MZInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZInjector.h; path = Code/Helpers/Classes/MZInjector/MZInjector.h; sourceTree = SOURCE_ROOT; };
 		0CA58C071C206BA5000E19D4 /* MZInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZInjector.m; path = Code/Helpers/Classes/MZInjector/MZInjector.m; sourceTree = SOURCE_ROOT; };
-		0CA58C091C20735F000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
-		0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C0C1C207774000E19D4 /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+MemzAdditions.m"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C0F1C207D6E000E19D4 /* UINavigationController+MemzTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MemzTransitions.h"; path = "Code/Helpers/Categories/UINavigationController+MemzTransitions.h"; sourceTree = SOURCE_ROOT; };
@@ -78,6 +83,19 @@
 		0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+MemzAdditions.m"; path = "Code/Helpers/Categories/UINavigationItem+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C161C208BC0000E19D4 /* UIImage+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemzAdditions.h"; path = "Code/Helpers/Categories/UIImage+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MemzAdditions.m"; path = "Code/Helpers/Categories/UIImage+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C1D1C209C9C000E19D4 /* MZFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedViewController.h; path = "Code/Controllers/2-Feed/MZFeedViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedViewController.m; path = "Code/Controllers/2-Feed/MZFeedViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C201C209D9E000E19D4 /* MZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageViewController.h; path = Code/Helpers/Classes/MZPageViewController/MZPageViewController.h; sourceTree = SOURCE_ROOT; };
+		0CA58C211C209D9E000E19D4 /* MZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageViewController.m; path = Code/Helpers/Classes/MZPageViewController/MZPageViewController.m; sourceTree = SOURCE_ROOT; };
+		0CA58C231C209DBC000E19D4 /* MZUserEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZUserEntranceViewController.h; path = "Code/Controllers/1-User Entrance/MZUserEntranceViewController/MZUserEntranceViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserEntranceViewController.m; path = "Code/Controllers/1-User Entrance/MZUserEntranceViewController/MZUserEntranceViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C261C209DC7000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C271C209DC7000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C2B1C20A00E000E19D4 /* NSObject+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+MemzAdditions.h"; path = "Code/Helpers/Categories/NSObject+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MemzAdditions.m"; path = "Code/Helpers/Categories/NSObject+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		2EEB74D0462D5B520166C49D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67DDE0D0D32BF2E9C95544AE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +124,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C7A22E21C20B8EB00774B95 /* 2-Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0C7A22E31C20B8F400774B95 /* MZFeedTableViewCell */,
+			);
+			name = "2-Feed";
+			sourceTree = "<group>";
+		};
+		0C7A22E31C20B8F400774B95 /* MZFeedTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */,
+				0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */,
+			);
+			name = MZFeedTableViewCell;
+			sourceTree = "<group>";
+		};
 		0CA58B941C204C7F000E19D4 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +148,8 @@
 				0CA58BBC1C204C7F000E19D4 /* MemzTests */,
 				0CA58BC71C204C7F000E19D4 /* MemzUITests */,
 				0CA58B9E1C204C7F000E19D4 /* Products */,
+				44DFB1CF8393D3A69FE59971 /* Pods */,
+				D0B7255BD900C535A1644E00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,8 +199,9 @@
 		0CA58BD61C204E83000E19D4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BFD1C205936000E19D4 /* 0 - Common */,
-				0CA58C151C20890B000E19D4 /* 1 - User Entrance */,
+				0CA58BFD1C205936000E19D4 /* 0-Common */,
+				0CA58C151C20890B000E19D4 /* 1-User Entrance */,
+				0CA58C191C209BC4000E19D4 /* 2-Feed */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +209,7 @@
 		0CA58BD71C204E8A000E19D4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0C7A22E21C20B8EB00774B95 /* 2-Feed */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -243,6 +283,10 @@
 				0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */,
 				0CA58C161C208BC0000E19D4 /* UIImage+MemzAdditions.h */,
 				0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */,
+				0CA58C2B1C20A00E000E19D4 /* NSObject+MemzAdditions.h */,
+				0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */,
+				0C7A22EB1C20CCE100774B95 /* UIImageView+MemzDownloadImage.h */,
+				0C7A22EC1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -250,25 +294,25 @@
 		0CA58BE41C205033000E19D4 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BF81C205474000E19D4 /* Main.storyboard */,
+				0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */,
+				0C7A22E91C20CC4600774B95 /* Navigation.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		0CA58BFD1C205936000E19D4 /* 0 - Common */ = {
+		0CA58BFD1C205936000E19D4 /* 0-Common */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58C091C20735F000E19D4 /* MZMainViewController.h */,
-				0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */,
+				0CA58C1A1C209BFD000E19D4 /* MZMainViewController */,
 			);
-			name = "0 - Common";
+			name = "0-Common";
 			sourceTree = "<group>";
 		};
 		0CA58BFE1C205950000E19D4 /* MZPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BFF1C20598F000E19D4 /* MZPageViewController.h */,
-				0CA58C001C20598F000E19D4 /* MZPageViewController.m */,
+				0CA58C201C209D9E000E19D4 /* MZPageViewController.h */,
+				0CA58C211C209D9E000E19D4 /* MZPageViewController.m */,
 			);
 			name = MZPageViewController;
 			sourceTree = "<group>";
@@ -282,13 +326,64 @@
 			name = MZInjector;
 			sourceTree = "<group>";
 		};
-		0CA58C151C20890B000E19D4 /* 1 - User Entrance */ = {
+		0CA58C151C20890B000E19D4 /* 1-User Entrance */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BDD1C204FE0000E19D4 /* MZUserEntranceViewController.h */,
-				0CA58BDE1C204FE0000E19D4 /* MZUserEntranceViewController.m */,
+				0CA58C1B1C209C0A000E19D4 /* MZUserEntranceViewController */,
 			);
-			name = "1 - User Entrance";
+			name = "1-User Entrance";
+			sourceTree = "<group>";
+		};
+		0CA58C191C209BC4000E19D4 /* 2-Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C1C1C209C1A000E19D4 /* MZFeedViewController */,
+			);
+			name = "2-Feed";
+			sourceTree = "<group>";
+		};
+		0CA58C1A1C209BFD000E19D4 /* MZMainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C261C209DC7000E19D4 /* MZMainViewController.h */,
+				0CA58C271C209DC7000E19D4 /* MZMainViewController.m */,
+			);
+			name = MZMainViewController;
+			sourceTree = "<group>";
+		};
+		0CA58C1B1C209C0A000E19D4 /* MZUserEntranceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C231C209DBC000E19D4 /* MZUserEntranceViewController.h */,
+				0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */,
+			);
+			name = MZUserEntranceViewController;
+			sourceTree = "<group>";
+		};
+		0CA58C1C1C209C1A000E19D4 /* MZFeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA58C1D1C209C9C000E19D4 /* MZFeedViewController.h */,
+				0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */,
+			);
+			name = MZFeedViewController;
+			sourceTree = "<group>";
+		};
+		44DFB1CF8393D3A69FE59971 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */,
+				E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0B7255BD900C535A1644E00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EEB74D0462D5B520166C49D /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,9 +393,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA58BCD1C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "Memz" */;
 			buildPhases = (
+				1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */,
 				0CA58B991C204C7F000E19D4 /* Sources */,
 				0CA58B9A1C204C7F000E19D4 /* Frameworks */,
 				0CA58B9B1C204C7F000E19D4 /* Resources */,
+				DD7536AA3755DD17187C88FC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -395,9 +492,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
 				0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */,
-				0CA58BF91C205474000E19D4 /* Main.storyboard in Resources */,
+				0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +515,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD7536AA3755DD17187C88FC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0CA58B991C204C7F000E19D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -424,15 +555,19 @@
 			files = (
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
-				0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */,
+				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
+				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
 				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
-				0CA58BDF1C204FE0000E19D4 /* MZUserEntranceViewController.m in Sources */,
-				0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */,
+				0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */,
+				0CA58C2D1C20A00E000E19D4 /* NSObject+MemzAdditions.m in Sources */,
 				0CA58C141C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m in Sources */,
 				0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */,
+				0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */,
+				0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */,
 				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
 				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
+				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,8 +686,11 @@
 		};
 		0CA58BCE1C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.Memz;
@@ -562,8 +700,11 @@
 		};
 		0CA58BCF1C204C7F000E19D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.Memz;
@@ -638,6 +779,7 @@
 				0CA58BCF1C204C7F000E19D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CA58BD01C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "MemzTests" */ = {
 			isa = XCConfigurationList;
@@ -646,6 +788,7 @@
 				0CA58BD21C204C7F000E19D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0CA58BD31C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "MemzUITests" */ = {
 			isa = XCConfigurationList;
@@ -654,6 +797,7 @@
 				0CA58BD51C204C7F000E19D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

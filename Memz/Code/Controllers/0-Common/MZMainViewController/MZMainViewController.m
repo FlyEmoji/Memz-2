@@ -7,6 +7,7 @@
 //
 
 #import "MZMainViewController.h"
+#import "MZFeedViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 
 const NSUInteger kNumberPages = 3;
@@ -69,7 +70,7 @@ const NSUInteger kNumberPages = 3;
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
 	switch (page) {
 		case CHKMainViewControllerPageFeed:
-			return ^{ return [[UIViewController alloc] init]; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
 		case CHKMainViewControllerPagePolls:
 			return ^{ return [[UIViewController alloc] init]; };
 		case CHKMainViewControllerPageToBeDecided:
@@ -102,6 +103,12 @@ const NSUInteger kNumberPages = 3;
 
 - (NSInteger)numberOfPage {
 	return kNumberPages;
+}
+
+#pragma mark - Helpers
+
+- (UIViewController *)pageViewControllerWithIdentifier:(NSString *)identifier {
+	return [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:identifier];
 }
 
 @end
