@@ -9,6 +9,7 @@
 #ifndef Memz_Prefiz_pch
 #define Memz_Prefiz_pch
 
+#import "constants.h"
 #import "NSObject+MemzAdditions.h"
 
 #endif

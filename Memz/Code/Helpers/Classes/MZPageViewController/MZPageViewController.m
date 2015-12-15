@@ -138,7 +138,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
 			viewControllerBeforeViewController:(UIViewController *)viewController {
 	NSInteger page = [self pageOfViewController:viewController];
-	if(--page < 0) {
+	if (--page < 0) {
 		return nil;
 	}
 
@@ -149,7 +149,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
 			 viewControllerAfterViewController:(UIViewController *)viewController {
 	NSInteger page = [self pageOfViewController:viewController];
-	if(++page >= [self numberOfPage]) {
+	if (++page >= [self numberOfPage]) {
 		return nil;
 	}
 
@@ -174,7 +174,7 @@
 #pragma mark - Custom getters
 
 - (UIPageControl *)pageControl {
-	if(_pageControl == nil) {
+	if (_pageControl == nil) {
 		_pageControl = [[MZInjector alloc] instanceForClass:[UIPageControl class]];
 		_pageControl.numberOfPages = [self numberOfPage];
 		_pageControl.currentPage = 0;
@@ -183,7 +183,7 @@
 }
 
 - (UIScrollView *)titleScrollView {
-	if(_titleScrollView == nil) {
+	if (_titleScrollView == nil) {
 		UIScrollView * titleScrollView = [[UIScrollView alloc] init];
 
 		CGSize size = CGSizeMake(self.view.frame.size.width - kTitleViewHorizontalMargin * 2.0f, kTitleViewMaxHeight);
@@ -280,7 +280,7 @@
 - (CGFloat)currentPosition {
 	NSUInteger offset = 0;
 	UIViewController * firstVisibleViewController;
-	while([(firstVisibleViewController = [self viewControllerForPage:offset]).view superview] == nil) {
+	while ([(firstVisibleViewController = [self viewControllerForPage:offset]).view superview] == nil) {
 		++offset;
 	}
 	CGRect rect = [[firstVisibleViewController.view superview] convertRect:firstVisibleViewController.view.frame fromView:self.view];
