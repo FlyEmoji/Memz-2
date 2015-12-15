@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-typedef UIViewController * (^ ETHPageViewControllerFactoryBlock)(void);
+typedef UIViewController * (^ MZPageViewControllerFactoryBlock)(void);
 
 @interface MZPageViewController : UIPageViewController
 
 - (UIViewController *)currentViewController;
 - (UIViewController *)viewControllerForPage:(NSInteger)page;
-- (ETHPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page;
+- (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page;
 
 - (NSString *)titleForViewControllerForPage:(NSInteger)page;
 - (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page;

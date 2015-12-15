@@ -85,7 +85,7 @@
 		return self.cachedViewControllers[@(page)];
 	}
 
-	ETHPageViewControllerFactoryBlock factory = [self viewControllerFactoryForPage:page];
+	MZPageViewControllerFactoryBlock factory = [self viewControllerFactoryForPage:page];
 	NSAssert(factory != nil, @"Factory for page %ld is not defined", (long)page);
 	UIViewController * viewController = factory();
 	NSAssert(viewController != nil, @"View controller for page %ld is not defined", (long)page);
@@ -93,7 +93,7 @@
 	return viewController;
 }
 
-- (ETHPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
+- (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
 	return nil;
 }
 

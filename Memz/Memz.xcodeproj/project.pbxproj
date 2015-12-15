@@ -19,6 +19,8 @@
 		0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C001C20598F000E19D4 /* MZPageViewController.m */; };
 		0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */; };
 		0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C071C206BA5000E19D4 /* MZInjector.m */; };
+		0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */; };
+		0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C061C206BA5000E19D4 /* MZInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZInjector.h; path = Code/Helpers/Classes/MZInjector/MZInjector.h; sourceTree = SOURCE_ROOT; };
 		0CA58C071C206BA5000E19D4 /* MZInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZInjector.m; path = Code/Helpers/Classes/MZInjector/MZInjector.m; sourceTree = SOURCE_ROOT; };
+		0CA58C091C20735F000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0 - Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CA58C0C1C207774000E19D4 /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+MemzAdditions.m"; path = "Code/Helpers/Categories/NSAttributedString+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +227,8 @@
 			children = (
 				0CA58C021C205E8A000E19D4 /* CADisplayLink+MemzBlocks.h */,
 				0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */,
+				0CA58C0C1C207774000E19D4 /* NSAttributedString+MemzAdditions.h */,
+				0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -236,6 +244,8 @@
 		0CA58BFD1C205936000E19D4 /* 0 - Common */ = {
 			isa = PBXGroup;
 			children = (
+				0CA58C091C20735F000E19D4 /* MZMainViewController.h */,
+				0CA58C0A1C20735F000E19D4 /* MZMainViewController.m */,
 			);
 			name = "0 - Common";
 			sourceTree = "<group>";
@@ -393,9 +403,11 @@
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
 				0CA58C011C20598F000E19D4 /* MZPageViewController.m in Sources */,
 				0CA58BDF1C204FE0000E19D4 /* ViewController.m in Sources */,
+				0CA58C0B1C20735F000E19D4 /* MZMainViewController.m in Sources */,
 				0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */,
 				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
+				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
