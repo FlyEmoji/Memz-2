@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
+		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
 		0CA58BC91C204C7F000E19D4 /* MemzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BC81C204C7F000E19D4 /* MemzUITests.m */; };
 		0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BE21C20501C000E19D4 /* Assets.xcassets */; };
@@ -26,8 +27,8 @@
 		0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C211C209D9E000E19D4 /* MZPageViewController.m */; };
 		0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C271C209DC7000E19D4 /* MZMainViewController.m */; };
-		0CA58C2A1C209F0C000E19D4 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58C291C209F0C000E19D4 /* Navigation.storyboard */; };
 		0CA58C2D1C20A00E000E19D4 /* NSObject+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */; };
+		67DDE0D0D32BF2E9C95544AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEB74D0462D5B520166C49D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedTableViewCell.m; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
 		0CA58B9D1C204C7F000E19D4 /* Memz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BB91C204C7F000E19D4 /* MemzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BBD1C204C7F000E19D4 /* MemzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzTests.m; sourceTree = "<group>"; };
@@ -86,9 +88,11 @@
 		0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserEntranceViewController.m; path = "Code/Controllers/1-User Entrance/MZUserEntranceViewController/MZUserEntranceViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C261C209DC7000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C271C209DC7000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
-		0CA58C291C209F0C000E19D4 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = SOURCE_ROOT; };
 		0CA58C2B1C20A00E000E19D4 /* NSObject+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+MemzAdditions.h"; path = "Code/Helpers/Categories/NSObject+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MemzAdditions.m"; path = "Code/Helpers/Categories/NSObject+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		2EEB74D0462D5B520166C49D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67DDE0D0D32BF2E9C95544AE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +145,8 @@
 				0CA58BBC1C204C7F000E19D4 /* MemzTests */,
 				0CA58BC71C204C7F000E19D4 /* MemzUITests */,
 				0CA58B9E1C204C7F000E19D4 /* Products */,
+				44DFB1CF8393D3A69FE59971 /* Pods */,
+				D0B7255BD900C535A1644E00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */,
-				0CA58C291C209F0C000E19D4 /* Navigation.storyboard */,
+				0C7A22E91C20CC4600774B95 /* Navigation.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -357,6 +364,23 @@
 			name = MZFeedViewController;
 			sourceTree = "<group>";
 		};
+		44DFB1CF8393D3A69FE59971 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */,
+				E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D0B7255BD900C535A1644E00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EEB74D0462D5B520166C49D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,9 +388,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA58BCD1C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "Memz" */;
 			buildPhases = (
+				1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */,
 				0CA58B991C204C7F000E19D4 /* Sources */,
 				0CA58B9A1C204C7F000E19D4 /* Frameworks */,
 				0CA58B9B1C204C7F000E19D4 /* Resources */,
+				DD7536AA3755DD17187C88FC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -461,7 +487,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA58C2A1C209F0C000E19D4 /* Navigation.storyboard in Resources */,
+				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
 				0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */,
 				0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */,
@@ -483,6 +509,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DD7536AA3755DD17187C88FC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CA58B991C204C7F000E19D4 /* Sources */ = {
@@ -621,6 +680,7 @@
 		};
 		0CA58BCE1C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -634,6 +694,7 @@
 		};
 		0CA58BCF1C204C7F000E19D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
