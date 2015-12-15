@@ -24,7 +24,7 @@ const NSUInteger kNumberPages = 3;
 	[super viewDidLoad];
 
 	// Add right button (add new word or expression)
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Add-Word"]
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Add"]
 																																	style:UIBarButtonItemStylePlain
 																																 target:self
 																																 action:@selector(goToAddWordView:)];
