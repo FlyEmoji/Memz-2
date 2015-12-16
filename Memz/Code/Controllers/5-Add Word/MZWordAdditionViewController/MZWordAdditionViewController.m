@@ -10,4 +10,14 @@
 
 @implementation MZWordAdditionViewController
 
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapCloseButton:(UIButton *)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
