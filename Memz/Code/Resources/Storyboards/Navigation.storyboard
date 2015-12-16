@@ -3,8 +3,50 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Word Addition View Controller-->
+        <scene sceneID="WOX-1S-wxr">
+            <objects>
+                <viewController storyboardIdentifier="MZWordAdditionViewControllerIdentifier" id="hko-ZM-ogh" customClass="MZWordAdditionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wev-HU-WUY"/>
+                        <viewControllerLayoutGuide type="bottom" id="XD5-Gd-9Ck"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0fl-7w-hRt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-ar-79y">
+                                <rect key="frame" x="5" y="5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="O89-fW-iQp"/>
+                                    <constraint firstAttribute="width" secondItem="b2y-ar-79y" secondAttribute="height" id="Qna-Pv-sxV"/>
+                                </constraints>
+                                <state key="normal" image="Navigation-Cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fwu-Pf-C5m" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="top" id="0Sv-Dk-4ch"/>
+                            <constraint firstItem="b2y-ar-79y" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="topMargin" constant="5" id="4V2-Ql-nAp"/>
+                            <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="bottom" id="MVe-Sh-0zo"/>
+                            <constraint firstItem="Fwu-Pf-C5m" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" id="j3N-EC-Kxq"/>
+                            <constraint firstItem="b2y-ar-79y" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" constant="5" id="s4w-Nk-otu"/>
+                            <constraint firstAttribute="trailing" secondItem="Fwu-Pf-C5m" secondAttribute="trailing" id="zn2-T7-Efl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rFh-yF-mW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="-513"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="eU3-Ob-pmS">
             <objects>
@@ -19,6 +61,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="LNH-jj-3rk"/>
+                    <connections>
+                        <segue destination="hko-ZM-ogh" kind="show" identifier="MZWordAdditionViewControllerSegue" id="Ls5-4s-CYZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c40-XB-gFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,5 +265,6 @@
     </scenes>
     <resources>
         <image name="Feed-Gradient" width="375" height="375"/>
+        <image name="Navigation-Cancel" width="21" height="20"/>
     </resources>
 </document>

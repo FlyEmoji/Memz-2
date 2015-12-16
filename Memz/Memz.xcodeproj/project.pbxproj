@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */; };
 		0C0551201C20DA0A000565DC /* MZPollsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C05511F1C20DA0A000565DC /* MZPollsViewController.m */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
@@ -56,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C01CD1C1C21990C00F604A2 /* MZWordAdditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionViewController.h; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.h"; sourceTree = SOURCE_ROOT; };
+		0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionViewController.m; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C05511E1C20DA0A000565DC /* MZPollsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsViewController.h; path = "Code/Controllers/3-Polls/MZPollsViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C05511F1C20DA0A000565DC /* MZPollsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsViewController.m; path = "Code/Controllers/3-Polls/MZPollsViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -141,6 +144,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C01CD191C21977500F604A2 /* 4-Manage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "4-Manage";
+			sourceTree = "<group>";
+		};
+		0C01CD1A1C2197D700F604A2 /* 5-Add Word */ = {
+			isa = PBXGroup;
+			children = (
+				0C01CD1B1C2197F400F604A2 /* MZWordAdditionViewController */,
+			);
+			name = "5-Add Word";
+			sourceTree = "<group>";
+		};
+		0C01CD1B1C2197F400F604A2 /* MZWordAdditionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C01CD1C1C21990C00F604A2 /* MZWordAdditionViewController.h */,
+				0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */,
+			);
+			name = MZWordAdditionViewController;
+			sourceTree = "<group>";
+		};
 		0C05511C1C20D9A3000565DC /* 3-Polls */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +282,8 @@
 				0CA58C151C20890B000E19D4 /* 1-User Entrance */,
 				0CA58C191C209BC4000E19D4 /* 2-Feed */,
 				0C05511C1C20D9A3000565DC /* 3-Polls */,
+				0C01CD191C21977500F604A2 /* 4-Manage */,
+				0C01CD1A1C2197D700F604A2 /* 5-Add Word */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -647,6 +676,7 @@
 				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0C92FFF41C218822009425E3 /* UIView+MemzAdditions.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
+				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */,

@@ -9,7 +9,11 @@
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
 #import "MZPollsViewController.h"
+#import "MZWordAdditionViewController.h"
+#import "MZInjector.h"
 #import "NSAttributedString+MemzAdditions.h"
+
+NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 
 const NSUInteger kNumberPages = 3;
 
@@ -51,12 +55,13 @@ const NSUInteger kNumberPages = 3;
 	self.profileButton.enabled = YES;
 }
 
-- (void)goToAddWordView:(id)sender {
-	/*
+- (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
 	[sender setEnabled:NO];
-	CHKProfileViewController *profileViewController = [[CHKProfileViewController alloc] init];
-	profileViewController.user = [CHKDataManager sharedDataManager].currentUser;
-	[self.navigationController pushViewController:profileViewController animated:YES];*/
+	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+
+	UINavigationController *navigationController = [[MZInjector alloc] instanceForClass:[UINavigationController class]];
+	navigationController.viewControllers = @[wordAdditionViewController];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)gotoSettingsView:(id)sender {
