@@ -41,6 +41,7 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 
 	self.tableView.contentInset = UIEdgeInsetsMake(kTopShrinkableViewMaximumHeight, 0.0f, 0.0f, 0.0f);
 	self.tableView.contentOffset = CGPointMake(0.0f, -self.topShrinkableViewHeightConstraint.constant);
+	self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)setupTableViewData {
