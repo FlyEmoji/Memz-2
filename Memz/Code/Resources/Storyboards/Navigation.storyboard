@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -170,45 +168,11 @@
                                     <outlet property="delegate" destination="c8k-Kd-gHs" id="CuC-LM-2Gp"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ch-X1q" userLabel="Top Shrinkable View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ch-X1q" userLabel="Top Shrinkable View" customClass="MZPollsInfoView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Polls-Bell" translatesAutoresizingMaskIntoConstraints="NO" id="exl-1q-eab">
-                                        <rect key="frame" x="14" y="14" width="36" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="36" id="RNd-Iu-1JL"/>
-                                            <constraint firstAttribute="width" secondItem="exl-1q-eab" secondAttribute="height" id="mdh-av-YTl"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have pending polls!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU1-Qd-d7o">
-                                        <rect key="frame" x="58" y="21" width="181" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHz-th-M5Y">
-                                        <rect key="frame" x="10" y="10" width="13" height="13"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="13" id="9ea-we-9Qt"/>
-                                            <constraint firstAttribute="width" secondItem="PHz-th-M5Y" secondAttribute="height" id="mLW-Xf-mGV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="21X-4b-UNg"/>
-                                    <constraint firstItem="PHz-th-M5Y" firstAttribute="centerX" secondItem="exl-1q-eab" secondAttribute="centerX" multiplier="1:2" id="5WA-Ll-dR4"/>
-                                    <constraint firstItem="PHz-th-M5Y" firstAttribute="centerY" secondItem="exl-1q-eab" secondAttribute="centerY" multiplier="1:2" id="9F8-cv-CvU"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="exl-1q-eab" secondAttribute="bottom" constant="5" id="AO8-hc-kYf"/>
-                                    <constraint firstItem="exl-1q-eab" firstAttribute="leading" secondItem="tdN-ch-X1q" secondAttribute="leading" constant="14" id="C2c-3n-JcI"/>
-                                    <constraint firstItem="HU1-Qd-d7o" firstAttribute="centerY" secondItem="exl-1q-eab" secondAttribute="centerY" id="G6g-kb-kqK"/>
-                                    <constraint firstItem="exl-1q-eab" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tdN-ch-X1q" secondAttribute="top" constant="5" id="K3h-pM-plo"/>
-                                    <constraint firstItem="HU1-Qd-d7o" firstAttribute="leading" secondItem="exl-1q-eab" secondAttribute="trailing" constant="8" id="dcr-So-zrp"/>
-                                    <constraint firstItem="exl-1q-eab" firstAttribute="top" secondItem="tdN-ch-X1q" secondAttribute="top" priority="500" constant="14" id="ugz-ci-njQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -256,6 +220,5 @@
     </scenes>
     <resources>
         <image name="Feed-Gradient" width="375" height="375"/>
-        <image name="Polls-Bell" width="111" height="108"/>
     </resources>
 </document>

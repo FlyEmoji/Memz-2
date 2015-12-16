@@ -14,7 +14,7 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionUp
 };
 
-const CGFloat kTopShrinkableViewMinimumHeight = 30.0f;
+const CGFloat kTopShrinkableViewMinimumHeight = 40.0f;
 const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
 
 NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifier";
