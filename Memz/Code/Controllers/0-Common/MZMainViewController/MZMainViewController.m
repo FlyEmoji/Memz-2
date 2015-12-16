@@ -8,6 +8,7 @@
 
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
+#import "MZPollsViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 
 const NSUInteger kNumberPages = 3;
@@ -72,7 +73,7 @@ const NSUInteger kNumberPages = 3;
 		case CHKMainViewControllerPageFeed:
 			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
 		case CHKMainViewControllerPagePolls:
-			return ^{ return [[UIViewController alloc] init]; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZPollsViewControllerIdentifier"]; return viewController; };
 		case CHKMainViewControllerPageToBeDecided:
 			return ^{ return [[UIViewController alloc] init]; };
 	}
