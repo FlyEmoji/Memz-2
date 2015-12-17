@@ -10,7 +10,6 @@
 #import "MZFeedViewController.h"
 #import "MZPollsViewController.h"
 #import "MZWordAdditionViewController.h"
-#import "MZInjector.h"
 #import "NSAttributedString+MemzAdditions.h"
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";

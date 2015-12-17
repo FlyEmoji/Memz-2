@@ -9,7 +9,6 @@
 #import <objc/runtime.h>
 #import "UINavigationController+MemzTransitions.h"
 #import "UINavigationItem+MemzAdditions.h"
-#import "MZInjector.h"
 
 static const char kTransitionOptionKey;
 
@@ -62,9 +61,7 @@ static const char kTransitionOptionKey;
 
 	if (!!(options & MZAnimatedTransitionNewRootOptionNavigationController)) {
 		NSLog(@"Transition to new root controller (%@), creating a new instance of UINavigationController for it", viewController);
-		UINavigationController * navigationController = [[MZInjector alloc] instanceForClass:[UINavigationController class]];
-		navigationController.viewControllers = @[viewController];
-
+		UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
 		resultViewController = navigationController;
 	} else {
 		NSLog(@"Transition to new root controller (%@)", viewController);

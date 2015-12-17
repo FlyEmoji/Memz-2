@@ -10,7 +10,11 @@
 
 @implementation MZWordAdditionViewController
 
-- (BOOL)prefersStatusBarHidden {
+- (void)viewDidLoad {
+	[super viewDidLoad];
+}
+
+- (BOOL)prefersStatusBarHidden {		// TODO: DOES NOT WORK
 	return YES;
 }
 
