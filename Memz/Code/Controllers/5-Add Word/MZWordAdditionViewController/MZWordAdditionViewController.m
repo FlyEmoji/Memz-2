@@ -30,7 +30,7 @@ NSString * const kWordRowTypeKey = @"WordRowTypeKey";
 NSString * const kContentTypeKey = @"ContentTypeKey";
 
 const CGFloat kTableViewSectionHeaderHeight = 40.0f;
-const CGFloat kWordAdditionTypeWordCellHeight = 40.0f;
+const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 
 @interface MZWordAdditionViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -50,7 +50,13 @@ const CGFloat kWordAdditionTypeWordCellHeight = 40.0f;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.tableViewTopConstraint.constant = [UIApplication sharedApplication].statusBarFrame.size.height;
+	self.title = @"Add New Word";  // TODO: Localize
+
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Cancel"]
+																																	style:UIBarButtonItemStylePlain
+																																target:self
+																																action:@selector(didTapCloseButton:)];
+	[self.navigationItem setLeftBarButtonItem:leftButton];
 
 	[self setupTableView];
 	[self.tableView reloadData];
@@ -115,7 +121,7 @@ const CGFloat kWordAdditionTypeWordCellHeight = 40.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.tableViewData[section] count];
+	return [self.tableViewData[section][kContentTypeKey] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,8 +129,12 @@ const CGFloat kWordAdditionTypeWordCellHeight = 40.0f;
 		case MZWordAdditionSectionTypeWord: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
+			if ([self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kWordRowTypeKey] integerValue] == MZWordAdditionWordRowTypeNewWord) {
+				cell.cellType = MZTextFieldTableViewCellTypeRegular;
+			} else {
+				cell.cellType = MZTextFieldTableViewCellTypeAddition;
+			}
 			return cell;
-			break;
 		}
 
 		default:
@@ -135,7 +145,7 @@ const CGFloat kWordAdditionTypeWordCellHeight = 40.0f;
 
 #pragma mark - Actions
 
-- (IBAction)didTapCloseButton:(UIButton *)sender {
+- (void)didTapCloseButton:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
+	MZTextFieldTableViewCellTypeRegular,
+	MZTextFieldTableViewCellTypeAddition
+};
+
 @interface MZTextFieldTableViewCell : UITableViewCell
+
+@property (nonatomic, assign) MZTextFieldTableViewCellType cellType;
+
+@property (nonatomic, assign, getter=isShowingBottomSeparator) BOOL showBottomSeparator;
+@property (nonatomic, assign) UIColor *separatorColor;
 
 @end

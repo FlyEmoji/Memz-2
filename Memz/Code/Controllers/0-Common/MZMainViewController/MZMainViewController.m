@@ -59,8 +59,6 @@ const NSUInteger kNumberPages = 3;
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
 
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:wordAdditionViewController];
-	[navigationController setNavigationBarHidden:YES animated:NO];
-
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
