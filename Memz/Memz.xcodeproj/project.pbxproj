@@ -36,6 +36,9 @@
 		0CBF7AB91C21786000F5D91B /* MZPollsInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CBF7AB81C21786000F5D91B /* MZPollsInfoView.xib */; };
 		0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7ABD1C217BA400F5D91B /* MZNibView.m */; };
 		0CBF7AC11C21814000F5D91B /* MZPollsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7AC01C21814000F5D91B /* MZPollsInfoView.m */; };
+		0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */; };
+		0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */; };
+		0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */; };
 		67DDE0D0D32BF2E9C95544AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EEB74D0462D5B520166C49D /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +116,11 @@
 		0CBF7ABD1C217BA400F5D91B /* MZNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibView.m; path = Code/Helpers/Classes/MZNibView/MZNibView.m; sourceTree = SOURCE_ROOT; };
 		0CBF7ABF1C21814000F5D91B /* MZPollsInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsInfoView.h; path = "Code/Views/3-Polls/MZPollsInfoView/MZPollsInfoView.h"; sourceTree = SOURCE_ROOT; };
 		0CBF7AC01C21814000F5D91B /* MZPollsInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsInfoView.m; path = "Code/Views/3-Polls/MZPollsInfoView/MZPollsInfoView.m"; sourceTree = SOURCE_ROOT; };
+		0CD2F0261C2316B000636588 /* MZTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTextFieldTableViewCell.h; path = "Code/Views/5-Add Word/MZTextFieldTableViewCell/MZTextFieldTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTextFieldTableViewCell.m; path = "Code/Views/5-Add Word/MZTextFieldTableViewCell/MZTextFieldTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0CD2F02A1C2320E600636588 /* MZWordAdditionTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionTableViewHeader.h; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.h"; sourceTree = SOURCE_ROOT; };
+		0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionTableViewHeader.m; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.m"; sourceTree = SOURCE_ROOT; };
+		0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordAdditionTableViewHeader.xib; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.xib"; sourceTree = SOURCE_ROOT; };
 		2EEB74D0462D5B520166C49D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +301,7 @@
 			children = (
 				0C7A22E21C20B8EB00774B95 /* 2-Feed */,
 				0C6891AF1C20DE370069E39A /* 3-Polls */,
+				0CD2F0241C23166600636588 /* 5-Add Word */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -474,6 +483,34 @@
 			name = MZNibView;
 			sourceTree = "<group>";
 		};
+		0CD2F0241C23166600636588 /* 5-Add Word */ = {
+			isa = PBXGroup;
+			children = (
+				0CD2F0291C231FF900636588 /* MZWordAdditionTableViewHeader */,
+				0CD2F0251C23167900636588 /* MZTextFieldTableViewCell */,
+			);
+			name = "5-Add Word";
+			sourceTree = "<group>";
+		};
+		0CD2F0251C23167900636588 /* MZTextFieldTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CD2F0261C2316B000636588 /* MZTextFieldTableViewCell.h */,
+				0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */,
+			);
+			name = MZTextFieldTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CD2F0291C231FF900636588 /* MZWordAdditionTableViewHeader */ = {
+			isa = PBXGroup;
+			children = (
+				0CD2F02A1C2320E600636588 /* MZWordAdditionTableViewHeader.h */,
+				0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */,
+				0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */,
+			);
+			name = MZWordAdditionTableViewHeader;
+			sourceTree = "<group>";
+		};
 		44DFB1CF8393D3A69FE59971 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,6 +637,7 @@
 				0CBF7AB91C21786000F5D91B /* MZPollsInfoView.xib in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
+				0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */,
 				0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */,
 				0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */,
 			);
@@ -673,12 +711,14 @@
 				0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */,
 				0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */,
 				0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */,
+				0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */,
 				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0C92FFF41C218822009425E3 /* UIView+MemzAdditions.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
+				0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */,
 				0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */,
 				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);

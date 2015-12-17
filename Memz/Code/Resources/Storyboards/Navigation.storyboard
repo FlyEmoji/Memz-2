@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Word Addition View Controller-->
@@ -19,12 +18,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.30390537210000002" green="0.56333246879999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTextFieldTableViewCellIdentifier" rowHeight="72" id="26E-MQ-oFk" customClass="MZTextFieldTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="26E-MQ-oFk" id="aO7-qT-f1Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your New Word Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-hB-NhR">
+                                                    <rect key="frame" x="8" y="8" width="520" height="56"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-Kz-UZi">
+                                                    <rect key="frame" x="536" y="8" width="56" height="56"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="PHw-Kz-UZi" secondAttribute="height" id="MMK-7g-89h"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Add-Word-Plus-Icon"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hDE-hB-NhR" firstAttribute="top" secondItem="aO7-qT-f1Q" secondAttribute="top" constant="8" id="8e3-Yd-qnY"/>
+                                                <constraint firstAttribute="bottom" secondItem="PHw-Kz-UZi" secondAttribute="bottom" constant="8" id="Av9-4h-PsT"/>
+                                                <constraint firstItem="PHw-Kz-UZi" firstAttribute="leading" secondItem="hDE-hB-NhR" secondAttribute="trailing" constant="8" id="GpJ-TJ-HxA"/>
+                                                <constraint firstItem="hDE-hB-NhR" firstAttribute="leading" secondItem="aO7-qT-f1Q" secondAttribute="leading" constant="8" id="VSM-Zw-lzF"/>
+                                                <constraint firstAttribute="bottom" secondItem="hDE-hB-NhR" secondAttribute="bottom" constant="8" id="WD7-tq-eKh"/>
+                                                <constraint firstItem="PHw-Kz-UZi" firstAttribute="top" secondItem="aO7-qT-f1Q" secondAttribute="top" constant="8" id="hsF-R2-pj8"/>
+                                                <constraint firstAttribute="trailing" secondItem="PHw-Kz-UZi" secondAttribute="trailing" constant="8" id="uGu-hk-mPq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="PHw-Kz-UZi" id="dBi-06-7D3"/>
+                                            <outlet property="textField" destination="hDE-hB-NhR" id="v8y-cR-zpy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hko-ZM-ogh" id="0wI-HC-PAo"/>
+                                    <outlet property="delegate" destination="hko-ZM-ogh" id="EAS-f2-ckI"/>
+                                </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-ar-79y">
-                                <rect key="frame" x="5" y="5" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-ar-79y" userLabel="Close Button">
+                                <rect key="frame" x="5" y="0.0" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="O89-fW-iQp"/>
@@ -35,18 +77,36 @@
                                     <action selector="didTapCloseButton:" destination="hko-ZM-ogh" eventType="touchUpInside" id="KFB-em-pNs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrp-eF-sJu" userLabel="Add Button">
+                                <rect key="frame" x="30" y="535" width="540" height="50"/>
+                                <color key="backgroundColor" red="0.1171962347" green="0.070841617839999996" blue="0.5315466244" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Eod-go-ZgT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Add Word">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.30196078431372547" green="0.56470588235294117" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="top" id="0Sv-Dk-4ch"/>
-                            <constraint firstItem="b2y-ar-79y" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="topMargin" constant="5" id="4V2-Ql-nAp"/>
                             <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="bottom" id="MVe-Sh-0zo"/>
+                            <constraint firstItem="b2y-ar-79y" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="top" id="Uuj-Au-v6z"/>
+                            <constraint firstItem="hrp-eF-sJu" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" constant="30" id="ZsZ-mE-MwJ"/>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" id="j3N-EC-Kxq"/>
+                            <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="hrp-eF-sJu" secondAttribute="bottom" constant="15" id="lg9-VE-b0I"/>
+                            <constraint firstAttribute="trailing" secondItem="hrp-eF-sJu" secondAttribute="trailing" constant="30" id="qmR-AX-JTS"/>
                             <constraint firstItem="b2y-ar-79y" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" constant="5" id="s4w-Nk-otu"/>
                             <constraint firstAttribute="trailing" secondItem="Fwu-Pf-C5m" secondAttribute="trailing" id="zn2-T7-Efl"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Fwu-Pf-C5m" id="1xw-7x-5j6"/>
+                        <outlet property="tableViewTopConstraint" destination="0Sv-Dk-4ch" id="GtV-OT-dWy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFh-yF-mW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,6 +329,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add-Word-Plus-Icon" width="512" height="512"/>
         <image name="Feed-Gradient" width="375" height="375"/>
         <image name="Navigation-Cancel" width="21" height="20"/>
     </resources>

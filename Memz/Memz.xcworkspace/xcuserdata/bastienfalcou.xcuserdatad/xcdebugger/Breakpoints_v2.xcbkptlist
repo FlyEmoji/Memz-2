@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"
-            timestampString = "472050654.062692"
+            timestampString = "472065858.057988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "-prefersStatusBarHidden"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-tableView:viewForHeaderInSection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
