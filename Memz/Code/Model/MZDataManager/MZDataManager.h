@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class DATAStack;
+@import DATAStack;
 
 @interface MZDataManager : NSObject
 

@@ -6,7 +6,6 @@
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
-#import <DATAStack/DATAStack.h>
 #import "MZDataManager.h"
 
 @interface MZDataManager ()
@@ -29,17 +28,16 @@
 - (instancetype)init {
 	if (self = [super init]) {
 		_dataStack = [[DATAStack alloc] initWithModelName:@"Memz"];
-
-		[[NSNotificationCenter defaultCenter] addObserver:(id)[self class]
-																						 selector:@selector(objectContextWillSave:)
-																								 name:NSManagedObjectContextWillSaveNotification
-																							 object:nil];
 	}
 	return self;
 }
 
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+- (NSError *)saveChanges {
+	return nil;
+}
+
+- (NSError *)rollBackChanges {
+	return nil;
 }
 
 @end
