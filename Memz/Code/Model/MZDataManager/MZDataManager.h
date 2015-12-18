@@ -8,16 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@import CoreData;
 @import DATAStack;
 
 @interface MZDataManager : NSObject
 
-@property (nonatomic, strong, readonly) DATAStack * dataStack;
-@property (nonatomic, strong, readonly) NSManagedObjectContext * managedObjectContext;
+@property (nonatomic, strong, readonly, nonnull) DATAStack *dataStack;
+@property (nonatomic, weak, readonly) NSManagedObjectContext *managedObjectContext;
 
-+ (instancetype)sharedDataManager;
++ (nonnull instancetype)sharedDataManager;
 
-- (NSError *)saveChanges;
-- (NSError *)rollBackChanges;
+- (void)saveChangesWithCompletionHandler:(void (^ __nullable)(void))completionHandler;
+- (void)rollBackChanges;
 
 @end
