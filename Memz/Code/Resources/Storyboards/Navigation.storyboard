@@ -138,6 +138,9 @@
                                 <state key="normal" title="Add Word">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapAddWordButton:" destination="hko-ZM-ogh" eventType="touchUpInside" id="cxm-5v-VWt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.30196078431372547" green="0.56470588235294117" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>

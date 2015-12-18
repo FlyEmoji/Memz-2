@@ -10,6 +10,9 @@
 #import "MZWordAdditionTableViewHeader.h"
 #import "MZTextFieldTableViewCell.h"
 #import "MZTranslatedWordTableViewCell.h"
+#import "NSManagedObject+MemzCoreData.h"
+#import "MZWord+CoreDataProperties.h"
+#import "MZDataManager.h"
 
 typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 	MZWordAdditionSectionTypeWord,
@@ -205,6 +208,12 @@ MZTranslatedWordTableViewCellDelegate>
 
 - (void)didTapCloseButton:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)didTapAddWordButton:(id)sender {
+	// TODO: Test texts not empty, etc.
+
+	MZWord *word = [MZWord newInstance];
 }
 
 @end

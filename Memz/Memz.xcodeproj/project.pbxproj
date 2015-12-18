@@ -13,6 +13,9 @@
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC221C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC211C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m */; };
+		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
+		0C3726D21C2545EC00C9879F /* MZWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726CF1C2545EC00C9879F /* MZWord.m */; };
+		0C3726D31C2545EC00C9879F /* MZWord+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726D11C2545EC00C9879F /* MZWord+CoreDataProperties.m */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
@@ -25,7 +28,6 @@
 		0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BEC1C20534E000E19D4 /* AppDelegate.m */; };
 		0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */; };
 		0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */; };
-		0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BFB1C2055DE000E19D4 /* Memz.xcdatamodeld */; };
 		0CA58C041C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C031C205E8A000E19D4 /* CADisplayLink+MemzBlocks.m */; };
 		0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C071C206BA5000E19D4 /* MZInjector.m */; };
 		0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C0D1C207774000E19D4 /* NSAttributedString+MemzAdditions.m */; };
@@ -77,6 +79,11 @@
 		0C13AC1E1C247196007A1AD5 /* MZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDataManager.m; path = Code/Model/MZDataManager/MZDataManager.m; sourceTree = SOURCE_ROOT; };
 		0C13AC201C247D64007A1AD5 /* NSManagedObject+MemzCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+MemzCoreData.h"; path = "Code/Helpers/Categories/NSManagedObject+MemzCoreData.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC211C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+MemzCoreData.m"; path = "Code/Helpers/Categories/NSManagedObject+MemzCoreData.m"; sourceTree = SOURCE_ROOT; };
+		0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memz.xcdatamodel; sourceTree = "<group>"; };
+		0C3726CE1C2545EC00C9879F /* MZWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWord.h; path = Code/Model/CoreData/MZWord.h; sourceTree = SOURCE_ROOT; };
+		0C3726CF1C2545EC00C9879F /* MZWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWord.m; path = Code/Model/CoreData/MZWord.m; sourceTree = SOURCE_ROOT; };
+		0C3726D01C2545EC00C9879F /* MZWord+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZWord+CoreDataProperties.h"; path = "Code/Model/CoreData/MZWord+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
+		0C3726D11C2545EC00C9879F /* MZWord+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZWord+CoreDataProperties.m"; path = "Code/Model/CoreData/MZWord+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsTableViewCell.m; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -224,6 +231,17 @@
 			name = MZDataManager;
 			sourceTree = "<group>";
 		};
+		0C13AC231C24854B007A1AD5 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0C3726CE1C2545EC00C9879F /* MZWord.h */,
+				0C3726CF1C2545EC00C9879F /* MZWord.m */,
+				0C3726D01C2545EC00C9879F /* MZWord+CoreDataProperties.h */,
+				0C3726D11C2545EC00C9879F /* MZWord+CoreDataProperties.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		0C6891AF1C20DE370069E39A /* 3-Polls */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +304,7 @@
 			children = (
 				0CA58BEB1C20534E000E19D4 /* AppDelegate.h */,
 				0CA58BEC1C20534E000E19D4 /* AppDelegate.m */,
+				0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */,
 				0CA58BD61C204E83000E19D4 /* Controllers */,
 				0CA58BD71C204E8A000E19D4 /* Views */,
 				0CA58BD81C204E97000E19D4 /* Helpers */,
@@ -349,7 +368,7 @@
 		0CA58BD91C204ED2000E19D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BFB1C2055DE000E19D4 /* Memz.xcdatamodeld */,
+				0C13AC231C24854B007A1AD5 /* CoreData */,
 				0C13AC1C1C24716B007A1AD5 /* MZDataManager */,
 			);
 			name = Model;
@@ -753,6 +772,7 @@
 			files = (
 				0CBF7AC11C21814000F5D91B /* MZPollsInfoView.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
+				0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */,
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
@@ -769,7 +789,6 @@
 				0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */,
 				0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */,
 				0C13AC221C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m in Sources */,
-				0CA58BFC1C2055DE000E19D4 /* Memz.xcdatamodeld in Sources */,
 				0C92FFF41C218822009425E3 /* UIView+MemzAdditions.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
@@ -777,6 +796,8 @@
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */,
 				0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */,
+				0C3726D31C2545EC00C9879F /* MZWord+CoreDataProperties.m in Sources */,
+				0C3726D21C2545EC00C9879F /* MZWord.m in Sources */,
 				0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */,
 				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);
@@ -1014,13 +1035,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0CA58BFB1C2055DE000E19D4 /* Memz.xcdatamodeld */ = {
+		0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */,
 			);
-			name = Memz.xcdatamodeld;
-			path = ../Code/Model/Memz.xcdatamodeld;
-			sourceTree = "<group>";
+			currentVersion = 0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */;
+			path = Memz.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
