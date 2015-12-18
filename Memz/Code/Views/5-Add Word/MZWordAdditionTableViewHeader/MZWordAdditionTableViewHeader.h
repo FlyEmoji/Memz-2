@@ -11,5 +11,6 @@
 @interface MZWordAdditionTableViewHeader : UITableViewHeaderFooterView
 
 @property (weak, nonatomic) IBOutlet UILabel *headerTitle;
+@property (weak, nonatomic) IBOutlet UIView *bottomSeparatorView;
 
 @end

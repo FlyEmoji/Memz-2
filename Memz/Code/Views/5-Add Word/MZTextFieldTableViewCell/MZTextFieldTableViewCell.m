@@ -14,7 +14,6 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonWidthConstant;
 
 @end
@@ -30,20 +29,16 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 	[self layoutIfNeeded];
 }
 
-- (void)setShowBottomSeparator:(BOOL)showBottomSeparator {
-	self.bottomSeparatorView.hidden = !showBottomSeparator;
+- (NSString *)cellText {
+	return self.textField.text;
 }
 
-- (BOOL)isShowingBottomSeparator {
-	return !self.bottomSeparatorView.hidden;
-}
+#pragma mark - Actions
 
-- (void)setSeparatorColor:(UIColor *)separatorColor {
-	self.bottomSeparatorView.backgroundColor = separatorColor;
-}
-
-- (UIColor *)separatorColor {
-	return self.bottomSeparatorView.backgroundColor;
+- (IBAction)didTapAddButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(textFieldTableViewCellDidTapAddButton:)]) {
+		[self.delegate textFieldTableViewCellDidTapAddButton:self];
+	}
 }
 
 @end

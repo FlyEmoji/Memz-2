@@ -10,4 +10,18 @@
 
 @implementation MZWordAdditionTableViewHeader
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	self.backgroundView = [[UIView alloc] initWithFrame:self.frame];
+}
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+	self.backgroundView.backgroundColor = backgroundColor;
+}
+
+- (UIColor *)backgroundColor {
+	return self.backgroundView.backgroundColor;
+}
+
 @end

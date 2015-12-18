@@ -9,6 +9,7 @@
 #import "MZWordAdditionViewController.h"
 #import "MZWordAdditionTableViewHeader.h"
 #import "MZTextFieldTableViewCell.h"
+#import "MZTranslatedWordTableViewCell.h"
 
 typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 	MZWordAdditionSectionTypeWord,
@@ -23,6 +24,7 @@ typedef NS_ENUM(NSInteger, MZWordAdditionWordRowType) {
 
 NSString * const kWordAdditionTableViewHeaderIdentifier = @"MZWordAdditionTableViewHeaderIdentifier";
 NSString * const kTextFieldTableViewCellIdentifier = @"MZTextFieldTableViewCellIdentifier";
+NSString * const kTranslatedWordTableViewCellIdentifier = @"MZTranslatedWordTableViewCellIdentifier";
 
 NSString * const kSectionTypeKey = @"SectionTypeKey";
 NSString * const kSectionTitleKey = @"SectionTitleKey";
@@ -32,16 +34,19 @@ NSString * const kContentTypeKey = @"ContentTypeKey";
 const CGFloat kTableViewSectionHeaderHeight = 40.0f;
 const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 
-@interface MZWordAdditionViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MZWordAdditionViewController () <UITableViewDataSource,
+UITableViewDelegate,
+MZTextFieldTableViewCellDelegate,
+MZTranslatedWordTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
 
-@property (weak, nonatomic, readonly) NSArray *tableViewData;
+@property (weak, nonatomic, readonly) NSArray<NSDictionary *> *tableViewData;
 
 @property (strong, nonatomic) NSString *wordToTranslate;
-@property (copy, nonatomic) NSMutableArray *wordTranslations;
-@property (strong, nonatomic) NSArray *wordSuggestions;
+@property (strong, nonatomic) NSMutableArray<NSString *> *wordTranslations;
+@property (strong, nonatomic) NSArray<NSString *> *wordSuggestions;
 
 @end
 
@@ -50,13 +55,14 @@ const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.title = @"Add New Word";  // TODO: Localize
+	self.title = @"Add New Word";  // TODO: Localize and designs
 
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Cancel"]
 																																	style:UIBarButtonItemStylePlain
 																																target:self
 																																action:@selector(didTapCloseButton:)];
 	[self.navigationItem setLeftBarButtonItem:leftButton];
+	self.wordTranslations = [[NSMutableArray alloc] init];
 
 	[self setupTableView];
 	[self.tableView reloadData];
@@ -108,6 +114,8 @@ const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   MZWordAdditionTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kWordAdditionTableViewHeaderIdentifier];
 	headerView.headerTitle.text = [self.tableViewData[section][kSectionTitleKey] safeCastToClass:[NSString class]];
+	headerView.backgroundColor = [UIColor mainBackgroundColor];
+	headerView.bottomSeparatorView.backgroundColor = [UIColor secondaryBackgroundColor];
 	return headerView;
 }
 
@@ -129,6 +137,9 @@ const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 		case MZWordAdditionSectionTypeWord: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
+			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
+			cell.delegate = self;
+
 			if ([self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kWordRowTypeKey] integerValue] == MZWordAdditionWordRowTypeNewWord) {
 				cell.cellType = MZTextFieldTableViewCellTypeRegular;
 			} else {
@@ -137,10 +148,57 @@ const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
 			return cell;
 		}
 
+		case MZWordAdditionSectionTypeTranslations: {
+			MZTranslatedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslatedWordTableViewCellIdentifier
+																																						forIndexPath:indexPath];
+			cell.translatedWordLabel.text = self.wordTranslations[indexPath.row];
+			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
+			cell.delegate = self;
+			return cell;
+		}
+
 		default:
 			return nil;
-			break;
 		}
+}
+
+#pragma mark - Text Field Cells Delegate Methods
+
+- (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell {
+	// TODO: Check if valid
+
+	if ([self.wordTranslations containsObject:cell.cellText]) {
+		// TODO: Show error
+		return;
+	}
+
+	[self.view endEditing:YES];
+	[self.wordTranslations addObject:cell.cellText];
+
+	if (self.wordTranslations.count == 1) {
+		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeTranslations]
+									withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+		[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.wordTranslations.count - 1
+																																inSection:MZWordAdditionSectionTypeTranslations]]
+													withRowAnimation:UITableViewRowAnimationFade];
+	}
+}
+
+#pragma mark - Translated Word Cells Delegate Methods
+
+- (void)translatedWordTableViewCellDidTapRemoveButton:(MZTranslatedWordTableViewCell *)cell {
+	NSUInteger wordTranslationIndex = [self.wordTranslations indexOfObject:cell.translatedWordLabel.text];
+	[self.wordTranslations removeObjectAtIndex:wordTranslationIndex];
+
+	if (self.wordTranslations.count == 0) {
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeTranslations]
+									withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:wordTranslationIndex
+																																inSection:MZWordAdditionSectionTypeTranslations]]
+													withRowAnimation:UITableViewRowAnimationFade];
+	}
 }
 
 #pragma mark - Actions

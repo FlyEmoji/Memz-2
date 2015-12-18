@@ -13,11 +13,20 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 	MZTextFieldTableViewCellTypeAddition
 };
 
+@protocol MZTextFieldTableViewCellDelegate;
+
 @interface MZTextFieldTableViewCell : UITableViewCell
 
-@property (nonatomic, assign) MZTextFieldTableViewCellType cellType;
+@property (nonatomic, weak) IBOutlet UIView *bottomSeparator;
 
-@property (nonatomic, assign, getter=isShowingBottomSeparator) BOOL showBottomSeparator;
-@property (nonatomic, assign) UIColor *separatorColor;
+@property (nonatomic, weak) id<MZTextFieldTableViewCellDelegate> delegate;
+@property (nonatomic, assign) MZTextFieldTableViewCellType cellType;
+@property (nonatomic, strong, readonly) NSString *cellText;
+
+@end
+
+@protocol MZTextFieldTableViewCellDelegate <NSObject>
+
+- (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell;
 
 @end

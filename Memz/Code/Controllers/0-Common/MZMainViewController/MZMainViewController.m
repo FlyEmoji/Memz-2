@@ -83,17 +83,17 @@ const NSUInteger kNumberPages = 3;
 	return nil;
 }
 
-- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {
+- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {		// TODO: localize
 	NSString * title = nil;
-	switch(page) {
+	switch (page) {
 		case CHKMainViewControllerPageFeed:
-			title = [NSLocalizedString(@"HeatMapTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"FeedTitle", @"") uppercaseString];
 			break;
 		case CHKMainViewControllerPagePolls:
-			title = [NSLocalizedString(@"MissedTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"PollsTitle", @"") uppercaseString];
 			break;
 		case CHKMainViewControllerPageToBeDecided:
-			title = [NSLocalizedString(@"ConnectionsTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"PageToBeDecidedTitle", @"") uppercaseString];
 			break;
 		default:
 			break;
