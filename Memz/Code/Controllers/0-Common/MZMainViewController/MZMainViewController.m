@@ -9,7 +9,10 @@
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
 #import "MZPollsViewController.h"
+#import "MZWordAdditionViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
+
+NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 
 const NSUInteger kNumberPages = 3;
 
@@ -51,12 +54,12 @@ const NSUInteger kNumberPages = 3;
 	self.profileButton.enabled = YES;
 }
 
-- (void)goToAddWordView:(id)sender {
-	/*
+- (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
 	[sender setEnabled:NO];
-	CHKProfileViewController *profileViewController = [[CHKProfileViewController alloc] init];
-	profileViewController.user = [CHKDataManager sharedDataManager].currentUser;
-	[self.navigationController pushViewController:profileViewController animated:YES];*/
+	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:wordAdditionViewController];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)gotoSettingsView:(id)sender {
@@ -80,17 +83,17 @@ const NSUInteger kNumberPages = 3;
 	return nil;
 }
 
-- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {
+- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {		// TODO: localize
 	NSString * title = nil;
-	switch(page) {
+	switch (page) {
 		case CHKMainViewControllerPageFeed:
-			title = [NSLocalizedString(@"HeatMapTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"FeedTitle", @"") uppercaseString];
 			break;
 		case CHKMainViewControllerPagePolls:
-			title = [NSLocalizedString(@"MissedTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"PollsTitle", @"") uppercaseString];
 			break;
 		case CHKMainViewControllerPageToBeDecided:
-			title = [NSLocalizedString(@"ConnectionsTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"PageToBeDecidedTitle", @"") uppercaseString];
 			break;
 		default:
 			break;
