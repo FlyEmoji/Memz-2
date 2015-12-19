@@ -9,9 +9,9 @@
 #import "MZPageViewController.h"
 
 typedef NS_ENUM(NSUInteger, MZMainViewControllerPages) {
-	CHKMainViewControllerPageFeed,
-	CHKMainViewControllerPagePolls,
-	CHKMainViewControllerPageToBeDecided,
+	MZMainViewControllerPageFeed,
+	MZMainViewControllerPagePolls,
+	MZMainViewControllerPageMyDictionary,
 };
 
 @interface MZMainViewController : MZPageViewController

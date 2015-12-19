@@ -11,8 +11,8 @@
 #import "MZTextFieldTableViewCell.h"
 #import "MZTranslatedWordTableViewCell.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "MZWord+CoreDataProperties.h"
 #import "MZDataManager.h"
-#import "MZWord.h"
 
 typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 	MZWordAdditionSectionTypeWord,

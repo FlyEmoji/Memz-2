@@ -8,6 +8,7 @@
 
 #import "MZWord.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "MZDataManager.h"
 
 @implementation MZWord
 

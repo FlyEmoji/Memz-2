@@ -9,6 +9,7 @@
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
 #import "MZPollsViewController.h"
+#import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 
@@ -73,27 +74,26 @@ const NSUInteger kNumberPages = 3;
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
 	switch (page) {
-		case CHKMainViewControllerPageFeed:
+		case MZMainViewControllerPageFeed:
 			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
-		case CHKMainViewControllerPagePolls:
+		case MZMainViewControllerPagePolls:
 			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZPollsViewControllerIdentifier"]; return viewController; };
-		case CHKMainViewControllerPageToBeDecided:
-			return ^{ return [[UIViewController alloc] init]; };
-	}
+		case MZMainViewControllerPageMyDictionary:
+			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyDictionaryViewControllerIdentifier"]; return viewController; };	}
 	return nil;
 }
 
-- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {		// TODO: localize
+- (NSAttributedString *)attributedTitleForViewControllerForPage:(NSInteger)page {
 	NSString * title = nil;
 	switch (page) {
-		case CHKMainViewControllerPageFeed:
+		case MZMainViewControllerPageFeed:
 			title = [NSLocalizedString(@"FeedTitle", @"") uppercaseString];
 			break;
-		case CHKMainViewControllerPagePolls:
+		case MZMainViewControllerPagePolls:
 			title = [NSLocalizedString(@"PollsTitle", @"") uppercaseString];
 			break;
-		case CHKMainViewControllerPageToBeDecided:
-			title = [NSLocalizedString(@"PageToBeDecidedTitle", @"") uppercaseString];
+		case MZMainViewControllerPageMyDictionary:
+			title = [NSLocalizedString(@"MyDictionaryTitle", @"") uppercaseString];
 			break;
 		default:
 			break;

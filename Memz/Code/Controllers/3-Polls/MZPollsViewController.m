@@ -17,6 +17,8 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 const CGFloat kTopShrinkableViewMinimumHeight = 40.0f;
 const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
 
+const CGFloat kPollsTableViewEstimatedRowHeight = 100.0f;
+
 NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifier";
 
 @interface MZPollsViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -39,6 +41,9 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 	[self setupTableViewData];
 	[self.tableView reloadData];
 
+	self.tableView.estimatedRowHeight = kPollsTableViewEstimatedRowHeight;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
+
 	self.tableView.contentInset = UIEdgeInsetsMake(kTopShrinkableViewMaximumHeight, 0.0f, 0.0f, 0.0f);
 	self.tableView.contentOffset = CGPointMake(0.0f, -self.topShrinkableViewHeightConstraint.constant);
 	self.tableView.tableFooterView = [[UIView alloc] init];
@@ -59,10 +64,6 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.tableViewData.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 100.0f; // TODO: Should be self sized here
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
