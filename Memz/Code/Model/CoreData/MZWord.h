@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage;
 
++ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language
+																		startingByString:(NSString *)string;
+
 @end
 
 NS_ASSUME_NONNULL_END

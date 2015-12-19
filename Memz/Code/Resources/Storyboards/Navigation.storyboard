@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Word Addition View Controller-->
@@ -76,8 +77,51 @@
                                             <outlet property="textField" destination="hDE-hB-NhR" id="v8y-cR-zpy"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZAutoCompletionTableViewCellIdentifier" rowHeight="44" id="wEt-SO-wkb" customClass="MZAutoCompletionTableViewCell">
+                                        <rect key="frame" x="0.0" y="100" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEt-SO-wkb" id="Pts-iB-OIX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add-Word-Triangle-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="WKw-L4-phE">
+                                                    <rect key="frame" x="15" y="12" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="WKw-L4-phE" secondAttribute="height" multiplier="1:1" id="0lw-iB-mHe"/>
+                                                        <constraint firstAttribute="width" constant="20" id="9xq-wi-wGI"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You already entered:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8uV-Ts-a1e">
+                                                    <rect key="frame" x="43" y="14" width="157" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jg7-Kh-vAb">
+                                                    <rect key="frame" x="208" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.30196078430000001" green="0.56470588239999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8uV-Ts-a1e" secondAttribute="bottom" constant="6" id="8e1-uR-CPL"/>
+                                                <constraint firstItem="8uV-Ts-a1e" firstAttribute="centerY" secondItem="Pts-iB-OIX" secondAttribute="centerY" id="Fo6-Gu-Rcw"/>
+                                                <constraint firstItem="8uV-Ts-a1e" firstAttribute="leading" secondItem="WKw-L4-phE" secondAttribute="trailing" constant="8" id="MMG-bV-SIG"/>
+                                                <constraint firstItem="WKw-L4-phE" firstAttribute="leading" secondItem="Pts-iB-OIX" secondAttribute="leading" constant="15" id="aRO-BE-uhJ"/>
+                                                <constraint firstItem="Jg7-Kh-vAb" firstAttribute="centerY" secondItem="Pts-iB-OIX" secondAttribute="centerY" id="ncV-eB-Vw7"/>
+                                                <constraint firstItem="WKw-L4-phE" firstAttribute="centerY" secondItem="Pts-iB-OIX" secondAttribute="centerY" id="oOM-yu-JK0"/>
+                                                <constraint firstItem="Jg7-Kh-vAb" firstAttribute="leading" secondItem="8uV-Ts-a1e" secondAttribute="trailing" constant="8" id="xQw-tt-P6D"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Jg7-Kh-vAb" secondAttribute="trailing" constant="8" id="zQs-lo-6AD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93864425505050497" green="0.93864425505050497" blue="0.93864425505050497" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="wordLabel" destination="Jg7-Kh-vAb" id="T38-Td-kNx"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTranslatedWordTableViewCellIdentifier" rowHeight="42" id="vta-mD-ZFq" customClass="MZTranslatedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="100" width="600" height="42"/>
+                                        <rect key="frame" x="0.0" y="144" width="600" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vta-mD-ZFq" id="LSb-M8-quD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
@@ -470,6 +514,7 @@
     <resources>
         <image name="Add-Word-Minus-Icon" width="256" height="256"/>
         <image name="Add-Word-Plus-Icon" width="512" height="512"/>
+        <image name="Add-Word-Triangle-Icon" width="263" height="315"/>
         <image name="Feed-Gradient" width="375" height="375"/>
     </resources>
 </document>
