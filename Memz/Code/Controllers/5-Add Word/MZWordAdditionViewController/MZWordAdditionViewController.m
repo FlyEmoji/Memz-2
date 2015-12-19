@@ -11,8 +11,8 @@
 #import "MZTextFieldTableViewCell.h"
 #import "MZTranslatedWordTableViewCell.h"
 #import "NSManagedObject+MemzCoreData.h"
-#import "MZWord+CoreDataProperties.h"
 #import "MZDataManager.h"
+#import "MZWord.h"
 
 typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 	MZWordAdditionSectionTypeWord,
@@ -170,13 +170,12 @@ MZTranslatedWordTableViewCellDelegate>
 - (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell {
 	// TODO: Check if valid
 
-	if ([self.wordTranslations containsObject:cell.cellText]) {
+	if ([self.wordTranslations containsObject:cell.textField.text]) {
 		// TODO: Show error
 		return;
 	}
 
-	[self.view endEditing:YES];
-	[self.wordTranslations addObject:cell.cellText];
+	[self.wordTranslations addObject:cell.textField.text];
 
 	if (self.wordTranslations.count == 1) {
 		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeTranslations]
@@ -185,6 +184,18 @@ MZTranslatedWordTableViewCellDelegate>
 		[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.wordTranslations.count - 1
 																																inSection:MZWordAdditionSectionTypeTranslations]]
 													withRowAnimation:UITableViewRowAnimationFade];
+	}
+
+	cell.textField.text = @"";
+	[self.view endEditing:YES];
+}
+
+- (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
+		self.wordToTranslate = text;
+
+		// TODO: Update if needed looking for strings that start with same letters
 	}
 }
 
@@ -213,7 +224,14 @@ MZTranslatedWordTableViewCellDelegate>
 - (IBAction)didTapAddWordButton:(id)sender {
 	// TODO: Test texts not empty, etc.
 
-	MZWord *word = [MZWord newInstance];
+	[MZWord addWord:self.wordToTranslate
+		 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+		 translations:self.wordTranslations
+			 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}];
 }
 
 @end

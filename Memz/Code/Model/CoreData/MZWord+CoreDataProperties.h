@@ -15,9 +15,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZWord (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *word;
 @property (nullable, nonatomic, retain) NSNumber *language;
-@property (nullable, nonatomic, retain) MZWord *translation;
+@property (nullable, nonatomic, retain) NSString *word;
+@property (nullable, nonatomic, retain) NSSet<MZWord *> *translation;
+
+@end
+
+@interface MZWord (CoreDataGeneratedAccessors)
+
+- (void)addTranslationObject:(MZWord *)value;
+- (void)removeTranslationObject:(MZWord *)value;
+- (void)addTranslation:(NSSet<MZWord *> *)values;
+- (void)removeTranslation:(NSSet<MZWord *> *)values;
 
 @end
 

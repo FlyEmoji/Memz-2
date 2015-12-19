@@ -13,8 +13,8 @@
 
 @implementation MZWord (CoreDataProperties)
 
-@dynamic word;
 @dynamic language;
+@dynamic word;
 @dynamic translation;
 
 @end

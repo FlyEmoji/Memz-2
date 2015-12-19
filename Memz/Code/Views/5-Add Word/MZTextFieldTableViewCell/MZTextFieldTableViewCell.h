@@ -17,16 +17,17 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 
 @interface MZTextFieldTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (nonatomic, weak) IBOutlet UIView *bottomSeparator;
 
 @property (nonatomic, weak) id<MZTextFieldTableViewCellDelegate> delegate;
 @property (nonatomic, assign) MZTextFieldTableViewCellType cellType;
-@property (nonatomic, strong, readonly) NSString *cellText;
 
 @end
 
 @protocol MZTextFieldTableViewCellDelegate <NSObject>
 
 - (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell;
+- (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text;
 
 @end
