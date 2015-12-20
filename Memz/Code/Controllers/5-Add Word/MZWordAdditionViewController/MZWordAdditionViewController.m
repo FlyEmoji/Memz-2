@@ -62,7 +62,7 @@ MZTranslatedWordTableViewCellDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.title = @"Add New Word";  // TODO: Localize and designs
+	self.title = NSLocalizedString(@"WordAdditionViewControllerTitle", nil);
 
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Cancel"]
 																																	style:UIBarButtonItemStylePlain
@@ -90,7 +90,7 @@ MZTranslatedWordTableViewCellDelegate>
 
 	// Section (1)
 	[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeWord),
-														kSectionTitleKey: @"Your word",
+														kSectionTitleKey: NSLocalizedString(@"WordAdditionYourWordTitle", nil),
 														kContentTypeKey: [[NSMutableArray alloc] init]}];
 
 	NSMutableArray *firstSectionContentMutableArray = [mutableArray[MZWordAdditionSectionTypeWord][kContentTypeKey] safeCastToClass:[NSMutableArray class]];
@@ -106,19 +106,19 @@ MZTranslatedWordTableViewCellDelegate>
 	// Section (2)
 	if (self.wordSuggestions.count) {
 		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeSuggestions),
-															kSectionTitleKey: @"Suggested translations",
+															kSectionTitleKey: NSLocalizedString(@"WordAdditionSuggestedTranslationsTitle", nil),
 															kContentTypeKey: self.wordSuggestions}];
 	}
 
 	// Section (3)
 	[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeManual),
-														kSectionTitleKey: @"Add custom translation",
+														kSectionTitleKey: NSLocalizedString(@"WordAdditionCustomTranslationTitle", nil),
 														kContentTypeKey: @[@""]}];
 
 	// Section (4)
 	if (self.wordTranslations.count) {
 		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeTranslations),
-															kSectionTitleKey: @"Your translations",
+															kSectionTitleKey: NSLocalizedString(@"WordAdditionYourTranslationsTitle", nil),
 															kContentTypeKey: self.wordTranslations}];
 	}
 

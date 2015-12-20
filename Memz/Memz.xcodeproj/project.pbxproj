@@ -20,6 +20,7 @@
 		0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E41C255A7800C9879F /* MZMyDictionaryViewController.m */; };
 		0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E91C255C4300C9879F /* MZMyDictionaryTableViewCell.m */; };
 		0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726EF1C25B51400C9879F /* MZAutoCompletionTableViewCell.m */; };
+		0C3726F31C270D6900C9879F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3726F51C270D6900C9879F /* Localizable.strings */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
@@ -96,6 +97,7 @@
 		0C3726E91C255C4300C9879F /* MZMyDictionaryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMyDictionaryTableViewCell.m; path = "Code/Views/4-My Dictionary/MZMyDictionaryTableViewCell/MZMyDictionaryTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C3726EE1C25B51400C9879F /* MZAutoCompletionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAutoCompletionTableViewCell.h; path = "Code/Views/5-Add Word/MZAutoCompletionTableViewCell/MZAutoCompletionTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C3726EF1C25B51400C9879F /* MZAutoCompletionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAutoCompletionTableViewCell.m; path = "Code/Views/5-Add Word/MZAutoCompletionTableViewCell/MZAutoCompletionTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C3726F41C270D6900C9879F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsTableViewCell.m; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -457,6 +459,7 @@
 		0CA58BDC1C204F15000E19D4 /* Localizables */ = {
 			isa = PBXGroup;
 			children = (
+				0C3726F51C270D6900C9879F /* Localizable.strings */,
 			);
 			name = Localizables;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				0CBF7AB91C21786000F5D91B /* MZPollsInfoView.xib in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
+				0C3726F31C270D6900C9879F /* Localizable.strings in Resources */,
 				0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */,
 				0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */,
 				0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */,
@@ -897,6 +901,18 @@
 			targetProxy = 0CA58BC51C204C7F000E19D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0C3726F51C270D6900C9879F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C3726F41C270D6900C9879F /* en */,
+			);
+			name = Localizable.strings;
+			path = Code/Resources/Localizables;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0CA58BCB1C204C7F000E19D4 /* Debug */ = {

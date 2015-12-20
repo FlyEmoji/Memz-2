@@ -101,9 +101,9 @@ static const char kActionInProgressKey;
 
 	// Give it a slightly larger frame so that user can tap it easily, in case the image's width is not enough
 	CGFloat titleWidth = 0.0f;
-	if(self.title != nil) {
+	if (self.title != nil) {
 		NSDictionary * attributes = [[UINavigationBar appearance] titleTextAttributes];
-		if(attributes == nil) {
+		if (attributes == nil) {
 			attributes = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20.0f]};
 		}
 		CGSize textSize = [self.title sizeWithAttributes:attributes];
@@ -114,18 +114,18 @@ static const char kActionInProgressKey;
 
 	button.frame = CGRectMake(0.0f, 0.0f, image.size.width, image.size.height);
 	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-	if(title != nil) {
+	if (title != nil) {
 		button.titleLabel.font = [button.titleLabel.font fontWithSize:17.0f];
 		button.titleEdgeInsets = UIEdgeInsetsMake(2.0f, image ? 6.5f : 0.0f, 0.0f, 0.0f);
 
 		CGSize textSize = [title sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
 
-		if(textSize.width + titleWidth > screenWidth) {
-			title = @"BACK";		// TODO: Localize
+		if (textSize.width + titleWidth > screenWidth) {
+			title = [NSLocalizedString(@"CommonBack", nil) uppercaseString];
 			textSize = [title sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}];
 		}
 
-		if(textSize.width + titleWidth <= screenWidth) {
+		if (textSize.width + titleWidth <= screenWidth) {
 			button.frame = CGRectIntegral(CGRectMake(button.frame.origin.x,
 																							 button.frame.origin.y,
 																							 fmax(image.size.width + button.titleEdgeInsets.left + textSize.width + kBackButtonTextOffset - kBackButtonLeftOffset, button.frame.size.width),
@@ -163,13 +163,13 @@ static const char kActionInProgressKey;
 - (void)customAction_backButtonCustomActionTapped:(id)sender {
 	MZCustomBackButtonActionBlock actionBlock = objc_getAssociatedObject(self, &kBackButtonCustomActionBlockKey);
 	NSNumber * inProgress = objc_getAssociatedObject(self, &kActionInProgressKey);
-	if(![inProgress boolValue] && actionBlock != nil) {
+	if (![inProgress boolValue] && actionBlock != nil) {
 		objc_setAssociatedObject(self, &kActionInProgressKey, @YES, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
 		MZCustomBackButtonActionCompletedBlock completedBlock = ^(BOOL completed) {
 			objc_setAssociatedObject(self, &kActionInProgressKey, nil, OBJC_ASSOCIATION_ASSIGN);
 
-			if(completed) {
+			if (completed) {
 				objc_setAssociatedObject(self, &kBackButtonKey, nil, OBJC_ASSOCIATION_ASSIGN);
 				objc_setAssociatedObject(self, &kBackButtonCustomActionBlockKey, nil, OBJC_ASSOCIATION_ASSIGN);
 			}
@@ -182,7 +182,7 @@ static const char kActionInProgressKey;
 - (void)customAction_customTransitionPopGestureRecognizerMethod:(id)sender {
 	UIPanGestureRecognizer * panGestureRecognizer = (UIPanGestureRecognizer *)sender;
 	CGPoint translatedPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view.window];
-	if(translatedPoint.x > 0.0f) {
+	if (translatedPoint.x > 0.0f) {
 		[self customAction_backButtonCustomActionTapped:self];
 
 		[panGestureRecognizer.view removeGestureRecognizer:panGestureRecognizer];
