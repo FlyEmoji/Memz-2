@@ -17,14 +17,14 @@
 
 typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 	MZWordAdditionSectionTypeWord,
-	MZWordAdditionSectionTypeTranslations,
-	MZWordAdditionSectionTypeSuggestions
+	MZWordAdditionSectionTypeSuggestions,
+	MZWordAdditionSectionTypeManual,
+	MZWordAdditionSectionTypeTranslations
 };
 
 typedef NS_ENUM(NSInteger, MZWordAdditionWordRowType) {
 	MZWordAdditionWordRowTypeNewWord,
-	MZWordAdditionWordRowTypeAlreadyExisting,
-	MZWordAdditionWordRowTypeTranslation
+	MZWordAdditionWordRowTypeAlreadyExisting
 };
 
 NSString * const kWordAdditionTableViewHeaderIdentifier = @"MZWordAdditionTableViewHeaderIdentifier";
@@ -103,21 +103,23 @@ MZTranslatedWordTableViewCellDelegate>
 																								 kContentTypeKey: word}];
 	}
 
-	[firstSectionContentMutableArray addObject:@{kWordRowTypeKey: @(MZWordAdditionWordRowTypeTranslation),
-																							 kContentTypeKey: @""}];
-
 	// Section (2)
-	if (self.wordTranslations.count) {
-		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeTranslations),
-															kSectionTitleKey: @"Your translations",
-															kContentTypeKey: self.wordTranslations}];
-	}
-
-	// Section (3)
 	if (self.wordSuggestions.count) {
 		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeSuggestions),
 															kSectionTitleKey: @"Suggested translations",
 															kContentTypeKey: self.wordSuggestions}];
+	}
+
+	// Section (3)
+	[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeManual),
+														kSectionTitleKey: @"Add custom translation",
+														kContentTypeKey: @[@""]}];
+
+	// Section (4)
+	if (self.wordTranslations.count) {
+		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeTranslations),
+															kSectionTitleKey: @"Your translations",
+															kContentTypeKey: self.wordTranslations}];
 	}
 
 	return mutableArray;
@@ -175,16 +177,16 @@ MZTranslatedWordTableViewCellDelegate>
 					cell.wordLabel.text = [[self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kContentTypeKey] safeCastToClass:[MZWord class]] word];
 					return cell;
 				}
-
-				case MZWordAdditionWordRowTypeTranslation: {
-					MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
-																																					 forIndexPath:indexPath];
-					cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
-					cell.delegate = self;
-					cell.cellType = MZTextFieldTableViewCellTypeAddition;
-					return cell;
-				}
 			}
+
+		case MZWordAdditionSectionTypeManual: {
+			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
+																																			 forIndexPath:indexPath];
+			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
+			cell.delegate = self;
+			cell.cellType = MZTextFieldTableViewCellTypeAddition;
+			return cell;
+		}
 
 		case MZWordAdditionSectionTypeTranslations: {
 			MZTranslatedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslatedWordTableViewCellIdentifier
@@ -214,11 +216,11 @@ MZTranslatedWordTableViewCellDelegate>
 	[self.wordTranslations addObject:cell.textField.text];
 
 	if (self.wordTranslations.count == 1) {
-		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeTranslations]
+		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
 									withRowAnimation:UITableViewRowAnimationFade];
 	} else {
 		[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.wordTranslations.count - 1
-																																inSection:MZWordAdditionSectionTypeTranslations]]
+																																inSection:self.tableView.numberOfSections - 1]]
 													withRowAnimation:UITableViewRowAnimationFade];
 	}
 
@@ -241,7 +243,7 @@ MZTranslatedWordTableViewCellDelegate>
 
 			for (MZWord *wordToInsert in wordsToInsert) {
 				[self.alreadyExistingWords addObject:wordToInsert];
-				[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.alreadyExistingWords indexOfObject:wordToInsert] + 1
+				[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.alreadyExistingWords indexOfObject:wordToInsert] + 1	// First row is TextField
 																																		inSection:MZWordAdditionSectionTypeWord]]
 															withRowAnimation:UITableViewRowAnimationFade];
 			}
@@ -251,7 +253,7 @@ MZTranslatedWordTableViewCellDelegate>
 			[wordsToDelete minusOrderedSet:newAlreadyExistingWords];
 
 			for (MZWord *wordToDelete in wordsToDelete) {
-				NSUInteger index = [self.alreadyExistingWords indexOfObject:wordToDelete] + 1;
+				NSUInteger index = [self.alreadyExistingWords indexOfObject:wordToDelete] + 1;	// First row is TextField
 				[self.alreadyExistingWords removeObject:wordToDelete];
 				[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index
 																																		inSection:MZWordAdditionSectionTypeWord]]
@@ -268,11 +270,11 @@ MZTranslatedWordTableViewCellDelegate>
 	[self.wordTranslations removeObjectAtIndex:wordTranslationIndex];
 
 	if (self.wordTranslations.count == 0) {
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeTranslations]
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
 									withRowAnimation:UITableViewRowAnimationFade];
 	} else {
 		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:wordTranslationIndex
-																																inSection:MZWordAdditionSectionTypeTranslations]]
+																																inSection:self.tableView.numberOfSections - 1]]
 													withRowAnimation:UITableViewRowAnimationFade];
 	}
 }
