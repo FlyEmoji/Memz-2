@@ -13,7 +13,6 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 @interface MZTextFieldTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonWidthConstant;
 
 @end
@@ -29,15 +28,17 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 	[self layoutIfNeeded];
 }
 
-- (NSString *)cellText {
-	return self.textField.text;
-}
-
 #pragma mark - Actions
 
 - (IBAction)didTapAddButton:(id)sender {
 	if ([self.delegate respondsToSelector:@selector(textFieldTableViewCellDidTapAddButton:)]) {
 		[self.delegate textFieldTableViewCellDidTapAddButton:self];
+	}
+}
+
+- (IBAction)editingDidChange:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(textFieldTableViewCell:textDidChange:)]) {
+		[self.delegate textFieldTableViewCell:self textDidChange:self.textField.text];
 	}
 }
 

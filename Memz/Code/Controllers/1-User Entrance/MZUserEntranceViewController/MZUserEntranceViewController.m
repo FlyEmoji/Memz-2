@@ -8,6 +8,7 @@
 
 #import "MZUserEntranceViewController.h"
 #import "MZMainViewController.h"
+#import "MZLanguageManager.h"
 #import "UINavigationController+MemzTransitions.h"
 
 @interface MZUserEntranceViewController ()
@@ -17,6 +18,12 @@
 @end
 
 @implementation MZUserEntranceViewController
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+	[MZLanguageManager sharedManager];
+}
 
 #pragma mark - Helpers 
 
