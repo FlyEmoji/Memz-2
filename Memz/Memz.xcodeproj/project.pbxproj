@@ -23,6 +23,7 @@
 		0C3726F31C270D6900C9879F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3726F51C270D6900C9879F /* Localizable.strings */; };
 		0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */; };
 		0C3726FD1C282D4C00C9879F /* NSString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */; };
+		0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
@@ -104,6 +105,8 @@
 		0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorCoordinator.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorCoordinator.m; sourceTree = SOURCE_ROOT; };
 		0C3726FB1C282D4C00C9879F /* NSString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MemzAdditions.m"; path = "Code/Helpers/Categories/NSString+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C3726FF1C28994800C9879F /* MZBingTranslationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZBingTranslationWrapper.h; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslationWrapper/MZBingTranslationWrapper.h; sourceTree = SOURCE_ROOT; };
+		0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslationWrapper.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslationWrapper/MZBingTranslationWrapper.m; sourceTree = SOURCE_ROOT; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsTableViewCell.m; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -318,10 +321,20 @@
 		0C3726F71C271F9200C9879F /* MZBingTranslatorCoordinator */ = {
 			isa = PBXGroup;
 			children = (
+				0C3726FE1C28991000C9879F /* MZBingTranslationWrapper */,
 				0C3726F81C27209100C9879F /* MZBingTranslatorCoordinator.h */,
 				0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */,
 			);
 			name = MZBingTranslatorCoordinator;
+			sourceTree = "<group>";
+		};
+		0C3726FE1C28991000C9879F /* MZBingTranslationWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				0C3726FF1C28994800C9879F /* MZBingTranslationWrapper.h */,
+				0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */,
+			);
+			name = MZBingTranslationWrapper;
 			sourceTree = "<group>";
 		};
 		0C6891AF1C20DE370069E39A /* 3-Polls */ = {
@@ -895,6 +908,7 @@
 				0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */,
 				0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */,
 				0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */,
+				0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */,
 				0CA58C0E1C207774000E19D4 /* NSAttributedString+MemzAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

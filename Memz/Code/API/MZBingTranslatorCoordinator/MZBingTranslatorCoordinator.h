@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZBingTranslationWrapper.h"
 #import "MZLanguageManager.h"
-
-typedef void (^ MZBingTranslatorCompletionHandler)(NSArray<NSString *> *translations, NSError *error);
 
 @interface MZBingTranslatorCoordinator : NSObject
 
@@ -18,7 +17,7 @@ typedef void (^ MZBingTranslatorCompletionHandler)(NSArray<NSString *> *translat
 - (void)translateString:(NSString *)stringToTranslate
 					 fromLanguage:(MZLanguage)fromLanguage
 						 toLanguage:(MZLanguage)toLanguage
-			completionHandler:(nonnull MZBingTranslatorCompletionHandler)completionHandler;
+			completionHandler:(nonnull MZBingTranslationCompletionHandler)completionHandler;
 
 @end
 
@@ -26,5 +25,4 @@ typedef void (^ MZBingTranslatorCompletionHandler)(NSArray<NSString *> *translat
 // TODO :
 //  - Object for expiration
 //  - Expiration issue to fix
-//  - Handle concurrent calls / multiple completion handlers
 //  - Fix warnings
