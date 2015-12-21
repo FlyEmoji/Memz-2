@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZLanguageManager.h"
 
 @interface MZBingTranslatorCoordinator : NSObject
 
 + (MZBingTranslatorCoordinator *)sharedManager;
 
-- (void)clearAccessToken;		// TODO: Same
-- (void)getAccessTokenWithCompletionHandler:(nonnull void (^)(NSError *error))completionHandler;		// TODO: Should be private
+- (void)translateString:(NSString *)stringToTranslate
+					 fromLanguage:(MZLanguage)fromLanguage
+						 toLanguage:(MZLanguage)toLanguage
+			completionHandler:(nonnull void (^)(NSArray<NSString *> *translations, NSError *error))completionHandler;
 
 @end

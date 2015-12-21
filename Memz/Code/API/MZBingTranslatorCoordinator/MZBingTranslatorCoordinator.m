@@ -10,6 +10,8 @@
 #import "NSString+MemzAdditions.h"
 
 NSString * const kBaseURL = @"https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
+NSString * const kTranslateURL = @"http://api.microsofttranslator.com/V2/Http.svc/Translate";
+
 NSString * const kClientID = @"d10975df-3695-4602-b2f7-1702ddd7323b";
 NSString * const kClientSecretID = @"Xsb880QNq6Hfhf5kB+ujHPZlYSF4E3VILLATN0VS5NA=";
 
@@ -17,7 +19,7 @@ NSString * const kAccessTokenKey = @"MZBingAccessTokenKey";
 
 const NSTimeInterval kTimeoutTimeInterval = 60.0;
 
-@interface MZBingTranslatorCoordinator ()
+@interface MZBingTranslatorCoordinator () <NSXMLParserDelegate>
 
 @property (nonatomic, weak, readonly) NSString *accessToken;
 
@@ -34,7 +36,7 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 	return _sharedManager;
 }
 
-#pragma mark - Access Token
+#pragma mark - Access Token Management
 
 - (NSString *)accessToken {
 	return [[NSUserDefaults standardUserDefaults] stringForKey:kAccessTokenKey];
@@ -86,6 +88,51 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 
 #pragma mark - Translation
 
+- (void)translateString:(NSString *)stringToTranslate
+					 fromLanguage:(MZLanguage)fromLanguage
+						 toLanguage:(MZLanguage)toLanguage
+			completionHandler:(nonnull void (^)(NSArray<NSString *> *translations, NSError *error))completionHandler {
+	[self getAccessTokenWithCompletionHandler:^(NSError *error) {
+		NSMutableString *queryString = [NSMutableString string];
+		[queryString appendFormat:@"?to=%@", [self APILanguageCodeForLanguage:toLanguage]];
+		[queryString appendFormat:@"&from=%@", [self APILanguageCodeForLanguage:fromLanguage]];
+		[queryString appendFormat:@"&text=%@", [NSString urlEncodedStringFromString:stringToTranslate]];
+		[queryString appendString:@"&contentType=text/plain"];
+
+		NSURL *requestURL = [NSURL URLWithString:queryString relativeToURL:[NSURL URLWithString:kTranslateURL]];
+		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
+		[request addValue:[NSString stringWithFormat:@"Bearer %@", self.accessToken] forHTTPHeaderField:@"Authorization"];
+
+		NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request
+																																		 completionHandler:
+																			^(NSData *data, NSURLResponse *response, NSError *error) {
+																				if (error) {
+																					completionHandler(nil, error);
+																				} else {
+																					NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+																					parser.delegate = self;
+
+																					if ([parser parse]) {
+																						NSLog(@"Parsing Status is done");
+																					} else {
+																						completionHandler(nil, [[NSError alloc] init]);		// TODO: Create Error Manager
+																					}
+																				}
+																			}];
+		[dataTask resume];
+	}];
+}
+
+#pragma mark - XMLParser Delegate Methods
+
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
+	NSLog(@"");
+}
+
+- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+	NSLog(@"");
+}
+
 /*
 - (void)translateText:(NSString *)text fromLan:(NSString *)txtLan toLan:(NSString *)localLan{
 	if (text.length < 1) return;
@@ -119,5 +166,16 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 	}
 	translate_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }*/
+
+#pragma mark - Language Parser
+
+- (NSString *)APILanguageCodeForLanguage:(MZLanguage)language {
+	switch (language) {
+		case MZLanguageEnglish:
+			return @"EN";
+		case MZLanguageFrench:
+			return @"FR";
+	}
+}
 
 @end

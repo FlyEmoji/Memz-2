@@ -12,6 +12,7 @@
 #import "MZTranslatedWordTableViewCell.h"
 #import "MZAutoCompletionTableViewCell.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "MZBingTranslatorCoordinator.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZDataManager.h"
 
@@ -286,6 +287,16 @@ MZTranslatedWordTableViewCellDelegate>
 }
 
 - (IBAction)didTapAddWordButton:(id)sender {
+	[[MZBingTranslatorCoordinator sharedManager] translateString:self.wordToTranslate
+																									fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																										toLanguage:[MZLanguageManager sharedManager].toLanguage
+																						 completionHandler:^(NSArray<NSString *> *translations, NSError *error) {
+		NSLog(translations.description);
+	}];
+
+
+	return;
+
 	// TODO: Test texts not empty, etc.
 
 	[MZWord addWord:self.wordToTranslate
