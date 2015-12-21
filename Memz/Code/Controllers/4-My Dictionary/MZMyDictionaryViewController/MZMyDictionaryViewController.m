@@ -12,6 +12,8 @@
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 
+#import "MZBingTranslatorCoordinator.h"		// TODO: To delete, for tests only
+
 NSString * const kMyDictionaryTableViewCell = @"MZMyDictionaryTableViewCellIdentifier";
 
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
@@ -36,6 +38,11 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
 	[self.tableView reloadData];
+
+	[[MZBingTranslatorCoordinator sharedManager] clearAccessToken];
+	[[MZBingTranslatorCoordinator sharedManager] getAccessTokenWithCompletionHandler:^(NSError *error) {
+		NSLog(error);
+	}];
 }
 
 #pragma mark - Table View Data Source & Delegate Methods

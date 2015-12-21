@@ -21,6 +21,8 @@
 		0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E91C255C4300C9879F /* MZMyDictionaryTableViewCell.m */; };
 		0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726EF1C25B51400C9879F /* MZAutoCompletionTableViewCell.m */; };
 		0C3726F31C270D6900C9879F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C3726F51C270D6900C9879F /* Localizable.strings */; };
+		0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */; };
+		0C3726FD1C282D4C00C9879F /* NSString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
@@ -98,6 +100,10 @@
 		0C3726EE1C25B51400C9879F /* MZAutoCompletionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAutoCompletionTableViewCell.h; path = "Code/Views/5-Add Word/MZAutoCompletionTableViewCell/MZAutoCompletionTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C3726EF1C25B51400C9879F /* MZAutoCompletionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAutoCompletionTableViewCell.m; path = "Code/Views/5-Add Word/MZAutoCompletionTableViewCell/MZAutoCompletionTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C3726F41C270D6900C9879F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0C3726F81C27209100C9879F /* MZBingTranslatorCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZBingTranslatorCoordinator.h; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorCoordinator.h; sourceTree = SOURCE_ROOT; };
+		0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorCoordinator.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorCoordinator.m; sourceTree = SOURCE_ROOT; };
+		0C3726FB1C282D4C00C9879F /* NSString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MemzAdditions.m"; path = "Code/Helpers/Categories/NSString+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsTableViewCell.m; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -301,6 +307,23 @@
 			name = MZAutoCompletionTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C3726F61C271F8400C9879F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0C3726F71C271F9200C9879F /* MZBingTranslatorCoordinator */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		0C3726F71C271F9200C9879F /* MZBingTranslatorCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C3726F81C27209100C9879F /* MZBingTranslatorCoordinator.h */,
+				0C3726F91C27209100C9879F /* MZBingTranslatorCoordinator.m */,
+			);
+			name = MZBingTranslatorCoordinator;
+			sourceTree = "<group>";
+		};
 		0C6891AF1C20DE370069E39A /* 3-Polls */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +391,7 @@
 				0CA58BD71C204E8A000E19D4 /* Views */,
 				0CA58BD81C204E97000E19D4 /* Helpers */,
 				0CA58BD91C204ED2000E19D4 /* Model */,
+				0C3726F61C271F8400C9879F /* API */,
 				0CA58BDA1C204EE5000E19D4 /* Resources */,
 			);
 			name = Code;
@@ -499,6 +523,8 @@
 				0C13AC171C244CE3007A1AD5 /* MemzColors.items.h */,
 				0C13AC201C247D64007A1AD5 /* NSManagedObject+MemzCoreData.h */,
 				0C13AC211C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m */,
+				0C3726FB1C282D4C00C9879F /* NSString+MemzAdditions.h */,
+				0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -845,6 +871,7 @@
 				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
 				0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */,
 				0C13AC161C244C4A007A1AD5 /* UIColor+MemzColors.m in Sources */,
+				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0C0551201C20DA0A000565DC /* MZPollsViewController.m in Sources */,
 				0C3726DF1C25503800C9879F /* MZWord.m in Sources */,
 				0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */,
@@ -859,6 +886,7 @@
 				0C13AC221C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C92FFF41C218822009425E3 /* UIView+MemzAdditions.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
+				0C3726FD1C282D4C00C9879F /* NSString+MemzAdditions.m in Sources */,
 				0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
