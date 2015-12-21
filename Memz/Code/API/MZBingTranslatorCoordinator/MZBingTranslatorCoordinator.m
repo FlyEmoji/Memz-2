@@ -23,6 +23,10 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 
 @property (nonatomic, weak, readonly) NSString *accessToken;
 
+@property (nonatomic, copy) MZBingTranslatorCompletionHandler translationCompletionHandler;
+@property (nonatomic, strong) NSString *XMLElement;
+@property (nonatomic, strong) NSMutableString *XMLTranslation;
+
 @end
 
 @implementation MZBingTranslatorCoordinator
@@ -53,6 +57,9 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 }
 
 - (void)getAccessTokenWithCompletionHandler:(nonnull void (^)(NSError *error))completionHandler {
+	[self clearAccessToken];		// TODO: Should not do that like this
+
+
 	if (self.accessToken.length > 0) {
 		completionHandler(nil);
 		return;
@@ -91,8 +98,9 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 - (void)translateString:(NSString *)stringToTranslate
 					 fromLanguage:(MZLanguage)fromLanguage
 						 toLanguage:(MZLanguage)toLanguage
-			completionHandler:(nonnull void (^)(NSArray<NSString *> *translations, NSError *error))completionHandler {
+			completionHandler:(nonnull MZBingTranslatorCompletionHandler)completionHandler {
 	[self getAccessTokenWithCompletionHandler:^(NSError *error) {
+
 		NSMutableString *queryString = [NSMutableString string];
 		[queryString appendFormat:@"?to=%@", [self APILanguageCodeForLanguage:toLanguage]];
 		[queryString appendFormat:@"&from=%@", [self APILanguageCodeForLanguage:fromLanguage]];
@@ -103,11 +111,14 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:requestURL];
 		[request addValue:[NSString stringWithFormat:@"Bearer %@", self.accessToken] forHTTPHeaderField:@"Authorization"];
 
+		self.translationCompletionHandler = completionHandler;
+
 		NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithRequest:request
 																																		 completionHandler:
 																			^(NSData *data, NSURLResponse *response, NSError *error) {
 																				if (error) {
 																					completionHandler(nil, error);
+																					self.translationCompletionHandler = nil;
 																				} else {
 																					NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
 																					parser.delegate = self;
@@ -116,6 +127,7 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 																						NSLog(@"Parsing Status is done");
 																					} else {
 																						completionHandler(nil, [[NSError alloc] init]);		// TODO: Create Error Manager
+																						self.translationCompletionHandler = nil;
 																					}
 																				}
 																			}];
@@ -125,47 +137,27 @@ const NSTimeInterval kTimeoutTimeInterval = 60.0;
 
 #pragma mark - XMLParser Delegate Methods
 
-- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
-	NSLog(@"");
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+	self.XMLElement = elementName;
+	
+	if ([self.XMLElement isEqualToString:@"string"]) {
+		self.XMLTranslation = [[NSMutableString alloc] init];
+	}
 }
 
-- (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	NSLog(@"");
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+	if ([self.XMLElement isEqualToString:@"string"]) {
+		[self.XMLTranslation appendString:string];
+	}
 }
 
-/*
-- (void)translateText:(NSString *)text fromLan:(NSString *)txtLan toLan:(NSString *)localLan{
-	if (text.length < 1) return;
-
-	if (![self checkAndGetAccessToken]) {
-		return;
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+	if ([self.XMLElement isEqualToString:@"string"] && self.XMLTranslation && self.translationCompletionHandler) {
+		NSLog(@">>>>>>  %@", self.XMLTranslation);
+		self.translationCompletionHandler(@[self.XMLTranslation], nil);
+		self.translationCompletionHandler = nil;
 	}
-
-	if (receivedData != nil) {
-		[receivedData release];
-	}
-
-	receivedData = [[NSMutableData alloc] init];
-
-	NSString *encodedString = [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	NSString *string_prefix = bingAPI_translate @"&text=";
-
-	NSString *string_suffix = @"";
-
-	if (txtLan.length > 1)
-		string_suffix = [NSString stringWithFormat:@"&from=%@&to=%@",txtLan, localLan];
-	else
-		string_suffix = [NSString stringWithFormat:@"&to=%@", localLan];
-
-	NSString *finalString = [NSString stringWithFormat:@"%@%@%@", string_prefix, encodedString, string_suffix];
-	NSURL *queryURL = [NSURL URLWithString:finalString];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:queryURL];
-	[request addValue:[NSString stringWithFormat:@"Bearer %@", [self getValueAccessToken]] forHTTPHeaderField:@"Authorization"];
-	if (translate_connection != nil) {
-		[translate_connection release];
-	}
-	translate_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-}*/
+}
 
 #pragma mark - Language Parser
 

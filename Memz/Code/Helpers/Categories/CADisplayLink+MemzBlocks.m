@@ -21,10 +21,8 @@ static char kDisplayLinkBlockKey;
 + (void)displayLinkTriggered:(CADisplayLink *)displayLink {
 	MZDisplayLinkTriggeredBlock block = objc_getAssociatedObject(self, &kDisplayLinkBlockKey);
 	if (block != nil) {
-		NSLog(@"Calling block of CADisplayLink %@", displayLink);
 		block(displayLink);
 	} else {
-		NSLog(@"Invalidating CADisplayLink %@ because it has no block set", displayLink);
 		[displayLink invalidate];
 	}
 }

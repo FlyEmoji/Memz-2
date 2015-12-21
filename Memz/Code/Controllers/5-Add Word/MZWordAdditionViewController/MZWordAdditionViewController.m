@@ -180,6 +180,13 @@ MZTranslatedWordTableViewCellDelegate>
 				}
 			}
 
+		case MZWordAdditionSectionTypeSuggestions: {
+			MZAutoCompletionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAutoCompletionTableViewCellIdentifier
+																																						forIndexPath:indexPath];
+			cell.wordLabel.text = self.wordSuggestions[indexPath.row];
+			return cell;
+		}
+
 		case MZWordAdditionSectionTypeManual: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
@@ -234,34 +241,64 @@ MZTranslatedWordTableViewCellDelegate>
 	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
 		self.wordToTranslate = text;
 
-		NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZLanguageManager sharedManager].fromLanguage
-																																			startingByString:text];
+		[self updateExistingWords];
+		[self updateSuggestedTranslations];
+	}
+}
 
-		if (newAlreadyExistingWords.count > self.alreadyExistingWords.count) {
-			// Existing words to insert
-			NSMutableOrderedSet<MZWord *> *wordsToInsert = [newAlreadyExistingWords mutableCopy];
-			[wordsToInsert minusOrderedSet:self.alreadyExistingWords];
+#pragma mark - Updates Upon Text Change
 
-			for (MZWord *wordToInsert in wordsToInsert) {
-				[self.alreadyExistingWords addObject:wordToInsert];
-				[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.alreadyExistingWords indexOfObject:wordToInsert] + 1	// First row is TextField
-																																		inSection:MZWordAdditionSectionTypeWord]]
-															withRowAnimation:UITableViewRowAnimationFade];
-			}
-		} else {
-			// Previously suggested existing words to remove
-			NSMutableOrderedSet<MZWord *> *wordsToDelete = [self.alreadyExistingWords mutableCopy];
-			[wordsToDelete minusOrderedSet:newAlreadyExistingWords];
+- (void)updateExistingWords {
+	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZLanguageManager sharedManager].fromLanguage
+																																		startingByString:self.wordToTranslate];
 
-			for (MZWord *wordToDelete in wordsToDelete) {
-				NSUInteger index = [self.alreadyExistingWords indexOfObject:wordToDelete] + 1;	// First row is TextField
-				[self.alreadyExistingWords removeObject:wordToDelete];
-				[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index
-																																		inSection:MZWordAdditionSectionTypeWord]]
-															withRowAnimation:UITableViewRowAnimationFade];
-			}
+	if (newAlreadyExistingWords.count > self.alreadyExistingWords.count) {
+		// Existing words to insert
+		NSMutableOrderedSet<MZWord *> *wordsToInsert = [newAlreadyExistingWords mutableCopy];
+		[wordsToInsert minusOrderedSet:self.alreadyExistingWords];
+
+		for (MZWord *wordToInsert in wordsToInsert) {
+			[self.alreadyExistingWords addObject:wordToInsert];
+			[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[self.alreadyExistingWords indexOfObject:wordToInsert] + 1	// First row is TextField
+																																	inSection:MZWordAdditionSectionTypeWord]]
+														withRowAnimation:UITableViewRowAnimationFade];
+		}
+	} else {
+		// Previously suggested existing words to remove
+		NSMutableOrderedSet<MZWord *> *wordsToDelete = [self.alreadyExistingWords mutableCopy];
+		[wordsToDelete minusOrderedSet:newAlreadyExistingWords];
+
+		for (MZWord *wordToDelete in wordsToDelete) {
+			NSUInteger index = [self.alreadyExistingWords indexOfObject:wordToDelete] + 1;	// First row is TextField
+			[self.alreadyExistingWords removeObject:wordToDelete];
+			[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index
+																																	inSection:MZWordAdditionSectionTypeWord]]
+														withRowAnimation:UITableViewRowAnimationFade];
 		}
 	}
+}
+
+- (void)updateSuggestedTranslations {
+	[[MZBingTranslatorCoordinator sharedManager] translateString:self.wordToTranslate
+																									fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																										toLanguage:[MZLanguageManager sharedManager].toLanguage
+																						 completionHandler:
+	 ^(NSArray<NSString *> *translations, NSError *error) {
+		 if (!error) {
+			 dispatch_async(dispatch_get_main_queue(), ^{
+				 BOOL isSectionDisplayed = self.wordSuggestions.count > 0;
+				 self.wordSuggestions = @[];
+				 if (isSectionDisplayed) {
+					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]		// TODO: NOT GOOD, DO NOT DO THAT
+												 withRowAnimation:UITableViewRowAnimationNone];
+				 }
+
+				 self.wordSuggestions = translations;
+				 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
+											 withRowAnimation:UITableViewRowAnimationFade];
+			 });
+		 }
+	 }];
 }
 
 #pragma mark - Translated Word Cells Delegate Methods
@@ -287,16 +324,6 @@ MZTranslatedWordTableViewCellDelegate>
 }
 
 - (IBAction)didTapAddWordButton:(id)sender {
-	[[MZBingTranslatorCoordinator sharedManager] translateString:self.wordToTranslate
-																									fromLanguage:[MZLanguageManager sharedManager].fromLanguage
-																										toLanguage:[MZLanguageManager sharedManager].toLanguage
-																						 completionHandler:^(NSArray<NSString *> *translations, NSError *error) {
-		NSLog(translations.description);
-	}];
-
-
-	return;
-
 	// TODO: Test texts not empty, etc.
 
 	[MZWord addWord:self.wordToTranslate
