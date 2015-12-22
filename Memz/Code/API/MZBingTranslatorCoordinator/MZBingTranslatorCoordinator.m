@@ -64,7 +64,7 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 			if (!error) {
 				[self doTranslateString:stringToTranslate fromLanguage:fromLanguage toLanguage:toLanguage completionHandler:completionHandler];
 			} else {
-				completionHandler(nil, nil);  // TODO: Send Back Custom Error
+				completionHandler(nil, error);
 			}
 		}];
 	}
@@ -153,7 +153,7 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 																		 translationWrapper.parser.delegate = self;
 
 																		 if (![translationWrapper.parser parse]) {
-																			 completionHandler(nil, [[NSError alloc] init]);		// TODO: Create Error Manager
+																			 completionHandler(nil, [MZErrorCreator errorWithType:MZErrorTypeAPIParseResponse]);
 																			 translationWrapper.dataTask = nil;
 																			 [self.currentTranslations removeObject:translationWrapper];
 																		 }
