@@ -23,6 +23,7 @@
 
 
 // TODO :
+//  - Error handling
 //  - Object for expiration
 //  - Expiration issue to fix
 //  - Fix warnings
