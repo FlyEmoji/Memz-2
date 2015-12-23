@@ -87,13 +87,13 @@ const NSUInteger kNumberPages = 3;
 	NSString * title = nil;
 	switch (page) {
 		case MZMainViewControllerPageFeed:
-			title = [NSLocalizedString(@"FeedTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"NavigationFeedTitle", @"") uppercaseString];
 			break;
 		case MZMainViewControllerPagePolls:
-			title = [NSLocalizedString(@"PollsTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"NavigationPollsTitle", @"") uppercaseString];
 			break;
 		case MZMainViewControllerPageMyDictionary:
-			title = [NSLocalizedString(@"MyDictionaryTitle", @"") uppercaseString];
+			title = [NSLocalizedString(@"NavigationMyDictionaryTitle", @"") uppercaseString];
 			break;
 		default:
 			break;

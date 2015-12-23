@@ -32,16 +32,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"
-            timestampString = "472319384.742744"
+            filePath = "Code/Helpers/Categories/UINavigationItem+MemzAdditions.m"
+            timestampString = "472321874.057111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "-setCustomBackButtonWithType:image:title:actionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

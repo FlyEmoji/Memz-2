@@ -12,5 +12,6 @@
 #import "constants.h"
 #import "NSObject+MemzAdditions.h"
 #import "UIColor+MemzColors.h"
+#import "MZErrorCreator.h"
 
 #endif

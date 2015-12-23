@@ -1,0 +1,25 @@
+
+"CommonOk" = "OK";
+"CommonDone" = "Done";
+"CommonError" = "Error";
+"CommonBack" = "Back";
+"CommonNotice" = "Notice";
+"CommonCancel" = "Cancel";
+"CommonSubmit" = "Submit";
+"CommonClose" = "Close";
+"CommonSend" = "Send";
+"CommonLoading" = "Loading...";
+"CommonContinue" = "Continue";
+"CommonActivate" = "Activate";
+"CommonSave" = "Save";
+"CommonWarning" = "Warning";
+
+"NavigationFeedTitle" = "Feed";
+"NavigationPollsTitle" = "Polls";
+"NavigationMyDictionaryTitle" = "My Dictionary";
+
+"WordAdditionViewControllerTitle" = "Add New Word";
+"WordAdditionYourWordTitle" = "Your word";
+"WordAdditionSuggestedTranslationsTitle" = "Suggested translations";
+"WordAdditionCustomTranslationTitle" = "Add custom translation";
+"WordAdditionYourTranslationsTitle" = "Your translations";
