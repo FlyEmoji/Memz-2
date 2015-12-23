@@ -286,16 +286,43 @@ MZTranslatedWordTableViewCellDelegate>
 	 ^(NSArray<NSString *> *translations, NSError *error) {
 		 if (!error) {
 			 dispatch_async(dispatch_get_main_queue(), ^{
-				 BOOL isSectionDisplayed = self.wordSuggestions.count > 0;
-				 self.wordSuggestions = @[];
-				 if (isSectionDisplayed) {
-					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]		// TODO: NOT GOOD, DO NOT DO THAT
-												 withRowAnimation:UITableViewRowAnimationNone];
+				 if (translations.count == 0 && self.wordSuggestions.count > 0) {
+					 self.wordSuggestions = translations;
+					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
+												 withRowAnimation:UITableViewRowAnimationFade];
+					 return;
+				 }
+
+				 if (self.wordSuggestions.count == 0 && translations.count > 0) {
+					 self.wordSuggestions = translations;
+					 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
+												 withRowAnimation:UITableViewRowAnimationFade];
+					 return;
+				 }
+
+				 for (NSInteger i = 0; i < translations.count && i < self.wordSuggestions.count; i++) {
+					 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions];
+					 MZAutoCompletionTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+					 cell.wordLabel.text = translations[i];
+				 }
+
+				 NSMutableArray<NSIndexPath *> *indexPathsToDelete = [[NSMutableArray alloc] init];
+				 for (NSInteger i = translations.count; i < self.wordSuggestions.count; i++) {
+					 [indexPathsToDelete addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
+				 }
+
+				 NSMutableArray<NSIndexPath *> *indexPathsToInsert = [[NSMutableArray alloc] init];
+				 for (NSInteger i = self.wordSuggestions.count; i < translations.count; i++) {
+					 [indexPathsToInsert addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
 				 self.wordSuggestions = translations;
-				 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
-											 withRowAnimation:UITableViewRowAnimationFade];
+				 if (indexPathsToDelete.count > 0) {
+					 [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationFade];
+				 }
+				 if (indexPathsToInsert.count > 0) {
+					 [self.tableView insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationFade];
+				 }
 			 });
 		 }
 	 }];

@@ -12,15 +12,11 @@
 
 @interface MZBingTranslatorCoordinator : NSObject
 
-+ (MZBingTranslatorCoordinator *)sharedManager;
++ (nonnull MZBingTranslatorCoordinator *)sharedManager;
 
-- (void)translateString:(NSString *)stringToTranslate
+- (void)translateString:(nullable NSString *)stringToTranslate
 					 fromLanguage:(MZLanguage)fromLanguage
 						 toLanguage:(MZLanguage)toLanguage
 			completionHandler:(nonnull MZBingTranslationCompletionHandler)completionHandler;
 
 @end
-
-
-// TODO :
-//  - Fix warnings

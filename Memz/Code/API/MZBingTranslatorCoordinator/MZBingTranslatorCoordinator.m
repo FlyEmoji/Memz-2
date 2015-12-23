@@ -189,7 +189,8 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 
 	if ([translationWrapper.XMLElement isEqualToString:@"string"] && translationWrapper.XMLTranslation) {
 		NSLog(@"Suggested word: %@", translationWrapper.XMLTranslation);
-		translationWrapper.translationCompletionHandler(@[translationWrapper.XMLTranslation], nil);
+		NSArray<NSString *> *arrayToReturn = translationWrapper.XMLTranslation.length > 0 ? @[translationWrapper.XMLTranslation] : @[];
+		translationWrapper.translationCompletionHandler(arrayToReturn, nil);
 		[self.currentTranslations removeObject:translationWrapper];
 	}
 }
