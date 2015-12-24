@@ -39,7 +39,7 @@ NSString * const kWordRowTypeKey = @"WordRowTypeKey";
 NSString * const kContentTypeKey = @"ContentTypeKey";
 
 const CGFloat kTableViewSectionHeaderHeight = 40.0f;
-const CGFloat kWordAdditionTypeWordCellHeight = 50.0f;
+const CGFloat kWordAdditionTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZWordAdditionViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -74,6 +74,9 @@ MZTranslatedWordTableViewCellDelegate>
 	
 	self.wordTranslations = [[NSMutableArray alloc] init];
 	self.alreadyExistingWords = [[NSMutableOrderedSet alloc] init];
+
+	self.tableView.estimatedRowHeight = kWordAdditionTableViewEstimatedRowHeight;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
 
 	[self setupTableView];
 	[self.tableView reloadData];
@@ -145,15 +148,6 @@ MZTranslatedWordTableViewCellDelegate>
 	return headerView;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	switch ([self.tableViewData[indexPath.section][kSectionTypeKey] integerValue]) {
-		case MZWordAdditionSectionTypeWord:
-			return kWordAdditionTypeWordCellHeight;
-		default:
-			return UITableViewAutomaticDimension;
-	}
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.tableViewData[section][kContentTypeKey] count];
 }
@@ -168,8 +162,9 @@ MZTranslatedWordTableViewCellDelegate>
 																																					 forIndexPath:indexPath];
 					cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
 					cell.textField.text = self.wordToTranslate;
-					cell.delegate = self;
 					cell.cellType = MZTextFieldTableViewCellTypeRegular;
+					cell.language = [MZLanguageManager sharedManager].fromLanguage;
+					cell.delegate = self;
 					return cell;
 				}
 
@@ -192,8 +187,9 @@ MZTranslatedWordTableViewCellDelegate>
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
 			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
-			cell.delegate = self;
+			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			cell.cellType = MZTextFieldTableViewCellTypeAddition;
+			cell.delegate = self;
 			return cell;
 		}
 
@@ -202,6 +198,7 @@ MZTranslatedWordTableViewCellDelegate>
 																																						forIndexPath:indexPath];
 			cell.translatedWordLabel.text = self.wordTranslations[indexPath.row];
 			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
+			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			cell.delegate = self;
 			return cell;
 		}
@@ -438,6 +435,7 @@ MZTranslatedWordTableViewCellDelegate>
 
 - (IBAction)didTapAddWordButton:(id)sender {
 	// TODO: Test texts not empty, etc.
+	// TODO: In edit mode, remove no longer needed translations
 
 	[MZWord addWord:self.wordToTranslate
 		 fromLanguage:[MZLanguageManager sharedManager].fromLanguage

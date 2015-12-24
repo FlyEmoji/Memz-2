@@ -30,8 +30,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-United-Kingdom" translatesAutoresizingMaskIntoConstraints="NO" id="lqq-ta-w9Q" userLabel="Flag Image View">
+                                                    <rect key="frame" x="8" y="21" width="40" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="lqq-ta-w9Q" secondAttribute="height" multiplier="51:38" id="9HA-Rp-A1m"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Lny-ch-CHd"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your New Word Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-hB-NhR">
-                                                    <rect key="frame" x="8" y="8" width="546" height="56"/>
+                                                    <rect key="frame" x="56" y="8" width="498" height="56"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
@@ -42,7 +49,6 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-Kz-UZi">
                                                     <rect key="frame" x="562" y="21" width="30" height="30"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="Jbb-6k-WiR"/>
                                                         <constraint firstAttribute="width" secondItem="PHw-Kz-UZi" secondAttribute="height" multiplier="1:1" id="jqm-yv-AHJ"/>
                                                     </constraints>
                                                     <state key="normal" image="Add-Word-Plus-Icon"/>
@@ -59,21 +65,24 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="lqq-ta-w9Q" firstAttribute="height" secondItem="PHw-Kz-UZi" secondAttribute="height" id="0EK-t8-2So"/>
                                                 <constraint firstItem="hDE-hB-NhR" firstAttribute="top" secondItem="aO7-qT-f1Q" secondAttribute="top" constant="8" id="8e3-Yd-qnY"/>
                                                 <constraint firstAttribute="trailing" secondItem="PHw-Kz-UZi" secondAttribute="trailing" constant="8" id="DQ8-hj-04H"/>
                                                 <constraint firstItem="PHw-Kz-UZi" firstAttribute="centerY" secondItem="aO7-qT-f1Q" secondAttribute="centerY" id="DyQ-Z8-5Vo"/>
                                                 <constraint firstItem="PHw-Kz-UZi" firstAttribute="leading" secondItem="hDE-hB-NhR" secondAttribute="trailing" constant="8" id="LZY-cu-I8o"/>
-                                                <constraint firstItem="hDE-hB-NhR" firstAttribute="leading" secondItem="aO7-qT-f1Q" secondAttribute="leading" constant="8" id="VSM-Zw-lzF"/>
+                                                <constraint firstItem="lqq-ta-w9Q" firstAttribute="leading" secondItem="aO7-qT-f1Q" secondAttribute="leading" constant="8" id="MZu-am-TPy"/>
+                                                <constraint firstItem="hDE-hB-NhR" firstAttribute="leading" secondItem="lqq-ta-w9Q" secondAttribute="trailing" constant="8" id="SKl-Di-8M7"/>
                                                 <constraint firstAttribute="bottom" secondItem="hDE-hB-NhR" secondAttribute="bottom" constant="8" id="WD7-tq-eKh"/>
                                                 <constraint firstAttribute="trailing" secondItem="B3m-g4-Xyw" secondAttribute="trailing" id="WXD-ap-1ij"/>
+                                                <constraint firstItem="lqq-ta-w9Q" firstAttribute="centerY" secondItem="aO7-qT-f1Q" secondAttribute="centerY" id="cuG-tg-dLZ"/>
                                                 <constraint firstItem="B3m-g4-Xyw" firstAttribute="leading" secondItem="aO7-qT-f1Q" secondAttribute="leading" id="rPO-JA-92a"/>
                                                 <constraint firstAttribute="bottom" secondItem="B3m-g4-Xyw" secondAttribute="bottom" id="sve-OP-F9h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addButton" destination="PHw-Kz-UZi" id="dBi-06-7D3"/>
-                                            <outlet property="addButtonWidthConstant" destination="Jbb-6k-WiR" id="dgk-Mh-fia"/>
                                             <outlet property="bottomSeparator" destination="B3m-g4-Xyw" id="02o-hy-BNE"/>
+                                            <outlet property="flagImageView" destination="lqq-ta-w9Q" id="pkt-4e-E34"/>
                                             <outlet property="textField" destination="hDE-hB-NhR" id="v8y-cR-zpy"/>
                                         </connections>
                                     </tableViewCell>
@@ -127,8 +136,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-France" translatesAutoresizingMaskIntoConstraints="NO" id="Fp8-R0-wlz" userLabel="Flag Image View">
+                                                    <rect key="frame" x="8" y="6" width="40" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Fp8-R0-wlz" secondAttribute="height" multiplier="51:38" id="dDU-G2-AwL"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Added Word" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZ8-Mk-3nh">
-                                                    <rect key="frame" x="8" y="10" width="96" height="22"/>
+                                                    <rect key="frame" x="56" y="10" width="96" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -154,18 +169,22 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tFu-gt-UEl" firstAttribute="centerY" secondItem="LSb-M8-quD" secondAttribute="centerY" id="2Cj-Ah-WST"/>
-                                                <constraint firstItem="nZ8-Mk-3nh" firstAttribute="leading" secondItem="LSb-M8-quD" secondAttribute="leading" constant="8" id="2ut-kL-GCa"/>
+                                                <constraint firstItem="Fp8-R0-wlz" firstAttribute="height" secondItem="tFu-gt-UEl" secondAttribute="height" id="D1B-HT-aLS"/>
                                                 <constraint firstAttribute="trailing" secondItem="yoU-lN-7Eg" secondAttribute="trailing" id="Eli-j6-E1C"/>
                                                 <constraint firstAttribute="trailing" secondItem="tFu-gt-UEl" secondAttribute="trailing" constant="8" id="GPm-fO-xXA"/>
                                                 <constraint firstItem="nZ8-Mk-3nh" firstAttribute="top" secondItem="LSb-M8-quD" secondAttribute="top" constant="10" id="HeQ-s6-A30"/>
+                                                <constraint firstItem="Fp8-R0-wlz" firstAttribute="centerY" secondItem="LSb-M8-quD" secondAttribute="centerY" id="IvR-ft-KTt"/>
+                                                <constraint firstItem="nZ8-Mk-3nh" firstAttribute="leading" secondItem="Fp8-R0-wlz" secondAttribute="trailing" constant="8" id="K8X-lw-VVM"/>
                                                 <constraint firstItem="yoU-lN-7Eg" firstAttribute="leading" secondItem="LSb-M8-quD" secondAttribute="leading" id="OG0-dE-FOb"/>
                                                 <constraint firstAttribute="bottom" secondItem="yoU-lN-7Eg" secondAttribute="bottom" id="bVp-Yd-Ocz"/>
+                                                <constraint firstItem="Fp8-R0-wlz" firstAttribute="leading" secondItem="LSb-M8-quD" secondAttribute="leading" constant="8" id="hn6-8l-KXv"/>
                                                 <constraint firstItem="tFu-gt-UEl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nZ8-Mk-3nh" secondAttribute="trailing" constant="8" id="q5e-y0-40z"/>
                                                 <constraint firstAttribute="bottom" secondItem="nZ8-Mk-3nh" secondAttribute="bottom" constant="10" id="tjO-YC-Rdk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="bottomSeparator" destination="yoU-lN-7Eg" id="qfn-ES-u5d"/>
+                                            <outlet property="flagImageView" destination="Fp8-R0-wlz" id="UMB-QM-28D"/>
                                             <outlet property="translatedWordLabel" destination="nZ8-Mk-3nh" id="BL1-RA-G8B"/>
                                         </connections>
                                     </tableViewCell>
@@ -517,5 +536,7 @@
         <image name="Add-Word-Plus-Icon" width="512" height="512"/>
         <image name="Add-Word-Triangle-Icon" width="263" height="315"/>
         <image name="Feed-Gradient" width="375" height="375"/>
+        <image name="Flag-France" width="48" height="36"/>
+        <image name="Flag-United-Kingdom" width="48" height="36"/>
     </resources>
 </document>

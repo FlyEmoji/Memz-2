@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZLanguageManager.h"
 
 @interface UIImage (MemzAdditions)
+
++ (UIImage *)flagImageForLanguage:(MZLanguage)language;
 
 - (UIImage *)resizedImage:(CGSize)newSize interpolationQuality:(CGInterpolationQuality)quality;
 
