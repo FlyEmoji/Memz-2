@@ -211,6 +211,24 @@ MZTranslatedWordTableViewCellDelegate>
 	}
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self.view endEditing:YES];
+	switch ([self.tableViewData[indexPath.section][kSectionTypeKey] integerValue]) {
+
+		case MZWordAdditionSectionTypeWord: {
+			if ([self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kWordRowTypeKey] integerValue] == MZWordAdditionWordRowTypeAlreadyExisting) {
+				[self setupWithWord:self.alreadyExistingWords[indexPath.row - 1]];  // first cell is word to translate
+			}
+		}
+
+		case MZWordAdditionSectionTypeSuggestions: {
+
+		}
+		default:
+			return;
+	}
+}
+
 #pragma mark - Text Field Cells Delegate Methods
 
 - (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell {
@@ -326,6 +344,38 @@ MZTranslatedWordTableViewCellDelegate>
 			 });
 		 }
 	 }];
+}
+
+#pragma mark - Updates Upon Actions
+
+- (void)setupWithWord:(MZWord *)word {
+	// (1) Update current word
+	self.wordToTranslate = word.word;
+
+	// (2) Remove current existing words suggested
+	NSMutableArray *indexesToRemove = [[NSMutableArray alloc] init];
+	for (NSUInteger i = 0; i < self.alreadyExistingWords.count; i++) {
+		[indexesToRemove addObject:[NSIndexPath indexPathForItem:i + 1 inSection:MZWordAdditionSectionTypeWord]];
+	}
+
+	[self.alreadyExistingWords removeAllObjects];
+	[self.tableView deleteRowsAtIndexPaths:indexesToRemove withRowAnimation:UITableViewRowAnimationFade];
+
+	// (3) Update suggested translations
+	[self updateSuggestedTranslations];
+
+	// (4) Insert existing translations for already existing word chosen
+	if (self.wordTranslations.count > 0) {
+		[self.wordTranslations removeAllObjects];
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
+									withRowAnimation:UITableViewRowAnimationNone];
+	}
+
+	for (MZWord *translation in word.translation) {
+		[self.wordTranslations addObject:translation.word];
+	}
+	[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
+																							withRowAnimation:UITableViewRowAnimationFade];
 }
 
 #pragma mark - Translated Word Cells Delegate Methods
