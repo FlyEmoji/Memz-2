@@ -203,6 +203,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="bottomButton" destination="hrp-eF-sJu" id="yCy-pc-E98"/>
                         <outlet property="tableView" destination="Fwu-Pf-C5m" id="1xw-7x-5j6"/>
                         <outlet property="tableViewTopConstraint" destination="0Sv-Dk-4ch" id="GtV-OT-dWy"/>
                     </connections>
