@@ -54,7 +54,7 @@ MZTranslatedWordTableViewCellDelegate>
 @property (strong, nonatomic) NSString *wordToTranslate;
 @property (strong, nonatomic) NSMutableOrderedSet<MZWord *> *alreadyExistingWords;
 @property (strong, nonatomic) NSMutableArray<NSString *> *wordTranslations;
-@property (strong, nonatomic) NSArray<NSString *> *wordSuggestions;
+@property (strong, nonatomic) NSMutableArray<NSString *> *wordSuggestions;
 
 @end
 
@@ -222,8 +222,18 @@ MZTranslatedWordTableViewCellDelegate>
 		}
 
 		case MZWordAdditionSectionTypeSuggestions: {
+			NSString *word = self.wordSuggestions[indexPath.row];
+			[self addTranslations:word];
 
+			[self.wordSuggestions removeObjectAtIndex:indexPath.row];
+			if (self.wordSuggestions.count > 0) {
+				[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			} else {
+				[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
+											withRowAnimation:UITableViewRowAnimationFade];
+			}
 		}
+
 		default:
 			return;
 	}
@@ -234,21 +244,7 @@ MZTranslatedWordTableViewCellDelegate>
 - (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell {
 	// TODO: Check if valid
 
-	if ([self.wordTranslations containsObject:cell.textField.text]) {
-		// TODO: Show error
-		return;
-	}
-
-	[self.wordTranslations addObject:cell.textField.text];
-
-	if (self.wordTranslations.count == 1) {
-		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
-									withRowAnimation:UITableViewRowAnimationFade];
-	} else {
-		[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.wordTranslations.count - 1
-																																inSection:self.tableView.numberOfSections - 1]]
-													withRowAnimation:UITableViewRowAnimationFade];
-	}
+	[self addTranslations:cell.textField.text];
 
 	cell.textField.text = @"";
 	[self.view endEditing:YES];
@@ -259,6 +255,7 @@ MZTranslatedWordTableViewCellDelegate>
 	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
 		self.wordToTranslate = text;
 
+		[self removeTranslationsAnimated:YES];
 		[self updateExistingWords];
 		[self updateSuggestedTranslations];
 	}
@@ -271,7 +268,7 @@ MZTranslatedWordTableViewCellDelegate>
 																																		startingByString:self.wordToTranslate];
 
 	if (newAlreadyExistingWords.count > self.alreadyExistingWords.count) {
-		// Existing words to insert
+		// (1) Case existing words to insert
 		NSMutableOrderedSet<MZWord *> *wordsToInsert = [newAlreadyExistingWords mutableCopy];
 		[wordsToInsert minusOrderedSet:self.alreadyExistingWords];
 
@@ -282,7 +279,7 @@ MZTranslatedWordTableViewCellDelegate>
 														withRowAnimation:UITableViewRowAnimationFade];
 		}
 	} else {
-		// Previously suggested existing words to remove
+		// (2) Case previously suggested existing words to remove
 		NSMutableOrderedSet<MZWord *> *wordsToDelete = [self.alreadyExistingWords mutableCopy];
 		[wordsToDelete minusOrderedSet:newAlreadyExistingWords];
 
@@ -305,14 +302,14 @@ MZTranslatedWordTableViewCellDelegate>
 		 if (!error) {
 			 dispatch_async(dispatch_get_main_queue(), ^{
 				 if (translations.count == 0 && self.wordSuggestions.count > 0) {
-					 self.wordSuggestions = translations;
+					 self.wordSuggestions = translations.mutableCopy;
 					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
 				 }
 
 				 if (self.wordSuggestions.count == 0 && translations.count > 0) {
-					 self.wordSuggestions = translations;
+					 self.wordSuggestions = translations.mutableCopy;
 					 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
@@ -334,7 +331,7 @@ MZTranslatedWordTableViewCellDelegate>
 					 [indexPathsToInsert addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
-				 self.wordSuggestions = translations;
+				 self.wordSuggestions = translations.mutableCopy;
 				 if (indexPathsToDelete.count > 0) {
 					 [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationFade];
 				 }
@@ -365,17 +362,48 @@ MZTranslatedWordTableViewCellDelegate>
 	[self updateSuggestedTranslations];
 
 	// (4) Insert existing translations for already existing word chosen
-	if (self.wordTranslations.count > 0) {
-		[self.wordTranslations removeAllObjects];
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
-									withRowAnimation:UITableViewRowAnimationNone];
-	}
-
+	[self removeTranslationsAnimated:NO];
 	for (MZWord *translation in word.translation) {
 		[self.wordTranslations addObject:translation.word];
 	}
 	[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
 																							withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (void)addTranslations:(NSString *)translation {
+	if ([self.wordTranslations containsObject:translation]) {
+		// TODO: Show error
+		return;
+	}
+
+	[self.wordTranslations addObject:translation];
+
+	if (self.wordTranslations.count == 1) {
+		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
+									withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+		[self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.wordTranslations.count - 1
+																																inSection:self.tableView.numberOfSections - 1]]
+													withRowAnimation:UITableViewRowAnimationFade];
+	}
+}
+
+#pragma mark - Helpers
+
+- (void)removeTranslationsAnimated:(BOOL)animated {
+	if (self.wordTranslations.count > 0) {
+		[self.wordTranslations removeAllObjects];
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
+									withRowAnimation:animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
+	}
+}
+
+- (void)removeSuggestionsAnimated:(BOOL)animated {
+	if (self.wordSuggestions.count > 0) {
+		self.wordSuggestions = [[NSMutableArray alloc] init];
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
+									withRowAnimation:animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
+	}
 }
 
 #pragma mark - Translated Word Cells Delegate Methods
@@ -385,7 +413,7 @@ MZTranslatedWordTableViewCellDelegate>
 	[self.wordTranslations removeObjectAtIndex:wordTranslationIndex];
 
 	if (self.wordTranslations.count == 0) {
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
 									withRowAnimation:UITableViewRowAnimationFade];
 	} else {
 		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:wordTranslationIndex
