@@ -11,6 +11,7 @@
 #import "MZTextFieldTableViewCell.h"
 #import "MZTranslatedWordTableViewCell.h"
 #import "MZAutoCompletionTableViewCell.h"
+#import "MZSuggestedWordTableViewCell.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZBingTranslatorCoordinator.h"
 #import "MZWord+CoreDataProperties.h"
@@ -32,6 +33,7 @@ NSString * const kWordAdditionTableViewHeaderIdentifier = @"MZWordAdditionTableV
 NSString * const kTextFieldTableViewCellIdentifier = @"MZTextFieldTableViewCellIdentifier";
 NSString * const kAutoCompletionTableViewCellIdentifier = @"MZAutoCompletionTableViewCellIdentifier";
 NSString * const kTranslatedWordTableViewCellIdentifier = @"MZTranslatedWordTableViewCellIdentifier";
+NSString * const kSuggestedWordTableViewCellIdentifier = @"MZSuggestedWordTableViewCellIdentifier";
 
 NSString * const kSectionTypeKey = @"SectionTypeKey";
 NSString * const kSectionTitleKey = @"SectionTitleKey";
@@ -177,9 +179,11 @@ MZTranslatedWordTableViewCellDelegate>
 			}
 
 		case MZWordAdditionSectionTypeSuggestions: {
-			MZAutoCompletionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAutoCompletionTableViewCellIdentifier
-																																						forIndexPath:indexPath];
-			cell.wordLabel.text = self.wordSuggestions[indexPath.row];
+			MZSuggestedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuggestedWordTableViewCellIdentifier
+																																					 forIndexPath:indexPath];
+			cell.suggestedWordLabel.text = self.wordSuggestions[indexPath.row];
+			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
+			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			return cell;
 		}
 
@@ -218,6 +222,7 @@ MZTranslatedWordTableViewCellDelegate>
 				[self setupWithWord:self.alreadyExistingWords[indexPath.row - 1]];  // first cell is word to translate
 				[self.bottomButton setTitle:NSLocalizedString(@"WordAdditionEditWordButtonTitle", nil) forState:UIControlStateNormal];
 			}
+			break;
 		}
 
 		case MZWordAdditionSectionTypeSuggestions: {
@@ -231,6 +236,7 @@ MZTranslatedWordTableViewCellDelegate>
 				[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 											withRowAnimation:UITableViewRowAnimationFade];
 			}
+			break;
 		}
 
 		default:
@@ -321,8 +327,8 @@ MZTranslatedWordTableViewCellDelegate>
 				 // (3) Otherwise, update currently displayed suggestion cells if applicable
 				 for (NSInteger i = 0; i < translations.count && i < self.wordSuggestions.count; i++) {
 					 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions];
-					 MZAutoCompletionTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-					 cell.wordLabel.text = translations[i];
+					 MZSuggestedWordTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+					 cell.suggestedWordLabel.text = translations[i];
 				 }
 
 				 // (4) Update number of suggestion cells according to new needs
