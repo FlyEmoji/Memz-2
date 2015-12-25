@@ -17,13 +17,6 @@
 #import "MZWord+CoreDataProperties.h"
 #import "MZDataManager.h"
 
-typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
-	MZWordAdditionSectionTypeWord,
-	MZWordAdditionSectionTypeSuggestions,
-	MZWordAdditionSectionTypeManual,
-	MZWordAdditionSectionTypeTranslations
-};
-
 typedef NS_ENUM(NSInteger, MZWordAdditionWordRowType) {
 	MZWordAdditionWordRowTypeNewWord,
 	MZWordAdditionWordRowTypeAlreadyExisting
@@ -36,7 +29,6 @@ NSString * const kTranslatedWordTableViewCellIdentifier = @"MZTranslatedWordTabl
 NSString * const kSuggestedWordTableViewCellIdentifier = @"MZSuggestedWordTableViewCellIdentifier";
 
 NSString * const kSectionTypeKey = @"SectionTypeKey";
-NSString * const kSectionTitleKey = @"SectionTitleKey";
 NSString * const kWordRowTypeKey = @"WordRowTypeKey";
 NSString * const kContentTypeKey = @"ContentTypeKey";
 
@@ -46,7 +38,8 @@ const CGFloat kWordAdditionTableViewEstimatedRowHeight = 100.0f;
 @interface MZWordAdditionViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZTextFieldTableViewCellDelegate,
-MZTranslatedWordTableViewCellDelegate>
+MZTranslatedWordTableViewCellDelegate,
+MZWordAdditionTableViewHeaderDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
@@ -97,7 +90,6 @@ MZTranslatedWordTableViewCellDelegate>
 
 	// Section (1)
 	[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeWord),
-														kSectionTitleKey: NSLocalizedString(@"WordAdditionYourWordTitle", nil),
 														kContentTypeKey: [[NSMutableArray alloc] init]}];
 
 	NSMutableArray *firstSectionContentMutableArray = [mutableArray[MZWordAdditionSectionTypeWord][kContentTypeKey] safeCastToClass:[NSMutableArray class]];
@@ -113,19 +105,16 @@ MZTranslatedWordTableViewCellDelegate>
 	// Section (2)
 	if (self.wordSuggestions.count) {
 		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeSuggestions),
-															kSectionTitleKey: NSLocalizedString(@"WordAdditionSuggestedTranslationsTitle", nil),
 															kContentTypeKey: self.wordSuggestions}];
 	}
 
 	// Section (3)
 	[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeManual),
-														kSectionTitleKey: NSLocalizedString(@"WordAdditionCustomTranslationTitle", nil),
 														kContentTypeKey: @[@""]}];
 
 	// Section (4)
 	if (self.wordTranslations.count) {
 		[mutableArray addObject:@{kSectionTypeKey: @(MZWordAdditionSectionTypeTranslations),
-															kSectionTitleKey: NSLocalizedString(@"WordAdditionYourTranslationsTitle", nil),
 															kContentTypeKey: self.wordTranslations}];
 	}
 
@@ -144,9 +133,10 @@ MZTranslatedWordTableViewCellDelegate>
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   MZWordAdditionTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kWordAdditionTableViewHeaderIdentifier];
-	headerView.headerTitle.text = [self.tableViewData[section][kSectionTitleKey] safeCastToClass:[NSString class]];
+	headerView.sectionType = [self.tableViewData[section][kSectionTypeKey] integerValue] ;
 	headerView.backgroundColor = [UIColor mainBackgroundColor];
 	headerView.bottomSeparatorView.backgroundColor = [UIColor secondaryBackgroundColor];
+	headerView.delegate = self;
 	return headerView;
 }
 
@@ -415,6 +405,12 @@ MZTranslatedWordTableViewCellDelegate>
 		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 									withRowAnimation:animated ? UITableViewRowAnimationFade : UITableViewRowAnimationNone];
 	}
+}
+
+#pragma mark - Table View Header Delegate
+
+- (void)wordAdditionTableViewHeaderDidTapClearButton:(MZWordAdditionTableViewHeader *)tableViewHeader {
+	[self removeTranslationsAnimated:YES];
 }
 
 #pragma mark - Translated Word Cells Delegate Methods

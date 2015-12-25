@@ -672,10 +672,10 @@
 		0CD2F0241C23166600636588 /* 5-Add Word */ = {
 			isa = PBXGroup;
 			children = (
-				0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */,
 				0CD2F0291C231FF900636588 /* MZWordAdditionTableViewHeader */,
 				0CD2F0251C23167900636588 /* MZTextFieldTableViewCell */,
 				0C3726ED1C25B4E200C9879F /* MZAutoCompletionTableViewCell */,
+				0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */,
 				0C13AC181C2460D0007A1AD5 /* MZTranslatedWordTableViewCell */,
 			);
 			name = "5-Add Word";
