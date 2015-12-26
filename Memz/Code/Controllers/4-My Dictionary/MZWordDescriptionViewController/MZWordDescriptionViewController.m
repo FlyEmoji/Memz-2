@@ -76,4 +76,10 @@ UITableViewDelegate>
 	return cell;
 }
 
+#pragma mark - Test Methods
+
+- (IBAction)testReturnButtonTapped:(id)sender {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
