@@ -57,6 +57,8 @@
 		0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */; };
 		0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */; };
 		0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82791C2ECBF700EADB05 /* MZWordDescriptionViewController.m */; };
+		0CDB82811C2ED32100EADB05 /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82801C2ED32100EADB05 /* MZWordDescriptionHeaderView.m */; };
+		0CDB82831C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB82821C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib */; };
 		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -176,6 +178,9 @@
 		0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSuggestedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CDB82781C2ECBF700EADB05 /* MZWordDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionViewController.h; path = "Code/Controllers/4-My Dictionary/MZWordDescriptionViewController/MZWordDescriptionViewController.h"; sourceTree = SOURCE_ROOT; };
 		0CDB82791C2ECBF700EADB05 /* MZWordDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionViewController.m; path = "Code/Controllers/4-My Dictionary/MZWordDescriptionViewController/MZWordDescriptionViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CDB827F1C2ED32100EADB05 /* MZWordDescriptionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionHeaderView.h; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.h"; sourceTree = SOURCE_ROOT; };
+		0CDB82801C2ED32100EADB05 /* MZWordDescriptionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionHeaderView.m; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.m"; sourceTree = SOURCE_ROOT; };
+		0CDB82821C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -301,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				0C3726E71C255C1300C9879F /* MZMyDictionaryTableViewCell */,
+				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
 			);
 			name = "4-My Dictionary";
 			sourceTree = "<group>";
@@ -722,6 +728,16 @@
 			name = MZWordDescriptionViewController;
 			sourceTree = "<group>";
 		};
+		0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB827F1C2ED32100EADB05 /* MZWordDescriptionHeaderView.h */,
+				0CDB82801C2ED32100EADB05 /* MZWordDescriptionHeaderView.m */,
+				0CDB82821C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib */,
+			);
+			name = MZWordDescriptionHeaderView;
+			sourceTree = "<group>";
+		};
 		44DFB1CF8393D3A69FE59971 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +865,7 @@
 				0CBF7AB91C21786000F5D91B /* MZPollsInfoView.xib in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
+				0CDB82831C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib in Resources */,
 				0C3726F31C270D6900C9879F /* Localizable.strings in Resources */,
 				0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */,
 				0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */,
@@ -932,6 +949,7 @@
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
+				0CDB82811C2ED32100EADB05 /* MZWordDescriptionHeaderView.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
 				0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */,
