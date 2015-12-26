@@ -59,6 +59,7 @@
 		0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82791C2ECBF700EADB05 /* MZWordDescriptionViewController.m */; };
 		0CDB82811C2ED32100EADB05 /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82801C2ED32100EADB05 /* MZWordDescriptionHeaderView.m */; };
 		0CDB82831C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB82821C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib */; };
+		0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */; };
 		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,8 @@
 		0CDB827F1C2ED32100EADB05 /* MZWordDescriptionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionHeaderView.h; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.h"; sourceTree = SOURCE_ROOT; };
 		0CDB82801C2ED32100EADB05 /* MZWordDescriptionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionHeaderView.m; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.m"; sourceTree = SOURCE_ROOT; };
 		0CDB82821C2ED34200EADB05 /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/4-My Dictionary/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
+		0CDB82851C2EE44700EADB05 /* MZWordDescriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionTableViewCell.h; path = "Code/Views/4-My Dictionary/MZWordDescriptionTableViewCell/MZWordDescriptionTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionTableViewCell.m; path = "Code/Views/4-My Dictionary/MZWordDescriptionTableViewCell/MZWordDescriptionTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 			children = (
 				0C3726E71C255C1300C9879F /* MZMyDictionaryTableViewCell */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
+				0CDB82841C2EE41C00EADB05 /* MZWordDescriptionTableViewCell */,
 			);
 			name = "4-My Dictionary";
 			sourceTree = "<group>";
@@ -738,6 +742,15 @@
 			name = MZWordDescriptionHeaderView;
 			sourceTree = "<group>";
 		};
+		0CDB82841C2EE41C00EADB05 /* MZWordDescriptionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB82851C2EE44700EADB05 /* MZWordDescriptionTableViewCell.h */,
+				0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */,
+			);
+			name = MZWordDescriptionTableViewCell;
+			sourceTree = "<group>";
+		};
 		44DFB1CF8393D3A69FE59971 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,6 +957,7 @@
 			files = (
 				0C3726E01C25503800C9879F /* MZWord+CoreDataProperties.m in Sources */,
 				0CBF7AC11C21814000F5D91B /* MZPollsInfoView.m in Sources */,
+				0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
 				0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */,
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,

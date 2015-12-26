@@ -13,7 +13,7 @@
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 
-NSString * const kMyDictionaryTableViewCell = @"MZMyDictionaryTableViewCellIdentifier";
+NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
 NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
 
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
@@ -55,7 +55,7 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZMyDictionaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMyDictionaryTableViewCell
+	MZMyDictionaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMyDictionaryTableViewCellIdentifier
 																																			forIndexPath:indexPath];
 	MZWord *word = self.tableViewData[indexPath.row];
 	cell.wordLabel.text = word.word;

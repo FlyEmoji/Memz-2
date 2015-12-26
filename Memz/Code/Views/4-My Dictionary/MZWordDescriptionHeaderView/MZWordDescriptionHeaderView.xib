@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -38,21 +39,44 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeT-IM-0fN">
-                    <rect key="frame" x="204" y="58" width="89" height="24"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-zw-B3o" userLabel="Word Container View">
+                    <rect key="frame" x="204" y="45" width="89" height="64"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeT-IM-0fN">
+                            <rect key="frame" x="0.0" y="0.0" width="89" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-United-Kingdom" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-Ta-NRQ" userLabel="Flag Image View">
+                            <rect key="frame" x="20" y="32" width="50" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="q6l-Ta-NRQ" secondAttribute="height" multiplier="17:11" id="SOS-ph-2TE"/>
+                                <constraint firstAttribute="width" constant="50" id="knA-mT-nzT"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q6l-Ta-NRQ" secondAttribute="trailing" id="9Y0-F9-Dha"/>
+                        <constraint firstAttribute="bottom" secondItem="q6l-Ta-NRQ" secondAttribute="bottom" id="9g2-NK-gD1"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aPi-zw-B3o" secondAttribute="leading" id="Kag-xQ-yoB"/>
+                        <constraint firstAttribute="trailing" secondItem="MeT-IM-0fN" secondAttribute="trailing" id="c87-Aa-H5X"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="top" secondItem="MeT-IM-0fN" secondAttribute="bottom" constant="8" id="dgX-Iz-ea1"/>
+                        <constraint firstItem="MeT-IM-0fN" firstAttribute="leading" secondItem="aPi-zw-B3o" secondAttribute="leading" id="opf-6o-27i"/>
+                        <constraint firstItem="MeT-IM-0fN" firstAttribute="top" secondItem="aPi-zw-B3o" secondAttribute="top" id="oqt-Nx-LQY"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="centerX" secondItem="aPi-zw-B3o" secondAttribute="centerX" id="vnx-vA-jW1"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kaf-o4-xq0" secondAttribute="trailing" constant="4" id="0td-Oz-vZq"/>
                 <constraint firstItem="kaf-o4-xq0" firstAttribute="top" secondItem="7T1-cQ-5xi" secondAttribute="bottom" constant="2" id="3p4-DE-7Az"/>
                 <constraint firstItem="uRz-3K-GHM" firstAttribute="leading" secondItem="4fV-N3-6tE" secondAttribute="trailing" constant="4" id="5zt-Bj-frW"/>
-                <constraint firstItem="MeT-IM-0fN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Ela-Rh-cUp"/>
+                <constraint firstItem="aPi-zw-B3o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.1" id="SN6-3g-9ma"/>
                 <constraint firstItem="uRz-3K-GHM" firstAttribute="centerY" secondItem="4fV-N3-6tE" secondAttribute="centerY" id="Y3r-In-MHu"/>
-                <constraint firstItem="MeT-IM-0fN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="b62-Tp-GeO"/>
+                <constraint firstItem="aPi-zw-B3o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="epb-yX-xfV"/>
                 <constraint firstAttribute="trailing" secondItem="7T1-cQ-5xi" secondAttribute="trailing" constant="4" id="qnR-8B-Dhe"/>
                 <constraint firstItem="4fV-N3-6tE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="smY-8X-yAk"/>
                 <constraint firstItem="4fV-N3-6tE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="xCe-7k-fZp"/>
@@ -61,6 +85,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="flagImageView" destination="q6l-Ta-NRQ" id="Bkt-yI-TST"/>
                 <outlet property="learnedStatusLabel" destination="uRz-3K-GHM" id="YBt-IW-EQc"/>
                 <outlet property="learnedStatusView" destination="4fV-N3-6tE" id="vJg-VN-Bls"/>
                 <outlet property="numberOfTranslationsLabel" destination="7T1-cQ-5xi" id="rib-JV-mvC"/>
@@ -70,4 +95,7 @@
             <point key="canvasLocation" x="384" y="85"/>
         </view>
     </objects>
+    <resources>
+        <image name="Flag-United-Kingdom" width="48" height="36"/>
+    </resources>
 </document>

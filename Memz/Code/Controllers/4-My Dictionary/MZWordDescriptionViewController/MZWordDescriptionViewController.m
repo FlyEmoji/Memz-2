@@ -8,11 +8,18 @@
 
 #import "MZWordDescriptionViewController.h"
 #import "MZWordDescriptionHeaderView.h"
+#import "MZWordDescriptionTableViewCell.h"
+#import "UIImage+MemzAdditions.h"
 
-@interface MZWordDescriptionViewController ()
+NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
+
+const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
+
+@interface MZWordDescriptionViewController () <UITableViewDataSource,
+UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSSet<MZWord *> *tableViewData;
+@property (strong, nonatomic) NSArray<MZWord *> *tableViewData;
 
 @end
 
@@ -33,8 +40,13 @@
 #pragma mark - Setups
 
 - (void)setupTableView {
+	self.tableView.estimatedRowHeight = kWordDescriptionTableViewEstimatedRowHeight;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
+	self.tableView.tableFooterView = [[UIView alloc] init];
+
 	[self setupTableViewHeader];
-	self.tableViewData = self.word.translation;
+
+	self.tableViewData = self.word.translation.allObjects;
 	[self.tableView reloadData];
 }
 
@@ -48,6 +60,20 @@
 		self.tableView.tableHeaderView = tableViewHeader;
 	}
 	tableViewHeader.word = self.word;
+}
+
+#pragma mark - Table View DataSource & Delegate Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return self.tableViewData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	MZWordDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kWordDescriptionTableViewCellIdentifier
+																																			forIndexPath:indexPath];
+	cell.wordLabel.text = self.tableViewData[indexPath.row].word;
+	cell.flagImageView.image = [UIImage flagImageForLanguage:self.tableViewData[indexPath.row].language.integerValue];
+	return cell;
 }
 
 @end

@@ -8,10 +8,12 @@
 
 #import "MZWordDescriptionHeaderView.h"
 #import "UIVIew+MemzAdditions.h"
+#import "UIImage+MemzAdditions.h"
 
 @interface MZWordDescriptionHeaderView ()
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 @property (weak, nonatomic) IBOutlet UILabel *learnedStatusLabel;
 @property (weak, nonatomic) IBOutlet UIView *learnedStatusView;
 @property (weak, nonatomic) IBOutlet UILabel *numberOfTranslationsLabel;
@@ -31,6 +33,7 @@
 	_word = word;
 
 	self.wordLabel.text = word.word;
+	self.flagImageView.image = [UIImage flagImageForLanguage:self.word.language.integerValue];
 }
 
 @end
