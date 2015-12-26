@@ -9,10 +9,12 @@
 #import "MZMyDictionaryViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZMyDictionaryTableViewCell.h"
+#import "MZWordDescriptionViewController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 
 NSString * const kMyDictionaryTableViewCell = @"MZMyDictionaryTableViewCellIdentifier";
+NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
 
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
@@ -20,6 +22,7 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray<MZWord *> *tableViewData;
+@property (strong, nonatomic) MZWord *selectedWord;
 
 @end
 
@@ -38,6 +41,13 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 	[self.tableView reloadData];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
+		MZWordDescriptionViewController *viewController = segue.destinationViewController;
+		viewController.word = self.selectedWord;
+	}
+}
+
 #pragma mark - Table View Data Source & Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -51,6 +61,11 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 	cell.wordLabel.text = word.word;
 	[cell setupTranslations:[word.translation allObjects]];
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	self.selectedWord = self.tableViewData[indexPath.row];
+	[self performSegueWithIdentifier:MZWordDescriptionViewControllerSegue sender:self];
 }
 
 @end
