@@ -25,19 +25,34 @@
                         <constraint firstAttribute="height" constant="1" id="pHK-C2-z97"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-Zl-xPo">
+                    <rect key="frame" x="383" y="0.0" width="50" height="56"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="QqE-0x-5TW"/>
+                    </constraints>
+                    <state key="normal" title="Clear"/>
+                    <connections>
+                        <action selector="clearButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uZa-pa-Gml"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="nF8-ZE-RWy" secondAttribute="bottom" id="1iG-6e-ILc"/>
                 <constraint firstAttribute="trailing" secondItem="nF8-ZE-RWy" secondAttribute="trailing" id="Fi1-e2-g44"/>
+                <constraint firstItem="Xj7-Zl-xPo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IKg-DH-yCL"/>
+                <constraint firstItem="Xj7-Zl-xPo" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OIf-Cc-rzz"/>
                 <constraint firstItem="lXC-dx-HGh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Yj7-q8-zPy"/>
                 <constraint firstItem="nF8-ZE-RWy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="co1-4G-ZAo"/>
-                <constraint firstItem="lXC-dx-HGh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="w3I-6b-Uyj"/>
+                <constraint firstAttribute="trailing" secondItem="Xj7-Zl-xPo" secondAttribute="trailing" id="gVY-Iy-rkb"/>
+                <constraint firstItem="Xj7-Zl-xPo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lXC-dx-HGh" secondAttribute="trailing" constant="8" id="kAc-sD-5Du"/>
+                <constraint firstItem="lXC-dx-HGh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oUj-FL-rR2"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomSeparatorView" destination="nF8-ZE-RWy" id="enW-Ps-jn0"/>
+                <outlet property="clearButton" destination="Xj7-Zl-xPo" id="3CO-MT-fWA"/>
                 <outlet property="headerTitle" destination="lXC-dx-HGh" id="5xS-yz-Ldw"/>
             </connections>
             <point key="canvasLocation" x="326.5" y="61.5"/>

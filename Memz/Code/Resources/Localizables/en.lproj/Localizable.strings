@@ -23,3 +23,5 @@
 "WordAdditionSuggestedTranslationsTitle" = "Suggested translations";
 "WordAdditionCustomTranslationTitle" = "Add custom translation";
 "WordAdditionYourTranslationsTitle" = "Your translations";
+"WordAdditionAddWordButtonTitle" = "Add Word";
+"WordAdditionEditWordButtonTitle" = "Edit Word";

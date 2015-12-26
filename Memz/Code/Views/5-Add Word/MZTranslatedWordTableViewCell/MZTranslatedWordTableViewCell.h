@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZLanguageManager.h"
 
 @protocol MZTranslatedWordTableViewCellDelegate;
 
 @interface MZTranslatedWordTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) id<MZTranslatedWordTableViewCellDelegate> delegate;
+@property (assign, nonatomic) MZLanguage language;
 
 @property (weak, nonatomic) IBOutlet UILabel *translatedWordLabel;
 @property (weak, nonatomic) IBOutlet UIView *bottomSeparator;

@@ -10,6 +10,17 @@
 
 @implementation UIImage (MemzAdditions)
 
+#pragma mark - Flag Helpers
+
++ (UIImage *)flagImageForLanguage:(MZLanguage)language {
+	switch (language) {
+		case MZLanguageEnglish:
+			return [UIImage imageNamed:@"Flag-United-Kingdom"];
+		case MZLanguageFrench:
+			return [UIImage imageNamed:@"Flag-France"];
+	}
+}
+
 #pragma mark - Resize Helpers
 
 - (UIImage *)resizedImage:(CGSize)newSize interpolationQuality:(CGInterpolationQuality)quality {

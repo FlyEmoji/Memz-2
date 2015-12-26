@@ -7,13 +7,14 @@
 //
 
 #import "MZTextFieldTableViewCell.h"
+#import "UIImage+MemzAdditions.h"
 
 CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 
 @interface MZTextFieldTableViewCell ()
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonWidthConstant;
+@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 
 @end
 
@@ -24,8 +25,13 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 - (void)setCellType:(MZTextFieldTableViewCellType)cellType {
 	_cellType = cellType;
 
-	self.addButtonWidthConstant.constant = cellType == MZTextFieldTableViewCellTypeRegular ? 0.0f : kAddButtonDefaultWidthConstraint;
-	[self layoutIfNeeded];
+	self.addButton.hidden = cellType == MZTextFieldTableViewCellTypeRegular;
+}
+
+- (void)setLanguage:(MZLanguage)language {
+	_language = language;
+
+	self.flagImageView.image = [UIImage flagImageForLanguage:language];
 }
 
 #pragma mark - Actions

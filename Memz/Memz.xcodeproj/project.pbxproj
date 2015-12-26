@@ -55,6 +55,7 @@
 		0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */; };
 		0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */; };
 		0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */; };
+		0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */; };
 		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,8 @@
 		0CD2F02A1C2320E600636588 /* MZWordAdditionTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionTableViewHeader.h; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.h"; sourceTree = SOURCE_ROOT; };
 		0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionTableViewHeader.m; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.m"; sourceTree = SOURCE_ROOT; };
 		0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordAdditionTableViewHeader.xib; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.xib"; sourceTree = SOURCE_ROOT; };
+		0CDB82741C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSuggestedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSuggestedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -672,6 +675,7 @@
 				0CD2F0291C231FF900636588 /* MZWordAdditionTableViewHeader */,
 				0CD2F0251C23167900636588 /* MZTextFieldTableViewCell */,
 				0C3726ED1C25B4E200C9879F /* MZAutoCompletionTableViewCell */,
+				0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */,
 				0C13AC181C2460D0007A1AD5 /* MZTranslatedWordTableViewCell */,
 			);
 			name = "5-Add Word";
@@ -694,6 +698,15 @@
 				0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */,
 			);
 			name = MZWordAdditionTableViewHeader;
+			sourceTree = "<group>";
+		};
+		0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB82741C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.h */,
+				0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */,
+			);
+			name = MZSuggestedWordTableViewCell;
 			sourceTree = "<group>";
 		};
 		44DFB1CF8393D3A69FE59971 /* Pods */ = {
@@ -909,6 +922,7 @@
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
 				0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */,
+				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
 				0C13AC161C244C4A007A1AD5 /* UIColor+MemzColors.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0C0551201C20DA0A000565DC /* MZPollsViewController.m in Sources */,
