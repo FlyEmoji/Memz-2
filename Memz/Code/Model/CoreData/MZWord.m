@@ -21,7 +21,7 @@
 	MZWord *newWord = [MZWord newInstance];
 	newWord.word = word;
 	newWord.language = @(fromLanguage);
-	[newWord addTranslations:translations toLanguage:toLanguage];
+	[newWord addOrRemoveTranslations:translations toLanguage:toLanguage];
 	return newWord;
 }
 
@@ -37,7 +37,7 @@
 	if (!existingWord) {
 		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage];
 	} else {
-		[existingWord addTranslations:translations toLanguage:toLanguage];
+		[existingWord addOrRemoveTranslations:translations toLanguage:toLanguage];
 		return existingWord;
 	}
 }
@@ -49,8 +49,9 @@
 
 #pragma mark - Private Methods
 
-- (void)addTranslations:(NSArray<NSString *> *)translations
+- (void)addOrRemoveTranslations:(NSArray<NSString *> *)translations
 						 toLanguage:(MZLanguage)toLanguage {
+	// (1) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@ AND language == %d", translation, toLanguage];
 		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate].firstObject;
@@ -62,6 +63,17 @@
 		}
 
 		[self addTranslationObject:wordTranslation];
+	}];
+
+	// (2) Remove no longer needed translations
+	NSMutableSet<MZWord *> *allTranslations = self.translation.mutableCopy;
+	[allTranslations minusSet:[NSSet setWithArray:translations]];
+	[self removeTranslation:allTranslations];
+
+	[allTranslations.allObjects enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
+		if (translation.translation.count == 0) {
+			[[MZDataManager sharedDataManager].managedObjectContext deleteObject:translation];
+		}
 	}];
 }
 
