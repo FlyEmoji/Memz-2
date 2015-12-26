@@ -129,8 +129,62 @@
                                             <outlet property="wordLabel" destination="Jg7-Kh-vAb" id="T38-Td-kNx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTranslatedWordTableViewCellIdentifier" rowHeight="42" id="vta-mD-ZFq" customClass="MZTranslatedWordTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSuggestedWordTableViewCellIdentifier" rowHeight="42" id="t7o-fq-Iez" customClass="MZSuggestedWordTableViewCell">
                                         <rect key="frame" x="0.0" y="144" width="600" height="42"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7o-fq-Iez" id="NgG-F7-gmJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-France" translatesAutoresizingMaskIntoConstraints="NO" id="qaP-Zf-Luc">
+                                                    <rect key="frame" x="8" y="6" width="40" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="HXI-xG-UaF"/>
+                                                        <constraint firstAttribute="width" secondItem="qaP-Zf-Luc" secondAttribute="height" multiplier="51:38" id="fAy-gB-yMA"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-3O-o6Q">
+                                                    <rect key="frame" x="56" y="10" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.30196078430000001" green="0.56470588239999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-2v-KyT" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="0.0" y="41" width="600" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Pzh-O7-Ivj"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TkF-5r-UxR">
+                                                    <rect key="frame" x="562" y="6" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="TkF-5r-UxR" secondAttribute="height" multiplier="1:1" id="daO-3b-Aza"/>
+                                                        <constraint firstAttribute="height" constant="30" id="dfa-pF-Fq6"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Add-Word-Plus-Icon"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="TkF-5r-UxR" secondAttribute="trailing" constant="8" id="0UD-Vb-Svt"/>
+                                                <constraint firstItem="qaP-Zf-Luc" firstAttribute="leading" secondItem="NgG-F7-gmJ" secondAttribute="leading" constant="8" id="4OK-LD-PjY"/>
+                                                <constraint firstItem="Cpx-2v-KyT" firstAttribute="leading" secondItem="NgG-F7-gmJ" secondAttribute="leading" id="7Cl-qd-h8P"/>
+                                                <constraint firstItem="qaP-Zf-Luc" firstAttribute="centerY" secondItem="NgG-F7-gmJ" secondAttribute="centerY" id="8fW-6P-ghg"/>
+                                                <constraint firstItem="TkF-5r-UxR" firstAttribute="centerY" secondItem="NgG-F7-gmJ" secondAttribute="centerY" id="VMi-kh-psW"/>
+                                                <constraint firstItem="eIZ-3O-o6Q" firstAttribute="centerY" secondItem="NgG-F7-gmJ" secondAttribute="centerY" id="bhy-nu-Swr"/>
+                                                <constraint firstItem="eIZ-3O-o6Q" firstAttribute="leading" secondItem="qaP-Zf-Luc" secondAttribute="trailing" constant="8" id="eA5-C5-eGV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cpx-2v-KyT" secondAttribute="trailing" id="exf-sm-54L"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eIZ-3O-o6Q" secondAttribute="trailing" constant="8" id="oxE-Tt-FOu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Cpx-2v-KyT" secondAttribute="bottom" id="yhJ-IT-ReM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bottomSeparator" destination="Cpx-2v-KyT" id="4k6-Lp-OSQ"/>
+                                            <outlet property="suggestedWordLabel" destination="eIZ-3O-o6Q" id="S2X-LO-eJT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTranslatedWordTableViewCellIdentifier" rowHeight="42" id="vta-mD-ZFq" customClass="MZTranslatedWordTableViewCell">
+                                        <rect key="frame" x="0.0" y="186" width="600" height="42"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vta-mD-ZFq" id="LSb-M8-quD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
@@ -188,50 +242,6 @@
                                             <outlet property="translatedWordLabel" destination="nZ8-Mk-3nh" id="BL1-RA-G8B"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSuggestedWordTableViewCellIdentifier" rowHeight="42" id="t7o-fq-Iez" customClass="MZSuggestedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="186" width="600" height="42"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7o-fq-Iez" id="NgG-F7-gmJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-France" translatesAutoresizingMaskIntoConstraints="NO" id="qaP-Zf-Luc">
-                                                    <rect key="frame" x="8" y="6" width="40" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="HXI-xG-UaF"/>
-                                                        <constraint firstAttribute="width" secondItem="qaP-Zf-Luc" secondAttribute="height" multiplier="51:38" id="fAy-gB-yMA"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIZ-3O-o6Q">
-                                                    <rect key="frame" x="56" y="10" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.30196078430000001" green="0.56470588239999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cpx-2v-KyT" userLabel="Bottom Separator View">
-                                                    <rect key="frame" x="0.0" y="41" width="600" height="1"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="Pzh-O7-Ivj"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="qaP-Zf-Luc" firstAttribute="leading" secondItem="NgG-F7-gmJ" secondAttribute="leading" constant="8" id="4OK-LD-PjY"/>
-                                                <constraint firstItem="Cpx-2v-KyT" firstAttribute="leading" secondItem="NgG-F7-gmJ" secondAttribute="leading" id="7Cl-qd-h8P"/>
-                                                <constraint firstItem="qaP-Zf-Luc" firstAttribute="centerY" secondItem="NgG-F7-gmJ" secondAttribute="centerY" id="8fW-6P-ghg"/>
-                                                <constraint firstItem="eIZ-3O-o6Q" firstAttribute="centerY" secondItem="NgG-F7-gmJ" secondAttribute="centerY" id="bhy-nu-Swr"/>
-                                                <constraint firstItem="eIZ-3O-o6Q" firstAttribute="leading" secondItem="qaP-Zf-Luc" secondAttribute="trailing" constant="8" id="eA5-C5-eGV"/>
-                                                <constraint firstAttribute="trailing" secondItem="Cpx-2v-KyT" secondAttribute="trailing" id="exf-sm-54L"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eIZ-3O-o6Q" secondAttribute="trailing" constant="8" id="oxE-Tt-FOu"/>
-                                                <constraint firstAttribute="bottom" secondItem="Cpx-2v-KyT" secondAttribute="bottom" id="yhJ-IT-ReM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="bottomSeparator" destination="Cpx-2v-KyT" id="4k6-Lp-OSQ"/>
-                                            <outlet property="suggestedWordLabel" destination="eIZ-3O-o6Q" id="S2X-LO-eJT"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="hko-ZM-ogh" id="0wI-HC-PAo"/>
@@ -253,7 +263,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.30196078431372547" green="0.56470588235294117" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="top" id="0Sv-Dk-4ch"/>
                             <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="bottom" id="MVe-Sh-0zo"/>
