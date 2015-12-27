@@ -44,7 +44,7 @@
 - (void)setIsEditing:(BOOL)isEditing {
 	_isEditing = isEditing;
 
-	if (!isEditing) {
+	if (isEditing) {
 		[self.editButton setTitle:NSLocalizedString(@"CommonDone", nil) forState:UIControlStateNormal];
 		if ([self.delegate respondsToSelector:@selector(wordDescriptionHeaderViewDidStartEditing:)]) {
 			[self.delegate wordDescriptionHeaderViewDidStartEditing:self];

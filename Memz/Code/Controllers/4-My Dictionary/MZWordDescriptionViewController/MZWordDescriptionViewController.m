@@ -23,7 +23,7 @@ UITableViewDelegate,
 MZWordDescriptionHeaderViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (copy, nonatomic) NSMutableArray<MZWord *> *tableViewData;
+@property (strong, nonatomic) NSMutableArray<MZWord *> *tableViewData;
 
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 
@@ -84,7 +84,7 @@ MZWordDescriptionHeaderViewDelegate>
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (self.tableViewData.count == 0) {
+	if (self.tableViewData.count <= 1) {
 		[self removeWordWithCompletionHandler:^{
 			[self dismissViewControllerAnimated:YES completion:nil];
 		}];
@@ -106,7 +106,7 @@ MZWordDescriptionHeaderViewDelegate>
 	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
 		[translationStrings addObject:word.word];
 	}];
-	[self.word addOrRemoveTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage];
+	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }
@@ -141,7 +141,7 @@ MZWordDescriptionHeaderViewDelegate>
 #pragma mark - Test Methods
 
 - (IBAction)bottomButtonTapped:(id)sender {
-	if (self.isEditing) {
+	if (self.tableView.isEditing) {
 		[self removeWordWithCompletionHandler:^{
 			[self dismissViewControllerAnimated:YES completion:nil];
 		}];
