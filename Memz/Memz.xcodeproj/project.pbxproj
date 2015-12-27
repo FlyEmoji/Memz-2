@@ -66,6 +66,7 @@
 		0CDB82EE1C30A0BD00EADB05 /* MZWord+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82E41C30A0BD00EADB05 /* MZWord+CoreDataProperties.m */; };
 		0CDB82EF1C30A0BD00EADB05 /* Response.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82E61C30A0BD00EADB05 /* Response.m */; };
 		0CDB82F01C30A0BD00EADB05 /* Response+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82E81C30A0BD00EADB05 /* Response+CoreDataProperties.m */; };
+		0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */; };
 		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -202,6 +203,8 @@
 		0CDB82E61C30A0BD00EADB05 /* Response.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Response.m; path = Code/Model/CoreData/Response.m; sourceTree = SOURCE_ROOT; };
 		0CDB82E71C30A0BD00EADB05 /* Response+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Response+CoreDataProperties.h"; path = "Code/Model/CoreData/Response+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		0CDB82E81C30A0BD00EADB05 /* Response+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Response+CoreDataProperties.m"; path = "Code/Model/CoreData/Response+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		0CDB82F21C30A5E200EADB05 /* MZQuizManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZQuizManager.h; path = Code/Helpers/Classes/MZQuizManager/MZQuizManager.h; sourceTree = SOURCE_ROOT; };
+		0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManager.m; path = Code/Helpers/Classes/MZQuizManager/MZQuizManager.m; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CBF7ABB1C217B6A00F5D91B /* MZNibView */,
 				0CA58C051C206B7A000E19D4 /* MZInjector */,
@@ -779,6 +783,15 @@
 				0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */,
 			);
 			name = MZWordDescriptionTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CDB82F11C30A4BC00EADB05 /* MZQuizManager */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB82F21C30A5E200EADB05 /* MZQuizManager.h */,
+				0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */,
+			);
+			name = MZQuizManager;
 			sourceTree = "<group>";
 		};
 		44DFB1CF8393D3A69FE59971 /* Pods */ = {
@@ -996,6 +1009,7 @@
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CA58C111C207D6E000E19D4 /* UINavigationController+MemzTransitions.m in Sources */,
 				0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */,
+				0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */,
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
 				0C13AC161C244C4A007A1AD5 /* UIColor+MemzColors.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
