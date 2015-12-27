@@ -629,11 +629,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="e6M-n0-U7P"/>
                                 </constraints>
-                                <state key="normal" title="TEST RETURN">
+                                <state key="normal" title="RETURN">
                                     <color key="titleColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="testReturnButtonTapped:" destination="nMe-o3-j5J" eventType="touchUpInside" id="6TA-Je-nFs"/>
+                                    <action selector="bottomButtonTapped:" destination="nMe-o3-j5J" eventType="touchUpInside" id="JbC-8q-YSQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -650,6 +650,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="bottomButton" destination="SYf-Fv-m1b" id="WF2-jy-PMc"/>
                         <outlet property="tableView" destination="0WD-Zb-A3Q" id="iza-Q8-xAU"/>
                     </connections>
                 </viewController>

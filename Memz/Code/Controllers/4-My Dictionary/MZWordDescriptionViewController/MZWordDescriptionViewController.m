@@ -9,17 +9,23 @@
 #import "MZWordDescriptionViewController.h"
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
+#import "MZDataManager.h"
 #import "UIImage+MemzAdditions.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 
 const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
 
+const NSTimeInterval kEditAnimationDuration = 0.3;
+
 @interface MZWordDescriptionViewController () <UITableViewDataSource,
-UITableViewDelegate>
+UITableViewDelegate,
+MZWordDescriptionHeaderViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray<MZWord *> *tableViewData;
+@property (copy, nonatomic) NSMutableArray<MZWord *> *tableViewData;
+
+@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 
 @end
 
@@ -46,7 +52,7 @@ UITableViewDelegate>
 
 	[self setupTableViewHeader];
 
-	self.tableViewData = self.word.translation.allObjects;
+	self.tableViewData = self.word.translation.allObjects.mutableCopy;
 	[self.tableView reloadData];
 }
 
@@ -57,6 +63,7 @@ UITableViewDelegate>
 																																							 owner:self
 																																						 options:nil][0];
 		tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+		tableViewHeader.delegate = self;
 		self.tableView.tableHeaderView = tableViewHeader;
 	}
 	tableViewHeader.word = self.word;
@@ -76,10 +83,71 @@ UITableViewDelegate>
 	return cell;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (self.tableViewData.count == 0) {
+		[self removeWordWithCompletionHandler:^{
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}];
+	} else {
+		[self removeTranslation:self.tableViewData[indexPath.row] completionHandler:nil];
+	}
+}
+
+#pragma mark - Edition Helpers
+
+- (void)removeTranslation:(MZWord *)translation completionHandler:(void (^ __nullable)(void))completionHandler {
+	NSUInteger index = [self.tableViewData indexOfObject:translation];
+
+	[self.tableViewData removeObjectAtIndex:index];
+	[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]
+												withRowAnimation:UITableViewRowAnimationRight];
+
+	NSMutableArray *translationStrings = [[NSMutableArray alloc] initWithCapacity:self.tableViewData.count];
+	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
+		[translationStrings addObject:word.word];
+	}];
+	[self.word addOrRemoveTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
+}
+
+- (void)removeWordWithCompletionHandler:(void (^ __nullable)(void))completionHandler {
+	[[MZDataManager sharedDataManager].managedObjectContext deleteObject:self.word];
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
+}
+
+#pragma mark - Table View Header Delegate Methods
+
+- (void)wordDescriptionHeaderViewDidStartEditing:(MZWordDescriptionHeaderView *)headerView {
+	[self.tableView setEditing:YES animated:YES];
+
+	[UIView animateWithDuration:kEditAnimationDuration
+									 animations:^{
+										 self.bottomButton.backgroundColor = [UIColor editWordBackgroundColor];
+										 [self.bottomButton setTitle:NSLocalizedString(@"CommonDelete", nil) forState:UIControlStateNormal];
+									 }];
+}
+
+- (void)wordDescriptionHeaderViewDidStopEditing:(MZWordDescriptionHeaderView *)headerView {
+	[self.tableView setEditing:NO animated:YES];
+
+	[UIView animateWithDuration:kEditAnimationDuration
+									 animations:^{
+										 self.bottomButton.backgroundColor = [UIColor secondaryBackgroundColor];
+										 [self.bottomButton setTitle:NSLocalizedString(@"CommonReturn", nil) forState:UIControlStateNormal];
+									 }];
+}
+
 #pragma mark - Test Methods
 
-- (IBAction)testReturnButtonTapped:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)bottomButtonTapped:(id)sender {
+	if (self.isEditing) {
+		[self removeWordWithCompletionHandler:^{
+			[self dismissViewControllerAnimated:YES completion:nil];
+		}];
+	} else {
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 @end

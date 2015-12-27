@@ -1,10 +1,13 @@
 
 "CommonOk" = "OK";
+"CommonEdit" = "Edit";
 "CommonDone" = "Done";
 "CommonError" = "Error";
 "CommonBack" = "Back";
 "CommonNotice" = "Notice";
 "CommonCancel" = "Cancel";
+"CommonReturn" = "Return";
+"CommonDelete" = "Delete";
 "CommonSubmit" = "Submit";
 "CommonClose" = "Close";
 "CommonSend" = "Send";

@@ -68,6 +68,17 @@
                         <constraint firstItem="q6l-Ta-NRQ" firstAttribute="centerX" secondItem="aPi-zw-B3o" secondAttribute="centerX" id="vnx-vA-jW1"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-yJ-rSf">
+                    <rect key="frame" x="4" y="23" width="95" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="Brx-t0-BWk"/>
+                        <constraint firstAttribute="height" constant="42" id="aCL-In-LLM"/>
+                    </constraints>
+                    <state key="normal" title="Edit"/>
+                    <connections>
+                        <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="8ZD-5m-iYL"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -77,7 +88,9 @@
                 <constraint firstItem="aPi-zw-B3o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.1" id="SN6-3g-9ma"/>
                 <constraint firstItem="uRz-3K-GHM" firstAttribute="centerY" secondItem="4fV-N3-6tE" secondAttribute="centerY" id="Y3r-In-MHu"/>
                 <constraint firstItem="aPi-zw-B3o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="epb-yX-xfV"/>
+                <constraint firstItem="jeU-yJ-rSf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="g1K-1B-Vjl"/>
                 <constraint firstAttribute="trailing" secondItem="7T1-cQ-5xi" secondAttribute="trailing" constant="4" id="qnR-8B-Dhe"/>
+                <constraint firstItem="jeU-yJ-rSf" firstAttribute="top" secondItem="uRz-3K-GHM" secondAttribute="bottom" constant="3" id="saU-u4-yVQ"/>
                 <constraint firstItem="4fV-N3-6tE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="smY-8X-yAk"/>
                 <constraint firstItem="4fV-N3-6tE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="xCe-7k-fZp"/>
                 <constraint firstItem="7T1-cQ-5xi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="zDt-fB-fIj"/>
@@ -85,6 +98,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="editButton" destination="jeU-yJ-rSf" id="HaD-R4-zsF"/>
                 <outlet property="flagImageView" destination="q6l-Ta-NRQ" id="Bkt-yI-TST"/>
                 <outlet property="learnedStatusLabel" destination="uRz-3K-GHM" id="YBt-IW-EQc"/>
                 <outlet property="learnedStatusView" destination="4fV-N3-6tE" id="vJg-VN-Bls"/>

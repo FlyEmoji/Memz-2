@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language
 																		startingByString:(NSString *)string;
 
+- (void)addOrRemoveTranslations:(NSArray<NSString *> *)translations
+										 toLanguage:(MZLanguage)toLanguage;
+
 @end
 
 NS_ASSUME_NONNULL_END

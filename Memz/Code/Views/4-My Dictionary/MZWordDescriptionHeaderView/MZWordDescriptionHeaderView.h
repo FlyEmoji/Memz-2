@@ -9,8 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "MZWord.h"
 
+@protocol MZWordDescriptionHeaderViewDelegate;
+
 @interface MZWordDescriptionHeaderView : UIView
 
+@property (nonatomic, weak) id<MZWordDescriptionHeaderViewDelegate> delegate;
 @property (nonatomic, strong) MZWord *word;
+
+@end
+
+@protocol MZWordDescriptionHeaderViewDelegate <NSObject>
+
+@optional
+
+- (void)wordDescriptionHeaderViewDidStartEditing:(MZWordDescriptionHeaderView *)headerView;
+- (void)wordDescriptionHeaderViewDidStopEditing:(MZWordDescriptionHeaderView *)headerView;
 
 @end
