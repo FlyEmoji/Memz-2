@@ -1,5 +1,5 @@
 //
-//  MZWord+CoreDataProperties.m
+//  MZQuizz+CoreDataProperties.m
 //  
 //
 //  Created by Bastien Falcou on 12/27/15.
@@ -9,14 +9,12 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZWord+CoreDataProperties.h"
+#import "MZQuizz+CoreDataProperties.h"
 
-@implementation MZWord (CoreDataProperties)
+@implementation MZQuizz (CoreDataProperties)
 
-@dynamic language;
-@dynamic word;
-@dynamic learningIndex;
-@dynamic translation;
+@dynamic date;
+@dynamic isAnswered;
 @dynamic responses;
 
 @end

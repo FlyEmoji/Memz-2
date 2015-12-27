@@ -163,7 +163,8 @@ MZWordAdditionTableViewHeaderDelegate>
 				case MZWordAdditionWordRowTypeAlreadyExisting: {
 					MZAutoCompletionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAutoCompletionTableViewCellIdentifier
 																																								forIndexPath:indexPath];
-					cell.wordLabel.text = [[self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kContentTypeKey] safeCastToClass:[MZWord class]] word];
+					MZWord *word = [self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kContentTypeKey] safeCastToClass:[MZWord class]];
+					cell.wordLabel.text = word.word;
 					return cell;
 				}
 			}
