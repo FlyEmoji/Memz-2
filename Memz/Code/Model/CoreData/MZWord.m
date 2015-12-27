@@ -21,11 +21,16 @@
 	MZWord *newWord = [MZWord newInstance];
 	newWord.word = word;
 	newWord.language = @(fromLanguage);
-	[newWord addTranslations:translations toLanguage:toLanguage];
+	[newWord updateTranslations:translations toLanguage:toLanguage];
 	return newWord;
 }
 
 #pragma mark - Public Methods
+
++ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language == %d", string, language];
+	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
+}
 
 + (MZWord *)addWord:(NSString *)word
 			 fromLanguage:(MZLanguage)fromLanguage
@@ -37,20 +42,14 @@
 	if (!existingWord) {
 		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage];
 	} else {
-		[existingWord addTranslations:translations toLanguage:toLanguage];
+		[existingWord updateTranslations:translations toLanguage:toLanguage];
 		return existingWord;
 	}
 }
 
-+ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language == %d", string, language];
-	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
-}
-
-#pragma mark - Private Methods
-
-- (void)addTranslations:(NSArray<NSString *> *)translations
-						 toLanguage:(MZLanguage)toLanguage {
+- (void)updateTranslations:(NSArray<NSString *> *)translations
+								toLanguage:(MZLanguage)toLanguage {
+	// (1) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@ AND language == %d", translation, toLanguage];
 		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate].firstObject;
@@ -62,6 +61,17 @@
 		}
 
 		[self addTranslationObject:wordTranslation];
+	}];
+
+	// (2) Remove no longer needed translations
+	[self.translation.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
+		if (![translations containsObject:translation.word]) {
+			[self removeTranslation:[NSSet setWithObject:translation]];
+
+			if (translation.translation.count == 0) {
+				[[MZDataManager sharedDataManager].managedObjectContext deleteObject:translation];
+			}
+		}
 	}];
 }
 
