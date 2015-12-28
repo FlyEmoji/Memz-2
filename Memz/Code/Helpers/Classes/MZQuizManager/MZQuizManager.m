@@ -35,4 +35,15 @@
 
 #pragma mark - Private Methods
 
+- (void)scheduleQuizNotifications {
+	NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+	NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+	[dateComps setDay:item.day];
+	[dateComps setMonth:item.month];
+	[dateComps setYear:item.year];
+	[dateComps setHour:item.hour];
+	[dateComps setMinute:item.minute];
+	NSDate *itemDate = [calendar dateFromComponents:dateComps];
+}
+
 @end

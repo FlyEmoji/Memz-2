@@ -11,7 +11,7 @@
 
 @interface MZQuizManager : NSObject
 
-@property (nonatomic, assign) NSTimeInterval quizzDelay;
+@property (nonatomic, assign) NSUInteger quizPerDay;
 @property (nonatomic, assign, readonly) BOOL isActive;
 
 + (MZQuizManager *)sharedManager;
