@@ -8,6 +8,16 @@
 
 #import "MZNibView.h"
 
+@protocol MZQuizInfoViewDelegate;
+
 @interface MZQuizInfoView : MZNibView
+
+@property (nonatomic, weak) id<MZQuizInfoViewDelegate> delegate;
+
+@end
+
+@protocol MZQuizInfoViewDelegate <NSObject>
+
+- (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView;
 
 @end

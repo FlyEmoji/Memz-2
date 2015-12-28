@@ -1,27 +1,27 @@
 //
-//  MZQuizz.m
+//  MZQuiz.m
 //  
 //
 //  Created by Bastien Falcou on 12/27/15.
 //
 //
 
-#import "MZQuizz.h"
+#import "MZQuiz.h"
 #import "MZWord.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZLanguageManager.h"
 
-@implementation MZQuizz
+@implementation MZQuiz
 
-+ (MZQuizz *)generateRandomQuiz {
-	MZQuizz *newQuiz = [MZQuizz newInstance];
++ (MZQuiz *)generateRandomQuiz {
+	MZQuiz *newQuiz = [MZQuiz newInstance];
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND learningIndex < %d", [MZLanguageManager sharedManager].fromLanguage, MZWordIndexLearned];
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;
 	NSMutableArray<MZWord *> *selectedWords = [[NSMutableArray alloc] init];
 
-	for (NSUInteger i = 0; i < words.count && i < MZQuizNumberTranslations; i++) {
+	for (NSUInteger i = 0; i < MZQuizNumberTranslations && words.count > 0; i++) {
 		MZWord *randomWord = [words objectAtIndex:arc4random() % words.count];
 		[selectedWords addObject:randomWord];
 		[words removeObject:randomWord];

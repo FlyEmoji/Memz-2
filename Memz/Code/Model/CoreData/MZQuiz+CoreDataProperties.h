@@ -1,5 +1,5 @@
 //
-//  MZQuizz+CoreDataProperties.h
+//  MZQuiz+CoreDataProperties.h
 //  
 //
 //  Created by Bastien Falcou on 12/27/15.
@@ -9,12 +9,12 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZQuizz.h"
+#import "MZQuiz.h"
 #import "MZResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MZQuizz (CoreDataProperties)
+@interface MZQuiz (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSDate *date;
 @property (nullable, nonatomic, retain) NSNumber *isAnswered;
@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface MZQuizz (CoreDataGeneratedAccessors)
+@interface MZQuiz (CoreDataGeneratedAccessors)
 
 - (void)addResponsesObject:(MZResponse *)value;
 - (void)removeResponsesObject:(MZResponse *)value;

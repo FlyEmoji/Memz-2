@@ -56,10 +56,6 @@ const NSUInteger kDefaultStopTimeHour = 20;
 	[[MZPushNotificationManager sharedManager] cancelLocalNotifications:MZLocalPushNotificationTypeQuizz];
 }
 
-- (MZQuizz *)generateQuiz {
-	return nil;
-}
-
 - (void)setQuizPerDay:(NSUInteger)quizPerDay {
 	if (quizPerDay < kDayMinimumQuizNumber) {
 		_quizPerDay = kDayMinimumQuizNumber;

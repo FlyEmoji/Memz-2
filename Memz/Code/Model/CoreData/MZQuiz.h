@@ -1,5 +1,5 @@
 //
-//  MZQuizz.h
+//  MZQuiz.h
 //  
 //
 //  Created by Bastien Falcou on 12/27/15.
@@ -13,12 +13,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MZQuizz : NSManagedObject
+@interface MZQuiz : NSManagedObject
 
-+ (MZQuizz *)generateRandomQuiz;
++ (MZQuiz *)generateRandomQuiz;
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "MZQuizz+CoreDataProperties.h"
+#import "MZQuiz+CoreDataProperties.h"

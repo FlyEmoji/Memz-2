@@ -7,6 +7,10 @@
 //
 
 #import "MZMyQuizzesViewController.h"
+#import "MZQuizInfoView.h"
+#import "MZQuizViewController.h"
+#import "MZDataManager.h"
+#import "MZQuiz.h"
 
 typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionNone = 0,
@@ -19,14 +23,16 @@ const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
-NSString * const kQuizzTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
+NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
 
-@interface MZMyQuizzesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MZMyQuizzesViewController () <UITableViewDataSource,
+UITableViewDelegate,
+MZQuizInfoViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tableViewData;
 
-@property (weak, nonatomic) IBOutlet UIView *topShrinkableView;
+@property (weak, nonatomic) IBOutlet MZQuizInfoView *topShrinkableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
 
 @property (nonatomic, assign) CGPoint lastContentOffset;
@@ -47,6 +53,8 @@ NSString * const kQuizzTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdent
 	self.tableView.contentInset = UIEdgeInsetsMake(kTopShrinkableViewMaximumHeight, 0.0f, 0.0f, 0.0f);
 	self.tableView.contentOffset = CGPointMake(0.0f, -self.topShrinkableViewHeightConstraint.constant);
 	self.tableView.tableFooterView = [[UIView alloc] init];
+
+	self.topShrinkableView.delegate = self;
 }
 
 - (void)setupTableViewData {
@@ -67,7 +75,7 @@ NSString * const kQuizzTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdent
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizzTableViewCellIdentifier
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
 																													forIndexPath:indexPath];
 	return cell;
 }
@@ -116,6 +124,18 @@ NSString * const kQuizzTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdent
 	} else {
 		return MZScrollDirectionNone;
 	}
+}
+
+#pragma mark - Quiz Info View Delegate Methods
+
+- (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
+	MZQuiz *quiz = [MZQuiz generateRandomQuiz];
+
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+			// TODO: Do Something
+		}];
+	}];
 }
 
 @end

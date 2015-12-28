@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MZQuizz.h"
+#import "MZQuiz.h"
 
 @interface MZQuizManager : NSObject
 
@@ -22,7 +22,5 @@
 
 - (void)startManager;
 - (void)stopManager;
-
-- (MZQuizz *)generateQuiz;
 
 @end

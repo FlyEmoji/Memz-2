@@ -14,6 +14,7 @@
 const CGFloat kTranslationResponseTableViewCellHeight = 80.0f;
 
 NSString * const kTranslationResponseTableViewCellIdentifier = @"MZTranslationResponseTableViewCellIdentifier";
+NSString * const kQuizViewControllerIdentifer = @"MZQuizViewControllerIdentifier";
 
 @interface MZQuizViewController () <UITableViewDataSource,
 UITableViewDelegate>
@@ -31,25 +32,30 @@ UITableViewDelegate>
 
 #pragma mark - Class Quiz Methods
 
-+ (void)askQuiz:(MZQuizz *)quizz fromViewController:(UIViewController *)fromViewController completionBlock:(void (^)(void))completionBlock {
++ (void)askQuiz:(MZQuiz *)quiz fromViewController:(UIViewController *)fromViewController completionBlock:(void (^)(void))completionBlock {
 	__block MZQuizCompletionBlock didGiveTranslationResponseBlock;
-	void (^ completeResponse)(MZResponse *) = ^(MZResponse *response) {
-		MZQuizViewController *viewController = [[MZQuizViewController alloc] initWithResponse:response];
-		[fromViewController.navigationController pushViewController:viewController animated:YES];
+	void (^ completeResponse)(MZResponse *, BOOL) = ^(MZResponse *response, BOOL present) {
+		MZQuizViewController *quizViewController = [[UIStoryboard storyboardWithName:@"Quiz" bundle:nil] instantiateViewControllerWithIdentifier:kQuizViewControllerIdentifer];
+		quizViewController.didGiveTranslationResponse = didGiveTranslationResponseBlock;
 
-		viewController.didGiveTranslationResponse = didGiveTranslationResponseBlock;
+		if (present) {
+			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:quizViewController];
+			[fromViewController.navigationController presentViewController:navigationController animated:YES completion:nil];
+		} else {
+			[fromViewController.navigationController pushViewController:quizViewController animated:YES];
+		}
 	};
 
 	__block NSUInteger currentResponseIndex = 0;
 	didGiveTranslationResponseBlock = ^{
-		if (currentResponseIndex < quizz.responses.count) {
-			quizz.isAnswered = @YES;
+		if (currentResponseIndex >= quiz.responses.count) {
+			quiz.isAnswered = @YES;
 			completionBlock();
 			return;
 		}
 
-		MZResponse *response = quizz.responses.allObjects[currentResponseIndex];
-		completeResponse(response);
+		MZResponse *response = quiz.responses.allObjects[currentResponseIndex];
+		completeResponse(response, currentResponseIndex == 0);
 
 		currentResponseIndex++;
 	};

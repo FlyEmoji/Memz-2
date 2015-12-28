@@ -61,4 +61,12 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 	[self.scrollView setContentOffset:newContentOffset animated:YES];
 }
 
+#pragma mark - Actions
+
+- (IBAction)didTapRequestNewQuizButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(quizInfoViewDidRequestNewQuiz:)]) {
+		[self.delegate quizInfoViewDidRequestNewQuiz:self];
+	}
+}
+
 @end

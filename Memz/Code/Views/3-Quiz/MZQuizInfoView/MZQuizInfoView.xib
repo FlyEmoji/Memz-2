@@ -44,6 +44,9 @@
                                     <state key="normal" title="Give me a new quizz now!">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="didTapRequestNewQuizButton:" destination="-1" eventType="touchUpInside" id="sDX-33-xBL"/>
+                                    </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Polls-Bell" translatesAutoresizingMaskIntoConstraints="NO" id="GAc-PK-HNf">
                                     <rect key="frame" x="14" y="14" width="30" height="30"/>

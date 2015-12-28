@@ -28,8 +28,8 @@
 + (instancetype)newInstanceInContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
-	NSManagedObject * object = [[NSManagedObject alloc] initWithEntity:[self entityDescriptionInContext:context]
-																			insertIntoManagedObjectContext:context];
+	NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:[self entityDescriptionInContext:context]
+																		 insertIntoManagedObjectContext:context];
 	NSError *error;
 	if (![context obtainPermanentIDsForObjects:@[object] error:&error]) {
 		NSLog(@"Failed to obtain permanent ID for object: %@ (%@)", error, object);

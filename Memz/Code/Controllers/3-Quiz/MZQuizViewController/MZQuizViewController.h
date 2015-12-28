@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MZQuizz.h"
+#import "MZQuiz.h"
 #import "MZResponse.h"
 
 typedef void (^ MZQuizCompletionBlock)(void);
 
 @interface MZQuizViewController : UIViewController
 
-+ (void)askQuiz:(MZQuizz *)quizz fromViewController:(UIViewController *)fromViewController completionBlock:(void (^)(void))completionBlock;
++ (void)askQuiz:(MZQuiz *)quiz fromViewController:(UIViewController *)fromViewController completionBlock:(void (^)(void))completionBlock;
 
 @property (nonatomic, strong) MZResponse *response;
 @property (nonatomic, copy) MZQuizCompletionBlock didGiveTranslationResponse;

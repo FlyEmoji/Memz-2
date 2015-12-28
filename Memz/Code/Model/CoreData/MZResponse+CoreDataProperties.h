@@ -10,7 +10,7 @@
 //
 
 #import "MZResponse.h"
-#import "MZQuizz.h"
+#import "MZQuiz.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSNumber *result;
 @property (nullable, nonatomic, retain) MZWord *word;
-@property (nullable, nonatomic, retain) MZQuizz *quiz;
+@property (nullable, nonatomic, retain) MZQuiz *quiz;
 
 @end
 
