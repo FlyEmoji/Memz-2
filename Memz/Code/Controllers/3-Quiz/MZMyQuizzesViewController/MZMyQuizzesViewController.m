@@ -1,12 +1,12 @@
 //
-//  MZPollsViewController.m
+//  MZMyQuizzesViewController.m
 //  Memz
 //
 //  Created by Bastien Falcou on 12/16/15.
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
-#import "MZPollsViewController.h"
+#import "MZMyQuizzesViewController.h"
 
 typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionNone = 0,
@@ -17,11 +17,11 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 const CGFloat kTopShrinkableViewMinimumHeight = 40.0f;
 const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
 
-const CGFloat kPollsTableViewEstimatedRowHeight = 100.0f;
+const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
-NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifier";
+NSString * const kQuizzTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
 
-@interface MZPollsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MZMyQuizzesViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *tableViewData;
@@ -33,7 +33,7 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 
 @end
 
-@implementation MZPollsViewController
+@implementation MZMyQuizzesViewController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -41,7 +41,7 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 	[self setupTableViewData];
 	[self.tableView reloadData];
 
-	self.tableView.estimatedRowHeight = kPollsTableViewEstimatedRowHeight;
+	self.tableView.estimatedRowHeight = kQuizzesTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 
 	self.tableView.contentInset = UIEdgeInsetsMake(kTopShrinkableViewMaximumHeight, 0.0f, 0.0f, 0.0f);
@@ -67,7 +67,7 @@ NSString * const kPollsTableViewCellIdentifier = @"MZPollsTableViewCellIdentifie
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPollsTableViewCellIdentifier
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizzTableViewCellIdentifier
 																													forIndexPath:indexPath];
 	return cell;
 }

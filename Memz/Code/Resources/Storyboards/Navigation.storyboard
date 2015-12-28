@@ -406,10 +406,10 @@
             </objects>
             <point key="canvasLocation" x="2250" y="-365"/>
         </scene>
-        <!--Polls View Controller-->
+        <!--My Quizzes View Controller-->
         <scene sceneID="j8q-Lq-YSF">
             <objects>
-                <viewController storyboardIdentifier="MZPollsViewControllerIdentifier" id="c8k-Kd-gHs" customClass="MZPollsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MZMyQuizzesViewControllerIdentifier" id="c8k-Kd-gHs" customClass="MZMyQuizzesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kwp-Qh-85t"/>
                         <viewControllerLayoutGuide type="bottom" id="R6I-1F-Icc"/>
@@ -422,7 +422,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZPollsTableViewCellIdentifier" rowHeight="130" id="lB6-x9-Lxu" customClass="MZPollsTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZMyQuizzesTableViewCellIdentifier" rowHeight="130" id="lB6-x9-Lxu" customClass="MZMyQuizzesTableViewCell">
                                         <rect key="frame" x="0.0" y="92" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lB6-x9-Lxu" id="Dd1-PB-cAf">
@@ -451,7 +451,7 @@
                                     <outlet property="delegate" destination="c8k-Kd-gHs" id="CuC-LM-2Gp"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ch-X1q" userLabel="Top Shrinkable View" customClass="MZPollsInfoView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ch-X1q" userLabel="Top Shrinkable View" customClass="MZQuizInfoView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>

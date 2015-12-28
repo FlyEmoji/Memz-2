@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZPollsInfoView">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZQuizInfoView">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="LGg-bA-Jkl"/>
-                <outlet property="createNewPollButton" destination="H9o-nf-w9u" id="9Rd-RK-TJL"/>
-                <outlet property="numberPendingPollsLabel" destination="2Qf-gh-wMl" id="vcj-ED-URO"/>
+                <outlet property="createNewQuizButton" destination="H9o-nf-w9u" id="CG6-RL-Ywr"/>
+                <outlet property="numberPendingQuizzesLabel" destination="2Qf-gh-wMl" id="Ph1-kU-iSL"/>
                 <outlet property="pageWidthConstraint" destination="BbC-As-8wF" id="7LT-uG-8MU"/>
-                <outlet property="pendingPollDescriptionLabel" destination="VDa-c5-6tp" id="AGs-h6-3Av"/>
+                <outlet property="pendingQuizDescriptionLabel" destination="VDa-c5-6tp" id="nyw-b0-2Se"/>
                 <outlet property="scrollView" destination="Grs-u1-eZ3" id="DWe-iK-Uqe"/>
             </connections>
         </placeholder>
@@ -28,8 +28,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xni-4E-mOT" userLabel="1-Status Pending Page">
                             <rect key="frame" x="0.0" y="0.0" width="500" height="114"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have pending polls!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-c5-6tp">
-                                    <rect key="frame" x="52" y="20" width="153" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have pending quizzes!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-c5-6tp">
+                                    <rect key="frame" x="52" y="20" width="172" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                                         <constraint firstAttribute="height" constant="40" id="FtZ-Mw-l4l"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                    <state key="normal" title="Give me a new poll now!">
+                                    <state key="normal" title="Give me a new quizz now!">
                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
                                 </button>

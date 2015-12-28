@@ -18,7 +18,7 @@
 "CommonWarning" = "Warning";
 
 "NavigationFeedTitle" = "Feed";
-"NavigationPollsTitle" = "Polls";
+"NavigationQuizzesTitle" = "My Quizzes";
 "NavigationMyDictionaryTitle" = "My Dictionary";
 
 "WordAdditionViewControllerTitle" = "Add New Word";
