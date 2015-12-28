@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZQuizz : NSManagedObject
 
++ (MZQuizz *)generateRandomQuiz;
+
 @end
 
 NS_ASSUME_NONNULL_END

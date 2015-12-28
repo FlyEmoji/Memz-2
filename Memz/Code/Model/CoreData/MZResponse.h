@@ -9,6 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+typedef NS_ENUM(NSUInteger, MZResponseResult) {
+	MZResponseResultUnanswered = 0,
+	MZResponseResultWrond,
+	MZResponseResultLearningInProgress,
+	MZResponseResultRight
+};
+
 @class MZWord;
 
 NS_ASSUME_NONNULL_BEGIN
