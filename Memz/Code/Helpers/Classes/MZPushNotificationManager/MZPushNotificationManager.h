@@ -13,6 +13,8 @@ typedef NS_ENUM(NSUInteger, MZLocalPushNotificationType) {
 	MZLocalPushNotificationTypeQuizz
 };
 
+extern NSString * const MZNotificationTypeKey;
+
 @interface MZPushNotificationManager : NSObject
 
 + (MZPushNotificationManager *)sharedManager;
@@ -20,5 +22,7 @@ typedef NS_ENUM(NSUInteger, MZLocalPushNotificationType) {
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat;
 - (void)cancelLocalNotifications:(MZLocalPushNotificationType)notificationType;
 - (void)cancelAllLocalNotifications;
+
+- (void)handleLocalNotification:(UILocalNotification *)notification;
 
 @end

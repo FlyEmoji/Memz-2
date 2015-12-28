@@ -25,6 +25,7 @@
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
 		0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */; };
+		0C711C851C3150E400E0BB43 /* UIViewController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C841C3150E400E0BB43 /* UIViewController+MemzAdditions.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7A22ED1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22EC1C20CCE100774B95 /* UIImageView+MemzDownloadImage.m */; };
@@ -124,6 +125,8 @@
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
 		0C6891B11C20DE920069E39A /* MZPollsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPollsTableViewCell.h; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C6891B21C20DE920069E39A /* MZPollsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPollsTableViewCell.m; path = "Code/Views/3-Polls/MZPollsTableViewCell/MZPollsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C711C831C3150E400E0BB43 /* UIViewController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIViewController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0C711C841C3150E400E0BB43 /* UIViewController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIViewController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedTableViewCell.m; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
@@ -619,6 +622,8 @@
 				0C13AC211C247D64007A1AD5 /* NSManagedObject+MemzCoreData.m */,
 				0C3726FB1C282D4C00C9879F /* NSString+MemzAdditions.h */,
 				0C3726FC1C282D4C00C9879F /* NSString+MemzAdditions.m */,
+				0C711C831C3150E400E0BB43 /* UIViewController+MemzAdditions.h */,
+				0C711C841C3150E400E0BB43 /* UIViewController+MemzAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1029,6 +1034,7 @@
 				0C0551201C20DA0A000565DC /* MZPollsViewController.m in Sources */,
 				0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */,
 				0CDB82E91C30A0BD00EADB05 /* MZQuizz.m in Sources */,
+				0C711C851C3150E400E0BB43 /* UIViewController+MemzAdditions.m in Sources */,
 				0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0C6891B31C20DE920069E39A /* MZPollsTableViewCell.m in Sources */,

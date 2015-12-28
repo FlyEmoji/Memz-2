@@ -14,6 +14,12 @@ static const char kTransitionOptionKey;
 
 @implementation UINavigationController (MemzTransitions)
 
++ (UINavigationController *)mainNavigationController {
+	UIWindow *mainWindow = [UIApplication sharedApplication].windows.firstObject;
+	UINavigationController *navigationController = (UINavigationController *)mainWindow.rootViewController;
+	return navigationController;
+}
+
 - (void)animatedTransitionToViewController:(UIViewController *)viewController
 															transitionOption:(UIViewAnimationOptions)transitionOption
 																		completion:(void (^)(BOOL finished))completionHandler {

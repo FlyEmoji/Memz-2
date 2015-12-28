@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "MZPushNotificationManager.h"
+#import "MZMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -40,6 +42,30 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	// Saves changes in the application's managed object context before the application terminates.
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void (^)())completionHandler {
+	[[MZPushNotificationManager sharedManager] handleLocalNotification:notification];
+}
+
+#pragma mark - Deep Linking
+
++ (void)pushQuizViewController {
+	// TODO: Need to create the Quiz first
+	/*
+	CHKProfileViewController * viewController = (CHKProfileViewController *)[self topViewController];
+	if(!([viewController isKindOfClass:[CHKProfileViewController class]] && viewController.user != [CHKDataManager sharedDataManager].currentUser && [viewController.user.remoteID isEqualToString:encounter.remoteID])) {
+		[CHKActivityIndicatorHelper hideAllHUDsForView:[[self class] getMainNavigationController].view animated:YES];
+		UINavigationController *navigationController = [self getMainNavigationController];
+		[navigationController dismissViewControllerAnimated:YES completion:nil];
+
+		viewController = [[CHKProfileViewController alloc] init];
+		viewController.user = encounter;
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[navigationController pushViewController:viewController animated:YES];
+		});
+	}*/
 }
 
 @end

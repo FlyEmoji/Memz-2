@@ -27,6 +27,11 @@ typedef NS_OPTIONS(NSUInteger, MZAnimatedTransitionNewRootOptions) {
 @interface UINavigationController (MemzTransitions)
 
 /**
+ *  Retuns Application current main navigation controller.
+ */
++ (UINavigationController *)mainNavigationController;
+
+/**
  *  Perform a transition to a new view controller, allowing to specify the animation type.
  *
  *  @param viewController    The view controller to perform the transition to.

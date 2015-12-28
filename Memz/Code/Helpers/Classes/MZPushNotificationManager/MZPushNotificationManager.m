@@ -8,7 +8,7 @@
 
 #import "MZPushNotificationManager.h"
 
-NSString * const kNotificationTypeKey = @"MVNotificationTypeKey";
+NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 
 @implementation MZPushNotificationManager
 
@@ -24,7 +24,7 @@ NSString * const kNotificationTypeKey = @"MVNotificationTypeKey";
 #pragma mark - Public Methods 
 
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat {
-	NSDictionary *userInfo = @{kNotificationTypeKey: @(notificationType)};
+	NSDictionary *userInfo = @{MZNotificationTypeKey: @(notificationType)};
 
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz: {
@@ -46,7 +46,7 @@ NSString * const kNotificationTypeKey = @"MVNotificationTypeKey";
 
 	[[[UIApplication sharedApplication] scheduledLocalNotifications] enumerateObjectsUsingBlock:
 			^(UILocalNotification *notification, NSUInteger idx, BOOL *stop) {
-				if ([notification.userInfo[kNotificationTypeKey] integerValue] == notificationType) {
+				if ([notification.userInfo[MZNotificationTypeKey] integerValue] == notificationType) {
 					[notificationsOfSpecifiedType addObject:notification];
 				}
 	}];
@@ -58,6 +58,17 @@ NSString * const kNotificationTypeKey = @"MVNotificationTypeKey";
 
 - (void)cancelAllLocalNotifications {
 	[[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+
+- (void)handleLocalNotification:(UILocalNotification *)notification {
+	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
+	switch (notificationType) {
+		case MZLocalPushNotificationTypeQuizz:
+
+			break;
+		default:
+			break;
+	}
 }
 
 #pragma mark - Private Methods
