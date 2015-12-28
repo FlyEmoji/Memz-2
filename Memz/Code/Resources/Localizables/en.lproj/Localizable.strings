@@ -31,3 +31,5 @@
 
 "LocalPushNotificationQuizBody" = "It's time to translate!";
 "LocalPushNotificationQuizAlertAction" = "Translate";
+
+"QuizResponseTextFieldPlaceholder" = "Type Translation %ld Here";
