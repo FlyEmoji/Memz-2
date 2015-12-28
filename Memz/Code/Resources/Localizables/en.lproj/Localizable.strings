@@ -29,4 +29,5 @@
 "WordAdditionAddWordButtonTitle" = "Add Word";
 "WordAdditionEditWordButtonTitle" = "Edit Word";
 
-"LocalPushNotificationQuizz" = "It's time to translate!";
+"LocalPushNotificationQuizBody" = "It's time to translate!";
+"LocalPushNotificationQuizAlertAction" = "Translate";

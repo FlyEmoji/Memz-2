@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, MZLocalPushNotificationType) {
-	MZLocalPushNotificationTypeQuizz = 0
+	MZLocalPushNotificationTypeNone = 0,
+	MZLocalPushNotificationTypeQuizz
 };
 
 @interface MZPushNotificationManager : NSObject
 
 + (MZPushNotificationManager *)sharedManager;
 
-- (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date;
+- (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat;
 - (void)cancelLocalNotifications:(MZLocalPushNotificationType)notificationType;
 - (void)cancelAllLocalNotifications;
 

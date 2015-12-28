@@ -12,6 +12,7 @@
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
+#import "MZQuizManager.h"
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 
@@ -46,6 +47,9 @@ const NSUInteger kNumberPages = 3;
 	[self.navigationItem setLeftBarButtonItem:leftButton];
 
 	self.settingsButton = leftButton;
+
+	// Initialize managers
+	[[MZQuizManager sharedManager] startManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

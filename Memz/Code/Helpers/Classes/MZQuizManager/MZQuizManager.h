@@ -11,7 +11,11 @@
 
 @interface MZQuizManager : NSObject
 
-@property (nonatomic, assign) NSUInteger quizPerDay;
+@property (nonatomic, assign) NSUInteger quizPerDay;	// Between 1 and 5, default 3
+
+@property (nonatomic, assign) NSUInteger startTimeHour;		// Default 8am
+@property (nonatomic, assign) NSUInteger stopTimeHour;	 // Default 8pm
+
 @property (nonatomic, assign, readonly) BOOL isActive;
 
 + (MZQuizManager *)sharedManager;
