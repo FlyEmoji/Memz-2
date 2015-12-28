@@ -9,6 +9,7 @@
 "CommonReturn" = "Return";
 "CommonDelete" = "Delete";
 "CommonSubmit" = "Submit";
+"CommonNext" = "Next";
 "CommonClose" = "Close";
 "CommonSend" = "Send";
 "CommonLoading" = "Loading...";

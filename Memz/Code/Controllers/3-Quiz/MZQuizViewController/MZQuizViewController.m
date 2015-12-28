@@ -12,6 +12,7 @@
 #import "MZWord.h"
 
 const CGFloat kTranslationResponseTableViewCellHeight = 80.0f;
+const NSTimeInterval kSubmitButtonAnimationDuration = 0.3;
 
 NSString * const kTranslationResponseTableViewCellIdentifier = @"MZTranslationResponseTableViewCellIdentifier";
 NSString * const kQuizViewControllerIdentifer = @"MZQuizViewControllerIdentifier";
@@ -23,8 +24,10 @@ UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
-@property (copy, nonatomic) NSMutableArray<NSString *> *tableViewEnteredData;
+@property (strong, nonatomic) NSMutableArray<NSString *> *tableViewEnteredData;
+@property (assign, nonatomic, getter=isTranslating) BOOL translating;
 
 @end
 
@@ -36,6 +39,7 @@ UITableViewDelegate>
 	__block MZQuizCompletionBlock didGiveTranslationResponseBlock;
 	void (^ completeResponse)(MZResponse *, BOOL) = ^(MZResponse *response, BOOL present) {
 		MZQuizViewController *quizViewController = [[UIStoryboard storyboardWithName:@"Quiz" bundle:nil] instantiateViewControllerWithIdentifier:kQuizViewControllerIdentifer];
+		quizViewController.response = response;
 		quizViewController.didGiveTranslationResponse = didGiveTranslationResponseBlock;
 
 		if (present) {
@@ -65,15 +69,22 @@ UITableViewDelegate>
 
 #pragma mark - Public Methods
 
-- (instancetype)initWithResponse:(MZResponse *)response {
-	if (self = [super init]) {
-		_response = response;
-	}
-	return self;
-}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
+	[self setupResponse];
+}
+
+- (void)setResponse:(MZResponse *)response {
+	_response = response;
+
+	[self setupResponse];
+}
+
+- (void)setupResponse {
+	self.translating = YES;
+	self.wordLabel.text = self.response.word.word;
 
 	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
 	for (NSUInteger i = 0; i < self.response.word.translation.count; i++) {
@@ -100,6 +111,42 @@ UITableViewDelegate>
 	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZLanguageManager sharedManager].toLanguage];
 	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row];
 	return cell;
+}
+
+#pragma mark - Helpers
+
+- (UIColor *)submitButtonColorForResult:(MZResponseResult)result {
+	switch (result) {
+		case MZResponseResultRight:
+			return [UIColor quizNextButtonRightColor];
+		case MZResponseResultLearningInProgress:
+			return [UIColor quizNextButtonLearningInProgressColor];
+		case MZResponseResultWrond:
+			return [UIColor quizNextButtonWrongColor];
+		default:
+			return [UIColor quizSubmitButtonColor];
+	}
+}
+
+- (void)submitResponseAndDisplayResults {
+	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData]];
+	// TODO: Update View With Correct Answers
+
+	[UIView animateWithDuration:kSubmitButtonAnimationDuration
+									 animations:^{
+										 self.submitButton.backgroundColor = submitButtonColor;
+										 [self.submitButton setTitle:NSLocalizedString(@"CommonNext", nil) forState:UIControlStateNormal];
+									 }];
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapSubmitButton:(id)sender {
+	if (self.isTranslating) {
+		[self submitResponseAndDisplayResults];
+	} else if (self.didGiveTranslationResponse) {
+		self.didGiveTranslationResponse();
+	}
 }
 
 @end

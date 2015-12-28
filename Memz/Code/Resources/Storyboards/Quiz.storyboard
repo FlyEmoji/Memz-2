@@ -65,9 +65,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="q9u-sC-01m"/>
                                 </constraints>
-                                <state key="normal" title="SUBMIT AND NEXT">
+                                <state key="normal" title="SUBMIT">
                                     <color key="titleColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapSubmitButton:" destination="0rT-kj-9N3" eventType="touchUpInside" id="IzI-mc-7wJ"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-Et-9lq">
                                 <rect key="frame" x="0.0" y="134" width="600" height="416"/>
@@ -134,6 +137,7 @@
                     <connections>
                         <outlet property="countDownLabel" destination="tON-wX-FUa" id="bwB-wy-N46"/>
                         <outlet property="flagImageView" destination="i4m-1e-5so" id="dRZ-HK-FMI"/>
+                        <outlet property="submitButton" destination="5ZG-Y2-grU" id="B7K-lp-U53"/>
                         <outlet property="tableView" destination="4IU-Et-9lq" id="zPN-tc-z49"/>
                         <outlet property="wordLabel" destination="Fkd-vp-tx7" id="vbG-QM-8sv"/>
                     </connections>

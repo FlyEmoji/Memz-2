@@ -11,4 +11,8 @@
 
 @implementation MZResponse
 
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
+	return MZResponseResultRight;		// TODO: To Implement
+}
+
 @end
