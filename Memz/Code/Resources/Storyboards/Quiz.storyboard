@@ -93,7 +93,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsO-yZ-F2l">
                                                     <rect key="frame" x="58" y="0.0" width="542" height="67"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="textFieldDidChange:" destination="Vv3-Xe-F7n" eventType="editingChanged" id="f83-gs-VYw"/>
                                                         <action selector="textFieldDidTapReturnKey:" destination="Vv3-Xe-F7n" eventType="editingDidEndOnExit" id="7wr-kM-Zg1"/>

@@ -38,29 +38,35 @@ MZTranslationResponseTableViewCellDelegate>
 
 + (void)askQuiz:(MZQuiz *)quiz fromViewController:(UIViewController *)fromViewController completionBlock:(void (^)(void))completionBlock {
 	__block MZQuizCompletionBlock didGiveTranslationResponseBlock;
-	void (^ completeResponse)(MZResponse *, BOOL) = ^(MZResponse *response, BOOL present) {
+
+	MZQuizViewController * (^ completeResponse)(MZResponse *, BOOL, UIViewController *) = ^(MZResponse *response, BOOL present, UIViewController *currentViewController) {
 		MZQuizViewController *quizViewController = [[UIStoryboard storyboardWithName:@"Quiz" bundle:nil] instantiateViewControllerWithIdentifier:kQuizViewControllerIdentifer];
 		quizViewController.response = response;
 		quizViewController.didGiveTranslationResponse = didGiveTranslationResponseBlock;
 
 		if (present) {
 			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:quizViewController];
-			[fromViewController.navigationController presentViewController:navigationController animated:YES completion:nil];
+			[currentViewController.navigationController presentViewController:navigationController animated:YES completion:nil];
 		} else {
-			[fromViewController.navigationController pushViewController:quizViewController animated:YES];
+			[currentViewController.navigationController pushViewController:quizViewController animated:YES];
 		}
+
+		return quizViewController;
 	};
 
 	__block NSUInteger currentResponseIndex = 0;
+	__block UIViewController *currentViewController = fromViewController;
 	didGiveTranslationResponseBlock = ^{
 		if (currentResponseIndex >= quiz.responses.count) {
 			quiz.isAnswered = @YES;
-			completionBlock();
+			[fromViewController.navigationController dismissViewControllerAnimated:YES completion:^{
+				completionBlock();
+			}];
 			return;
 		}
 
 		MZResponse *response = quiz.responses.allObjects[currentResponseIndex];
-		completeResponse(response, currentResponseIndex == 0);
+		currentViewController = completeResponse(response, currentResponseIndex == 0, currentViewController);
 
 		currentResponseIndex++;
 	};
@@ -151,6 +157,7 @@ MZTranslationResponseTableViewCellDelegate>
 }
 
 - (void)submitResponseAndDisplayResults {
+	self.translating = NO;
 	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData]];
 	// TODO: Update View With Correct Answers
 
