@@ -10,4 +10,18 @@
 
 @implementation MZTranslationResponseTableViewCell
 
+#pragma mark - Actions
+
+- (IBAction)textFieldDidChange:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(translationResponseTableViewCellTextFieldDidChange:)]) {
+		[self.delegate translationResponseTableViewCellTextFieldDidChange:self];
+	}
+}
+
+- (IBAction)textFieldDidTapReturnKey:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(translationResponseTableViewCellTextFieldDidHitReturnButton:)]) {
+		[self.delegate translationResponseTableViewCellTextFieldDidHitReturnButton:self];
+	}
+}
+
 @end

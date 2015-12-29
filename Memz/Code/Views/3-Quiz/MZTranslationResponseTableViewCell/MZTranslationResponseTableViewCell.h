@@ -8,9 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MZTranslationResponseTableViewCellDelegate;
+
 @interface MZTranslationResponseTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+
+@property (weak, nonatomic) id<MZTranslationResponseTableViewCellDelegate> delegate;
+
+@end
+
+@protocol MZTranslationResponseTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)translationResponseTableViewCellTextFieldDidChange:(MZTranslationResponseTableViewCell *)cell;
+- (void)translationResponseTableViewCellTextFieldDidHitReturnButton:(MZTranslationResponseTableViewCell *)cell;
 
 @end
