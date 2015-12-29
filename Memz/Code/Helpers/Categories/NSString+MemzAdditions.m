@@ -34,4 +34,13 @@
 	return escaped;
 }
 
++ (NSString *)stringForDuration:(NSTimeInterval)duration {
+	int totalSeconds = duration;
+
+	int seconds = totalSeconds % 60;
+	int minutes = (totalSeconds / 60) % 60;
+
+	return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
+}
+
 @end

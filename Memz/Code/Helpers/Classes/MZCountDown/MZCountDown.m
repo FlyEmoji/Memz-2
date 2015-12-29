@@ -71,11 +71,13 @@
 	[self elapseOneSecondFire:YES];
 }
 
-- (void)stop {
+- (void)invalidate {
+	_isRunning = NO;
+	[self.countDownTimer invalidate];
+
 	if ([self.delegate respondsToSelector:@selector(countDownDidEnd:)]) {
 		[self.delegate countDownDidEnd:self];
 	}
-	[self.countDownTimer invalidate];
 }
 
 #pragma mark - Remaining Time
@@ -103,7 +105,6 @@
 	_isRunning = YES;
 
 	if (self.remainingTime <= 0.0) {
-		_isRunning = NO;
 		[timer invalidate];
 
 		if ([self.delegate respondsToSelector:@selector(countDownDidEnd:)]) {

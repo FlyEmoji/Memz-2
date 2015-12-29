@@ -9,17 +9,21 @@
 #import "MZQuizViewController.h"
 #import "MZTranslationResponseTableViewCell.h"
 #import "UIImage+MemzAdditions.h"
+#import "NSString+MemzAdditions.h"
+#import "MZCountDown.h"
 #import "MZWord.h"
 
 const CGFloat kTranslationResponseTableViewCellHeight = 60.0f;
 const NSTimeInterval kSubmitButtonAnimationDuration = 0.3;
+const NSTimeInterval kCountDownDuration = 90.0;
 
 NSString * const kTranslationResponseTableViewCellIdentifier = @"MZTranslationResponseTableViewCellIdentifier";
 NSString * const kQuizViewControllerIdentifer = @"MZQuizViewControllerIdentifier";
 
 @interface MZQuizViewController () <UITableViewDataSource,
 UITableViewDelegate,
-MZTranslationResponseTableViewCellDelegate>
+MZTranslationResponseTableViewCellDelegate,
+MZCountDownDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
@@ -29,6 +33,7 @@ MZTranslationResponseTableViewCellDelegate>
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *tableViewEnteredData;
 @property (assign, nonatomic, getter=isTranslating) BOOL translating;
+@property (strong, nonatomic) MZCountDown *countDown;
 
 @end
 
@@ -81,6 +86,13 @@ MZTranslationResponseTableViewCellDelegate>
 
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[self setupResponse];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	self.countDown = [MZCountDown countDownWithDuration:kCountDownDuration delegate:self];
+	[self.countDown fire];
 }
 
 - (void)setResponse:(MZResponse *)response {
@@ -137,8 +149,19 @@ MZTranslationResponseTableViewCellDelegate>
 		NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:index + 1 inSection:0];
 		MZTranslationResponseTableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
 		[nextCell.textField becomeFirstResponder];
+
 		// TODO: Check if workds if there are invisible cells
 	}
+}
+
+#pragma mark - Count Down Delegate Methods
+
+- (void)countDownDidChange:(MZCountDown *)countDown remainingTime:(NSTimeInterval)remainingTime totalTime:(NSTimeInterval)totalTime {
+	self.countDownLabel.text = [NSString stringForDuration:remainingTime];
+}
+
+- (void)countDownDidEnd:(MZCountDown *)countDown {
+	[self submitResponseAndDisplayResults];
 }
 
 #pragma mark - Helpers
@@ -157,10 +180,22 @@ MZTranslationResponseTableViewCellDelegate>
 }
 
 - (void)submitResponseAndDisplayResults {
-	self.translating = NO;
-	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData]];
-	// TODO: Update View With Correct Answers
+	if (!self.isTranslating) {
+		return;
+	}
 
+	self.translating = NO;
+
+	if (self.countDown.isRunning) {
+		[self.countDown invalidate];
+		self.countDown = nil;
+		self.countDownLabel.text = [NSString stringForDuration:0];
+	}
+
+	// TODO: Update View With Correct Answers
+	// TODO: Disable Interaction On Text Fields
+
+	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData]];
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
 										 self.submitButton.backgroundColor = submitButtonColor;

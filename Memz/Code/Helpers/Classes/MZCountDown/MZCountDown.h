@@ -20,7 +20,7 @@
 - (instancetype)initWithDuration:(NSTimeInterval)duration delegate:(id<MZCountDownDelegate>)delegate;
 
 - (void)fire;
-- (void)stop;
+- (void)invalidate;
 
 @end
 
