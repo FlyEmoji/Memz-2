@@ -24,6 +24,7 @@
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
 		0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51801F1C31BA520072FEB0 /* Quiz.storyboard */; };
+		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
 		0C711C851C3150E400E0BB43 /* UIViewController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C841C3150E400E0BB43 /* UIViewController+MemzAdditions.m */; };
 		0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */; };
 		0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */; };
@@ -123,6 +124,8 @@
 		0C3727071C29BF9E00C9879F /* MZErrorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZErrorCreator.h; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.h; sourceTree = SOURCE_ROOT; };
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
 		0C51801F1C31BA520072FEB0 /* Quiz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Quiz.storyboard; path = Code/Resources/Storyboards/Quiz.storyboard; sourceTree = SOURCE_ROOT; };
+		0C5180221C331A790072FEB0 /* MZCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZCountDown.h; path = Code/Helpers/Classes/MZCountDown/MZCountDown.h; sourceTree = SOURCE_ROOT; };
+		0C5180231C331A790072FEB0 /* MZCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCountDown.m; path = Code/Helpers/Classes/MZCountDown/MZCountDown.m; sourceTree = SOURCE_ROOT; };
 		0C711C831C3150E400E0BB43 /* UIViewController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIViewController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C711C841C3150E400E0BB43 /* UIViewController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIViewController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C711C861C3179AF00E0BB43 /* MZMyQuizzesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesViewController.h; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -417,6 +420,15 @@
 			name = MZErrorCreator;
 			sourceTree = "<group>";
 		};
+		0C5180211C331A4F0072FEB0 /* MZCountDown */ = {
+			isa = PBXGroup;
+			children = (
+				0C5180221C331A790072FEB0 /* MZCountDown.h */,
+				0C5180231C331A790072FEB0 /* MZCountDown.m */,
+			);
+			name = MZCountDown;
+			sourceTree = "<group>";
+		};
 		0C6891AF1C20DE370069E39A /* 3-Quiz */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,6 +618,7 @@
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
+				0C5180211C331A4F0072FEB0 /* MZCountDown */,
 				0CBF7ABB1C217B6A00F5D91B /* MZNibView */,
 				0CA58C051C206B7A000E19D4 /* MZInjector */,
 				0CA58BFE1C205950000E19D4 /* MZPageViewController */,
@@ -1078,6 +1091,7 @@
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0CA58C181C208BC0000E19D4 /* UIImage+MemzAdditions.m in Sources */,
+				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */,
 				0CDB82EB1C30A0BD00EADB05 /* MZResponse.m in Sources */,
