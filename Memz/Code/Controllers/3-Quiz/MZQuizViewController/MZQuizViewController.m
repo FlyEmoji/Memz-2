@@ -8,6 +8,7 @@
 
 #import "MZQuizViewController.h"
 #import "MZTranslationResponseTableViewCell.h"
+#import "MZWordDescriptionHeaderView.h"
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
 #import "MZCountDown.h"
@@ -26,12 +27,10 @@ MZTranslationResponseTableViewCellDelegate,
 MZCountDownDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
-@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @property (strong, nonatomic) NSMutableArray<NSString *> *tableViewEnteredData;
+@property (strong, nonatomic) MZWordDescriptionHeaderView *tableViewHeaderView;
 @property (assign, nonatomic, getter=isTranslating) BOOL translating;
 @property (strong, nonatomic) MZCountDown *countDown;
 
@@ -101,17 +100,31 @@ MZCountDownDelegate>
 	[self setupResponse];
 }
 
+#pragma mark - Setups
+
 - (void)setupResponse {
 	self.translating = YES;
-	self.wordLabel.text = self.response.word.word;
 
 	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
 	for (NSUInteger i = 0; i < self.response.word.translation.count; i++) {
 		[self.tableViewEnteredData addObject:@""];
 	}
 
+	[self setupTableViewHeader];
 	[self.tableView reloadData];
 	self.tableView.tableFooterView = [[UIView alloc] init];
+}
+
+- (void)setupTableViewHeader {
+	if (!self.tableView.tableHeaderView) {
+		self.tableViewHeaderView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZWordDescriptionHeaderView class])
+																														 owner:self
+																													 options:nil][0];
+		self.tableViewHeaderView.headerType = MZWordDescriptionHeaderTypeReadonly;
+		self.tableView.tableHeaderView = self.tableViewHeaderView;
+	}
+	self.tableViewHeaderView.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+	self.tableViewHeaderView.word = self.response.word;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -128,7 +141,7 @@ MZCountDownDelegate>
 	MZTranslationResponseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslationResponseTableViewCellIdentifier
 																																						 forIndexPath:indexPath];
 	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZLanguageManager sharedManager].toLanguage];
-	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row];
+	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row + 1];
 	cell.textField.returnKeyType = indexPath.row == self.tableViewEnteredData.count - 1 ? UIReturnKeyDone : UIReturnKeyNext;
 	cell.delegate = self;
 	return cell;
@@ -157,7 +170,7 @@ MZCountDownDelegate>
 #pragma mark - Count Down Delegate Methods
 
 - (void)countDownDidChange:(MZCountDown *)countDown remainingTime:(NSTimeInterval)remainingTime totalTime:(NSTimeInterval)totalTime {
-	self.countDownLabel.text = [NSString stringForDuration:remainingTime];
+	self.tableViewHeaderView.countDownRemainingTime = remainingTime;
 }
 
 - (void)countDownDidEnd:(MZCountDown *)countDown {
@@ -189,7 +202,7 @@ MZCountDownDelegate>
 	if (self.countDown.isRunning) {
 		[self.countDown invalidate];
 		self.countDown = nil;
-		self.countDownLabel.text = [NSString stringForDuration:0];
+		self.tableViewHeaderView.countDownRemainingTime = 0.0;
 	}
 
 	// TODO: Update View With Correct Answers

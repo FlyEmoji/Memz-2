@@ -9,6 +9,10 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "UIVIew+MemzAdditions.h"
 #import "UIImage+MemzAdditions.h"
+#import "NSString+MemzAdditions.h"
+
+const CGFloat kCountDownDefaultBottomSeparatorConstraint = 8.0f;
+const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 
 @interface MZWordDescriptionHeaderView ()
 
@@ -19,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberOfTranslationsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *percentageSuccessLabel;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *countDownSectionHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *countDownBottomSeparatorConstraint;
 
 @property (assign, nonatomic) BOOL isEditing;
 
@@ -37,6 +45,30 @@
 
 	self.wordLabel.text = word.word;
 	self.flagImageView.image = [UIImage flagImageForLanguage:self.word.language.integerValue];
+}
+
+- (void)setHeaderType:(MZWordDescriptionHeaderType)headerType {
+	_headerType = headerType;
+
+	switch (headerType) {
+		case MZWordDescriptionHeaderTypeReadonly:
+			self.countDownBottomSeparatorConstraint.constant = kCountDownDefaultBottomSeparatorConstraint;
+			self.countDownSectionHeightConstraint.constant = kCountDownSectionHeightConstraint;
+			self.editButton.hidden = YES;
+			break;
+		case MZWordDescriptionHeaderTypeEdit:
+			self.countDownBottomSeparatorConstraint.constant = 0.0f;
+			self.countDownSectionHeightConstraint.constant = 0.0f;
+			self.editButton.hidden = NO;
+			break;
+	}
+	[self layoutIfNeeded];
+}
+
+- (void)setCountDownRemainingTime:(NSTimeInterval)countDownRemainingTime {
+	_countDownRemainingTime = countDownRemainingTime;
+
+	self.countDownLabel.text = [NSString stringForDuration:countDownRemainingTime];
 }
 
 #pragma mark - Edition 

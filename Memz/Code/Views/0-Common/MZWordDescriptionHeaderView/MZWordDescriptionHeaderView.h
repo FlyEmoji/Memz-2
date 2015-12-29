@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 #import "MZWord.h"
 
+typedef NS_ENUM(NSUInteger, MZWordDescriptionHeaderType) {
+	MZWordDescriptionHeaderTypeReadonly = 0,
+	MZWordDescriptionHeaderTypeEdit
+};
+
 @protocol MZWordDescriptionHeaderViewDelegate;
 
 @interface MZWordDescriptionHeaderView : UIView
 
 @property (nonatomic, weak) id<MZWordDescriptionHeaderViewDelegate> delegate;
+
 @property (nonatomic, strong) MZWord *word;
+@property (nonatomic, assign) MZWordDescriptionHeaderType headerType;
+@property (nonatomic, assign) NSTimeInterval countDownRemainingTime;
 
 @end
 
