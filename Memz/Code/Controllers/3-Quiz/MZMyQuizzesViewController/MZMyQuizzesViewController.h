@@ -1,5 +1,5 @@
 //
-//  MZPollsTableViewCell.h
+//  MZMyQuizzesViewController.h
 //  Memz
 //
 //  Created by Bastien Falcou on 12/16/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MZPollsTableViewCell : UITableViewCell
+@interface MZMyQuizzesViewController : UIViewController
 
 @end

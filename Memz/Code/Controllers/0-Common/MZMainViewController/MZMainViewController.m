@@ -8,10 +8,11 @@
 
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
-#import "MZPollsViewController.h"
+#import "MZMyQuizzesViewController.h"
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
+#import "MZQuizManager.h"
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 
@@ -46,6 +47,9 @@ const NSUInteger kNumberPages = 3;
 	[self.navigationItem setLeftBarButtonItem:leftButton];
 
 	self.settingsButton = leftButton;
+
+	// Initialize managers
+	[[MZQuizManager sharedManager] startManager];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,8 +80,8 @@ const NSUInteger kNumberPages = 3;
 	switch (page) {
 		case MZMainViewControllerPageFeed:
 			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
-		case MZMainViewControllerPagePolls:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZPollsViewControllerIdentifier"]; return viewController; };
+		case MZMainViewControllerPageQuizzes:
+			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyQuizzesViewControllerIdentifier"]; return viewController; };
 		case MZMainViewControllerPageMyDictionary:
 			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyDictionaryViewControllerIdentifier"]; return viewController; };	}
 	return nil;
@@ -89,8 +93,8 @@ const NSUInteger kNumberPages = 3;
 		case MZMainViewControllerPageFeed:
 			title = [NSLocalizedString(@"NavigationFeedTitle", @"") uppercaseString];
 			break;
-		case MZMainViewControllerPagePolls:
-			title = [NSLocalizedString(@"NavigationPollsTitle", @"") uppercaseString];
+		case MZMainViewControllerPageQuizzes:
+			title = [NSLocalizedString(@"NavigationQuizzesTitle", @"") uppercaseString];
 			break;
 		case MZMainViewControllerPageMyDictionary:
 			title = [NSLocalizedString(@"NavigationMyDictionaryTitle", @"") uppercaseString];

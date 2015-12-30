@@ -11,5 +11,6 @@
 @interface NSString (MemzAdditions)
 
 + (NSString *)urlEncodedStringFromString:(NSString *)original;
++ (NSString *)stringForDuration:(NSTimeInterval)duration;
 
 @end

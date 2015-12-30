@@ -1,26 +1,26 @@
 //
-//  MZPollsInfoView.m
+//  MZQuizInfoView.m
 //  Memz
 //
 //  Created by Bastien Falcou on 12/16/15.
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
-#import "MZPollsInfoView.h"
+#import "MZQuizInfoView.h"
 #import "UIView+MemzAdditions.h"
 
 NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 
-@interface MZPollsInfoView ()
+@interface MZQuizInfoView ()
 
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint *pageWidthConstraint;
 @property (nonatomic, strong) NSTimer *swipeTimer;
 
 // First page: information
-@property (nonatomic, weak) IBOutlet UILabel *numberPendingPollsLabel;
-@property (nonatomic, weak) IBOutlet UILabel *pendingPollDescriptionLabel;
-@property (nonatomic, weak) IBOutlet UIButton *createNewPollButton;
+@property (nonatomic, weak) IBOutlet UILabel *numberPendingQuizzesLabel;
+@property (nonatomic, weak) IBOutlet UILabel *pendingQuizDescriptionLabel;
+@property (nonatomic, weak) IBOutlet UIButton *createNewQuizButton;
 
 // Second page: statistics
 
@@ -28,12 +28,12 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 
 @end
 
-@implementation MZPollsInfoView
+@implementation MZQuizInfoView
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
-	[self.numberPendingPollsLabel makeCircular];
+	[self.numberPendingQuizzesLabel makeCircular];
 	self.pageWidthConstraint.constant = [UIScreen mainScreen].bounds.size.width;
 
 	self.swipeTimer = [NSTimer scheduledTimerWithTimeInterval:kAutomaticSwipeScrollViewDelay
@@ -59,6 +59,14 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 
 	CGPoint newContentOffset = CGPointMake(nextPage * self.scrollView.frame.size.width, self.scrollView.contentOffset.y);
 	[self.scrollView setContentOffset:newContentOffset animated:YES];
+}
+
+#pragma mark - Actions
+
+- (IBAction)didTapRequestNewQuizButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(quizInfoViewDidRequestNewQuiz:)]) {
+		[self.delegate quizInfoViewDidRequestNewQuiz:self];
+	}
 }
 
 @end

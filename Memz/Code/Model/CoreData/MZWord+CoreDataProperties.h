@@ -2,7 +2,7 @@
 //  MZWord+CoreDataProperties.h
 //  
 //
-//  Created by Bastien Falcou on 12/19/15.
+//  Created by Bastien Falcou on 12/27/15.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,6 +10,7 @@
 //
 
 #import "MZWord.h"
+#import "MZResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSNumber *language;
 @property (nullable, nonatomic, retain) NSString *word;
+@property (nullable, nonatomic, retain) NSNumber *learningIndex;
 @property (nullable, nonatomic, retain) NSSet<MZWord *> *translation;
+@property (nullable, nonatomic, retain) NSSet<MZResponse *> *responses;
 
 @end
 
@@ -27,6 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeTranslationObject:(MZWord *)value;
 - (void)addTranslation:(NSSet<MZWord *> *)values;
 - (void)removeTranslation:(NSSet<MZWord *> *)values;
+
+- (void)addResponsesObject:(MZResponse *)value;
+- (void)removeResponsesObject:(MZResponse *)value;
+- (void)addResponses:(NSSet<MZResponse *> *)values;
+- (void)removeResponses:(NSSet<MZResponse *> *)values;
 
 @end
 

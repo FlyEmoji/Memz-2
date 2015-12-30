@@ -62,10 +62,11 @@ MZWordDescriptionHeaderViewDelegate>
 		tableViewHeader = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZWordDescriptionHeaderView class])
 																																							 owner:self
 																																						 options:nil][0];
-		tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 		tableViewHeader.delegate = self;
+		tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
 		self.tableView.tableHeaderView = tableViewHeader;
 	}
+	tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	tableViewHeader.word = self.word;
 }
 

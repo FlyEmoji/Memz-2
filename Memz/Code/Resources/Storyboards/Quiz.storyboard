@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Quiz View Controller-->
+        <scene sceneID="66E-bb-WaJ">
+            <objects>
+                <viewController storyboardIdentifier="MZQuizViewControllerIdentifier" id="0rT-kj-9N3" customClass="MZQuizViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7aV-KK-mKr"/>
+                        <viewControllerLayoutGuide type="bottom" id="jiy-OA-eW5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="783-N0-Tzn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ZG-Y2-grU">
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.30196078430000001" green="0.56470588239999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="q9u-sC-01m"/>
+                                </constraints>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapSubmitButton:" destination="0rT-kj-9N3" eventType="touchUpInside" id="IzI-mc-7wJ"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-Et-9lq">
+                                <rect key="frame" x="0.0" y="20" width="600" height="530"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTranslationResponseTableViewCellIdentifier" rowHeight="68" id="Vv3-Xe-F7n" customClass="MZTranslationResponseTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vv3-Xe-F7n" id="U7r-M7-WEO">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-France" translatesAutoresizingMaskIntoConstraints="NO" id="WRP-qM-HC5">
+                                                    <rect key="frame" x="10" y="18" width="40" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="WRP-qM-HC5" secondAttribute="height" multiplier="51:38" id="gBY-fr-eIx"/>
+                                                        <constraint firstAttribute="height" constant="30" id="gsS-o1-dXp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsO-yZ-F2l">
+                                                    <rect key="frame" x="58" y="0.0" width="542" height="67"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <connections>
+                                                        <action selector="textFieldDidChange:" destination="Vv3-Xe-F7n" eventType="editingChanged" id="f83-gs-VYw"/>
+                                                        <action selector="textFieldDidTapReturnKey:" destination="Vv3-Xe-F7n" eventType="editingDidEndOnExit" id="7wr-kM-Zg1"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="LsO-yZ-F2l" firstAttribute="leading" secondItem="WRP-qM-HC5" secondAttribute="trailing" constant="8" id="AG8-dj-URI"/>
+                                                <constraint firstItem="WRP-qM-HC5" firstAttribute="leading" secondItem="U7r-M7-WEO" secondAttribute="leading" constant="10" id="asg-7l-pmy"/>
+                                                <constraint firstItem="WRP-qM-HC5" firstAttribute="centerY" secondItem="U7r-M7-WEO" secondAttribute="centerY" id="dKn-Hu-faG"/>
+                                                <constraint firstItem="LsO-yZ-F2l" firstAttribute="top" secondItem="U7r-M7-WEO" secondAttribute="top" id="ikX-5f-baE"/>
+                                                <constraint firstAttribute="bottom" secondItem="LsO-yZ-F2l" secondAttribute="bottom" id="ixl-xv-o3i"/>
+                                                <constraint firstAttribute="trailing" secondItem="LsO-yZ-F2l" secondAttribute="trailing" id="kDe-8M-WCI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="flagImageView" destination="WRP-qM-HC5" id="6cL-Oz-g5F"/>
+                                            <outlet property="textField" destination="LsO-yZ-F2l" id="pNC-i6-G2V"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0rT-kj-9N3" id="f4i-7n-qyK"/>
+                                    <outlet property="delegate" destination="0rT-kj-9N3" id="1uQ-de-rdO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5ZG-Y2-grU" firstAttribute="leading" secondItem="783-N0-Tzn" secondAttribute="leading" id="3Wn-jd-QVe"/>
+                            <constraint firstItem="4IU-Et-9lq" firstAttribute="top" secondItem="7aV-KK-mKr" secondAttribute="bottom" id="4Wt-bV-VOh"/>
+                            <constraint firstAttribute="trailing" secondItem="5ZG-Y2-grU" secondAttribute="trailing" id="Ecd-OC-cPd"/>
+                            <constraint firstItem="5ZG-Y2-grU" firstAttribute="top" secondItem="4IU-Et-9lq" secondAttribute="bottom" id="FDB-wY-yRi"/>
+                            <constraint firstItem="4IU-Et-9lq" firstAttribute="leading" secondItem="783-N0-Tzn" secondAttribute="leading" id="Gq1-Sc-l4T"/>
+                            <constraint firstAttribute="trailing" secondItem="4IU-Et-9lq" secondAttribute="trailing" id="PiJ-3Q-VIn"/>
+                            <constraint firstItem="jiy-OA-eW5" firstAttribute="top" secondItem="5ZG-Y2-grU" secondAttribute="bottom" id="ehH-d9-tlS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="submitButton" destination="5ZG-Y2-grU" id="B7K-lp-U53"/>
+                        <outlet property="tableView" destination="4IU-Et-9lq" id="zPN-tc-z49"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOn-0x-6HN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2986" y="328"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Flag-France" width="48" height="36"/>
+    </resources>
+</document>

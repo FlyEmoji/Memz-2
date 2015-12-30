@@ -9,6 +9,7 @@
 "CommonReturn" = "Return";
 "CommonDelete" = "Delete";
 "CommonSubmit" = "Submit";
+"CommonNext" = "Next";
 "CommonClose" = "Close";
 "CommonSend" = "Send";
 "CommonLoading" = "Loading...";
@@ -18,7 +19,7 @@
 "CommonWarning" = "Warning";
 
 "NavigationFeedTitle" = "Feed";
-"NavigationPollsTitle" = "Polls";
+"NavigationQuizzesTitle" = "My Quizzes";
 "NavigationMyDictionaryTitle" = "My Dictionary";
 
 "WordAdditionViewControllerTitle" = "Add New Word";
@@ -28,3 +29,8 @@
 "WordAdditionYourTranslationsTitle" = "Your translations";
 "WordAdditionAddWordButtonTitle" = "Add Word";
 "WordAdditionEditWordButtonTitle" = "Edit Word";
+
+"LocalPushNotificationQuizBody" = "It's time to translate!";
+"LocalPushNotificationQuizAlertAction" = "Translate";
+
+"QuizResponseTextFieldPlaceholder" = "Type Translation %ld Here";

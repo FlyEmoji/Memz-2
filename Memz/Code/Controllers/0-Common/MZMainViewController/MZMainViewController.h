@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, MZMainViewControllerPages) {
 	MZMainViewControllerPageFeed,
-	MZMainViewControllerPagePolls,
+	MZMainViewControllerPageQuizzes,
 	MZMainViewControllerPageMyDictionary,
 };
 
