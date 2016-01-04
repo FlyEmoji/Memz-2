@@ -18,11 +18,23 @@ typedef NS_ENUM(NSUInteger, MZResponseResult) {
 
 @class MZWord;
 
+@protocol MZResponseResultDelegate;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MZResponse : NSManagedObject
 
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;
+@property (nonatomic, copy) id<MZResponseResultDelegate> delegate;
+
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;		// TODO: Implement object "MZResponseComparator" and pass delegate
+
+@end
+
+@protocol MZResponseResultDelegate <NSObject>
+
+@optional
+
+- (void)responseResult:(MZResponse *)response didCheckTranslation:(NSString *)translation correctWithWord:(MZWord *)correction;
 
 @end
 

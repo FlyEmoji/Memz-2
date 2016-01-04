@@ -13,4 +13,6 @@
 + (NSString *)urlEncodedStringFromString:(NSString *)original;
 + (NSString *)stringForDuration:(NSTimeInterval)duration;
 
+- (CGFloat)compareWithString:(NSString *)string matchGain:(NSInteger)gain missingCost:(NSInteger)cost;
+
 @end
