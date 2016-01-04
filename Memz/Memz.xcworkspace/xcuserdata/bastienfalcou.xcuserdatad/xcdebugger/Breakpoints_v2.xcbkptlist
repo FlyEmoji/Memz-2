@@ -68,11 +68,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Model/CoreData/MZResponse.m"
-            timestampString = "473562037.201614"
+            timestampString = "473566223.169323"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "-checkTranslations:delegate:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m"
+            timestampString = "473566324.383856"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "-checkTranslations:"
             landmarkType = "5">
          </BreakpointContent>

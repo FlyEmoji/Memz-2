@@ -8,33 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-typedef NS_ENUM(NSUInteger, MZResponseResult) {
-	MZResponseResultUnanswered = 0,
-	MZResponseResultWrond,
-	MZResponseResultLearningInProgress,
-	MZResponseResultRight
-};
+#import "MZResponseComparator.h"
 
 @class MZWord;
-
-@protocol MZResponseResultDelegate;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MZResponse : NSManagedObject
 
-@property (nonatomic, copy) id<MZResponseResultDelegate> delegate;
-
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;		// TODO: Implement object "MZResponseComparator" and pass delegate
-
-@end
-
-@protocol MZResponseResultDelegate <NSObject>
-
-@optional
-
-- (void)responseResult:(MZResponse *)response didCheckTranslation:(NSString *)translation correctWithWord:(MZWord *)correction;
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations delegate:(id<MZResponseComparatorDelegate>)delegate;
 
 @end
 

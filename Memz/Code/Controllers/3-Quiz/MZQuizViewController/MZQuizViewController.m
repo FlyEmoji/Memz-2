@@ -24,6 +24,7 @@ NSString * const kQuizViewControllerIdentifer = @"MZQuizViewControllerIdentifier
 @interface MZQuizViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZTranslationResponseTableViewCellDelegate,
+MZResponseComparatorDelegate,
 MZCountDownDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -208,7 +209,7 @@ MZCountDownDelegate>
 	// TODO: Update View With Correct Answers
 	// TODO: Disable Interaction On Text Fields
 
-	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData]];
+	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData delegate:self]];
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
 										 self.submitButton.backgroundColor = submitButtonColor;
