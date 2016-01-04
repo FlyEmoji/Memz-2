@@ -10,6 +10,9 @@
 #import "NSString+MemzAdditions.h"
 #import "MZWord.h"
 
+const CGFloat kMinimumPercentageConsiderTrue = 0.9f;
+const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
+
 @implementation MZResponseComparator
 
 - (instancetype)initWithResponse:(MZResponse *)response {
@@ -24,34 +27,70 @@
 }
 
 - (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
-	NSMutableSet<MZWord *> *mutableSet = [NSMutableSet setWithCapacity:self.response.word.translation.count];
+	// Build arrays of similarity percentage
+	NSMutableArray<NSMutableArray<NSNumber *> *> *arrayPercentages = [NSMutableArray arrayWithCapacity:self.response.word.translation.count];
 
-	for (NSString *proposedTranslation in translations) {
-		CGFloat __block closestPercentageSimilarity = 0.0f;
-		MZWord __block *closestActualTranslation;
+	NSUInteger i = 0;
+	for (MZWord *actualTranslation in self.response.word.translation.allObjects) {
+		arrayPercentages[i] = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
 
-		for (MZWord *actualTranslation in self.response.word.translation.allObjects) {
-			CGFloat percentageSimilarity = [proposedTranslation compareWithString:actualTranslation.word matchGain:0 missingCost:1];
+		NSUInteger j = 0;
+		for (NSString *proposedTranslation in translations) {
+			arrayPercentages[i][j] = @([actualTranslation.word percentageSimilarity:proposedTranslation]);
+			j++;
+		}
+		i++;
+	}
 
-			if (percentageSimilarity >= closestPercentageSimilarity && ![mutableSet containsObject:actualTranslation]) {
-				closestPercentageSimilarity = percentageSimilarity;
-				closestActualTranslation = actualTranslation;
+	// Interpreat those arrays
+	NSMutableSet<NSString *> *mutableSet = [NSMutableSet setWithCapacity:self.response.word.translation.count];
+
+	CGFloat totalSuccessPercentage = 0.0f;
+	CGFloat unitySucessPercentage = 1.0f / self.response.word.translation.count;
+
+	for (NSUInteger i = 0; i < arrayPercentages.count; i++) {
+		NSString *mostLikelyTranslation;
+		CGFloat highestPercentage = 0.0f;
+
+		for (NSUInteger j = 0; j < arrayPercentages[i].count; j++) {
+			CGFloat percentage = arrayPercentages[i][j].floatValue;
+
+			if (percentage >= highestPercentage && ![mutableSet containsObject:translations[j]]) {
+				highestPercentage = percentage;
+				mostLikelyTranslation = translations[j];
 			}
 		}
 
-		if (closestActualTranslation) {
-			[mutableSet addObject:closestActualTranslation];
+		if (mostLikelyTranslation) {
+			[mutableSet addObject:mostLikelyTranslation];
 		}
 
 		if ([self.delegate respondsToSelector:@selector(responseComparator:didCheckTranslation:correctWithWord:isTranslationCorrect:)]) {
 			[self.delegate responseComparator:self
-										didCheckTranslation:proposedTranslation
-												correctWithWord:closestActualTranslation
-									 isTranslationCorrect:closestPercentageSimilarity > 2];
+										didCheckTranslation:mostLikelyTranslation
+												correctWithWord:self.response.word.translation.allObjects[i]
+									 isTranslationCorrect:highestPercentage >= kMinimumPercentageConsiderTrue];
+		}
+
+		if (highestPercentage >= kMinimumPercentageConsiderTrue) {
+			totalSuccessPercentage += unitySucessPercentage;
+		} else if (highestPercentage >= kMinimumPercentageConsiderLearningInProgress) {
+			totalSuccessPercentage += unitySucessPercentage / 2.0f;
 		}
 	}
 
-	return MZResponseResultRight;		// TODO: Send Right One
+	return [self responseResultForSimilarityPercentage:totalSuccessPercentage];
+}
+
+#pragma mark - Helpers
+
+- (MZResponseResult)responseResultForSimilarityPercentage:(CGFloat)similarityPercentage {
+	if (similarityPercentage >= kMinimumPercentageConsiderTrue) {
+		return MZResponseResultRight;
+	} else if (similarityPercentage >= kMinimumPercentageConsiderLearningInProgress) {
+		return MZResponseResultLearningInProgress;
+	}
+	return MZResponseResultWrond;
 }
 
 @end

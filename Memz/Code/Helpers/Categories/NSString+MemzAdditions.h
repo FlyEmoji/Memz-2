@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, NSStringScoreOption) {
+	NSStringScoreOptionNone = 0,
+	NSStringScoreOptionFavorSmallerWords,
+	NSStringScoreOptionReducedLongStringPenalty
+};
+
 @interface NSString (MemzAdditions)
 
 + (NSString *)urlEncodedStringFromString:(NSString *)original;
 + (NSString *)stringForDuration:(NSTimeInterval)duration;
 
-- (CGFloat)compareWithString:(NSString *)string matchGain:(NSInteger)gain missingCost:(NSInteger)cost;
+- (CGFloat)percentageSimilarity:(NSString *)otherString;
+- (CGFloat)percentageSimilarity:(NSString *)otherString fuzziness:(NSNumber *)fuzziness;
+- (CGFloat)percentageSimilarity:(NSString *)otherString fuzziness:(NSNumber *)fuzziness options:(NSStringScoreOption)options;
 
 @end

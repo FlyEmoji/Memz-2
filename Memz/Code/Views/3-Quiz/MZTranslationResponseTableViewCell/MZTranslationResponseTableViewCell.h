@@ -12,10 +12,12 @@
 
 @interface MZTranslationResponseTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (nonatomic, weak) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
 
-@property (weak, nonatomic) id<MZTranslationResponseTableViewCellDelegate> delegate;
+@property (nonatomic, weak) id<MZTranslationResponseTableViewCellDelegate> delegate;
+
+- (void)switchToCorrectionDisplayIsRight:(BOOL)isRight correctionText:(NSString *)correction;
 
 @end
 

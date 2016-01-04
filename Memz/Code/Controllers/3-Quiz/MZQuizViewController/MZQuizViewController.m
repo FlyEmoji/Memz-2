@@ -206,8 +206,6 @@ MZCountDownDelegate>
 		self.tableViewHeaderView.countDownRemainingTime = 0.0;
 	}
 
-	// TODO: Disable Interaction On Text Fields
-
 	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData delegate:self]];
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
@@ -224,8 +222,7 @@ MZCountDownDelegate>
 			isTranslationCorrect:(BOOL)isCorrect {
 	NSUInteger cellIndex = [self.tableViewEnteredData indexOfObject:translation];
 	MZTranslationResponseTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:cellIndex inSection:0]];
-
-	// TODO: Update Cell With Correction
+	[cell switchToCorrectionDisplayIsRight:isCorrect correctionText:correction.word];
 }
 
 #pragma mark - Actions

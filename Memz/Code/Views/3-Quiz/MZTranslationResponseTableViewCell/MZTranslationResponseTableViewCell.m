@@ -10,6 +10,28 @@
 
 @implementation MZTranslationResponseTableViewCell
 
+- (void)switchToCorrectionDisplayIsRight:(BOOL)isRight correctionText:(NSString *)correction {
+	self.textField.userInteractionEnabled = NO;
+
+	if (isRight) {
+		return;
+	}
+
+	NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:self.textField.text];
+	[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+	[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:correction]];
+
+	[mutableAttributedString addAttribute:NSForegroundColorAttributeName
+																	value:[UIColor quizNextButtonWrongColor]
+																	range:NSMakeRange(0, self.textField.text.length)];
+
+	[mutableAttributedString addAttribute:NSForegroundColorAttributeName
+																	value:[UIColor blackColor]
+																	range:NSMakeRange(self.textField.text.length, correction.length)];
+
+	self.textField.attributedText = mutableAttributedString;
+}
+
 #pragma mark - Actions
 
 - (IBAction)textFieldDidChange:(id)sender {

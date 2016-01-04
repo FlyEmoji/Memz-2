@@ -64,16 +64,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Code/Model/CoreData/MZResponse.m"
-            timestampString = "473566223.169323"
+            filePath = "Code/Controllers/3-Quiz/MZQuizViewController/MZQuizViewController.m"
+            timestampString = "473566464.834606"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "-checkTranslations:delegate:"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Views/3-Quiz/MZTranslationResponseTableViewCell/MZTranslationResponseTableViewCell.m"
+            timestampString = "473650304.776299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "-switchToCorrectionDisplayIsRight:correctionText:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -84,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m"
-            timestampString = "473566324.383856"
+            timestampString = "473656770.413501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-checkTranslations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -99,13 +115,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Code/Controllers/3-Quiz/MZQuizViewController/MZQuizViewController.m"
-            timestampString = "473566464.834606"
+            filePath = "Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m"
+            timestampString = "473656876.741405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "-tableView:numberOfRowsInSection:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-checkTranslations:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
