@@ -43,8 +43,11 @@
 			[mutableSet addObject:closestActualTranslation];
 		}
 
-		if ([self.delegate respondsToSelector:@selector(responseComparator:didCheckTranslation:correctWithWord:)]) {
-			[self.delegate responseComparator:self didCheckTranslation:proposedTranslation correctWithWord:closestActualTranslation];
+		if ([self.delegate respondsToSelector:@selector(responseComparator:didCheckTranslation:correctWithWord:isTranslationCorrect:)]) {
+			[self.delegate responseComparator:self
+										didCheckTranslation:proposedTranslation
+												correctWithWord:closestActualTranslation
+									 isTranslationCorrect:closestPercentageSimilarity > 2];
 		}
 	}
 

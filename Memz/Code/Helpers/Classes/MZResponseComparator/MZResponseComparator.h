@@ -36,6 +36,9 @@ typedef NS_ENUM(NSUInteger, MZResponseResult) {
 
 @optional
 
-- (void)responseComparator:(MZResponseComparator *)response didCheckTranslation:(NSString *)translation correctWithWord:(MZWord *)correction;
+- (void)responseComparator:(MZResponseComparator *)response
+			 didCheckTranslation:(NSString *)translation
+					 correctWithWord:(MZWord *)correction
+			isTranslationCorrect:(BOOL)isCorrect;
 
 @end
