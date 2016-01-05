@@ -111,9 +111,11 @@ MZCountDownDelegate>
 		[self.tableViewEnteredData addObject:@""];
 	}
 
-	[self setupTableViewHeader];
-	[self.tableView reloadData];
-	self.tableView.tableFooterView = [[UIView alloc] init];
+	dispatch_async(dispatch_get_main_queue(), ^(void){
+		[self setupTableViewHeader];
+		[self.tableView reloadData];
+		self.tableView.tableFooterView = [[UIView alloc] init];
+	});
 }
 
 - (void)setupTableViewHeader {

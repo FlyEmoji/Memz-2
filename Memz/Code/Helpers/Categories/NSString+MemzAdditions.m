@@ -52,7 +52,7 @@
  */
 
 - (CGFloat)percentageSimilarity:(NSString *)otherString {
-	return [self percentageSimilarity:otherString fuzziness:nil];
+	return [self percentageSimilarity:otherString fuzziness:@1.0f];
 }
 
 - (CGFloat)percentageSimilarity:(NSString *)otherString fuzziness:(NSNumber *)fuzziness {

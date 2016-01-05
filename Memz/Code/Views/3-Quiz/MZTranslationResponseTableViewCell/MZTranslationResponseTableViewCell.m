@@ -10,6 +10,13 @@
 
 @implementation MZTranslationResponseTableViewCell
 
+- (void)prepareForReuse {
+	[super prepareForReuse];
+
+	self.textField.text = @"";
+	self.textField.attributedText = [[NSAttributedString alloc] initWithString:@""];
+}
+
 - (void)switchToCorrectionDisplayIsRight:(BOOL)isRight correctionText:(NSString *)correction {
 	self.textField.userInteractionEnabled = NO;
 
