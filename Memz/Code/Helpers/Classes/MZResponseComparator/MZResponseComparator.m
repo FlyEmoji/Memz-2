@@ -7,7 +7,7 @@
 //
 
 #import "MZResponseComparator.h"
-#import "NSString+MemzAdditions.h"
+#import "NSString+LevenshteinDistances.h"
 #import "MZWord.h"
 
 const CGFloat kMinimumPercentageConsiderTrue = 0.9f;

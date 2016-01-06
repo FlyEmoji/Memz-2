@@ -1,9 +1,9 @@
 //
-//  NSString+MemzAdditions.h
+//  NSString+LevenshteinDistances.h
 //  Memz
 //
-//  Created by Bastien Falcou on 12/21/15.
-//  Copyright © 2015 Falcou. All rights reserved.
+//  Created by Bastien Falcou on 1/5/16.
+//  Copyright © 2016 Falcou. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,10 +14,12 @@ typedef NS_ENUM(NSUInteger, NSStringScoreOption) {
 	NSStringScoreOptionReducedLongStringPenalty
 };
 
-@interface NSString (MemzAdditions)
+/*
+ * Based on mathematical Levenshtein Distance.
+ * See: https://github.com/thetron/StringScore
+ */
 
-+ (NSString *)urlEncodedStringFromString:(NSString *)original;
-+ (NSString *)stringForDuration:(NSTimeInterval)duration;
+@interface NSString (LevenshteinDistances)
 
 - (CGFloat)percentageSimilarity:(NSString *)otherString;
 - (CGFloat)percentageSimilarity:(NSString *)otherString fuzziness:(NSNumber *)fuzziness;
