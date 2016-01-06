@@ -14,6 +14,8 @@
 #import "MZCountDown.h"
 #import "MZWord.h"
 
+#define UNVALID_INDEX -1
+
 const CGFloat kTranslationResponseTableViewCellHeight = 60.0f;
 const NSTimeInterval kSubmitButtonAnimationDuration = 0.3;
 const NSTimeInterval kCountDownDuration = 90.0;
@@ -21,19 +23,26 @@ const NSTimeInterval kCountDownDuration = 90.0;
 NSString * const kTranslationResponseTableViewCellIdentifier = @"MZTranslationResponseTableViewCellIdentifier";
 NSString * const kQuizViewControllerIdentifer = @"MZQuizViewControllerIdentifier";
 
+NSString * const kCellStatusKey = @"MZCellStatusKey";
+NSString * const kUserTranslationKey = @"MZUserTranslationKey";
+NSString * const kCorrectionKey = @"MZCorrectionKey";
+NSString * const kIsRightKey = @"MZIsRightKey";
+
 @interface MZQuizViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZTranslationResponseTableViewCellDelegate,
 MZResponseComparatorDelegate,
 MZCountDownDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UIButton *submitButton;
 
-@property (strong, nonatomic) NSMutableArray<NSString *> *tableViewEnteredData;
-@property (strong, nonatomic) MZWordDescriptionHeaderView *tableViewHeaderView;
-@property (assign, nonatomic, getter=isTranslating) BOOL translating;
-@property (strong, nonatomic) MZCountDown *countDown;
+@property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewEnteredData;
+@property (nonatomic, weak, readonly) NSArray<NSString *> *userTranslations;
+
+@property (nonatomic, strong) MZWordDescriptionHeaderView *tableViewHeaderView;
+@property (nonatomic, assign, getter=isTranslating) BOOL translating;
+@property (nonatomic, strong) MZCountDown *countDown;
 
 @end
 
@@ -101,14 +110,34 @@ MZCountDownDelegate>
 	[self setupResponse];
 }
 
+- (NSArray<NSString *> *)userTranslations {
+	NSMutableArray<NSString *> *mutatingUserTranslations = [[NSMutableArray alloc] initWithCapacity:self.tableViewEnteredData.count];
+
+	for (NSMutableDictionary *dictionary in self.tableViewEnteredData) {
+		NSString *translation = [dictionary[kUserTranslationKey] safeCastToClass:[NSString class]];
+		if (translation) {
+			[mutatingUserTranslations addObject:translation];
+		}
+	}
+	return mutatingUserTranslations;
+}
+
 #pragma mark - Setups
 
 - (void)setupResponse {
+	NSMutableDictionary * (^ buildTranslation)(MZTranslationResponseTableViewCellType, NSString *, NSString *, BOOL) =
+	^(MZTranslationResponseTableViewCellType status, NSString *userTranslation, NSString *correction, BOOL isRight) {
+		return [@{kCellStatusKey: @(status),
+							kUserTranslationKey: userTranslation,
+							kCorrectionKey: correction,
+							kIsRightKey: @(isRight)} mutableCopy];
+	};
+
 	self.translating = YES;
 
 	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
 	for (NSUInteger i = 0; i < self.response.word.translation.count; i++) {
-		[self.tableViewEnteredData addObject:@""];
+		[self.tableViewEnteredData addObject:buildTranslation(MZTranslationResponseTableViewCellTypeUnaswered, @"", @"", NO)];
 	}
 
 	dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -147,6 +176,14 @@ MZCountDownDelegate>
 	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row + 1];
 	cell.textField.returnKeyType = indexPath.row == self.tableViewEnteredData.count - 1 ? UIReturnKeyDone : UIReturnKeyNext;
 	cell.delegate = self;
+
+	MZTranslationResponseTableViewCellType status = [self.tableViewEnteredData[indexPath.row][kCellStatusKey] integerValue];
+	NSString *userTranslation = self.tableViewEnteredData[indexPath.row][kUserTranslationKey];
+	NSString *correction = self.tableViewEnteredData[indexPath.row][kCorrectionKey];
+	BOOL isRight = [self.tableViewEnteredData[indexPath.row][kIsRightKey] boolValue];
+
+	[cell setStatus:status userTranslation:userTranslation correction:correction isRight:isRight];
+
 	return cell;
 }
 
@@ -154,7 +191,7 @@ MZCountDownDelegate>
 
 - (void)translationResponseTableViewCellTextFieldDidChange:(MZTranslationResponseTableViewCell *)cell {
 	NSUInteger index = [self.tableView indexPathForCell:cell].row;
-	self.tableViewEnteredData[index] = cell.textField.text;
+	self.tableViewEnteredData[index][kUserTranslationKey] = cell.textField.text;
 }
 
 - (void)translationResponseTableViewCellTextFieldDidHitReturnButton:(MZTranslationResponseTableViewCell *)cell {
@@ -200,6 +237,8 @@ MZCountDownDelegate>
 		return;
 	}
 
+	// TODO: Need to test if there are duplicated translations
+
 	self.translating = NO;
 
 	if (self.countDown.isRunning) {
@@ -208,7 +247,7 @@ MZCountDownDelegate>
 		self.tableViewHeaderView.countDownRemainingTime = 0.0;
 	}
 
-	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.tableViewEnteredData delegate:self]];
+	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.userTranslations delegate:self]];
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
 										 self.submitButton.backgroundColor = submitButtonColor;
@@ -222,9 +261,31 @@ MZCountDownDelegate>
 			 didCheckTranslation:(NSString *)translation
 					 correctWithWord:(MZWord *)correction
 			isTranslationCorrect:(BOOL)isCorrect {
-	NSUInteger cellIndex = [self.tableViewEnteredData indexOfObject:translation];
+	NSUInteger cellIndex = [self indexPathForNotCorrectedUserTranslation:translation];
+
+	self.tableViewEnteredData[cellIndex][kCellStatusKey] = @(MZTranslationResponseTableViewCellTypeAnswered);
+	self.tableViewEnteredData[cellIndex][kCorrectionKey] = correction.word ?: @"";
+	self.tableViewEnteredData[cellIndex][kIsRightKey] = @(isCorrect);
+
 	MZTranslationResponseTableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:cellIndex inSection:0]];
-	[cell switchToCorrectionDisplayIsRight:isCorrect correctionText:correction.word];
+
+	[cell setStatus:[self.tableViewEnteredData[cellIndex][kCellStatusKey] integerValue]
+	userTranslation:[self.tableViewEnteredData[cellIndex][kUserTranslationKey] safeCastToClass:[NSString class]]
+			 correction:[self.tableViewEnteredData[cellIndex][kCorrectionKey] safeCastToClass:[NSString class]]
+					isRight:[self.tableViewEnteredData[cellIndex][kIsRightKey] boolValue]];
+}
+
+#pragma mark - Helpers
+
+- (NSInteger)indexPathForNotCorrectedUserTranslation:(NSString *)string {
+	// Only return index path for words that have not been corrected yet: their correction value must be an empty string
+	for (NSMutableDictionary *dictionary in self.tableViewEnteredData) {
+		if ([[dictionary[kUserTranslationKey] safeCastToClass:[NSString class]] isEqualToString:string]
+				&& [[dictionary[kCorrectionKey] safeCastToClass:[NSString class]] isEqualToString:@""]) {
+			return [self.tableViewEnteredData indexOfObject:dictionary];
+		}
+	}
+	return UNVALID_INDEX;
 }
 
 #pragma mark - Actions

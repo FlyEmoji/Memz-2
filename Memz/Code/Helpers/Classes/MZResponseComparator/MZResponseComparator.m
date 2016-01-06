@@ -11,7 +11,7 @@
 #import "MZWord.h"
 
 const CGFloat kMinimumPercentageConsiderTrue = 0.9f;
-const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
+const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 
 @implementation MZResponseComparator
 
@@ -27,7 +27,8 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
 }
 
 - (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
-	// Build arrays of similarity percentage
+	// (1) Build arrays of similarity percentage
+	// For each correct translation, calculate percentage of similarity with each proposed translation.
 	NSMutableArray<NSMutableArray<NSNumber *> *> *arrayPercentages = [NSMutableArray arrayWithCapacity:self.response.word.translation.count];
 
 	NSUInteger i = 0;
@@ -42,7 +43,8 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
 		i++;
 	}
 
-	// Interpreat those arrays
+	// (2) Interpreat those arrays of similarity percentage one by one
+	// The highest percentage points to the word with most chances to be right - or an attempt to write the correct translation
 	NSMutableSet<NSString *> *mutableSet = [NSMutableSet setWithCapacity:self.response.word.translation.count];
 
 	CGFloat totalSuccessPercentage = 0.0f;
@@ -61,7 +63,9 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
 			}
 		}
 
-		if (mostLikelyTranslation) {
+		// (3) Add word to already selected translations set, exclude empty strings because would keep from considering following empty ones
+		// Notify delegate that this word has been checked and results.
+		if (mostLikelyTranslation && ![mostLikelyTranslation isEqualToString:@""]) {
 			[mutableSet addObject:mostLikelyTranslation];
 		}
 
@@ -72,6 +76,8 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.5f;
 									 isTranslationCorrect:highestPercentage >= kMinimumPercentageConsiderTrue];
 		}
 
+		// (4) Calculate global result, addition takes place at each iteration according to similarity percentage
+		// If percentage considered wrong, do not add any value. If in progress, add certain percentage of unity value. If right, add one unity.
 		if (highestPercentage >= kMinimumPercentageConsiderTrue) {
 			totalSuccessPercentage += unitySucessPercentage;
 		} else if (highestPercentage >= kMinimumPercentageConsiderLearningInProgress) {

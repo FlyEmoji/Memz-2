@@ -8,7 +8,7 @@
 
 #import "MZTranslationResponseTableViewCell.h"
 
-const CGFloat kRightImageWidthCorrectionConstant = 40.0f;
+const CGFloat kRightImageWidthCorrectionConstant = 30.0f;
 const NSTimeInterval kCorrectionAnimationDuration = 0.3;
 
 @interface MZTranslationResponseTableViewCell ()
@@ -27,28 +27,43 @@ const NSTimeInterval kCorrectionAnimationDuration = 0.3;
 	self.textField.attributedText = [[NSAttributedString alloc] initWithString:@""];
 }
 
-- (void)switchToCorrectionDisplayIsRight:(BOOL)isRight correctionText:(NSString *)correction {
-	self.textField.userInteractionEnabled = NO;
+- (void)setStatus:(MZTranslationResponseTableViewCellType)status
+	userTranslation:(NSString *)userTranslation
+			 correction:(NSString *)correction
+					isRight:(BOOL)isRight {
+	_status = status;
 
-	if (isRight) {
-		return;
+	switch (status) {
+		case MZTranslationResponseTableViewCellTypeUnaswered:
+			self.textField.userInteractionEnabled = YES;
+			self.textField.text = userTranslation;
+			break;
+		case MZTranslationResponseTableViewCellTypeAnswered:
+			self.textField.userInteractionEnabled = NO;
+			[self animateCorrectionIsRight:isRight];
+
+			// Translations can be considered correct even if different - if very slightly different (usually one character)
+			// In that case and even if the right image shows correct indicator, we still want to display the wrong but almost
+			// true proposed translation, and the actual corrected translation for user to realize it was not exactly perfect, and learn.
+
+			if (![userTranslation isEqualToString:correction]) {
+				NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:userTranslation];
+				[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
+				[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:correction]];
+
+				[mutableAttributedString addAttribute:NSForegroundColorAttributeName
+																				value:[UIColor quizNextButtonWrongColor]
+																				range:NSMakeRange(0, userTranslation.length)];
+
+				[mutableAttributedString addAttribute:NSForegroundColorAttributeName
+																				value:[UIColor blackColor]
+																				range:NSMakeRange(userTranslation.length, correction.length)];
+
+				self.textField.attributedText = mutableAttributedString;
+			} else {
+				self.textField.text = correction;
+			}
 	}
-
-	NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:self.textField.text];
-	[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
-	[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:correction]];
-
-	[mutableAttributedString addAttribute:NSForegroundColorAttributeName
-																	value:[UIColor quizNextButtonWrongColor]
-																	range:NSMakeRange(0, self.textField.text.length)];
-
-	[mutableAttributedString addAttribute:NSForegroundColorAttributeName
-																	value:[UIColor blackColor]
-																	range:NSMakeRange(self.textField.text.length, correction.length)];
-
-	self.textField.attributedText = mutableAttributedString;
-
-	[self animateCorrectionIsRight:isRight];
 }
 
 #pragma mark - Animations 
