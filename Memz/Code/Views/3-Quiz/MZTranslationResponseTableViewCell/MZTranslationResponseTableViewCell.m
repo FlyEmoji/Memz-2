@@ -8,6 +8,16 @@
 
 #import "MZTranslationResponseTableViewCell.h"
 
+const CGFloat kRightImageWidthCorrectionConstant = 40.0f;
+const NSTimeInterval kCorrectionAnimationDuration = 0.3;
+
+@interface MZTranslationResponseTableViewCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *rightImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightImageViewWidthConstraint;
+
+@end
+
 @implementation MZTranslationResponseTableViewCell
 
 - (void)prepareForReuse {
@@ -37,6 +47,20 @@
 																	range:NSMakeRange(self.textField.text.length, correction.length)];
 
 	self.textField.attributedText = mutableAttributedString;
+
+	[self animateCorrectionIsRight:isRight];
+}
+
+#pragma mark - Animations 
+
+- (void)animateCorrectionIsRight:(BOOL)isRight {
+	UIImage *image = [UIImage imageWithAssetIdentifier:isRight ? MZAssetIdentifierQuizTick : MZAssetIdentifierQuizCross];
+	self.rightImageView.image = image;
+
+	self.rightImageViewWidthConstraint.constant = kRightImageWidthCorrectionConstant;
+	[UIView animateWithDuration:kCorrectionAnimationDuration animations:^{
+		[self.contentView layoutIfNeeded];
+	}];
 }
 
 #pragma mark - Actions

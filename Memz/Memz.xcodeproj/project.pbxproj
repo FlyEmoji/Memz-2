@@ -72,6 +72,7 @@
 		0CDB82EE1C30A0BD00EADB05 /* MZWord+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82E41C30A0BD00EADB05 /* MZWord+CoreDataProperties.m */; };
 		0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */; };
 		0CDB82F81C30ABB300EADB05 /* MZPushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82F71C30ABB300EADB05 /* MZPushNotificationManager.m */; };
+		0CEFD1971C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1961C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.m */; };
 		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -219,6 +220,8 @@
 		0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManager.m; path = Code/Helpers/Classes/MZQuizManager/MZQuizManager.m; sourceTree = SOURCE_ROOT; };
 		0CDB82F61C30ABB300EADB05 /* MZPushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPushNotificationManager.h; path = Code/Helpers/Classes/MZPushNotificationManager/MZPushNotificationManager.h; sourceTree = SOURCE_ROOT; };
 		0CDB82F71C30ABB300EADB05 /* MZPushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPushNotificationManager.m; path = Code/Helpers/Classes/MZPushNotificationManager/MZPushNotificationManager.m; sourceTree = SOURCE_ROOT; };
+		0CEFD1951C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+AssetIdentifiers.h"; path = "Code/Helpers/Categories/UIImage+AssetIdentifiers.h"; sourceTree = SOURCE_ROOT; };
+		0CEFD1961C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+AssetIdentifiers.m"; path = "Code/Helpers/Categories/UIImage+AssetIdentifiers.m"; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -443,8 +446,8 @@
 		0C6891AF1C20DE370069E39A /* 3-Quiz */ = {
 			isa = PBXGroup;
 			children = (
-				0C6891B01C20DE550069E39A /* MZMyQuizzesTableViewCell */,
 				0CBF7ABA1C217A1600F5D91B /* MZQuizInfoView */,
+				0C6891B01C20DE550069E39A /* MZMyQuizzesTableViewCell */,
 				0C711C951C31936C00E0BB43 /* MZTranslationResponseTableViewCell */,
 			);
 			name = "3-Quiz";
@@ -661,6 +664,8 @@
 				0CA58C131C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m */,
 				0CA58C161C208BC0000E19D4 /* UIImage+MemzAdditions.h */,
 				0CA58C171C208BC0000E19D4 /* UIImage+MemzAdditions.m */,
+				0CEFD1951C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.h */,
+				0CEFD1961C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.m */,
 				0CA58C2B1C20A00E000E19D4 /* NSObject+MemzAdditions.h */,
 				0CA58C2C1C20A00E000E19D4 /* NSObject+MemzAdditions.m */,
 				0C7A22EB1C20CCE100774B95 /* UIImageView+MemzDownloadImage.h */,
@@ -1091,6 +1096,7 @@
 				0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */,
 				0C711C8F1C3179FA00E0BB43 /* MZQuizInfoView.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
+				0CEFD1971C3CAF6E00EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
 				0CA58C2D1C20A00E000E19D4 /* NSObject+MemzAdditions.m in Sources */,
 				0CA58C141C2082A1000E19D4 /* UINavigationItem+MemzAdditions.m in Sources */,

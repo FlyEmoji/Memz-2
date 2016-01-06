@@ -61,7 +61,7 @@ MZWordAdditionTableViewHeaderDelegate>
 
 	self.title = NSLocalizedString(@"WordAdditionViewControllerTitle", nil);
 
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Cancel"]
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationCancel]
 																																	style:UIBarButtonItemStylePlain
 																																target:self
 																																action:@selector(didTapCloseButton:)];

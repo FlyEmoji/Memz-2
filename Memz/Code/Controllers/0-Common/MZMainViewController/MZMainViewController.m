@@ -31,7 +31,7 @@ const NSUInteger kNumberPages = 3;
 	[super viewDidLoad];
 
 	// Add right button (add new word or expression)
-	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Add"]
+	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationAdd]
 																																	style:UIBarButtonItemStylePlain
 																																 target:self
 																																 action:@selector(goToAddWordView:)];
@@ -40,7 +40,7 @@ const NSUInteger kNumberPages = 3;
 	self.profileButton = rightButton;
 
 	// Add left button (change settings)
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Navigation-Settings"]
+	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationSettings]
 																																 style:UIBarButtonItemStylePlain
 																																target:self
 																																action:@selector(gotoSettingsView:)];
