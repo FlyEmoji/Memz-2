@@ -99,6 +99,10 @@
 	return [self allObjectsMatchingPredicate:predicate context:nil];
 }
 
++ (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors {
+	return [self objectsMatchingPredicate:predicate offset:0 limit:-1 sortDescriptors:sortDescriptors returnAsFaults:YES];
+}
+
 + (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context {
 	return [self objectsMatchingPredicate:predicate offset:0 limit:-1 sortDescriptors:nil returnAsFaults:YES context:context];
 }

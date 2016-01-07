@@ -7,8 +7,10 @@
 //
 
 #import "MZMyQuizzesViewController.h"
+#import "MZMyQuizzesTableViewCell.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
+#import "NSManagedObject+MemzCoreData.h"
 #import "MZDataManager.h"
 #import "MZQuiz.h"
 
@@ -30,7 +32,7 @@ UITableViewDelegate,
 MZQuizInfoViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tableViewData;
+@property (strong, nonatomic) NSArray<MZQuiz *> *tableViewData;
 
 @property (weak, nonatomic) IBOutlet MZQuizInfoView *topShrinkableView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
@@ -40,6 +42,8 @@ MZQuizInfoViewDelegate>
 @end
 
 @implementation MZMyQuizzesViewController
+
+// TODO: Have a NSFetchedResultsController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -58,14 +62,9 @@ MZQuizInfoViewDelegate>
 }
 
 - (void)setupTableViewData {
-	self.tableViewData = @[@{@"hey": @"test hey"},
-												 @{@"hey2" : @"test hey 2"},
-												 @{@"hey3" : @"test hey 3"},
-												 @{@"hey4" : @"test hey 4"},
-												 @{@"hey": @"test hey"},
-												 @{@"hey2" : @"test hey 2"},
-												 @{@"hey3" : @"test hey 3"},
-												 @{@"hey4" : @"test hey 4"}];
+	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered"
+																															 ascending:YES];
+	self.tableViewData = [MZQuiz allObjectsMatchingPredicate:nil sortDescriptors:@[descriptor]];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -75,8 +74,9 @@ MZQuizInfoViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
-																													forIndexPath:indexPath];
+	MZMyQuizzesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
+																																	 forIndexPath:indexPath];
+	cell.quiz = self.tableViewData[indexPath.row];
 	return cell;
 }
 
@@ -131,10 +131,8 @@ MZQuizInfoViewDelegate>
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
 	MZQuiz *quiz = [MZQuiz generateRandomQuiz];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-			// TODO: Do Something
-		}];
+	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 	}];
 }
 

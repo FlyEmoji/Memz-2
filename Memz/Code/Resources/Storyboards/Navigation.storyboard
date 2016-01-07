@@ -436,14 +436,35 @@
                                                         <constraint firstAttribute="height" constant="1" id="dyb-bw-ZFx"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejU-lN-fYn">
+                                                    <rect key="frame" x="8" y="8" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="isAnswered" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ew-oI-Wjz">
+                                                    <rect key="frame" x="504" y="8" width="88" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="6aU-qu-ehZ" secondAttribute="bottom" id="9XW-eo-DzP"/>
                                                 <constraint firstAttribute="trailing" secondItem="6aU-qu-ehZ" secondAttribute="trailing" id="9um-3a-QQ1"/>
+                                                <constraint firstItem="4Ew-oI-Wjz" firstAttribute="top" secondItem="Dd1-PB-cAf" secondAttribute="top" constant="8" id="I0e-fj-LCy"/>
+                                                <constraint firstItem="ejU-lN-fYn" firstAttribute="top" secondItem="Dd1-PB-cAf" secondAttribute="top" constant="8" id="TkM-dq-Gvm"/>
+                                                <constraint firstItem="4Ew-oI-Wjz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ejU-lN-fYn" secondAttribute="trailing" constant="20" id="VdE-d3-hZb"/>
+                                                <constraint firstItem="ejU-lN-fYn" firstAttribute="leading" secondItem="Dd1-PB-cAf" secondAttribute="leading" constant="8" id="Xt3-II-gSH"/>
                                                 <constraint firstItem="6aU-qu-ehZ" firstAttribute="leading" secondItem="Dd1-PB-cAf" secondAttribute="leading" id="cU1-E0-joJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="4Ew-oI-Wjz" secondAttribute="trailing" constant="8" id="dos-vT-TYg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.79767895878846229" green="0.8207139971454207" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="ejU-lN-fYn" id="xRb-2U-f5V"/>
+                                            <outlet property="isAnsweredLabel" destination="4Ew-oI-Wjz" id="SbU-Wo-mxP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -31,6 +31,7 @@
 + (NSUInteger)countOfObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context;
 
 + (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate;
++ (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors;
 + (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context;
 
 + (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults;
