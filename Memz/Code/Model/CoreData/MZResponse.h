@@ -8,13 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-typedef NS_ENUM(NSUInteger, MZResponseResult) {
-	MZResponseResultUnanswered = 0,
-	MZResponseResultWrond,
-	MZResponseResultLearningInProgress,
-	MZResponseResultRight
-};
+#import "MZResponseComparator.h"
 
 @class MZWord;
 
@@ -22,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZResponse : NSManagedObject
 
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations delegate:(id<MZResponseComparatorDelegate>)delegate;
 
 @end
 

@@ -50,7 +50,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsO-yZ-F2l">
-                                                    <rect key="frame" x="58" y="0.0" width="542" height="67"/>
+                                                    <rect key="frame" x="58" y="0.0" width="534" height="67"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
@@ -58,18 +58,29 @@
                                                         <action selector="textFieldDidTapReturnKey:" destination="Vv3-Xe-F7n" eventType="editingDidEndOnExit" id="7wr-kM-Zg1"/>
                                                     </connections>
                                                 </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Cross" translatesAutoresizingMaskIntoConstraints="NO" id="os0-qK-Zt3">
+                                                    <rect key="frame" x="592" y="0.0" width="0.0" height="67"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" id="GWO-hR-ww2"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="LsO-yZ-F2l" firstAttribute="leading" secondItem="WRP-qM-HC5" secondAttribute="trailing" constant="8" id="AG8-dj-URI"/>
+                                                <constraint firstAttribute="bottom" secondItem="os0-qK-Zt3" secondAttribute="bottom" id="Dsa-HI-OKP"/>
+                                                <constraint firstAttribute="trailing" secondItem="os0-qK-Zt3" secondAttribute="trailing" constant="8" id="Tvy-2s-v5x"/>
                                                 <constraint firstItem="WRP-qM-HC5" firstAttribute="leading" secondItem="U7r-M7-WEO" secondAttribute="leading" constant="10" id="asg-7l-pmy"/>
                                                 <constraint firstItem="WRP-qM-HC5" firstAttribute="centerY" secondItem="U7r-M7-WEO" secondAttribute="centerY" id="dKn-Hu-faG"/>
+                                                <constraint firstItem="os0-qK-Zt3" firstAttribute="leading" secondItem="LsO-yZ-F2l" secondAttribute="trailing" id="eTC-I0-L87"/>
                                                 <constraint firstItem="LsO-yZ-F2l" firstAttribute="top" secondItem="U7r-M7-WEO" secondAttribute="top" id="ikX-5f-baE"/>
                                                 <constraint firstAttribute="bottom" secondItem="LsO-yZ-F2l" secondAttribute="bottom" id="ixl-xv-o3i"/>
-                                                <constraint firstAttribute="trailing" secondItem="LsO-yZ-F2l" secondAttribute="trailing" id="kDe-8M-WCI"/>
+                                                <constraint firstItem="os0-qK-Zt3" firstAttribute="top" secondItem="U7r-M7-WEO" secondAttribute="top" id="qRw-pc-74e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="flagImageView" destination="WRP-qM-HC5" id="6cL-Oz-g5F"/>
+                                            <outlet property="rightImageView" destination="os0-qK-Zt3" id="Qen-ds-PhD"/>
+                                            <outlet property="rightImageViewWidthConstraint" destination="GWO-hR-ww2" id="hL8-zp-ZWp"/>
                                             <outlet property="textField" destination="LsO-yZ-F2l" id="pNC-i6-G2V"/>
                                         </connections>
                                     </tableViewCell>
@@ -103,5 +114,6 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
+        <image name="Quiz-Cross" width="383" height="383"/>
     </resources>
 </document>

@@ -8,14 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, MZTranslationResponseTableViewCellType) {
+	MZTranslationResponseTableViewCellTypeUnaswered = 0,
+	MZTranslationResponseTableViewCellTypeAnswered
+};
+
 @protocol MZTranslationResponseTableViewCellDelegate;
 
 @interface MZTranslationResponseTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (nonatomic, weak) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, weak) IBOutlet UITextField *textField;
 
-@property (weak, nonatomic) id<MZTranslationResponseTableViewCellDelegate> delegate;
+@property (nonatomic, weak) id<MZTranslationResponseTableViewCellDelegate> delegate;
+@property (nonatomic, assign, readonly) MZTranslationResponseTableViewCellType status;
+
+- (void)setStatus:(MZTranslationResponseTableViewCellType)status
+	userTranslation:(NSString *)userTranslation
+			 correction:(NSString *)correction
+					isRight:(BOOL)isRight;
 
 @end
 

@@ -15,9 +15,9 @@
 + (UIImage *)flagImageForLanguage:(MZLanguage)language {
 	switch (language) {
 		case MZLanguageEnglish:
-			return [UIImage imageNamed:@"Flag-United-Kingdom"];
+			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagUnitedKingdom];
 		case MZLanguageFrench:
-			return [UIImage imageNamed:@"Flag-France"];
+			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagFrance];
 	}
 }
 

@@ -11,8 +11,10 @@
 
 @implementation MZResponse
 
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
-	return MZResponseResultRight;		// TODO: To Implement
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations delegate:(id<MZResponseComparatorDelegate>)delegate {
+	MZResponseComparator *responseComparator = [MZResponseComparator responseComparatorWithResponse:self];
+	responseComparator.delegate = delegate;
+	return [responseComparator checkTranslations:translations];
 }
 
 @end

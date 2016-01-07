@@ -10,6 +10,8 @@
 
 @implementation NSString (MemzAdditions)
 
+#pragma mark - Class Methods
+
 + (NSString *)urlEncodedStringFromString:(NSString *)original {
 	NSMutableString *escaped = [NSMutableString stringWithString:[original stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 

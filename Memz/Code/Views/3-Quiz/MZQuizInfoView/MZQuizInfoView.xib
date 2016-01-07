@@ -48,7 +48,7 @@
                                         <action selector="didTapRequestNewQuizButton:" destination="-1" eventType="touchUpInside" id="sDX-33-xBL"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Polls-Bell" translatesAutoresizingMaskIntoConstraints="NO" id="GAc-PK-HNf">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Bell" translatesAutoresizingMaskIntoConstraints="NO" id="GAc-PK-HNf">
                                     <rect key="frame" x="14" y="14" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="Gwb-aA-dlW"/>
@@ -223,6 +223,6 @@
     <resources>
         <image name="Navigation-Add" width="29" height="30"/>
         <image name="Navigation-Cancel" width="21" height="20"/>
-        <image name="Polls-Bell" width="111" height="108"/>
+        <image name="Quiz-Bell" width="111" height="108"/>
     </resources>
 </document>
