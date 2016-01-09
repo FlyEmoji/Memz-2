@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZLanguageManager.h"
 
 @class MZResponse;
 @class MZWord;
@@ -28,7 +29,8 @@ typedef NS_ENUM(NSUInteger, MZResponseResult) {
 - (instancetype)initWithResponse:(MZResponse *)response;
 + (instancetype)responseComparatorWithResponse:(MZResponse *)response;
 
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;	// will use response.quiz.toLanguage by default
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations toLanguage:(MZLanguage)language;
 
 @end
 
