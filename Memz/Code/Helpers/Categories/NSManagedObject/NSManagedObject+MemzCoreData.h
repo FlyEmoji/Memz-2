@@ -34,8 +34,8 @@
 + (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors;
 + (NSArray *)allObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context;
 
-+ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults;
-+ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults context:(NSManagedObjectContext *)context;
++ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults;
++ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults context:(NSManagedObjectContext *)context;
 
 + (void)deleteAllObjectsMatchingPredicate:(NSPredicate *)predicate;
 + (void)deleteAllObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context;

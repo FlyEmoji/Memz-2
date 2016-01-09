@@ -28,7 +28,7 @@
 #pragma mark - Public Methods
 
 + (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language == %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
 	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
 }
 
@@ -36,7 +36,7 @@
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word == %@ AND language == %d", word, fromLanguage];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", word, fromLanguage];
 	MZWord *existingWord = [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate].firstObject;
 
 	if (!existingWord) {
@@ -51,7 +51,7 @@
 								toLanguage:(MZLanguage)toLanguage {
 	// (1) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@ AND language == %d", translation, toLanguage];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", translation, toLanguage];
 		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate].firstObject;
 
 		if (!wordTranslation) {
@@ -78,19 +78,16 @@
 #pragma mark - Statistics
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@", self];
-	NSArray<MZResponse *> *responses = [MZResponse allObjectsMatchingPredicate:predicate];
-
-	// TODO: NEED TO VERIFY THE LANGUAGE
-
-	return responses.count;
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
 - (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:[NSPredicate predicateWithFormat:@"word == %@ && result == YES", self]];
-	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:[NSPredicate predicateWithFormat:@"word == %@", self]];
+	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
 
-	// TODO: NEED TO VERIFY THE LANGUAGE
+	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:successCountPredicate];
+	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:allObjectsCountPredicate];
 
 	return allObjectsCount > 0 ? successCount * 100.0f / allObjectsCount : 0.0f;
 }

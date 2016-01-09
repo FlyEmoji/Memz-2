@@ -17,7 +17,7 @@
 	MZQuiz *newQuiz = [MZQuiz newInstance];
 	newQuiz.toLanguage = @(toLanguage);
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;
 	NSMutableArray<MZWord *> *selectedWords = [[NSMutableArray alloc] init];
