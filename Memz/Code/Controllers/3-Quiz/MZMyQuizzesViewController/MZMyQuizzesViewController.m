@@ -29,21 +29,20 @@ NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdenti
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
+NSFetchedResultsControllerDelegate,
 MZQuizInfoViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray<MZQuiz *> *tableViewData;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet MZQuizInfoView *topShrinkableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
+@property (nonatomic, weak) IBOutlet MZQuizInfoView *topShrinkableView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, assign) CGPoint lastContentOffset;
 
 @end
 
 @implementation MZMyQuizzesViewController
-
-// TODO: Have a NSFetchedResultsController
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -62,22 +61,75 @@ MZQuizInfoViewDelegate>
 }
 
 - (void)setupTableViewData {
-	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered"
-																															 ascending:YES];
-	self.tableViewData = [MZQuiz allObjectsMatchingPredicate:nil sortDescriptors:@[descriptor]];
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
+	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
+	request.sortDescriptors = @[descriptor];
+
+	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+																																			managedObjectContext:[MZDataManager sharedDataManager].managedObjectContext
+																																				sectionNameKeyPath:nil
+																																								 cacheName:nil];
+	self.fetchedResultsController.delegate = self;
+
+	NSError *error = nil;
+	[self.fetchedResultsController performFetch:&error];
+
+	if (error) {
+		NSLog(@"%@, %@", error, error.localizedDescription);
+	}
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.tableViewData.count;
+	id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
+	return sectionInfo.numberOfObjects;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZMyQuizzesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
 																																	 forIndexPath:indexPath];
-	cell.quiz = self.tableViewData[indexPath.row];
+	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
+	cell.quiz = quiz;
+
 	return cell;
+}
+
+#pragma mark - Fetched Result Controller Delegate Methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+	 didChangeObject:(id)anObject
+			 atIndexPath:(NSIndexPath *)indexPath
+		 forChangeType:(NSFetchedResultsChangeType)type
+			newIndexPath:(NSIndexPath *)newIndexPath {
+	switch (type) {
+		case NSFetchedResultsChangeInsert: {
+			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeDelete: {
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeUpdate: {
+			MZMyQuizzesTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			cell.quiz = [anObject safeCastToClass:[MZQuiz class]];
+			break;
+		}
+		case NSFetchedResultsChangeMove: {
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+	}
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView endUpdates];
 }
 
 #pragma mark - Scroll Management
