@@ -7,6 +7,7 @@
 //
 
 #import "MZMyQuizzesTableViewCell.h"
+#import "NSDate+MemzAdditions.h"
 
 @interface MZMyQuizzesTableViewCell ()
 
@@ -20,8 +21,8 @@
 - (void)setQuiz:(MZQuiz *)quiz {
 	_quiz = quiz;
 
-	self.dateLabel.text = quiz.date.description;
-	self.isAnsweredLabel.text = quiz.isAnswered.boolValue ? NSLocalizedString(@"Is Answered", nil) : NSLocalizedString(@"Pending!", nil);
+	self.dateLabel.text = [quiz.date humanReadableDateString];
+	self.isAnsweredLabel.text = quiz.isAnswered.boolValue ? NSLocalizedString(@"QuizResponseIsAnswered", nil) : NSLocalizedString(@"QuizResponsePending!", nil);
 	self.contentView.backgroundColor = quiz.isAnswered ? [UIColor myQuizzesAnsweredBackgroundColor] : [UIColor myQuizzesPendingBackgroundColor];
 }
 

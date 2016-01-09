@@ -34,3 +34,5 @@
 "LocalPushNotificationQuizAlertAction" = "Translate";
 
 "QuizResponseTextFieldPlaceholder" = "Type Translation %ld Here";
+"QuizResponseIsAnswered" = "Is Answered";
+"QuizResponsePending" = "Pending!";
