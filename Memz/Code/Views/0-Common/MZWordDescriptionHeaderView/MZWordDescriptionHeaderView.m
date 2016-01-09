@@ -45,6 +45,17 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 
 	self.wordLabel.text = word.word;
 	self.flagImageView.image = [UIImage flagImageForLanguage:self.word.language.integerValue];
+
+	if (word.learningIndex.integerValue == MZWordIndexLearned) {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearnedStatusColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearned", nil);
+	} else if (word.learningIndex.integerValue >= trunc(MZWordIndexLearned / 2.0f)) {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearningInProgressColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearningInProgressStatus", nil);
+	} else {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionNotLearedColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionNotLearnedStatus", nil);
+	}
 }
 
 - (void)setHeaderType:(MZWordDescriptionHeaderType)headerType {

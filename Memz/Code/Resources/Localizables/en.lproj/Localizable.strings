@@ -30,6 +30,10 @@
 "WordAdditionAddWordButtonTitle" = "Add Word";
 "WordAdditionEditWordButtonTitle" = "Edit Word";
 
+"WordDescriptionNotLearnedStatus" = "Not Learned";
+"WordDescriptionLearningInProgressStatus" = "Larning In Progress";
+"WordDescriptionLearned" = "Learned";
+
 "LocalPushNotificationQuizBody" = "It's time to translate!";
 "LocalPushNotificationQuizAlertAction" = "Translate";
 
