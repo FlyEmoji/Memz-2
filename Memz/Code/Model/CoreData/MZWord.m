@@ -75,4 +75,24 @@
 	}];
 }
 
+#pragma mark - Statistics
+
+- (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@", self];
+	NSArray<MZResponse *> *responses = [MZResponse allObjectsMatchingPredicate:predicate];
+
+	// TODO: NEED TO VERIFY THE LANGUAGE
+
+	return responses.count;
+}
+
+- (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage {
+	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:[NSPredicate predicateWithFormat:@"word == %@ && result == YES", self]];
+	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:[NSPredicate predicateWithFormat:@"word == %@", self]];
+
+	// TODO: NEED TO VERIFY THE LANGUAGE
+
+	return allObjectsCount > 0 ? successCount * 100.0f / allObjectsCount : 0.0f;
+}
+
 @end

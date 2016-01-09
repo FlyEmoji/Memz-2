@@ -264,12 +264,16 @@ MZCountDownDelegate>
 			isTranslationCorrect:(BOOL)isCorrect {
 	NSUInteger cellIndex = [self indexPathForNotCorrectedUserTranslation:translation];
 
+	// (1) Update Managed Object
+	self.response.result = @(isCorrect);
+
 	if (isCorrect && self.response.word.learningIndex.integerValue < MZWordIndexLearned) {
 		self.response.word.learningIndex = @(self.response.word.learningIndex.integerValue + 1);
 	} else if (!isCorrect && self.response.word.learningIndex.integerValue > 0) {
 		self.response.word.learningIndex = @(self.response.word.learningIndex.integerValue - 1);
 	}
 
+	// (2) Update persisted Table View data for reusability, update corresponding Cell
 	self.tableViewEnteredData[cellIndex][kCellStatusKey] = @(MZTranslationResponseTableViewCellTypeAnswered);
 	self.tableViewEnteredData[cellIndex][kCorrectionKey] = correction.word ?: @"";
 	self.tableViewEnteredData[cellIndex][kIsRightKey] = @(isCorrect);

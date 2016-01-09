@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateTranslations:(NSArray<NSString *> *)translations
 								toLanguage:(MZLanguage)toLanguage;
 
+- (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage;
+
+- (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage;
+
 @end
 
 NS_ASSUME_NONNULL_END
