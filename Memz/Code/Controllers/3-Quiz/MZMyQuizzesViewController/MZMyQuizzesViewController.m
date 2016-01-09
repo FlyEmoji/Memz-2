@@ -7,8 +7,10 @@
 //
 
 #import "MZMyQuizzesViewController.h"
+#import "MZMyQuizzesTableViewCell.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
+#import "NSManagedObject+MemzCoreData.h"
 #import "MZDataManager.h"
 #import "MZQuiz.h"
 
@@ -27,14 +29,15 @@ NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdenti
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
+NSFetchedResultsControllerDelegate,
 MZQuizInfoViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tableViewData;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
-@property (weak, nonatomic) IBOutlet MZQuizInfoView *topShrinkableView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
+@property (nonatomic, weak) IBOutlet MZQuizInfoView *topShrinkableView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, assign) CGPoint lastContentOffset;
 
 @end
@@ -45,7 +48,6 @@ MZQuizInfoViewDelegate>
 	[super viewDidLoad];
 
 	[self setupTableViewData];
-	[self.tableView reloadData];
 
 	self.tableView.estimatedRowHeight = kQuizzesTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -58,26 +60,86 @@ MZQuizInfoViewDelegate>
 }
 
 - (void)setupTableViewData {
-	self.tableViewData = @[@{@"hey": @"test hey"},
-												 @{@"hey2" : @"test hey 2"},
-												 @{@"hey3" : @"test hey 3"},
-												 @{@"hey4" : @"test hey 4"},
-												 @{@"hey": @"test hey"},
-												 @{@"hey2" : @"test hey 2"},
-												 @{@"hey3" : @"test hey 3"},
-												 @{@"hey4" : @"test hey 4"}];
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
+	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
+	NSSortDescriptor *descriptorDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
+	request.sortDescriptors = @[descriptorIsAnswered, descriptorDate];
+
+	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+																																			managedObjectContext:[MZDataManager sharedDataManager].managedObjectContext
+																																				sectionNameKeyPath:nil
+																																								 cacheName:nil];
+	self.fetchedResultsController.delegate = self;
+
+	NSError *error = nil;
+	[self.fetchedResultsController performFetch:&error];
+
+	if (error) {
+		NSLog(@"%@, %@", error, error.localizedDescription);
+	}
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.tableViewData.count;
+	id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
+	return sectionInfo.numberOfObjects;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
-																													forIndexPath:indexPath];
+	MZMyQuizzesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
+																																	 forIndexPath:indexPath];
+	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
+	cell.quiz = quiz;
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
+	if (quiz.isAnswered) {
+		// TODO: Show quiz in view mode
+	} else {
+		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+		}];
+	}
+}
+
+#pragma mark - Fetched Result Controller Delegate Methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+	 didChangeObject:(id)anObject
+			 atIndexPath:(NSIndexPath *)indexPath
+		 forChangeType:(NSFetchedResultsChangeType)type
+			newIndexPath:(NSIndexPath *)newIndexPath {
+	switch (type) {
+		case NSFetchedResultsChangeInsert: {
+			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeDelete: {
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeUpdate: {
+			MZMyQuizzesTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			cell.quiz = [anObject safeCastToClass:[MZQuiz class]];
+			break;
+		}
+		case NSFetchedResultsChangeMove: {
+			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+	}
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView endUpdates];
 }
 
 #pragma mark - Scroll Management
@@ -131,10 +193,8 @@ MZQuizInfoViewDelegate>
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
 	MZQuiz *quiz = [MZQuiz generateRandomQuiz];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-			// TODO: Do Something
-		}];
+	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 	}];
 }
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZQuiz.h"
 
 @interface MZMyQuizzesTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) MZQuiz *quiz;
 
 @end
