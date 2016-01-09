@@ -22,7 +22,7 @@
 	_quiz = quiz;
 
 	self.dateLabel.text = [quiz.date humanReadableDateString];
-	self.isAnsweredLabel.text = quiz.isAnswered.boolValue ? NSLocalizedString(@"QuizResponseIsAnswered", nil) : NSLocalizedString(@"QuizResponsePending!", nil);
+	self.isAnsweredLabel.text = quiz.isAnswered.boolValue ? NSLocalizedString(@"QuizResponseIsAnswered", nil) : NSLocalizedString(@"QuizResponsePending", nil);
 	self.contentView.backgroundColor = quiz.isAnswered ? [UIColor myQuizzesAnsweredBackgroundColor] : [UIColor myQuizzesPendingBackgroundColor];
 }
 

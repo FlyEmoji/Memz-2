@@ -48,7 +48,6 @@ MZQuizInfoViewDelegate>
 	[super viewDidLoad];
 
 	[self setupTableViewData];
-	[self.tableView reloadData];
 
 	self.tableView.estimatedRowHeight = kQuizzesTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
@@ -63,7 +62,7 @@ MZQuizInfoViewDelegate>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
 	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
-	NSSortDescriptor *descriptorDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+	NSSortDescriptor *descriptorDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
 	request.sortDescriptors = @[descriptorIsAnswered, descriptorDate];
 
 	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
@@ -92,8 +91,18 @@ MZQuizInfoViewDelegate>
 																																	 forIndexPath:indexPath];
 	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
 	cell.quiz = quiz;
-
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
+	if (quiz.isAnswered) {
+		// TODO: Show quiz in view mode
+	} else {
+		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+		}];
+	}
 }
 
 #pragma mark - Fetched Result Controller Delegate Methods
