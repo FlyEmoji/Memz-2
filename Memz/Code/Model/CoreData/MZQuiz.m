@@ -13,10 +13,11 @@
 
 @implementation MZQuiz
 
-+ (MZQuiz *)generateRandomQuiz {
++ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage {
 	MZQuiz *newQuiz = [MZQuiz newInstance];
+	newQuiz.toLanguage = @(toLanguage);
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND learningIndex < %d", [MZLanguageManager sharedManager].fromLanguage, MZWordIndexLearned];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;
 	NSMutableArray<MZWord *> *selectedWords = [[NSMutableArray alloc] init];
@@ -35,7 +36,11 @@
 		[newQuiz addResponsesObject:response];
 	}
 
-	return newQuiz;
+	return newQuiz.responses.count > 0 ? newQuiz : nil;
+}
+
+- (MZLanguage)fromLanguage {
+	return self.responses.allObjects.firstObject.word.language.integerValue;
 }
 
 @end

@@ -191,7 +191,13 @@ MZQuizInfoViewDelegate>
 #pragma mark - Quiz Info View Delegate Methods
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
-	MZQuiz *quiz = [MZQuiz generateRandomQuiz];
+	MZQuiz *quiz = [MZQuiz randomQuizFromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																		 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+	if (!quiz) {
+		// TODO: Display message saying no words to translate
+		return;
+	}
 
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
 		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];

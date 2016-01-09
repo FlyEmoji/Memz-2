@@ -29,7 +29,7 @@ MZWordDescriptionHeaderViewDelegate>
 
 @end
 
-@implementation MZWordDescriptionViewController
+@implementation MZWordDescriptionViewController		// TODO: See if NSFetchRequestController applicable
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
