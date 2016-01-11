@@ -1,5 +1,5 @@
 //
-//  MZSettingsViewController.h
+//  MZSettingsTableViewHeader.h
 //  Memz
 //
 //  Created by Bastien Falcou on 1/10/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MZSettingsViewController : UIViewController
+@interface MZSettingsTableViewHeader : UITableViewHeaderFooterView
 
 @end

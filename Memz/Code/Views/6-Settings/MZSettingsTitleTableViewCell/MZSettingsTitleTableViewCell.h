@@ -10,4 +10,7 @@
 
 @interface MZSettingsTitleTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *settingsNameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *settingsSwitch;
+
 @end

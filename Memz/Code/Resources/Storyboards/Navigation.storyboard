@@ -349,6 +349,10 @@
                                                 <constraint firstItem="iM6-Kx-3bA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kB3-Jt-tde" secondAttribute="trailing" constant="15" id="XLq-xC-y1e"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingsNameLabel" destination="kB3-Jt-tde" id="KBI-2g-6qs"/>
+                                            <outlet property="settingsSwitch" destination="iM6-Kx-3bA" id="43G-9s-Pke"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -356,10 +360,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="settingsNameLabel" destination="kB3-Jt-tde" id="741-V4-vYS"/>
-                        <outlet property="settingsSwitch" destination="iM6-Kx-3bA" id="JfF-Eb-m6h"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
