@@ -320,11 +320,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="58" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5u5-4G-Ao8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="58" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5u5-4G-Ao8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="bwn-qp-QZF" customClass="MZSettingsTitleTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsTitleTableViewCellIdentifier" rowHeight="58" id="bwn-qp-QZF" customClass="MZSettingsTitleTableViewCell">
                                         <rect key="frame" x="0.0" y="114" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bwn-qp-QZF" id="RrJ-wm-97r">
@@ -355,11 +355,24 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="vF7-DI-xAs" id="YK1-Pe-RPJ"/>
+                                    <outlet property="delegate" destination="vF7-DI-xAs" id="8KY-g4-RzY"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5u5-4G-Ao8" firstAttribute="top" secondItem="UMM-9f-GpV" secondAttribute="bottom" id="4IM-Ji-FSB"/>
+                            <constraint firstItem="5u5-4G-Ao8" firstAttribute="leading" secondItem="tx2-Cg-30r" secondAttribute="leading" id="cGC-jQ-Z4q"/>
+                            <constraint firstAttribute="trailing" secondItem="5u5-4G-Ao8" secondAttribute="trailing" id="g78-rn-eM8"/>
+                            <constraint firstItem="xNH-1K-Cea" firstAttribute="top" secondItem="5u5-4G-Ao8" secondAttribute="bottom" id="keG-Mc-nPL"/>
+                        </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

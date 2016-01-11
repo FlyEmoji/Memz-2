@@ -8,6 +8,9 @@
 
 #import "MZLanguageManager.h"
 
+NSString * const kFromLanguageKey = @"FromLanguageKey";
+NSString * const kToLanguageKey = @"ToLanguageKey";
+
 @implementation MZLanguageManager
 
 + (MZLanguageManager *)sharedManager {
@@ -19,12 +22,34 @@
 	return _sharedManager;
 }
 
-- (instancetype)init {
-	if (self = [super init]) {
-		_fromLanguage = MZLanguageEnglish;
-		_toLanguage = MZLanguageFrench;
+#pragma mark - Custom Getters and Setters & Persistance
+
+- (void)setFromLanguage:(MZLanguage)fromLanguage {
+	[[NSUserDefaults standardUserDefaults] setObject:@(fromLanguage) forKey:kFromLanguageKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setToLanguage:(MZLanguage)toLanguage {
+	[[NSUserDefaults standardUserDefaults] setObject:@(toLanguage) forKey:kToLanguageKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (MZLanguage)fromLanguage {
+	// Initialize From Language if never initialized yet
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kFromLanguageKey] == nil) {
+		self.fromLanguage = MZLanguageFrench;
 	}
-	return self;
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kFromLanguageKey] integerValue];
+}
+
+- (MZLanguage)toLanguage {
+	// Initialize To Language if never initialized yet
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kToLanguageKey] == nil) {
+		self.toLanguage = MZLanguageEnglish;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kToLanguageKey] integerValue];
 }
 
 @end
