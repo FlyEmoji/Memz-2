@@ -11,10 +11,12 @@
 #import "MZMyQuizzesViewController.h"
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
+#import "MZSettingsViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
+NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue";
 
 const NSUInteger kNumberPages = 3;
 
@@ -68,12 +70,11 @@ const NSUInteger kNumberPages = 3;
 }
 
 - (void)gotoSettingsView:(id)sender {
-	/*
 	[sender setEnabled:NO];
-	CHKSettingsViewController *settingsViewController = [[CHKSettingsViewController alloc] init];
-	UINavigationController * navigationController = [[ETHFramework injector] instanceForClass:[UINavigationController class]];
-	navigationController.viewControllers = @[settingsViewController];
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];*/
+	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
+
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {

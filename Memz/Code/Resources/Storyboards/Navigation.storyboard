@@ -301,11 +301,31 @@
                     <navigationItem key="navigationItem" id="LNH-jj-3rk"/>
                     <connections>
                         <segue destination="hko-ZM-ogh" kind="show" identifier="MZWordAdditionViewControllerSegue" id="Ls5-4s-CYZ"/>
+                        <segue destination="vF7-DI-xAs" kind="presentation" identifier="MZSettingsViewControllerSegue" id="wIc-S3-fwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c40-XB-gFM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1355" y="330"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="CJ2-oZ-Kv5">
+            <objects>
+                <viewController storyboardIdentifier="MZSettingsViewControllerIdentifier" id="vF7-DI-xAs" customClass="MZSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UMM-9f-GpV"/>
+                        <viewControllerLayoutGuide type="bottom" id="xNH-1K-Cea"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tx2-Cg-30r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="1160"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="DMP-Z8-Z9z">
