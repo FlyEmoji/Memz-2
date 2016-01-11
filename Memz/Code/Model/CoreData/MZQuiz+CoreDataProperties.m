@@ -2,7 +2,7 @@
 //  MZQuiz+CoreDataProperties.m
 //  
 //
-//  Created by Bastien Falcou on 12/27/15.
+//  Created by Bastien Falcou on 1/9/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,6 +15,7 @@
 
 @dynamic date;
 @dynamic isAnswered;
+@dynamic toLanguage;
 @dynamic responses;
 
 @end

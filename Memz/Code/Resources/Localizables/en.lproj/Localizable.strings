@@ -30,6 +30,14 @@
 "WordAdditionAddWordButtonTitle" = "Add Word";
 "WordAdditionEditWordButtonTitle" = "Edit Word";
 
+"WordDescriptionNotLearnedStatus" = "Not Learned";
+"WordDescriptionLearningInProgressStatus" = "Larning In Progress";
+"WordDescriptionLearned" = "Learned";
+"WordDescriptionNeverTranslated" = "Never Translated";
+"WordDescriptionTranslatedOnce" = "Translated Once";
+"WordDescriptionTranslatedTimes" = "Translated %ld times";
+"WordDescriptionPercentageSuccess" = "%.0f%% success";
+
 "LocalPushNotificationQuizBody" = "It's time to translate!";
 "LocalPushNotificationQuizAlertAction" = "Translate";
 

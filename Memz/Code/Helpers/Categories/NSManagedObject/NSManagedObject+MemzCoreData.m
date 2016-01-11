@@ -107,11 +107,11 @@
 	return [self objectsMatchingPredicate:predicate offset:0 limit:-1 sortDescriptors:nil returnAsFaults:YES context:context];
 }
 
-+ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults {
++ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults {
 	return [self objectsMatchingPredicate:predicate offset:offset limit:limit sortDescriptors:sortDescriptors returnAsFaults:returnAsFaults context:nil];
 }
 
-+ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults context:(NSManagedObjectContext *)context {
++ (NSArray *)objectsMatchingPredicate:(NSPredicate *)predicate offset:(NSInteger)offset limit:(NSInteger)limit sortDescriptors:(NSArray<NSSortDescriptor *> *)sortDescriptors returnAsFaults:(BOOL)returnAsFaults context:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	NSFetchRequest *request = [[NSFetchRequest alloc] init];

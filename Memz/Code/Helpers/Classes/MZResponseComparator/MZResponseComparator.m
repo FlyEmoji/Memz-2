@@ -8,6 +8,7 @@
 
 #import "MZResponseComparator.h"
 #import "NSString+LevenshteinDistances.h"
+#import "NSManagedObject+MemzCoreData.h"
 #import "MZWord.h"
 
 const CGFloat kMinimumPercentageConsiderTrue = 0.9f;
@@ -27,13 +28,20 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 }
 
 - (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
-	// (1) Build arrays of similarity percentage
+	return [self checkTranslations:translations toLanguage:self.response.quiz.toLanguage.integerValue];
+}
+
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations toLanguage:(MZLanguage)language {
+	// (1) Build arrays of similarity percentage, on translations to correct language only (can be translations to several languages)
 	// For each correct translation, calculate percentage of similarity with each proposed translation.
-	NSMutableArray<NSMutableArray<NSNumber *> *> *arrayPercentages = [NSMutableArray arrayWithCapacity:self.response.word.translation.count];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %ld", language];
+	NSArray<MZWord *> *correctTranslations = [self.response.word.translation.allObjects filteredArrayUsingPredicate:predicate];
+
+	NSMutableArray<NSMutableArray<NSNumber *> *> *arrayPercentages = [NSMutableArray arrayWithCapacity:correctTranslations.count];
 
 	NSUInteger i = 0;
-	for (MZWord *actualTranslation in self.response.word.translation.allObjects) {
-		arrayPercentages[i] = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
+	for (MZWord *actualTranslation in correctTranslations) {
+		arrayPercentages[i] = [[NSMutableArray alloc] initWithCapacity:correctTranslations.count];
 
 		NSUInteger j = 0;
 		for (NSString *proposedTranslation in translations) {
@@ -45,10 +53,10 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 
 	// (2) Interpreat those arrays of similarity percentage one by one
 	// The highest percentage points to the word with most chances to be right - or an attempt to write the correct translation
-	NSMutableSet<NSString *> *mutableSet = [NSMutableSet setWithCapacity:self.response.word.translation.count];
+	NSMutableSet<NSString *> *mutableSet = [NSMutableSet setWithCapacity:correctTranslations.count];
 
 	CGFloat totalSuccessPercentage = 0.0f;
-	CGFloat unitySucessPercentage = 1.0f / self.response.word.translation.count;
+	CGFloat unitySucessPercentage = 1.0f / correctTranslations.count;
 
 	for (NSUInteger i = 0; i < arrayPercentages.count; i++) {
 		NSString *mostLikelyTranslation;
@@ -72,7 +80,7 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 		if ([self.delegate respondsToSelector:@selector(responseComparator:didCheckTranslation:correctWithWord:isTranslationCorrect:)]) {
 			[self.delegate responseComparator:self
 										didCheckTranslation:mostLikelyTranslation
-												correctWithWord:self.response.word.translation.allObjects[i]
+												correctWithWord:correctTranslations[i]
 									 isTranslationCorrect:highestPercentage >= kMinimumPercentageConsiderTrue];
 		}
 

@@ -43,8 +43,40 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 - (void)setWord:(MZWord *)word {
 	_word = word;
 
+	// (1) Update Center View
 	self.wordLabel.text = word.word;
 	self.flagImageView.image = [UIImage flagImageForLanguage:self.word.language.integerValue];
+
+	// (2) Update Status (Left)
+	if (word.learningIndex.integerValue == MZWordIndexLearned) {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearnedStatusColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearned", nil);
+	} else if (word.learningIndex.integerValue >= trunc(MZWordIndexLearned / 2.0f)) {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearningInProgressColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearningInProgressStatus", nil);
+	} else {
+		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionNotLearedColor];
+		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionNotLearnedStatus", nil);
+	}
+
+	// (3) Update Statistics (Right)
+	NSUInteger numberTranslations = [self.word numberTranslationsToLanguage:[MZLanguageManager sharedManager].toLanguage];
+	CGFloat percentageSuccess = [self.word percentageSuccessTranslationsToLanguage:[MZLanguageManager sharedManager].toLanguage];
+	NSString *numberOfTranslationsString, *percentageSuccessString;
+
+	if (numberTranslations == 0) {
+		numberOfTranslationsString = NSLocalizedString(@"WordDescriptionNeverTranslated", nil);
+		percentageSuccessString = [[NSString alloc] init];
+	} else if (numberTranslations == 1) {
+		numberOfTranslationsString = NSLocalizedString(@"WordDescriptionTranslatedOnce", nil);
+		percentageSuccessString = [NSString stringWithFormat:NSLocalizedString(@"WordDescriptionPercentageSuccess", nil), percentageSuccess];
+	} else {
+		numberOfTranslationsString = [NSString stringWithFormat:NSLocalizedString(@"WordDescriptionTranslatedTimes", nil), numberTranslations];
+		percentageSuccessString = [NSString stringWithFormat:NSLocalizedString(@"WordDescriptionPercentageSuccess", nil), percentageSuccess];
+	}
+
+	self.numberOfTranslationsLabel.text = numberOfTranslationsString;
+	self.percentageSuccessLabel.text = percentageSuccessString;
 }
 
 - (void)setHeaderType:(MZWordDescriptionHeaderType)headerType {
