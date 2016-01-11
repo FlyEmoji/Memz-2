@@ -45,4 +45,13 @@
 	return [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
 }
 
++ (NSString *)languageNameForLanguage:(MZLanguage)language {
+	switch (language) {
+		case MZLanguageEnglish:
+			return NSLocalizedString(@"LanguageNameEnglish", nil);
+		case MZLanguageFrench:
+			return NSLocalizedString(@"LanguageNameFrench", nil);
+	}
+}
+
 @end

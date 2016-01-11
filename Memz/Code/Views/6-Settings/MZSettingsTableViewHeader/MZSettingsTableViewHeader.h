@@ -7,7 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZLanguageManager.h"
+
+@protocol MZSettingsTableViewHeaderDelegate;
 
 @interface MZSettingsTableViewHeader : UITableViewHeaderFooterView
+
+@property (nonatomic, weak) id<MZSettingsTableViewHeaderDelegate> delegate;
+
+@property (nonatomic, assign) MZLanguage fromLanguage;
+@property (nonatomic, assign) MZLanguage toLanguage;
+
+@end
+
+@protocol MZSettingsTableViewHeaderDelegate <NSObject>
+
+@optional
+
+- (void)settingsTableViewHeaderDidRequestChangeFromLanguage:(MZSettingsTableViewHeader *)tableViewHeader;
+- (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader;
 
 @end

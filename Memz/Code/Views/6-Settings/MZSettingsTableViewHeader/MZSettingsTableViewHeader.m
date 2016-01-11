@@ -7,6 +7,8 @@
 //
 
 #import "MZSettingsTableViewHeader.h"
+#import "UIImage+MemzAdditions.h"
+#import "NSString+MemzAdditions.h"
 
 @interface MZSettingsTableViewHeader ()
 
@@ -18,5 +20,23 @@
 @end
 
 @implementation MZSettingsTableViewHeader
+
+#pragma mark - Custom Getters / Setters
+
+- (void)setFromLanguage:(MZLanguage)fromLanguage {
+	_fromLanguage = fromLanguage;
+
+	self.yourLanguageFlagImageView.image = [UIImage flagImageForLanguage:fromLanguage];
+	self.yourLanguageLabel.text = [NSString languageNameForLanguage:fromLanguage];
+}
+
+- (void)setToLanguage:(MZLanguage)toLanguage {
+	_toLanguage = toLanguage;
+
+	self.learnedLanguageFlagImageView.image = [UIImage flagImageForLanguage:toLanguage];
+	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:toLanguage];
+}
+
+// TODO: To implement calls to delegate
 
 @end

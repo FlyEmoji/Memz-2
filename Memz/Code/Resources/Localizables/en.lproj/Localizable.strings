@@ -44,3 +44,6 @@
 "QuizResponseTextFieldPlaceholder" = "Type Translation %ld Here";
 "QuizResponseIsAnswered" = "Is Answered";
 "QuizResponsePending" = "Pending!";
+
+"LanguageNameEnglish" = "English";
+"LanguageNameFrench" = "French";

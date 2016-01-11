@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZLanguageManager.h"
 
 @interface NSString (MemzAdditions)
 
 + (NSString *)urlEncodedStringFromString:(NSString *)original;
 + (NSString *)stringForDuration:(NSTimeInterval)duration;
++ (NSString *)languageNameForLanguage:(MZLanguage)language;
 
 @end
