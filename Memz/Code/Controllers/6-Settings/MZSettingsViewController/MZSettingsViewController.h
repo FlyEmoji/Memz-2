@@ -10,4 +10,7 @@
 
 @interface MZSettingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *settingsNameLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *settingsSwitch;
+
 @end
