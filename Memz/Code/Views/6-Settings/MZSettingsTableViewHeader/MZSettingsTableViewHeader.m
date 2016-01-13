@@ -12,8 +12,8 @@
 
 @interface MZSettingsTableViewHeader ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *yourLanguageFlagImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *learnedLanguageFlagImageView;
+@property (weak, nonatomic) IBOutlet UIButton *yourLanguageFlagButton;
+@property (weak, nonatomic) IBOutlet UIButton *learnedLanguageFlagButton;
 @property (weak, nonatomic) IBOutlet UILabel *yourLanguageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *learnedLanguageLabel;
 
@@ -26,17 +26,27 @@
 - (void)setFromLanguage:(MZLanguage)fromLanguage {
 	_fromLanguage = fromLanguage;
 
-	self.yourLanguageFlagImageView.image = [UIImage flagImageForLanguage:fromLanguage];
+	[self.yourLanguageFlagButton setImage:[UIImage flagImageForLanguage:fromLanguage] forState:UIControlStateNormal];
 	self.yourLanguageLabel.text = [NSString languageNameForLanguage:fromLanguage];
 }
 
 - (void)setToLanguage:(MZLanguage)toLanguage {
 	_toLanguage = toLanguage;
 
-	self.learnedLanguageFlagImageView.image = [UIImage flagImageForLanguage:toLanguage];
+	[self.learnedLanguageFlagButton setImage:[UIImage flagImageForLanguage:toLanguage] forState:UIControlStateNormal];
 	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:toLanguage];
 }
 
-// TODO: To implement calls to delegate
+- (IBAction)didTapYourLanguageFlagButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(settingsTableViewHeaderDidRequestChangeFromLanguage:)]) {
+		[self.delegate settingsTableViewHeaderDidRequestChangeFromLanguage:self];
+	}
+}
+
+- (IBAction)didTapLearnedLanguageButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(settingsTableViewHeaderDidRequestChangeToLanguage:)]) {
+		[self.delegate settingsTableViewHeaderDidRequestChangeToLanguage:self];
+	}
+}
 
 @end
