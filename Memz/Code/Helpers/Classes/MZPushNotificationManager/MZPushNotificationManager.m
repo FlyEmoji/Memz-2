@@ -10,6 +10,14 @@
 
 NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 
+NSString * const kSettingsIsActivatedKey = @"MZSettingsIsActivatedKey";
+NSString * const kSettingsStartHourKey = @"SettingsStartHourKey";
+NSString * const kSettingsEndHourHey = @"SettingsEndHourHey";
+
+const BOOL kDefaultIsActivated = YES;
+const NSUInteger kDefaultStartTimeHour = 8;
+const NSUInteger kDefaultEndTimeHour = 20;
+
 @implementation MZPushNotificationManager
 
 + (MZPushNotificationManager *)sharedManager {
@@ -64,11 +72,52 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz:
-
+			// TODO: To Implement
 			break;
 		default:
 			break;
 	}
+}
+
+#pragma mark - Settings Persistance
+
+- (BOOL)isActivated {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActivatedKey] == nil) {
+		self.activated = kDefaultIsActivated;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActivatedKey] integerValue];
+}
+
+- (void)setActivated:(BOOL)activated {
+	[[NSUserDefaults standardUserDefaults] setObject:@(activated) forKey:kSettingsIsActivatedKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSUInteger)startHour {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] == nil) {
+		self.startHour = kDefaultStartTimeHour;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] integerValue];
+}
+
+- (void)setStartHour:(NSUInteger)startHour {
+	[[NSUserDefaults standardUserDefaults] setObject:@(startHour) forKey:kSettingsStartHourKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSUInteger)endHour {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] == nil) {
+		self.endHour = kDefaultEndTimeHour;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] integerValue];
+}
+
+- (void)setEndHour:(NSUInteger)endHour {
+	[[NSUserDefaults standardUserDefaults] setObject:@(endHour) forKey:kSettingsEndHourHey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Private Methods

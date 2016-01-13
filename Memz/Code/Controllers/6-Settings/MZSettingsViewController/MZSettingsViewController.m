@@ -9,9 +9,30 @@
 #import "MZSettingsViewController.h"
 #import "MZSettingsTableViewHeader.h"
 #import "MZSettingsTitleTableViewCell.h"
+#import "MZQuizManager.h"
+#import "MZPushNotificationManager.h"
+
+typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
+	MZSettingsTableViewSectionTypeNotifications,
+	MZSettingsTableViewSectionTypeReverseQuiz
+};
+
+typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
+	MZSettingsTableViewRowTypeNotificationMain,
+	MZSettingsTableViewRowTypeNotificationNumber,
+	MZSettingsTableViewRowTypeNotificationHours,
+	MZSettingsTableViewRowTypeReverseQuiz
+};
 
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
 NSString * const kSettingsTitleTableViewCellIdentifier = @"MZSettingsTitleTableViewCellIdentifier";
+
+NSString * const kSectionKey = @"SectionKey";
+NSString * const kRowKey = @"RowKey";
+NSString * const kIsActiveKey = @"IsActiveKey";
+NSString * const kNotificationsNumber = @"NotificationsNumber";
+NSString * const kTimeStartKey = @"TimeStartKey";
+NSString * const kTimeEndKey = @"TimeEndKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
 
@@ -44,8 +65,21 @@ MZSettingsTableViewHeaderDelegate>
 	tableViewHeader.delegate = self;
 	self.tableView.tableHeaderView = tableViewHeader;
 
-	// (3) Setup Table View Data
-	// TODO: To implement
+	// (3.1) Setup Table View Data: Notifications
+	NSMutableArray *notificationsSettings = @[@{kRowKey: @(MZSettingsTableViewRowTypeNotificationMain),
+																							kIsActiveKey: @([MZPushNotificationManager sharedManager].isActivated)}].mutableCopy;
+
+	if ([MZPushNotificationManager sharedManager].isActivated) {
+		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationNumber),
+																			 kNotificationsNumber: @([MZQuizManager sharedManager].quizPerDay)}.mutableCopy];
+
+		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationHours),
+																			 kTimeStartKey: @([MZPushNotificationManager sharedManager].startHour),
+																			 kTimeEndKey: @([MZPushNotificationManager sharedManager].endHour)}.mutableCopy];
+	}
+
+	// (3.2) Setup Table View Data: Quiz
+	
 }
 
 #pragma mark - Table View DataSource & Delegate Methods

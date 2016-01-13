@@ -13,12 +13,13 @@ const NSUInteger kDayMinimumQuizNumber = 1;
 const NSUInteger kDayMaximumQuizNumber = 5;
 
 const NSUInteger kDefaultQuizPerDay = 3;
-const NSUInteger kDefaultStartTimeHour = 8;
-const NSUInteger kDefaultStopTimeHour = 20;
 
 @interface MZQuizManager ()
 
 @property (nonatomic, weak, readonly) NSArray<NSDate *> *quizTrigerDates;
+
+@property (nonatomic, assign, readonly) NSUInteger startTimeHour;
+@property (nonatomic, assign, readonly) NSUInteger stopTimeHour;
 
 @end
 
@@ -36,8 +37,6 @@ const NSUInteger kDefaultStopTimeHour = 20;
 - (instancetype)init {
 	if (self = [super init]) {
 		_quizPerDay = kDefaultQuizPerDay;
-		_startTimeHour = kDefaultStartTimeHour;
-		_stopTimeHour = kDefaultStopTimeHour;
 	}
 	return self;
 }
@@ -102,6 +101,14 @@ const NSUInteger kDefaultStopTimeHour = 20;
 	}
 
 	return mutableQuizTrigerDates;
+}
+
+- (NSUInteger)startTimeHour {
+	return [MZPushNotificationManager sharedManager].startHour;
+}
+
+- (NSUInteger)stopTimeHour {
+	return [MZPushNotificationManager sharedManager].endHour;
 }
 
 @end

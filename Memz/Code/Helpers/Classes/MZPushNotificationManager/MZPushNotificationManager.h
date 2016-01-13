@@ -19,6 +19,10 @@ extern NSString * const MZNotificationTypeKey;
 
 + (MZPushNotificationManager *)sharedManager;
 
+@property (nonatomic, assign, getter=isActivated) BOOL activated;		// Defaut is activated
+@property (nonatomic, assign) NSUInteger startHour;		// Defaut 8 (8am)
+@property (nonatomic, assign) NSUInteger endHour;		// Defaut 20 (8pm)
+
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat;
 - (void)cancelLocalNotifications:(MZLocalPushNotificationType)notificationType;
 - (void)cancelAllLocalNotifications;
