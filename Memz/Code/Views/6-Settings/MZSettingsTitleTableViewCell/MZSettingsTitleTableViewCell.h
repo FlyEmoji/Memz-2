@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MZSettingsTitleTableViewCellDelegate;
+
 @interface MZSettingsTitleTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *settingsNameLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *settingsSwitch;
+@property (nonatomic, weak) IBOutlet UILabel *settingsNameLabel;
+@property (nonatomic, weak) IBOutlet UISwitch *settingsSwitch;
+
+@property (nonatomic, strong) id<MZSettingsTitleTableViewCellDelegate> delegate;
+
+@end
+
+@protocol MZSettingsTitleTableViewCellDelegate <NSObject>
+
+- (void)settingsTitleTableViewCellDidSwitch:(MZSettingsTitleTableViewCell *)cell;
 
 @end

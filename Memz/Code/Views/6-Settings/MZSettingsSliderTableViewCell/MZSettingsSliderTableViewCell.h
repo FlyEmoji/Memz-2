@@ -14,7 +14,7 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
-@property (nonatomic, copy) id<MZSettingsSliderTableViewCellDelegate> delegate;
+@property (nonatomic, strong) id<MZSettingsSliderTableViewCellDelegate> delegate;
 
 @property (nonatomic, assign) NSUInteger startHour;	  // Between 0 and 24
 @property (nonatomic, assign) NSUInteger endHour;		// Between 0 and 24

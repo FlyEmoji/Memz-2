@@ -333,6 +333,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iM6-Kx-3bA">
                                                     <rect key="frame" x="536" y="13" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didSwitchValueChange:" destination="bwn-qp-QZF" eventType="valueChanged" id="hOp-j3-snT"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setting Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kB3-Jt-tde">
                                                     <rect key="frame" x="15" y="18" width="104" height="21"/>

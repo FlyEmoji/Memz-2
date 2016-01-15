@@ -14,12 +14,15 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
 
-@property (nonatomic, copy) id<MZSettingsStepperTableViewCellDelegate> delegate;
-@property (nonatomic, assign) NSUInteger currentValue;
+@property (nonatomic, strong) id<MZSettingsStepperTableViewCellDelegate> delegate;
+
+@property (nonatomic, assign) NSUInteger currentValue;	// Default 0
+@property (nonatomic, assign) NSUInteger maximumValue;	// Default 0
+@property (nonatomic, assign) NSUInteger minimumValue;	// Default 10
 
 @end
 
-@protocol MZStepperTableViewCellDelegate <NSObject>
+@protocol MZSettingsStepperTableViewCellDelegate <NSObject>
 
 @optional
 

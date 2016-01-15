@@ -10,4 +10,12 @@
 
 @implementation MZSettingsTitleTableViewCell
 
+#pragma mark - Actions
+
+- (IBAction)didSwitchValueChange:(UISwitch *)theSwitch {
+	if ([self.delegate respondsToSelector:@selector(settingsTitleTableViewCellDidSwitch:)]) {
+		[self.delegate settingsTitleTableViewCellDidSwitch:self];
+	}
+}
+
 @end

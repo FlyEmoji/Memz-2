@@ -47,7 +47,10 @@ const CGFloat kCellSliderHeight = 100.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
-MZSettingsTableViewHeaderDelegate>
+MZSettingsTableViewHeaderDelegate,
+MZSettingsTitleTableViewCellDelegate,
+MZSettingsStepperTableViewCellDelegate,
+MZSettingsSliderTableViewCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
@@ -60,10 +63,7 @@ MZSettingsTableViewHeaderDelegate>
 	[super viewDidLoad];
 
 	self.automaticallyAdjustsScrollViewInsets = NO;
-	[self setupTableView];
-}
 
-- (void)setupTableView {
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
 
@@ -75,7 +75,12 @@ MZSettingsTableViewHeaderDelegate>
 	tableViewHeader.delegate = self;
 	self.tableView.tableHeaderView = tableViewHeader;
 
-	// (3.1) Setup Table View Data: Notifications
+	// (3) Reload Data
+	[self.tableView reloadData];
+}
+
+- (NSMutableArray<NSMutableDictionary *> *)tableViewData {
+	// (1) Setup Table View Data: Notifications
 	NSMutableArray *notificationsSettings = @[@{kRowKey: @(MZSettingsTableViewRowTypeNotificationMain),
 																							kTitleKey: NSLocalizedString(@"SettingsNotificationsActivateTitle", nil),
 																							kIsActiveKey: @([MZPushNotificationManager sharedManager].isActivated)}.mutableCopy].mutableCopy;
@@ -91,18 +96,16 @@ MZSettingsTableViewHeaderDelegate>
 																			 kTimeEndKey: @([MZPushNotificationManager sharedManager].endHour)}.mutableCopy];
 	}
 
-	// (3.2) Setup Table View Data: Quiz
+	// (2) Setup Table View Data: Quiz
 	NSMutableArray *reverseQuiz = @[@{kRowKey: @(MZSettingsTableViewRowTypeReverseQuiz),
 																		kTitleKey: NSLocalizedString(@"SettingsQuizReverseTitle", nil),
 																		kIsActiveKey: @([MZQuizManager sharedManager].isReversed)}.mutableCopy].mutableCopy;
 
-	// (3.3) Unify Table View Data
-	self.tableViewData = @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
-													 kDataKey: notificationsSettings},
-												 @{kSectionKey: @(MZSettingsTableViewSectionTypeReverseQuiz),
-													 kDataKey: reverseQuiz}].mutableCopy;
-
-	[self.tableView reloadData];
+	// (3) Unify Table View Data and Return
+	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
+						 kDataKey: notificationsSettings},
+					 @{kSectionKey: @(MZSettingsTableViewSectionTypeReverseQuiz),
+						 kDataKey: reverseQuiz}].mutableCopy;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -142,6 +145,7 @@ MZSettingsTableViewHeaderDelegate>
 																																				 forIndexPath:indexPath];
 		cell.settingsNameLabel.text = title;
 		cell.settingsSwitch.on = isActive;
+		cell.delegate = self;
 		return cell;
 	};
 
@@ -150,6 +154,8 @@ MZSettingsTableViewHeaderDelegate>
 																																				 forIndexPath:indexPath];
 		cell.titleLabel.text = title;
 		cell.currentValue = value;
+		cell.delegate = self;
+		// TODO: Need to set Min and Max values
 		return cell;
 	};
 
@@ -159,6 +165,7 @@ MZSettingsTableViewHeaderDelegate>
 		cell.titleLabel.text = title;
 		cell.startHour = startValue;
 		cell.endHour = endValue;
+		cell.delegate = self;
 		return cell;
 	};
 
@@ -184,6 +191,54 @@ MZSettingsTableViewHeaderDelegate>
 
 - (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
 	// TODO: To implement
+}
+
+#pragma mark - Title Table View Cell Delegate Methods
+
+- (void)settingsTitleTableViewCellDidSwitch:(MZSettingsTitleTableViewCell *)cell {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+
+	MZSettingsTableViewRowType rowType = [self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue];
+	BOOL isOn = cell.settingsSwitch.on;
+
+	switch (rowType) {
+		case MZSettingsTableViewRowTypeNotificationMain: {
+			[MZPushNotificationManager sharedManager].activated = isOn;
+
+			NSArray<NSIndexPath *> *indexPathsToAnimate = @[[NSIndexPath indexPathForItem:MZSettingsTableViewRowTypeNotificationNumber
+																																					inSection:MZSettingsTableViewSectionTypeNotifications],
+																											[NSIndexPath indexPathForItem:MZSettingsTableViewRowTypeNotificationHours
+																																					inSection:MZSettingsTableViewSectionTypeNotifications]];
+
+			if (isOn) {
+				[self.tableView insertRowsAtIndexPaths:indexPathsToAnimate withRowAnimation:UITableViewRowAnimationFade];
+			} else {
+				[self.tableView deleteRowsAtIndexPaths:indexPathsToAnimate withRowAnimation:UITableViewRowAnimationFade];
+			}
+			break;
+		}
+		case MZSettingsTableViewRowTypeReverseQuiz:
+			[MZQuizManager sharedManager].reversed = isOn;
+			break;
+  default:
+			break;
+	}
+}
+
+#pragma mark - Stepper Table View Cell Delegate Methods
+
+- (void)settingsStepperTableViewCell:(MZSettingsStepperTableViewCell *)cell didUpdateValue:(NSUInteger)value {
+
+}
+
+#pragma mark - Slider Table View Cell Delegate Methods
+
+- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeStartHour:(NSUInteger)startHour {
+
+}
+
+- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeEndHour:(NSUInteger)endHour {
+
 }
 
 @end
