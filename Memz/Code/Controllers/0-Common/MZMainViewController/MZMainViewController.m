@@ -51,7 +51,7 @@ const NSUInteger kNumberPages = 3;
 	self.settingsButton = leftButton;
 
 	// Initialize managers
-	[[MZQuizManager sharedManager] startManager];
+	[[MZQuizManager sharedManager] scheduleQuizNotifications];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

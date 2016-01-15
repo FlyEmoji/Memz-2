@@ -16,7 +16,7 @@
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
-	MZSettingsTableViewSectionTypeReverseQuiz
+	MZSettingsTableViewSectionTypeQuiz
 };
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
@@ -83,17 +83,17 @@ MZSettingsSliderTableViewCellDelegate>
 	// (1) Setup Table View Data: Notifications
 	NSMutableArray *notificationsSettings = @[@{kRowKey: @(MZSettingsTableViewRowTypeNotificationMain),
 																							kTitleKey: NSLocalizedString(@"SettingsNotificationsActivateTitle", nil),
-																							kIsActiveKey: @([MZPushNotificationManager sharedManager].isActivated)}.mutableCopy].mutableCopy;
+																							kIsActiveKey: @([MZQuizManager sharedManager].isActive)}.mutableCopy].mutableCopy;
 
-	if ([MZPushNotificationManager sharedManager].isActivated) {
+	if ([MZQuizManager sharedManager].isActive) {
 		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationNumber),
 																			 kTitleKey: NSLocalizedString(@"SettingsNotificationsNumberTitle", nil),
 																			 kNotificationsNumber: @([MZQuizManager sharedManager].quizPerDay)}.mutableCopy];
 
 		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationHours),
 																			 kTitleKey: NSLocalizedString(@"SettingsNotificationsHoursTitle", nil),
-																			 kTimeStartKey: @([MZPushNotificationManager sharedManager].startHour),
-																			 kTimeEndKey: @([MZPushNotificationManager sharedManager].endHour)}.mutableCopy];
+																			 kTimeStartKey: @([MZQuizManager sharedManager].startHour),
+																			 kTimeEndKey: @([MZQuizManager sharedManager].endHour)}.mutableCopy];
 	}
 
 	// (2) Setup Table View Data: Quiz
@@ -104,7 +104,7 @@ MZSettingsSliderTableViewCellDelegate>
 	// (3) Unify Table View Data and Return
 	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
 						 kDataKey: notificationsSettings},
-					 @{kSectionKey: @(MZSettingsTableViewSectionTypeReverseQuiz),
+					 @{kSectionKey: @(MZSettingsTableViewSectionTypeQuiz),
 						 kDataKey: reverseQuiz}].mutableCopy;
 }
 
@@ -118,7 +118,7 @@ MZSettingsSliderTableViewCellDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationSectionTitle", nil);
-		case MZSettingsTableViewSectionTypeReverseQuiz:
+		case MZSettingsTableViewSectionTypeQuiz:
 			return NSLocalizedString(@"SettingsQuizSetionTitle", nil);
 	}
 	return nil;
@@ -174,7 +174,7 @@ MZSettingsSliderTableViewCellDelegate>
 	switch ([data[kRowKey] integerValue]) {
 		case MZSettingsTableViewRowTypeNotificationMain:
 		case MZSettingsTableViewRowTypeReverseQuiz:
-			return buildTitleCell(data[kTitleKey], data[kIsActiveKey]);
+			return buildTitleCell(data[kTitleKey], [data[kIsActiveKey] boolValue]);
 		case MZSettingsTableViewRowTypeNotificationNumber:
 			return buildStepperCell(data[kTitleKey], [data[kNotificationsNumber] integerValue]);
 		case MZSettingsTableViewRowTypeNotificationHours:
@@ -203,7 +203,7 @@ MZSettingsSliderTableViewCellDelegate>
 
 	switch (rowType) {
 		case MZSettingsTableViewRowTypeNotificationMain: {
-			[MZPushNotificationManager sharedManager].activated = isOn;
+			[MZQuizManager sharedManager].active = isOn;
 
 			NSArray<NSIndexPath *> *indexPathsToAnimate = @[[NSIndexPath indexPathForItem:MZSettingsTableViewRowTypeNotificationNumber
 																																					inSection:MZSettingsTableViewSectionTypeNotifications],
@@ -228,17 +228,17 @@ MZSettingsSliderTableViewCellDelegate>
 #pragma mark - Stepper Table View Cell Delegate Methods
 
 - (void)settingsStepperTableViewCell:(MZSettingsStepperTableViewCell *)cell didUpdateValue:(NSUInteger)value {
-
+	[MZQuizManager sharedManager].quizPerDay = value;
 }
 
 #pragma mark - Slider Table View Cell Delegate Methods
 
 - (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeStartHour:(NSUInteger)startHour {
-
+	[MZQuizManager sharedManager].startHour = startHour;
 }
 
 - (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeEndHour:(NSUInteger)endHour {
-
+	[MZQuizManager sharedManager].endHour = endHour;
 }
 
 @end
