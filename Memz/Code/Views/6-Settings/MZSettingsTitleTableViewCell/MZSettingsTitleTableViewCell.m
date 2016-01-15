@@ -10,6 +10,12 @@
 
 @implementation MZSettingsTitleTableViewCell
 
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
 #pragma mark - Actions
 
 - (IBAction)didSwitchValueChange:(UISwitch *)theSwitch {

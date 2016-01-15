@@ -40,6 +40,8 @@ NSString * const kIsActiveKey = @"IsActiveKey";
 NSString * const kNotificationsNumber = @"NotificationsNumber";
 NSString * const kTimeStartKey = @"TimeStartKey";
 NSString * const kTimeEndKey = @"TimeEndKey";
+NSString * const kMinimumValueKey = @"MinimumValueKey";
+NSString * const kMaximumValueKey = @"MaximumValueKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
 const CGFloat kCellRegularHeight = 60.0f;
@@ -88,12 +90,16 @@ MZSettingsSliderTableViewCellDelegate>
 	if ([MZQuizManager sharedManager].isActive) {
 		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationNumber),
 																			 kTitleKey: NSLocalizedString(@"SettingsNotificationsNumberTitle", nil),
-																			 kNotificationsNumber: @([MZQuizManager sharedManager].quizPerDay)}.mutableCopy];
+																			 kNotificationsNumber: @([MZQuizManager sharedManager].quizPerDay),
+																			 kMinimumValueKey: @(kDayMinimumQuizNumber),
+																			 kMaximumValueKey: @(kDayMaximumQuizNumber)}.mutableCopy];
 
 		[notificationsSettings addObject:@{kRowKey: @(MZSettingsTableViewRowTypeNotificationHours),
 																			 kTitleKey: NSLocalizedString(@"SettingsNotificationsHoursTitle", nil),
 																			 kTimeStartKey: @([MZQuizManager sharedManager].startHour),
-																			 kTimeEndKey: @([MZQuizManager sharedManager].endHour)}.mutableCopy];
+																			 kTimeEndKey: @([MZQuizManager sharedManager].endHour),
+																			 kMinimumValueKey: @(0),
+																			 kMaximumValueKey: @(24)}.mutableCopy];
 	}
 
 	// (2) Setup Table View Data: Quiz
@@ -149,22 +155,27 @@ MZSettingsSliderTableViewCellDelegate>
 		return cell;
 	};
 
-	MZSettingsStepperTableViewCell * (^ buildStepperCell)(NSString *, NSUInteger) = ^(NSString *title, NSUInteger value) {
+	MZSettingsStepperTableViewCell * (^ buildStepperCell)(NSString *, NSUInteger, NSUInteger, NSUInteger) =
+	^(NSString *title, NSUInteger value, NSUInteger minimumValue, NSUInteger maximumValue) {
 		MZSettingsStepperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsStepperTableViewCellIdentifier
 																																				 forIndexPath:indexPath];
 		cell.titleLabel.text = title;
+		cell.minimumValue = minimumValue;
+		cell.maximumValue = maximumValue;
 		cell.currentValue = value;
 		cell.delegate = self;
-		// TODO: Need to set Min and Max values
 		return cell;
 	};
 
-	MZSettingsSliderTableViewCell * (^ buildSliderCell)(NSString *, NSUInteger, NSUInteger) = ^(NSString *title, NSUInteger startValue, NSUInteger endValue) {
+	MZSettingsSliderTableViewCell * (^ buildSliderCell)(NSString *, NSUInteger, NSUInteger, NSUInteger, NSUInteger) =
+	^(NSString *title, NSUInteger startValue, NSUInteger endValue, NSUInteger minimumValue, NSUInteger maximumValue) {
 		MZSettingsSliderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsSliderTableViewCellIdentifier
 																																				 forIndexPath:indexPath];
 		cell.titleLabel.text = title;
-		cell.startHour = startValue;
-		cell.endHour = endValue;
+		cell.minimumValue = minimumValue;
+		cell.maximumValue = maximumValue;
+		cell.startValue = startValue;
+		cell.endValue = endValue;
 		cell.delegate = self;
 		return cell;
 	};
@@ -174,11 +185,21 @@ MZSettingsSliderTableViewCellDelegate>
 	switch ([data[kRowKey] integerValue]) {
 		case MZSettingsTableViewRowTypeNotificationMain:
 		case MZSettingsTableViewRowTypeReverseQuiz:
-			return buildTitleCell(data[kTitleKey], [data[kIsActiveKey] boolValue]);
+			return buildTitleCell(data[kTitleKey],
+														[data[kIsActiveKey] boolValue]);
+
 		case MZSettingsTableViewRowTypeNotificationNumber:
-			return buildStepperCell(data[kTitleKey], [data[kNotificationsNumber] integerValue]);
+			return buildStepperCell(data[kTitleKey],
+															[data[kNotificationsNumber] integerValue],
+															[data[kMinimumValueKey] integerValue],
+															[data[kMaximumValueKey] integerValue]);
+
 		case MZSettingsTableViewRowTypeNotificationHours:
-			return buildSliderCell(data[kTitleKey], [data[kTimeStartKey] integerValue], [data[kTimeEndKey] integerValue]);
+			return buildSliderCell(data[kTitleKey],
+														 [data[kTimeStartKey] integerValue],
+														 [data[kTimeEndKey] integerValue],
+														 [data[kMinimumValueKey] integerValue],
+														 [data[kMaximumValueKey] integerValue]);
 	}
 	return nil;
 }

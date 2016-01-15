@@ -8,9 +8,9 @@
 
 #import "MZSettingsStepperTableViewCell.h"
 
-const NSUInteger kDefaultValue = 0;
-const NSUInteger kDefaultMinimumValue = 0;
-const NSUInteger kDefaultMaximumValue = 10;
+const NSUInteger kStepperDefaultValue = 0;
+const NSUInteger kStepperDefaultMinimumValue = 0;
+const NSUInteger kStepperDefaultMaximumValue = 10;
 
 @interface MZSettingsStepperTableViewCell ()
 
@@ -24,9 +24,12 @@ const NSUInteger kDefaultMaximumValue = 10;
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
-	self.stepper.value = kDefaultValue;
-	self.stepper.minimumValue = kDefaultMinimumValue;
-	self.stepper.maximumValue = kDefaultMaximumValue;
+	self.stepper.value = kStepperDefaultValue;
+	self.stepper.minimumValue = kStepperDefaultMinimumValue;
+	self.stepper.maximumValue = kStepperDefaultMaximumValue;
+
+	// TODO: Might want to refactor in superclass Settings Table View Cell for common designs
+	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 #pragma mark - Custom Getters/Setters
@@ -39,19 +42,27 @@ const NSUInteger kDefaultMaximumValue = 10;
 }
 
 - (void)setMinimumValue:(NSUInteger)minimumValue {
-	_minimumValue = minimumValue;
+	self.stepper.minimumValue = minimumValue;
 
 	if (self.currentValue < minimumValue) {
 		self.currentValue = minimumValue;
 	}
 }
 
+- (NSUInteger)minimumValue {
+	return self.stepper.minimumValue;
+}
+
 - (void)setMaximumValue:(NSUInteger)maximumValue {
-	_maximumValue = maximumValue;
+	self.stepper.maximumValue = maximumValue;
 
 	if (self.currentValue > maximumValue) {
 		self.currentValue = maximumValue;
 	}
+}
+
+- (NSUInteger)maximumValue {
+	return self.stepper.maximumValue;
 }
 
 #pragma mark - Actions 

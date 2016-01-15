@@ -13,11 +13,15 @@
 @interface MZSettingsSliderTableViewCell : UITableViewCell
 
 @property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+// TODO: Add left and right labels to display actual values
 
 @property (nonatomic, strong) id<MZSettingsSliderTableViewCellDelegate> delegate;
 
-@property (nonatomic, assign) NSUInteger startHour;	  // Between 0 and 24
-@property (nonatomic, assign) NSUInteger endHour;		// Between 0 and 24
+@property (nonatomic, assign) NSUInteger startValue;	  // Default 0
+@property (nonatomic, assign) NSUInteger endValue;		// Default 24
+
+@property (nonatomic, assign) NSUInteger minimumValue;	// Default 0
+@property (nonatomic, assign) NSUInteger maximumValue;	// Default 24
 
 @end
 
