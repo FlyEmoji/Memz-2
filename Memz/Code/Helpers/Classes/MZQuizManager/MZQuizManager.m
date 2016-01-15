@@ -9,12 +9,18 @@
 #import "MZQuizManager.h"
 #import "MZPushNotificationManager.h"
 
-const NSUInteger kDayMinimumQuizNumber = 1;
-const NSUInteger kDayMaximumQuizNumber = 5;
-
 const NSUInteger kDefaultQuizPerDay = 3;
+
 const NSUInteger kDefaultStartTimeHour = 8;
-const NSUInteger kDefaultStopTimeHour = 20;
+const NSUInteger kDefaultEndTimeHour = 20;
+
+const BOOL kDefaultIsActive = YES;
+const BOOL kDefaultIsReversed = NO;
+
+NSString * const kSettingsIsActiveKey = @"SettingsIsActiveKey";
+NSString * const kSettingsStartHourKey = @"SettingsStartHourKey";
+NSString * const kSettingsEndHourHey = @"SettingsEndHourHey";
+NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 @interface MZQuizManager ()
 
@@ -36,23 +42,25 @@ const NSUInteger kDefaultStopTimeHour = 20;
 - (instancetype)init {
 	if (self = [super init]) {
 		_quizPerDay = kDefaultQuizPerDay;
-		_startTimeHour = kDefaultStartTimeHour;
-		_stopTimeHour = kDefaultStopTimeHour;
 	}
 	return self;
 }
 
 #pragma mark - Public Methods
 
-- (void)startManager {
-	_isActive = YES;
+- (void)scheduleQuizNotifications {
+	if (!self.isActive) {
+		return;
+	}
 
-	[self scheduleQuizNotifications];
+	[[MZPushNotificationManager sharedManager] cancelLocalNotifications:MZLocalPushNotificationTypeQuizz];
+
+	[self.quizTrigerDates enumerateObjectsUsingBlock:^(NSDate *trigerDate, NSUInteger idx, BOOL *stop) {
+		[[MZPushNotificationManager sharedManager] scheduleLocalNotifications:MZLocalPushNotificationTypeQuizz forDate:trigerDate repeat:YES];
+	}];
 }
 
-- (void)stopManager {
-	_isActive = NO;
-
+- (void)cancelQuizNotifications {
 	[[MZPushNotificationManager sharedManager] cancelLocalNotifications:MZLocalPushNotificationTypeQuizz];
 }
 
@@ -64,35 +72,27 @@ const NSUInteger kDefaultStopTimeHour = 20;
 	} else {
 		_quizPerDay = quizPerDay;
 	}
-}
 
-#pragma mark - Private Methods
-
-- (void)scheduleQuizNotifications {
-	[[MZPushNotificationManager sharedManager] cancelLocalNotifications:MZLocalPushNotificationTypeQuizz];
-
-	[self.quizTrigerDates enumerateObjectsUsingBlock:^(NSDate *trigerDate, NSUInteger idx, BOOL *stop) {
-		[[MZPushNotificationManager sharedManager] scheduleLocalNotifications:MZLocalPushNotificationTypeQuizz forDate:trigerDate repeat:YES];
-	}];
+	[self scheduleQuizNotifications];
 }
 
 #pragma mark - Calculated Properties
 
 - (NSArray<NSDate *> *)quizTrigerDates {
 	NSMutableArray<NSDate *> *mutableQuizTrigerDates = [NSMutableArray arrayWithCapacity:self.quizPerDay];
-	NSTimeInterval quizTimeInterval = (self.stopTimeHour - self.startTimeHour) * 60.0 * 60.0 / (self.quizPerDay - 1);
+	NSTimeInterval quizTimeInterval = (self.endHour - self.startHour) * 60.0 * 60.0 / (self.quizPerDay - 1);
 	NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
 
 	NSDate *baseDate = [NSDate date];
 	NSDateComponents *dateComponents = [calendar components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay)
 																								 fromDate:baseDate];
-	dateComponents.hour = self.startTimeHour;
+	dateComponents.hour = self.startHour;
 	dateComponents.minute = 0;
 	baseDate = [calendar dateFromComponents:dateComponents];
 
 	for (NSUInteger quizIndex = 0; quizIndex < self.quizPerDay; quizIndex++) {
 		NSTimeInterval additionSeconds = self.quizPerDay > 1 ? quizIndex * quizTimeInterval :
-				(self.stopTimeHour - self.startTimeHour) * 60.0 * 60.0 / 2.0;
+				(self.endHour - self.startHour) * 60.0 * 60.0 / 2.0;
 
 		NSDateComponents *additionalDayComponents = [[NSDateComponents alloc] init];
 		additionalDayComponents.second = additionSeconds;
@@ -102,6 +102,66 @@ const NSUInteger kDefaultStopTimeHour = 20;
 	}
 
 	return mutableQuizTrigerDates;
+}
+
+#pragma mark - Settings Persistance
+
+- (BOOL)isActive {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] == nil) {
+		self.startHour = kDefaultIsActive;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] integerValue];
+}
+
+- (void)setActive:(BOOL)active {
+	[[NSUserDefaults standardUserDefaults] setObject:@(active) forKey:kSettingsIsActiveKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+
+	if (active) {
+		[self scheduleQuizNotifications];
+	} else {
+		[self cancelQuizNotifications];
+	}
+}
+
+- (NSUInteger)startHour {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] == nil) {
+		self.startHour = kDefaultStartTimeHour;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] integerValue];
+}
+
+- (void)setStartHour:(NSUInteger)startHour {
+	[[NSUserDefaults standardUserDefaults] setObject:@(startHour) forKey:kSettingsStartHourKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSUInteger)endHour {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] == nil) {
+		self.endHour = kDefaultEndTimeHour;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] integerValue];
+}
+
+- (void)setEndHour:(NSUInteger)endHour {
+	[[NSUserDefaults standardUserDefaults] setObject:@(MIN(endHour, 24)) forKey:kSettingsEndHourHey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (BOOL)isReversed {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
+		self.reversed = kDefaultIsReversed;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] integerValue];
+}
+
+- (void)setReversed:(BOOL)reversed {
+	[[NSUserDefaults standardUserDefaults] setObject:@(reversed) forKey:kSettingsIsReversedKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

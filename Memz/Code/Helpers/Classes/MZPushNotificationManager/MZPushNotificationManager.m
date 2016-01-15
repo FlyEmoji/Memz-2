@@ -64,7 +64,7 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz:
-
+			// TODO: To Implement
 			break;
 		default:
 			break;

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MZSettingsTableViewHeader">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v35-DV-ihl" userLabel="Top Separator">
+                    <rect key="frame" x="233" y="0.0" width="0.0" height="13"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdD-Oy-cP6">
+                    <rect key="frame" x="194" y="13" width="78" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rya-Bn-oQr" userLabel="Title Separator">
+                    <rect key="frame" x="233" y="34" width="0.0" height="14"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-Yo-THa">
+                    <rect key="frame" x="0.0" y="48" width="234" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learned Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-aa-6fD">
+                    <rect key="frame" x="234" y="48" width="233" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOw-ad-0sO" userLabel="Flag Separator View">
+                    <rect key="frame" x="117" y="69" width="0.0" height="19"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="zZm-pc-cBV"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Ym-lGF" userLabel="Your Language Button">
+                    <rect key="frame" x="70" y="88" width="93" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="hWr-Ym-lGF" secondAttribute="height" multiplier="82:53" id="X4X-bz-yEF"/>
+                    </constraints>
+                    <state key="normal" image="Flag-France"/>
+                    <connections>
+                        <action selector="didTapYourLanguageFlagButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="h0f-95-fOe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcx-DI-yGh" userLabel="Learned Language Button">
+                    <rect key="frame" x="304" y="88" width="93" height="60"/>
+                    <state key="normal" image="Flag-United-Kingdom"/>
+                    <connections>
+                        <action selector="didTapLearnedLanguageButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="erx-Cs-2EZ"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-rc-2sX" userLabel="Language Title Separator">
+                    <rect key="frame" x="117" y="148" width="0.0" height="12"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36a-qh-z6J">
+                    <rect key="frame" x="90" y="160" width="53" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyN-HS-DRW">
+                    <rect key="frame" x="323" y="160" width="56" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLM-WT-ZzG" userLabel="Bottom Separator">
+                    <rect key="frame" x="117" y="181" width="0.0" height="19"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="TLM-WT-ZzG" secondAttribute="bottom" id="0xD-Z7-blN"/>
+                <constraint firstItem="6uM-aa-6fD" firstAttribute="top" secondItem="rya-Bn-oQr" secondAttribute="bottom" id="0zu-fA-uCe"/>
+                <constraint firstItem="36a-qh-z6J" firstAttribute="top" secondItem="ZyN-HS-DRW" secondAttribute="top" id="1yr-Jr-WtY"/>
+                <constraint firstItem="rya-Bn-oQr" firstAttribute="top" secondItem="VdD-Oy-cP6" secondAttribute="bottom" id="1zh-Bx-wGL"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="height" secondItem="Dcx-DI-yGh" secondAttribute="height" id="3nN-7q-uJb"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="width" secondItem="v35-DV-ihl" secondAttribute="width" id="4Mg-cg-aj6"/>
+                <constraint firstItem="ZyN-HS-DRW" firstAttribute="centerX" secondItem="6uM-aa-6fD" secondAttribute="centerX" id="4WF-Gy-t5T"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="width" secondItem="Dcx-DI-yGh" secondAttribute="width" id="8OM-Yb-Cyi"/>
+                <constraint firstItem="VdD-Oy-cP6" firstAttribute="top" secondItem="v35-DV-ihl" secondAttribute="bottom" id="Civ-3z-eog"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="top" secondItem="n5a-Yo-THa" secondAttribute="bottom" id="FXa-pa-hPO"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="width" secondItem="TLM-WT-ZzG" secondAttribute="width" id="Hfq-TZ-qu8"/>
+                <constraint firstItem="36a-qh-z6J" firstAttribute="top" secondItem="JbW-rc-2sX" secondAttribute="bottom" id="HpG-if-izK"/>
+                <constraint firstItem="v35-DV-ihl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="It2-uj-E8M"/>
+                <constraint firstItem="36a-qh-z6J" firstAttribute="centerX" secondItem="n5a-Yo-THa" secondAttribute="centerX" id="Krx-pm-vOa"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="top" secondItem="AOw-ad-0sO" secondAttribute="bottom" id="MbP-zK-Ab4"/>
+                <constraint firstItem="rya-Bn-oQr" firstAttribute="height" secondItem="v35-DV-ihl" secondAttribute="height" id="NFo-nl-UFe"/>
+                <constraint firstAttribute="trailing" secondItem="6uM-aa-6fD" secondAttribute="trailing" id="Oup-Eo-8g9"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="top" secondItem="Dcx-DI-yGh" secondAttribute="top" id="QBH-ki-jD7"/>
+                <constraint firstItem="n5a-Yo-THa" firstAttribute="width" secondItem="6uM-aa-6fD" secondAttribute="width" id="QMU-ax-zvL"/>
+                <constraint firstItem="v35-DV-ihl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QT5-ao-kIj"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:5" id="QxQ-Id-HWd"/>
+                <constraint firstItem="6uM-aa-6fD" firstAttribute="leading" secondItem="n5a-Yo-THa" secondAttribute="trailing" id="RTR-8m-bVx"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="JbW-rc-2sX" secondAttribute="centerX" id="SfC-r1-Cgh"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="width" secondItem="rya-Bn-oQr" secondAttribute="width" id="T4E-jv-hRT"/>
+                <constraint firstItem="rya-Bn-oQr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tje-K1-9if"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="TLM-WT-ZzG" secondAttribute="height" id="UnI-Nc-uLu"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="n5a-Yo-THa" secondAttribute="centerX" id="egM-on-8Gt"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="JbW-rc-2sX" secondAttribute="height" multiplier="1:0.6" id="ffg-S2-bOq"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="TLM-WT-ZzG" secondAttribute="centerX" id="gL6-o8-AP5"/>
+                <constraint firstItem="hWr-Ym-lGF" firstAttribute="centerX" secondItem="n5a-Yo-THa" secondAttribute="centerX" id="jGI-1f-x3M"/>
+                <constraint firstItem="JbW-rc-2sX" firstAttribute="top" secondItem="hWr-Ym-lGF" secondAttribute="bottom" id="kCD-U7-G0C"/>
+                <constraint firstItem="n5a-Yo-THa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oNy-KM-3we"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="width" secondItem="JbW-rc-2sX" secondAttribute="width" id="s3d-FD-w2L"/>
+                <constraint firstItem="n5a-Yo-THa" firstAttribute="top" secondItem="6uM-aa-6fD" secondAttribute="top" id="sar-Cx-ftq"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="v35-DV-ihl" secondAttribute="height" multiplier="1:0.7" id="uTU-hb-4G2"/>
+                <constraint firstItem="TLM-WT-ZzG" firstAttribute="top" secondItem="36a-qh-z6J" secondAttribute="bottom" id="vm5-E4-ISg"/>
+                <constraint firstItem="VdD-Oy-cP6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="x0Y-Tk-6EA"/>
+                <constraint firstItem="Dcx-DI-yGh" firstAttribute="centerX" secondItem="6uM-aa-6fD" secondAttribute="centerX" id="x7P-gU-tY8"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="learnedLanguageFlagButton" destination="Dcx-DI-yGh" id="AZ3-Rh-zOj"/>
+                <outlet property="learnedLanguageLabel" destination="ZyN-HS-DRW" id="xpB-ex-lg3"/>
+                <outlet property="yourLanguageFlagButton" destination="hWr-Ym-lGF" id="6bp-Ax-Ahb"/>
+                <outlet property="yourLanguageLabel" destination="36a-qh-z6J" id="joV-p0-Luy"/>
+            </connections>
+            <point key="canvasLocation" x="196.5" y="305"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Flag-France" width="48" height="36"/>
+        <image name="Flag-United-Kingdom" width="48" height="36"/>
+    </resources>
+</document>

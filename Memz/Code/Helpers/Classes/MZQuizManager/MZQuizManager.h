@@ -9,18 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "MZQuiz.h"
 
+const NSUInteger kDayMinimumQuizNumber = 1;
+const NSUInteger kDayMaximumQuizNumber = 5;
+
 @interface MZQuizManager : NSObject
 
 @property (nonatomic, assign) NSUInteger quizPerDay;	// Between 1 and 5, default 3
 
-@property (nonatomic, assign) NSUInteger startTimeHour;		// Default 8am
-@property (nonatomic, assign) NSUInteger stopTimeHour;	 // Default 8pm
+@property (nonatomic, assign) NSUInteger startHour;		// Defaut 8 (8am)
+@property (nonatomic, assign) NSUInteger endHour;		// Defaut 20 (8pm)
 
-@property (nonatomic, assign, readonly) BOOL isActive;
+@property (nonatomic, assign, getter=isActive) BOOL active;	 // Default YES
+@property (nonatomic, assign, getter=isReversed) BOOL reversed;	 // Will allow for translations both ways (randomly)
 
 + (MZQuizManager *)sharedManager;
 
-- (void)startManager;
-- (void)stopManager;
+- (void)scheduleQuizNotifications;
+- (void)cancelQuizNotifications;
 
 @end
