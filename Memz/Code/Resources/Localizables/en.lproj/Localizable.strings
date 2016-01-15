@@ -45,5 +45,12 @@
 "QuizResponseIsAnswered" = "Is Answered";
 "QuizResponsePending" = "Pending!";
 
+"SettingsNotificationSectionTitle" = "Notifications";
+"SettingsNotificationsActivateTitle" = "Ask Quizzes";
+"SettingsNotificationsNumberTitle" = "Daily Number of Quizzes";
+"SettingsNotificationsHoursTitle" = "Daily Quizzes Time Frame";
+"SettingsQuizSetionTitle" = "Quizzes";
+"SettingsQuizReverseTitle" = "Random Questions Reverse Languages";
+
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";

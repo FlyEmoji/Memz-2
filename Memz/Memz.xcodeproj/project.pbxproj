@@ -22,6 +22,8 @@
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
 		0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51801F1C31BA520072FEB0 /* Quiz.storyboard */; };
 		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
+		0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */; };
+		0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */; };
 		0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */; };
 		0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */; };
 		0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */; };
@@ -127,6 +129,10 @@
 		0C51801F1C31BA520072FEB0 /* Quiz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Quiz.storyboard; path = Code/Resources/Storyboards/Quiz.storyboard; sourceTree = SOURCE_ROOT; };
 		0C5180221C331A790072FEB0 /* MZCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZCountDown.h; path = Code/Helpers/Classes/MZCountDown/MZCountDown.h; sourceTree = SOURCE_ROOT; };
 		0C5180231C331A790072FEB0 /* MZCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCountDown.m; path = Code/Helpers/Classes/MZCountDown/MZCountDown.m; sourceTree = SOURCE_ROOT; };
+		0C57F5331C48848F0055532E /* MZSettingsSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsSliderTableViewCell.h; path = "Code/Views/6-Settings/MZSettingsSliderTableViewCell/MZSettingsSliderTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsSliderTableViewCell.m; path = "Code/Views/6-Settings/MZSettingsSliderTableViewCell/MZSettingsSliderTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C57F5371C488B200055532E /* MZSettingsStepperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsStepperTableViewCell.h; path = "Code/Views/6-Settings/MZStepperTableViewCell/MZSettingsStepperTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsStepperTableViewCell.m; path = "Code/Views/6-Settings/MZStepperTableViewCell/MZSettingsStepperTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C5FC1571C3A05A900FF83E7 /* MZResponseComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZResponseComparator.h; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.h; sourceTree = SOURCE_ROOT; };
 		0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparator.m; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m; sourceTree = SOURCE_ROOT; };
 		0C711C861C3179AF00E0BB43 /* MZMyQuizzesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesViewController.h; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -449,6 +455,24 @@
 				0C5180231C331A790072FEB0 /* MZCountDown.m */,
 			);
 			name = MZCountDown;
+			sourceTree = "<group>";
+		};
+		0C57F5321C4882530055532E /* MZSettingsSliderTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C57F5331C48848F0055532E /* MZSettingsSliderTableViewCell.h */,
+				0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */,
+			);
+			name = MZSettingsSliderTableViewCell;
+			sourceTree = "<group>";
+		};
+		0C57F5361C488AFD0055532E /* MZSettingsStepperTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C57F5371C488B200055532E /* MZSettingsStepperTableViewCell.h */,
+				0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */,
+			);
+			name = MZSettingsStepperTableViewCell;
 			sourceTree = "<group>";
 		};
 		0C5FC1561C3A057800FF83E7 /* MZResponseComparator */ = {
@@ -851,6 +875,8 @@
 			children = (
 				0CD881711C4351FE00F57279 /* MZSettingsTableViewHeader */,
 				0CD8816D1C43504400F57279 /* MZSettingsTitleTableViewCell */,
+				0C57F5361C488AFD0055532E /* MZSettingsStepperTableViewCell */,
+				0C57F5321C4882530055532E /* MZSettingsSliderTableViewCell */,
 			);
 			name = "6-Settings";
 			sourceTree = "<group>";
@@ -1284,6 +1310,7 @@
 				0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */,
 				0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */,
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
+				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
 				0CEFD1C11C3CB72100EB60DE /* UIImageView+MemzDownloadImage.m in Sources */,
 				0CD881741C43522300F57279 /* MZSettingsTableViewHeader.m in Sources */,
@@ -1293,6 +1320,7 @@
 				0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */,
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
+				0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */,
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
 				0CEFD1B21C3CB6FC00EB60DE /* NSObject+MemzAdditions.m in Sources */,

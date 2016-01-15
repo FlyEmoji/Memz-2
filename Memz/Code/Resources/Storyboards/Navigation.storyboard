@@ -354,6 +354,83 @@
                                             <outlet property="settingsSwitch" destination="iM6-Kx-3bA" id="43G-9s-Pke"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsStepperTableViewCellIdentifier" id="eXq-dM-0n1" customClass="MZSettingsStepperTableViewCell">
+                                        <rect key="frame" x="0.0" y="172" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXq-dM-0n1" id="zgG-CB-d64">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAb-ee-bkO">
+                                                    <rect key="frame" x="15" y="18" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="33a-PA-hxA">
+                                                    <rect key="frame" x="491" y="14" width="94" height="29"/>
+                                                    <connections>
+                                                        <action selector="didStepperValueChange:" destination="eXq-dM-0n1" eventType="valueChanged" id="gVl-ok-fxs"/>
+                                                    </connections>
+                                                </stepper>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htp-CP-NRo">
+                                                    <rect key="frame" x="469" y="18" width="9" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="33a-PA-hxA" firstAttribute="leading" secondItem="htp-CP-NRo" secondAttribute="trailing" constant="13" id="3Ot-lq-dSy"/>
+                                                <constraint firstItem="33a-PA-hxA" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="8m2-ka-6Kt"/>
+                                                <constraint firstItem="nAb-ee-bkO" firstAttribute="leading" secondItem="zgG-CB-d64" secondAttribute="leading" constant="15" id="CfU-pI-cDY"/>
+                                                <constraint firstAttribute="trailing" secondItem="33a-PA-hxA" secondAttribute="trailing" constant="15" id="PWa-3J-Wtt"/>
+                                                <constraint firstItem="htp-CP-NRo" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="d3O-QP-6a1"/>
+                                                <constraint firstItem="htp-CP-NRo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nAb-ee-bkO" secondAttribute="trailing" constant="15" id="pR9-2w-89y"/>
+                                                <constraint firstItem="nAb-ee-bkO" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="s3A-rd-zQk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="numberLabel" destination="htp-CP-NRo" id="ZBc-QS-p7G"/>
+                                            <outlet property="stepper" destination="33a-PA-hxA" id="SEE-gn-8xf"/>
+                                            <outlet property="titleLabel" destination="nAb-ee-bkO" id="6eh-Vp-ddb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsSliderTableViewCellIdentifier" rowHeight="106" id="YNa-Ni-Aws" customClass="MZSettingsSliderTableViewCell">
+                                        <rect key="frame" x="0.0" y="230" width="600" height="106"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNa-Ni-Aws" id="Guh-9O-KV4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slider Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8j-OO-WoN">
+                                                    <rect key="frame" x="15" y="17" width="93" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-Dy-v0C">
+                                                    <rect key="frame" x="24" y="58" width="552" height="31"/>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="YNa-Ni-Aws" eventType="valueChanged" id="4hM-Gj-zVX"/>
+                                                    </connections>
+                                                </slider>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zEa-Dy-v0C" firstAttribute="top" secondItem="c8j-OO-WoN" secondAttribute="bottom" constant="20" id="3Fb-qF-AeJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="zEa-Dy-v0C" secondAttribute="trailing" constant="26" id="7cJ-TB-7aY"/>
+                                                <constraint firstItem="c8j-OO-WoN" firstAttribute="top" secondItem="Guh-9O-KV4" secondAttribute="top" constant="17" id="7ol-BH-VZD"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c8j-OO-WoN" secondAttribute="trailing" constant="16" id="Ddm-fu-C6O"/>
+                                                <constraint firstItem="zEa-Dy-v0C" firstAttribute="leading" secondItem="Guh-9O-KV4" secondAttribute="leading" constant="26" id="I5q-cs-0vQ"/>
+                                                <constraint firstItem="zEa-Dy-v0C" firstAttribute="centerX" secondItem="Guh-9O-KV4" secondAttribute="centerX" id="bc2-fD-qPC"/>
+                                                <constraint firstItem="c8j-OO-WoN" firstAttribute="leading" secondItem="Guh-9O-KV4" secondAttribute="leading" constant="15" id="poG-kO-uE7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="slider" destination="zEa-Dy-v0C" id="Bd3-Sw-bOY"/>
+                                            <outlet property="titleLabel" destination="c8j-OO-WoN" id="Kdf-ms-VlS"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="vF7-DI-xAs" id="YK1-Pe-RPJ"/>

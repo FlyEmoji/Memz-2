@@ -14,6 +14,10 @@ const NSUInteger kDayMaximumQuizNumber = 5;
 
 const NSUInteger kDefaultQuizPerDay = 3;
 
+const BOOL kDefaultIsReversed = NO;
+
+NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
+
 @interface MZQuizManager ()
 
 @property (nonatomic, weak, readonly) NSArray<NSDate *> *quizTrigerDates;
@@ -109,6 +113,21 @@ const NSUInteger kDefaultQuizPerDay = 3;
 
 - (NSUInteger)stopTimeHour {
 	return [MZPushNotificationManager sharedManager].endHour;
+}
+
+#pragma mark - Settings Persistance
+
+- (BOOL)isReversed {
+	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
+		self.reversed = kDefaultIsReversed;
+	}
+
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] integerValue];
+}
+
+- (void)setReversed:(BOOL)reversed {
+	[[NSUserDefaults standardUserDefaults] setObject:@(reversed) forKey:kSettingsIsReversedKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSUInteger quizPerDay;	// Between 1 and 5, default 3
 
 @property (nonatomic, assign, readonly) BOOL isActive;
+@property (nonatomic, assign, getter=isReversed) BOOL reversed;	// Will allow for translations both ways (randomly)
 
 + (MZQuizManager *)sharedManager;
 
