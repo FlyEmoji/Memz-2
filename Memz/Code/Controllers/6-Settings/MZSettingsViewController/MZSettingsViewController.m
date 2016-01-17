@@ -11,8 +11,9 @@
 #import "MZSettingsTitleTableViewCell.h"
 #import "MZSettingsStepperTableViewCell.h"
 #import "MZSettingsSliderTableViewCell.h"
-#import "MZQuizManager.h"
 #import "MZPushNotificationManager.h"
+#import "MZQuizManager.h"
+#import "MZTableView.h"
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
@@ -52,11 +53,13 @@ UITableViewDelegate,
 MZSettingsTableViewHeaderDelegate,
 MZSettingsTitleTableViewCellDelegate,
 MZSettingsStepperTableViewCellDelegate,
-MZSettingsSliderTableViewCellDelegate>
+MZSettingsSliderTableViewCellDelegate,
+MZTableViewTransitionDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
+
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
-@property (weak, nonatomic) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
 
 @end
 
@@ -81,6 +84,7 @@ MZSettingsSliderTableViewCellDelegate>
 	self.tableViewHeader.delegate = self;
 
 	// (3) Reload Data
+	self.tableView.transitionDelegate = self;
 	[self.tableView reloadData];
 }
 
@@ -215,6 +219,16 @@ MZSettingsSliderTableViewCellDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 	}
 	return nil;
+}
+
+#pragma mark - Table View Transition Delegate Methods
+
+- (void)tableView:(MZTableView *)tableView didChangeScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.delegate respondsToSelector:@selector(baseViewController:didRequestDismissAnimatedTransitionWithDirection:)]
+			&& percentage >= 1.0f) {
+		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
+		[self.delegate baseViewController:self didRequestDismissAnimatedTransitionWithDirection:direction];
+	}
 }
 
 #pragma mark - Table View Header Delegate Methods

@@ -20,6 +20,15 @@ CGFloat const kPullTransformScaleValue = 0.96f;
 
 @implementation MZPullViewControllerTransition
 
+- (instancetype)initWithTransitionDirection:(MZPullViewControllerTransitionDirection)transitionDirection {
+	if (self = [self init]) {
+		_transitionDirection = transitionDirection;
+	}
+	return self;
+}
+
+#pragma mark - Transition Delegate Methods
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
 	return kPullAnimationDuration;
 }
@@ -61,10 +70,13 @@ CGFloat const kPullTransformScaleValue = 0.96f;
 	[destinationView.layer addAnimation:transformAnimation forKey:kPullTransformAnimationKey];
 
 	// (6) Animate source disappearance using Core Animation
+	NSNumber *toValue = self.transitionDirection == MZPullViewControllerTransitionDown ? @(destinationView.layer.position.y
+		+ sourceView.frame.size.height) : @(destinationView.layer.position.y - sourceView.frame.size.height);
+
 	CABasicAnimation *frameAnimation = [CABasicAnimation animation];
 	frameAnimation.keyPath = @"position.y";
 	frameAnimation.fromValue = @(destinationView.layer.position.y);
-	frameAnimation.toValue = @(destinationView.layer.position.y + sourceView.frame.size.height);
+	frameAnimation.toValue = toValue;
 	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 	frameAnimation.duration = kPullAnimationDuration;
 	[sourceView.layer addAnimation:frameAnimation forKey:kPullFrameAnimationKey];

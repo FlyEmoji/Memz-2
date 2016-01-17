@@ -20,6 +20,8 @@ typedef NS_ENUM(NSUInteger, MZPullViewControllerTransitionDirection) {
 @property (nonatomic, copy) id<MZPullViewControllerTransitionDelegate> delegate;
 @property (nonatomic, assign) MZPullViewControllerTransitionDirection transitionDirection;
 
+- (instancetype)initWithTransitionDirection:(MZPullViewControllerTransitionDirection)transitionDirection;
+
 @end
 
 @protocol MZPullViewControllerTransitionDelegate <NSObject>

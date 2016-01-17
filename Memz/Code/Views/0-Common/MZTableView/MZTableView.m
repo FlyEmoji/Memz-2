@@ -8,7 +8,7 @@
 
 #import "MZTableView.h"
 
-const CGFloat kTableViewOffsetTriggersDismiss = 50.0f;
+const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
 @interface MZTableView ()
 
@@ -82,18 +82,23 @@ const CGFloat kTableViewOffsetTriggersDismiss = 50.0f;
 - (void)setContentOffset:(CGPoint)contentOffset {
 	[super setContentOffset:contentOffset];
 
-	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didChangeScrollOutOfBoundsPercentage:)]) {
+	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didChangeScrollOutOfBoundsPercentage:goingUp:)]) {
 		return;
 	}
 
+	CGFloat bottomEdgeY = contentOffset.y + self.frame.size.height;
+
 	CGFloat percentage = 0.0f;
 	if (contentOffset.y < 0.0f) {
-		percentage = fabs(contentOffset.y) * kTableViewOffsetTriggersDismiss / 100.0f;
-	} else if (contentOffset.y > self.contentSize.height) {
-		percentage = (contentOffset.y - self.contentSize.height) * kTableViewOffsetTriggersDismiss / 100.0f;
+		percentage = fabs(contentOffset.y) / kTableViewOffsetTriggersDismiss;
+	} else if (bottomEdgeY >= self.contentSize.height) {
+		percentage = 1.0f - fabs(bottomEdgeY - self.contentSize.height) / kTableViewOffsetTriggersDismiss;
 	}
 
-	[self.transitionDelegate tableView:self didChangeScrollOutOfBoundsPercentage:percentage];
+	// TODO: Check this calculation for bottom.
+	// Percentage seems to be different, and the 1.0f - should not be necessary, nor should the fabs below be.
+
+	[self.transitionDelegate tableView:self didChangeScrollOutOfBoundsPercentage:fabs(percentage) goingUp:contentOffset.y > 0.0f];
 }
 
 #pragma mark - Helpers

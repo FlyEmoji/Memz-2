@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZBaseViewController.h"
 
-@interface MZSettingsViewController : UIViewController
+@interface MZSettingsViewController : MZBaseViewController
 
 @end
