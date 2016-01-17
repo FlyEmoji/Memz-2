@@ -36,11 +36,11 @@ MZCountDownDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
 
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewEnteredData;
 @property (nonatomic, weak, readonly) NSArray<NSString *> *userTranslations;
 
-@property (nonatomic, strong) MZWordDescriptionHeaderView *tableViewHeaderView;
 @property (nonatomic, assign, getter=isTranslating) BOOL translating;
 @property (nonatomic, strong) MZCountDown *countDown;
 
@@ -142,22 +142,11 @@ MZCountDownDelegate>
 	}
 
 	dispatch_async(dispatch_get_main_queue(), ^(void){
-		[self setupTableViewHeader];
+		self.tableViewHeader.word = self.response.word;
+		self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 		[self.tableView reloadData];
 		self.tableView.tableFooterView = [[UIView alloc] init];
 	});
-}
-
-- (void)setupTableViewHeader {
-	if (!self.tableView.tableHeaderView) {
-		self.tableViewHeaderView = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZWordDescriptionHeaderView class])
-																														 owner:self
-																													 options:nil][0];
-		self.tableViewHeaderView.headerType = MZWordDescriptionHeaderTypeReadonly;
-		self.tableView.tableHeaderView = self.tableViewHeaderView;
-	}
-	self.tableViewHeaderView.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
-	self.tableViewHeaderView.word = self.response.word;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -211,7 +200,7 @@ MZCountDownDelegate>
 #pragma mark - Count Down Delegate Methods
 
 - (void)countDownDidChange:(MZCountDown *)countDown remainingTime:(NSTimeInterval)remainingTime totalTime:(NSTimeInterval)totalTime {
-	self.tableViewHeaderView.countDownRemainingTime = remainingTime;
+	self.tableViewHeader.countDownRemainingTime = remainingTime;
 }
 
 - (void)countDownDidEnd:(MZCountDown *)countDown {
@@ -245,7 +234,7 @@ MZCountDownDelegate>
 	if (self.countDown.isRunning) {
 		[self.countDown invalidate];
 		self.countDown = nil;
-		self.tableViewHeaderView.countDownRemainingTime = 0.0;
+		self.tableViewHeader.countDownRemainingTime = 0.0;
 	}
 
 	UIColor *submitButtonColor = [self submitButtonColorForResult:[self.response checkTranslations:self.userTranslations delegate:self]];

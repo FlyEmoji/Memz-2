@@ -25,6 +25,7 @@ MZWordDescriptionHeaderViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<MZWord *> *tableViewData;
 
+@property (weak, nonatomic) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 
 @end
@@ -50,24 +51,13 @@ MZWordDescriptionHeaderViewDelegate>
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
-	[self setupTableViewHeader];
+	self.tableViewHeader.delegate = self;
+	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+	self.tableViewHeader.word = self.word;
 
 	self.tableViewData = self.word.translation.allObjects.mutableCopy;
 	[self.tableView reloadData];
-}
-
-- (void)setupTableViewHeader {
-	MZWordDescriptionHeaderView *tableViewHeader = [self.tableView.tableHeaderView safeCastToClass:[MZWordDescriptionHeaderView class]];
-	if (!tableViewHeader) {
-		tableViewHeader = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZWordDescriptionHeaderView class])
-																																							 owner:self
-																																						 options:nil][0];
-		tableViewHeader.delegate = self;
-		tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
-		self.tableView.tableHeaderView = tableViewHeader;
-	}
-	tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
-	tableViewHeader.word = self.word;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods

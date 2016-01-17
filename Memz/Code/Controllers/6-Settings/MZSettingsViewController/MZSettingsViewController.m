@@ -44,8 +44,8 @@ NSString * const kMinimumValueKey = @"MinimumValueKey";
 NSString * const kMaximumValueKey = @"MaximumValueKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
-const CGFloat kCellRegularHeight = 60.0f;
-const CGFloat kCellSliderHeight = 100.0f;
+const CGFloat kCellRegularHeight = 50.0f;
+const CGFloat kCellSliderHeight = 95.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -56,6 +56,7 @@ MZSettingsSliderTableViewCellDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
+@property (weak, nonatomic) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
 
 @end
 
@@ -70,12 +71,8 @@ MZSettingsSliderTableViewCellDelegate>
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
 
 	// (2) Setup Table View Header
-	MZSettingsTableViewHeader *tableViewHeader = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZSettingsTableViewHeader class])
-																																						 owner:self
-																																					 options:nil][0];
-	tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
-	tableViewHeader.delegate = self;
-	self.tableView.tableHeaderView = tableViewHeader;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
+	self.tableViewHeader.delegate = self;
 
 	// (3) Reload Data
 	[self.tableView reloadData];

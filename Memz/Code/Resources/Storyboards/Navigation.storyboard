@@ -323,9 +323,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="58" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="5u5-4G-Ao8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="IKM-GF-Fd0" customClass="MZSettingsTableViewHeader">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsTitleTableViewCellIdentifier" rowHeight="58" id="bwn-qp-QZF" customClass="MZSettingsTitleTableViewCell">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="170" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bwn-qp-QZF" id="RrJ-wm-97r">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -358,7 +363,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsStepperTableViewCellIdentifier" id="eXq-dM-0n1" customClass="MZSettingsStepperTableViewCell">
-                                        <rect key="frame" x="0.0" y="172" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="228" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXq-dM-0n1" id="zgG-CB-d64">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -399,11 +404,11 @@
                                             <outlet property="titleLabel" destination="nAb-ee-bkO" id="6eh-Vp-ddb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsSliderTableViewCellIdentifier" rowHeight="106" id="YNa-Ni-Aws" customClass="MZSettingsSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="230" width="600" height="106"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsSliderTableViewCellIdentifier" rowHeight="100" id="YNa-Ni-Aws" customClass="MZSettingsSliderTableViewCell">
+                                        <rect key="frame" x="0.0" y="286" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNa-Ni-Aws" id="Guh-9O-KV4">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="105"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slider Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8j-OO-WoN">
@@ -413,14 +418,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zEa-Dy-v0C">
-                                                    <rect key="frame" x="24" y="58" width="552" height="31"/>
+                                                    <rect key="frame" x="24" y="52" width="552" height="31"/>
                                                     <connections>
                                                         <action selector="sliderValueChanged:" destination="YNa-Ni-Aws" eventType="valueChanged" id="4hM-Gj-zVX"/>
                                                     </connections>
                                                 </slider>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zEa-Dy-v0C" firstAttribute="top" secondItem="c8j-OO-WoN" secondAttribute="bottom" constant="20" id="3Fb-qF-AeJ"/>
+                                                <constraint firstItem="zEa-Dy-v0C" firstAttribute="top" secondItem="c8j-OO-WoN" secondAttribute="bottom" constant="14" id="3Fb-qF-AeJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="zEa-Dy-v0C" secondAttribute="trailing" constant="26" id="7cJ-TB-7aY"/>
                                                 <constraint firstItem="c8j-OO-WoN" firstAttribute="top" secondItem="Guh-9O-KV4" secondAttribute="top" constant="17" id="7ol-BH-VZD"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c8j-OO-WoN" secondAttribute="trailing" constant="16" id="Ddm-fu-C6O"/>
@@ -452,6 +457,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
+                        <outlet property="tableViewHeader" destination="IKM-GF-Fd0" id="yO7-vW-Ge3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -754,9 +760,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0WD-Zb-A3Q">
                                 <rect key="frame" x="0.0" y="64" width="600" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="wCm-i6-bOq" customClass="MZWordDescriptionHeaderView">
+                                    <rect key="frame" x="0.0" y="64" width="600" height="51"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZWordDescriptionTableViewCellIdentifier" rowHeight="52" id="bTA-Pv-qgg" customClass="MZWordDescriptionTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="52"/>
+                                        <rect key="frame" x="0.0" y="143" width="600" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bTA-Pv-qgg" id="ISe-SY-tPO">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="51"/>
@@ -824,6 +835,7 @@
                     <connections>
                         <outlet property="bottomButton" destination="SYf-Fv-m1b" id="WF2-jy-PMc"/>
                         <outlet property="tableView" destination="0WD-Zb-A3Q" id="iza-Q8-xAU"/>
+                        <outlet property="tableViewHeader" destination="wCm-i6-bOq" id="mfm-RV-1x0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bb9-Md-pBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
