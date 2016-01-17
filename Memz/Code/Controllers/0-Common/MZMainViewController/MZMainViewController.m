@@ -12,6 +12,7 @@
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
+#import "MZPullViewControllerTransition.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -20,7 +21,7 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController ()
+@interface MZMainViewController () <UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) UIBarButtonItem * settingsButton;
 @property (nonatomic, weak) UIBarButtonItem * profileButton;
@@ -64,8 +65,12 @@ const NSUInteger kNumberPages = 3;
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
 	[sender setEnabled:NO];
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+	wordAdditionViewController.transitioningDelegate = self;
+	wordAdditionViewController.modalPresentationStyle = UIModalPresentationCustom;
 
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:wordAdditionViewController];
+	navigationController.transitioningDelegate = self;
+	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
@@ -74,6 +79,8 @@ const NSUInteger kNumberPages = 3;
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
 
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+	navigationController.transitioningDelegate = self;
+	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
@@ -118,6 +125,18 @@ const NSUInteger kNumberPages = 3;
 
 - (UIViewController *)pageViewControllerWithIdentifier:(NSString *)identifier {
 	return [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:identifier];
+}
+
+#pragma mark - Custom Presentation Animation
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+																																	presentingController:(UIViewController *)presenting
+																																			sourceController:(UIViewController *)source {
+	return [MZPullViewControllerTransition new];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+	return [MZPullViewControllerTransition new];
 }
 
 @end

@@ -24,6 +24,7 @@
 		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
 		0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */; };
 		0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */; };
+		0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */; };
 		0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */; };
 		0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */; };
 		0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */; };
@@ -133,6 +134,8 @@
 		0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsSliderTableViewCell.m; path = "Code/Views/6-Settings/MZSettingsSliderTableViewCell/MZSettingsSliderTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C57F5371C488B200055532E /* MZSettingsStepperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsStepperTableViewCell.h; path = "Code/Views/6-Settings/MZStepperTableViewCell/MZSettingsStepperTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsStepperTableViewCell.m; path = "Code/Views/6-Settings/MZStepperTableViewCell/MZSettingsStepperTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C57F57F1C4B26A60055532E /* MZPullViewControllerTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPullViewControllerTransition.h; path = Code/Helpers/Classes/MZPullViewControllerTransition/MZPullViewControllerTransition.h; sourceTree = SOURCE_ROOT; };
+		0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPullViewControllerTransition.m; path = Code/Helpers/Classes/MZPullViewControllerTransition/MZPullViewControllerTransition.m; sourceTree = SOURCE_ROOT; };
 		0C5FC1571C3A05A900FF83E7 /* MZResponseComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZResponseComparator.h; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.h; sourceTree = SOURCE_ROOT; };
 		0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparator.m; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m; sourceTree = SOURCE_ROOT; };
 		0C711C861C3179AF00E0BB43 /* MZMyQuizzesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesViewController.h; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -475,6 +478,15 @@
 			name = MZSettingsStepperTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C57F57E1C4B264B0055532E /* MZPullViewControllerTransition */ = {
+			isa = PBXGroup;
+			children = (
+				0C57F57F1C4B26A60055532E /* MZPullViewControllerTransition.h */,
+				0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */,
+			);
+			name = MZPullViewControllerTransition;
+			sourceTree = "<group>";
+		};
 		0C5FC1561C3A057800FF83E7 /* MZResponseComparator */ = {
 			isa = PBXGroup;
 			children = (
@@ -685,6 +697,7 @@
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
+				0C57F57E1C4B264B0055532E /* MZPullViewControllerTransition */,
 				0C5180211C331A4F0072FEB0 /* MZCountDown */,
 				0CBF7ABB1C217B6A00F5D91B /* MZNibView */,
 				0CA58C051C206B7A000E19D4 /* MZInjector */,
@@ -1275,6 +1288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */,
+				0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
 				0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */,
 				0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */,
