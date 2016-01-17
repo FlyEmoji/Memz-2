@@ -11,6 +11,7 @@
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
+		0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */; };
 		0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726D61C25485500C9879F /* MZLanguageManager.m */; };
 		0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E41C255A7800C9879F /* MZMyDictionaryViewController.m */; };
 		0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E91C255C4300C9879F /* MZMyDictionaryTableViewCell.m */; };
@@ -111,6 +112,8 @@
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
 		0C13AC1E1C247196007A1AD5 /* MZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDataManager.m; path = Code/Model/MZDataManager/MZDataManager.m; sourceTree = SOURCE_ROOT; };
 		0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memz.xcdatamodel; sourceTree = "<group>"; };
+		0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableView.h; path = "Code/Views/0-Common/MZTableView/MZTableView.h"; sourceTree = SOURCE_ROOT; };
+		0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableView.m; path = "Code/Views/0-Common/MZTableView/MZTableView.m"; sourceTree = SOURCE_ROOT; };
 		0C3726D51C25485500C9879F /* MZLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageManager.h; path = Code/Helpers/Classes/MZLanguageManager/MZLanguageManager.h; sourceTree = SOURCE_ROOT; };
 		0C3726D61C25485500C9879F /* MZLanguageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLanguageManager.m; path = Code/Helpers/Classes/MZLanguageManager/MZLanguageManager.m; sourceTree = SOURCE_ROOT; };
 		0C3726E31C255A7800C9879F /* MZMyDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyDictionaryViewController.h; path = "Code/Controllers/4-My Dictionary/MZMyDictionaryViewController/MZMyDictionaryViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -363,6 +366,15 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		0C2DC8721C4BE596005B11F5 /* MZTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */,
+				0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */,
+			);
+			name = MZTableView;
+			sourceTree = "<group>";
+		};
 		0C3726D41C25483000C9879F /* MZLanguageManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +577,7 @@
 		0CA04A251C3325C40078C8EE /* 0-Common */ = {
 			isa = PBXGroup;
 			children = (
+				0C2DC8721C4BE596005B11F5 /* MZTableView */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
 			);
 			name = "0-Common";
@@ -1331,6 +1344,7 @@
 				0CEFD1C81C3CB73A00EB60DE /* UIView+MemzAdditions.m in Sources */,
 				0CD8816B1C433C2900F57279 /* MZSettingsViewController.m in Sources */,
 				0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */,
+				0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */,
 				0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */,
 				0CEFD1B81C3CB70700EB60DE /* NSString+MemzAdditions.m in Sources */,
 				0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */,

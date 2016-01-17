@@ -46,7 +46,6 @@ NSString * const kMaximumValueKey = @"MaximumValueKey";
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
 const CGFloat kCellRegularHeight = 50.0f;
 const CGFloat kCellSliderHeight = 95.0f;
-const CGFloat kTableViewOffsetTriggersDismiss = 40.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -216,12 +215,6 @@ MZSettingsSliderTableViewCellDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 	}
 	return nil;
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-	if (scrollView.contentOffset.y < -kTableViewOffsetTriggersDismiss) {
-		[self.navigationController dismissViewControllerAnimated:YES completion:nil];
-	}
 }
 
 #pragma mark - Table View Header Delegate Methods
