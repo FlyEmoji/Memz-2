@@ -7,6 +7,7 @@
 //
 
 #import "MZPullViewControllerTransition.h"
+#import "UIImage+MemzAdditions.h"
 
 NSTimeInterval const kAnimationDuration = 0.8f;
 CGFloat const kTransformScaleValue = 0.95f;
@@ -24,14 +25,20 @@ CGFloat const kTransformScaleValue = 0.95f;
 	UIView *sourceView = sourceViewController.view;
 	UIView *destinationView = destinationViewController.view;
 
-	destinationView.frame = CGRectMake(0.0f, sourceView.frame.size.height, destinationView.frame.size.width, destinationView.frame.size.height);
-	[[sourceView superview] addSubview:destinationView];
+	UIImageView *snapshotSourceImageView = [[UIImageView alloc] initWithImage:[UIImage snapshotFromView:sourceView]];
+	[sourceView addSubview:snapshotSourceImageView];
+
+	[[sourceView superview] insertSubview:destinationView belowSubview:sourceView];
 
 	[UIView animateWithDuration:kAnimationDuration animations:^{
-		destinationView.frame = CGRectMake(0.0f, 0.0f, destinationView.frame.size.width, destinationView.frame.size.height);
-		sourceView.transform = CGAffineTransformMakeScale(kTransformScaleValue, kTransformScaleValue);
+		sourceView.frame = CGRectMake(0.0f, destinationView.frame.size.height, sourceView.frame.size.width, sourceView.frame.size.height);
+		destinationView.transform = CGAffineTransformIdentity;
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:finished];
+
+		if ([self.delegate respondsToSelector:@selector(pullViewControllerTransitionDidFinish:)]) {
+			[self.delegate pullViewControllerTransitionDidFinish:self];
+		}
 	}];
 }
 

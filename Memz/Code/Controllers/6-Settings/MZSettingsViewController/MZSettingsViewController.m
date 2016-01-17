@@ -46,6 +46,7 @@ NSString * const kMaximumValueKey = @"MaximumValueKey";
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
 const CGFloat kCellRegularHeight = 50.0f;
 const CGFloat kCellSliderHeight = 95.0f;
+const CGFloat kTableViewOffsetTriggersDismiss = 40.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -65,7 +66,13 @@ MZSettingsSliderTableViewCellDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.automaticallyAdjustsScrollViewInsets = NO;
+	self.navigationController.navigationBarHidden = YES;
+	self.modalPresentationCapturesStatusBarAppearance = YES;
+
+	//self.extendedLayoutIncludesOpaqueBars = YES;
+	self.edgesForExtendedLayout = UIRectEdgeNone;
+
+	[self setNeedsStatusBarAppearanceUpdate];
 
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
@@ -109,6 +116,16 @@ MZSettingsSliderTableViewCellDelegate>
 						 kDataKey: notificationsSettings},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeQuiz),
 						 kDataKey: reverseQuiz}].mutableCopy;
+}
+
+#pragma mark - Statius Bar Handling
+
+- (BOOL)prefersStatusBarHidden {
+	return YES;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+	return UIStatusBarAnimationFade;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -199,6 +216,12 @@ MZSettingsSliderTableViewCellDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 	}
 	return nil;
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if (scrollView.contentOffset.y < -kTableViewOffsetTriggersDismiss) {
+		[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 #pragma mark - Table View Header Delegate Methods

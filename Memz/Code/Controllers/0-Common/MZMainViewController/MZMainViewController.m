@@ -56,15 +56,7 @@ const NSUInteger kNumberPages = 3;
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-
-	self.settingsButton.enabled = YES;
-	self.profileButton.enabled = YES;
-}
-
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
-	[sender setEnabled:NO];
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
 	wordAdditionViewController.transitioningDelegate = self;
 	wordAdditionViewController.modalPresentationStyle = UIModalPresentationCustom;
@@ -76,7 +68,6 @@ const NSUInteger kNumberPages = 3;
 }
 
 - (void)gotoSettingsView:(id)sender {
-	[sender setEnabled:NO];
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
 
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
