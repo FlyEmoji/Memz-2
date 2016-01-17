@@ -8,31 +8,68 @@
 
 #import "MZPresentViewControllerTransition.h"
 
-NSTimeInterval const kAnimationDuration = 0.8f;
-CGFloat const kTransformScaleValue = 0.97f;
+typedef void (^MZAnimationCompletionBlock)(void);
+
+NSString * const kPresentFrameAnimationKey = @"PresentFrameAnimationKey";
+NSString * const kPresentTransformAnimationKey = @"PresentTransformAnimationKey";
+NSString * const kPresentAnimationCompletionBlockKey = @"PresentAnimationCompletionBlockKey";
+
+NSTimeInterval const kPresentAnimationDuration = 0.3f;
+CGFloat const kPresentTransformScaleValue = 0.96f;
 
 @implementation MZPresentViewControllerTransition
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-	return kAnimationDuration;
+	return kPresentAnimationDuration;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
+	// (1) Get source & destination view controllers and views
 	UIViewController *sourceViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
 	UIViewController *destinationViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
 	UIView *sourceView = sourceViewController.view;
 	UIView *destinationView = destinationViewController.view;
 
-	destinationView.frame = CGRectMake(0.0f, sourceView.frame.size.height, destinationView.frame.size.width, destinationView.frame.size.height);
+	// (2) Insert and prepare views to their final state before animation
+	destinationView.frame = CGRectMake(0.0f, 0.0f, destinationView.frame.size.width, destinationView.frame.size.height);
+	sourceView.transform = CGAffineTransformMakeScale(kPresentTransformScaleValue, kPresentTransformScaleValue);
 	[[sourceView superview] addSubview:destinationView];
 
-	[UIView animateWithDuration:kAnimationDuration animations:^{
-		destinationView.frame = CGRectMake(0.0f, 0.0f, destinationView.frame.size.width, destinationView.frame.size.height);
-		sourceView.transform = CGAffineTransformMakeScale(kTransformScaleValue, kTransformScaleValue);
-	} completion:^(BOOL finished) {
-		[transitionContext completeTransition:finished];
-	}];
+	// (3) Prepare completion block
+	MZAnimationCompletionBlock completionBlock = ^(void) {
+		[transitionContext completeTransition:YES];
+	};
+
+	// (4) Destination view appearance using Core Animation
+	CABasicAnimation *frameAnimation = [CABasicAnimation animation];
+	frameAnimation.keyPath = @"position.y";
+	frameAnimation.fromValue = @(destinationView.layer.position.y + sourceView.frame.size.height);
+	frameAnimation.toValue = @(destinationView.layer.position.y);
+	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	frameAnimation.duration = kPresentAnimationDuration;
+	[destinationView.layer addAnimation:frameAnimation forKey:kPresentFrameAnimationKey];
+
+	// (5) Animate source transform using Core Animation
+	CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+	transformAnimation.fromValue = [NSValue valueWithCGAffineTransform:CGAffineTransformIdentity];
+	transformAnimation.toValue = [NSValue valueWithCGAffineTransform:CGAffineTransformMakeScale(kPresentTransformScaleValue,
+																																															kPresentTransformScaleValue)];
+	transformAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+	transformAnimation.duration = kPresentAnimationDuration;
+	transformAnimation.delegate = self;
+	[transformAnimation setValue:completionBlock forKey:kPresentAnimationCompletionBlockKey];
+	[sourceView.layer addAnimation:transformAnimation forKey:kPresentTransformAnimationKey];
+}
+
+#pragma mark - Core Animation Delegate Methods
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+	// (6) Complete transition when animations done
+	MZAnimationCompletionBlock completionBlock = [anim valueForKey:kPresentAnimationCompletionBlockKey];
+	if (completionBlock) {
+		completionBlock();
+	}
 }
 
 @end
