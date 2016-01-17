@@ -12,6 +12,7 @@
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
+#import "MZPresentViewControllerTransition.h"
 #import "MZPullViewControllerTransition.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
@@ -132,7 +133,7 @@ const NSUInteger kNumberPages = 3;
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
 																																	presentingController:(UIViewController *)presenting
 																																			sourceController:(UIViewController *)source {
-	return [MZPullViewControllerTransition new];
+	return [MZPresentViewControllerTransition new];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {

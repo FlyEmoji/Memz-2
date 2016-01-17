@@ -1,17 +1,17 @@
 //
-//  MZPullViewControllerTransition.m
+//  MZPresentViewControllerTransition.m
 //  Memz
 //
 //  Created by Bastien Falcou on 1/16/16.
 //  Copyright © 2016 Falcou. All rights reserved.
 //
 
-#import "MZPullViewControllerTransition.h"
+#import "MZPresentViewControllerTransition.h"
 
 NSTimeInterval const kAnimationDuration = 0.8f;
-CGFloat const kTransformScaleValue = 0.95f;
+CGFloat const kTransformScaleValue = 0.97f;
 
-@implementation MZPullViewControllerTransition
+@implementation MZPresentViewControllerTransition
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
 	return kAnimationDuration;
