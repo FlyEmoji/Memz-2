@@ -27,6 +27,9 @@
 
 @optional
 
-- (void)baseViewController:(MZBaseViewController *)viewController didRequestDismissAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction;
+- (void)baseViewControllerDidStartDismissalAnimatedTransition:(MZBaseViewController *)viewController;
+- (void)baseViewController:(MZBaseViewController *)viewController didUpdateDismissalAnimatedTransition:(CGFloat)percent;
+- (void)baseViewController:(MZBaseViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction;
+- (void)baseViewControllerDidCancelDismissalAnimatedTransition:(MZBaseViewController *)viewController;
 
 @end

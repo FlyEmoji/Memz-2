@@ -225,11 +225,29 @@ UIScrollViewDelegate>
 
 #pragma mark - Table View Transition Delegate Methods
 
+- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
+	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidStartDismissalAnimatedTransition:)]) {
+		[self.delegate baseViewControllerDidStartDismissalAnimatedTransition:self];
+	}
+}
+
+- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.delegate respondsToSelector:@selector(baseViewController:didUpdateDismissalAnimatedTransition:)]
+			&& percentage >= 0.0f && percentage < 1.0f) {
+		[self.delegate baseViewController:self didUpdateDismissalAnimatedTransition:percentage];
+	}
+}
+
 - (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.delegate respondsToSelector:@selector(baseViewController:didRequestDismissAnimatedTransitionWithDirection:)]
+	if ([self.delegate respondsToSelector:@selector(baseViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
 			&& percentage >= 1.0f) {
 		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
-		[self.delegate baseViewController:self didRequestDismissAnimatedTransitionWithDirection:direction];
+		[self.delegate baseViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
+	}
+	
+	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidCancelDismissalAnimatedTransition:)]
+			&& percentage < 1.0f) {
+		[self.delegate baseViewControllerDidCancelDismissalAnimatedTransition:self];
 	}
 }
 

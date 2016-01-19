@@ -15,7 +15,8 @@ typedef NS_ENUM(NSUInteger, MZPullViewControllerTransitionDirection) {
 
 @protocol MZPullViewControllerTransitionDelegate;
 
-@interface MZPullViewControllerTransition : NSObject <UIViewControllerAnimatedTransitioning>
+@interface MZPullViewControllerTransition : UIPercentDrivenInteractiveTransition <UIViewControllerAnimatedTransitioning,
+UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, copy) id<MZPullViewControllerTransitionDelegate> delegate;
 @property (nonatomic, assign) MZPullViewControllerTransitionDirection transitionDirection;

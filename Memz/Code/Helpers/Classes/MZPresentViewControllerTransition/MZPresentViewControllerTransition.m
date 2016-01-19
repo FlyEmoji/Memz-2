@@ -35,12 +35,12 @@ CGFloat const kPresentTransformScaleValue = 0.96f;
 	// (2) Insert and prepare views to their final state before animation
 	destinationView.frame = CGRectMake(0.0f, 0.0f, destinationView.frame.size.width, destinationView.frame.size.height);
 	sourceView.transform = CGAffineTransformMakeScale(kPresentTransformScaleValue, kPresentTransformScaleValue);
-	[[sourceView superview] addSubview:destinationView];
+	[sourceView.superview addSubview:destinationView];
 
 	// (3) Prepare fade view over source view controller
 	UIView *fadeView = [[UIView alloc] initWithFrame:destinationView.frame];
 	fadeView.backgroundColor = [UIColor blackColor];
-	[sourceView addSubview:fadeView];
+	[sourceView.superview insertSubview:fadeView belowSubview:destinationView];
 
 	// (4) Prepare completion block
 	MZAnimationCompletionBlock completionBlock = ^(void) {

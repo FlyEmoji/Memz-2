@@ -23,13 +23,14 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController () <UIViewControllerTransitioningDelegate,
+@interface MZMainViewController () <UIViewControllerAnimatedTransitioning,
+UIViewControllerTransitioningDelegate,
 MZBaseViewControllerDelegate>
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;
 
-@property (nonatomic, assign) MZPullViewControllerTransitionDirection currentDismissAnimationTransitionDirection;
+@property (nonatomic, strong) MZPullViewControllerTransition *iterativeDismissalTransition;
 
 @end
 
@@ -124,12 +125,24 @@ MZBaseViewControllerDelegate>
 
 #pragma mark - Base View Controller Delegate Methods
 
-- (void)baseViewController:(MZBaseViewController *)viewController didRequestDismissAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
-	self.currentDismissAnimationTransitionDirection = direction;
+- (void)baseViewControllerDidStartDismissalAnimatedTransition:(MZBaseViewController *)viewController {
 	[viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Custom Presentation Animation
+- (void)baseViewController:(MZBaseViewController *)viewController didUpdateDismissalAnimatedTransition:(CGFloat)percent {
+	[self.iterativeDismissalTransition updateInteractiveTransition:percent];
+}
+
+- (void)baseViewController:(MZBaseViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
+	self.iterativeDismissalTransition.transitionDirection = direction;
+	[self.iterativeDismissalTransition finishInteractiveTransition];
+}
+
+- (void)baseViewControllerDidCancelDismissalAnimatedTransition:(MZBaseViewController *)viewController {
+	[self.iterativeDismissalTransition cancelInteractiveTransition];
+}
+
+#pragma mark - Custom Presentation/Dismissal Transition Animations
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
 																																	presentingController:(UIViewController *)presenting
@@ -138,7 +151,13 @@ MZBaseViewControllerDelegate>
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-	return [[MZPullViewControllerTransition alloc] initWithTransitionDirection:self.currentDismissAnimationTransitionDirection];
+	return self.iterativeDismissalTransition = [[MZPullViewControllerTransition alloc] init];
+}
+
+#pragma mark - Custom Dismissal Interactive Transition Animation Delegate Method
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+	return self.iterativeDismissalTransition;
 }
 
 @end

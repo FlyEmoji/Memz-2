@@ -20,8 +20,10 @@ IB_DESIGNABLE
 
 @interface MZTableView : UITableView
 
-@property (nonatomic, strong) id<MZTableViewTransitionDelegate> transitionDelegate;
 @property (nonatomic, strong) IBInspectable UIColor *progressiveBackgroundColor;	// Default transparent
+
+@property (nonatomic, strong) id<MZTableViewTransitionDelegate> transitionDelegate;
+@property (nonatomic, assign, readonly) CGFloat percentageOutOfBounds;
 
 @end
 
@@ -29,6 +31,8 @@ IB_DESIGNABLE
 
 @optional
 
+- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView;
+- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp;
 - (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp;
 
 @end

@@ -10,7 +10,7 @@
 #import "MZTableView.h"
 #import "MZProtocolInterceptor.h"
 
-const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
+const CGFloat kTableViewOffsetTriggersDismiss = 100.0f;
 
 /* Progressive Background View is not the only advantage this subclass provides. Indeed, it also allows to
  * intercept scroll view delegate methods and perform custom operations before being forwarded to the actual
@@ -22,6 +22,9 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
 @property (nonatomic, strong) UIView *progressiveBackgroundView;
 @property (nonatomic, strong) MZProtocolInterceptor *protocolInterceptor;
+
+@property (nonatomic, assign) BOOL didStartScrollingOutOfBounds;
+@property (nonatomic, assign, readonly) BOOL isScrollingOutOfBoundsUp;
 
 @end
 
@@ -109,16 +112,9 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 	return self.protocolInterceptor.receiver;
 }
 
-#pragma mark - Intercepted Delegate Methods
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-	// (1) This is an intercepted scroll event, start to check if transitionDelegate set
-	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didEndScrollOutOfBoundsPercentage:goingUp:)]) {
-		return;
-	}
-
-	// (2) Calculation of scroll out of bounds arbitrary percentage
+- (CGFloat)percentageOutOfBounds {
 	CGFloat percentage = 0.0f;
+
 	if (self.contentOffset.y < 0.0f) {
 		percentage = fabs(self.contentOffset.y) / kTableViewOffsetTriggersDismiss;
 	} else if (self.frame.size.height + self.contentOffset.y >= self.contentSize.height) {
@@ -128,11 +124,59 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 		percentage = distanceFromBottom / kTableViewOffsetTriggersDismiss;
 	}
 
+	return percentage;
+}
+
+- (BOOL)isScrollingOutOfBoundsUp {
+	return self.contentOffset.y > 0.0f;
+}
+
+#pragma mark - Intercepted Delegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	// (1) Calculation of scroll out of bounds arbitrary percentage
+	CGFloat percentage = self.percentageOutOfBounds;
+
+	// (2) Notifiy transition delegate for start if needed
+	if (percentage > 0.0f && !self.didStartScrollingOutOfBounds) {
+		self.didStartScrollingOutOfBounds = YES;
+		if ([self.transitionDelegate respondsToSelector:@selector(tableViewDidStartScrollOutOfBounds:)]) {
+			[self.transitionDelegate tableViewDidStartScrollOutOfBounds:self];
+		}
+	}
+
+	// (3) Notifiy transition delegate for scroll update if needed
+	if (percentage > 0.0f && self.didStartScrollingOutOfBounds) {
+		if ([self.transitionDelegate respondsToSelector:@selector(tableView:didScrollOutOfBoundsPercentage:goingUp:)]) {
+			[self.transitionDelegate tableView:self didScrollOutOfBoundsPercentage:percentage goingUp:self.isScrollingOutOfBoundsUp];
+		}
+	}
+
+	// (4) Update internal states if needed
+	if (percentage <= 0.0f) {
+		self.didStartScrollingOutOfBounds = NO;
+	}
+
+	// (5) Forward intercepted scroll event to potential actual delegate
+	if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+		[self.delegate scrollViewDidScroll:scrollView];
+	}
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	// (1) This is an intercepted scroll event, start to check if transitionDelegate set
+	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didEndScrollOutOfBoundsPercentage:goingUp:)]) {
+		return;
+	}
+
+	// (2) Calculation of scroll out of bounds arbitrary percentage
+	CGFloat percentage = self.percentageOutOfBounds;
+
 	// (3) Notifiy transition delegate
-	[self.transitionDelegate tableView:self didEndScrollOutOfBoundsPercentage:fabs(percentage) goingUp:self.contentOffset.y > 0.0f];
+	[self.transitionDelegate tableView:self didEndScrollOutOfBoundsPercentage:fabs(percentage) goingUp:self.isScrollingOutOfBoundsUp];
 
 	// (4) Forward intercepted scroll event to potential actual delegate
-	if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+	if ([self.delegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
 		[self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
 	}
 }
