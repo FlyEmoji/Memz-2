@@ -54,7 +54,8 @@ MZSettingsTableViewHeaderDelegate,
 MZSettingsTitleTableViewCellDelegate,
 MZSettingsStepperTableViewCellDelegate,
 MZSettingsSliderTableViewCellDelegate,
-MZTableViewTransitionDelegate>
+MZTableViewTransitionDelegate,
+UIScrollViewDelegate>
 
 @property (nonatomic, weak) IBOutlet MZTableView *tableView;
 @property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
@@ -85,6 +86,7 @@ MZTableViewTransitionDelegate>
 
 	// (3) Reload Data
 	self.tableView.transitionDelegate = self;
+	self.tableView.delegate = self;
 	[self.tableView reloadData];
 }
 
@@ -223,7 +225,7 @@ MZTableViewTransitionDelegate>
 
 #pragma mark - Table View Transition Delegate Methods
 
-- (void)tableView:(MZTableView *)tableView didChangeScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
 	if ([self.delegate respondsToSelector:@selector(baseViewController:didRequestDismissAnimatedTransitionWithDirection:)]
 			&& percentage >= 1.0f) {
 		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;

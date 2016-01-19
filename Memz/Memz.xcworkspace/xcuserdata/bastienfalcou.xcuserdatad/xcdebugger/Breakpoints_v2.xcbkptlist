@@ -68,12 +68,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Controllers/6-Settings/MZSettingsViewController/MZSettingsViewController.m"
-            timestampString = "474747118.705868"
+            timestampString = "474865439.786631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-prefersStatusBarHidden"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-numberOfSectionsInTableView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -84,12 +84,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Controllers/6-Settings/MZSettingsViewController/MZSettingsViewController.m"
-            timestampString = "474747118.705868"
+            timestampString = "474865439.786631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-preferredStatusBarUpdateAnimation"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-tableView:titleForHeaderInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Controllers/6-Settings/MZSettingsViewController/MZSettingsViewController.m"
+            timestampString = "474865770.946784"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "-tableViewData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

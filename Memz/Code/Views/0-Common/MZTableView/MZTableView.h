@@ -29,6 +29,6 @@ IB_DESIGNABLE
 
 @optional
 
-- (void)tableView:(MZTableView *)tableView didChangeScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp;
+- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp;
 
 @end

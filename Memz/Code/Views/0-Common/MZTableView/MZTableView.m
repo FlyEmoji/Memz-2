@@ -6,17 +6,28 @@
 //  Copyright © 2016 Falcou. All rights reserved.
 //
 
+#import <objc/runtime.h>
 #import "MZTableView.h"
+#import "MZProtocolInterceptor.h"
 
 const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
-@interface MZTableView ()
+/* Progressive Background View is not the only advantage this subclass provides. Indeed, it also allows to
+ * intercept scroll view delegate methods and perform custom operations before being forwarded to the actual
+ * delegate. This behavior is handled at runtime, perfectly encapsulated (hidden to the outside world), and
+ * finally (and very importantly) safely implemented.
+ */
+
+@interface MZTableView () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIView *progressiveBackgroundView;
+@property (nonatomic, strong) MZProtocolInterceptor *protocolInterceptor;
 
 @end
 
 @implementation MZTableView
+
+#pragma mark - Initializers 
 
 - (instancetype)init {
 	if (self = [super init]) {
@@ -55,12 +66,22 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 	// (2) Configure default color
 	self.progressiveBackgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.0f];
 	self.progressiveBackgroundView.backgroundColor = self.progressiveBackgroundColor;
+
+	// (3) Configure protocol interceptor to handle scroll events and forward them
+	self.protocolInterceptor = [[MZProtocolInterceptor alloc] initWithInterceptedProtocol:objc_getProtocol("UIScrollViewDelegate")];
+	self.protocolInterceptor.middleMan = self;
 }
+
+#pragma mrak - Other Overriden Methods
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
 	[self updateProgressiveBackgroundViewFrame];
+}
+
+- (void)dealloc {
+	self.protocolInterceptor = nil;
 }
 
 #pragma mark - Custom Getters/Setters
@@ -79,24 +100,41 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 	[self updateProgressiveBackgroundViewFrame];
 }
 
-- (void)setContentOffset:(CGPoint)contentOffset {
-	[super setContentOffset:contentOffset];
+- (void)setDelegate:(id<UITableViewDelegate>)delegate {
+	self.protocolInterceptor.receiver = delegate;
+	[super setDelegate:(id)self.protocolInterceptor];
+}
 
-	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didChangeScrollOutOfBoundsPercentage:goingUp:)]) {
+- (id<UITableViewDelegate>)delegate {
+	return self.protocolInterceptor.receiver;
+}
+
+#pragma mark - Intercepted Delegate Methods
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	// (1) This is an intercepted scroll event, start to check if transitionDelegate set
+	if (![self.transitionDelegate respondsToSelector:@selector(tableView:didEndScrollOutOfBoundsPercentage:goingUp:)]) {
 		return;
 	}
 
+	// (2) Calculation of scroll out of bounds arbitrary percentage
 	CGFloat percentage = 0.0f;
-	if (contentOffset.y < 0.0f) {
-		percentage = fabs(contentOffset.y) / kTableViewOffsetTriggersDismiss;
-	} else if (self.frame.size.height + contentOffset.y >= self.contentSize.height) {
+	if (self.contentOffset.y < 0.0f) {
+		percentage = fabs(self.contentOffset.y) / kTableViewOffsetTriggersDismiss;
+	} else if (self.frame.size.height + self.contentOffset.y >= self.contentSize.height) {
 		// If actual content size height smaller than frame, consider frame instead (progressive background height)
 		CGFloat actualContentSize = fmaxf(self.contentSize.height, self.frame.size.height);
-		CGFloat distanceFromBottom = self.frame.size.height + contentOffset.y - actualContentSize;
+		CGFloat distanceFromBottom = self.frame.size.height + self.contentOffset.y - actualContentSize;
 		percentage = distanceFromBottom / kTableViewOffsetTriggersDismiss;
 	}
 
-	[self.transitionDelegate tableView:self didChangeScrollOutOfBoundsPercentage:fabs(percentage) goingUp:contentOffset.y > 0.0f];
+	// (3) Notifiy transition delegate
+	[self.transitionDelegate tableView:self didEndScrollOutOfBoundsPercentage:fabs(percentage) goingUp:self.contentOffset.y > 0.0f];
+
+	// (4) Forward intercepted scroll event to potential actual delegate
+	if ([self.delegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+		[self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+	}
 }
 
 #pragma mark - Helpers
