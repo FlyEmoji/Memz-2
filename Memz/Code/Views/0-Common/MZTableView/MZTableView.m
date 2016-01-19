@@ -86,17 +86,15 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 		return;
 	}
 
-	CGFloat bottomEdgeY = contentOffset.y + self.frame.size.height;
-
 	CGFloat percentage = 0.0f;
 	if (contentOffset.y < 0.0f) {
 		percentage = fabs(contentOffset.y) / kTableViewOffsetTriggersDismiss;
-	} else if (bottomEdgeY >= self.contentSize.height) {
-		percentage = 1.0f - fabs(bottomEdgeY - self.contentSize.height) / kTableViewOffsetTriggersDismiss;
+	} else if (self.frame.size.height + contentOffset.y >= self.contentSize.height) {
+		// If actual content size height smaller than frame, consider frame instead (progressive background height)
+		CGFloat actualContentSize = fmaxf(self.contentSize.height, self.frame.size.height);
+		CGFloat distanceFromBottom = self.frame.size.height + contentOffset.y - actualContentSize;
+		percentage = distanceFromBottom / kTableViewOffsetTriggersDismiss;
 	}
-
-	// TODO: Check this calculation for bottom.
-	// Percentage seems to be different, and the 1.0f - should not be necessary, nor should the fabs below be.
 
 	[self.transitionDelegate tableView:self didChangeScrollOutOfBoundsPercentage:fabs(percentage) goingUp:contentOffset.y > 0.0f];
 }
