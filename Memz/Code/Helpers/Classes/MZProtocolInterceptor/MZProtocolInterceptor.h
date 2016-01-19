@@ -13,6 +13,8 @@
  * callbacks. This class allows to keep our delegate, listen to messages sent along it, and forward messages outward 
  * after running some custom code.
  * This file implements an intermediate proxy class that avoids overriding all of the delegate methods manually.
+ * Based on implementation provided below.
+ * http://stackoverflow.com/questions/3498158/intercept-objective-c-delegate-messages-within-a-subclass
  */
 
 @interface MZProtocolInterceptor : NSObject

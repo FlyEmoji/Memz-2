@@ -73,8 +73,7 @@ CGFloat const kPullTransformScaleValue = 0.96f;
 	NSNumber *toValue = self.transitionDirection == MZPullViewControllerTransitionDown ? @(destinationView.layer.position.y
 		+ sourceView.frame.size.height) : @(destinationView.layer.position.y - sourceView.frame.size.height);
 
-	CABasicAnimation *frameAnimation = [CABasicAnimation animation];
-	frameAnimation.keyPath = @"position.y";
+	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
 	frameAnimation.fromValue = @(destinationView.layer.position.y);
 	frameAnimation.toValue = toValue;
 	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
