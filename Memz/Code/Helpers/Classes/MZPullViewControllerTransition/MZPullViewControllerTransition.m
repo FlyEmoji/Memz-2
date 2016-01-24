@@ -120,17 +120,22 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 }
 
 - (void)finishInteractiveTransition {
-	// (5) Insert and prepare views to their final state before animation
+	// (5) Send transition confirmation
+	if ([self.delegate respondsToSelector:@selector(pullViewControllerTransitionDidConfirm:)]) {
+		[self.delegate pullViewControllerTransitionDidConfirm:self];
+	}
+
+	// (6) Insert and prepare views to their final state before animation
 	self.sourceView.frame = CGRectMake(0.0f, self.destinationView.frame.size.height, self.sourceView.frame.size.width, self.sourceView.frame.size.height);
 	self.destinationView.transform = CGAffineTransformIdentity;
 
-	// (6) Freeze source view setting and using snapshot instead
+	// (7) Freeze source view setting and using snapshot instead
 	UIImageView *snapshotSourceImageView = [[UIImageView alloc] initWithImage:[UIImage snapshotFromView:self.sourceView]];
 	snapshotSourceImageView.frame = self.sourceView.frame;
 	[self.sourceView.superview insertSubview:snapshotSourceImageView belowSubview:self.sourceView];
 	[self.sourceView removeFromSuperview];
 
-	// (7) Prepare completion block
+	// (8) Prepare completion block
 	MZAnimationCompletionBlock completionBlock = ^(void) {
 		[self.fadeView removeFromSuperview];
 		[snapshotSourceImageView removeFromSuperview];
@@ -140,7 +145,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 		}
 	};
 
-	// (8) Destination view appearance using Core Animation
+	// (9) Destination view appearance using Core Animation
 	CABasicAnimation *transformAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
 	transformAnimation.fromValue = [NSValue valueWithCGAffineTransform:CGAffineTransformMakeScale(kPullTransformScaleValue,
 																																																kPullTransformScaleValue)];
@@ -151,7 +156,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	[transformAnimation setValue:completionBlock forKey:kPullAnimationCompletionBlockKey];
 	[self.destinationView.layer addAnimation:transformAnimation forKey:kPullTransformAnimationKey];
 
-	// (9) Animate source disappearance using Core Animation
+	// (10) Animate source disappearance using Core Animation
 	NSNumber *toValue = self.transitionDirection == MZPullViewControllerTransitionDown ? @(self.destinationView.layer.position.y
 		+ snapshotSourceImageView.frame.size.height) : @(self.destinationView.layer.position.y - snapshotSourceImageView.frame.size.height);
 
@@ -162,7 +167,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	frameAnimation.duration = kPullAnimationDuration;
 	[snapshotSourceImageView.layer addAnimation:frameAnimation forKey:kPullFrameAnimationKey];
 
-	// (10) Animate fade view over source view controller
+	// (11) Animate fade view over source view controller
 	CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
 	alphaAnimation.fromValue = @(self.fadeView.layer.opacity);
 	alphaAnimation.toValue = @0.0f;
@@ -205,7 +210,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 #pragma mark - Core Animation Delegate Methods
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-	// (11) Complete transition when animations done
+	// (12) Complete transition when animations done
 	MZAnimationCompletionBlock completionBlock = [anim valueForKey:kPullAnimationCompletionBlockKey];
 	if (completionBlock) {
 		completionBlock();

@@ -6,6 +6,7 @@
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
+#import "MZNavigationController.h"
 #import "MZMainViewController.h"
 #import "MZBaseViewController.h"
 #import "MZFeedViewController.h"
@@ -64,7 +65,7 @@ MZBaseViewControllerDelegate>
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
 
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:wordAdditionViewController];
+	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
 	navigationController.transitioningDelegate = self;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
@@ -74,7 +75,7 @@ MZBaseViewControllerDelegate>
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
 	settingsViewController.delegate = self;
 
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
 	navigationController.transitioningDelegate = self;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
@@ -125,6 +126,11 @@ MZBaseViewControllerDelegate>
 
 #pragma mark - Base View Controller Delegate Methods
 
+- (void)baseViewControllerDidStartPresenting:(MZBaseViewController *)viewController {
+	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
+	[navigationController showStatusBar:NO];
+}
+
 - (void)baseViewControllerDidStartDismissalAnimatedTransition:(MZBaseViewController *)viewController {
 	[viewController dismissViewControllerAnimated:YES completion:nil];
 }
@@ -134,6 +140,9 @@ MZBaseViewControllerDelegate>
 }
 
 - (void)baseViewController:(MZBaseViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
+	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
+	[navigationController showStatusBar:YES];
+
 	self.iterativeDismissalTransition.transitionDirection = direction;
 	[self.iterativeDismissalTransition finishInteractiveTransition];
 }

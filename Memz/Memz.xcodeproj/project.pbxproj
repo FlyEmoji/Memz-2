@@ -72,6 +72,7 @@
 		0CDB82EE1C30A0BD00EADB05 /* MZWord+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82E41C30A0BD00EADB05 /* MZWord+CoreDataProperties.m */; };
 		0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */; };
 		0CDB82F81C30ABB300EADB05 /* MZPushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82F71C30ABB300EADB05 /* MZPushNotificationManager.m */; };
+		0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFD9EB1C5462EC007EBCA6 /* MZNavigationController.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -231,6 +232,8 @@
 		0CDB82F31C30A5E200EADB05 /* MZQuizManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManager.m; path = Code/Helpers/Classes/MZQuizManager/MZQuizManager.m; sourceTree = SOURCE_ROOT; };
 		0CDB82F61C30ABB300EADB05 /* MZPushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPushNotificationManager.h; path = Code/Helpers/Classes/MZPushNotificationManager/MZPushNotificationManager.h; sourceTree = SOURCE_ROOT; };
 		0CDB82F71C30ABB300EADB05 /* MZPushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPushNotificationManager.m; path = Code/Helpers/Classes/MZPushNotificationManager/MZPushNotificationManager.m; sourceTree = SOURCE_ROOT; };
+		0CDFD9EA1C5462EC007EBCA6 /* MZNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZNavigationController.h; path = "Code/Controllers/0-Common/MZNavigationController/MZNavigationController.h"; sourceTree = SOURCE_ROOT; };
+		0CDFD9EB1C5462EC007EBCA6 /* MZNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNavigationController.m; path = "Code/Controllers/0-Common/MZNavigationController/MZNavigationController.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -792,6 +795,7 @@
 		0CA58BFD1C205936000E19D4 /* 0-Common */ = {
 			isa = PBXGroup;
 			children = (
+				0CDFD9E91C5462BE007EBCA6 /* MZNavigationController */,
 				0CA58C1A1C209BFD000E19D4 /* MZMainViewController */,
 				0C2DC8761C4C0436005B11F5 /* MZBaseViewController */,
 			);
@@ -1018,6 +1022,15 @@
 				0CDB82F71C30ABB300EADB05 /* MZPushNotificationManager.m */,
 			);
 			name = MZPushNotificationManager;
+			sourceTree = "<group>";
+		};
+		0CDFD9E91C5462BE007EBCA6 /* MZNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				0CDFD9EA1C5462EC007EBCA6 /* MZNavigationController.h */,
+				0CDFD9EB1C5462EC007EBCA6 /* MZNavigationController.m */,
+			);
+			name = MZNavigationController;
 			sourceTree = "<group>";
 		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
@@ -1361,6 +1374,7 @@
 				0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */,
 				0C711C8F1C3179FA00E0BB43 /* MZQuizInfoView.m in Sources */,
 				0CEFD1BD1C3CB71400EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
+				0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */,

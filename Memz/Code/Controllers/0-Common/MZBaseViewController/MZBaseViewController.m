@@ -8,10 +8,22 @@
 
 #import "MZBaseViewController.h"
 
-@interface MZBaseViewController ()
-
-@end
-
 @implementation MZBaseViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidStartPresenting:)]) {
+		[self.delegate baseViewControllerDidStartPresenting:self];
+	}
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+
+	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinishPresenting:)]) {
+		[self.delegate baseViewControllerDidFinishPresenting:self];
+	}
+}
 
 @end

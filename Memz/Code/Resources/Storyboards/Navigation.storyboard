@@ -474,7 +474,7 @@
         <!--Feed View Controller-->
         <scene sceneID="DMP-Z8-Z9z">
             <objects>
-                <viewController storyboardIdentifier="MZFeedViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="rRx-I4-HYR" customClass="MZFeedViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MZFeedViewControllerIdentifier" id="rRx-I4-HYR" customClass="MZFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QrX-Nj-FLO"/>
                         <viewControllerLayoutGuide type="bottom" id="Lce-ZI-vWb"/>
@@ -488,7 +488,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZFeedTableViewCellIdentifier" rowHeight="150" id="wJI-pg-yZM" customClass="MZFeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="150"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wJI-pg-yZM" id="Va4-Lm-633">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>

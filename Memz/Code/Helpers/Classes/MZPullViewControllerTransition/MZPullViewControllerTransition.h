@@ -29,6 +29,7 @@ UIViewControllerTransitioningDelegate>
 
 @optional
 
+- (void)pullViewControllerTransitionDidConfirm:(MZPullViewControllerTransition *)transition;
 - (void)pullViewControllerTransitionDidFinish:(MZPullViewControllerTransition *)transition;
 
 @end

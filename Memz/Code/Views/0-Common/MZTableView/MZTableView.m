@@ -10,7 +10,7 @@
 #import "MZTableView.h"
 #import "MZProtocolInterceptor.h"
 
-const CGFloat kTableViewOffsetTriggersDismiss = 100.0f;
+const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
 /* Progressive Background View is not the only advantage this subclass provides. Indeed, it also allows to
  * intercept scroll view delegate methods and perform custom operations before being forwarded to the actual

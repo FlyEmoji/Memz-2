@@ -70,12 +70,6 @@ UIScrollViewDelegate>
 	[super viewDidLoad];
 
 	self.navigationController.navigationBarHidden = YES;
-	self.modalPresentationCapturesStatusBarAppearance = YES;
-
-	//self.extendedLayoutIncludesOpaqueBars = YES;
-	self.edgesForExtendedLayout = UIRectEdgeNone;
-
-	[self setNeedsStatusBarAppearanceUpdate];
 
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
@@ -121,16 +115,6 @@ UIScrollViewDelegate>
 						 kDataKey: notificationsSettings},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeQuiz),
 						 kDataKey: reverseQuiz}].mutableCopy;
-}
-
-#pragma mark - Statius Bar Handling
-
-- (BOOL)prefersStatusBarHidden {
-	return YES;
-}
-
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
-	return UIStatusBarAnimationFade;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
