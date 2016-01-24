@@ -10,23 +10,27 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
 #import "MZDataManager.h"
+#import "MZTableView.h"
 #import "UIImage+MemzAdditions.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 
 const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
+const CGFloat kBottomButtonDeleteHeight = 50.0f;
 
 const NSTimeInterval kEditAnimationDuration = 0.3;
 
 @interface MZWordDescriptionViewController () <UITableViewDataSource,
 UITableViewDelegate,
-MZWordDescriptionHeaderViewDelegate>
+MZWordDescriptionHeaderViewDelegate,
+MZTableViewTransitionDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<MZWord *> *tableViewData;
+@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, strong) NSMutableArray<MZWord *> *tableViewData;
 
-@property (weak, nonatomic) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
-@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+@property (nonatomic, weak) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
+@property (nonatomic, weak) IBOutlet UIButton *bottomButton;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomButtonHeightConstraint;
 
 @end
 
@@ -50,6 +54,7 @@ MZWordDescriptionHeaderViewDelegate>
 	self.tableView.estimatedRowHeight = kWordDescriptionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
+	self.tableView.transitionDelegate = self;
 
 	self.tableViewHeader.delegate = self;
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
@@ -112,33 +117,57 @@ MZWordDescriptionHeaderViewDelegate>
 - (void)wordDescriptionHeaderViewDidStartEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:YES animated:YES];
 
+	self.bottomButtonHeightConstraint.constant = kBottomButtonDeleteHeight;
 	[UIView animateWithDuration:kEditAnimationDuration
 									 animations:^{
-										 self.bottomButton.backgroundColor = [UIColor editWordBackgroundColor];
-										 [self.bottomButton setTitle:NSLocalizedString(@"CommonDelete", nil) forState:UIControlStateNormal];
+										 [self.view layoutIfNeeded];
 									 }];
 }
 
 - (void)wordDescriptionHeaderViewDidStopEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:NO animated:YES];
 
+	self.bottomButtonHeightConstraint.constant = 0.0f;
 	[UIView animateWithDuration:kEditAnimationDuration
 									 animations:^{
-										 self.bottomButton.backgroundColor = [UIColor secondaryBackgroundColor];
-										 [self.bottomButton setTitle:NSLocalizedString(@"CommonReturn", nil) forState:UIControlStateNormal];
+										 [self.view layoutIfNeeded];
 									 }];
+}
+
+#pragma mark - Table View Transition Delegate Methods
+
+- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidStartDismissalAnimatedTransition:)]) {
+		[self.transitionDelegate baseViewControllerDidStartDismissalAnimatedTransition:self];
+	}
+}
+
+- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didUpdateDismissalAnimatedTransition:)]
+			&& percentage >= 0.0f && percentage < 1.0f) {
+		[self.transitionDelegate baseViewController:self didUpdateDismissalAnimatedTransition:percentage];
+	}
+}
+
+- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
+			&& percentage >= 1.0f) {
+		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
+		[self.transitionDelegate baseViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
+	}
+
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidCancelDismissalAnimatedTransition:)]
+			&& percentage < 1.0f) {
+		[self.transitionDelegate baseViewControllerDidCancelDismissalAnimatedTransition:self];
+	}
 }
 
 #pragma mark - Test Methods
 
 - (IBAction)bottomButtonTapped:(id)sender {
-	if (self.tableView.isEditing) {
-		[self removeWordWithCompletionHandler:^{
-			[self dismissViewControllerAnimated:YES completion:nil];
-		}];
-	} else {
+	[self removeWordWithCompletionHandler:^{
 		[self dismissViewControllerAnimated:YES completion:nil];
-	}
+	}];
 }
 
 @end

@@ -8,22 +8,46 @@
 
 #import "MZBaseViewController.h"
 
+@interface MZBaseViewController ()
+
+@property (nonatomic, assign) BOOL shouldHideStatusBar;
+
+@end
+
 @implementation MZBaseViewController
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidStartPresenting:)]) {
-		[self.delegate baseViewControllerDidStartPresenting:self];
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidStartPresenting:)]) {
+		[self.transitionDelegate baseViewControllerDidStartPresenting:self];
 	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 
-	if ([self.delegate respondsToSelector:@selector(baseViewControllerDidFinishPresenting:)]) {
-		[self.delegate baseViewControllerDidFinishPresenting:self];
+	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidFinishPresenting:)]) {
+		[self.transitionDelegate baseViewControllerDidFinishPresenting:self];
 	}
+}
+
+#pragma mark - Statius Bar Handling
+
+- (void)showStatusBar:(BOOL)show {
+	self.shouldHideStatusBar = !show;
+	[self setNeedsStatusBarAppearanceUpdate];
+
+	// TODO: Remove that deprecated code
+	[[UIApplication sharedApplication] setStatusBarHidden:!show withAnimation:UIStatusBarAnimationFade];
+}
+
+- (BOOL)prefersStatusBarHidden {
+	return self.shouldHideStatusBar;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+	return UIStatusBarAnimationFade;
 }
 
 @end

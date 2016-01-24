@@ -14,8 +14,6 @@
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
-#import "MZPresentViewControllerTransition.h"
-#import "MZPullViewControllerTransition.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -24,14 +22,11 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController () <UIViewControllerAnimatedTransitioning,
-UIViewControllerTransitioningDelegate,
-MZBaseViewControllerDelegate>
+@interface MZMainViewController () <MZBaseViewControllerTransitioning,
+UIViewControllerTransitioningDelegate>
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;
-
-@property (nonatomic, strong) MZPullViewControllerTransition *iterativeDismissalTransition;
 
 @end
 
@@ -73,7 +68,7 @@ MZBaseViewControllerDelegate>
 
 - (void)gotoSettingsView:(id)sender {
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
-	settingsViewController.delegate = self;
+	settingsViewController.transitionDelegate = self;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
 	navigationController.transitioningDelegate = self;
@@ -122,51 +117,6 @@ MZBaseViewControllerDelegate>
 
 - (UIViewController *)pageViewControllerWithIdentifier:(NSString *)identifier {
 	return [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:identifier];
-}
-
-#pragma mark - Base View Controller Delegate Methods
-
-- (void)baseViewControllerDidStartPresenting:(MZBaseViewController *)viewController {
-	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
-	[navigationController showStatusBar:NO];
-}
-
-- (void)baseViewControllerDidStartDismissalAnimatedTransition:(MZBaseViewController *)viewController {
-	[viewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)baseViewController:(MZBaseViewController *)viewController didUpdateDismissalAnimatedTransition:(CGFloat)percent {
-	[self.iterativeDismissalTransition updateInteractiveTransition:percent];
-}
-
-- (void)baseViewController:(MZBaseViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
-	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
-	[navigationController showStatusBar:YES];
-
-	self.iterativeDismissalTransition.transitionDirection = direction;
-	[self.iterativeDismissalTransition finishInteractiveTransition];
-}
-
-- (void)baseViewControllerDidCancelDismissalAnimatedTransition:(MZBaseViewController *)viewController {
-	[self.iterativeDismissalTransition cancelInteractiveTransition];
-}
-
-#pragma mark - Custom Presentation/Dismissal Transition Animations
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
-																																	presentingController:(UIViewController *)presenting
-																																			sourceController:(UIViewController *)source {
-	return [[MZPresentViewControllerTransition alloc] init];
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-	return self.iterativeDismissalTransition = [[MZPullViewControllerTransition alloc] init];
-}
-
-#pragma mark - Custom Dismissal Interactive Transition Animation Delegate Method
-
-- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
-	return self.iterativeDismissalTransition;
 }
 
 @end

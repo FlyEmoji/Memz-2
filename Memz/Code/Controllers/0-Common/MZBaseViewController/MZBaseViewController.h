@@ -15,15 +15,17 @@
  * should occur (going down/up).
  */
 
-@protocol MZBaseViewControllerDelegate;
+@protocol MZBaseViewControllerTransitioning;
 
 @interface MZBaseViewController : UIViewController
 
-@property (nonatomic, strong) id<MZBaseViewControllerDelegate> delegate;
+@property (nonatomic, strong) id<MZBaseViewControllerTransitioning> transitionDelegate;
+
+- (void)showStatusBar:(BOOL)show;
 
 @end
 
-@protocol MZBaseViewControllerDelegate <NSObject>
+@protocol MZBaseViewControllerTransitioning <NSObject>
 
 @optional
 

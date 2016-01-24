@@ -10,6 +10,7 @@
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
+#import "MZNavigationController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 #import "MZDataManager.h"
@@ -21,7 +22,9 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
-NSFetchedResultsControllerDelegate>
+NSFetchedResultsControllerDelegate,
+UIViewControllerTransitioningDelegate,
+MZBaseViewControllerTransitioning>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -46,6 +49,9 @@ NSFetchedResultsControllerDelegate>
 	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
+		viewController.transitionDelegate = self;
+		viewController.transitioningDelegate = self;
+		viewController.modalPresentationStyle = UIModalPresentationCustom;
 	}
 }
 

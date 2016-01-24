@@ -16,6 +16,8 @@
 
 @implementation MZNavigationController
 
+#pragma mark - Statius Bar Handling
+
 - (void)showStatusBar:(BOOL)show {
 	self.shouldHideStatusBar = !show;
 	[self setNeedsStatusBarAppearanceUpdate];
@@ -23,8 +25,6 @@
 	// TODO: Remove that deprecated code
 	[[UIApplication sharedApplication] setStatusBarHidden:!show withAnimation:UIStatusBarAnimationFade];
 }
-
-#pragma mark - Statius Bar Handling
 
 - (BOOL)prefersStatusBarHidden {
 	return self.shouldHideStatusBar;

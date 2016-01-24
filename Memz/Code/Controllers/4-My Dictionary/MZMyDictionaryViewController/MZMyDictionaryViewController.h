@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZPresenterViewController.h"
 
-@interface MZMyDictionaryViewController : UIViewController
+@interface MZMyDictionaryViewController : MZPresenterViewController
 
 @end

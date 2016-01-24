@@ -77,8 +77,8 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
 #pragma mrak - Other Overriden Methods
 
-- (void)awakeFromNib {
-	[super awakeFromNib];
+- (void)layoutSubviews {
+	[super layoutSubviews];
 
 	[self updateProgressiveBackgroundViewFrame];
 }
