@@ -10,11 +10,9 @@
 #import "MZPresentViewControllerTransition.h"
 #import "MZPullViewControllerTransition.h"
 #import "MZNavigationController.h"
-#import "MZBaseViewController.h"
+#import "MZPresentableViewController.h"
 
-@interface MZPresenterViewController () <UIViewControllerAnimatedTransitioning,
-UIViewControllerTransitioningDelegate,
-MZBaseViewControllerTransitioning>
+@interface MZPresenterViewController () <MZPresentableViewControllerTransitioning>
 
 @property (nonatomic, strong) MZPullViewControllerTransition *iterativeDismissalTransition;
 
@@ -24,21 +22,21 @@ MZBaseViewControllerTransitioning>
 
 #pragma mark - Base View Controller Delegate Methods
 
-- (void)baseViewControllerDidStartPresenting:(MZBaseViewController *)viewController {
+- (void)presentableViewControllerDidStartPresentAnimatedTransition:(MZPresentableViewController *)viewController {
 	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
 	[navigationController showStatusBar:NO];
 	[viewController showStatusBar:YES];
 }
 
-- (void)baseViewControllerDidStartDismissalAnimatedTransition:(MZBaseViewController *)viewController {
+- (void)presentableViewControllerDidStartDismissalAnimatedTransition:(MZPresentableViewController *)viewController {
 	[viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)baseViewController:(MZBaseViewController *)viewController didUpdateDismissalAnimatedTransition:(CGFloat)percent {
+- (void)presentableViewController:(MZPresentableViewController *)viewController didUpdateDismissalAnimatedTransition:(CGFloat)percent {
 	[self.iterativeDismissalTransition updateInteractiveTransition:percent];
 }
 
-- (void)baseViewController:(MZBaseViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
+- (void)presentableViewController:(MZPresentableViewController *)viewController didFinishDismissalAnimatedTransitionWithDirection:(MZPullViewControllerTransitionDirection)direction {
 	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
 	[navigationController showStatusBar:YES];
 	[viewController showStatusBar:YES];
@@ -47,7 +45,7 @@ MZBaseViewControllerTransitioning>
 	[self.iterativeDismissalTransition finishInteractiveTransition];
 }
 
-- (void)baseViewControllerDidCancelDismissalAnimatedTransition:(MZBaseViewController *)viewController {
+- (void)presentableViewControllerDidCancelDismissalAnimatedTransition:(MZPresentableViewController *)viewController {
 	[self.iterativeDismissalTransition cancelInteractiveTransition];
 }
 

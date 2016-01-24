@@ -23,8 +23,7 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
 NSFetchedResultsControllerDelegate,
-UIViewControllerTransitioningDelegate,
-MZBaseViewControllerTransitioning>
+MZPresentableViewControllerTransitioning>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 

@@ -8,12 +8,12 @@
 
 #import "MZNavigationController.h"
 #import "MZMainViewController.h"
-#import "MZBaseViewController.h"
 #import "MZFeedViewController.h"
 #import "MZMyQuizzesViewController.h"
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
+#import "MZPresentableViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -22,8 +22,8 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController () <MZBaseViewControllerTransitioning,
-UIViewControllerTransitioningDelegate>
+@interface MZMainViewController () <UIViewControllerTransitioningDelegate,
+MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove that
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MZBaseViewController.h"
+#import "MZPresentableViewController.h"
 #import "MZWord.h"
 
-@interface MZWordDescriptionViewController : MZBaseViewController
+@interface MZWordDescriptionViewController : MZPresentableViewController
 
 @property (nonatomic, strong) MZWord *word;
 

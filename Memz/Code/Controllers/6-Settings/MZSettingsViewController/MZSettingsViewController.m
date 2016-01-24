@@ -210,28 +210,28 @@ UIScrollViewDelegate>
 #pragma mark - Table View Transition Delegate Methods
 
 - (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidStartDismissalAnimatedTransition:)]) {
-		[self.transitionDelegate baseViewControllerDidStartDismissalAnimatedTransition:self];
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidStartDismissalAnimatedTransition:)]) {
+		[self.transitionDelegate presentableViewControllerDidStartDismissalAnimatedTransition:self];
 	}
 }
 
 - (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didUpdateDismissalAnimatedTransition:)]
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didUpdateDismissalAnimatedTransition:)]
 			&& percentage >= 0.0f && percentage < 1.0f) {
-		[self.transitionDelegate baseViewController:self didUpdateDismissalAnimatedTransition:percentage];
+		[self.transitionDelegate presentableViewController:self didUpdateDismissalAnimatedTransition:percentage];
 	}
 }
 
 - (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
 			&& percentage >= 1.0f) {
 		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
-		[self.transitionDelegate baseViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
+		[self.transitionDelegate presentableViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
 	}
 	
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidCancelDismissalAnimatedTransition:)]
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidCancelDismissalAnimatedTransition:)]
 			&& percentage < 1.0f) {
-		[self.transitionDelegate baseViewControllerDidCancelDismissalAnimatedTransition:self];
+		[self.transitionDelegate presentableViewControllerDidCancelDismissalAnimatedTransition:self];
 	}
 }
 

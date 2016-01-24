@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MZPresenterViewController : UIViewController
+@interface MZPresenterViewController : UIViewController <UIViewControllerTransitioningDelegate>
 
 @end

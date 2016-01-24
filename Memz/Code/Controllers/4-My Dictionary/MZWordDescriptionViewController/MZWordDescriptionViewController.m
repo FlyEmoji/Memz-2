@@ -10,7 +10,6 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
 #import "MZDataManager.h"
-#import "MZTableView.h"
 #import "UIImage+MemzAdditions.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
@@ -132,34 +131,6 @@ MZTableViewTransitionDelegate>
 									 animations:^{
 										 [self.view layoutIfNeeded];
 									 }];
-}
-
-#pragma mark - Table View Transition Delegate Methods
-
-- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidStartDismissalAnimatedTransition:)]) {
-		[self.transitionDelegate baseViewControllerDidStartDismissalAnimatedTransition:self];
-	}
-}
-
-- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didUpdateDismissalAnimatedTransition:)]
-			&& percentage >= 0.0f && percentage < 1.0f) {
-		[self.transitionDelegate baseViewController:self didUpdateDismissalAnimatedTransition:percentage];
-	}
-}
-
-- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
-			&& percentage >= 1.0f) {
-		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
-		[self.transitionDelegate baseViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
-	}
-
-	if ([self.transitionDelegate respondsToSelector:@selector(baseViewControllerDidCancelDismissalAnimatedTransition:)]
-			&& percentage < 1.0f) {
-		[self.transitionDelegate baseViewControllerDidCancelDismissalAnimatedTransition:self];
-	}
 }
 
 #pragma mark - Test Methods
