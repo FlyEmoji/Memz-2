@@ -13,11 +13,11 @@
 
 @interface MZTranslatedWordTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) id<MZTranslatedWordTableViewCellDelegate> delegate;
-@property (assign, nonatomic) MZLanguage language;
+@property (nonatomic, weak) id<MZTranslatedWordTableViewCellDelegate> delegate;
+@property (nonatomic, assign) MZLanguage language;
 
-@property (weak, nonatomic) IBOutlet UILabel *translatedWordLabel;
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
+@property (nonatomic, strong) IBOutlet UILabel *translatedWordLabel;
+@property (nonatomic, strong) IBOutlet UIView *bottomSeparator;
 
 @end
 

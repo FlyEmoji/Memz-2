@@ -14,8 +14,8 @@ const NSUInteger kStepperDefaultMaximumValue = 10;
 
 @interface MZSettingsStepperTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UIStepper *stepper;
-@property (nonatomic, weak) IBOutlet UILabel *numberLabel;
+@property (nonatomic, strong) IBOutlet UIStepper *stepper;
+@property (nonatomic, strong) IBOutlet UILabel *numberLabel;
 
 @end
 

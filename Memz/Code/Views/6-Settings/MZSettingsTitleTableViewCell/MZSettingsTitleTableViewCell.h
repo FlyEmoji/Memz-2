@@ -12,8 +12,8 @@
 
 @interface MZSettingsTitleTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *settingsNameLabel;
-@property (nonatomic, weak) IBOutlet UISwitch *settingsSwitch;
+@property (nonatomic, strong) IBOutlet UILabel *settingsNameLabel;
+@property (nonatomic, strong) IBOutlet UISwitch *settingsSwitch;
 
 @property (nonatomic, strong) id<MZSettingsTitleTableViewCellDelegate> delegate;
 

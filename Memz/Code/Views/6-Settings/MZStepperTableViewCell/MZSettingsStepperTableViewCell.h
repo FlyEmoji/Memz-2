@@ -12,7 +12,7 @@
 
 @interface MZSettingsStepperTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 
 @property (nonatomic, strong) id<MZSettingsStepperTableViewCellDelegate> delegate;
 

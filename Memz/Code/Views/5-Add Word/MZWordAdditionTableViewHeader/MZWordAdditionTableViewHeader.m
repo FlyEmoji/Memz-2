@@ -10,8 +10,8 @@
 
 @interface MZWordAdditionTableViewHeader ()
 
-@property (weak, nonatomic) IBOutlet UILabel *headerTitle;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (nonatomic, strong) IBOutlet UILabel *headerTitle;
+@property (nonatomic, strong) IBOutlet UIButton *clearButton;
 
 @end
 

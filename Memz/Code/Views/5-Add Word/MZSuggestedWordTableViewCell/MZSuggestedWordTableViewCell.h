@@ -11,9 +11,9 @@
 
 @interface MZSuggestedWordTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *bottomSeparator;
-@property (weak, nonatomic) IBOutlet UILabel *suggestedWordLabel;
+@property (nonatomic, strong) IBOutlet UIView *bottomSeparator;
+@property (nonatomic, strong) IBOutlet UILabel *suggestedWordLabel;
 
-@property (assign, nonatomic) MZLanguage language;
+@property (nonatomic, assign) MZLanguage language;
 
 @end

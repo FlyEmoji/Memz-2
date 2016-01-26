@@ -25,7 +25,7 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 UITableViewDelegate,
 NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) MZWord *selectedWord;

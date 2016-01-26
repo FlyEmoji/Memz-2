@@ -32,10 +32,10 @@ UITableViewDelegate,
 NSFetchedResultsControllerDelegate,
 MZQuizInfoViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
-@property (nonatomic, weak) IBOutlet MZQuizInfoView *topShrinkableView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
+@property (nonatomic, strong) IBOutlet MZQuizInfoView *topShrinkableView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, assign) CGPoint lastContentOffset;

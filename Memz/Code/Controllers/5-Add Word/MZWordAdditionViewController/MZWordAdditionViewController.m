@@ -42,16 +42,16 @@ MZTextFieldTableViewCellDelegate,
 MZTranslatedWordTableViewCellDelegate,
 MZWordAdditionTableViewHeaderDelegate>
 
-@property (weak, nonatomic) IBOutlet MZTableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+@property (nonatomic, strong) IBOutlet MZTableView *tableView;
+@property (nonatomic, strong) IBOutlet UIButton *bottomButton;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
 
-@property (weak, nonatomic, readonly) NSArray<NSDictionary *> *tableViewData;
+@property (nonatomic, weak, readonly) NSArray<NSDictionary *> *tableViewData;
 
-@property (strong, nonatomic) NSString *wordToTranslate;
-@property (strong, nonatomic) NSMutableOrderedSet<MZWord *> *alreadyExistingWords;
-@property (strong, nonatomic) NSMutableArray<NSString *> *wordTranslations;
-@property (strong, nonatomic) NSMutableArray<NSString *> *wordSuggestions;
+@property (nonatomic, strong) NSString *wordToTranslate;
+@property (nonatomic, strong) NSMutableOrderedSet<MZWord *> *alreadyExistingWords;
+@property (nonatomic, strong) NSMutableArray<NSString *> *wordTranslations;
+@property (nonatomic, strong) NSMutableArray<NSString *> *wordSuggestions;
 
 @end
 

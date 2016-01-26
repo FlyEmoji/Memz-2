@@ -751,12 +751,12 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */,
 				0C5FC1561C3A057800FF83E7 /* MZResponseComparator */,
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
+				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C57F5851C4B2E050055532E /* MZPresentViewControllerTransition */,
 				0C57F57E1C4B264B0055532E /* MZPullViewControllerTransition */,
 				0C5180211C331A4F0072FEB0 /* MZCountDown */,

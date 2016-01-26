@@ -10,6 +10,6 @@
 
 @interface MZAutoCompletionTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 
 @end

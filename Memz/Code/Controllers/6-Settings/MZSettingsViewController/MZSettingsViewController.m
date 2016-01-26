@@ -57,8 +57,8 @@ MZSettingsSliderTableViewCellDelegate,
 MZTableViewTransitionDelegate,
 UIScrollViewDelegate>
 
-@property (nonatomic, weak) IBOutlet MZTableView *tableView;
-@property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
+@property (nonatomic, strong) IBOutlet MZTableView *tableView;
+@property (nonatomic, strong) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
 
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
 

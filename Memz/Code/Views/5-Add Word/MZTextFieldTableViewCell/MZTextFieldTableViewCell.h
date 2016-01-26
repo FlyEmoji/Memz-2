@@ -18,8 +18,8 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 
 @interface MZTextFieldTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextField *textField;
-@property (nonatomic, weak) IBOutlet UIView *bottomSeparator;
+@property (nonatomic, strong) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UIView *bottomSeparator;
 
 @property (nonatomic, weak) id<MZTextFieldTableViewCellDelegate> delegate;
 @property (nonatomic, assign) MZTextFieldTableViewCellType cellType;

@@ -13,7 +13,7 @@
 
 @interface MZUserEntranceViewController ()
 
-@property (nonatomic, weak) IBOutlet UIButton *enterNavigationButton;
+@property (nonatomic, strong) IBOutlet UIButton *enterNavigationButton;
 
 @end
 

@@ -12,7 +12,7 @@
 
 @interface MZSettingsSliderTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 // TODO: Add left and right labels to display actual values
 
 @property (nonatomic, strong) id<MZSettingsSliderTableViewCellDelegate> delegate;

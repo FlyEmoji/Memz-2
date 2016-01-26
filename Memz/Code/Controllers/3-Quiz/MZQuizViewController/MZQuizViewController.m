@@ -34,9 +34,9 @@ MZTranslationResponseTableViewCellDelegate,
 MZResponseComparatorDelegate,
 MZCountDownDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet UIButton *submitButton;
-@property (weak, nonatomic) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UIButton *submitButton;
+@property (nonatomic, strong) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
 
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewEnteredData;
 @property (nonatomic, weak, readonly) NSArray<NSString *> *userTranslations;

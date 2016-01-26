@@ -13,8 +13,8 @@ const NSTimeInterval kCorrectionAnimationDuration = 0.3;
 
 @interface MZTranslationResponseTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *rightImageView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *rightImageViewWidthConstraint;
+@property (nonatomic, strong) IBOutlet UIImageView *rightImageView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *rightImageViewWidthConstraint;
 
 @end
 

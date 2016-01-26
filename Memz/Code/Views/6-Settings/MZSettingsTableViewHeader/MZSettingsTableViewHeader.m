@@ -12,10 +12,10 @@
 
 @interface MZSettingsTableViewHeader ()
 
-@property (weak, nonatomic) IBOutlet UIButton *yourLanguageFlagButton;
-@property (weak, nonatomic) IBOutlet UIButton *learnedLanguageFlagButton;
-@property (weak, nonatomic) IBOutlet UILabel *yourLanguageLabel;
-@property (weak, nonatomic) IBOutlet UILabel *learnedLanguageLabel;
+@property (nonatomic, strong) IBOutlet UIButton *yourLanguageFlagButton;
+@property (nonatomic, strong) IBOutlet UIButton *learnedLanguageFlagButton;
+@property (nonatomic, strong) IBOutlet UILabel *yourLanguageLabel;
+@property (nonatomic, strong) IBOutlet UILabel *learnedLanguageLabel;
 
 @end
 
