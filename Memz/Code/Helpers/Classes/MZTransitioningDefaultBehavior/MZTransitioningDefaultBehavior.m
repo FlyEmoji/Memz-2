@@ -1,31 +1,30 @@
 //
-//  MZPresenterViewController.m
+//  MZTransitioningDefaultBehavior.m
 //  Memz
 //
-//  Created by Bastien Falcou on 1/23/16.
+//  Created by Bastien Falcou on 1/25/16.
 //  Copyright © 2016 Falcou. All rights reserved.
 //
 
-#import "MZPresenterViewController.h"
-#import "MZPresentViewControllerTransition.h"
+#import "MZTransitioningDefaultBehavior.h"
 #import "MZPullViewControllerTransition.h"
+#import "MZPresentViewControllerTransition.h"
 #import "MZNavigationController.h"
-#import "MZPresentableViewController.h"
 
-@interface MZPresenterViewController () <MZPresentableViewControllerTransitioning>
+@interface MZTransitioningDefaultBehavior ()
 
 @property (nonatomic, strong) MZPullViewControllerTransition *iterativeDismissalTransition;
 
 @end
 
-@implementation MZPresenterViewController
+@implementation MZTransitioningDefaultBehavior
 
 #pragma mark - Base View Controller Delegate Methods
 
 - (void)presentableViewControllerDidStartPresentAnimatedTransition:(MZPresentableViewController *)viewController {
 	MZNavigationController *navigationController = [viewController.navigationController safeCastToClass:[MZNavigationController class]];
 	[navigationController showStatusBar:NO];
-	[viewController showStatusBar:YES];
+	[viewController showStatusBar:NO];
 }
 
 - (void)presentableViewControllerDidStartDismissalAnimatedTransition:(MZPresentableViewController *)viewController {

@@ -10,6 +10,7 @@
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
+#import "MZTransitioningDefaultBehavior.h"
 #import "MZNavigationController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
@@ -46,10 +47,11 @@ MZPresentableViewControllerTransitioning>
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
+		MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
-		viewController.transitionDelegate = self;
-		viewController.transitioningDelegate = self;
+		viewController.transitionDelegate = transitioningBehavior;
+		viewController.transitioningDelegate = transitioningBehavior;
 		viewController.modalPresentationStyle = UIModalPresentationCustom;
 	}
 }

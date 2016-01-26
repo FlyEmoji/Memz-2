@@ -14,6 +14,7 @@
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
 #import "MZPresentableViewController.h"
+#import "MZTransitioningDefaultBehavior.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -58,21 +59,25 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 }
 
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
+	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
+
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
-	wordAdditionViewController.transitionDelegate = self;
+	wordAdditionViewController.transitionDelegate = transitioningBehavior;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
-	navigationController.transitioningDelegate = self;
+	navigationController.transitioningDelegate = transitioningBehavior;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)gotoSettingsView:(id)sender {
+	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
+
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
-	settingsViewController.transitionDelegate = self;
+	settingsViewController.transitionDelegate = transitioningBehavior;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
-	navigationController.transitioningDelegate = self;
+	navigationController.transitioningDelegate = transitioningBehavior;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
