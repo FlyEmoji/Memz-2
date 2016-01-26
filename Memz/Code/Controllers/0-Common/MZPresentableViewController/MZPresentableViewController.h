@@ -10,10 +10,13 @@
 #import "MZPullViewControllerTransition.h"
 #import "MZTableView.h"
 
-/* Base for all view controllers throughout the application that will share similar properties and behavior.
- * For instance, all view controllers that can be closed using custom pull transition will take advantage of
- * the delegate declared in this base view controller, to tell the previous view which way the transition 
- * should occur (going down/up).
+/* Presentable View Controller behavior for all presented view controllers throughout the application that will 
+ * share similar properties and behavior (notably transitioning). For instance, all view controllers that can 
+ * be closed using custom pull transition will take advantage of the delegate declared in this subclass View 
+ * Controller, to tell the previous view which way the transition should occur (going down/up), etc.
+ *
+ * Implements MZTableViewTransitionDelegate for its subclasses to conform it if needed and automatically enjoy
+ * its behavior already implemented and handled.
  */
 
 @protocol MZPresentableViewControllerTransitioning;

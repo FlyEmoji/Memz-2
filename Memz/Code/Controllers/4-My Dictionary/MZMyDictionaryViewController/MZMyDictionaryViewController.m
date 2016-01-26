@@ -23,8 +23,7 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
-NSFetchedResultsControllerDelegate,
-MZPresentableViewControllerTransitioning>
+NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -47,12 +46,11 @@ MZPresentableViewControllerTransitioning>
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
-		MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
-		viewController.transitionDelegate = transitioningBehavior;
-		viewController.transitioningDelegate = transitioningBehavior;
 		viewController.modalPresentationStyle = UIModalPresentationCustom;
+		viewController.transitioningDelegate = self.transitioningBehavior;
+		viewController.transitionDelegate = self.transitioningBehavior;
 	}
 }
 

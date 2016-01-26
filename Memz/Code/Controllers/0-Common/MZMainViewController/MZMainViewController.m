@@ -23,11 +23,14 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController () <UIViewControllerTransitioningDelegate,
-MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove that
+@interface MZMainViewController ()
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;
+
+// Use of composition pattern to implement transition behavior (can't use mutiple inheritance from both
+// MZPageViewController for pagination, and MZPresenterViewController for transition behavior.
+@property (nonatomic, strong) MZTransitioningDefaultBehavior *transitioningBehavior;
 
 @end
 
@@ -36,7 +39,7 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	// Add right button (add new word or expression)
+	// (1) Add right button (add new word or expression)
 	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationAdd]
 																																	style:UIBarButtonItemStylePlain
 																																 target:self
@@ -45,7 +48,7 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 	self.profileButton = rightButton;
 
-	// Add left button (change settings)
+	// (2) Add left button (change settings)
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationSettings]
 																																 style:UIBarButtonItemStylePlain
 																																target:self
@@ -54,31 +57,32 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 	self.settingsButton = leftButton;
 
-	// Initialize managers
+	// (3) Initialize managers
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
+
+	// (4) Initialize transition behavior
+	self.transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 }
 
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
-	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
-
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
-	wordAdditionViewController.transitionDelegate = transitioningBehavior;
+	wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
-	navigationController.transitioningDelegate = transitioningBehavior;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
+	navigationController.transitioningDelegate = self.transitioningBehavior;
+
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)gotoSettingsView:(id)sender {
-	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
-
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
-	settingsViewController.transitionDelegate = transitioningBehavior;
+	settingsViewController.transitionDelegate = self.transitioningBehavior;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
-	navigationController.transitioningDelegate = transitioningBehavior;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
+	navigationController.transitioningDelegate = self.transitioningBehavior;
+
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 

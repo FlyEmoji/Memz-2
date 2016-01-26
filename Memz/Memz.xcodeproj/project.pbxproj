@@ -74,6 +74,7 @@
 		0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFD9EB1C5462EC007EBCA6 /* MZNavigationController.m */; };
 		0CDFD9F31C54874D007EBCA6 /* MZPresentableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFD9F21C54874D007EBCA6 /* MZPresentableViewController.m */; };
 		0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */; };
+		0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -237,6 +238,8 @@
 		0CDFD9F21C54874D007EBCA6 /* MZPresentableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresentableViewController.m; path = "Code/Controllers/0-Common/MZPresentableViewController/MZPresentableViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CDFDA0B1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTransitioningDefaultBehavior.h; path = Code/Helpers/Classes/MZTransitioningDefaultBehavior/MZTransitioningDefaultBehavior.h; sourceTree = SOURCE_ROOT; };
 		0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTransitioningDefaultBehavior.m; path = Code/Helpers/Classes/MZTransitioningDefaultBehavior/MZTransitioningDefaultBehavior.m; sourceTree = SOURCE_ROOT; };
+		0CDFDA0F1C5732EA007EBCA6 /* MZPresenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPresenterViewController.h; path = "Code/Controllers/0-Common/MZPresenterViewController/MZPresenterViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresenterViewController.m; path = "Code/Controllers/0-Common/MZPresenterViewController/MZPresenterViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -801,6 +804,7 @@
 			children = (
 				0CDFD9E91C5462BE007EBCA6 /* MZNavigationController */,
 				0CA58C1A1C209BFD000E19D4 /* MZMainViewController */,
+				0CDFDA0E1C573220007EBCA6 /* MZPresenterViewController */,
 				0C2DC8761C4C0436005B11F5 /* MZPresentableViewController */,
 			);
 			name = "0-Common";
@@ -1044,6 +1048,15 @@
 				0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */,
 			);
 			name = MZTransitioningDefaultBehavior;
+			sourceTree = "<group>";
+		};
+		0CDFDA0E1C573220007EBCA6 /* MZPresenterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CDFDA0F1C5732EA007EBCA6 /* MZPresenterViewController.h */,
+				0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */,
+			);
+			name = MZPresenterViewController;
 			sourceTree = "<group>";
 		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
@@ -1389,6 +1402,7 @@
 				0CEFD1BD1C3CB71400EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
 				0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
+				0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */,
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
