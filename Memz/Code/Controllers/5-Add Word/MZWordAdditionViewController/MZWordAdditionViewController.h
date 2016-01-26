@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZPresentableViewController.h"
 
-@interface MZWordAdditionViewController : UIViewController
+@interface MZWordAdditionViewController : MZPresentableViewController
 
 @end

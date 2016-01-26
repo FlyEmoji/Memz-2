@@ -10,7 +10,7 @@
         <!--Word Addition View Controller-->
         <scene sceneID="WOX-1S-wxr">
             <objects>
-                <viewController storyboardIdentifier="MZWordAdditionViewControllerIdentifier" id="hko-ZM-ogh" customClass="MZWordAdditionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MZWordAdditionViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="hko-ZM-ogh" customClass="MZWordAdditionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wev-HU-WUY"/>
                         <viewControllerLayoutGuide type="bottom" id="XD5-Gd-9Ck"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m" customClass="MZTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -243,6 +243,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressiveBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="hko-ZM-ogh" id="0wI-HC-PAo"/>
                                     <outlet property="delegate" destination="hko-ZM-ogh" id="EAS-f2-ckI"/>
@@ -263,7 +268,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="top" id="0Sv-Dk-4ch"/>
                             <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="bottom" id="MVe-Sh-0zo"/>
@@ -274,6 +279,7 @@
                             <constraint firstAttribute="trailing" secondItem="Fwu-Pf-C5m" secondAttribute="trailing" id="zn2-T7-Efl"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="bottomButton" destination="hrp-eF-sJu" id="yCy-pc-E98"/>
@@ -459,7 +465,6 @@
                             <constraint firstItem="xNH-1K-Cea" firstAttribute="top" secondItem="5u5-4G-Ao8" secondAttribute="bottom" id="keG-Mc-nPL"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>

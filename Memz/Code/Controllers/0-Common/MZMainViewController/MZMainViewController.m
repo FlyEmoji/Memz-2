@@ -59,6 +59,7 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+	wordAdditionViewController.transitionDelegate = self;
 
 	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
 	navigationController.transitioningDelegate = self;

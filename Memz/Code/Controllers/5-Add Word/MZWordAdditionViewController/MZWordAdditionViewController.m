@@ -16,6 +16,7 @@
 #import "MZBingTranslatorCoordinator.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZDataManager.h"
+#import "MZTableView.h"
 
 typedef NS_ENUM(NSInteger, MZWordAdditionWordRowType) {
 	MZWordAdditionWordRowTypeNewWord,
@@ -41,7 +42,7 @@ MZTextFieldTableViewCellDelegate,
 MZTranslatedWordTableViewCellDelegate,
 MZWordAdditionTableViewHeaderDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet MZTableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
 
@@ -60,18 +61,14 @@ MZWordAdditionTableViewHeaderDelegate>
 	[super viewDidLoad];
 
 	self.title = NSLocalizedString(@"WordAdditionViewControllerTitle", nil);
-
-	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationCancel]
-																																	style:UIBarButtonItemStylePlain
-																																target:self
-																																action:@selector(didTapCloseButton:)];
-	[self.navigationItem setLeftBarButtonItem:leftButton];
+	self.navigationController.navigationBarHidden = YES;
 	
 	self.wordTranslations = [[NSMutableArray alloc] init];
 	self.alreadyExistingWords = [[NSMutableOrderedSet alloc] init];
 
 	self.tableView.estimatedRowHeight = kWordAdditionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
+	self.tableView.transitionDelegate = self;
 
 	[self setupTableView];
 	[self.tableView reloadData];
@@ -431,10 +428,6 @@ MZWordAdditionTableViewHeaderDelegate>
 }
 
 #pragma mark - Actions
-
-- (void)didTapCloseButton:(id)sender {
-	[self dismissViewControllerAnimated:YES completion:nil];
-}
 
 - (IBAction)didTapAddWordButton:(id)sender {
 	// TODO: Test texts not empty, etc.
