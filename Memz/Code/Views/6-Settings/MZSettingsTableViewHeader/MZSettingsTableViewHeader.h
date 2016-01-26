@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MZLanguageManager.h"
+#import "MZNibView.h"
 
 @protocol MZSettingsTableViewHeaderDelegate;
 
-@interface MZSettingsTableViewHeader : UITableViewHeaderFooterView
+@interface MZSettingsTableViewHeader : MZNibView
 
 @property (nonatomic, weak) id<MZSettingsTableViewHeaderDelegate> delegate;
 

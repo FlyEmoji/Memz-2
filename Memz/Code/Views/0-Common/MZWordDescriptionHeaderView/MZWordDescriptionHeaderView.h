@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZNibView.h"
 #import "MZWord.h"
 
 typedef NS_ENUM(NSUInteger, MZWordDescriptionHeaderType) {
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSUInteger, MZWordDescriptionHeaderType) {
 
 @protocol MZWordDescriptionHeaderViewDelegate;
 
-@interface MZWordDescriptionHeaderView : UIView
+@interface MZWordDescriptionHeaderView : MZNibView
 
 @property (nonatomic, weak) id<MZWordDescriptionHeaderViewDelegate> delegate;
 

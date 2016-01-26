@@ -7,9 +7,23 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZWordDescriptionHeaderView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="i2m-Bl-RTE"/>
+                <outlet property="countDownBottomSeparatorConstraint" destination="En2-cb-yZI" id="Wlk-uA-jC6"/>
+                <outlet property="countDownLabel" destination="8iP-KV-QO6" id="iqk-Qu-PMB"/>
+                <outlet property="countDownSectionHeightConstraint" destination="oUE-iJ-Up6" id="hz1-c9-FdR"/>
+                <outlet property="editButton" destination="jeU-yJ-rSf" id="GuC-1e-5xU"/>
+                <outlet property="flagImageView" destination="q6l-Ta-NRQ" id="ZSN-EM-UJN"/>
+                <outlet property="learnedStatusLabel" destination="uRz-3K-GHM" id="Afi-1x-ggF"/>
+                <outlet property="learnedStatusView" destination="4fV-N3-6tE" id="qWj-gP-eFI"/>
+                <outlet property="numberOfTranslationsLabel" destination="7T1-cQ-5xi" id="o13-gL-Xfr"/>
+                <outlet property="percentageSuccessLabel" destination="kaf-o4-xq0" id="6on-0I-YAR"/>
+                <outlet property="wordLabel" destination="MeT-IM-0fN" id="8wY-jg-sge"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MZWordDescriptionHeaderView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="496" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -96,7 +110,7 @@
                     </constraints>
                     <state key="normal" title="Edit"/>
                     <connections>
-                        <action selector="editButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="8ZD-5m-iYL"/>
+                        <action selector="editButtonTapped:" destination="-1" eventType="touchUpInside" id="qKT-wG-TdW"/>
                     </connections>
                 </button>
             </subviews>
@@ -117,18 +131,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="countDownBottomSeparatorConstraint" destination="En2-cb-yZI" id="RLS-P2-JGm"/>
-                <outlet property="countDownLabel" destination="8iP-KV-QO6" id="zB5-mu-d8O"/>
-                <outlet property="countDownSectionHeightConstraint" destination="oUE-iJ-Up6" id="2N5-bi-ni0"/>
-                <outlet property="editButton" destination="jeU-yJ-rSf" id="HaD-R4-zsF"/>
-                <outlet property="flagImageView" destination="q6l-Ta-NRQ" id="Bkt-yI-TST"/>
-                <outlet property="learnedStatusLabel" destination="uRz-3K-GHM" id="YBt-IW-EQc"/>
-                <outlet property="learnedStatusView" destination="4fV-N3-6tE" id="vJg-VN-Bls"/>
-                <outlet property="numberOfTranslationsLabel" destination="7T1-cQ-5xi" id="rib-JV-mvC"/>
-                <outlet property="percentageSuccessLabel" destination="kaf-o4-xq0" id="64i-GD-h9z"/>
-                <outlet property="wordLabel" destination="MeT-IM-0fN" id="4ti-Oy-cNB"/>
-            </connections>
             <point key="canvasLocation" x="384" y="85"/>
         </view>
     </objects>

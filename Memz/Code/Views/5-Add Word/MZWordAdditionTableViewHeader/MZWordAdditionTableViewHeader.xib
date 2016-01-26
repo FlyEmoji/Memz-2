@@ -32,7 +32,7 @@
                     </constraints>
                     <state key="normal" title="Clear"/>
                     <connections>
-                        <action selector="clearButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="uZa-pa-Gml"/>
+                        <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="AtO-AN-usg"/>
                     </connections>
                 </button>
             </subviews>

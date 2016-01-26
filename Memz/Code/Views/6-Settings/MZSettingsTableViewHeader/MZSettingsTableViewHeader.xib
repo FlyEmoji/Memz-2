@@ -7,9 +7,17 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZSettingsTableViewHeader">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="pIb-Tf-fWA"/>
+                <outlet property="learnedLanguageFlagButton" destination="Dcx-DI-yGh" id="Hd8-OU-8Ng"/>
+                <outlet property="learnedLanguageLabel" destination="6uM-aa-6fD" id="qWf-HL-zCP"/>
+                <outlet property="yourLanguageFlagButton" destination="hWr-Ym-lGF" id="mrK-Oy-skC"/>
+                <outlet property="yourLanguageLabel" destination="n5a-Yo-THa" id="kyJ-af-9bX"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MZSettingsTableViewHeader">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="467" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -53,14 +61,14 @@
                     </constraints>
                     <state key="normal" image="Flag-France"/>
                     <connections>
-                        <action selector="didTapYourLanguageFlagButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="h0f-95-fOe"/>
+                        <action selector="didTapYourLanguageFlagButton:" destination="-1" eventType="touchUpInside" id="C1d-rd-fMh"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcx-DI-yGh" userLabel="Learned Language Button">
                     <rect key="frame" x="304" y="88" width="93" height="60"/>
                     <state key="normal" image="Flag-United-Kingdom"/>
                     <connections>
-                        <action selector="didTapLearnedLanguageButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="erx-Cs-2EZ"/>
+                        <action selector="didTapLearnedLanguageButton:" destination="-1" eventType="touchUpInside" id="zam-1u-haF"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-rc-2sX" userLabel="Language Title Separator">
@@ -127,12 +135,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="learnedLanguageFlagButton" destination="Dcx-DI-yGh" id="AZ3-Rh-zOj"/>
-                <outlet property="learnedLanguageLabel" destination="ZyN-HS-DRW" id="xpB-ex-lg3"/>
-                <outlet property="yourLanguageFlagButton" destination="hWr-Ym-lGF" id="6bp-Ax-Ahb"/>
-                <outlet property="yourLanguageLabel" destination="36a-qh-z6J" id="joV-p0-Luy"/>
-            </connections>
             <point key="canvasLocation" x="196.5" y="305"/>
         </view>
     </objects>

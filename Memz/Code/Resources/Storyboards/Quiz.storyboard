@@ -34,9 +34,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4IU-Et-9lq">
                                 <rect key="frame" x="0.0" y="20" width="600" height="530"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="SI9-3s-tye" customClass="MZWordDescriptionHeaderView">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTranslationResponseTableViewCellIdentifier" rowHeight="68" id="Vv3-Xe-F7n" customClass="MZTranslationResponseTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="68"/>
+                                        <rect key="frame" x="0.0" y="72" width="600" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vv3-Xe-F7n" id="U7r-M7-WEO">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
@@ -105,6 +110,7 @@
                     <connections>
                         <outlet property="submitButton" destination="5ZG-Y2-grU" id="B7K-lp-U53"/>
                         <outlet property="tableView" destination="4IU-Et-9lq" id="zPN-tc-z49"/>
+                        <outlet property="tableViewHeader" destination="SI9-3s-tye" id="rRK-EX-LZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOn-0x-6HN" userLabel="First Responder" sceneMemberID="firstResponder"/>

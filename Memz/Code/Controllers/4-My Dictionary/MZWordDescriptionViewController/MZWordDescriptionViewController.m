@@ -15,17 +15,21 @@
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 
 const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
+const CGFloat kBottomButtonDeleteHeight = 50.0f;
 
 const NSTimeInterval kEditAnimationDuration = 0.3;
 
 @interface MZWordDescriptionViewController () <UITableViewDataSource,
 UITableViewDelegate,
-MZWordDescriptionHeaderViewDelegate>
+MZWordDescriptionHeaderViewDelegate,
+MZTableViewTransitionDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<MZWord *> *tableViewData;
+@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, strong) NSMutableArray<MZWord *> *tableViewData;
 
-@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+@property (nonatomic, weak) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
+@property (nonatomic, weak) IBOutlet UIButton *bottomButton;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomButtonHeightConstraint;
 
 @end
 
@@ -49,25 +53,15 @@ MZWordDescriptionHeaderViewDelegate>
 	self.tableView.estimatedRowHeight = kWordDescriptionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
+	self.tableView.transitionDelegate = self;
 
-	[self setupTableViewHeader];
+	self.tableViewHeader.delegate = self;
+	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+	self.tableViewHeader.word = self.word;
 
 	self.tableViewData = self.word.translation.allObjects.mutableCopy;
 	[self.tableView reloadData];
-}
-
-- (void)setupTableViewHeader {
-	MZWordDescriptionHeaderView *tableViewHeader = [self.tableView.tableHeaderView safeCastToClass:[MZWordDescriptionHeaderView class]];
-	if (!tableViewHeader) {
-		tableViewHeader = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZWordDescriptionHeaderView class])
-																																							 owner:self
-																																						 options:nil][0];
-		tableViewHeader.delegate = self;
-		tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
-		self.tableView.tableHeaderView = tableViewHeader;
-	}
-	tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
-	tableViewHeader.word = self.word;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -122,33 +116,29 @@ MZWordDescriptionHeaderViewDelegate>
 - (void)wordDescriptionHeaderViewDidStartEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:YES animated:YES];
 
+	self.bottomButtonHeightConstraint.constant = kBottomButtonDeleteHeight;
 	[UIView animateWithDuration:kEditAnimationDuration
 									 animations:^{
-										 self.bottomButton.backgroundColor = [UIColor editWordBackgroundColor];
-										 [self.bottomButton setTitle:NSLocalizedString(@"CommonDelete", nil) forState:UIControlStateNormal];
+										 [self.view layoutIfNeeded];
 									 }];
 }
 
 - (void)wordDescriptionHeaderViewDidStopEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:NO animated:YES];
 
+	self.bottomButtonHeightConstraint.constant = 0.0f;
 	[UIView animateWithDuration:kEditAnimationDuration
 									 animations:^{
-										 self.bottomButton.backgroundColor = [UIColor secondaryBackgroundColor];
-										 [self.bottomButton setTitle:NSLocalizedString(@"CommonReturn", nil) forState:UIControlStateNormal];
+										 [self.view layoutIfNeeded];
 									 }];
 }
 
 #pragma mark - Test Methods
 
 - (IBAction)bottomButtonTapped:(id)sender {
-	if (self.tableView.isEditing) {
-		[self removeWordWithCompletionHandler:^{
-			[self dismissViewControllerAnimated:YES completion:nil];
-		}];
-	} else {
+	[self removeWordWithCompletionHandler:^{
 		[self dismissViewControllerAnimated:YES completion:nil];
-	}
+	}];
 }
 
 @end

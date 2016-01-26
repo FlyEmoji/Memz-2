@@ -6,12 +6,15 @@
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
+#import "MZNavigationController.h"
 #import "MZMainViewController.h"
 #import "MZFeedViewController.h"
 #import "MZMyQuizzesViewController.h"
 #import "MZMyDictionaryViewController.h"
 #import "MZWordAdditionViewController.h"
 #import "MZSettingsViewController.h"
+#import "MZPresentableViewController.h"
+#import "MZTransitioningDefaultBehavior.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -20,10 +23,11 @@ NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController ()
+@interface MZMainViewController () <UIViewControllerTransitioningDelegate,
+MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove that
 
-@property (nonatomic, weak) UIBarButtonItem * settingsButton;
-@property (nonatomic, weak) UIBarButtonItem * profileButton;
+@property (nonatomic, weak) UIBarButtonItem *settingsButton;
+@property (nonatomic, weak) UIBarButtonItem *profileButton;
 
 @end
 
@@ -54,26 +58,27 @@ const NSUInteger kNumberPages = 3;
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-
-	self.settingsButton.enabled = YES;
-	self.profileButton.enabled = YES;
-}
-
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
-	[sender setEnabled:NO];
-	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:wordAdditionViewController];
+	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
+	wordAdditionViewController.transitionDelegate = transitioningBehavior;
+
+	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
+	navigationController.transitioningDelegate = transitioningBehavior;
+	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 
 - (void)gotoSettingsView:(id)sender {
-	[sender setEnabled:NO];
-	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
+	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
+	settingsViewController.transitionDelegate = transitioningBehavior;
+
+	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
+	navigationController.transitioningDelegate = transitioningBehavior;
+	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
 }
 

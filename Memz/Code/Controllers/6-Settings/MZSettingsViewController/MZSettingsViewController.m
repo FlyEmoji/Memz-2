@@ -11,8 +11,9 @@
 #import "MZSettingsTitleTableViewCell.h"
 #import "MZSettingsStepperTableViewCell.h"
 #import "MZSettingsSliderTableViewCell.h"
-#import "MZQuizManager.h"
 #import "MZPushNotificationManager.h"
+#import "MZQuizManager.h"
+#import "MZTableView.h"
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
@@ -44,17 +45,21 @@ NSString * const kMinimumValueKey = @"MinimumValueKey";
 NSString * const kMaximumValueKey = @"MaximumValueKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
-const CGFloat kCellRegularHeight = 60.0f;
-const CGFloat kCellSliderHeight = 100.0f;
+const CGFloat kCellRegularHeight = 50.0f;
+const CGFloat kCellSliderHeight = 95.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZSettingsTableViewHeaderDelegate,
 MZSettingsTitleTableViewCellDelegate,
 MZSettingsStepperTableViewCellDelegate,
-MZSettingsSliderTableViewCellDelegate>
+MZSettingsSliderTableViewCellDelegate,
+MZTableViewTransitionDelegate,
+UIScrollViewDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
+
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
 
 @end
@@ -64,20 +69,18 @@ MZSettingsSliderTableViewCellDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.automaticallyAdjustsScrollViewInsets = NO;
+	self.navigationController.navigationBarHidden = YES;
 
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
 
 	// (2) Setup Table View Header
-	MZSettingsTableViewHeader *tableViewHeader = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([MZSettingsTableViewHeader class])
-																																						 owner:self
-																																					 options:nil][0];
-	tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
-	tableViewHeader.delegate = self;
-	self.tableView.tableHeaderView = tableViewHeader;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
+	self.tableViewHeader.delegate = self;
 
 	// (3) Reload Data
+	self.tableView.transitionDelegate = self;
+	self.tableView.delegate = self;
 	[self.tableView reloadData];
 }
 
@@ -202,6 +205,34 @@ MZSettingsSliderTableViewCellDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 	}
 	return nil;
+}
+
+#pragma mark - Table View Transition Delegate Methods
+
+- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidStartDismissalAnimatedTransition:)]) {
+		[self.transitionDelegate presentableViewControllerDidStartDismissalAnimatedTransition:self];
+	}
+}
+
+- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didUpdateDismissalAnimatedTransition:)]
+			&& percentage >= 0.0f && percentage < 1.0f) {
+		[self.transitionDelegate presentableViewController:self didUpdateDismissalAnimatedTransition:percentage];
+	}
+}
+
+- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
+			&& percentage >= 1.0f) {
+		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
+		[self.transitionDelegate presentableViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
+	}
+	
+	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidCancelDismissalAnimatedTransition:)]
+			&& percentage < 1.0f) {
+		[self.transitionDelegate presentableViewControllerDidCancelDismissalAnimatedTransition:self];
+	}
 }
 
 #pragma mark - Table View Header Delegate Methods
