@@ -65,6 +65,9 @@ const NSUInteger kNumberPages = 3;
 }
 
 - (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
+	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegue sender:self];
+
+	/*
 	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
 	wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
 
@@ -72,10 +75,13 @@ const NSUInteger kNumberPages = 3;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	navigationController.transitioningDelegate = self.transitioningBehavior;
 
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];*/
 }
 
 - (void)gotoSettingsView:(id)sender {
+	[self performSegueWithIdentifier:MZSettingsViewControllerSegue sender:self];
+
+	/*
 	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
 	settingsViewController.transitionDelegate = self.transitioningBehavior;
 
@@ -83,7 +89,7 @@ const NSUInteger kNumberPages = 3;
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
 	navigationController.transitioningDelegate = self.transitioningBehavior;
 
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+	[self.navigationController presentViewController:navigationController animated:YES completion:nil];*/
 }
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
