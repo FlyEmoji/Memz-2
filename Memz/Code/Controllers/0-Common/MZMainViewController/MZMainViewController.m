@@ -64,32 +64,27 @@ const NSUInteger kNumberPages = 3;
 	self.transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 }
 
-- (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
-	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegue sender:self];
-
-	/*
-	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
-	wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
-
-	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	MZNavigationController *navigationController = [[segue destinationViewController] safeCastToClass:[MZNavigationController class]];
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
+	navigationController.modalPresentationCapturesStatusBarAppearance = YES;		// TODO: See if works, and if needs to do same with VCs
 	navigationController.transitioningDelegate = self.transitioningBehavior;
 
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];*/
+	if ([segue.identifier isEqualToString:MZWordAdditionViewControllerSegue]) {
+		MZWordAdditionViewController *wordAdditionViewController = [[navigationController viewControllers][0] safeCastToClass:[MZWordAdditionViewController class]];
+		wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
+	} else if ([segue.identifier isEqualToString:MZSettingsViewControllerSegue]) {
+		MZSettingsViewController *settingsViewController = [[navigationController viewControllers][0] safeCastToClass:[MZSettingsViewController class]];
+		settingsViewController.transitionDelegate = self.transitioningBehavior;
+	}
+}
+
+- (void)goToAddWordView:(id)sender {
+	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegue sender:self];
 }
 
 - (void)gotoSettingsView:(id)sender {
 	[self performSegueWithIdentifier:MZSettingsViewControllerSegue sender:self];
-
-	/*
-	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
-	settingsViewController.transitionDelegate = self.transitioningBehavior;
-
-	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
-	navigationController.modalPresentationStyle = UIModalPresentationCustom;
-	navigationController.transitioningDelegate = self.transitioningBehavior;
-
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];*/
 }
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {

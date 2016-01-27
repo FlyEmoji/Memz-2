@@ -798,8 +798,8 @@
 				0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */,
 				0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */,
 				0C7A22E91C20CC4600774B95 /* Navigation.storyboard */,
-				0C0550821C5855A0005924A9 /* Settings.storyboard */,
 				0C0550801C585442005924A9 /* AddWord.storyboard */,
+				0C0550821C5855A0005924A9 /* Settings.storyboard */,
 				0C51801F1C31BA520072FEB0 /* Quiz.storyboard */,
 			);
 			name = Storyboards;
