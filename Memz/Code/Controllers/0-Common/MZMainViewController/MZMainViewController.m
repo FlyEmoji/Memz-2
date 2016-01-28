@@ -6,15 +6,7 @@
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
-#import "MZNavigationController.h"
 #import "MZMainViewController.h"
-#import "MZFeedViewController.h"
-#import "MZMyQuizzesViewController.h"
-#import "MZMyDictionaryViewController.h"
-#import "MZWordAdditionViewController.h"
-#import "MZSettingsViewController.h"
-#import "MZPresentableViewController.h"
-#import "MZTransitioningDefaultBehavior.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
@@ -31,10 +23,6 @@ const NSUInteger kNumberPages = 3;
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;
-
-// Use of composition pattern to implement transition behavior (can't use mutiple inheritance from both
-// MZPageViewController for pagination, and MZPresenterViewController for transition behavior.
-@property (nonatomic, strong) MZTransitioningDefaultBehavior *transitioningBehavior;
 
 @end
 
@@ -63,23 +51,6 @@ const NSUInteger kNumberPages = 3;
 
 	// (3) Initialize managers
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
-
-	// (4) Initialize transition behavior
-	self.transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	MZNavigationController *navigationController = [[segue destinationViewController] safeCastToClass:[MZNavigationController class]];
-	navigationController.modalPresentationStyle = UIModalPresentationCustom;
-	navigationController.transitioningDelegate = self.transitioningBehavior;
-
-	if ([segue.identifier isEqualToString:MZWordAdditionViewControllerSegue]) {
-		MZWordAdditionViewController *wordAdditionViewController = [navigationController.topViewController safeCastToClass:[MZWordAdditionViewController class]];
-		wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
-	} else if ([segue.identifier isEqualToString:MZSettingsViewControllerSegue]) {
-		MZSettingsViewController *settingsViewController = [navigationController.topViewController safeCastToClass:[MZSettingsViewController class]];
-		settingsViewController.transitionDelegate = self.transitioningBehavior;
-	}
 }
 
 - (void)goToAddWordView:(id)sender {

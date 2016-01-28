@@ -10,8 +10,6 @@
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
-#import "MZTransitioningDefaultBehavior.h"
-#import "MZNavigationController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 #import "MZDataManager.h"
@@ -48,9 +46,6 @@ NSFetchedResultsControllerDelegate>
 	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
-		viewController.modalPresentationStyle = UIModalPresentationCustom;
-		viewController.transitioningDelegate = self.transitioningBehavior;
-		viewController.transitionDelegate = self.transitioningBehavior;
 	}
 }
 

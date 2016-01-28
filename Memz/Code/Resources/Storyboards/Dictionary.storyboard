@@ -85,7 +85,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="6iB-bH-gfd" id="fcB-XO-8RA"/>
-                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegue" id="VC7-0k-l2D"/>
+                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegue" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okv-fd-Ryk" userLabel="First Responder" sceneMemberID="firstResponder"/>
