@@ -18,6 +18,10 @@
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
 
+NSString * const MZFeedViewControllerIdentifier = @"MZFeedViewControllerIdentifier";
+NSString * const MZMyQuizzesViewControllerIdentifier = @"MZMyQuizzesViewControllerIdentifier";
+NSString * const MZMyDictionaryViewControllerIdentifier = @"MZMyDictionaryViewControllerIdentifier";
+
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue";
 
@@ -67,14 +71,13 @@ const NSUInteger kNumberPages = 3;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	MZNavigationController *navigationController = [[segue destinationViewController] safeCastToClass:[MZNavigationController class]];
 	navigationController.modalPresentationStyle = UIModalPresentationCustom;
-	navigationController.modalPresentationCapturesStatusBarAppearance = YES;		// TODO: See if works, and if needs to do same with VCs
 	navigationController.transitioningDelegate = self.transitioningBehavior;
 
 	if ([segue.identifier isEqualToString:MZWordAdditionViewControllerSegue]) {
-		MZWordAdditionViewController *wordAdditionViewController = [[navigationController viewControllers][0] safeCastToClass:[MZWordAdditionViewController class]];
+		MZWordAdditionViewController *wordAdditionViewController = [navigationController.topViewController safeCastToClass:[MZWordAdditionViewController class]];
 		wordAdditionViewController.transitionDelegate = self.transitioningBehavior;
 	} else if ([segue.identifier isEqualToString:MZSettingsViewControllerSegue]) {
-		MZSettingsViewController *settingsViewController = [[navigationController viewControllers][0] safeCastToClass:[MZSettingsViewController class]];
+		MZSettingsViewController *settingsViewController = [navigationController.topViewController safeCastToClass:[MZSettingsViewController class]];
 		settingsViewController.transitionDelegate = self.transitioningBehavior;
 	}
 }
@@ -90,11 +93,11 @@ const NSUInteger kNumberPages = 3;
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
 	switch (page) {
 		case MZMainViewControllerPageFeed:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZFeedStoryboard identifier:MZFeedViewControllerIdentifier]; return viewController; };
 		case MZMainViewControllerPageQuizzes:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyQuizzesViewControllerIdentifier"]; return viewController; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZQuizStoryboard identifier:MZMyQuizzesViewControllerIdentifier]; return viewController; };
 		case MZMainViewControllerPageMyDictionary:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyDictionaryViewControllerIdentifier"]; return viewController; };	}
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZDictionaryStoryboard identifier:MZMyDictionaryViewControllerIdentifier]; return viewController; };	}
 	return nil;
 }
 
@@ -126,8 +129,9 @@ const NSUInteger kNumberPages = 3;
 
 #pragma mark - Helpers
 
-- (UIViewController *)pageViewControllerWithIdentifier:(NSString *)identifier {
-	return [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:identifier];
+- (UIViewController *)pageViewControllerWithStoryboard:(NSString *)storyboard
+																						identifier:(NSString *)identifier {
+	return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identifier];
 }
 
 @end

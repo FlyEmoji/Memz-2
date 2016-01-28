@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UYH-Eu-4rs">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -115,7 +115,104 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOn-0x-6HN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986" y="328"/>
+            <point key="canvasLocation" x="3854" y="367"/>
+        </scene>
+        <!--My Quizzes View Controller-->
+        <scene sceneID="8em-KK-jo6">
+            <objects>
+                <viewController storyboardIdentifier="MZMyQuizzesViewControllerIdentifier" id="UYH-Eu-4rs" customClass="MZMyQuizzesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cqm-s4-ezu"/>
+                        <viewControllerLayoutGuide type="bottom" id="g3g-5T-yTP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q7u-9N-x3b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="127" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1tS-8s-5d3">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZMyQuizzesTableViewCellIdentifier" rowHeight="130" id="Gyc-fc-tP9" customClass="MZMyQuizzesTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="130"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gyc-fc-tP9" id="HET-V5-pVl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="130"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-CI-2OK" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="0.0" y="129" width="600" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="FKK-Qs-4Kp"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q7-p5-NZo">
+                                                    <rect key="frame" x="8" y="8" width="36" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="isAnswered" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hb2-b0-zcb">
+                                                    <rect key="frame" x="504" y="8" width="88" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Hb2-b0-zcb" secondAttribute="trailing" constant="8" id="4he-Hc-et3"/>
+                                                <constraint firstItem="vfc-CI-2OK" firstAttribute="leading" secondItem="HET-V5-pVl" secondAttribute="leading" id="6zJ-Z6-tby"/>
+                                                <constraint firstAttribute="trailing" secondItem="vfc-CI-2OK" secondAttribute="trailing" id="RP4-8B-5CN"/>
+                                                <constraint firstItem="8Q7-p5-NZo" firstAttribute="leading" secondItem="HET-V5-pVl" secondAttribute="leading" constant="8" id="Rv0-bQ-lfo"/>
+                                                <constraint firstAttribute="bottom" secondItem="vfc-CI-2OK" secondAttribute="bottom" id="XsT-KG-buk"/>
+                                                <constraint firstItem="Hb2-b0-zcb" firstAttribute="top" secondItem="HET-V5-pVl" secondAttribute="top" constant="8" id="YM5-kG-Yid"/>
+                                                <constraint firstItem="8Q7-p5-NZo" firstAttribute="top" secondItem="HET-V5-pVl" secondAttribute="top" constant="8" id="fxN-AK-OuL"/>
+                                                <constraint firstItem="Hb2-b0-zcb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Q7-p5-NZo" secondAttribute="trailing" constant="20" id="pZT-60-HYl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.79767895879999995" green="0.82071399710000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="8Q7-p5-NZo" id="I93-5c-IA9"/>
+                                            <outlet property="isAnsweredLabel" destination="Hb2-b0-zcb" id="WrO-sF-MW7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="UYH-Eu-4rs" id="RGQ-p6-xYb"/>
+                                    <outlet property="delegate" destination="UYH-Eu-4rs" id="C3p-Lz-6hg"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykn-9u-40g" userLabel="Top Shrinkable View" customClass="MZQuizInfoView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9fX-QM-VeF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1tS-8s-5d3" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="3yP-Ka-2es"/>
+                            <constraint firstItem="ykn-9u-40g" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="5oJ-5e-4C0"/>
+                            <constraint firstItem="g3g-5T-yTP" firstAttribute="top" secondItem="1tS-8s-5d3" secondAttribute="bottom" id="7pd-va-NpO"/>
+                            <constraint firstItem="1tS-8s-5d3" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AX5-it-ihU"/>
+                            <constraint firstItem="ykn-9u-40g" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AXn-bN-taB"/>
+                            <constraint firstAttribute="trailing" secondItem="ykn-9u-40g" secondAttribute="trailing" id="WWk-60-5Wa"/>
+                            <constraint firstAttribute="trailing" secondItem="1tS-8s-5d3" secondAttribute="trailing" id="Xi8-w4-pMA"/>
+                        </constraints>
+                    </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="1tS-8s-5d3" id="zgv-17-vId"/>
+                        <outlet property="topShrinkableView" destination="ykn-9u-40g" id="MZ8-Fy-CR9"/>
+                        <outlet property="topShrinkableViewHeightConstraint" destination="9fX-QM-VeF" id="wvw-op-hLU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbC-SN-usl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3044" y="367"/>
         </scene>
     </scenes>
     <resources>

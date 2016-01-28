@@ -54,7 +54,7 @@ MZCountDownDelegate>
 	__block MZQuizCompletionBlock didGiveTranslationResponseBlock;
 
 	MZQuizViewController * (^ completeResponse)(MZResponse *, BOOL, UIViewController *) = ^(MZResponse *response, BOOL present, UIViewController *currentViewController) {
-		MZQuizViewController *quizViewController = [[UIStoryboard storyboardWithName:@"Quiz" bundle:nil] instantiateViewControllerWithIdentifier:kQuizViewControllerIdentifer];
+		MZQuizViewController *quizViewController = [[UIStoryboard storyboardWithName:MZQuizStoryboard bundle:nil] instantiateViewControllerWithIdentifier:kQuizViewControllerIdentifer];
 		quizViewController.response = response;
 		quizViewController.didGiveTranslationResponse = didGiveTranslationResponseBlock;
 

@@ -23,6 +23,9 @@
 		0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */; };
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
+		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
+		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
+		0C5042261C59B01D0045E6FC /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5042251C59B01D0045E6FC /* constants.m */; };
 		0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51801F1C31BA520072FEB0 /* Quiz.storyboard */; };
 		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
 		0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */; };
@@ -140,6 +143,9 @@
 		0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorToken.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorToken/MZBingTranslatorToken.m; sourceTree = SOURCE_ROOT; };
 		0C3727071C29BF9E00C9879F /* MZErrorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZErrorCreator.h; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.h; sourceTree = SOURCE_ROOT; };
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
+		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
+		0C5042231C59AD690045E6FC /* Dictionary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dictionary.storyboard; path = Code/Resources/Storyboards/Dictionary.storyboard; sourceTree = SOURCE_ROOT; };
+		0C5042251C59B01D0045E6FC /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Code/Resources/Supporting Files/constants.m"; sourceTree = SOURCE_ROOT; };
 		0C51801F1C31BA520072FEB0 /* Quiz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Quiz.storyboard; path = Code/Resources/Storyboards/Quiz.storyboard; sourceTree = SOURCE_ROOT; };
 		0C5180221C331A790072FEB0 /* MZCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZCountDown.h; path = Code/Helpers/Classes/MZCountDown/MZCountDown.h; sourceTree = SOURCE_ROOT; };
 		0C5180231C331A790072FEB0 /* MZCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCountDown.m; path = Code/Helpers/Classes/MZCountDown/MZCountDown.m; sourceTree = SOURCE_ROOT; };
@@ -736,10 +742,11 @@
 		0CA58BDB1C204EFB000E19D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BEF1C205387000E19D4 /* constants.h */,
 				0CA58BE61C205111000E19D4 /* Info.plist */,
-				0CA58BE71C205111000E19D4 /* main.m */,
+				0CA58BEF1C205387000E19D4 /* constants.h */,
+				0C5042251C59B01D0045E6FC /* constants.m */,
 				0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */,
+				0CA58BE71C205111000E19D4 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -798,9 +805,11 @@
 				0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */,
 				0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */,
 				0C7A22E91C20CC4600774B95 /* Navigation.storyboard */,
+				0C5042211C59ACD80045E6FC /* Feed.storyboard */,
+				0C51801F1C31BA520072FEB0 /* Quiz.storyboard */,
+				0C5042231C59AD690045E6FC /* Dictionary.storyboard */,
 				0C0550801C585442005924A9 /* AddWord.storyboard */,
 				0C0550821C5855A0005924A9 /* Settings.storyboard */,
-				0C51801F1C31BA520072FEB0 /* Quiz.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1303,10 +1312,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0550811C585442005924A9 /* AddWord.storyboard in Resources */,
+				0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
 				0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */,
 				0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */,
+				0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */,
 				0C3726F31C270D6900C9879F /* Localizable.strings in Resources */,
 				0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */,
 				0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */,
@@ -1442,6 +1453,7 @@
 				0C57F5841C4B2DFD0055532E /* MZPresentViewControllerTransition.m in Sources */,
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
+				0C5042261C59B01D0045E6FC /* constants.m in Sources */,
 				0CEFD1B21C3CB6FC00EB60DE /* NSObject+MemzAdditions.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0C74E69C1C4DD60A00184C94 /* MZProtocolInterceptor.m in Sources */,
