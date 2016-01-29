@@ -10,8 +10,8 @@
 
 @interface MZMyDictionaryTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *countTranslationsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *translationsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *countTranslationsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *translationsLabel;
 
 @end
 

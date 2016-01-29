@@ -21,13 +21,13 @@
 
 @interface MZPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong, readonly) UIPageControl * pageControl;
-@property (nonatomic, strong, readonly) UIScrollView * titleScrollView;
-@property (nonatomic, strong, readonly) UIView * titleView;
-@property (nonatomic, strong) UIPanGestureRecognizer * panGestureRecognizer;
-@property (nonatomic, strong) CADisplayLink * displayLink;
-@property (nonatomic, strong) NSMutableDictionary * cachedViewControllers;
-@property (nonatomic, copy) NSArray * titleLabels;
+@property (nonatomic, strong, readonly) UIPageControl *pageControl;
+@property (nonatomic, strong, readonly) UIScrollView *titleScrollView;
+@property (nonatomic, strong, readonly) UIView *titleView;
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
+@property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, strong) NSMutableDictionary *cachedViewControllers;
+@property (nonatomic, copy) NSArray *titleLabels;
 
 @end
 
@@ -36,10 +36,22 @@
 @synthesize titleScrollView = _titleScrollView;
 @synthesize titleView = _titleView;
 
+#pragma mark - Initializers 
+
 - (id)init {
 	return [self initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
 								 navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
 															 options:nil];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+	if (self = [super initWithCoder:coder]) {
+		self.delegate = self;
+		self.dataSource = self;
+
+		_cachedViewControllers = [NSMutableDictionary dictionary];
+	}
+	return self;
 }
 
 - (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style
@@ -48,12 +60,14 @@
 	self = [super initWithTransitionStyle:style navigationOrientation:navigationOrientation options:options];
 	if (self != nil) {
 		self.dataSource = self;
-		self.delegate = self;
+		self.dataSource = self;
 
 		_cachedViewControllers = [NSMutableDictionary dictionary];
 	}
 	return self;
 }
+
+#pragma mark - Overridden Methods
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -81,13 +95,13 @@
 }
 
 - (UIViewController *)viewControllerForPage:(NSInteger)page {
-	if(self.cachedViewControllers[@(page)] != nil) {
+	if (self.cachedViewControllers[@(page)] != nil) {
 		return self.cachedViewControllers[@(page)];
 	}
 
 	MZPageViewControllerFactoryBlock factory = [self viewControllerFactoryForPage:page];
 	NSAssert(factory != nil, @"Factory for page %ld is not defined", (long)page);
-	UIViewController * viewController = factory();
+	UIViewController *viewController = factory();
 	NSAssert(viewController != nil, @"View controller for page %ld is not defined", (long)page);
 	self.cachedViewControllers[@(page)] = viewController;
 	return viewController;
@@ -239,9 +253,9 @@
 #pragma mark - Helper method
 
 - (NSInteger)pageOfViewController:(UIViewController *)viewController {
-	for(NSNumber * currentPage in [self.cachedViewControllers allKeys]) {
+	for (NSNumber * currentPage in [self.cachedViewControllers allKeys]) {
 		UIViewController * currentViewController = self.cachedViewControllers[currentPage];
-		if(viewController == currentViewController) {
+		if (viewController == currentViewController) {
 			return [currentPage integerValue];
 		}
 	}
@@ -263,23 +277,23 @@
 		CGFloat a = (1.0f - kTitleViewMinimumAlpha) / (0.0f - 0.5f);
 		CGFloat b = 1.0f - a * 0.0f;
 		offset = a * offset + b;
-		if(offset < kTitleViewMinimumAlpha) {
+		if (offset < kTitleViewMinimumAlpha) {
 			return kTitleViewMinimumAlpha;
-		} else if(offset > 1.0f) {
+		} else if (offset > 1.0f) {
 			return 1.0f;
 		}
 		return offset;
 	};
 
 	NSUInteger count = [self.titleLabels count];
-	for(NSUInteger i = 0;i < count;++i) {
+	for(NSUInteger i = 0; i < count; ++i) {
 		[self.titleLabels[i] setAlpha:calculateProgress(i * 1.0f, position)];
 	}
 }
 
 - (CGFloat)currentPosition {
 	NSUInteger offset = 0;
-	UIViewController * firstVisibleViewController;
+	UIViewController *firstVisibleViewController;
 	while ([(firstVisibleViewController = [self viewControllerForPage:offset]).view superview] == nil) {
 		++offset;
 	}

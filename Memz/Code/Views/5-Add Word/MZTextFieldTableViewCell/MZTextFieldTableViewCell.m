@@ -13,8 +13,8 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 
 @interface MZTextFieldTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UIButton *addButton;
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 
 @end
 

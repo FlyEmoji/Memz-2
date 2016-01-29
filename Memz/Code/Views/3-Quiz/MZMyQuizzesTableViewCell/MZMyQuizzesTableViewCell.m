@@ -11,8 +11,8 @@
 
 @interface MZMyQuizzesTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *isAnsweredLabel;
+@property (nonatomic, strong) IBOutlet UILabel *dateLabel;
+@property (nonatomic, strong) IBOutlet UILabel *isAnsweredLabel;
 
 @end
 

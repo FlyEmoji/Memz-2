@@ -11,9 +11,9 @@
 
 @interface MZFeedTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UILabel *cellTitleLabel;
-@property (nonatomic, weak) IBOutlet UILabel *cellSubTitleLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet UILabel *cellTitleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *cellSubTitleLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
 
 @end
 

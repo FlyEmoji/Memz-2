@@ -16,19 +16,19 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 
 @interface MZWordDescriptionHeaderView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@property (weak, nonatomic) IBOutlet UILabel *learnedStatusLabel;
-@property (weak, nonatomic) IBOutlet UIView *learnedStatusView;
-@property (weak, nonatomic) IBOutlet UILabel *numberOfTranslationsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *percentageSuccessLabel;
-@property (weak, nonatomic) IBOutlet UIButton *editButton;
-@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UILabel *learnedStatusLabel;
+@property (nonatomic, strong) IBOutlet UIView *learnedStatusView;
+@property (nonatomic, strong) IBOutlet UILabel *numberOfTranslationsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *percentageSuccessLabel;
+@property (nonatomic, strong) IBOutlet UIButton *editButton;
+@property (nonatomic, strong) IBOutlet UILabel *countDownLabel;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *countDownSectionHeightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *countDownBottomSeparatorConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *countDownSectionHeightConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *countDownBottomSeparatorConstraint;
 
-@property (assign, nonatomic) BOOL isEditing;
+@property (nonatomic, assign) BOOL isEditing;
 
 @end
 

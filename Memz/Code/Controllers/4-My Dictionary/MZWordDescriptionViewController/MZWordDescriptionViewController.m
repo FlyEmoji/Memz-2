@@ -24,12 +24,12 @@ UITableViewDelegate,
 MZWordDescriptionHeaderViewDelegate,
 MZTableViewTransitionDelegate>
 
-@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, strong) IBOutlet MZTableView *tableView;
 @property (nonatomic, strong) NSMutableArray<MZWord *> *tableViewData;
 
-@property (nonatomic, weak) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
-@property (nonatomic, weak) IBOutlet UIButton *bottomButton;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *bottomButtonHeightConstraint;
+@property (nonatomic, strong) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
+@property (nonatomic, strong) IBOutlet UIButton *bottomButton;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *bottomButtonHeightConstraint;
 
 @end
 

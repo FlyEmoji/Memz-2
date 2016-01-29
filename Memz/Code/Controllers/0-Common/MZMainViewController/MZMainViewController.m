@@ -6,25 +6,20 @@
 //  Copyright © 2015 Falcou. All rights reserved.
 //
 
-#import "MZNavigationController.h"
 #import "MZMainViewController.h"
-#import "MZFeedViewController.h"
-#import "MZMyQuizzesViewController.h"
-#import "MZMyDictionaryViewController.h"
-#import "MZWordAdditionViewController.h"
-#import "MZSettingsViewController.h"
-#import "MZPresentableViewController.h"
-#import "MZTransitioningDefaultBehavior.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
+
+NSString * const MZFeedViewControllerIdentifier = @"MZFeedViewControllerIdentifier";
+NSString * const MZMyQuizzesViewControllerIdentifier = @"MZMyQuizzesViewControllerIdentifier";
+NSString * const MZMyDictionaryViewControllerIdentifier = @"MZMyDictionaryViewControllerIdentifier";
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue";
 
 const NSUInteger kNumberPages = 3;
 
-@interface MZMainViewController () <UIViewControllerTransitioningDelegate,
-MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove that
+@interface MZMainViewController ()
 
 @property (nonatomic, weak) UIBarButtonItem *settingsButton;
 @property (nonatomic, weak) UIBarButtonItem *profileButton;
@@ -36,7 +31,7 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	// Add right button (add new word or expression)
+	// (1) Add right button (add new word or expression)
 	UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationAdd]
 																																	style:UIBarButtonItemStylePlain
 																																 target:self
@@ -45,7 +40,7 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 	self.profileButton = rightButton;
 
-	// Add left button (change settings)
+	// (2) Add left button (change settings)
 	UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationSettings]
 																																 style:UIBarButtonItemStylePlain
 																																target:self
@@ -54,42 +49,26 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 	self.settingsButton = leftButton;
 
-	// Initialize managers
+	// (3) Initialize managers
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
 }
 
-- (void)goToAddWordView:(id)sender {		// TODO: Use segue instead if possible
-	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
-
-	MZWordAdditionViewController *wordAdditionViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZWordAdditionViewControllerIdentifier"];
-	wordAdditionViewController.transitionDelegate = transitioningBehavior;
-
-	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:wordAdditionViewController];
-	navigationController.transitioningDelegate = transitioningBehavior;
-	navigationController.modalPresentationStyle = UIModalPresentationCustom;
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+- (void)goToAddWordView:(id)sender {
+	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegue sender:self];
 }
 
 - (void)gotoSettingsView:(id)sender {
-	MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
-
-	MZSettingsViewController *settingsViewController = [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:@"MZSettingsViewControllerIdentifier"];
-	settingsViewController.transitionDelegate = transitioningBehavior;
-
-	MZNavigationController *navigationController = [[MZNavigationController alloc] initWithRootViewController:settingsViewController];
-	navigationController.transitioningDelegate = transitioningBehavior;
-	navigationController.modalPresentationStyle = UIModalPresentationCustom;
-	[self.navigationController presentViewController:navigationController animated:YES completion:nil];
+	[self performSegueWithIdentifier:MZSettingsViewControllerSegue sender:self];
 }
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {
 	switch (page) {
 		case MZMainViewControllerPageFeed:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZFeedViewControllerIdentifier"]; return viewController; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZFeedStoryboard identifier:MZFeedViewControllerIdentifier]; return viewController; };
 		case MZMainViewControllerPageQuizzes:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyQuizzesViewControllerIdentifier"]; return viewController; };
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZQuizStoryboard identifier:MZMyQuizzesViewControllerIdentifier]; return viewController; };
 		case MZMainViewControllerPageMyDictionary:
-			return ^{ UIViewController *viewController = [self pageViewControllerWithIdentifier:@"MZMyDictionaryViewControllerIdentifier"]; return viewController; };	}
+			return ^{ UIViewController *viewController = [self pageViewControllerWithStoryboard:MZDictionaryStoryboard identifier:MZMyDictionaryViewControllerIdentifier]; return viewController; };	}
 	return nil;
 }
 
@@ -121,8 +100,9 @@ MZPresentableViewControllerTransitioning>		// TODO: Should be able to remove tha
 
 #pragma mark - Helpers
 
-- (UIViewController *)pageViewControllerWithIdentifier:(NSString *)identifier {
-	return [[UIStoryboard storyboardWithName:@"Navigation" bundle:nil] instantiateViewControllerWithIdentifier:identifier];
+- (UIViewController *)pageViewControllerWithStoryboard:(NSString *)storyboard
+																						identifier:(NSString *)identifier {
+	return [[UIStoryboard storyboardWithName:storyboard bundle:nil] instantiateViewControllerWithIdentifier:identifier];
 }
 
 @end

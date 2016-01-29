@@ -11,7 +11,7 @@
 
 @interface MZTranslatedWordTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 
 @end
 

@@ -10,7 +10,7 @@
 
 @interface MZWordDescriptionTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 
 @end

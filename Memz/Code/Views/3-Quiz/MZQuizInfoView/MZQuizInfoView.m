@@ -13,14 +13,14 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 
 @interface MZQuizInfoView ()
 
-@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *pageWidthConstraint;
+@property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint *pageWidthConstraint;
 @property (nonatomic, strong) NSTimer *swipeTimer;
 
 // First page: information
-@property (nonatomic, weak) IBOutlet UILabel *numberPendingQuizzesLabel;
-@property (nonatomic, weak) IBOutlet UILabel *pendingQuizDescriptionLabel;
-@property (nonatomic, weak) IBOutlet UIButton *createNewQuizButton;
+@property (nonatomic, strong) IBOutlet UILabel *numberPendingQuizzesLabel;
+@property (nonatomic, strong) IBOutlet UILabel *pendingQuizDescriptionLabel;
+@property (nonatomic, strong) IBOutlet UIButton *createNewQuizButton;
 
 // Second page: statistics
 

@@ -10,7 +10,7 @@
 
 @interface MZNibView ()
 
-@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic, strong) IBOutlet UIView *contentView;
 
 @end
 

@@ -34,11 +34,20 @@
                     <navigationItem key="navigationItem" id="3cr-kN-Yv7"/>
                     <connections>
                         <outlet property="enterNavigationButton" destination="5Ss-MS-bXC" id="e4o-nO-FGi"/>
+                        <segue destination="Io8-Rl-NrL" kind="presentation" identifier="MZMainViewControllerSegue" id="Q9C-uX-Yl5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1015" y="311"/>
+        </scene>
+        <!--Navigation-->
+        <scene sceneID="z0b-yf-hcC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Navigation" id="Io8-Rl-NrL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TCO-5O-u1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535.5" y="311"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7kc-Oi-B65">

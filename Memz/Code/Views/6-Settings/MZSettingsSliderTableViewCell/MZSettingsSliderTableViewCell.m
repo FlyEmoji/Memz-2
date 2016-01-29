@@ -16,7 +16,7 @@ const NSUInteger kSliderDefaultEndValue = 24;
 
 @interface MZSettingsSliderTableViewCell ()
 
-@property (strong, nonatomic) IBOutlet UISlider *slider;
+@property (nonatomic, strong) IBOutlet UISlider *slider;
 
 @end
 

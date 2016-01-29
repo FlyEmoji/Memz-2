@@ -11,9 +11,12 @@
 #import "MZLanguageManager.h"
 #import "UINavigationController+MemzTransitions.h"
 
+NSString * const MZMainViewControllerIdentifier = @"MZMainViewControllerIdentifier";
+NSString * const MZMainViewControllerSegue = @"MZMainViewControllerSegue";
+
 @interface MZUserEntranceViewController ()
 
-@property (nonatomic, weak) IBOutlet UIButton *enterNavigationButton;
+@property (nonatomic, strong) IBOutlet UIButton *enterNavigationButton;
 
 @end
 
@@ -25,13 +28,21 @@
 	[MZLanguageManager sharedManager];
 }
 
-#pragma mark - Helpers 
+#pragma mark - Actions
+
+- (IBAction)didTapEnterNavigationButton:(UIButton *)button {
+	[self goToNavigationController];
+}
+
+#pragma mark - Helpers
 
 - (void)goToNavigationController {
-	NSArray *viewControllers = @[[[MZMainViewController alloc] init]];
+	UIStoryboard *navigationStoryboard = [UIStoryboard storyboardWithName:MZNavigationStoryboard bundle:nil];
+	MZMainViewController *mainViewController = [navigationStoryboard instantiateViewControllerWithIdentifier:MZMainViewControllerIdentifier];
 
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Navigation" bundle:nil];
-	UINavigationController *navigationController = [storyboard instantiateInitialViewController];
+	NSArray *viewControllers = @[mainViewController];
+
+	UINavigationController *navigationController = [navigationStoryboard instantiateInitialViewController];
 	navigationController.viewControllers = viewControllers;
 
 	UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
@@ -41,12 +52,6 @@
 																											options:MZAnimatedTransitionNewRootOptionNone
 																						 transitionOption:UIViewAnimationOptionTransitionCrossDissolve
 																									 completion:nil];
-}
-
-#pragma mark - Actions
-
-- (IBAction)didTapEnterNavigationButton:(UIButton *)button {
-	[self goToNavigationController];
 }
 
 @end

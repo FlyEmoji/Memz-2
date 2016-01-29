@@ -11,7 +11,7 @@
 
 @interface MZMyDictionaryTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 
 - (void)setupTranslations:(NSArray<MZWord *> *)translations;
 

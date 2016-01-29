@@ -10,8 +10,6 @@
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
-#import "MZTransitioningDefaultBehavior.h"
-#import "MZNavigationController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageManager.h"
 #import "MZDataManager.h"
@@ -23,10 +21,9 @@ const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
-NSFetchedResultsControllerDelegate,
-MZPresentableViewControllerTransitioning>
+NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) MZWord *selectedWord;
@@ -47,12 +44,8 @@ MZPresentableViewControllerTransitioning>
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
-		MZTransitioningDefaultBehavior *transitioningBehavior = [[MZTransitioningDefaultBehavior alloc] init];
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
-		viewController.transitionDelegate = transitioningBehavior;
-		viewController.transitioningDelegate = transitioningBehavior;
-		viewController.modalPresentationStyle = UIModalPresentationCustom;
 	}
 }
 

@@ -17,8 +17,8 @@ typedef NS_ENUM(NSUInteger, MZTranslationResponseTableViewCellType) {
 
 @interface MZTranslationResponseTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIImageView *flagImageView;
-@property (nonatomic, weak) IBOutlet UITextField *textField;
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UITextField *textField;
 
 @property (nonatomic, weak) id<MZTranslationResponseTableViewCellDelegate> delegate;
 @property (nonatomic, assign, readonly) MZTranslationResponseTableViewCellType status;

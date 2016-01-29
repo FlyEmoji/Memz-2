@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */; };
+		0C0550811C585442005924A9 /* AddWord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0550801C585442005924A9 /* AddWord.storyboard */; };
+		0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0550821C5855A0005924A9 /* Settings.storyboard */; };
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
@@ -21,6 +23,10 @@
 		0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */; };
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
+		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
+		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
+		0C5042261C59B01D0045E6FC /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5042251C59B01D0045E6FC /* constants.m */; };
+		0C50422A1C59CBCC0045E6FC /* MZStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5042291C59CBCC0045E6FC /* MZStoryboardSegue.m */; };
 		0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51801F1C31BA520072FEB0 /* Quiz.storyboard */; };
 		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
 		0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */; };
@@ -74,6 +80,7 @@
 		0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFD9EB1C5462EC007EBCA6 /* MZNavigationController.m */; };
 		0CDFD9F31C54874D007EBCA6 /* MZPresentableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFD9F21C54874D007EBCA6 /* MZPresentableViewController.m */; };
 		0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */; };
+		0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -111,6 +118,8 @@
 /* Begin PBXFileReference section */
 		0C01CD1C1C21990C00F604A2 /* MZWordAdditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionViewController.h; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionViewController.m; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"; sourceTree = SOURCE_ROOT; };
+		0C0550801C585442005924A9 /* AddWord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWord.storyboard; path = Code/Resources/Storyboards/AddWord.storyboard; sourceTree = SOURCE_ROOT; };
+		0C0550821C5855A0005924A9 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Code/Resources/Storyboards/Settings.storyboard; sourceTree = SOURCE_ROOT; };
 		0C13AC191C24611D007A1AD5 /* MZTranslatedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslatedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslatedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -135,6 +144,11 @@
 		0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorToken.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorToken/MZBingTranslatorToken.m; sourceTree = SOURCE_ROOT; };
 		0C3727071C29BF9E00C9879F /* MZErrorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZErrorCreator.h; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.h; sourceTree = SOURCE_ROOT; };
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
+		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
+		0C5042231C59AD690045E6FC /* Dictionary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dictionary.storyboard; path = Code/Resources/Storyboards/Dictionary.storyboard; sourceTree = SOURCE_ROOT; };
+		0C5042251C59B01D0045E6FC /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Code/Resources/Supporting Files/constants.m"; sourceTree = SOURCE_ROOT; };
+		0C5042281C59CBCC0045E6FC /* MZStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZStoryboardSegue.h; path = Code/Helpers/Classes/MZStoryboardSegue/MZStoryboardSegue.h; sourceTree = SOURCE_ROOT; };
+		0C5042291C59CBCC0045E6FC /* MZStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZStoryboardSegue.m; path = Code/Helpers/Classes/MZStoryboardSegue/MZStoryboardSegue.m; sourceTree = SOURCE_ROOT; };
 		0C51801F1C31BA520072FEB0 /* Quiz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Quiz.storyboard; path = Code/Resources/Storyboards/Quiz.storyboard; sourceTree = SOURCE_ROOT; };
 		0C5180221C331A790072FEB0 /* MZCountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZCountDown.h; path = Code/Helpers/Classes/MZCountDown/MZCountDown.h; sourceTree = SOURCE_ROOT; };
 		0C5180231C331A790072FEB0 /* MZCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCountDown.m; path = Code/Helpers/Classes/MZCountDown/MZCountDown.m; sourceTree = SOURCE_ROOT; };
@@ -237,6 +251,8 @@
 		0CDFD9F21C54874D007EBCA6 /* MZPresentableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresentableViewController.m; path = "Code/Controllers/0-Common/MZPresentableViewController/MZPresentableViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CDFDA0B1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTransitioningDefaultBehavior.h; path = Code/Helpers/Classes/MZTransitioningDefaultBehavior/MZTransitioningDefaultBehavior.h; sourceTree = SOURCE_ROOT; };
 		0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTransitioningDefaultBehavior.m; path = Code/Helpers/Classes/MZTransitioningDefaultBehavior/MZTransitioningDefaultBehavior.m; sourceTree = SOURCE_ROOT; };
+		0CDFDA0F1C5732EA007EBCA6 /* MZPresenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPresenterViewController.h; path = "Code/Controllers/0-Common/MZPresenterViewController/MZPresenterViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresenterViewController.m; path = "Code/Controllers/0-Common/MZPresenterViewController/MZPresenterViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -487,6 +503,15 @@
 			name = MZErrorCreator;
 			sourceTree = "<group>";
 		};
+		0C5042271C59CBA90045E6FC /* MZStoryboardSegue */ = {
+			isa = PBXGroup;
+			children = (
+				0C5042281C59CBCC0045E6FC /* MZStoryboardSegue.h */,
+				0C5042291C59CBCC0045E6FC /* MZStoryboardSegue.m */,
+			);
+			name = MZStoryboardSegue;
+			sourceTree = "<group>";
+		};
 		0C5180211C331A4F0072FEB0 /* MZCountDown */ = {
 			isa = PBXGroup;
 			children = (
@@ -729,10 +754,11 @@
 		0CA58BDB1C204EFB000E19D4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BEF1C205387000E19D4 /* constants.h */,
 				0CA58BE61C205111000E19D4 /* Info.plist */,
-				0CA58BE71C205111000E19D4 /* main.m */,
+				0CA58BEF1C205387000E19D4 /* constants.h */,
+				0C5042251C59B01D0045E6FC /* constants.m */,
 				0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */,
+				0CA58BE71C205111000E19D4 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -748,12 +774,13 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */,
 				0C5FC1561C3A057800FF83E7 /* MZResponseComparator */,
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
+				0C5042271C59CBA90045E6FC /* MZStoryboardSegue */,
+				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C57F5851C4B2E050055532E /* MZPresentViewControllerTransition */,
 				0C57F57E1C4B264B0055532E /* MZPullViewControllerTransition */,
 				0C5180211C331A4F0072FEB0 /* MZCountDown */,
@@ -791,7 +818,11 @@
 				0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */,
 				0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */,
 				0C7A22E91C20CC4600774B95 /* Navigation.storyboard */,
+				0C5042211C59ACD80045E6FC /* Feed.storyboard */,
 				0C51801F1C31BA520072FEB0 /* Quiz.storyboard */,
+				0C5042231C59AD690045E6FC /* Dictionary.storyboard */,
+				0C0550801C585442005924A9 /* AddWord.storyboard */,
+				0C0550821C5855A0005924A9 /* Settings.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -801,6 +832,7 @@
 			children = (
 				0CDFD9E91C5462BE007EBCA6 /* MZNavigationController */,
 				0CA58C1A1C209BFD000E19D4 /* MZMainViewController */,
+				0CDFDA0E1C573220007EBCA6 /* MZPresenterViewController */,
 				0C2DC8761C4C0436005B11F5 /* MZPresentableViewController */,
 			);
 			name = "0-Common";
@@ -1046,6 +1078,15 @@
 			name = MZTransitioningDefaultBehavior;
 			sourceTree = "<group>";
 		};
+		0CDFDA0E1C573220007EBCA6 /* MZPresenterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CDFDA0F1C5732EA007EBCA6 /* MZPresenterViewController.h */,
+				0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */,
+			);
+			name = MZPresenterViewController;
+			sourceTree = "<group>";
+		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,9 +1324,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0550811C585442005924A9 /* AddWord.storyboard in Resources */,
+				0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
+				0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */,
 				0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */,
+				0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */,
 				0C3726F31C270D6900C9879F /* Localizable.strings in Resources */,
 				0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */,
 				0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */,
@@ -1389,6 +1434,7 @@
 				0CEFD1BD1C3CB71400EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
 				0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
+				0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */,
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
@@ -1403,6 +1449,7 @@
 				0CEFD1B81C3CB70700EB60DE /* NSString+MemzAdditions.m in Sources */,
 				0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */,
 				0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */,
+				0C50422A1C59CBCC0045E6FC /* MZStoryboardSegue.m in Sources */,
 				0CDFD9F31C54874D007EBCA6 /* MZPresentableViewController.m in Sources */,
 				0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */,
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
@@ -1420,6 +1467,7 @@
 				0C57F5841C4B2DFD0055532E /* MZPresentViewControllerTransition.m in Sources */,
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
+				0C5042261C59B01D0045E6FC /* constants.m in Sources */,
 				0CEFD1B21C3CB6FC00EB60DE /* NSObject+MemzAdditions.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,
 				0C74E69C1C4DD60A00184C94 /* MZProtocolInterceptor.m in Sources */,

@@ -19,8 +19,8 @@ const CGFloat kFeedTableViewCellFixedHeight = 200.0f;
 
 @interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSArray *tableViewData;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *tableViewData;
 
 @end
 

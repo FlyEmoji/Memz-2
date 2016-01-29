@@ -53,11 +53,11 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
 																																	presentingController:(UIViewController *)presenting
 																																			sourceController:(UIViewController *)source {
-	return [[MZPresentViewControllerTransition alloc] init];
+	return [MZPresentViewControllerTransition new];
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-	return self.iterativeDismissalTransition = [[MZPullViewControllerTransition alloc] init];
+	return self.iterativeDismissalTransition = [MZPullViewControllerTransition new];
 }
 
 #pragma mark - Custom Dismissal Interactive Transition Animation Delegate Method
