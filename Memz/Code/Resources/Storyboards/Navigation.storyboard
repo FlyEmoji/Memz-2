@@ -8,7 +8,7 @@
         <!--Main View Controller-->
         <scene sceneID="zDi-ER-Rdc">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VoW-Q2-HpE" customClass="MZMainViewController" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="MZMainViewControllerIdentifier" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="VoW-Q2-HpE" customClass="MZMainViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="x72-Yg-2LO"/>
                     <connections>
                         <segue destination="MRV-1q-3R5" kind="presentation" identifier="MZWordAdditionViewControllerSegue" customClass="MZStoryboardSegue" id="tJd-VW-eVU"/>

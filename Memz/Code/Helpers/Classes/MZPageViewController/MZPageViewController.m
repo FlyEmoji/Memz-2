@@ -36,6 +36,14 @@
 @synthesize titleScrollView = _titleScrollView;
 @synthesize titleView = _titleView;
 
+#pragma mark - Initializers 
+
+- (id)init {
+	return [self initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+								 navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+															 options:nil];
+}
+
 - (instancetype)initWithCoder:(NSCoder *)coder {
 	if (self = [super initWithCoder:coder]) {
 		self.delegate = self;
@@ -45,6 +53,21 @@
 	}
 	return self;
 }
+
+- (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style
+				navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation
+											options:(NSDictionary *)options {
+	self = [super initWithTransitionStyle:style navigationOrientation:navigationOrientation options:options];
+	if (self != nil) {
+		self.dataSource = self;
+		self.dataSource = self;
+
+		_cachedViewControllers = [NSMutableDictionary dictionary];
+	}
+	return self;
+}
+
+#pragma mark - Overridden Methods
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
