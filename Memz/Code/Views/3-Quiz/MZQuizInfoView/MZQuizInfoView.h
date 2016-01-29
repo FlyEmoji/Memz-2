@@ -19,5 +19,6 @@
 @protocol MZQuizInfoViewDelegate <NSObject>
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView;
+- (void)quizInfoViewDidRequestStatistics:(MZQuizInfoView *)quizInfoView;
 
 @end

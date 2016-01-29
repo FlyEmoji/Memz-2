@@ -18,11 +18,13 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 @property (nonatomic, strong) NSTimer *swipeTimer;
 
 // First page: information
+@property (strong, nonatomic) IBOutlet UIView *statusPendingPage;
 @property (nonatomic, strong) IBOutlet UILabel *numberPendingQuizzesLabel;
 @property (nonatomic, strong) IBOutlet UILabel *pendingQuizDescriptionLabel;
 @property (nonatomic, strong) IBOutlet UIButton *createNewQuizButton;
 
 // Second page: statistics
+@property (strong, nonatomic) IBOutlet UIView *statisticsPage;
 
 // Third page: to be decided
 
@@ -41,6 +43,16 @@ NSTimeInterval const kAutomaticSwipeScrollViewDelay = 5.0;
 																									 selector:@selector(swipeToNextPage:)
 																									 userInfo:nil
 																										repeats:YES];
+
+	UITapGestureRecognizer *statisticsTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+																																																	 action:@selector(didTapStatisticsPage:)];
+	[self.statisticsPage addGestureRecognizer:statisticsTapGestureRecognizer];
+}
+
+- (void)didTapStatisticsPage:(UITapGestureRecognizer *)tapGestureRecognizer {
+	if ([self.delegate respondsToSelector:@selector(quizInfoViewDidRequestStatistics:)]) {
+		[self.delegate quizInfoViewDidRequestStatistics:self];
+	}
 }
 
 - (void)dealloc {

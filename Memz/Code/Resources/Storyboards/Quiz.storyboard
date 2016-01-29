@@ -208,11 +208,20 @@
                         <outlet property="tableView" destination="1tS-8s-5d3" id="zgv-17-vId"/>
                         <outlet property="topShrinkableView" destination="ykn-9u-40g" id="MZ8-Fy-CR9"/>
                         <outlet property="topShrinkableViewHeightConstraint" destination="9fX-QM-VeF" id="wvw-op-hLU"/>
+                        <segue destination="dQT-cP-BtT" kind="presentation" identifier="MZLanguagePickerViewControllerSegue" id="hpg-qf-rwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbC-SN-usl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3044" y="367"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="TtQ-Az-GlR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistics" id="dQT-cP-BtT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-hX-2a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3044" y="850"/>
         </scene>
     </scenes>
     <resources>
