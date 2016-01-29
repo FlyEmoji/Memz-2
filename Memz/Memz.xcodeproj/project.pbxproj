@@ -43,6 +43,7 @@
 		0C74E69C1C4DD60A00184C94 /* MZProtocolInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C74E69B1C4DD60A00184C94 /* MZProtocolInterceptor.m */; };
 		0C7536051C5B0B2B00810402 /* MZLanguagesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7536041C5B0B2B00810402 /* MZLanguagesPickerViewController.m */; };
 		0C7536071C5B0C2B00810402 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7536061C5B0C2B00810402 /* Statistics.storyboard */; };
+		0C75360B1C5B18F700810402 /* MZGradientCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C75360A1C5B18F700810402 /* MZGradientCollectionViewLayout.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
@@ -180,6 +181,8 @@
 		0C7536031C5B0B2B00810402 /* MZLanguagesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguagesPickerViewController.h; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerViewController/MZLanguagesPickerViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C7536041C5B0B2B00810402 /* MZLanguagesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLanguagesPickerViewController.m; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerViewController/MZLanguagesPickerViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C7536061C5B0C2B00810402 /* Statistics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Statistics.storyboard; path = Code/Resources/Storyboards/Statistics.storyboard; sourceTree = SOURCE_ROOT; };
+		0C7536091C5B18F700810402 /* MZGradientCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZGradientCollectionViewLayout.h; path = Code/Helpers/Classes/MZGradientCollectionViewLayout/MZGradientCollectionViewLayout.h; sourceTree = SOURCE_ROOT; };
+		0C75360A1C5B18F700810402 /* MZGradientCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZGradientCollectionViewLayout.m; path = Code/Helpers/Classes/MZGradientCollectionViewLayout/MZGradientCollectionViewLayout.m; sourceTree = SOURCE_ROOT; };
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedTableViewCell.m; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
@@ -634,6 +637,15 @@
 			name = MZLanguagesPickerViewController;
 			sourceTree = "<group>";
 		};
+		0C7536081C5B181100810402 /* MZGradientCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				0C7536091C5B18F700810402 /* MZGradientCollectionViewLayout.h */,
+				0C75360A1C5B18F700810402 /* MZGradientCollectionViewLayout.m */,
+			);
+			name = MZGradientCollectionViewLayout;
+			sourceTree = "<group>";
+		};
 		0C7A22E21C20B8EB00774B95 /* 2-Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -806,6 +818,7 @@
 				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C57F5851C4B2E050055532E /* MZPresentViewControllerTransition */,
 				0C57F57E1C4B264B0055532E /* MZPullViewControllerTransition */,
+				0C7536081C5B181100810402 /* MZGradientCollectionViewLayout */,
 				0C5180211C331A4F0072FEB0 /* MZCountDown */,
 				0CBF7ABB1C217B6A00F5D91B /* MZNibView */,
 				0CA58C051C206B7A000E19D4 /* MZInjector */,
@@ -1439,6 +1452,7 @@
 				0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
 				0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */,
+				0C75360B1C5B18F700810402 /* MZGradientCollectionViewLayout.m in Sources */,
 				0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */,
 				0C711C981C31939600E0BB43 /* MZTranslationResponseTableViewCell.m in Sources */,
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
