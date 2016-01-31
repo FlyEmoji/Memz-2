@@ -7,6 +7,7 @@
 //
 
 #import "MZGradientCollectionViewLayout.h"
+#import "MZCollectionViewLayoutAttributes.h"
 
 const NSUInteger kNumberVisibleItems = 1;
 
@@ -29,12 +30,20 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
 @property (nonatomic, assign) CGFloat itemsSpacing;
 
-@property (nonatomic, strong) NSMutableArray<UICollectionViewLayoutAttributes *> *attributes;
-@property (nonatomic, weak, readonly) UICollectionViewLayoutAttributes* currentMostCenteredCellAttributes;
+@property (nonatomic, strong) NSMutableArray<MZCollectionViewLayoutAttributes *> *attributes;
+@property (nonatomic, weak, readonly) MZCollectionViewLayoutAttributes* currentMostCenteredCellAttributes;
 
 @end
 
 @implementation MZGradientCollectionViewLayout
+
+#pragma mark - Class Methods
+
++ (Class)layoutAttributesClass {
+	return [MZCollectionViewLayoutAttributes class];
+}
+
+#pragma mark - Initialization
 
 - (instancetype)init {
 	if (self = [super init]) {
@@ -142,10 +151,10 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
 - (UICollectionViewLayoutAttributes *)currentMostCenteredCellAttributes {
 	CGFloat center = self.collectionView.contentOffset.x + self.collectionView.center.x;
-	UICollectionViewLayoutAttributes *mostCenteredCellAttributes = self.attributes.firstObject;
+	MZCollectionViewLayoutAttributes *mostCenteredCellAttributes = self.attributes.firstObject;
 
 	for (NSInteger i = 1; i < self.attributes.count; i++) {
-		UICollectionViewLayoutAttributes *attribute = self.attributes[i];
+		MZCollectionViewLayoutAttributes *attribute = self.attributes[i];
 
 		CGFloat attributeBaseDistanceToCenter = fabs(mostCenteredCellAttributes.frame.origin.x
 																								 + (mostCenteredCellAttributes.frame.size.width / 2.0f) - center);
@@ -193,7 +202,8 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 	for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
 
-		UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+		MZCollectionViewLayoutAttributes *attribute = (MZCollectionViewLayoutAttributes *)[UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+
 		CGFloat x = [self centerXForItemAtIndexPath:indexPath];
 		CGFloat y = [self centerYForItemAtIndexPath:indexPath];
 		attribute.center = CGPointMake(x, y);
@@ -208,9 +218,9 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
-	NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
+	NSMutableArray<MZCollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
 
-	for (UICollectionViewLayoutAttributes *attribute in self.attributes) {
+	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
 		if (CGRectIntersectsRect(attribute.frame, rect)) {
 			CGFloat indexTransform = [self indexIncreaseSizeForCellAtIndexPath:attribute.indexPath];
 			CGFloat width = self.itemSize.width + kCurrentCellMaximumTransformValue * indexTransform;
@@ -221,6 +231,24 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 	}
 	return attributes;
 }
+
+#pragma mark - Overridden Appearance Animation
+
+- (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
+	MZCollectionViewLayoutAttributes *attributes = (MZCollectionViewLayoutAttributes *)[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+
+	CABasicAnimation *cellAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+	cellAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(attributes.center.x, attributes.center.y
+	    - (attributes.frame.origin.y + attributes.frame.size.height))];
+	cellAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
+	cellAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	cellAnimation.duration = 1.0f;
+	attributes.animation = cellAnimation;
+
+	return attributes;
+}
+
+#pragma mark - Overridden Pagination Handling
 
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
 	CGFloat currentOffset = self.collectionView.contentOffset.x;

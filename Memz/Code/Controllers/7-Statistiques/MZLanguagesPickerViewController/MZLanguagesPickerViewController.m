@@ -24,7 +24,11 @@ UICollectionViewDelegate>
 	[super viewDidLoad];
 
 	self.collectionViewData = @[@"France", @"US", @"UK", @"Other"];
+
 	[self.collectionView reloadData];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.collectionView.collectionViewLayout invalidateLayout];
+	});
 }
 
 #pragma mark - Collection View DataSource & Delegate Methods
