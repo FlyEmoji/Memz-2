@@ -15,7 +15,7 @@ NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionV
 UICollectionViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, copy) NSArray<NSString *> *collectionViewData;
+@property (nonatomic, strong) NSMutableArray<NSString *> *collectionViewData;
 
 @end
 
@@ -24,12 +24,15 @@ UICollectionViewDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.collectionViewData = @[@"France", @"US", @"UK", @"Other"];
+	NSArray<NSString *> *languages = @[@"France", @"US", @"UK", @"Other"];
+	self.collectionViewData = [[NSMutableArray alloc] initWithCapacity:languages.count];
 
-	[self.collectionView reloadData];
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.collectionView.collectionViewLayout invalidateLayout];
-	});
+	for (NSUInteger i = 0; i < languages.count; i++) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+			[self.collectionViewData addObject:languages[i]];
+			[self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+		});
+	}
 }
 
 #pragma mark - Collection View DataSource & Delegate Methods

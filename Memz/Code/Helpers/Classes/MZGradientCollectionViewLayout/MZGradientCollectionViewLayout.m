@@ -203,7 +203,7 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
 
 		// TODO: User layoutAttributesClass instead, to ensure sublasses will be able to do so as well
-		MZCollectionViewLayoutAttributes *attribute = (MZCollectionViewLayoutAttributes *)[UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+		MZCollectionViewLayoutAttributes *attribute = [MZCollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
 
 		CGFloat x = [self centerXForItemAtIndexPath:indexPath];
 		CGFloat y = [self centerYForItemAtIndexPath:indexPath];
@@ -243,7 +243,7 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 #pragma mark - Overridden Appearance Animation
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
-	MZCollectionViewLayoutAttributes *attributes = (MZCollectionViewLayoutAttributes *)[super initialLayoutAttributesForAppearingItemAtIndexPath:itemIndexPath];
+	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:itemIndexPath];
 
 	CABasicAnimation *cellAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
 	cellAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(attributes.center.x, attributes.center.y
