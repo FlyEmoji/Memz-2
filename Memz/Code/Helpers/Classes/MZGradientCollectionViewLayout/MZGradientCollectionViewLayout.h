@@ -15,4 +15,6 @@
 
 @interface MZGradientCollectionViewLayout : UICollectionViewLayout
 
+@property (nonatomic, assign) BOOL positionRelativeDelayCellAnimations;		// Default NO
+
 @end

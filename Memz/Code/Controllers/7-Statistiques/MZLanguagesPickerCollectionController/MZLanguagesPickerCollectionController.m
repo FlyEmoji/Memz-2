@@ -7,6 +7,7 @@
 //
 
 #import "MZLanguagesPickerCollectionController.h"
+#import "MZGradientCollectionViewLayout.h"
 #import "MZLanguageCollectionViewCell.h"
 
 #define COMPLETION_IF_NEEDED() \
@@ -24,6 +25,8 @@ UICollectionViewDelegate>
 @property (nonatomic, strong) NSMutableArray<NSString *> *mutableCollectionViewData;
 @property (nonatomic, weak, readonly) NSArray<NSIndexPath *> *allIndexPaths;
 
+@property (nonatomic, strong) MZGradientCollectionViewLayout *collectionViewLayout;
+
 @end
 
 @implementation MZLanguagesPickerCollectionController
@@ -35,6 +38,9 @@ UICollectionViewDelegate>
 		_collectionView = collectionView;
 		_collectionView.dataSource = self;
 		_collectionView.delegate = self;
+
+		self.collectionViewLayout = [[MZGradientCollectionViewLayout alloc] init];
+		_collectionView.collectionViewLayout = self.collectionViewLayout;
 	}
 	return self;
 }
@@ -54,11 +60,11 @@ UICollectionViewDelegate>
 	}
 
 	if (!animated) {
-		// (1) Update private mutable collection view data with all public collection view data objects
+		// (2) Update private mutable collection view data with all public collection view data objects
 		self.mutableCollectionViewData = self.collectionViewData.mutableCopy;
 		[self.collectionView reloadData];
 
-		// (2) Invalidate layout on main queue to ensure the collection view has finished to load and render cells
+		// (3) Invalidate layout on main queue to ensure the collection view has finished to load and render cells
 		// This will initialize the layout right after reload data
 		dispatch_async(dispatch_get_main_queue(), ^(void){
 			[self.collectionView.collectionViewLayout invalidateLayout];
@@ -67,22 +73,19 @@ UICollectionViewDelegate>
 		return;
 	}
 
-	// (1) If animating, will take advantage of collection view custom layout animations on insert/remove adding cell by cell
+	// (2) Take advantage of custom collection layout appearance animation (called upon insertion) to animate reload data
 	[self removeAllCellsAnimated:NO completionHandler:^{
+		BOOL wasDelayingAnimations = self.collectionViewLayout.positionRelativeDelayCellAnimations;
+		self.collectionViewLayout.positionRelativeDelayCellAnimations = YES;
+
 		[self.collectionView performBatchUpdates:^{
 			_isAnimating = YES;
-
-			for (NSUInteger i = 0; i < self.collectionViewData.count; i++) {
-				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i * kDelayAppearanceCells * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-					[self.mutableCollectionViewData addObject:self.collectionViewData[i]];
-					[self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
-				});
-			}
+			self.mutableCollectionViewData = self.collectionViewData.mutableCopy;
+			[self.collectionView insertItemsAtIndexPaths:self.allIndexPaths];
 		} completion:^(BOOL finished) {
-			if ([self.mutableCollectionViewData isEqualToArray:self.collectionViewData] && finished) {
-				_isAnimating = !finished;
-				COMPLETION_IF_NEEDED();
-			}
+			self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
+			_isAnimating = !finished;
+			COMPLETION_IF_NEEDED();
 		}];
 	}];
 }
@@ -93,8 +96,9 @@ UICollectionViewDelegate>
 		return;
 	}
 
+	[self.mutableCollectionViewData removeAllObjects];
+
 	if (!animated) {
-		[self.mutableCollectionViewData removeAllObjects];
 		[self.collectionView reloadData];
 		dispatch_async(dispatch_get_main_queue(), ^(void){
 			COMPLETION_IF_NEEDED();
@@ -102,28 +106,25 @@ UICollectionViewDelegate>
 		return;
 	}
 
-	for (NSUInteger i = 0; i < self.collectionViewData.count; i++) {
-		[self.collectionView performBatchUpdates:^{
-			_isAnimating = YES;
+	BOOL wasDelayingAnimations = self.collectionViewLayout.positionRelativeDelayCellAnimations;
+	self.collectionViewLayout.positionRelativeDelayCellAnimations = YES;
 
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i * kDelayAppearanceCells * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-				[self.mutableCollectionViewData removeObject:self.collectionViewData[i]];
-				[self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
-			});
-		} completion:^(BOOL finished) {
-			if ([self.mutableCollectionViewData isEqualToArray:self.collectionViewData] && finished) {
-				_isAnimating = !finished;
-				COMPLETION_IF_NEEDED();
-			}
-		}];
-	}
+	[self.collectionView performBatchUpdates:^{
+		_isAnimating = YES;
+		[self.collectionView deleteItemsAtIndexPaths:self.allIndexPaths];
+	} completion:^(BOOL finished) {
+		self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
+		self.collectionViewData = @[];
+		_isAnimating = !finished;
+		COMPLETION_IF_NEEDED();
+	}];
 }
 
 #pragma mark - Helpers
 
 - (NSArray<NSIndexPath *> *)allIndexPaths {
-	NSMutableArray<NSIndexPath *> *allIndexPaths = [[NSMutableArray alloc] initWithCapacity:[self.collectionView numberOfItemsInSection:0]];
-	for (NSUInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
+	NSMutableArray<NSIndexPath *> *allIndexPaths = [[NSMutableArray alloc] initWithCapacity:self.mutableCollectionViewData.count];
+	for (NSUInteger i = 0; i < self.mutableCollectionViewData.count; i++) {
 		[allIndexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
 	}
 	return allIndexPaths;

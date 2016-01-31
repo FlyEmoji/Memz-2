@@ -11,15 +11,15 @@
 @interface MZLanguagesPickerCollectionController : NSObject
 
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray<NSString *> *collectionViewData;	// You must check if the animating before updating data
+@property (nonatomic, strong) NSArray<NSString *> *collectionViewData;	// Update data does not calls reloadData
 
 @property (nonatomic, assign, readonly) BOOL isAnimating;	 // Returns YES if currently animating
 
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 + (instancetype)languageCollectionControllerWithCollectionView:(UICollectionView *)collectionView;
 
-- (void)reloadData;		// Not animated
-- (void)reloadDataAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;
+- (void)reloadData;		// Not animated, cancelled if already animating
+- (void)reloadDataAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;	 // Cancelled if already animating
 
 - (void)removeAllCellsAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;  // Sets collectionViewData to nil
 

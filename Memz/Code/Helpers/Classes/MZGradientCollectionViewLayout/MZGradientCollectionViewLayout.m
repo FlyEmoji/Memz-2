@@ -20,7 +20,8 @@ const CGFloat kRatioBottomInset = 0.1f;
 const CGFloat kDefaultItemsSpacing = 32.0f;
 const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
-const NSTimeInterval kAppearanceAnimationDuration = 0.5;
+const NSTimeInterval kAppearanceAnimationDuration = 0.4;
+const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 @interface MZGradientCollectionViewLayout ()
 
@@ -70,6 +71,7 @@ const NSTimeInterval kAppearanceAnimationDuration = 0.5;
 	self.itemsSpacing = kDefaultItemsSpacing;
 
 	self.attributes = [[NSMutableArray alloc] init];
+	self.positionRelativeDelayCellAnimations = NO;
 }
 
 #pragma mark - Custom Setters
@@ -247,13 +249,17 @@ const NSTimeInterval kAppearanceAnimationDuration = 0.5;
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
 	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:itemIndexPath];
 
-	CABasicAnimation *cellAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-	cellAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(attributes.center.x, attributes.center.y
-	    + (attributes.frame.origin.y + attributes.frame.size.height))];
-	cellAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
-	cellAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	cellAnimation.duration = kAppearanceAnimationDuration;
-	attributes.animation = cellAnimation;
+	CGPoint fromPoint = CGPointMake(attributes.center.x,
+																	attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
+
+	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+	frameAnimation.fromValue = [NSValue valueWithCGPoint:fromPoint];
+	frameAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
+	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	frameAnimation.beginTime = [self delayForIndexPath:itemIndexPath];
+	frameAnimation.fillMode = kCAFillModeBackwards;
+	frameAnimation.duration = kAppearanceAnimationDuration;
+	attributes.animation = frameAnimation;
 
 	return attributes;
 }
@@ -299,7 +305,7 @@ const NSTimeInterval kAppearanceAnimationDuration = 0.5;
 	return CGPointMake(newTargetOffset, 0.0f);
 }
 
-#pragma mark - Helper
+#pragma mark - Increase Cell Size according to their Current Position
 
 - (CGFloat)indexIncreaseSizeForCellAtIndexPath:(NSIndexPath *)indexPath {
 	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:indexPath];
@@ -316,6 +322,8 @@ const NSTimeInterval kAppearanceAnimationDuration = 0.5;
 	return fmax(1.0f - distanceFromBorder / maximumDistanceFromBorder, 0.0f);
 }
 
+#pragma mark - Helpers
+
 - (MZCollectionViewLayoutAttributes *)attributesAtIndexPath:(NSIndexPath *)indexPath {
 	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
 		if ([attribute.indexPath isEqual:indexPath]) {
@@ -323,6 +331,11 @@ const NSTimeInterval kAppearanceAnimationDuration = 0.5;
 		}
 	}
 	return nil;
+}
+
+- (CFTimeInterval)delayForIndexPath:(NSIndexPath *)indexPath {
+	CFTimeInterval delayedBeginTime = CACurrentMediaTime() + indexPath.item * kDelayAppearanceCells;
+	return self.positionRelativeDelayCellAnimations ? delayedBeginTime : 0.0;
 }
 
 #pragma mark - Invalidate Layout
