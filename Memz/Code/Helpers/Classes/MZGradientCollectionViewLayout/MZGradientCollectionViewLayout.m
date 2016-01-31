@@ -33,7 +33,7 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 @property (nonatomic, assign) CGFloat itemsSpacing;
 
-@property (nonatomic, strong) NSMutableArray<MZCollectionViewLayoutAttributes *> *attributes;
+@property (nonatomic, strong) NSMutableArray<MZCollectionViewLayoutAttributes *> *cachedAttributes;
 @property (nonatomic, weak, readonly) MZCollectionViewLayoutAttributes* currentMostCenteredCellAttributes;
 
 @end
@@ -70,7 +70,7 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 	self.sectionInsets = UIEdgeInsetsZero;
 	self.itemsSpacing = kDefaultItemsSpacing;
 
-	self.attributes = [[NSMutableArray alloc] init];
+	self.cachedAttributes = [[NSMutableArray alloc] init];
 	self.positionRelativeDelayCellAnimations = NO;
 }
 
@@ -155,10 +155,10 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 - (UICollectionViewLayoutAttributes *)currentMostCenteredCellAttributes {
 	CGFloat center = self.collectionView.contentOffset.x + self.collectionView.center.x;
-	MZCollectionViewLayoutAttributes *mostCenteredCellAttributes = self.attributes.firstObject;
+	MZCollectionViewLayoutAttributes *mostCenteredCellAttributes = self.cachedAttributes.firstObject;
 
-	for (NSInteger i = 1; i < self.attributes.count; i++) {
-		MZCollectionViewLayoutAttributes *attribute = self.attributes[i];
+	for (NSInteger i = 1; i < self.cachedAttributes.count; i++) {
+		MZCollectionViewLayoutAttributes *attribute = self.cachedAttributes[i];
 
 		CGFloat attributeBaseDistanceToCenter = fabs(mostCenteredCellAttributes.frame.origin.x
 																								 + (mostCenteredCellAttributes.frame.size.width / 2.0f) - center);
@@ -200,21 +200,12 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 	self.contentSize = CGSizeMake(width, height);
 
-	// (3) Create Attributes
-	[self.attributes removeAllObjects];
+	// (3) Purge old attributes and create new ones
+	[self.cachedAttributes removeAllObjects];
 
 	for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-
-		Class layoutAttributesClass = [[self class] layoutAttributesClass];
-		MZCollectionViewLayoutAttributes *attribute = [layoutAttributesClass layoutAttributesForCellWithIndexPath:indexPath];
-
-		CGFloat x = [self centerXForItemAtIndexPath:indexPath];
-		CGFloat y = [self centerYForItemAtIndexPath:indexPath];
-		attribute.center = CGPointMake(x, y);
-		attribute.size = self.itemSize;
-
-		[self.attributes addObject:attribute];
+		[self.cachedAttributes addObject:[self cachedOrNewAttributesForIndexPath:indexPath]];
 	}
 }
 
@@ -225,7 +216,7 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
 	NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
 
-	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
+	for (MZCollectionViewLayoutAttributes *attribute in self.cachedAttributes) {
 		if (CGRectIntersectsRect(attribute.frame, rect)) {
 			[attributes addObject:[self layoutAttributesForItemAtIndexPath:attribute.indexPath]];
 		}
@@ -234,7 +225,7 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:indexPath];
+	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:indexPath];
 
 	CGFloat indexTransform = [self indexIncreaseSizeForCellAtIndexPath:attributes.indexPath];
 	CGFloat width = self.itemSize.width + kCurrentCellMaximumTransformValue * indexTransform;
@@ -244,10 +235,10 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 	return attributes;
 }
 
-#pragma mark - Overridden Appearance Animation
+#pragma mark - Overridden Appearance/Disappearance Animations
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
-	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:itemIndexPath];
+	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:itemIndexPath];
 
 	CGPoint fromPoint = CGPointMake(attributes.center.x,
 																	attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
@@ -255,6 +246,24 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
 	frameAnimation.fromValue = [NSValue valueWithCGPoint:fromPoint];
 	frameAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
+	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	frameAnimation.beginTime = [self delayForIndexPath:itemIndexPath];
+	frameAnimation.fillMode = kCAFillModeBackwards;
+	frameAnimation.duration = kAppearanceAnimationDuration;
+	attributes.animation = frameAnimation;
+
+	return attributes;
+}
+
+- (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
+	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:itemIndexPath];
+
+	CGPoint toPoint = CGPointMake(attributes.center.x,
+																attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
+
+	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+	frameAnimation.fromValue = [NSValue valueWithCGPoint:attributes.center];
+	frameAnimation.toValue = [NSValue valueWithCGPoint:toPoint];
 	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 	frameAnimation.beginTime = [self delayForIndexPath:itemIndexPath];
 	frameAnimation.fillMode = kCAFillModeBackwards;
@@ -308,7 +317,7 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 #pragma mark - Increase Cell Size according to their Current Position
 
 - (CGFloat)indexIncreaseSizeForCellAtIndexPath:(NSIndexPath *)indexPath {
-	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:indexPath];
+	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:indexPath];
 
 	CGRect cellAbsoluteRect = [self.collectionView.superview convertRect:attributes.frame fromView:self.collectionView];
 	CGFloat distanceFromCenter = fabs(self.collectionView.center.x - (cellAbsoluteRect.origin.x + cellAbsoluteRect.size.width / 2.0f));
@@ -324,13 +333,24 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 #pragma mark - Helpers
 
-- (MZCollectionViewLayoutAttributes *)attributesAtIndexPath:(NSIndexPath *)indexPath {
-	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
+- (MZCollectionViewLayoutAttributes *)cachedOrNewAttributesForIndexPath:(NSIndexPath *)indexPath {
+	// (1) Return cached attribute if exists
+	for (MZCollectionViewLayoutAttributes *attribute in self.cachedAttributes) {
 		if ([attribute.indexPath isEqual:indexPath]) {
 			return attribute;
 		}
 	}
-	return nil;
+
+	// (2) Create new attribute if no attribute cached
+	Class layoutAttributesClass = [[self class] layoutAttributesClass];
+	MZCollectionViewLayoutAttributes *attribute = [layoutAttributesClass layoutAttributesForCellWithIndexPath:indexPath];
+
+	CGFloat x = [self centerXForItemAtIndexPath:indexPath];
+	CGFloat y = [self centerYForItemAtIndexPath:indexPath];
+	attribute.center = CGPointMake(x, y);
+	attribute.size = self.itemSize;
+
+	return attribute;
 }
 
 - (CFTimeInterval)delayForIndexPath:(NSIndexPath *)indexPath {

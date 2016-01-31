@@ -23,9 +23,10 @@ NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionV
 UICollectionViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray<NSString *> *mutableCollectionViewData;
-@property (nonatomic, weak, readonly) NSArray<NSIndexPath *> *allIndexPaths;
-
 @property (nonatomic, strong) MZGradientCollectionViewLayout *collectionViewLayout;
+
+@property (nonatomic, weak, readonly) NSArray<NSIndexPath *> *indexPathsToInsert;
+@property (nonatomic, weak, readonly) NSArray<NSIndexPath *> *indexPathsToRemove;
 
 @end
 
@@ -74,14 +75,14 @@ UICollectionViewDelegate>
 	}
 
 	// (2) Take advantage of custom collection layout appearance animation (called upon insertion) to animate reload data
-	[self removeAllCellsAnimated:NO completionHandler:^{
+	[self dropAllCellsAnimated:NO completionHandler:^{
 		BOOL wasDelayingAnimations = self.collectionViewLayout.positionRelativeDelayCellAnimations;
 		self.collectionViewLayout.positionRelativeDelayCellAnimations = YES;
 
 		[self.collectionView performBatchUpdates:^{
 			_isAnimating = YES;
 			self.mutableCollectionViewData = self.collectionViewData.mutableCopy;
-			[self.collectionView insertItemsAtIndexPaths:self.allIndexPaths];
+			[self.collectionView insertItemsAtIndexPaths:self.indexPathsToInsert];
 		} completion:^(BOOL finished) {
 			self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
 			_isAnimating = !finished;
@@ -90,7 +91,7 @@ UICollectionViewDelegate>
 	}];
 }
 
-- (void)removeAllCellsAnimated:(BOOL)animated completionHandler:(void (^)(void))completionHandler {
+- (void)dropAllCellsAnimated:(BOOL)animated completionHandler:(void (^)(void))completionHandler {
 	if (self.isAnimating || self.collectionViewData.count == 0) {
 		COMPLETION_IF_NEEDED()
 		return;
@@ -111,7 +112,7 @@ UICollectionViewDelegate>
 
 	[self.collectionView performBatchUpdates:^{
 		_isAnimating = YES;
-		[self.collectionView deleteItemsAtIndexPaths:self.allIndexPaths];
+		[self.collectionView deleteItemsAtIndexPaths:self.indexPathsToRemove];
 	} completion:^(BOOL finished) {
 		self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
 		self.collectionViewData = @[];
@@ -120,14 +121,22 @@ UICollectionViewDelegate>
 	}];
 }
 
-#pragma mark - Helpers
+#pragma mark - Calculated Properties
 
-- (NSArray<NSIndexPath *> *)allIndexPaths {
-	NSMutableArray<NSIndexPath *> *allIndexPaths = [[NSMutableArray alloc] initWithCapacity:self.mutableCollectionViewData.count];
-	for (NSUInteger i = 0; i < self.mutableCollectionViewData.count; i++) {
-		[allIndexPaths addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+- (NSArray<NSIndexPath *> *)indexPathsToInsert {
+	NSMutableArray<NSIndexPath *> *indexPathsToInsert = [[NSMutableArray alloc] init];
+	for (NSUInteger i = [self.collectionView numberOfItemsInSection:0]; i < self.mutableCollectionViewData.count; i++) {
+		[indexPathsToInsert addObject:[NSIndexPath indexPathForItem:i inSection:0]];
 	}
-	return allIndexPaths;
+	return indexPathsToInsert;
+}
+
+- (NSArray<NSIndexPath *> *)indexPathsToRemove {
+	NSMutableArray<NSIndexPath *> *indexPathsToRemove = [[NSMutableArray alloc] init];
+	for (NSUInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
+		[indexPathsToRemove addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+	}
+	return indexPathsToRemove;
 }
 
 #pragma mark - Custom Getters / Setters

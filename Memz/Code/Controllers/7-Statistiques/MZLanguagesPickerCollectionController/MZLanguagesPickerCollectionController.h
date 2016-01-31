@@ -21,6 +21,6 @@
 - (void)reloadData;		// Not animated, cancelled if already animating
 - (void)reloadDataAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;	 // Cancelled if already animating
 
-- (void)removeAllCellsAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;  // Sets collectionViewData to nil
+- (void)dropAllCellsAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;  // Sets collectionViewData to nil
 
 @end
