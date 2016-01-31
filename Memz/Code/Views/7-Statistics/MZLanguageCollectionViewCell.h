@@ -10,4 +10,7 @@
 
 @interface MZLanguageCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
+@property (nonatomic, strong) IBOutlet UILabel *languageTitleLabel;
+
 @end

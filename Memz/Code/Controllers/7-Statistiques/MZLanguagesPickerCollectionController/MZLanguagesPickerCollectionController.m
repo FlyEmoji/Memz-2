@@ -161,7 +161,7 @@ UICollectionViewDelegate>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	MZLanguageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLanguageCollectionViewCellIdentifier
 																																								 forIndexPath:indexPath];
-	cell.backgroundColor = [UIColor redColor];
+	cell.backgroundColor = [UIColor lightGrayColor];
 	return cell;
 }
 
