@@ -57,6 +57,8 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
 	self.sectionInsets = UIEdgeInsetsZero;
 	self.itemsSpacing = kDefaultItemsSpacing;
+
+	self.attributes = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - Custom Setters
@@ -93,7 +95,8 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 }
 
 - (CGSize)computeItemSize {
-	CGFloat itemSizeWidth, itemSizeHeight = 0.0f;
+	CGFloat itemSizeWidth = 0.0f;
+	CGFloat itemSizeHeight = 0.0f;
 
 	// (1.1) Width: divided by number of cells
 	itemSizeWidth += self.collectionView.bounds.size.width / kNumberVisibleItems;
@@ -222,7 +225,8 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 - (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity {
 	CGFloat currentOffset = self.collectionView.contentOffset.x;
 	CGFloat targetOffset = proposedContentOffset.x;
-	CGFloat newTargetOffset, page = 0.0f;
+	CGFloat newTargetOffset = 0.0f;
+  CGFloat page = 0.0f;
 
 	if (targetOffset == currentOffset) {
 		// (1) User releases finger with no scroll velocity (finger not moving).
