@@ -7,45 +7,29 @@
 //
 
 #import "MZLanguagesPickerViewController.h"
-#import "MZLanguageCollectionViewCell.h"
+#import "MZLanguagesPickerCollectionController.h"
 
-NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionViewCellIdentifier";
-
-@interface MZLanguagesPickerViewController () <UICollectionViewDataSource,
-UICollectionViewDelegate>
+@interface MZLanguagesPickerViewController ()
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
-@property (nonatomic, strong) NSMutableArray<NSString *> *collectionViewData;
+@property (nonatomic, strong) MZLanguagesPickerCollectionController *collectionController;
 
 @end
 
 @implementation MZLanguagesPickerViewController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 
-	NSArray<NSString *> *languages = @[@"France", @"US", @"UK", @"Other"];
-	self.collectionViewData = [[NSMutableArray alloc] initWithCapacity:languages.count];
-
-	for (NSUInteger i = 0; i < languages.count; i++) {
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-			[self.collectionViewData addObject:languages[i]];
-			[self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
-		});
-	}
+	self.collectionController = [[MZLanguagesPickerCollectionController alloc] initWithCollectionView:self.collectionView];
+	self.collectionController.collectionViewData = @[@"French", @"English", @"Spanish", @"Greek"];
+	[self.collectionController reloadDataAnimated:YES completionHandler:nil];
 }
 
-#pragma mark - Collection View DataSource & Delegate Methods
+#pragma mark - Actions
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return self.collectionViewData.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	MZLanguageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLanguageCollectionViewCellIdentifier
-																																								 forIndexPath:indexPath];
-	cell.backgroundColor = [UIColor redColor];
-	return cell;
+- (IBAction)backBarButtonItemTapped:(UIBarButtonItem *)barButtonItem {
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

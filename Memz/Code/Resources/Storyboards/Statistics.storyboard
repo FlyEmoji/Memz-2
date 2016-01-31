@@ -34,10 +34,6 @@
                                         <size key="customSize" width="176" height="168"/>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="iNG-DX-8Ed" id="wTv-8i-kaP"/>
-                                    <outlet property="delegate" destination="iNG-DX-8Ed" id="sAn-X8-T44"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,7 +44,13 @@
                             <constraint firstItem="oGw-id-wZr" firstAttribute="top" secondItem="FrC-uN-lDh" secondAttribute="bottom" id="vwm-lt-d6G"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rpa-i9-L3T"/>
+                    <navigationItem key="navigationItem" id="rpa-i9-L3T">
+                        <barButtonItem key="leftBarButtonItem" image="Navigation-Back" id="4ql-hU-NIY">
+                            <connections>
+                                <action selector="backBarButtonItemTapped:" destination="iNG-DX-8Ed" id="Jo9-5X-vZn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="oGw-id-wZr" id="qzt-6d-VSL"/>
                     </connections>
@@ -76,4 +78,7 @@
             <point key="canvasLocation" x="526" y="240"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Navigation-Back" width="27" height="22"/>
+    </resources>
 </document>

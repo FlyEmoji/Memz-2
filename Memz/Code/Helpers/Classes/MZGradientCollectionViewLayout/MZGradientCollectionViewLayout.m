@@ -20,6 +20,8 @@ const CGFloat kRatioBottomInset = 0.1f;
 const CGFloat kDefaultItemsSpacing = 32.0f;
 const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
+const NSTimeInterval kAppearanceAnimationDuration = 0.5;
+
 @interface MZGradientCollectionViewLayout ()
 
 @property (nonatomic, assign) CGSize itemSize;
@@ -202,8 +204,8 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 	for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
 
-		// TODO: User layoutAttributesClass instead, to ensure sublasses will be able to do so as well
-		MZCollectionViewLayoutAttributes *attribute = [MZCollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+		Class layoutAttributesClass = [[self class] layoutAttributesClass];
+		MZCollectionViewLayoutAttributes *attribute = [layoutAttributesClass layoutAttributesForCellWithIndexPath:indexPath];
 
 		CGFloat x = [self centerXForItemAtIndexPath:indexPath];
 		CGFloat y = [self centerYForItemAtIndexPath:indexPath];
@@ -219,11 +221,11 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
-	NSMutableArray<MZCollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
+	NSMutableArray<UICollectionViewLayoutAttributes *> *attributes = [[NSMutableArray alloc] init];
 
 	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
 		if (CGRectIntersectsRect(attribute.frame, rect)) {
-			[attributes addObject:(MZCollectionViewLayoutAttributes *)[self layoutAttributesForItemAtIndexPath:attribute.indexPath]];
+			[attributes addObject:[self layoutAttributesForItemAtIndexPath:attribute.indexPath]];
 		}
 	}
 	return attributes;
@@ -247,10 +249,10 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
 	CABasicAnimation *cellAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
 	cellAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(attributes.center.x, attributes.center.y
-	    - (attributes.frame.origin.y + attributes.frame.size.height))];
+	    + (attributes.frame.origin.y + attributes.frame.size.height))];
 	cellAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
 	cellAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	cellAnimation.duration = 1.0f;
+	cellAnimation.duration = kAppearanceAnimationDuration;
 	attributes.animation = cellAnimation;
 
 	return attributes;
@@ -300,21 +302,18 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 #pragma mark - Helper
 
 - (CGFloat)indexIncreaseSizeForCellAtIndexPath:(NSIndexPath *)indexPath {
-	UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-	if (!cell) {
-		return 0.0f;
-	}
+	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:indexPath];
 
-	CGRect cellAbsoluteRect = [self.collectionView.superview convertRect:cell.frame fromView:self.collectionView];
+	CGRect cellAbsoluteRect = [self.collectionView.superview convertRect:attributes.frame fromView:self.collectionView];
 	CGFloat distanceFromCenter = fabs(self.collectionView.center.x - (cellAbsoluteRect.origin.x + cellAbsoluteRect.size.width / 2.0f));
 
 	CGFloat maximumDistanceFromBorder = self.collectionView.frame.size.width / 2.0f;
-	CGFloat maximumDistanceFromCenter = self.collectionView.frame.size.width / 2.0f + cell.frame.size.width / 2.0f;
+	CGFloat maximumDistanceFromCenter = self.collectionView.frame.size.width / 2.0f + attributes.frame.size.width / 2.0f;
 
 	CGFloat ratio = distanceFromCenter / maximumDistanceFromCenter;
 	CGFloat distanceFromBorder = maximumDistanceFromBorder * ratio;
 
-	return 1.0f - distanceFromBorder / maximumDistanceFromBorder;
+	return fmax(1.0f - distanceFromBorder / maximumDistanceFromBorder, 0.0f);
 }
 
 - (MZCollectionViewLayoutAttributes *)attributesAtIndexPath:(NSIndexPath *)indexPath {
