@@ -7,6 +7,7 @@
 //
 
 #import "MZLanguagesPickerViewController.h"
+#import "MZLanguageCollectionViewCell.h"
 
 NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionViewCellIdentifier";
 
@@ -38,8 +39,8 @@ UICollectionViewDelegate>
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLanguageCollectionViewCellIdentifier
-																																				 forIndexPath:indexPath];
+	MZLanguageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLanguageCollectionViewCellIdentifier
+																																								 forIndexPath:indexPath];
 	cell.backgroundColor = [UIColor redColor];
 	return cell;
 }

@@ -202,6 +202,7 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 	for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
 
+		// TODO: User layoutAttributesClass instead, to ensure sublasses will be able to do so as well
 		MZCollectionViewLayoutAttributes *attribute = (MZCollectionViewLayoutAttributes *)[UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
 
 		CGFloat x = [self centerXForItemAtIndexPath:indexPath];
@@ -222,13 +223,20 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
 	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
 		if (CGRectIntersectsRect(attribute.frame, rect)) {
-			CGFloat indexTransform = [self indexIncreaseSizeForCellAtIndexPath:attribute.indexPath];
-			CGFloat width = self.itemSize.width + kCurrentCellMaximumTransformValue * indexTransform;
-			CGFloat height = self.itemSize.height + kCurrentCellMaximumTransformValue * indexTransform;
-			attribute.size = CGSizeMake(width, height);
-			[attributes addObject:attribute];
+			[attributes addObject:(MZCollectionViewLayoutAttributes *)[self layoutAttributesForItemAtIndexPath:attribute.indexPath]];
 		}
 	}
+	return attributes;
+}
+
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
+	MZCollectionViewLayoutAttributes *attributes = [self attributesAtIndexPath:indexPath];
+
+	CGFloat indexTransform = [self indexIncreaseSizeForCellAtIndexPath:attributes.indexPath];
+	CGFloat width = self.itemSize.width + kCurrentCellMaximumTransformValue * indexTransform;
+	CGFloat height = self.itemSize.height + kCurrentCellMaximumTransformValue * indexTransform;
+	attributes.size = CGSizeMake(width, height);
+
 	return attributes;
 }
 
@@ -307,6 +315,15 @@ const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 	CGFloat distanceFromBorder = maximumDistanceFromBorder * ratio;
 
 	return 1.0f - distanceFromBorder / maximumDistanceFromBorder;
+}
+
+- (MZCollectionViewLayoutAttributes *)attributesAtIndexPath:(NSIndexPath *)indexPath {
+	for (MZCollectionViewLayoutAttributes *attribute in self.attributes) {
+		if ([attribute.indexPath isEqual:indexPath]) {
+			return attribute;
+		}
+	}
+	return nil;
 }
 
 #pragma mark - Invalidate Layout

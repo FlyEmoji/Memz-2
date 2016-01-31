@@ -85,6 +85,7 @@
 		0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA0C1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m */; };
 		0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */; };
 		0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */; };
+		0CE051571C5DAC0E0011091D /* MZLanguageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE051561C5DAC0E0011091D /* MZLanguageCollectionViewCell.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -264,6 +265,8 @@
 		0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresenterViewController.m; path = "Code/Controllers/0-Common/MZPresenterViewController/MZPresenterViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CE051501C5DA7F70011091D /* MZCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZCollectionViewLayoutAttributes.h; path = Code/Helpers/Classes/MZCollectionViewLayoutAttributes/MZCollectionViewLayoutAttributes.h; sourceTree = SOURCE_ROOT; };
 		0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCollectionViewLayoutAttributes.m; path = Code/Helpers/Classes/MZCollectionViewLayoutAttributes/MZCollectionViewLayoutAttributes.m; sourceTree = SOURCE_ROOT; };
+		0CE051551C5DAC0E0011091D /* MZLanguageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageCollectionViewCell.h; path = "Code/Views/7-Statistics/MZLanguageCollectionViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CE051561C5DAC0E0011091D /* MZLanguageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLanguageCollectionViewCell.m; path = "Code/Views/7-Statistics/MZLanguageCollectionViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -756,6 +759,7 @@
 				0C3726E61C255C0800C9879F /* 4-My Dictionary */,
 				0CD2F0241C23166600636588 /* 5-Add Word */,
 				0CD8816C1C43500100F57279 /* 6-Settings */,
+				0CE051531C5DABD70011091D /* 7-Statistics */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1137,6 +1141,23 @@
 			name = MZCollectionViewLayoutAttributes;
 			sourceTree = "<group>";
 		};
+		0CE051531C5DABD70011091D /* 7-Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				0CE051541C5DABE30011091D /* MZLanguageCollectionViewCell */,
+			);
+			name = "7-Statistics";
+			sourceTree = "<group>";
+		};
+		0CE051541C5DABE30011091D /* MZLanguageCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CE051551C5DAC0E0011091D /* MZLanguageCollectionViewCell.h */,
+				0CE051561C5DAC0E0011091D /* MZLanguageCollectionViewCell.m */,
+			);
+			name = MZLanguageCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -1472,6 +1493,7 @@
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */,
+				0CE051571C5DAC0E0011091D /* MZLanguageCollectionViewCell.m in Sources */,
 				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,

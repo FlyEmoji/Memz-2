@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="xIn-FP-ljN" customClass="MZGradientCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MZLanguageCollectionViewCellIdentifier" id="nRD-nf-XUa">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MZLanguageCollectionViewCellIdentifier" id="nRD-nf-XUa" customClass="MZLanguageCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="176" height="168"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
