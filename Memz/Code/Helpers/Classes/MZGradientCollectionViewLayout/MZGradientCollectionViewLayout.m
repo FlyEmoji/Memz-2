@@ -7,7 +7,6 @@
 //
 
 #import "MZGradientCollectionViewLayout.h"
-#import "MZCollectionViewLayoutAttributes.h"
 
 const NSUInteger kNumberVisibleItems = 1;
 
@@ -20,8 +19,7 @@ const CGFloat kRatioBottomInset = 0.1f;
 const CGFloat kDefaultItemsSpacing = 32.0f;
 const CGFloat kCurrentCellMaximumTransformValue = 20.0f;
 
-const NSTimeInterval kAppearanceAnimationDuration = 0.4;
-const NSTimeInterval kDelayAppearanceCells = 0.2;
+const NSTimeInterval kDefaultAppearanceAnimationDuration = 0.4;
 
 @interface MZGradientCollectionViewLayout ()
 
@@ -69,9 +67,9 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 	self.sectionInsets = UIEdgeInsetsZero;
 	self.itemsSpacing = kDefaultItemsSpacing;
-
+	
+	self.appearanceAnimationDuration = kDefaultAppearanceAnimationDuration;
 	self.cachedAttributes = [[NSMutableArray alloc] init];
-	self.positionRelativeDelayCellAnimations = NO;
 }
 
 #pragma mark - Custom Setters
@@ -239,37 +237,13 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
 	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:itemIndexPath];
-
-	CGPoint fromPoint = CGPointMake(attributes.center.x,
-																	attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
-
-	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-	frameAnimation.fromValue = [NSValue valueWithCGPoint:fromPoint];
-	frameAnimation.toValue = [NSValue valueWithCGPoint:attributes.center];
-	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	frameAnimation.beginTime = [self delayForIndexPath:itemIndexPath];
-	frameAnimation.fillMode = kCAFillModeBackwards;
-	frameAnimation.duration = kAppearanceAnimationDuration;
-	attributes.animation = frameAnimation;
-
+	attributes.animation = [self appearanceAnimationForAttributes:attributes isAppearing:YES];
 	return attributes;
 }
 
 - (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath {
 	MZCollectionViewLayoutAttributes *attributes = [self cachedOrNewAttributesForIndexPath:itemIndexPath];
-
-	CGPoint toPoint = CGPointMake(attributes.center.x,
-																attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
-
-	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
-	frameAnimation.fromValue = [NSValue valueWithCGPoint:attributes.center];
-	frameAnimation.toValue = [NSValue valueWithCGPoint:toPoint];
-	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-	frameAnimation.beginTime = [self delayForIndexPath:itemIndexPath];
-	frameAnimation.fillMode = kCAFillModeBackwards;
-	frameAnimation.duration = kAppearanceAnimationDuration;
-	attributes.animation = frameAnimation;
-
+	attributes.animation = [self appearanceAnimationForAttributes:attributes isAppearing:NO];
 	return attributes;
 }
 
@@ -353,9 +327,25 @@ const NSTimeInterval kDelayAppearanceCells = 0.2;
 	return attribute;
 }
 
-- (CFTimeInterval)delayForIndexPath:(NSIndexPath *)indexPath {
-	CFTimeInterval delayedBeginTime = CACurrentMediaTime() + indexPath.item * kDelayAppearanceCells;
-	return self.positionRelativeDelayCellAnimations ? delayedBeginTime : 0.0;
+- (CABasicAnimation *)appearanceAnimationForAttributes:(MZCollectionViewLayoutAttributes *)attributes isAppearing:(BOOL)appearing {
+	CGPoint fromPoint, toPoint;
+	if (appearing) {
+		fromPoint = CGPointMake(attributes.center.x, attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
+		toPoint = attributes.center;
+	} else {
+		fromPoint = attributes.center;
+		toPoint = CGPointMake(attributes.center.x, attributes.center.y + (attributes.frame.origin.y + attributes.frame.size.height));
+	}
+
+	CABasicAnimation *frameAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
+	frameAnimation.fromValue = [NSValue valueWithCGPoint:fromPoint];
+	frameAnimation.toValue = [NSValue valueWithCGPoint:toPoint];
+	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+	frameAnimation.beginTime = CACurrentMediaTime() + attributes.indexPath.item * self.relativeDelayCellAnimations;
+	frameAnimation.fillMode = kCAFillModeBackwards;
+	frameAnimation.duration = self.appearanceAnimationDuration;
+
+	return frameAnimation;
 }
 
 #pragma mark - Invalidate Layout

@@ -29,7 +29,6 @@
 #pragma mark - Actions
 
 - (IBAction)backBarButtonItemTapped:(UIBarButtonItem *)barButtonItem {
-	[self.collectionController dropAllCellsAnimated:YES completionHandler:nil];
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

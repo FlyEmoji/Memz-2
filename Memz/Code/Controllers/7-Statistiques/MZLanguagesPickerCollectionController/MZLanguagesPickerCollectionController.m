@@ -15,7 +15,8 @@ if (completionHandler) { \
 completionHandler(); \
 } \
 
-const NSTimeInterval kDelayAppearanceCells = 0.25;
+const NSTimeInterval kAppearanceCellsDuration = 0.4;
+const NSTimeInterval kDelayAppearanceCells = 0.2;
 
 NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionViewCellIdentifier";
 
@@ -41,6 +42,8 @@ UICollectionViewDelegate>
 		_collectionView.delegate = self;
 
 		self.collectionViewLayout = [[MZGradientCollectionViewLayout alloc] init];
+		self.collectionViewLayout.appearanceAnimationDuration = kAppearanceCellsDuration;
+		self.collectionViewLayout.relativeDelayCellAnimations = kDelayAppearanceCells;
 		_collectionView.collectionViewLayout = self.collectionViewLayout;
 	}
 	return self;
@@ -76,15 +79,15 @@ UICollectionViewDelegate>
 
 	// (2) Take advantage of custom collection layout appearance animation (called upon insertion) to animate reload data
 	[self dropAllCellsAnimated:NO completionHandler:^{
-		BOOL wasDelayingAnimations = self.collectionViewLayout.positionRelativeDelayCellAnimations;
-		self.collectionViewLayout.positionRelativeDelayCellAnimations = YES;
+		NSTimeInterval savedDelayAnimations = self.collectionViewLayout.relativeDelayCellAnimations;
+		self.collectionViewLayout.relativeDelayCellAnimations = kDelayAppearanceCells;
 
 		[self.collectionView performBatchUpdates:^{
 			_isAnimating = YES;
 			self.mutableCollectionViewData = self.collectionViewData.mutableCopy;
 			[self.collectionView insertItemsAtIndexPaths:self.indexPathsToInsert];
 		} completion:^(BOOL finished) {
-			self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
+			self.collectionViewLayout.relativeDelayCellAnimations = savedDelayAnimations;
 			_isAnimating = !finished;
 			COMPLETION_IF_NEEDED();
 		}];
@@ -107,14 +110,14 @@ UICollectionViewDelegate>
 		return;
 	}
 
-	BOOL wasDelayingAnimations = self.collectionViewLayout.positionRelativeDelayCellAnimations;
-	self.collectionViewLayout.positionRelativeDelayCellAnimations = YES;
+	NSTimeInterval savedDelayAnimations = self.collectionViewLayout.relativeDelayCellAnimations;
+	self.collectionViewLayout.relativeDelayCellAnimations = kDelayAppearanceCells;
 
 	[self.collectionView performBatchUpdates:^{
 		_isAnimating = YES;
 		[self.collectionView deleteItemsAtIndexPaths:self.indexPathsToRemove];
 	} completion:^(BOOL finished) {
-		self.collectionViewLayout.positionRelativeDelayCellAnimations = wasDelayingAnimations;
+		self.collectionViewLayout.relativeDelayCellAnimations = savedDelayAnimations;
 		self.collectionViewData = @[];
 		_isAnimating = !finished;
 		COMPLETION_IF_NEEDED();
