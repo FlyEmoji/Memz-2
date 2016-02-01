@@ -33,6 +33,7 @@
 		0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */; };
 		0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */; };
 		0C57F5841C4B2DFD0055532E /* MZPresentViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5831C4B2DFD0055532E /* MZPresentViewControllerTransition.m */; };
+		0C5F57D21C619F16003CA161 /* MZStatisticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F57D11C619F16003CA161 /* MZStatisticsProvider.m */; };
 		0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */; };
 		0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */; };
 		0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */; };
@@ -166,6 +167,8 @@
 		0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPullViewControllerTransition.m; path = Code/Helpers/Classes/MZPullViewControllerTransition/MZPullViewControllerTransition.m; sourceTree = SOURCE_ROOT; };
 		0C57F5821C4B2DFD0055532E /* MZPresentViewControllerTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPresentViewControllerTransition.h; path = Code/Helpers/Classes/MZPresentViewControllerTransition/MZPresentViewControllerTransition.h; sourceTree = SOURCE_ROOT; };
 		0C57F5831C4B2DFD0055532E /* MZPresentViewControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPresentViewControllerTransition.m; path = Code/Helpers/Classes/MZPresentViewControllerTransition/MZPresentViewControllerTransition.m; sourceTree = SOURCE_ROOT; };
+		0C5F57D01C619F16003CA161 /* MZStatisticsProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZStatisticsProvider.h; path = Code/Helpers/Classes/MZStatisticsProvider/MZStatisticsProvider.h; sourceTree = SOURCE_ROOT; };
+		0C5F57D11C619F16003CA161 /* MZStatisticsProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZStatisticsProvider.m; path = Code/Helpers/Classes/MZStatisticsProvider/MZStatisticsProvider.m; sourceTree = SOURCE_ROOT; };
 		0C5FC1571C3A05A900FF83E7 /* MZResponseComparator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZResponseComparator.h; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.h; sourceTree = SOURCE_ROOT; };
 		0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparator.m; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m; sourceTree = SOURCE_ROOT; };
 		0C711C861C3179AF00E0BB43 /* MZMyQuizzesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesViewController.h; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -574,6 +577,15 @@
 			name = MZPresentViewControllerTransition;
 			sourceTree = "<group>";
 		};
+		0C5F57CF1C619EDF003CA161 /* MZStatisticsProvider */ = {
+			isa = PBXGroup;
+			children = (
+				0C5F57D01C619F16003CA161 /* MZStatisticsProvider.h */,
+				0C5F57D11C619F16003CA161 /* MZStatisticsProvider.m */,
+			);
+			name = MZStatisticsProvider;
+			sourceTree = "<group>";
+		};
 		0C5FC1561C3A057800FF83E7 /* MZResponseComparator */ = {
 			isa = PBXGroup;
 			children = (
@@ -820,6 +832,7 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0C5F57CF1C619EDF003CA161 /* MZStatisticsProvider */,
 				0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */,
 				0C5FC1561C3A057800FF83E7 /* MZResponseComparator */,
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
@@ -1541,6 +1554,7 @@
 				0C50422A1C59CBCC0045E6FC /* MZStoryboardSegue.m in Sources */,
 				0CDFD9F31C54874D007EBCA6 /* MZPresentableViewController.m in Sources */,
 				0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */,
+				0C5F57D21C619F16003CA161 /* MZStatisticsProvider.m in Sources */,
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
 				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
