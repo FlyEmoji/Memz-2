@@ -62,7 +62,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	// (3) Insert and prepare views to their final state before animation
 	sourceView.frame = CGRectMake(0.0f, destinationView.frame.size.height, sourceView.frame.size.width, sourceView.frame.size.height);
 	destinationView.transform = CGAffineTransformIdentity;
-	[[sourceView superview] insertSubview:destinationView belowSubview:sourceView];
+	[[sourceView superview] insertSubview:destinationView belowSubview:sourceView];		// Refactor using transitionContext.containerView and finalFrameForViewController
 
 	// (4) Prepare completion block
 	MZAnimationCompletionBlock completionBlock = ^(void) {

@@ -13,6 +13,7 @@
 
 + (NSArray<MZWord *> *)wordsForLanguage:(MZLanguage)language;
 + (NSArray<MZWord *> *)wordsTranslationsForLanguage:(MZLanguage)language;
++ (NSArray<MZWord *> *)wordsLearnedForLanguage:(MZLanguage)language;
 
 + (NSArray<MZQuiz *> *)quizzesForLanguage:(MZLanguage)language;
 
@@ -21,5 +22,7 @@
 
 + (NSArray<MZResponse *> *)successfulTranslationsForLanguage:(MZLanguage)language;
 + (NSArray<MZResponse *> *)successfulTranslationsForLanguage:(MZLanguage)language forDay:(NSDate *)date;
+
++ (CGFloat)percentageTranslationSuccessForLanguage:(MZLanguage)language;
 
 @end

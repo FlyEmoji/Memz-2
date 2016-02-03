@@ -57,3 +57,9 @@
 "LanguageNameSpanish" = "Spanish";
 "LanguageNameItalian" = "Italian";
 "LanguageNamePortuguese" = "Portuguese";
+
+"StatisticsNumberWordsTitle" = "%ld words";
+"StatisticsNumberTranslationsTitle" = "%ld translations";
+"StatisticsNumberGoodAnswersTitle" = "%ld good answers";
+"StatisticsNumberWordsLearnedTitle" = "%ld words learned";
+"StatisticsPercentageTranslationsSuccessTitle" = "%.2f%% successful translations";

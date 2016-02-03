@@ -8,6 +8,7 @@
 
 #import "MZLanguageCollectionViewCell.h"
 #import "MZCollectionViewLayoutAttributes.h"
+#import "MZStatisticsProvider.h"
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
 
@@ -17,6 +18,12 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
 @property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 @property (nonatomic, strong) IBOutlet UILabel *languageTitleLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *numberWordsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberTranslationsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberGoodAnswersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberWordsLearnedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *percentageSuccessLabel;
 
 @end
 
@@ -29,6 +36,17 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
 	self.flagImageView.image = [UIImage flagImageForLanguage:language];
 	self.languageTitleLabel.text = [NSString languageNameForLanguage:language];
+
+	self.numberWordsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberWordsTitle", nil),
+																[MZStatisticsProvider wordsForLanguage:language].count];
+	self.numberTranslationsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberTranslationsTitle", nil),
+																			 [MZStatisticsProvider translationsForLanguage:language].count];
+	self.numberGoodAnswersLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberGoodAnswersTitle", nil),
+																			[MZStatisticsProvider successfulTranslationsForLanguage:language].count];
+	self.numberWordsLearnedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberWordsLearnedTitle", nil),
+																			 [MZStatisticsProvider wordsLearnedForLanguage:language].count];
+	self.percentageSuccessLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsPercentageTranslationsSuccessTitle", nil),
+																			[MZStatisticsProvider percentageTranslationSuccessForLanguage:language]];
 }
 
 #pragma mark - Animation

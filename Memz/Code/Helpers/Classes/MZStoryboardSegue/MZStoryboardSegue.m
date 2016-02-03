@@ -36,7 +36,7 @@
 
 	self.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
 	self.destinationViewController.transitioningDelegate = self.transitioningBehavior;
-	self.destinationViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	self.destinationViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;	// TODO: To refactor, duplicated assignations
 
 	if ([self.destinationViewController isKindOfClass:[UINavigationController class]]) {
 		UINavigationController *navigationController = self.destinationViewController;
