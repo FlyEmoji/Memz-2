@@ -26,6 +26,12 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 @property (strong, nonatomic) IBOutlet UILabel *numberWordsLearnedLabel;
 @property (strong, nonatomic) IBOutlet UILabel *percentageSuccessLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *numberWordsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberTranslationsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberGoodAnswersLabel;
+@property (strong, nonatomic) IBOutlet UILabel *numberWordsLearnedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *percentageSuccessLabel;
+
 @end
 
 @implementation MZLanguageCollectionViewCell
