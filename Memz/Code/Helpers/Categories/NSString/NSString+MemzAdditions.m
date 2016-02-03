@@ -51,6 +51,12 @@
 			return NSLocalizedString(@"LanguageNameEnglish", nil);
 		case MZLanguageFrench:
 			return NSLocalizedString(@"LanguageNameFrench", nil);
+		case MZLanguageSpanish:
+			return NSLocalizedString(@"LanguageNameSpanish", nil);
+		case MZLanguageItalian:
+			return NSLocalizedString(@"LanguageNameItalian", nil);
+		case MZLanguagePortuguese:
+			return NSLocalizedString(@"LanguageNamePortuguese", nil);
 	}
 }
 

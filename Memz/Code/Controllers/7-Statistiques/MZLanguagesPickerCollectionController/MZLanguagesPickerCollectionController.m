@@ -23,7 +23,7 @@ NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionV
 @interface MZLanguagesPickerCollectionController () <UICollectionViewDataSource,
 UICollectionViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray<NSString *> *mutableCollectionViewData;
+@property (nonatomic, strong) NSMutableArray<NSNumber *> *mutableCollectionViewData;
 @property (nonatomic, strong) MZGradientCollectionViewLayout *collectionViewLayout;
 
 @property (nonatomic, weak, readonly) NSArray<NSIndexPath *> *indexPathsToInsert;
@@ -144,7 +144,7 @@ UICollectionViewDelegate>
 
 #pragma mark - Custom Getters / Setters
 
-- (void)setCollectionViewData:(NSArray<NSString *> *)collectionViewData {
+- (void)setCollectionViewData:(NSArray<NSNumber *> *)collectionViewData {
 	if (self.isAnimating) {
 		return;
 	}
@@ -161,7 +161,7 @@ UICollectionViewDelegate>
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	MZLanguageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kLanguageCollectionViewCellIdentifier
 																																								 forIndexPath:indexPath];
-	cell.backgroundColor = [UIColor lightGrayColor];
+	cell.language = self.mutableCollectionViewData[indexPath.row].integerValue;
 	return cell;
 }
 

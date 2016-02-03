@@ -8,6 +8,7 @@
 
 #import "MZLanguagesPickerViewController.h"
 #import "MZLanguagesPickerCollectionController.h"
+#import "MZLanguageManager.h"
 
 @interface MZLanguagesPickerViewController ()
 
@@ -22,7 +23,7 @@
 	[super viewWillAppear:animated];
 
 	self.collectionController = [[MZLanguagesPickerCollectionController alloc] initWithCollectionView:self.collectionView];
-	self.collectionController.collectionViewData = @[@"French", @"English", @"Spanish", @"Greek"];
+	self.collectionController.collectionViewData = [MZLanguageManager sharedManager].allLanguages;
 	[self.collectionController reloadDataAnimated:YES completionHandler:nil];
 }
 

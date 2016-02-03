@@ -11,7 +11,7 @@
 @interface MZLanguagesPickerCollectionController : NSObject
 
 @property (nonatomic, weak, readonly) UICollectionView *collectionView;
-@property (nonatomic, strong) NSArray<NSString *> *collectionViewData;	// Update data does not calls reloadData
+@property (nonatomic, strong) NSArray<NSNumber *> *collectionViewData;	// Update data does not calls reloadData
 
 @property (nonatomic, assign, readonly) BOOL isAnimating;	 // Returns YES if currently animating
 

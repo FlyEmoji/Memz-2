@@ -54,7 +54,10 @@ NSString * const kToLanguageKey = @"ToLanguageKey";
 
 - (NSArray<NSNumber *> *)allLanguages {
 	return @[@(MZLanguageEnglish),
-					 @(MZLanguageFrench)];
+					 @(MZLanguageFrench),
+					 @(MZLanguageSpanish),
+					 @(MZLanguageItalian),
+					 @(MZLanguagePortuguese)];
 }
 
 @end

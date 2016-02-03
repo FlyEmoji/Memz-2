@@ -20,6 +20,12 @@
 			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagUnitedKingdom];
 		case MZLanguageFrench:
 			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagFrance];
+		case MZLanguageSpanish:
+			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagSpain];
+		case MZLanguageItalian:
+			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagItalie];
+		case MZLanguagePortuguese:
+			return [UIImage imageWithAssetIdentifier:MZAssetIdentifierFlagPortugal];
 	}
 }
 

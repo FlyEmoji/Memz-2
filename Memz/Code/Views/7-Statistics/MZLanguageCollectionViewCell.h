@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZLanguageManager.h"
 
 @interface MZLanguageCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
-@property (nonatomic, strong) IBOutlet UILabel *languageTitleLabel;
+@property (nonatomic, assign) MZLanguage language;
 
 @end
