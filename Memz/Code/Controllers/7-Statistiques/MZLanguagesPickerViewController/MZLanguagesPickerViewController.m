@@ -8,12 +8,16 @@
 
 #import "MZLanguagesPickerViewController.h"
 #import "MZLanguagesPickerCollectionController.h"
-#import "MZLanguageManager.h"
+#import "MZStatisticsViewController.h"
 
-@interface MZLanguagesPickerViewController ()
+NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSegue";
+
+@interface MZLanguagesPickerViewController () <MZLanguagesPickerCollectionControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) MZLanguagesPickerCollectionController *collectionController;
+
+@property (nonatomic, assign) MZLanguage selectedLanguage;
 
 @end
 
@@ -24,7 +28,23 @@
 
 	self.collectionController = [[MZLanguagesPickerCollectionController alloc] initWithCollectionView:self.collectionView];
 	self.collectionController.collectionViewData = [MZLanguageManager sharedManager].allLanguages;
+	self.collectionController.delegate = self;
 	[self.collectionController reloadDataAnimated:YES completionHandler:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kStatisticsViewControllerSegue]) {
+		MZStatisticsViewController *viewController = [segue.destinationViewController safeCastToClass:[MZStatisticsViewController class]];
+		viewController.language = self.selectedLanguage;
+	}
+}
+
+#pragma mark - Picker Collection Controller Delegate Methods
+
+- (void)languagesPickerCollectionController:(MZLanguagesPickerCollectionController *)collectionController
+													didSelectLanguage:(MZLanguage)language {
+	self.selectedLanguage = language;
+	[self performSegueWithIdentifier:kStatisticsViewControllerSegue sender:self];
 }
 
 #pragma mark - Actions

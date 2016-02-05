@@ -41,6 +41,7 @@
 		0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C711C8E1C3179FA00E0BB43 /* MZQuizInfoView.xib */; };
 		0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C931C317F2900E0BB43 /* MZQuizViewController.m */; };
 		0C711C981C31939600E0BB43 /* MZTranslationResponseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C971C31939600E0BB43 /* MZTranslationResponseTableViewCell.m */; };
+		0C72F19C1C64684200EABC16 /* MZStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C72F19B1C64684200EABC16 /* MZStatisticsViewController.m */; };
 		0C74E69C1C4DD60A00184C94 /* MZProtocolInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C74E69B1C4DD60A00184C94 /* MZProtocolInterceptor.m */; };
 		0C7536051C5B0B2B00810402 /* MZLanguagesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7536041C5B0B2B00810402 /* MZLanguagesPickerViewController.m */; };
 		0C7536071C5B0C2B00810402 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7536061C5B0C2B00810402 /* Statistics.storyboard */; };
@@ -182,6 +183,8 @@
 		0C711C931C317F2900E0BB43 /* MZQuizViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizViewController.m; path = "Code/Controllers/3-Quiz/MZQuizViewController/MZQuizViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C711C961C31939600E0BB43 /* MZTranslationResponseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslationResponseTableViewCell.h; path = "Code/Views/3-Quiz/MZTranslationResponseTableViewCell/MZTranslationResponseTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C711C971C31939600E0BB43 /* MZTranslationResponseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslationResponseTableViewCell.m; path = "Code/Views/3-Quiz/MZTranslationResponseTableViewCell/MZTranslationResponseTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C72F19A1C64684200EABC16 /* MZStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZStatisticsViewController.h; path = "Code/Controllers/7-Statistiques/MZStatisticsViewController/MZStatisticsViewController.h"; sourceTree = SOURCE_ROOT; };
+		0C72F19B1C64684200EABC16 /* MZStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZStatisticsViewController.m; path = "Code/Controllers/7-Statistiques/MZStatisticsViewController/MZStatisticsViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C74E69A1C4DD60A00184C94 /* MZProtocolInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZProtocolInterceptor.h; path = Code/Helpers/Classes/MZProtocolInterceptor/MZProtocolInterceptor.h; sourceTree = SOURCE_ROOT; };
 		0C74E69B1C4DD60A00184C94 /* MZProtocolInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZProtocolInterceptor.m; path = Code/Helpers/Classes/MZProtocolInterceptor/MZProtocolInterceptor.m; sourceTree = SOURCE_ROOT; };
 		0C7536031C5B0B2B00810402 /* MZLanguagesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguagesPickerViewController.h; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerViewController/MZLanguagesPickerViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -632,6 +635,15 @@
 			name = MZTranslationResponseTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C72F1991C64681400EABC16 /* MZStatisticsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C72F19A1C64684200EABC16 /* MZStatisticsViewController.h */,
+				0C72F19B1C64684200EABC16 /* MZStatisticsViewController.m */,
+			);
+			name = MZStatisticsViewController;
+			sourceTree = "<group>";
+		};
 		0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */ = {
 			isa = PBXGroup;
 			children = (
@@ -646,6 +658,7 @@
 			children = (
 				0C7536021C5B0ADA00810402 /* MZLanguagesPickerViewController */,
 				0CE051581C5DCBA00011091D /* MZLanguagesPickerCollectionController */,
+				0C72F1991C64681400EABC16 /* MZStatisticsViewController */,
 			);
 			name = "7-Statistics";
 			sourceTree = "<group>";
@@ -1528,6 +1541,7 @@
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */,
 				0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */,
+				0C72F19C1C64684200EABC16 /* MZStatisticsViewController.m in Sources */,
 				0CD881661C409C0D00F57279 /* NSDate+MemzAdditions.m in Sources */,
 				0CDB82E91C30A0BD00EADB05 /* MZQuiz.m in Sources */,
 				0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */,
