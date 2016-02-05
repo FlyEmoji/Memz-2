@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierFlagSpain,
 	MZAssetIdentifierFlagItalie,
 	MZAssetIdentifierFlagPortugal,
+	MZAssetIdentifierNavigationBarPixel,
+	MZAssetIdentifierNavigationBarTransparentPixel,
 	MZAssetIdentifierNavigationAdd,
 	MZAssetIdentifierNavigationBack,
 	MZAssetIdentifierNavigationCancel,
