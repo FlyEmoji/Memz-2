@@ -18,6 +18,7 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
 @property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 @property (nonatomic, strong) IBOutlet UILabel *languageTitleLabel;
+@property (strong, nonatomic) IBOutlet UIView *noDataContainerView;
 
 @property (strong, nonatomic) IBOutlet UILabel *numberWordsLabel;
 @property (strong, nonatomic) IBOutlet UILabel *numberTranslationsLabel;
@@ -29,6 +30,12 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
 @implementation MZLanguageCollectionViewCell
 
+- (void)prepareForReuse {
+	[super prepareForReuse];
+
+	self.noDataContainerView.hidden = YES;
+}
+
 #pragma mark - Custom Setter
 
 - (void)setLanguage:(MZLanguage)language {
@@ -36,6 +43,11 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
 	self.flagImageView.image = [UIImage flagImageForLanguage:language];
 	self.languageTitleLabel.text = [NSString languageNameForLanguage:language];
+
+	if ([MZStatisticsProvider wordsForLanguage:language].count == 0) {
+		self.noDataContainerView.hidden = NO;
+		return;
+	}
 
 	self.numberWordsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberWordsTitle", nil),
 																[MZStatisticsProvider wordsForLanguage:language].count];

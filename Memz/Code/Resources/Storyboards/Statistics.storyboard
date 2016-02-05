@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Statistics-->
@@ -94,15 +95,34 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cw-xo-oAI" userLabel="No Data Container View">
+                                                    <rect key="frame" x="0.0" y="200" width="350" height="261"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Yet!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-yd-s6b">
+                                                            <rect key="frame" x="126" y="98" width="98" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="NzF-yd-s6b" firstAttribute="centerX" secondItem="6cw-xo-oAI" secondAttribute="centerX" id="Igd-cH-MqY"/>
+                                                        <constraint firstItem="NzF-yd-s6b" firstAttribute="centerY" secondItem="6cw-xo-oAI" secondAttribute="centerY" multiplier="1:1.2" id="UNy-S0-xAY"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6cw-xo-oAI" secondAttribute="trailing" id="1fA-g6-9eI"/>
                                             <constraint firstItem="n4A-6h-e2J" firstAttribute="top" secondItem="ioV-dw-pXe" secondAttribute="bottom" constant="6" id="9yr-FA-IHX"/>
                                             <constraint firstItem="b4C-JW-DTS" firstAttribute="leading" secondItem="SH0-gO-gQk" secondAttribute="leading" id="BGd-vo-oDu"/>
                                             <constraint firstItem="SH0-gO-gQk" firstAttribute="top" secondItem="b4C-JW-DTS" secondAttribute="bottom" constant="6" id="Etc-sI-qdz"/>
                                             <constraint firstItem="n4A-6h-e2J" firstAttribute="leading" secondItem="iHC-Ms-5EJ" secondAttribute="leading" id="Iyd-Ch-wtb"/>
+                                            <constraint firstItem="6cw-xo-oAI" firstAttribute="leading" secondItem="nRD-nf-XUa" secondAttribute="leading" id="Nez-KK-2ac"/>
+                                            <constraint firstItem="6cw-xo-oAI" firstAttribute="top" secondItem="gwR-OT-64G" secondAttribute="bottom" id="ONi-ZW-DhQ"/>
                                             <constraint firstItem="b4C-JW-DTS" firstAttribute="top" secondItem="gwR-OT-64G" secondAttribute="bottom" constant="14" id="S1z-0v-ZxJ"/>
                                             <constraint firstItem="gwR-OT-64G" firstAttribute="leading" secondItem="nRD-nf-XUa" secondAttribute="leading" id="d4t-uS-eFm"/>
                                             <constraint firstItem="SH0-gO-gQk" firstAttribute="leading" secondItem="ioV-dw-pXe" secondAttribute="leading" id="efJ-o3-MHk"/>
@@ -110,6 +130,7 @@
                                             <constraint firstItem="gwR-OT-64G" firstAttribute="top" secondItem="nRD-nf-XUa" secondAttribute="top" id="j6f-Ef-d4Y"/>
                                             <constraint firstItem="ioV-dw-pXe" firstAttribute="top" secondItem="SH0-gO-gQk" secondAttribute="bottom" constant="6" id="ldH-JE-Ple"/>
                                             <constraint firstItem="b4C-JW-DTS" firstAttribute="leading" secondItem="nRD-nf-XUa" secondAttribute="leading" constant="15" id="lyz-xB-9wb"/>
+                                            <constraint firstAttribute="bottom" secondItem="6cw-xo-oAI" secondAttribute="bottom" id="uz0-fD-Lfi"/>
                                             <constraint firstAttribute="trailing" secondItem="gwR-OT-64G" secondAttribute="trailing" id="wQC-x3-FZg"/>
                                             <constraint firstItem="iHC-Ms-5EJ" firstAttribute="top" secondItem="n4A-6h-e2J" secondAttribute="bottom" constant="6" id="zHK-Ad-TrV"/>
                                         </constraints>
@@ -117,6 +138,7 @@
                                         <connections>
                                             <outlet property="flagImageView" destination="b5z-bO-Zvf" id="dyG-DC-mrn"/>
                                             <outlet property="languageTitleLabel" destination="kSd-Rv-VXy" id="BIM-fX-tLe"/>
+                                            <outlet property="noDataContainerView" destination="6cw-xo-oAI" id="afz-Vb-2PJ"/>
                                             <outlet property="numberGoodAnswersLabel" destination="ioV-dw-pXe" id="d1m-zG-zAm"/>
                                             <outlet property="numberTranslationsLabel" destination="SH0-gO-gQk" id="Osi-IJ-qgC"/>
                                             <outlet property="numberWordsLabel" destination="b4C-JW-DTS" id="oj3-YY-T9E"/>

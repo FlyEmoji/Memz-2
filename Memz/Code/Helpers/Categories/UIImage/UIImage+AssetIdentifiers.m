@@ -19,7 +19,7 @@
 		case MZAssetIdentifierFlagSpain:
 			return [UIImage imageNamed:@"Flag-Spain"];
 		case MZAssetIdentifierFlagItalie:
-			return [UIImage imageNamed:@"Flag-Italie"];
+			return [UIImage imageNamed:@"Flag-Italy"];
 		case MZAssetIdentifierFlagPortugal:
 			return [UIImage imageNamed:@"Flag-Portugal"];
 		case MZAssetIdentifierNavigationAdd:
