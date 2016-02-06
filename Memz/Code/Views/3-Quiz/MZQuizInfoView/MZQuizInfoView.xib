@@ -15,6 +15,8 @@
                 <outlet property="pageWidthConstraint" destination="BbC-As-8wF" id="7LT-uG-8MU"/>
                 <outlet property="pendingQuizDescriptionLabel" destination="VDa-c5-6tp" id="nyw-b0-2Se"/>
                 <outlet property="scrollView" destination="Grs-u1-eZ3" id="DWe-iK-Uqe"/>
+                <outlet property="statisticsPage" destination="x69-kl-igM" id="HY0-iE-taF"/>
+                <outlet property="statusPendingPage" destination="xni-4E-mOT" id="xFv-jS-jvZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -86,7 +88,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x69-kl-igM" userLabel="2-Statistics Page">
                             <rect key="frame" x="500" y="0.0" width="500" height="114"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W3-Tm-3kr" userLabel="Positive Panel">
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3W3-Tm-3kr" userLabel="Positive Panel">
                                     <rect key="frame" x="0.0" y="0.0" width="250" height="114"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Navigation-Add" translatesAutoresizingMaskIntoConstraints="NO" id="xtK-CQ-mdq">
@@ -121,7 +123,7 @@
                                         <constraint firstItem="Zfs-h2-CLa" firstAttribute="leading" secondItem="xtK-CQ-mdq" secondAttribute="trailing" constant="8" id="zlH-z4-BvB"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-GV-YsD" userLabel="Negative Panel">
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-GV-YsD" userLabel="Negative Panel">
                                     <rect key="frame" x="250" y="0.0" width="250" height="114"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Navigation-Cancel" translatesAutoresizingMaskIntoConstraints="NO" id="VD2-ja-lmr">
@@ -178,7 +180,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TO BE DECIDED" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNj-MQ-8kg">
                                     <rect key="frame" x="188" y="46" width="124" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

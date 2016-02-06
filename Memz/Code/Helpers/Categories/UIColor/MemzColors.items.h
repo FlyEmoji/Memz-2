@@ -23,3 +23,5 @@ MZCOLOR(quizNextButtonWrongColor, 228.0f, 42.0f, 42.0f);
 
 MZCOLOR(myQuizzesPendingBackgroundColor, 255.0f, 255.0f, 255.0f);
 MZCOLOR(myQuizzesAnsweredBackgroundColor, 200.0f, 200.0f, 200.0f);
+
+MZCOLOR(statisticsDarkBackgroundColor, 44.0f, 44.0f, 62.0f);

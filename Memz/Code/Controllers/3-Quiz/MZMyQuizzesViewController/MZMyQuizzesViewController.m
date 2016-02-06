@@ -25,6 +25,7 @@ const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
+NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
 NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
@@ -202,6 +203,10 @@ MZQuizInfoViewDelegate>
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
 		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 	}];
+}
+
+- (void)quizInfoViewDidRequestStatistics:(MZQuizInfoView *)quizInfoView {
+	[self performSegueWithIdentifier:kLanguagePickerViewControllerSegue sender:self];
 }
 
 @end

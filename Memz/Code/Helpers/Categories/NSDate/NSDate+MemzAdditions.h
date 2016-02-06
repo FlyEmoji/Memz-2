@@ -12,4 +12,7 @@
 
 - (NSString *)humanReadableDateString;
 
+- (NSDate *)beginningDayDate;
+- (NSDate *)endDayDate;
+
 @end

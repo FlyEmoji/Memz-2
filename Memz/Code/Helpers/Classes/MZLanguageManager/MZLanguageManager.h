@@ -10,7 +10,10 @@
 
 typedef NS_ENUM(NSInteger, MZLanguage) {
 	MZLanguageEnglish,
-	MZLanguageFrench
+	MZLanguageFrench,
+	MZLanguageSpanish,
+	MZLanguageItalian,
+	MZLanguagePortuguese
 };
 
 @interface MZLanguageManager : NSObject
@@ -19,5 +22,7 @@ typedef NS_ENUM(NSInteger, MZLanguage) {
 
 @property (nonatomic, assign) MZLanguage fromLanguage;
 @property (nonatomic, assign) MZLanguage toLanguage;
+
+@property (nonatomic, weak, readonly) NSArray<NSNumber *> *allLanguages;
 
 @end

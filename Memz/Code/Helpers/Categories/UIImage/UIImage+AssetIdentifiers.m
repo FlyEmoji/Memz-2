@@ -16,6 +16,12 @@
 			return [UIImage imageNamed:@"Flag-France"];
 		case MZAssetIdentifierFlagUnitedKingdom:
 			return [UIImage imageNamed:@"Flag-United-Kingdom"];
+		case MZAssetIdentifierFlagSpain:
+			return [UIImage imageNamed:@"Flag-Spain"];
+		case MZAssetIdentifierFlagItalie:
+			return [UIImage imageNamed:@"Flag-Italy"];
+		case MZAssetIdentifierFlagPortugal:
+			return [UIImage imageNamed:@"Flag-Portugal"];
 		case MZAssetIdentifierNavigationAdd:
 			return [UIImage imageNamed:@"Navigation-Add"];
 		case MZAssetIdentifierNavigationBack:
