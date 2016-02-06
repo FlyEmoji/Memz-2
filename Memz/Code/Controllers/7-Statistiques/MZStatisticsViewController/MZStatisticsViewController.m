@@ -8,11 +8,18 @@
 
 #import "MZStatisticsViewController.h"
 #import "MZStatisticsExtendedNavigationBarView.h"
+#import "MZGraphicTableViewCell.h"
 
-@interface MZStatisticsViewController () <MZStatisticsExtendedNavigationBarViewDelegate>
+NSString * const kGraphicTableViewCellIdentifier = @"MZGraphicTableViewCellIdentifier";
+
+@interface MZStatisticsViewController () <MZStatisticsExtendedNavigationBarViewDelegate,
+UITableViewDataSource,
+UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet MZStatisticsExtendedNavigationBarView *extendedNavigationBarView;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+
+@property (nonatomic, strong) NSArray<NSString *> *tableViewData;
 
 @end
 
@@ -20,6 +27,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	self.tableViewData = @[@"data1", @"data2", @"data3", @"data4"];
+	self.tableView.tableFooterView = [[UIView alloc] init];
+	[self.tableView reloadData];
 
 	[self setupNavigationBarUI];
 	self.extendedNavigationBarView.delegate = self;
@@ -36,6 +47,18 @@
 	// (2) MZAssetIdentifierNavigationBarPixel is a solid white 1x1 image.
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierNavigationBarPixel]
 																								forBarMetrics:UIBarMetricsDefault];
+}
+
+#pragma mark - Table View Delegate & DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return self.tableViewData.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	MZGraphicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphicTableViewCellIdentifier
+																																			forIndexPath:indexPath];
+	return cell;
 }
 
 #pragma mark - Statistics Extende dNavigation Bar View delegate methods
