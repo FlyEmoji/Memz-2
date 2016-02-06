@@ -20,20 +20,22 @@
 
 #pragma mark - Equality
 
-- (BOOL)isEqual:(id)other {
-	if (other == self) {
+- (BOOL)isEqual:(id)object {
+	BOOL isEqual = [super isEqual:object];
+
+	if (isEqual && object == self) {
 		return YES;
 	}
 
-	if (!other || ![[other class] isEqual:[self class]]) {
+	if (isEqual && (!object || ![[object class] isEqual:[self class]])) {
 		return NO;
 	}
 
-	if ([[other safeCastToClass:[self class]] animation] != self.animation) {
+	if (isEqual && [[object safeCastToClass:[self class]] animation] != self.animation) {
 		return NO;
 	}
 
-	return YES;
+	return isEqual;
 }
 
 @end
