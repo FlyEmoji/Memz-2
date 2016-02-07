@@ -10,16 +10,13 @@
 
 #define DEFAULT_GRADIENT_START_COLOR [UIColor graphGradientDefaultStartColor]
 #define DEFAULT_GRADIENT_END_COLOR [UIColor graphGradientDefaultEndColor]
+#define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
 const CGFloat kTopInset = 60.0f;
 const CGFloat kBottomInset = 50.0f;
 
 const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
-
-@interface MZGraphicView ()
-
-@end
 
 @implementation MZGraphicView
 
@@ -49,6 +46,7 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 - (void)commonInit {
 	self.gradientStartColor = DEFAULT_GRADIENT_START_COLOR;
 	self.gradientEndColor = DEFAULT_GRADIENT_END_COLOR;
+	self.gradientUnderGraphStartColor = DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR;
 
 	self.values = @[@0, @8, @3, @6, @2, @7, @3];		// TODO: Delete after tests
 }
@@ -65,33 +63,16 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 	[path addClip];
 
 	// (2) Draw background gradient
-	[self drawGradient];
+	[self drawBackgroundGradient];
 
-	// (3) Calculate graphic line
+	// (3) Draw under graph gradient
+	[self drawUnderGraphGradient];
+
+	// (4) Draw graph line
 	[self drawLine];
 }
 
-#pragma mark - Gradient Background
-
-- (void)drawGradient {
-	CGContextRef currentContext = UIGraphicsGetCurrentContext();
-
-	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-
-	CFMutableArrayRef colorArray = CFArrayCreateMutable(NULL, 2, &kCFTypeArrayCallBacks);
-	CFArrayAppendValue(colorArray, self.gradientStartColor.CGColor);
-	CFArrayAppendValue(colorArray, self.gradientEndColor.CGColor);
-
-	CGFloat colorLocations[2] = {0.0f, 1.0f};
-
-	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, colorArray, colorLocations);
-
-	CGPoint startPoint = CGPointZero;
-	CGPoint endPoint = CGPointMake(0.0f, self.bounds.size.height);
-	CGContextDrawLinearGradient(currentContext, gradient, startPoint, endPoint, kCGGradientDrawsBeforeStartLocation);
-}
-
-#pragma mark - Points 
+#pragma mark - Points
 
 - (CGFloat)xPointForColumn:(NSInteger)column {
 	CGFloat spacer = (self.bounds.size.width - kHorizontalInsets * 2 - kFirstLastPointsAdditionalInset * 2) / (self.values.count - 1);
@@ -108,11 +89,78 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 	return graphHeight + topBorder - yPoint;
 }
 
-#pragma mark - Line
+#pragma mark - Gradient Background
 
-- (void)drawLine {
+- (CGGradientRef)generateBackgroundGradient {
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+	CFMutableArrayRef colorArray = CFArrayCreateMutable(NULL, 2, &kCFTypeArrayCallBacks);
+	CFArrayAppendValue(colorArray, self.gradientStartColor.CGColor);
+	CFArrayAppendValue(colorArray, self.gradientEndColor.CGColor);
+
+	CGFloat colorLocations[2] = {0.0f, 1.0f};
+
+	return CGGradientCreateWithColors(colorSpace, colorArray, colorLocations);
+}
+
+- (void)drawBackgroundGradient {
+	CGPoint startPoint = CGPointZero;
+	CGPoint endPoint = CGPointMake(0.0f, self.bounds.size.height);
+	CGContextDrawLinearGradient(UIGraphicsGetCurrentContext(),
+															[self generateBackgroundGradient],
+															startPoint,
+															endPoint,
+															kCGGradientDrawsBeforeStartLocation);
+}
+
+#pragma mark - Under Graph Gradient
+
+- (CGGradientRef)generateUnderGraphGradient {
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+	CFMutableArrayRef colorArray = CFArrayCreateMutable(NULL, 2, &kCFTypeArrayCallBacks);
+	CFArrayAppendValue(colorArray, self.gradientUnderGraphStartColor.CGColor);
+	CFArrayAppendValue(colorArray, self.gradientEndColor.CGColor);
+
+	CGFloat colorLocations[2] = {0.0f, 1.0f};
+
+	return CGGradientCreateWithColors(colorSpace, colorArray, colorLocations);
+}
+
+- (void)drawUnderGraphGradient {
+	CGContextSaveGState(UIGraphicsGetCurrentContext());
+	UIBezierPath *graphPath = [self generateGraphLine];
+
+	[graphPath addLineToPoint:CGPointMake([self xPointForColumn:self.values.count - 1], self.frame.size.height)];
+	[graphPath addLineToPoint:CGPointMake([self xPointForColumn:0], self.frame.size.height)];
+	[graphPath closePath];
+
+	[graphPath addClip];
+
+	[[UIColor greenColor] setFill];
+	UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:self.bounds];
+	[rectPath fill];
+
+	NSNumber *maxValue = [self.values valueForKeyPath:@"@max.self"];
+	NSUInteger indexMaxValue = [self.values indexOfObject:maxValue];
+	CGFloat highestPoint = [self yPointForColumn:indexMaxValue];
+
+	CGPoint startPoint = CGPointMake(kHorizontalInsets, highestPoint);
+	CGPoint endPoint = CGPointMake(kHorizontalInsets, self.bounds.size.height);
+
+	CGContextDrawLinearGradient(UIGraphicsGetCurrentContext(),
+															[self generateUnderGraphGradient],
+															startPoint,
+															endPoint,
+															kCGGradientDrawsBeforeStartLocation);
+	//CGContextRestoreGState(context)
+}
+
+#pragma mark - Graph Line
+
+- (UIBezierPath *)generateGraphLine {
 	if (self.values.count == 0) {
-		return;
+		return nil;
 	}
 
 	[[UIColor whiteColor] setFill];
@@ -125,6 +173,13 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 		CGPoint nextPoint = CGPointMake([self xPointForColumn:i], [self yPointForColumn:i]);
 		[graphPath addLineToPoint:nextPoint];
 	}
+	return graphPath;
+}
+
+- (void)drawLine {
+	UIBezierPath *graphLine = [self generateGraphLine];
+	graphLine.lineWidth = 2.0f;
+	[graphLine stroke];
 }
 
 @end
