@@ -213,25 +213,25 @@
                                     <outlet property="segmentedControl" destination="3X2-BZ-gtg" id="HdF-bW-OWV"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="136" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgR-bB-8w8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="163" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgR-bB-8w8">
                                 <rect key="frame" x="6" y="106" width="588" height="494"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZGraphicTableViewCellIdentifier" rowHeight="136" id="boY-n9-Ngk" customClass="MZGraphicTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="588" height="136"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZGraphicTableViewCellIdentifier" rowHeight="163" id="boY-n9-Ngk" customClass="MZGraphicTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="588" height="163"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="boY-n9-Ngk" id="lZ8-rw-X2d">
-                                            <rect key="frame" x="0.0" y="0.0" width="588" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="588" height="163"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="III-xE-0zS" customClass="MZGraphicView">
-                                                    <rect key="frame" x="0.0" y="4" width="588" height="128"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="588" height="159"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="III-xE-0zS" firstAttribute="top" secondItem="lZ8-rw-X2d" secondAttribute="top" constant="4" id="5r1-RY-lIO"/>
+                                                <constraint firstItem="III-xE-0zS" firstAttribute="top" secondItem="lZ8-rw-X2d" secondAttribute="top" id="5r1-RY-lIO"/>
                                                 <constraint firstItem="III-xE-0zS" firstAttribute="leading" secondItem="lZ8-rw-X2d" secondAttribute="leading" id="Adw-bL-uos"/>
                                                 <constraint firstAttribute="trailing" secondItem="III-xE-0zS" secondAttribute="trailing" id="FQA-X5-HU4"/>
                                                 <constraint firstAttribute="bottom" secondItem="III-xE-0zS" secondAttribute="bottom" constant="4" id="iCs-3g-rVs"/>
