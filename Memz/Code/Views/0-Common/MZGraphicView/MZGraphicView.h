@@ -16,4 +16,6 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *gradientStartColor;	// Default iOS yellow to red colors
 @property (nonatomic, strong) IBInspectable UIColor *gradientEndColor;
 
+@property (nonatomic, strong) NSArray<NSNumber *> *values;
+
 @end
