@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MZNibView.h"
 
+IB_DESIGNABLE
+
 @interface MZGraphicView : MZNibView
+
+@property (nonatomic, strong) IBInspectable UIColor *gradientStartColor;	// Default iOS yellow to red colors
+@property (nonatomic, strong) IBInspectable UIColor *gradientEndColor;
 
 @end

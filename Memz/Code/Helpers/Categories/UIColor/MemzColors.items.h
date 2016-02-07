@@ -26,3 +26,6 @@ MZCOLOR(myQuizzesAnsweredBackgroundColor, 200.0f, 200.0f, 200.0f);
 
 MZCOLOR(statisticsDarkBackgroundColor, 44.0f, 44.0f, 62.0f);
 MZCOLOR(statisticsSegmentedControlTintColor, 233.0f, 63.0f, 51.0f);
+
+MZCOLOR(graphGradientDefaultStartColor, 250.0f, 233.0f, 222.0f);
+MZCOLOR(graphGradientDefaultEndColor, 252.0f, 79.0f, 8.0f);
