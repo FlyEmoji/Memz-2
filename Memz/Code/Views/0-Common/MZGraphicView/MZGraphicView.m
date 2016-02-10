@@ -18,6 +18,8 @@ const CGFloat kBottomInset = 50.0f;
 
 const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 
+const CGFloat kPointRadius = 5.0f;
+
 @implementation MZGraphicView
 
 #pragma mark - Initialization
@@ -70,9 +72,12 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 
 	// (4) Draw graph line
 	[self drawLine];
+
+	// (5) Draw points
+	[self drawPoints];
 }
 
-#pragma mark - Points
+#pragma mark - Points Calculations
 
 - (CGFloat)xPointForColumn:(NSInteger)column {
 	CGFloat spacer = (self.bounds.size.width - kHorizontalInsets * 2 - kFirstLastPointsAdditionalInset * 2) / (self.values.count - 1);
@@ -129,6 +134,7 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 
 - (void)drawUnderGraphGradient {
 	CGContextSaveGState(UIGraphicsGetCurrentContext());
+
 	UIBezierPath *graphPath = [self generateGraphLine];
 
 	[graphPath addLineToPoint:CGPointMake([self xPointForColumn:self.values.count - 1], self.frame.size.height)];
@@ -153,7 +159,8 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 															startPoint,
 															endPoint,
 															kCGGradientDrawsBeforeStartLocation);
-	//CGContextRestoreGState(context)
+
+	CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
 #pragma mark - Graph Line
@@ -180,6 +187,21 @@ const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 	UIBezierPath *graphLine = [self generateGraphLine];
 	graphLine.lineWidth = 2.0f;
 	[graphLine stroke];
+}
+
+#pragma mark - Points
+
+- (void)drawPoints {
+	[[UIColor whiteColor] setFill];
+
+	for (NSUInteger i = 0; i < self.values.count; i++) {
+		CGPoint point = CGPointMake([self xPointForColumn:i], [self yPointForColumn:i]);
+		point.x -= kPointRadius / 2.0f;
+		point.y -= kPointRadius / 2.0f;
+
+		UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x, point.y, kPointRadius, kPointRadius)];
+		[circle fill];
+	}
 }
 
 @end
