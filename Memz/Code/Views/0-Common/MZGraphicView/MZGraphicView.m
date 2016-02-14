@@ -123,8 +123,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 - (void)updateLabelsStyle {
 	self.titleLabel.textColor = self.textColor;
 	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = self.tintColor;
-	self.timeStampLabel.textColor = self.tintColor;
+	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:0.2f];
+	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:0.2f];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
