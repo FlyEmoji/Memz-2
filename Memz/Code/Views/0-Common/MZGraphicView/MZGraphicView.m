@@ -7,6 +7,7 @@
 //
 
 #import "MZGraphicView.h"
+#import "UIColor+MemzAdditions.h"
 
 #define DEFAULT_GRADIENT_START_COLOR [UIColor graphGradientDefaultStartColor]
 #define DEFAULT_GRADIENT_END_COLOR [UIColor graphGradientDefaultEndColor]
@@ -51,6 +52,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 	self.gradientEndColor = DEFAULT_GRADIENT_END_COLOR;
 	self.gradientUnderGraphStartColor = DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR;
 
+	self.showAverage = YES;
+
 	self.values = @[@0, @8, @3, @6, @2, @7, @3];		// TODO: Delete after tests
 }
 
@@ -77,8 +80,13 @@ const CGFloat kInnerPointRadius = 3.0f;
 	// (5) Draw points
 	[self drawPoints];
 
-	// (6) Draw dashed line
-	[self drawDashedLine];
+	// (6) Draw average dashed line
+	if (self.showAverage) {
+		[self drawDashedLine];
+	}
+
+	// (7) Draw top separation line
+
 }
 
 #pragma mark - Points Calculations
@@ -214,12 +222,13 @@ const CGFloat kInnerPointRadius = 3.0f;
 																																									point.y + (kPointRadius - kInnerPointRadius) / 2.0f,
 																																									kInnerPointRadius,
 																																									kInnerPointRadius)];
-		[DEFAULT_GRADIENT_START_COLOR setFill];
+
+		[[UIColor averageColorBetweenColor:DEFAULT_GRADIENT_START_COLOR andColor:DEFAULT_GRADIENT_END_COLOR] setFill];
 		[innerCircle fill];
 	}
 }
 
-#pragma mark - Horizontal Lines
+#pragma mark - Horizontal Average Dashed Line
 
 - (void)drawDashedLine {
 	UIBezierPath *linePath = [[UIBezierPath alloc] init];
@@ -236,5 +245,9 @@ const CGFloat kInnerPointRadius = 3.0f;
 	linePath.lineWidth = 1.0f;
 	[linePath stroke];
 }
+
+#pragma mark - Horizontal Top Separator Line
+
+-
 
 @end

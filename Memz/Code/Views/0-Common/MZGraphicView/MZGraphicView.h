@@ -17,6 +17,8 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *gradientEndColor;
 @property (nonatomic, strong) IBInspectable UIColor *gradientUnderGraphStartColor;
 
+@property (nonatomic, assign) IBInspectable BOOL showAverage;	 // Default YES
+
 @property (nonatomic, strong) NSArray<NSNumber *> *values;
 
 @end

@@ -93,6 +93,7 @@
 		0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */; };
 		0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */; };
 		0CE0515B1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0515A1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m */; };
+		0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -287,6 +288,8 @@
 		0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCollectionViewLayoutAttributes.m; path = Code/Helpers/Classes/MZCollectionViewLayoutAttributes/MZCollectionViewLayoutAttributes.m; sourceTree = SOURCE_ROOT; };
 		0CE051591C5DCBCB0011091D /* MZLanguagesPickerCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguagesPickerCollectionController.h; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerCollectionController/MZLanguagesPickerCollectionController.h"; sourceTree = SOURCE_ROOT; };
 		0CE0515A1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLanguagesPickerCollectionController.m; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerCollectionController/MZLanguagesPickerCollectionController.m"; sourceTree = SOURCE_ROOT; };
+		0CE449A41C70233000E40180 /* UIColor+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+MemzAdditions.h"; path = "Code/Helpers/Categories/UIColor/UIColor+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MemzAdditions.m"; path = "Code/Helpers/Categories/UIColor/UIColor+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -1319,6 +1322,8 @@
 				0CEFD1C21C3CB72D00EB60DE /* MemzColors.items.h */,
 				0CEFD1C31C3CB72D00EB60DE /* UIColor+MemzColors.h */,
 				0CEFD1C41C3CB72D00EB60DE /* UIColor+MemzColors.m */,
+				0CE449A41C70233000E40180 /* UIColor+MemzAdditions.h */,
+				0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */,
 			);
 			name = UIColor;
 			sourceTree = "<group>";
@@ -1621,6 +1626,7 @@
 				0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */,
 				0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */,
 				0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */,
+				0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */,
 				0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */,
 				0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */,
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
