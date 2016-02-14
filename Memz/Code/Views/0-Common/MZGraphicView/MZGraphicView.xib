@@ -25,25 +25,25 @@
                     <rect key="frame" x="0.0" y="0.0" width="420" height="56"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPS-ch-VzG">
-                            <rect key="frame" x="8" y="8" width="34" height="21"/>
+                            <rect key="frame" x="20" y="8" width="34" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Average Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akN-OU-fCP">
-                            <rect key="frame" x="8" y="26" width="81" height="15"/>
+                            <rect key="frame" x="20" y="26" width="81" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Values" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyk-J5-CVn">
-                            <rect key="frame" x="319" y="8" width="93" height="21"/>
+                            <rect key="frame" x="307" y="8" width="93" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date &amp; Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-H0-uWB">
-                            <rect key="frame" x="342" y="26" width="70" height="15"/>
+                            <rect key="frame" x="330" y="26" width="70" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -57,9 +57,9 @@
                         <constraint firstItem="akN-OU-fCP" firstAttribute="leading" secondItem="ZPS-ch-VzG" secondAttribute="leading" id="CLt-um-Hvx"/>
                         <constraint firstItem="ZPS-ch-VzG" firstAttribute="top" secondItem="h41-6W-eR0" secondAttribute="top" constant="8" id="PLG-eD-AIu"/>
                         <constraint firstAttribute="bottom" secondItem="akN-OU-fCP" secondAttribute="bottom" constant="15" id="dgd-I5-zPI"/>
-                        <constraint firstAttribute="trailing" secondItem="wyk-J5-CVn" secondAttribute="trailing" constant="8" id="fSt-Lw-H0Z"/>
+                        <constraint firstAttribute="trailing" secondItem="wyk-J5-CVn" secondAttribute="trailing" constant="20" id="fSt-Lw-H0Z"/>
                         <constraint firstItem="eNy-H0-uWB" firstAttribute="baseline" secondItem="akN-OU-fCP" secondAttribute="baseline" id="tKI-TT-zur"/>
-                        <constraint firstItem="ZPS-ch-VzG" firstAttribute="leading" secondItem="h41-6W-eR0" secondAttribute="leading" constant="8" id="yue-5Y-7UF"/>
+                        <constraint firstItem="ZPS-ch-VzG" firstAttribute="leading" secondItem="h41-6W-eR0" secondAttribute="leading" constant="20" id="yue-5Y-7UF"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTQ-iu-ubx" userLabel="Bottom Metrics View">

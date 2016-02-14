@@ -14,7 +14,8 @@
 #define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
-const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
+const CGFloat kFirstLastPointsAdditionalInset = 10.0f;
+const CGFloat kTopSeparatorLineAdditionInset = 9.0f;
 
 const CGFloat kPointRadius = 5.0f;
 const CGFloat kInnerPointRadius = 3.0f;
@@ -91,6 +92,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 	}
 
 	// (6) Draw top and bottom separation lines
+	[self drawTopSeparationLine];
+	[self drawBottomSeparatorLine];
 }
 
 #pragma mark - Custom Setters
@@ -120,8 +123,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 - (void)updateLabelsStyle {
 	self.titleLabel.textColor = self.textColor;
 	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = self.textColor;
-	self.timeStampLabel.textColor = self.textColor;
+	self.averageLabel.textColor = self.tintColor;
+	self.timeStampLabel.textColor = self.tintColor;
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
@@ -308,7 +311,38 @@ const CGFloat kInnerPointRadius = 3.0f;
 	[linePath stroke];
 }
 
-#pragma mark - Horizontal Top Separator Line
+#pragma mark - Horizontal Separator Lines
+
+- (void)drawTopSeparationLine {
+	UIBezierPath *linePath = [[UIBezierPath alloc] init];
+
+	CGPoint relativeTitleViewContainerBottomBaseline = CGPointMake(self.averageLabel.frame.origin.x,
+																																 self.averageLabel.frame.origin.x + self.averageLabel.frame.size.height);
+	CGPoint absolutetitleViewContainerBottomBaseline = [self.titleContainerView convertPoint:relativeTitleViewContainerBottomBaseline
+																																										toView:self];
+
+	[linePath moveToPoint:CGPointMake(kHorizontalInsets,
+																		absolutetitleViewContainerBottomBaseline.y + kTopSeparatorLineAdditionInset)];
+	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets,
+																			 absolutetitleViewContainerBottomBaseline.y + kTopSeparatorLineAdditionInset)];
+
+	[[self.tintColor colorWithAlphaComponent:0.8f] setStroke];
+	linePath.lineWidth = 0.5f;
+	[linePath stroke];
+}
+
+- (void)drawBottomSeparatorLine {
+	UIBezierPath *linePath = [[UIBezierPath alloc] init];
+
+	[linePath moveToPoint:CGPointMake(kHorizontalInsets,
+																		self.metricsContainerView.frame.origin.y)];
+	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets,
+																			 self.metricsContainerView.frame.origin.y)];
+
+	[[[UIColor whiteColor] colorWithAlphaComponent:0.5f] setStroke];
+	linePath.lineWidth = 0.5f;
+	[linePath stroke];
+}
 
 #pragma mark - Helpers
 

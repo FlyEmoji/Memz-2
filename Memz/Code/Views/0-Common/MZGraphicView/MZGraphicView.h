@@ -21,7 +21,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable NSString *title;
 @property (nonatomic, strong) IBInspectable UIFont *textFont;	 // Does not affect size
-@property (nonatomic, strong) IBInspectable UIColor *textColor;  // Default white
+@property (nonatomic, strong) IBInspectable UIColor *textColor;  // Default white, subTitles and top separator line take tintColor
 
 @property (nonatomic, copy, readonly) NSArray<NSNumber *> *values;
 @property (nonatomic, copy, readonly) NSArray<NSString *> *metrics;
