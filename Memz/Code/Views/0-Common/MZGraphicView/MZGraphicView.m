@@ -32,6 +32,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 @end
 
 @implementation MZGraphicView
+@synthesize textColor = _textColor;
+@synthesize textFont = _textFont;
 
 #pragma mark - Initialization
 
@@ -61,12 +63,80 @@ const CGFloat kInnerPointRadius = 3.0f;
 	self.gradientEndColor = DEFAULT_GRADIENT_END_COLOR;
 	self.gradientUnderGraphStartColor = DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR;
 
-	self.showAverage = YES;
+	self.showAverageLine = YES;
+	self.textColor = [UIColor whiteColor];
+}
 
-	self.values = @[@0, @8, @3, @6, @2, @7, @3];		// TODO: Delete after tests
+#pragma mark - Public Methods
+
+- (void)transitionToValues:(NSArray<NSNumber *> *)values withMetrics:(NSArray<NSString *> *)metrics animated:(BOOL)animated {
+	_values = values;
+	_metrics = metrics;
+
+	// (1) Draw background gradient
+	[self drawBackgroundGradient];
+
+	// (2) Draw under graph gradient
+	[self drawUnderGraphGradient];
+
+	// (3) Draw graph line
+	[self drawLine];
+
+	// (4) Draw points
+	[self drawPoints];
+
+	// (5) Draw average dashed line
+	if (self.showAverageLine) {
+		[self drawDashedLine];
+	}
+
+	// (6) Draw top and bottom separation lines
+}
+
+#pragma mark - Custom Setters
+
+- (void)setTextFont:(UIFont *)textFont {
+	_textFont = textFont;
+
+	[self updateLabelsStyle];
+}
+
+- (UIFont *)textFont {
+	return _textFont ?: self.titleLabel.font;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+	_textColor = textColor;
+
+	[self updateLabelsStyle];
+}
+
+- (UIColor *)textColor {
+	return _textColor ?: self.titleLabel.textColor;
+}
+
+#pragma mark Fonts & Colors 
+
+- (void)updateLabelsStyle {
+	self.titleLabel.textColor = self.textColor;
+	self.totalValuesLabel.textColor = self.textColor;
+	self.averageLabel.textColor = self.textColor;
+	self.timeStampLabel.textColor = self.textColor;
+
+	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
+	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
+	self.timeStampLabel.font = [self.textFont fontWithSize:self.timeStampLabel.font.pointSize];
+
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
 }
 
 #pragma mark - Global Overridden Methods
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	[self updateLabelsStyle];
+}
 
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
@@ -77,25 +147,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 																									 cornerRadii:CGSizeMake(8.0f, 8.0f)];
 	[path addClip];
 
-	// (2) Draw background gradient
-	[self drawBackgroundGradient];
-
-	// (3) Draw under graph gradient
-	[self drawUnderGraphGradient];
-
-	// (4) Draw graph line
-	[self drawLine];
-
-	// (5) Draw points
-	[self drawPoints];
-
-	// (6) Draw average dashed line
-	if (self.showAverage) {
-		[self drawDashedLine];
-	}
-
-	// (7) Draw top and bottom separation lines
-
+	// (2) Update Graph
+	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
 }
 
 #pragma mark - Points Calculations
@@ -245,7 +298,7 @@ const CGFloat kInnerPointRadius = 3.0f;
 	CGFloat dashArray[2] = {2.0f, 2.0f};
 	[linePath setLineDash:dashArray count:2 phase:0];
 
-	NSNumber *average = [self.values valueForKeyPath:@"@avg.self"];
+	NSNumber *average = [self averageValue];
 
 	[linePath moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
 	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
@@ -256,5 +309,42 @@ const CGFloat kInnerPointRadius = 3.0f;
 }
 
 #pragma mark - Horizontal Top Separator Line
+
+#pragma mark - Helpers
+
+- (NSNumber *)averageValue {
+	return [self.values valueForKeyPath:@"@avg.self"];
+}
+
+- (NSNumber *)sumValue {
+	return [self.values valueForKeyPath:@"@sum.self"];
+}
+
+- (NSAttributedString *)totalValuesAttributedString {
+	if (!self.textFont || !self.textColor) {
+		return nil;
+	}
+
+	NSString *sumValuesString = [NSString stringWithFormat:@"%.2f", [self sumValue].floatValue ?: 0.0f];
+	NSString *metricString = @"quizzes";	// TODO: Should be generic
+
+	NSString *totalValuesString = [NSString stringWithFormat:@"%@ %@", sumValuesString, metricString];
+
+	NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:totalValuesString];
+
+	[string addAttribute:NSForegroundColorAttributeName
+								 value:self.textColor
+								 range:NSMakeRange(0, totalValuesString.length)];
+
+	[string addAttribute:NSFontAttributeName
+								 value:[self.textFont fontWithSize:self.titleLabel.font.pointSize]
+								 range:NSMakeRange(0, sumValuesString.length)];
+
+	[string addAttribute:NSFontAttributeName
+								 value:[self.textFont fontWithSize:self.titleLabel.font.pointSize - 2.0f]
+								 range:NSMakeRange(sumValuesString.length, metricString.length)];
+
+	return string;
+}
 
 @end

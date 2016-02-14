@@ -57,7 +57,8 @@ UITableViewDelegate>
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZGraphicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphicTableViewCellIdentifier
-																																			forIndexPath:indexPath];
+																																 forIndexPath:indexPath];
+	[cell.graphicView transitionToValues:@[@0, @8, @3, @6, @2, @7, @3] withMetrics:@[@"M", @"T", @"W", @"T", @"F", @"S", @"S"] animated:NO];
 	return cell;
 }
 

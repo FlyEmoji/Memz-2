@@ -17,11 +17,15 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIColor *gradientEndColor;
 @property (nonatomic, strong) IBInspectable UIColor *gradientUnderGraphStartColor;  // TODO: Should be generated
 
-@property (nonatomic, assign) IBInspectable BOOL showAverage;	 // Default YES
+@property (nonatomic, assign) IBInspectable BOOL showAverageLine;	 // Default YES
 
+@property (nonatomic, strong) IBInspectable NSString *title;
 @property (nonatomic, strong) IBInspectable UIFont *textFont;	 // Does not affect size
 @property (nonatomic, strong) IBInspectable UIColor *textColor;  // Default white
 
-@property (nonatomic, strong) NSArray<NSNumber *> *values;
+@property (nonatomic, copy, readonly) NSArray<NSNumber *> *values;
+@property (nonatomic, copy, readonly) NSArray<NSString *> *metrics;
+
+- (void)transitionToValues:(NSArray<NSNumber *> *)values withMetrics:(NSArray<NSString *> *)metrics animated:(BOOL)animated;
 
 @end
