@@ -14,13 +14,22 @@
 #define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
-const CGFloat kTopInset = 40.0f;
-const CGFloat kBottomInset = 30.0f;
-
 const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 
 const CGFloat kPointRadius = 5.0f;
 const CGFloat kInnerPointRadius = 3.0f;
+
+@interface MZGraphicView ()
+
+@property (strong, nonatomic) IBOutlet UIView *titleContainerView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *averageLabel;
+@property (strong, nonatomic) IBOutlet UILabel *totalValuesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
+
+@property (strong, nonatomic) IBOutlet UIView *metricsContainerView;
+
+@end
 
 @implementation MZGraphicView
 
@@ -85,7 +94,7 @@ const CGFloat kInnerPointRadius = 3.0f;
 		[self drawDashedLine];
 	}
 
-	// (7) Draw top separation line
+	// (7) Draw top and bottom separation lines
 
 }
 
@@ -97,11 +106,11 @@ const CGFloat kInnerPointRadius = 3.0f;
 }
 
 - (CGFloat)yPointForValue:(NSNumber *)value {
-	CGFloat graphHeight = self.frame.size.height - kTopInset - kBottomInset;
+	CGFloat graphHeight = self.frame.size.height - self.titleContainerView.frame.size.height - self.metricsContainerView.frame.size.height;
 	CGFloat maximumValue = [[self.values valueForKeyPath:@"@max.self"] floatValue];
 
 	CGFloat yPoint = value.floatValue / maximumValue * graphHeight;
-	return graphHeight + kTopInset - yPoint;
+	return graphHeight + self.titleContainerView.frame.size.height - yPoint;
 }
 
 - (CGFloat)yPointForColumn:(NSInteger)column {
@@ -247,7 +256,5 @@ const CGFloat kInnerPointRadius = 3.0f;
 }
 
 #pragma mark - Horizontal Top Separator Line
-
--
 
 @end
