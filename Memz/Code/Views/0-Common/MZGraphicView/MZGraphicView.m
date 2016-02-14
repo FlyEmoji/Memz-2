@@ -22,13 +22,15 @@ const CGFloat kInnerPointRadius = 3.0f;
 
 @interface MZGraphicView ()
 
-@property (strong, nonatomic) IBOutlet UIView *titleContainerView;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *averageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *totalValuesLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
+@property (nonatomic, strong) IBOutlet UIView *titleContainerView;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *averageLabel;
+@property (nonatomic, strong) IBOutlet UILabel *totalValuesLabel;
+@property (nonatomic, strong) IBOutlet UILabel *timeStampLabel;
 
-@property (strong, nonatomic) IBOutlet UIView *metricsContainerView;
+@property (nonatomic, strong) IBOutlet UIView *metricsContainerView;
+
+@property (nonatomic, strong) NSMutableArray<UIView *> *metricsViews;
 
 @end
 
@@ -66,6 +68,8 @@ const CGFloat kInnerPointRadius = 3.0f;
 
 	self.showAverageLine = YES;
 	self.textColor = [UIColor whiteColor];
+
+	self.metricsViews = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - Public Methods
@@ -94,6 +98,9 @@ const CGFloat kInnerPointRadius = 3.0f;
 	// (6) Draw top and bottom separation lines
 	[self drawTopSeparationLine];
 	[self drawBottomSeparatorLine];
+
+	// (7) Draw bottom metrics
+	[self drawBottomMetricsViews];
 }
 
 #pragma mark - Custom Setters
@@ -342,6 +349,34 @@ const CGFloat kInnerPointRadius = 3.0f;
 	[[[UIColor whiteColor] colorWithAlphaComponent:0.5f] setStroke];
 	linePath.lineWidth = 0.5f;
 	[linePath stroke];
+}
+
+#pragma mark - Draw Bottom Metrics
+
+- (void)drawBottomMetricsViews {
+	for (UIView *view in self.metricsViews) {
+		[view removeFromSuperview];
+	}
+	[self.metricsViews removeAllObjects];
+
+	for (NSUInteger i = 0; i < self.metrics.count; i++) {
+		UILabel *metricView = [[UILabel alloc] init];
+		metricView.text = self.metrics[i];
+		metricView.font = [self.textFont fontWithSize:10.0f];
+		metricView.textColor = [self.textColor colorWithAlphaComponent:i == self.metrics.count - 1 ? 1.0f : 0.7f];
+		[metricView sizeToFit];
+
+		CGFloat totalHorizontalInset = kHorizontalInsets + kFirstLastPointsAdditionalInset;
+		CGFloat centerX = totalHorizontalInset + ((self.metricsContainerView.frame.size.width - 2
+																							 * totalHorizontalInset) / (self.metrics.count - 1)) * i;
+		CGFloat centerY = self.metricsContainerView.frame.size.height / 2.0f;
+
+		CGPoint centerPoint = CGPointMake(centerX, centerY);
+		metricView.center = centerPoint;
+
+		[self.metricsContainerView addSubview:metricView];
+		[self.metricsViews addObject:metricView];
+	}
 }
 
 #pragma mark - Helpers

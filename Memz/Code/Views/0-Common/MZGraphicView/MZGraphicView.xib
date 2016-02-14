@@ -63,10 +63,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTQ-iu-ubx" userLabel="Bottom Metrics View">
-                    <rect key="frame" x="0.0" y="174" width="420" height="35"/>
+                    <rect key="frame" x="0.0" y="181" width="420" height="28"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="QQ4-sQ-fd9"/>
+                        <constraint firstAttribute="height" constant="28" id="QQ4-sQ-fd9"/>
                     </constraints>
                 </view>
             </subviews>
