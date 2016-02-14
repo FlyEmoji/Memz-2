@@ -13,12 +13,13 @@
 #define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
-const CGFloat kTopInset = 60.0f;
-const CGFloat kBottomInset = 50.0f;
+const CGFloat kTopInset = 40.0f;
+const CGFloat kBottomInset = 30.0f;
 
 const CGFloat kFirstLastPointsAdditionalInset = 2.0f;
 
 const CGFloat kPointRadius = 5.0f;
+const CGFloat kInnerPointRadius = 3.0f;
 
 @implementation MZGraphicView
 
@@ -75,6 +76,9 @@ const CGFloat kPointRadius = 5.0f;
 
 	// (5) Draw points
 	[self drawPoints];
+
+	// (6) Draw dashed line
+	[self drawDashedLine];
 }
 
 #pragma mark - Points Calculations
@@ -84,14 +88,16 @@ const CGFloat kPointRadius = 5.0f;
 	return column * spacer + kHorizontalInsets + kFirstLastPointsAdditionalInset;
 }
 
-- (CGFloat)yPointForColumn:(NSInteger)column {
-	CGFloat topBorder = kTopInset;
-	CGFloat bottomBorder = kBottomInset;
-	CGFloat graphHeight = self.frame.size.height - topBorder - bottomBorder;
+- (CGFloat)yPointForValue:(NSNumber *)value {
+	CGFloat graphHeight = self.frame.size.height - kTopInset - kBottomInset;
 	CGFloat maximumValue = [[self.values valueForKeyPath:@"@max.self"] floatValue];
 
-	CGFloat yPoint = self.values[column].floatValue / maximumValue * graphHeight;
-	return graphHeight + topBorder - yPoint;
+	CGFloat yPoint = value.floatValue / maximumValue * graphHeight;
+	return graphHeight + kTopInset - yPoint;
+}
+
+- (CGFloat)yPointForColumn:(NSInteger)column {
+	return [self yPointForValue:self.values[column]];
 }
 
 #pragma mark - Gradient Background
@@ -185,23 +191,50 @@ const CGFloat kPointRadius = 5.0f;
 
 - (void)drawLine {
 	UIBezierPath *graphLine = [self generateGraphLine];
-	graphLine.lineWidth = 2.0f;
+	graphLine.lineWidth = 1.0f;
 	[graphLine stroke];
 }
 
 #pragma mark - Points
 
 - (void)drawPoints {
-	[[UIColor whiteColor] setFill];
-
 	for (NSUInteger i = 0; i < self.values.count; i++) {
 		CGPoint point = CGPointMake([self xPointForColumn:i], [self yPointForColumn:i]);
 		point.x -= kPointRadius / 2.0f;
 		point.y -= kPointRadius / 2.0f;
 
-		UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x, point.y, kPointRadius, kPointRadius)];
+		UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x,
+																																						 point.y,
+																																						 kPointRadius,
+																																						 kPointRadius)];
+		[[UIColor whiteColor] setFill];
 		[circle fill];
+
+		UIBezierPath *innerCircle = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(point.x + (kPointRadius - kInnerPointRadius) / 2.0f,
+																																									point.y + (kPointRadius - kInnerPointRadius) / 2.0f,
+																																									kInnerPointRadius,
+																																									kInnerPointRadius)];
+		[DEFAULT_GRADIENT_START_COLOR setFill];
+		[innerCircle fill];
 	}
+}
+
+#pragma mark - Horizontal Lines
+
+- (void)drawDashedLine {
+	UIBezierPath *linePath = [[UIBezierPath alloc] init];
+
+	CGFloat dashArray[2] = {2.0f, 2.0f};
+	[linePath setLineDash:dashArray count:2 phase:0];
+
+	NSNumber *average = [self.values valueForKeyPath:@"@avg.self"];
+
+	[linePath moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
+	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
+
+	[[[UIColor whiteColor] colorWithAlphaComponent:0.5f] setStroke];
+	linePath.lineWidth = 1.0f;
+	[linePath stroke];
 }
 
 @end
