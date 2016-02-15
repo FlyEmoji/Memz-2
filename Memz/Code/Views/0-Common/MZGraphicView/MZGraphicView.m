@@ -16,9 +16,13 @@
 const CGFloat kHorizontalInsets = 20.0f;
 const CGFloat kFirstLastPointsAdditionalInset = 10.0f;
 const CGFloat kTopSeparatorLineAdditionInset = 9.0f;
+const CGFloat kBoundariesLabelsInset = 3.0f;
 
-const CGFloat kPointRadius = 5.0f;
-const CGFloat kInnerPointRadius = 3.0f;
+const CGFloat kPointRadius = 4.0f;
+const CGFloat kInnerPointRadius = 2.0f;
+
+const CGFloat kTintColorMakeBrighterPercentage = 0.2f;
+const CGFloat kTextAlphaPercentage = 0.7f;
 
 @interface MZGraphicView ()
 
@@ -101,6 +105,10 @@ const CGFloat kInnerPointRadius = 3.0f;
 
 	// (7) Draw bottom metrics
 	[self drawBottomMetricsViews];
+
+	// (8) Draw right minimum and maximum values
+	[self drawTopBoundaryValue];
+	[self drawBottomBoundaryValue];
 }
 
 #pragma mark - Custom Setters
@@ -125,13 +133,19 @@ const CGFloat kInnerPointRadius = 3.0f;
 	return _textColor ?: self.titleLabel.textColor;
 }
 
+- (void)setYOriginType:(MZGraphYOriginType)yOriginType {
+	_yOriginType = yOriginType;
+
+	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
+}
+
 #pragma mark Fonts & Colors 
 
 - (void)updateLabelsStyle {
 	self.titleLabel.textColor = self.textColor;
 	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:0.2f];
-	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:0.2f];
+	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
@@ -170,10 +184,21 @@ const CGFloat kInnerPointRadius = 3.0f;
 
 - (CGFloat)yPointForValue:(NSNumber *)value {
 	CGFloat graphHeight = self.frame.size.height - self.titleContainerView.frame.size.height - self.metricsContainerView.frame.size.height;
-	CGFloat maximumValue = [[self.values valueForKeyPath:@"@max.self"] floatValue];
 
-	CGFloat yPoint = value.floatValue / maximumValue * graphHeight;
-	return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+	switch (self.yOriginType) {
+		case MZGraphYOriginTypeAutomatic: {
+			CGFloat yPoint = value.floatValue / [self maximumValue].floatValue * graphHeight;
+			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+		}
+		case MZGraphYOriginTypeZero: {
+			CGFloat yPoint = value.floatValue / [self maximumValue].floatValue * graphHeight;
+			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+		}
+		case MZGraphYOriginTypeMinimumValue: {
+			CGFloat yPoint = (value.floatValue - [self minimumValue].floatValue) / [self maximumValue].floatValue * graphHeight;
+			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+		}
+	}
 }
 
 - (CGFloat)yPointForColumn:(NSInteger)column {
@@ -233,8 +258,7 @@ const CGFloat kInnerPointRadius = 3.0f;
 	UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:self.bounds];
 	[rectPath fill];
 
-	NSNumber *maxValue = [self.values valueForKeyPath:@"@max.self"];
-	NSUInteger indexMaxValue = [self.values indexOfObject:maxValue];
+	NSUInteger indexMaxValue = [self.values indexOfObject:[self maximumValue]];
 	CGFloat highestPoint = [self yPointForColumn:indexMaxValue];
 
 	CGPoint startPoint = CGPointMake(kHorizontalInsets, highestPoint);
@@ -320,18 +344,19 @@ const CGFloat kInnerPointRadius = 3.0f;
 
 #pragma mark - Horizontal Separator Lines
 
-- (void)drawTopSeparationLine {
-	UIBezierPath *linePath = [[UIBezierPath alloc] init];
-
+- (CGFloat)yTitleViewContainerBottomBaseline {
 	CGPoint relativeTitleViewContainerBottomBaseline = CGPointMake(self.averageLabel.frame.origin.x,
 																																 self.averageLabel.frame.origin.x + self.averageLabel.frame.size.height);
 	CGPoint absolutetitleViewContainerBottomBaseline = [self.titleContainerView convertPoint:relativeTitleViewContainerBottomBaseline
 																																										toView:self];
+	return absolutetitleViewContainerBottomBaseline.y + kTopSeparatorLineAdditionInset;
+}
 
-	[linePath moveToPoint:CGPointMake(kHorizontalInsets,
-																		absolutetitleViewContainerBottomBaseline.y + kTopSeparatorLineAdditionInset)];
-	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets,
-																			 absolutetitleViewContainerBottomBaseline.y + kTopSeparatorLineAdditionInset)];
+- (void)drawTopSeparationLine {
+	UIBezierPath *linePath = [[UIBezierPath alloc] init];
+
+	[linePath moveToPoint:CGPointMake(kHorizontalInsets, [self yTitleViewContainerBottomBaseline])];
+	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yTitleViewContainerBottomBaseline])];
 
 	[[self.tintColor colorWithAlphaComponent:0.8f] setStroke];
 	linePath.lineWidth = 0.5f;
@@ -363,7 +388,7 @@ const CGFloat kInnerPointRadius = 3.0f;
 		UILabel *metricView = [[UILabel alloc] init];
 		metricView.text = self.metrics[i];
 		metricView.font = [self.textFont fontWithSize:10.0f];
-		metricView.textColor = [self.textColor colorWithAlphaComponent:i == self.metrics.count - 1 ? 1.0f : 0.7f];
+		metricView.textColor = [self.textColor colorWithAlphaComponent:i == self.metrics.count - 1 ? 1.0f : kTextAlphaPercentage];
 		[metricView sizeToFit];
 
 		CGFloat totalHorizontalInset = kHorizontalInsets + kFirstLastPointsAdditionalInset;
@@ -379,7 +404,50 @@ const CGFloat kInnerPointRadius = 3.0f;
 	}
 }
 
+#pragma mark - Draw Right Minimum & Maximum Values
+
+- (void)drawTopBoundaryValue {
+	NSString *yTopString = [NSString stringWithFormat:@"%.2f", [self maximumValue].floatValue];
+
+	UILabel *topBoundaryLabel = [[UILabel alloc] init];
+	topBoundaryLabel.text = yTopString;
+	topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	topBoundaryLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+	[topBoundaryLabel sizeToFit];
+
+	CGFloat x = self.frame.size.width - kHorizontalInsets - topBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = [self yTitleViewContainerBottomBaseline] + topBoundaryLabel.frame.size.height / 2.0f + kBoundariesLabelsInset;
+	topBoundaryLabel.center = CGPointMake(x, y);
+
+	[self addSubview:topBoundaryLabel];	// TODO: Store it in variable
+}
+
+- (void)drawBottomBoundaryValue {
+	CGFloat yOrigin = self.yOriginType == MZGraphYOriginTypeZero ? 0.0f : [self minimumValue].floatValue; 	// TODO: Handle 3rd enum member
+	NSString *yOriginString = [NSString stringWithFormat:@"%.2f", yOrigin];
+
+	UILabel *bottomBoundaryLabel = [[UILabel alloc] init];
+	bottomBoundaryLabel.text = yOriginString;
+	bottomBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	bottomBoundaryLabel.textColor = [self.textColor colorWithAlphaComponent:kTextAlphaPercentage];
+	[bottomBoundaryLabel sizeToFit];
+
+	CGFloat x = self.frame.size.width - kHorizontalInsets - bottomBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = self.metricsContainerView.frame.origin.y - bottomBoundaryLabel.frame.size.width / 2.0f - kBoundariesLabelsInset;
+	bottomBoundaryLabel.center = CGPointMake(x, y);
+
+	[self addSubview:bottomBoundaryLabel];	// TODO: Store it in variable
+}
+
 #pragma mark - Helpers
+
+- (NSNumber *)maximumValue {
+	return [self.values valueForKeyPath:@"@max.self"];
+}
+
+- (NSNumber *)minimumValue {
+	return [self.values valueForKeyPath:@"@min.self"];
+}
 
 - (NSNumber *)averageValue {
 	return [self.values valueForKeyPath:@"@avg.self"];
