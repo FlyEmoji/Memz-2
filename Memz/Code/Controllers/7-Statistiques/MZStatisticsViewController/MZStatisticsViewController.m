@@ -58,8 +58,7 @@ UITableViewDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZGraphicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphicTableViewCellIdentifier
 																																 forIndexPath:indexPath];
-	cell.graphicView.yOriginType = MZGraphYOriginTypeMinimumValue;
-	[cell.graphicView transitionToValues:@[@4, @8, @3, @6, @2, @7, @3] withMetrics:@[@"M", @"T", @"W", @"T", @"F", @"S", @"S"] animated:NO];
+	[cell.graphicView transitionToValues:@[@100, @80, @85, @95, @82, @98, @97] withMetrics:@[@"M", @"T", @"W"] animated:NO];
 	return cell;
 }
 

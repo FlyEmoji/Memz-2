@@ -14,15 +14,19 @@
 #define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
-const CGFloat kFirstLastPointsAdditionalInset = 10.0f;
-const CGFloat kTopSeparatorLineAdditionInset = 9.0f;
-const CGFloat kBoundariesLabelsInset = 3.0f;
+
+const CGFloat kLeftPointAdditionalInset = 10.0f;
+const CGFloat kRightPointAdditionalInset = 40.0f;
 
 const CGFloat kPointRadius = 4.0f;
 const CGFloat kInnerPointRadius = 2.0f;
 
+const CGFloat kTopSeparatorLineAdditionInset = 9.0f;
+const CGFloat kTopBoundaryLabelInset = 5.0f;
+
 const CGFloat kTintColorMakeBrighterPercentage = 0.2f;
 const CGFloat kTextAlphaPercentage = 0.7f;
+const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 @interface MZGraphicView ()
 
@@ -178,25 +182,35 @@ const CGFloat kTextAlphaPercentage = 0.7f;
 #pragma mark - Points Calculations
 
 - (CGFloat)xPointForColumn:(NSInteger)column {
-	CGFloat spacer = (self.bounds.size.width - kHorizontalInsets * 2 - kFirstLastPointsAdditionalInset * 2) / (self.values.count - 1);
-	return column * spacer + kHorizontalInsets + kFirstLastPointsAdditionalInset;
+	CGFloat spacer = (self.bounds.size.width - kHorizontalInsets * 2 - kLeftPointAdditionalInset - kRightPointAdditionalInset) / (self.values.count - 1);
+	return column * spacer + kHorizontalInsets + kLeftPointAdditionalInset;
 }
 
 - (CGFloat)yPointForValue:(NSNumber *)value {
 	CGFloat graphHeight = self.frame.size.height - self.titleContainerView.frame.size.height - self.metricsContainerView.frame.size.height;
 
+	CGFloat (^ graphYOriginZero)() = ^() {
+		CGFloat percentageHeight = value.floatValue / [self maximumValue].floatValue;
+		CGFloat yPoint = percentageHeight * graphHeight;
+		return self.titleContainerView.frame.size.height + graphHeight - yPoint;
+	};
+
+	CGFloat (^ graphYOriginMinimumValue)() = ^() {
+		CGFloat percentageHeight = (value.floatValue - [self minimumValue].floatValue) / ([self maximumValue].floatValue
+        - [self minimumValue].floatValue);
+		CGFloat yPoint = percentageHeight * graphHeight;
+		return self.titleContainerView.frame.size.height + graphHeight - yPoint;
+	};
+
 	switch (self.yOriginType) {
 		case MZGraphYOriginTypeAutomatic: {
-			CGFloat yPoint = value.floatValue / [self maximumValue].floatValue * graphHeight;
-			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+			return [self shouldDisplayOriginZero] ? graphYOriginZero() : graphYOriginMinimumValue();
 		}
 		case MZGraphYOriginTypeZero: {
-			CGFloat yPoint = value.floatValue / [self maximumValue].floatValue * graphHeight;
-			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+			return graphYOriginZero();
 		}
 		case MZGraphYOriginTypeMinimumValue: {
-			CGFloat yPoint = (value.floatValue - [self minimumValue].floatValue) / [self maximumValue].floatValue * graphHeight;
-			return graphHeight + self.titleContainerView.frame.size.height - yPoint;
+			return graphYOriginMinimumValue();
 		}
 	}
 }
@@ -391,9 +405,8 @@ const CGFloat kTextAlphaPercentage = 0.7f;
 		metricView.textColor = [self.textColor colorWithAlphaComponent:i == self.metrics.count - 1 ? 1.0f : kTextAlphaPercentage];
 		[metricView sizeToFit];
 
-		CGFloat totalHorizontalInset = kHorizontalInsets + kFirstLastPointsAdditionalInset;
-		CGFloat centerX = totalHorizontalInset + ((self.metricsContainerView.frame.size.width - 2
-																							 * totalHorizontalInset) / (self.metrics.count - 1)) * i;
+		CGFloat centerX = kHorizontalInsets + kLeftPointAdditionalInset + ((self.metricsContainerView.frame.size.width - 2
+				* kHorizontalInsets - kLeftPointAdditionalInset - kRightPointAdditionalInset) / (self.metrics.count - 1)) * i;
 		CGFloat centerY = self.metricsContainerView.frame.size.height / 2.0f;
 
 		CGPoint centerPoint = CGPointMake(centerX, centerY);
@@ -416,15 +429,14 @@ const CGFloat kTextAlphaPercentage = 0.7f;
 	[topBoundaryLabel sizeToFit];
 
 	CGFloat x = self.frame.size.width - kHorizontalInsets - topBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = [self yTitleViewContainerBottomBaseline] + topBoundaryLabel.frame.size.height / 2.0f + kBoundariesLabelsInset;
+	CGFloat y = [self yTitleViewContainerBottomBaseline] + topBoundaryLabel.frame.size.height / 2.0f + kTopBoundaryLabelInset;
 	topBoundaryLabel.center = CGPointMake(x, y);
 
 	[self addSubview:topBoundaryLabel];	// TODO: Store it in variable
 }
 
 - (void)drawBottomBoundaryValue {
-	CGFloat yOrigin = self.yOriginType == MZGraphYOriginTypeZero ? 0.0f : [self minimumValue].floatValue; 	// TODO: Handle 3rd enum member
-	NSString *yOriginString = [NSString stringWithFormat:@"%.2f", yOrigin];
+	NSString *yOriginString = [NSString stringWithFormat:@"%.2f", [self bottomBoundaryNumber].floatValue];
 
 	UILabel *bottomBoundaryLabel = [[UILabel alloc] init];
 	bottomBoundaryLabel.text = yOriginString;
@@ -433,7 +445,7 @@ const CGFloat kTextAlphaPercentage = 0.7f;
 	[bottomBoundaryLabel sizeToFit];
 
 	CGFloat x = self.frame.size.width - kHorizontalInsets - bottomBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = self.metricsContainerView.frame.origin.y - bottomBoundaryLabel.frame.size.width / 2.0f - kBoundariesLabelsInset;
+	CGFloat y = self.metricsContainerView.frame.origin.y - bottomBoundaryLabel.frame.size.width / 2.0f + kTopBoundaryLabelInset;
 	bottomBoundaryLabel.center = CGPointMake(x, y);
 
 	[self addSubview:bottomBoundaryLabel];	// TODO: Store it in variable
@@ -455,6 +467,17 @@ const CGFloat kTextAlphaPercentage = 0.7f;
 
 - (NSNumber *)sumValue {
 	return [self.values valueForKeyPath:@"@sum.self"];
+}
+
+- (BOOL)shouldDisplayOriginZero {
+	if (self.yOriginType == MZGraphYOriginTypeZero || self.yOriginType == MZGraphYOriginTypeMinimumValue) {
+		return self.yOriginType == MZGraphYOriginTypeZero;
+	}
+	return [self minimumValue].floatValue < [self maximumValue].floatValue * kPercentageShouldDisplayOriginZero;
+}
+
+- (NSNumber *)bottomBoundaryNumber {
+	return [self shouldDisplayOriginZero] ? @0.0f : [self minimumValue];
 }
 
 - (NSAttributedString *)totalValuesAttributedString {

@@ -10,7 +10,7 @@
 #import "MZNibView.h"
 
 typedef NS_ENUM(NSUInteger, MZGraphYOriginType) {
-	MZGraphYOriginTypeAutomatic = 0,	// chooses best fit between Zero and MinimumValue for optimal display, default value
+	MZGraphYOriginTypeAutomatic = 0,	// chooses best fit between Zero and MinimumValue for optimal display
 	MZGraphYOriginTypeZero,						// y origin will always be zero
 	MZGraphYOriginTypeMinimumValue		// y origin will be minimum value in the list
 };
@@ -29,7 +29,7 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIFont *textFont;	 // does not affect text size
 @property (nonatomic, strong) IBInspectable UIColor *textColor;  // default white, subTitles and top separator line take tintColor
 
-@property (nonatomic, assign) MZGraphYOriginType yOriginType;
+@property (nonatomic, assign) MZGraphYOriginType yOriginType;  // default MZGraphYOriginTypeAutomatic
 
 @property (nonatomic, copy, readonly) NSArray<NSNumber *> *values;
 @property (nonatomic, copy, readonly) NSArray<NSString *> *metrics;
