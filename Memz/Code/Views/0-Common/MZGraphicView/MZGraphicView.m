@@ -8,6 +8,7 @@
 
 #import "MZGraphicView.h"
 #import "UIColor+MemzAdditions.h"
+#import "NSDate+MemzAdditions.h"
 
 #define DEFAULT_GRADIENT_START_COLOR [UIColor graphGradientDefaultStartColor]
 #define DEFAULT_GRADIENT_END_COLOR [UIColor graphGradientDefaultEndColor]
@@ -77,6 +78,9 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	self.showAverageLine = YES;
 	self.textColor = [UIColor whiteColor];
 
+	self.title = NSLocalizedString(@"StatisticsGraphDefaultTitle", nil);
+	self.metricText = NSLocalizedString(@"StatisticsGraphDefaultMetricText", nil);
+
 	self.metricsViews = [[NSMutableArray alloc] init];
 }
 
@@ -113,6 +117,9 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	// (8) Draw right minimum and maximum values
 	[self drawTopBoundaryValue];
 	[self drawBottomBoundaryValue];
+
+	// (9) Update labels
+	[self updateLabelsText];
 }
 
 #pragma mark - Custom Setters
@@ -137,25 +144,22 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	return _textColor ?: self.titleLabel.textColor;
 }
 
+- (void)setTitle:(NSString *)title {
+	_title = title;
+
+	self.titleLabel.text = title;
+}
+
+- (void)setMetricText:(NSString *)metricText {
+	_metricText = metricText;
+
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
+}
+
 - (void)setYOriginType:(MZGraphYOriginType)yOriginType {
 	_yOriginType = yOriginType;
 
 	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
-}
-
-#pragma mark Fonts & Colors 
-
-- (void)updateLabelsStyle {
-	self.titleLabel.textColor = self.textColor;
-	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
-	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
-
-	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
-	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
-	self.timeStampLabel.font = [self.textFont fontWithSize:self.timeStampLabel.font.pointSize];
-
-	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
 }
 
 #pragma mark - Global Overridden Methods
@@ -451,6 +455,28 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	[self addSubview:bottomBoundaryLabel];	// TODO: Store it in variable
 }
 
+#pragma mark - Update Labels UI & Text
+
+- (void)updateLabelsStyle {
+	self.titleLabel.textColor = self.textColor;
+	self.totalValuesLabel.textColor = self.textColor;
+	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+
+	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
+	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
+	self.timeStampLabel.font = [self.textFont fontWithSize:self.timeStampLabel.font.pointSize];
+
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
+}
+
+- (void)updateLabelsText {
+	self.titleLabel.text = self.title;
+	self.averageLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsGraphAverageTitle", nil), [self averageValue].floatValue];
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
+	self.timeStampLabel.text = [[NSDate date] humanReadableDateString];
+}
+
 #pragma mark - Helpers
 
 - (NSNumber *)maximumValue {
@@ -485,10 +511,8 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 		return nil;
 	}
 
-	NSString *sumValuesString = [NSString stringWithFormat:@"%.2f", [self sumValue].floatValue ?: 0.0f];
-	NSString *metricString = @"quizzes";	// TODO: Should be generic
-
-	NSString *totalValuesString = [NSString stringWithFormat:@"%@ %@", sumValuesString, metricString];
+	NSString *sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue ?: 0.0f];
+	NSString *totalValuesString = [NSString stringWithFormat:@"%@ %@", sumValuesString, self.metricText];
 
 	NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:totalValuesString];
 
@@ -502,7 +526,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 	[string addAttribute:NSFontAttributeName
 								 value:[self.textFont fontWithSize:self.titleLabel.font.pointSize - 2.0f]
-								 range:NSMakeRange(sumValuesString.length, metricString.length)];
+								 range:NSMakeRange(sumValuesString.length + 1, self.metricText.length)];
 
 	return string;
 }

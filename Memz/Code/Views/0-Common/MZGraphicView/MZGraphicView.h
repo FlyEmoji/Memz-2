@@ -26,6 +26,8 @@ IB_DESIGNABLE
 @property (nonatomic, assign) IBInspectable BOOL showAverageLine;	 // default YES
 
 @property (nonatomic, strong) IBInspectable NSString *title;
+@property (nonatomic, strong) IBInspectable NSString *metricText;  // meters, miles, feet, etc.
+
 @property (nonatomic, strong) IBInspectable UIFont *textFont;	 // does not affect text size
 @property (nonatomic, strong) IBInspectable UIColor *textColor;  // default white, subTitles and top separator line take tintColor
 
