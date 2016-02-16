@@ -16,7 +16,6 @@
 
 #define UNVALID_INDEX -1
 
-const CGFloat kTranslationResponseTableViewCellHeight = 60.0f;
 const NSTimeInterval kSubmitButtonAnimationDuration = 0.3;
 const NSTimeInterval kCountDownDuration = 90.0;
 
@@ -153,10 +152,6 @@ MZCountDownDelegate>
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.tableViewEnteredData.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return kTranslationResponseTableViewCellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

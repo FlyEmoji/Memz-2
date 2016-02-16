@@ -165,4 +165,11 @@ UICollectionViewDelegate>
 	return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	if ([self.delegate respondsToSelector:@selector(languagesPickerCollectionController:didSelectLanguage:)]) {
+		[self.delegate languagesPickerCollectionController:self
+																		 didSelectLanguage:self.mutableCollectionViewData[indexPath.row].integerValue];
+	}
+}
+
 @end

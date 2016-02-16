@@ -40,22 +40,22 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTranslationResponseTableViewCellIdentifier" rowHeight="68" id="Vv3-Xe-F7n" customClass="MZTranslationResponseTableViewCell">
-                                        <rect key="frame" x="0.0" y="72" width="600" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTranslationResponseTableViewCellIdentifier" rowHeight="60" id="Vv3-Xe-F7n" customClass="MZTranslationResponseTableViewCell">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vv3-Xe-F7n" id="U7r-M7-WEO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="67"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-France" translatesAutoresizingMaskIntoConstraints="NO" id="WRP-qM-HC5">
-                                                    <rect key="frame" x="10" y="18" width="40" height="30"/>
+                                                    <rect key="frame" x="10" y="15" width="40" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="WRP-qM-HC5" secondAttribute="height" multiplier="51:38" id="gBY-fr-eIx"/>
                                                         <constraint firstAttribute="height" constant="30" id="gsS-o1-dXp"/>
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LsO-yZ-F2l">
-                                                    <rect key="frame" x="58" y="0.0" width="534" height="67"/>
+                                                    <rect key="frame" x="58" y="0.0" width="534" height="59"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
@@ -64,7 +64,7 @@
                                                     </connections>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Cross" translatesAutoresizingMaskIntoConstraints="NO" id="os0-qK-Zt3">
-                                                    <rect key="frame" x="592" y="0.0" width="0.0" height="67"/>
+                                                    <rect key="frame" x="592" y="0.0" width="0.0" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" id="GWO-hR-ww2"/>
                                                     </constraints>

@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZLanguageManager.h"
+
+@protocol MZLanguagesPickerCollectionControllerDelegate;
 
 @interface MZLanguagesPickerCollectionController : NSObject
 
@@ -15,6 +18,8 @@
 
 @property (nonatomic, assign, readonly) BOOL isAnimating;	 // Returns YES if currently animating
 
+@property (nonatomic, strong) id<MZLanguagesPickerCollectionControllerDelegate> delegate;
+
 - (instancetype)initWithCollectionView:(UICollectionView *)collectionView;
 + (instancetype)languageCollectionControllerWithCollectionView:(UICollectionView *)collectionView;
 
@@ -22,5 +27,14 @@
 - (void)reloadDataAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;	 // Cancelled if already animating
 
 - (void)dropAllCellsAnimated:(BOOL)animated completionHandler:(void(^)(void))completionHandler;  // Sets collectionViewData to nil
+
+@end
+
+@protocol MZLanguagesPickerCollectionControllerDelegate <NSObject>
+
+@optional
+
+- (void)languagesPickerCollectionController:(MZLanguagesPickerCollectionController *)collectionController
+													didSelectLanguage:(MZLanguage)language;
 
 @end

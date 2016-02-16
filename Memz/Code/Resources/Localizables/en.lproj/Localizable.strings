@@ -63,3 +63,7 @@
 "StatisticsNumberGoodAnswersTitle" = "%ld good answers";
 "StatisticsNumberWordsLearnedTitle" = "%ld words learned";
 "StatisticsPercentageTranslationsSuccessTitle" = "%.2f%% successful translations";
+
+"StatisticsGraphDefaultTitle" = "Graph";
+"StatisticsGraphDefaultMetricText" = "values";
+"StatisticsGraphAverageTitle" = "Average: %.2f";

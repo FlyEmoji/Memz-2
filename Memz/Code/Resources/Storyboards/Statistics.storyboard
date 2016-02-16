@@ -166,11 +166,109 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="oGw-id-wZr" id="qzt-6d-VSL"/>
+                        <segue destination="V71-Lo-2S0" kind="show" identifier="MZStatisticsViewControllerSegue" id="0wV-Py-PAg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGX-VR-5PJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1338" y="240"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="ll8-qG-9ei">
+            <objects>
+                <viewController title="Statistics" id="V71-Lo-2S0" customClass="MZStatisticsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="loQ-Y7-925"/>
+                        <viewControllerLayoutGuide type="bottom" id="Psf-rq-e1I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GEF-j5-I5T">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epx-el-GTz" userLabel="Extended Nav Bar View" customClass="MZStatisticsExtendedNavigationBarView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="42"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3X2-BZ-gtg">
+                                        <rect key="frame" x="6" y="7" width="588" height="29"/>
+                                        <segments>
+                                            <segment title="Day"/>
+                                            <segment title="Week"/>
+                                            <segment title="Month"/>
+                                            <segment title="Year"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.9137254901960784" green="0.24705882352941178" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="segmentedControlValueChanged:" destination="Epx-el-GTz" eventType="valueChanged" id="Ywu-vF-ccX"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3X2-BZ-gtg" secondAttribute="trailing" constant="6" id="jH3-rs-PPZ"/>
+                                    <constraint firstAttribute="height" constant="42" id="qpa-8n-aqu"/>
+                                    <constraint firstItem="3X2-BZ-gtg" firstAttribute="centerY" secondItem="Epx-el-GTz" secondAttribute="centerY" id="sdY-pW-MYB"/>
+                                    <constraint firstItem="3X2-BZ-gtg" firstAttribute="leading" secondItem="Epx-el-GTz" secondAttribute="leading" constant="6" id="zif-zo-U3z"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="segmentedControl" destination="3X2-BZ-gtg" id="HdF-bW-OWV"/>
+                                </connections>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fgR-bB-8w8">
+                                <rect key="frame" x="6" y="106" width="588" height="494"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZGraphicTableViewCellIdentifier" rowHeight="200" id="boY-n9-Ngk" customClass="MZGraphicTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="588" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="boY-n9-Ngk" id="lZ8-rw-X2d">
+                                            <rect key="frame" x="0.0" y="0.0" width="588" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="III-xE-0zS" customClass="MZGraphicView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="588" height="196"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="III-xE-0zS" firstAttribute="top" secondItem="lZ8-rw-X2d" secondAttribute="top" id="5r1-RY-lIO"/>
+                                                <constraint firstItem="III-xE-0zS" firstAttribute="leading" secondItem="lZ8-rw-X2d" secondAttribute="leading" id="Adw-bL-uos"/>
+                                                <constraint firstAttribute="trailing" secondItem="III-xE-0zS" secondAttribute="trailing" id="FQA-X5-HU4"/>
+                                                <constraint firstAttribute="bottom" secondItem="III-xE-0zS" secondAttribute="bottom" constant="4" id="iCs-3g-rVs"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="graphicView" destination="III-xE-0zS" id="PPk-3V-kkx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="V71-Lo-2S0" id="wqy-F4-11g"/>
+                                    <outlet property="delegate" destination="V71-Lo-2S0" id="a5g-i4-dFn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Psf-rq-e1I" firstAttribute="top" secondItem="fgR-bB-8w8" secondAttribute="bottom" id="5H9-02-X5L"/>
+                            <constraint firstItem="fgR-bB-8w8" firstAttribute="leading" secondItem="GEF-j5-I5T" secondAttribute="leading" constant="6" id="AO4-zZ-lUR"/>
+                            <constraint firstItem="Epx-el-GTz" firstAttribute="top" secondItem="loQ-Y7-925" secondAttribute="bottom" id="MkQ-3e-loI"/>
+                            <constraint firstAttribute="trailing" secondItem="Epx-el-GTz" secondAttribute="trailing" id="YEH-fL-948"/>
+                            <constraint firstAttribute="trailing" secondItem="fgR-bB-8w8" secondAttribute="trailing" constant="6" id="gf9-hi-guu"/>
+                            <constraint firstItem="Epx-el-GTz" firstAttribute="leading" secondItem="GEF-j5-I5T" secondAttribute="leading" id="ikH-Ua-2G4"/>
+                            <constraint firstItem="fgR-bB-8w8" firstAttribute="top" secondItem="Epx-el-GTz" secondAttribute="bottom" id="kKu-PV-3ra"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="extendedNavigationBarView" destination="Epx-el-GTz" id="wWw-rl-Xnt"/>
+                        <outlet property="tableView" destination="fgR-bB-8w8" id="eKN-Ih-fOV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wt4-hO-yEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2088" y="240"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gg7-l7-2S2">

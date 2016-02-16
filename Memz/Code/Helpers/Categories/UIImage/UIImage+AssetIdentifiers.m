@@ -22,6 +22,10 @@
 			return [UIImage imageNamed:@"Flag-Italy"];
 		case MZAssetIdentifierFlagPortugal:
 			return [UIImage imageNamed:@"Flag-Portugal"];
+		case MZAssetIdentifierNavigationBarPixel:
+			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
+		case MZAssetIdentifierNavigationBarTransparentPixel:
+			return [UIImage imageNamed:@"Navigation-Bar-Transparent-Pixel"];
 		case MZAssetIdentifierNavigationAdd:
 			return [UIImage imageNamed:@"Navigation-Add"];
 		case MZAssetIdentifierNavigationBack:

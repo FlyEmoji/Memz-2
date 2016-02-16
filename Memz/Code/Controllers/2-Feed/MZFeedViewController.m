@@ -15,8 +15,6 @@ NSString * const kCellTitleKey = @"kCellTitleKey";
 NSString * const kCellSubTitleKey = @"kCellSubTitleKey";
 NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 
-const CGFloat kFeedTableViewCellFixedHeight = 200.0f;
-
 @interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -48,10 +46,6 @@ const CGFloat kFeedTableViewCellFixedHeight = 200.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.tableViewData.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return kFeedTableViewCellFixedHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
