@@ -429,7 +429,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	UILabel *topBoundaryLabel = [[UILabel alloc] init];
 	topBoundaryLabel.text = yTopString;
 	topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	topBoundaryLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+	topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 	[topBoundaryLabel sizeToFit];
 
 	CGFloat x = self.frame.size.width - kHorizontalInsets - topBoundaryLabel.frame.size.width / 2.0f;
@@ -460,8 +460,8 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 - (void)updateLabelsStyle {
 	self.titleLabel.textColor = self.textColor;
 	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
-	self.timeStampLabel.textColor = [self.tintColor makeBrighterByPercentage:kTintColorMakeBrighterPercentage];
+	self.averageLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	self.timeStampLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];

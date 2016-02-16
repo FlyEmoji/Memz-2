@@ -12,7 +12,7 @@
 
 + (UIColor *)averageColorBetweenColor:(UIColor *)startColor andColor:(UIColor *)endColor;
 
-- (UIColor *)makeBrighterByPercentage:(CGFloat)percentage;
-- (UIColor *)makeDarkerByPercentage:(CGFloat)percentage;
+- (UIColor *)makeBrighterWithCount:(NSUInteger)count;
+- (UIColor *)makeDarkerWithCount:(NSUInteger)count;
 
 @end

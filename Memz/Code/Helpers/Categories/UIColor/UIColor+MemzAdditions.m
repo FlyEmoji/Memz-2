@@ -23,28 +23,20 @@
 	return nil;
 }
 
-- (UIColor *)makeBrighterByPercentage:(CGFloat)percentage {
-	CGFloat h, s, b, a;
-
-	if ([self getHue:&h saturation:&s brightness:&b alpha:&a]) {
-		return [UIColor colorWithHue:h
-											saturation:s
-											brightness:fmaxf(b * (1.0f + percentage), 1.0f)
-													 alpha:a];
+- (UIColor *)makeBrighterWithCount:(NSUInteger)count {
+	UIColor *color = self;
+	for (NSUInteger i = count; i > 0; i--) {
+		color = [[self class] averageColorBetweenColor:color andColor:[UIColor whiteColor]];
 	}
-	return nil;
+	return color;
 }
 
-- (UIColor *)makeDarkerByPercentage:(CGFloat)percentage {
-	CGFloat h, s, b, a;
-
-	if ([self getHue:&h saturation:&s brightness:&b alpha:&a]) {
-		return [UIColor colorWithHue:h
-											saturation:s
-											brightness:b * percentage
-													 alpha:a];
+- (UIColor *)makeDarkerWithCount:(NSUInteger)count {
+	UIColor *color = self;
+	for (NSUInteger i = count; i > 0; i--) {
+		color = [[self class] averageColorBetweenColor:color andColor:[UIColor blackColor]];
 	}
-	return nil;
+	return color;
 }
 
 @end
