@@ -9,6 +9,13 @@
 #import "MZStatisticsViewController.h"
 #import "MZStatisticsExtendedNavigationBarView.h"
 #import "MZGraphicTableViewCell.h"
+#import "MZStatisticsProvider.h"
+#import "NSDate+MemzAdditions.h"
+
+typedef NS_ENUM(NSInteger, MZStatisticsGraph) {
+	MZStatisticsGraphTotalTranslations,
+	MZStatisticsGraphSuccessfulTranslations
+};
 
 NSString * const kGraphicTableViewCellIdentifier = @"MZGraphicTableViewCellIdentifier";
 
@@ -20,6 +27,7 @@ UITableViewDelegate>
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray<NSString *> *tableViewData;
+@property (nonatomic, assign) MZStatisticsGranularity currentGranularity;
 
 @end
 
@@ -28,12 +36,12 @@ UITableViewDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.tableViewData = @[@"data1", @"data2", @"data3", @"data4"];
-	self.tableView.tableFooterView = [[UIView alloc] init];
-	[self.tableView reloadData];
-
 	[self setupNavigationBarUI];
 	self.extendedNavigationBarView.delegate = self;
+
+	self.tableViewData = @[@(MZStatisticsGraphTotalTranslations), @(MZStatisticsGraphSuccessfulTranslations)];
+	self.tableView.tableFooterView = [[UIView alloc] init];
+	[self.tableView reloadData];
 }
 
 #pragma mark - Navigation Bar & Extension UI Setup
@@ -58,28 +66,52 @@ UITableViewDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZGraphicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphicTableViewCellIdentifier
 																																 forIndexPath:indexPath];
-	[cell.graphicView transitionToValues:@[@100, @80, @85, @95, @82, @98, @97] withMetrics:@[@"M", @"T", @"W"] animated:NO];
+	[cell.graphicView transitionToValues:[self gatherStatisticsForGraph:self.tableViewData[indexPath.row].integerValue
+																													granularity:self.currentGranularity]
+													 withMetrics:[self metricsForGranularity:self.currentGranularity]
+															animated:NO];
 	return cell;
 }
 
-#pragma mark - Statistics Extende dNavigation Bar View delegate methods
+#pragma mark - Statistics Extended Navigation Bar View delegate methods
 
 - (void)statisticsExtendedNavigationBarView:(MZStatisticsExtendedNavigationBarView *)view
 						 didSelectStatisticsGranularity:(MZStatisticsGranularity)granularity {
+	self.currentGranularity = granularity;
+	[self.tableView reloadData];
+}
+
+#pragma mark - Exploitable Statistic Data
+
+- (NSArray<NSNumber *> *)gatherStatisticsForGraph:(MZStatisticsGraph)graph
+																			granularity:(MZStatisticsGranularity)granularity {
+	return [self aggregateStatisticDataForGranularity:granularity];	 // TODO: Will probably remove this method
+}
+
+- (NSArray<NSString *> *)metricsForGranularity:(MZStatisticsGranularity)granularity {
 	switch (granularity) {
 		case MZStatisticsGranularityDay:
-			// TODO
-			break;
+			return @[@"12AM", @"12PM", @"12AM"];
 		case MZStatisticsGranularityWeek:
-			// TODO
-			break;
+			return @[@"M", @"T", @"W", @"T", @"F", @"S", @"S"];
 		case MZStatisticsGranularityMonth:
-			// TODO
-			break;
+			return @[];
 		case MZStatisticsGranularityYear:
-			// TODO
-			break;
+			return @[];
 	}
+}
+
+#pragma mark - Statistic Data Aggregation
+
+- (NSArray<NSNumber *> *)aggregateStatisticDataForGranularity:(MZStatisticsGranularity)granularity {
+	NSMutableArray *mutableStatisticData = [[NSMutableArray alloc] init];
+
+	for (NSUInteger days = 0; days < 7; days++) {
+		[mutableStatisticData addObject:[MZStatisticsProvider translationsForLanguage:self.language
+																																					 forDay:[[NSDate date] dayForDaysInThePast:days]]];
+	}
+
+	return mutableStatisticData;
 }
 
 @end
