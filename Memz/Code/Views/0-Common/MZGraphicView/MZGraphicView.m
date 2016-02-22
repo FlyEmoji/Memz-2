@@ -87,6 +87,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - Public Methods
 
 - (void)transitionToValues:(NSArray<NSNumber *> *)values withMetrics:(NSArray<NSString *> *)metrics animated:(BOOL)animated {
+	if (!values || values.count == 0) {
+		return;  // TODO: Display no data
+	}
+
 	_values = values;
 	_metrics = metrics;
 

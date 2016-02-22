@@ -19,6 +19,28 @@
 	return [dateFormatter stringFromDate:self];
 }
 
+- (NSString *)weekDay {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+	[formatter setDateFormat:@"EEEE"];
+	NSString *weekDay = [formatter stringFromDate:self];
+	return weekDay.length > 1 ? [[weekDay substringToIndex:1] uppercaseString] : nil;
+}
+
+- (NSString *)month {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
+	[formatter setDateFormat:@"MMM"];
+	NSLog(@"DESCRIPTION: %@", [formatter stringFromDate:self]);
+	return [formatter stringFromDate:self];
+}
+
+- (NSInteger)day {
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitDay) fromDate:self];
+	return [components day];
+}
+
 - (NSString *)time {
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
@@ -28,13 +50,13 @@
 
 - (NSInteger)hour {
 	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:self];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitHour) fromDate:self];
 	return [components hour];
 }
 
 - (NSInteger)minute {
 	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *components = [calendar components:(NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:self];
+	NSDateComponents *components = [calendar components:(NSCalendarUnitMinute) fromDate:self];
 	return [components minute];
 }
 
@@ -58,7 +80,7 @@
 #pragma mark - Operations Different Days
 
 - (NSDate *)dayForDaysInThePast:(NSUInteger)daysInPast {
-	NSDate *dateBeforeDays = [self dateByAddingTimeInterval:-60 * 60 * 24 * daysInPast];
+	NSDate *dateBeforeDays = [self dateByAddingTimeInterval:-60 * 60 * 24 * (double)daysInPast];
 	return dateBeforeDays;
 }
 
@@ -67,7 +89,7 @@
 }
 
 - (NSDate *)dayForDaysInTheFuture:(NSInteger)daysAfter {
-	NSDate *dateAfterDays = [self dateByAddingTimeInterval:60 * 60 * 24 * daysAfter];
+	NSDate *dateAfterDays = [self dateByAddingTimeInterval:60 * 60 * 24 * (double)daysAfter];
 	return dateAfterDays;
 }
 
@@ -76,7 +98,7 @@
 }
 
 - (NSDate *)hoursBefore:(NSInteger)hoursBefore {
-	NSDate *dateBeforeDays = [self dateByAddingTimeInterval:-60 * 60 * hoursBefore];
+	NSDate *dateBeforeDays = [self dateByAddingTimeInterval:-60 * 60 * (double)hoursBefore];
 	return dateBeforeDays;
 }
 

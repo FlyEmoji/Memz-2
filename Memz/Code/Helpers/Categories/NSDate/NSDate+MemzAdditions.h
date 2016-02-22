@@ -10,10 +10,13 @@
 
 @interface NSDate (MemzAdditions)			// TODO: Write documentation and examples
 
-- (NSString *)humanReadableDateString;
-- (NSString *)time;
-- (NSInteger)hour;
-- (NSInteger)minute;
+- (NSString *)humanReadableDateString;  // MMM d, y, h:mm a
+- (NSString *)weekDay;  // uppercased first letter of the day
+- (NSString *)month;  // MMM
+- (NSInteger)day;  // d
+- (NSString *)time;	 // h:mm a
+- (NSInteger)hour;  // h
+- (NSInteger)minute;  // mm
 
 - (NSDate *)beginningDayDate;
 - (NSDate *)endDayDate;

@@ -191,7 +191,6 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3X2-BZ-gtg">
                                         <rect key="frame" x="6" y="7" width="588" height="29"/>
                                         <segments>
-                                            <segment title="Day"/>
                                             <segment title="Week"/>
                                             <segment title="Month"/>
                                             <segment title="Year"/>

@@ -47,7 +47,7 @@
 }
 
 + (NSArray<MZResponse *> *)translationsForLanguage:(MZLanguage)language forDay:(NSDate *)date {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word.language = %ld AND date >= %@ and date <= %@",
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word.language = %ld AND quiz.date >= %@ and quiz.date <= %@",
 														language, [date beginningDayDate], [date endDayDate]];
 	return [MZResponse allObjectsMatchingPredicate:predicate];
 }
@@ -58,7 +58,7 @@
 }
 
 + (NSArray<MZResponse *> *)successfulTranslationsForLanguage:(MZLanguage)language forDay:(NSDate *)date {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word.language = %ld AND result = true AND date >= %@ and date <= %@",
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word.language = %ld AND result = true AND quiz.date >= %@ and quiz.date <= %@",
 														language, [date beginningDayDate], [date endDayDate]];
 	return [MZResponse allObjectsMatchingPredicate:predicate];
 }

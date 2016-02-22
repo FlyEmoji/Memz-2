@@ -19,6 +19,10 @@ typedef NS_ENUM(NSInteger, MZStatisticsGraph) {
 
 NSString * const kGraphicTableViewCellIdentifier = @"MZGraphicTableViewCellIdentifier";
 
+const NSUInteger kWeekGranularityNumberMeasures = 7;
+const NSUInteger kMonthGranularityNumberMeasures = 31;
+const NSUInteger kYearGranularityNumberMeasures = 20;
+
 @interface MZStatisticsViewController () <MZStatisticsExtendedNavigationBarViewDelegate,
 UITableViewDataSource,
 UITableViewDelegate>
@@ -89,16 +93,26 @@ UITableViewDelegate>
 }
 
 - (NSArray<NSString *> *)metricsForGranularity:(MZStatisticsGranularity)granularity {
+	NSMutableArray *mutableMetricsData = [[NSMutableArray alloc] init];
+
 	switch (granularity) {
-		case MZStatisticsGranularityDay:
-			return @[@"12AM", @"12PM", @"12AM"];
 		case MZStatisticsGranularityWeek:
-			return @[@"M", @"T", @"W", @"T", @"F", @"S", @"S"];
+			for (NSUInteger days = 0; days < 7; days++) {
+				[mutableMetricsData addObject:[[[NSDate date] dayForDaysInThePast:days] weekDay]];
+			}
+			break;
 		case MZStatisticsGranularityMonth:
-			return @[];
+			for (NSUInteger days = 0; days <= 31; days = days + 31 / 5) {
+				[mutableMetricsData addObject:[NSString stringWithFormat:@"%ld", (long)[[[NSDate date] dayForDaysInThePast:days] day]]];
+			}
+			break;
 		case MZStatisticsGranularityYear:
-			return @[];
+			for (NSUInteger days = 0; days <= 365; days = days + 365 / 4) {
+				[mutableMetricsData addObject:[[[NSDate date] dayForDaysInThePast:days] month]];
+			}
+			break;
 	}
+	return [[mutableMetricsData reverseObjectEnumerator] allObjects];
 }
 
 #pragma mark - Statistic Data Aggregation
@@ -106,12 +120,36 @@ UITableViewDelegate>
 - (NSArray<NSNumber *> *)aggregateStatisticDataForGranularity:(MZStatisticsGranularity)granularity {
 	NSMutableArray *mutableStatisticData = [[NSMutableArray alloc] init];
 
-	for (NSUInteger days = 0; days < 7; days++) {
-		[mutableStatisticData addObject:[MZStatisticsProvider translationsForLanguage:self.language
-																																					 forDay:[[NSDate date] dayForDaysInThePast:days]]];
+	switch (granularity) {
+		case MZStatisticsGranularityWeek:
+			for (NSUInteger days = 0; days < 7; days++) {
+				NSUInteger count = [MZStatisticsProvider translationsForLanguage:self.language
+																																	forDay:[[NSDate date] dayForDaysInThePast:days]].count;
+				[mutableStatisticData addObject:@(count)];
+			}
+			break;
+		case MZStatisticsGranularityMonth:
+			for (NSUInteger period = 0; period < kMonthGranularityNumberMeasures; period++) {
+				NSUInteger count = 0;
+				for (NSUInteger daysInPeriod = period * kMonthGranularityNumberMeasures; daysInPeriod < 31 / kMonthGranularityNumberMeasures; daysInPeriod++) {
+					count += [MZStatisticsProvider translationsForLanguage:self.language
+																													forDay:[[NSDate date] dayForDaysInThePast:daysInPeriod]].count;
+				}
+				[mutableStatisticData addObject:@(count)];
+			}
+			break;
+		case MZStatisticsGranularityYear:
+			for (NSUInteger period = 0; period < kYearGranularityNumberMeasures; period++) {
+				NSUInteger count = 0;
+				for (NSUInteger daysInPeriod = period * kYearGranularityNumberMeasures; daysInPeriod < 365 / kYearGranularityNumberMeasures; daysInPeriod++) {
+					count += [MZStatisticsProvider translationsForLanguage:self.language
+																													forDay:[[NSDate date] dayForDaysInThePast:daysInPeriod]].count;
+				}
+				[mutableStatisticData addObject:@(count)];
+			}
+			break;
 	}
-
-	return mutableStatisticData;
+	return [[mutableStatisticData reverseObjectEnumerator] allObjects];
 }
 
 @end
