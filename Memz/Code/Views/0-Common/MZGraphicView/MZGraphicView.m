@@ -37,9 +37,13 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 @property (nonatomic, strong) IBOutlet UILabel *totalValuesLabel;
 @property (nonatomic, strong) IBOutlet UILabel *timeStampLabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *noDataLabel;
+@property (nonatomic, strong) IBOutlet UILabel *noDataLabel;
 
 @property (nonatomic, strong) IBOutlet UIView *metricsContainerView;
+
+@property (nonatomic, strong) UIBezierPath *graphLine;
+@property (nonatomic, strong) UIBezierPath *averageDashedLine;
+@property (nonatomic, strong) NSMutableArray<UIBezierPath *> *dots;
 
 @property (nonatomic, strong) NSMutableArray<UIView *> *metricsViews;
 @property (nonatomic, strong) UILabel *topBoundaryLabel;
@@ -94,39 +98,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	_values = values;
 	_metrics = metrics;
 
-	// (1) Draw background gradient
-	[self drawBackgroundGradient];
+	// Force redraw rect
+	[self setNeedsDisplay];
 
-	// (2) Draw under graph gradient
-	[self drawUnderGraphGradient];
-
-	// (3) Hide or show no data label if needed
-	[self updateShowNoDataLabelIfNeeded];
-
-	// (4) Draw graph line
-	[self drawLine];
-
-	// (5) Draw points
-	[self drawPoints];
-
-	// (6) Draw average dashed line
-	if (self.showAverageLine) {
-		[self drawDashedLine];
-	}
-
-	// (7) Draw top and bottom separation lines
-	[self drawTopSeparationLine];
-	[self drawBottomSeparatorLine];
-
-	// (8) Draw bottom metrics
-	[self drawBottomMetricsViews];
-
-	// (9) Draw right minimum and maximum values
-	[self drawTopBoundaryValue];
-	[self drawBottomBoundaryValue];
-
-	// (10) Update labels
-	[self updateLabelsText];
+	// TODO: Implement animation
 }
 
 #pragma mark - Custom Setters
@@ -186,8 +161,39 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 																									 cornerRadii:CGSizeMake(8.0f, 8.0f)];
 	[path addClip];
 
-	// (2) Update Graph
-	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
+	// (2) Draw background gradient
+	[self drawBackgroundGradient];
+
+	// (3) Draw under graph gradient
+	[self drawUnderGraphGradient];
+
+	// (4) Hide or show no data label if needed
+	[self updateShowNoDataLabelIfNeeded];
+
+	// (5) Draw graph line
+	[self drawLine];
+
+	// (6) Draw points
+	[self drawPoints];
+
+	// (7) Draw average dashed line
+	if (self.showAverageLine) {
+		[self drawDashedLine];
+	}
+
+	// (8) Draw top and bottom separation lines
+	[self drawTopSeparationLine];
+	[self drawBottomSeparatorLine];
+
+	// (9) Draw bottom metrics
+	[self drawBottomMetricsViews];
+
+	// (10) Draw right minimum and maximum values
+	[self drawTopBoundaryValue];
+	[self drawBottomBoundaryValue];
+
+	// (11) Update labels
+	[self updateLabelsText];
 }
 
 #pragma mark - Points Calculations
@@ -279,7 +285,6 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 	[graphPath addClip];
 
-	[[UIColor greenColor] setFill];
 	UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:self.bounds];
 	[rectPath fill];
 
@@ -301,7 +306,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - No Data Label Show Hide
 
 - (void)updateShowNoDataLabelIfNeeded {
-	self.noDataLabel.hidden = self.values.count == 0;
+	self.noDataLabel.hidden = self.values.count == 0 || [self sumValue].floatValue == 0.0f;
 }
 
 #pragma mark - Graph Line
@@ -325,14 +330,16 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 }
 
 - (void)drawLine {
-	UIBezierPath *graphLine = [self generateGraphLine];
-	graphLine.lineWidth = 1.0f;
-	[graphLine stroke];
+	self.graphLine = [self generateGraphLine];
+	self.graphLine.lineWidth = 1.0f;
+	[self.graphLine stroke];
 }
 
 #pragma mark - Points
 
 - (void)drawPoints {
+	[self.dots removeAllObjects];
+
 	for (NSUInteger i = 0; i < self.values.count; i++) {
 		CGPoint point = CGPointMake([self xPointForColumn:i], [self yPointForColumn:i]);
 		point.x -= kPointRadius / 2.0f;
@@ -352,25 +359,27 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 		[[UIColor averageColorBetweenColor:DEFAULT_GRADIENT_START_COLOR andColor:DEFAULT_GRADIENT_END_COLOR] setFill];
 		[innerCircle fill];
+
+		[self.dots addObjectsFromArray:@[circle, innerCircle]];
 	}
 }
 
 #pragma mark - Horizontal Average Dashed Line
 
 - (void)drawDashedLine {
-	UIBezierPath *linePath = [[UIBezierPath alloc] init];
+	self.averageDashedLine = [[UIBezierPath alloc] init];
 
 	CGFloat dashArray[2] = {2.0f, 2.0f};
-	[linePath setLineDash:dashArray count:2 phase:0];
+	[self.averageDashedLine setLineDash:dashArray count:2 phase:0];
 
 	NSNumber *average = [self averageValue];
 
-	[linePath moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
-	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
+	[self.averageDashedLine moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
+	[self.averageDashedLine addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
 
 	[[[UIColor whiteColor] colorWithAlphaComponent:0.5f] setStroke];
-	linePath.lineWidth = 1.0f;
-	[linePath stroke];
+	self.averageDashedLine.lineWidth = 1.0f;
+	[self.averageDashedLine stroke];
 }
 
 #pragma mark - Horizontal Separator Lines
