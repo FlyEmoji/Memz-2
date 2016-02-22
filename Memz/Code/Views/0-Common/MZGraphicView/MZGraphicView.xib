@@ -10,6 +10,7 @@
                 <outlet property="averageLabel" destination="akN-OU-fCP" id="d3R-FG-HAj"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="7tQ-Ea-Z5m"/>
                 <outlet property="metricsContainerView" destination="qTQ-iu-ubx" id="Oxj-K7-2YE"/>
+                <outlet property="noDataLabel" destination="aTZ-JY-v8K" id="NOe-xx-2aV"/>
                 <outlet property="timeStampLabel" destination="eNy-H0-uWB" id="nHF-Cf-3wG"/>
                 <outlet property="titleContainerView" destination="h41-6W-eR0" id="8B1-6A-BAZ"/>
                 <outlet property="titleLabel" destination="ZPS-ch-VzG" id="xI6-KJ-w7w"/>
@@ -62,6 +63,23 @@
                         <constraint firstItem="ZPS-ch-VzG" firstAttribute="leading" secondItem="h41-6W-eR0" secondAttribute="leading" constant="20" id="yue-5Y-7UF"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02S-EK-TAb" userLabel="No Data Top Separator">
+                    <rect key="frame" x="210" y="55" width="0.0" height="51"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" id="EK7-dE-dIu"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTZ-JY-v8K">
+                    <rect key="frame" x="174" y="106" width="73" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gz-D1-K2J" userLabel="No Data Bottom Separator">
+                    <rect key="frame" x="210" y="130" width="0.0" height="51"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTQ-iu-ubx" userLabel="Bottom Metrics View">
                     <rect key="frame" x="0.0" y="181" width="420" height="28"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -72,11 +90,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="qTQ-iu-ubx" firstAttribute="top" secondItem="1gz-D1-K2J" secondAttribute="bottom" id="2IV-Qe-uvH"/>
                 <constraint firstAttribute="trailing" secondItem="qTQ-iu-ubx" secondAttribute="trailing" id="3Rq-yb-KIW"/>
                 <constraint firstItem="h41-6W-eR0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KFl-Ul-Iup"/>
+                <constraint firstItem="1gz-D1-K2J" firstAttribute="height" secondItem="02S-EK-TAb" secondAttribute="height" id="MQP-8v-24d"/>
+                <constraint firstItem="aTZ-JY-v8K" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NPk-8F-af6"/>
+                <constraint firstItem="1gz-D1-K2J" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NoN-pU-UAV"/>
                 <constraint firstItem="h41-6W-eR0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="TSs-ST-Rl9"/>
+                <constraint firstItem="1gz-D1-K2J" firstAttribute="width" secondItem="02S-EK-TAb" secondAttribute="width" id="VRY-FP-oY3"/>
+                <constraint firstItem="02S-EK-TAb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Vhg-rP-mxJ"/>
                 <constraint firstAttribute="trailing" secondItem="h41-6W-eR0" secondAttribute="trailing" id="XYQ-xz-kmH"/>
+                <constraint firstItem="1gz-D1-K2J" firstAttribute="top" secondItem="aTZ-JY-v8K" secondAttribute="bottom" id="XcJ-Sh-jKJ"/>
                 <constraint firstItem="qTQ-iu-ubx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yrl-ak-JTR"/>
+                <constraint firstItem="02S-EK-TAb" firstAttribute="top" secondItem="h41-6W-eR0" secondAttribute="bottom" id="c0k-Vp-R6W"/>
+                <constraint firstItem="aTZ-JY-v8K" firstAttribute="top" secondItem="02S-EK-TAb" secondAttribute="bottom" id="g8Q-qP-Vu6"/>
                 <constraint firstAttribute="bottom" secondItem="qTQ-iu-ubx" secondAttribute="bottom" id="qC9-tK-J1a"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

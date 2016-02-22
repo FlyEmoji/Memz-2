@@ -37,9 +37,13 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 @property (nonatomic, strong) IBOutlet UILabel *totalValuesLabel;
 @property (nonatomic, strong) IBOutlet UILabel *timeStampLabel;
 
+@property (strong, nonatomic) IBOutlet UILabel *noDataLabel;
+
 @property (nonatomic, strong) IBOutlet UIView *metricsContainerView;
 
 @property (nonatomic, strong) NSMutableArray<UIView *> *metricsViews;
+@property (nonatomic, strong) UILabel *topBoundaryLabel;
+@property (nonatomic, strong) UILabel *bottomBoundaryLabel;
 
 @end
 
@@ -87,10 +91,6 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - Public Methods
 
 - (void)transitionToValues:(NSArray<NSNumber *> *)values withMetrics:(NSArray<NSString *> *)metrics animated:(BOOL)animated {
-	if (!values || values.count == 0) {
-		return;  // TODO: Display no data
-	}
-
 	_values = values;
 	_metrics = metrics;
 
@@ -100,29 +100,32 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	// (2) Draw under graph gradient
 	[self drawUnderGraphGradient];
 
-	// (3) Draw graph line
+	// (3) Hide or show no data label if needed
+	[self updateShowNoDataLabelIfNeeded];
+
+	// (4) Draw graph line
 	[self drawLine];
 
-	// (4) Draw points
+	// (5) Draw points
 	[self drawPoints];
 
-	// (5) Draw average dashed line
+	// (6) Draw average dashed line
 	if (self.showAverageLine) {
 		[self drawDashedLine];
 	}
 
-	// (6) Draw top and bottom separation lines
+	// (7) Draw top and bottom separation lines
 	[self drawTopSeparationLine];
 	[self drawBottomSeparatorLine];
 
-	// (7) Draw bottom metrics
+	// (8) Draw bottom metrics
 	[self drawBottomMetricsViews];
 
-	// (8) Draw right minimum and maximum values
+	// (9) Draw right minimum and maximum values
 	[self drawTopBoundaryValue];
 	[self drawBottomBoundaryValue];
 
-	// (9) Update labels
+	// (10) Update labels
 	[self updateLabelsText];
 }
 
@@ -295,6 +298,12 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	CGContextRestoreGState(UIGraphicsGetCurrentContext());
 }
 
+#pragma mark - No Data Label Show Hide
+
+- (void)updateShowNoDataLabelIfNeeded {
+	self.noDataLabel.hidden = self.values.count == 0;
+}
+
 #pragma mark - Graph Line
 
 - (UIBezierPath *)generateGraphLine {
@@ -428,35 +437,39 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - Draw Right Minimum & Maximum Values
 
 - (void)drawTopBoundaryValue {
+	[self.topBoundaryLabel removeFromSuperview];
+
 	NSString *yTopString = [NSString stringWithFormat:@"%.2f", [self maximumValue].floatValue];
 
-	UILabel *topBoundaryLabel = [[UILabel alloc] init];
-	topBoundaryLabel.text = yTopString;
-	topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
-	[topBoundaryLabel sizeToFit];
+	self.topBoundaryLabel = [[UILabel alloc] init];
+	self.topBoundaryLabel.text = yTopString;
+	self.topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	self.topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	[self.topBoundaryLabel sizeToFit];
 
-	CGFloat x = self.frame.size.width - kHorizontalInsets - topBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = [self yTitleViewContainerBottomBaseline] + topBoundaryLabel.frame.size.height / 2.0f + kTopBoundaryLabelInset;
-	topBoundaryLabel.center = CGPointMake(x, y);
+	CGFloat x = self.frame.size.width - kHorizontalInsets - self.topBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = [self yTitleViewContainerBottomBaseline] + self.topBoundaryLabel.frame.size.height / 2.0f + kTopBoundaryLabelInset;
+	self.topBoundaryLabel.center = CGPointMake(x, y);
 
-	[self addSubview:topBoundaryLabel];	// TODO: Store it in variable
+	[self addSubview:self.topBoundaryLabel];
 }
 
 - (void)drawBottomBoundaryValue {
+	[self.bottomBoundaryLabel removeFromSuperview];
+
 	NSString *yOriginString = [NSString stringWithFormat:@"%.2f", [self bottomBoundaryNumber].floatValue];
 
-	UILabel *bottomBoundaryLabel = [[UILabel alloc] init];
-	bottomBoundaryLabel.text = yOriginString;
-	bottomBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	bottomBoundaryLabel.textColor = [self.textColor colorWithAlphaComponent:kTextAlphaPercentage];
-	[bottomBoundaryLabel sizeToFit];
+	self.bottomBoundaryLabel = [[UILabel alloc] init];
+	self.bottomBoundaryLabel.text = yOriginString;
+	self.bottomBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	self.bottomBoundaryLabel.textColor = [self.textColor colorWithAlphaComponent:kTextAlphaPercentage];
+	[self.bottomBoundaryLabel sizeToFit];
 
-	CGFloat x = self.frame.size.width - kHorizontalInsets - bottomBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = self.metricsContainerView.frame.origin.y - bottomBoundaryLabel.frame.size.width / 2.0f + kTopBoundaryLabelInset;
-	bottomBoundaryLabel.center = CGPointMake(x, y);
+	CGFloat x = self.frame.size.width - kHorizontalInsets - self.bottomBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = self.metricsContainerView.frame.origin.y - self.bottomBoundaryLabel.frame.size.width / 2.0f + kTopBoundaryLabelInset;
+	self.bottomBoundaryLabel.center = CGPointMake(x, y);
 
-	[self addSubview:bottomBoundaryLabel];	// TODO: Store it in variable
+	[self addSubview:self.bottomBoundaryLabel];
 }
 
 #pragma mark - Update Labels UI & Text
@@ -466,12 +479,13 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	self.totalValuesLabel.textColor = self.textColor;
 	self.averageLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 	self.timeStampLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	self.noDataLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
 	self.timeStampLabel.font = [self.textFont fontWithSize:self.timeStampLabel.font.pointSize];
-
-	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
+	self.noDataLabel.font = [self.textFont fontWithSize:self.noDataLabel.font.pointSize];
 }
 
 - (void)updateLabelsText {
