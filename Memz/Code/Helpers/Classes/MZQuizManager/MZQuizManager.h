@@ -14,7 +14,7 @@ const NSUInteger kDayMaximumQuizNumber = 5;
 
 @interface MZQuizManager : NSObject
 
-@property (nonatomic, assign) NSUInteger quizPerDay;	// Between 1 and 5, default 3
+@property (nonatomic, assign) NSUInteger quizPerDay;	// Between kDayMinimumQuizNumber and kDayMaximumQuizNumber, default 3
 
 @property (nonatomic, assign) NSUInteger startHour;		// Defaut 8 (8am)
 @property (nonatomic, assign) NSUInteger endHour;		// Defaut 20 (8pm)

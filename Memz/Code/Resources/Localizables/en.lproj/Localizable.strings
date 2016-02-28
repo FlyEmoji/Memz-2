@@ -41,6 +41,10 @@
 "LocalPushNotificationQuizBody" = "It's time to translate!";
 "LocalPushNotificationQuizAlertAction" = "Translate";
 
+"LocalPushNotificationAlertTitle" = "New Quiz";
+"LocalPushNotificationAlertDescription" = "A new quiz has been delivered, it's time to translate!";
+"LocalPushNotificationAlertButtonTitle" = "Open";
+
 "QuizResponseTextFieldPlaceholder" = "Type Translation %ld Here";
 "QuizResponseIsAnswered" = "Is Answered";
 "QuizResponsePending" = "Pending!";
