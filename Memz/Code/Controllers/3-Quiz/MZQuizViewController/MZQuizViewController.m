@@ -74,7 +74,9 @@ MZCountDownDelegate>
 			quiz.isAnswered = @YES;
 			quiz.date = [NSDate date];
 			[fromViewController.navigationController dismissViewControllerAnimated:YES completion:^{
-				completionBlock();
+				if (completionBlock) {
+					completionBlock();
+				}
 			}];
 			return;
 		}

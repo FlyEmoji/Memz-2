@@ -71,24 +71,4 @@
 	self.powerOffDeviceBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
 }
 
-#pragma mark - Deep Linking
-
-+ (void)pushQuizViewController {
-	// TODO: Need to create the Quiz first
-	/*
-	CHKProfileViewController * viewController = (CHKProfileViewController *)[self topViewController];
-	if(!([viewController isKindOfClass:[CHKProfileViewController class]] && viewController.user != [CHKDataManager sharedDataManager].currentUser && [viewController.user.remoteID isEqualToString:encounter.remoteID])) {
-		[CHKActivityIndicatorHelper hideAllHUDsForView:[[self class] getMainNavigationController].view animated:YES];
-		UINavigationController *navigationController = [self getMainNavigationController];
-		[navigationController dismissViewControllerAnimated:YES completion:nil];
-
-		viewController = [[CHKProfileViewController alloc] init];
-		viewController.user = encounter;
-
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[navigationController pushViewController:viewController animated:YES];
-		});
-	}*/
-}
-
 @end

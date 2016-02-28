@@ -8,19 +8,19 @@
 
 #import "UIViewController+MemzAdditions.h"
 #import "UINavigationController+MemzTransitions.h"
+#import "MZNavigationController.h"
 #import "MZMainViewController.h"
 
 @implementation UIViewController (MemzAdditions)
 
 + (UIViewController *)topMostViewController {
-	UIViewController *topController = nil;
-	NSArray *windows = [UIApplication sharedApplication].windows;
+	UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
+	UIViewController *topController = mainWindow.rootViewController;
 
-	for (NSUInteger i = windows.count; i > 0;) {
-		--i;
-		if ((topController = [windows[i] rootViewController]) != nil) {
-			break;
-		}
+	if (!topController.presentedViewController
+			&& [[[topController safeCastToClass:[UINavigationController class]] topViewController] isKindOfClass:[MZMainViewController class]]) {
+		MZMainViewController *mainViewController = (MZMainViewController *)[(MZNavigationController *)topController topViewController];
+		return [mainViewController viewControllerForPage:[mainViewController currentPage]];
 	}
 
 	while (topController.presentedViewController != nil) {

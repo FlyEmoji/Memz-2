@@ -7,6 +7,11 @@
 //
 
 #import "MZPushNotificationManager.h"
+#import "UIViewController+MemzAdditions.h"
+#import "MZQuizViewController.h"
+#import "MZMainViewController.h"
+#import "MZLanguageManager.h"
+#import "MZQuiz.h"
 
 NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 
@@ -77,12 +82,30 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 - (void)handleLocalNotification:(UILocalNotification *)notification {
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
 	switch (notificationType) {
-		case MZLocalPushNotificationTypeQuizz:
-			// TODO: To Implement
+		case MZLocalPushNotificationTypeQuizz: {
+			MZQuiz *quiz = [MZQuiz randomQuizFromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																				 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+			[MZQuizViewController askQuiz:quiz fromViewController:[UIViewController topMostViewController] completionBlock:nil];
 			break;
+		}
 		default:
 			break;
 	}
+}
+
++ (UINavigationController *)getMainNavigationController {
+	UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
+	UINavigationController *navigationController = (UINavigationController *)mainWindow.rootViewController;
+	return navigationController;
+}
+
++ (UIViewController *)topViewController {
+	UINavigationController *navigationController = [self getMainNavigationController];
+	UIViewController * topViewController = navigationController.topViewController;
+	if ([topViewController isKindOfClass:[MZMainViewController class]]) {
+		topViewController = [(MZMainViewController *)topViewController viewControllerForPage:[(MZMainViewController *)topViewController currentPage]];
+	}
+	return topViewController;
 }
 
 #pragma mark - Private Methods
@@ -111,12 +134,14 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 }
 
 - (void)TEST {
+	NSDictionary *userInfo = @{MZNotificationTypeKey: @(MZLocalPushNotificationTypeQuizz)};
+
 	[self scheduleLocalNotificationWithTitle:nil
 																			body:NSLocalizedString(@"LocalPushNotificationQuizBody", nil)
 															 alertAction:NSLocalizedString(@"LocalPushNotificationQuizAlertAction", nil)
 													startingfromDate:[NSDate date]
 														repeatInterval:NSCalendarUnitDay
-																	userInfo:nil];
+																	userInfo:userInfo];
 }
 
 @end
