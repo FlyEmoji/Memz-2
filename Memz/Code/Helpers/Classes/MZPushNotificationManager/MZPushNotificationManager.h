@@ -25,4 +25,6 @@ extern NSString * const MZNotificationTypeKey;
 
 - (void)handleLocalNotification:(UILocalNotification *)notification;
 
+- (void)TEST;
+
 @end

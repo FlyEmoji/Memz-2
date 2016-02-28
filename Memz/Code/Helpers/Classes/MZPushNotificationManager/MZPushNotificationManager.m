@@ -21,6 +21,20 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 	return _sharedManager;
 }
 
+- (instancetype)init {
+	if (self = [super init]) {
+		if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+			[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
+																																					 settingsForTypes:(UIUserNotificationTypeSound
+																																														 | UIUserNotificationTypeAlert
+																																														 | UIUserNotificationTypeBadge)
+																																					 categories:nil]];
+			[[UIApplication sharedApplication] registerForRemoteNotifications];
+		}
+	}
+	return self;
+}
+
 #pragma mark - Public Methods 
 
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat {
@@ -93,6 +107,16 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 	localNotification.userInfo = userInfo;
 
 	[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
+}
+
+- (void)TEST {
+	[self scheduleLocalNotificationWithTitle:nil
+																			body:NSLocalizedString(@"LocalPushNotificationQuizBody", nil)
+															 alertAction:NSLocalizedString(@"LocalPushNotificationQuizAlertAction", nil)
+													startingfromDate:[NSDate date]
+														repeatInterval:NSCalendarUnitDay
+																	userInfo:nil];
 }
 
 @end
