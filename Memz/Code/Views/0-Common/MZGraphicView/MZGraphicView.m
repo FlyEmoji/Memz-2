@@ -37,9 +37,15 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 @property (nonatomic, strong) IBOutlet UILabel *totalValuesLabel;
 @property (nonatomic, strong) IBOutlet UILabel *timeStampLabel;
 
+@property (nonatomic, strong) IBOutlet UILabel *noDataLabel;
+
 @property (nonatomic, strong) IBOutlet UIView *metricsContainerView;
 
 @property (nonatomic, strong) NSMutableArray<UIView *> *metricsViews;
+@property (nonatomic, strong) UILabel *topBoundaryLabel;
+@property (nonatomic, strong) UILabel *bottomBoundaryLabel;
+
+@property (nonatomic, assign, readonly) BOOL isDataEmpty;
 
 @end
 
@@ -90,36 +96,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	_values = values;
 	_metrics = metrics;
 
-	// (1) Draw background gradient
-	[self drawBackgroundGradient];
+	// Force redraw rect
+	[self setNeedsDisplay];
 
-	// (2) Draw under graph gradient
-	[self drawUnderGraphGradient];
-
-	// (3) Draw graph line
-	[self drawLine];
-
-	// (4) Draw points
-	[self drawPoints];
-
-	// (5) Draw average dashed line
-	if (self.showAverageLine) {
-		[self drawDashedLine];
-	}
-
-	// (6) Draw top and bottom separation lines
-	[self drawTopSeparationLine];
-	[self drawBottomSeparatorLine];
-
-	// (7) Draw bottom metrics
-	[self drawBottomMetricsViews];
-
-	// (8) Draw right minimum and maximum values
-	[self drawTopBoundaryValue];
-	[self drawBottomBoundaryValue];
-
-	// (9) Update labels
-	[self updateLabelsText];
+	// TODO: Implement animation
 }
 
 #pragma mark - Custom Setters
@@ -162,6 +142,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
 }
 
+- (BOOL)isDataEmpty {
+	return self.values.count == 0 || [self sumValue].floatValue == 0.0f;
+}
+
 #pragma mark - Global Overridden Methods
 
 - (void)awakeFromNib {
@@ -179,8 +163,39 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 																									 cornerRadii:CGSizeMake(8.0f, 8.0f)];
 	[path addClip];
 
-	// (2) Update Graph
-	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
+	// (2) Draw background gradient
+	[self drawBackgroundGradient];
+
+	// (3) Draw under graph gradient
+	[self drawUnderGraphGradient];
+
+	// (4) Hide or show no data label if needed
+	[self updateShowNoDataLabelIfNeeded];
+
+	// (5) Draw graph line
+	[self drawLine];
+
+	// (6) Draw points
+	[self drawPoints];
+
+	// (7) Draw average dashed line
+	if (self.showAverageLine) {
+		[self drawDashedLine];
+	}
+
+	// (8) Draw top and bottom separation lines
+	[self drawTopSeparationLine];
+	[self drawBottomSeparatorLine];
+
+	// (9) Draw bottom metrics
+	[self drawBottomMetricsViews];
+
+	// (10) Draw right minimum and maximum values
+	[self drawTopBoundaryValue];
+	[self drawBottomBoundaryValue];
+
+	// (11) Update labels
+	[self updateLabelsText];
 }
 
 #pragma mark - Points Calculations
@@ -262,6 +277,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 }
 
 - (void)drawUnderGraphGradient {
+	if (self.isDataEmpty) {
+		return;
+	}
+
 	CGContextSaveGState(UIGraphicsGetCurrentContext());
 
 	UIBezierPath *graphPath = [self generateGraphLine];
@@ -272,7 +291,6 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 	[graphPath addClip];
 
-	[[UIColor greenColor] setFill];
 	UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:self.bounds];
 	[rectPath fill];
 
@@ -289,6 +307,12 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 															kCGGradientDrawsBeforeStartLocation);
 
 	CGContextRestoreGState(UIGraphicsGetCurrentContext());
+}
+
+#pragma mark - No Data Label Show Hide
+
+- (void)updateShowNoDataLabelIfNeeded {
+	self.noDataLabel.hidden = !self.isDataEmpty;
 }
 
 #pragma mark - Graph Line
@@ -424,35 +448,39 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - Draw Right Minimum & Maximum Values
 
 - (void)drawTopBoundaryValue {
+	[self.topBoundaryLabel removeFromSuperview];
+
 	NSString *yTopString = [NSString stringWithFormat:@"%.2f", [self maximumValue].floatValue];
 
-	UILabel *topBoundaryLabel = [[UILabel alloc] init];
-	topBoundaryLabel.text = yTopString;
-	topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
-	[topBoundaryLabel sizeToFit];
+	self.topBoundaryLabel = [[UILabel alloc] init];
+	self.topBoundaryLabel.text = yTopString;
+	self.topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	self.topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	[self.topBoundaryLabel sizeToFit];
 
-	CGFloat x = self.frame.size.width - kHorizontalInsets - topBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = [self yTitleViewContainerBottomBaseline] + topBoundaryLabel.frame.size.height / 2.0f + kTopBoundaryLabelInset;
-	topBoundaryLabel.center = CGPointMake(x, y);
+	CGFloat x = self.frame.size.width - kHorizontalInsets - self.topBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = [self yTitleViewContainerBottomBaseline] + self.topBoundaryLabel.frame.size.height / 2.0f + kTopBoundaryLabelInset;
+	self.topBoundaryLabel.center = CGPointMake(x, y);
 
-	[self addSubview:topBoundaryLabel];	// TODO: Store it in variable
+	[self addSubview:self.topBoundaryLabel];
 }
 
 - (void)drawBottomBoundaryValue {
+	[self.bottomBoundaryLabel removeFromSuperview];
+
 	NSString *yOriginString = [NSString stringWithFormat:@"%.2f", [self bottomBoundaryNumber].floatValue];
 
-	UILabel *bottomBoundaryLabel = [[UILabel alloc] init];
-	bottomBoundaryLabel.text = yOriginString;
-	bottomBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	bottomBoundaryLabel.textColor = [self.textColor colorWithAlphaComponent:kTextAlphaPercentage];
-	[bottomBoundaryLabel sizeToFit];
+	self.bottomBoundaryLabel = [[UILabel alloc] init];
+	self.bottomBoundaryLabel.text = yOriginString;
+	self.bottomBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
+	self.bottomBoundaryLabel.textColor = [self.textColor colorWithAlphaComponent:kTextAlphaPercentage];
+	[self.bottomBoundaryLabel sizeToFit];
 
-	CGFloat x = self.frame.size.width - kHorizontalInsets - bottomBoundaryLabel.frame.size.width / 2.0f;
-	CGFloat y = self.metricsContainerView.frame.origin.y - bottomBoundaryLabel.frame.size.width / 2.0f + kTopBoundaryLabelInset;
-	bottomBoundaryLabel.center = CGPointMake(x, y);
+	CGFloat x = self.frame.size.width - kHorizontalInsets - self.bottomBoundaryLabel.frame.size.width / 2.0f;
+	CGFloat y = self.metricsContainerView.frame.origin.y - self.bottomBoundaryLabel.frame.size.width / 2.0f + kTopBoundaryLabelInset;
+	self.bottomBoundaryLabel.center = CGPointMake(x, y);
 
-	[self addSubview:bottomBoundaryLabel];	// TODO: Store it in variable
+	[self addSubview:self.bottomBoundaryLabel];
 }
 
 #pragma mark - Update Labels UI & Text
@@ -462,12 +490,13 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	self.totalValuesLabel.textColor = self.textColor;
 	self.averageLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 	self.timeStampLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	self.noDataLabel.textColor = [self.tintColor makeBrighterWithCount:2];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
+	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
 	self.averageLabel.font = [self.textFont fontWithSize:self.averageLabel.font.pointSize];
 	self.timeStampLabel.font = [self.textFont fontWithSize:self.timeStampLabel.font.pointSize];
-
-	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
+	self.noDataLabel.font = [self.textFont fontWithSize:self.noDataLabel.font.pointSize];
 }
 
 - (void)updateLabelsText {
@@ -511,7 +540,14 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 		return nil;
 	}
 
-	NSString *sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue ?: 0.0f];
+	NSString *sumValuesString;
+
+	if (self.values.lastObject.floatValue == floorf(self.values.lastObject.floatValue)) {
+		sumValuesString = [NSString stringWithFormat:@"%ld", self.values.lastObject.integerValue];
+	} else {
+		sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue];
+	}
+
 	NSString *totalValuesString = [NSString stringWithFormat:@"%@ %@", sumValuesString, self.metricText];
 
 	NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:totalValuesString];

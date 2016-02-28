@@ -67,3 +67,7 @@
 "StatisticsGraphDefaultTitle" = "Graph";
 "StatisticsGraphDefaultMetricText" = "values";
 "StatisticsGraphAverageTitle" = "Average: %.2f";
+
+"StatisticsGraphTotalTitle" = "Translations";
+"StatisticsGraphSuccessfulTitle" = "Successful Translations";
+"StatisticsGraphMetric" = "translations";
