@@ -34,7 +34,6 @@
 		}
 	};
 
-	self.destinationViewController.modalPresentationStyle = UIModalPresentationCustom;
 	self.destinationViewController.transitioningDelegate = self.transitioningBehavior;
 	self.destinationViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;	// TODO: To refactor, duplicated assignations
 
