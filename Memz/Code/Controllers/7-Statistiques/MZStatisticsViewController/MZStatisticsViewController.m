@@ -70,8 +70,12 @@ UITableViewDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZGraphicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGraphicTableViewCellIdentifier
 																																 forIndexPath:indexPath];
-	[cell.graphicView transitionToValues:[self gatherStatisticsForGraph:self.tableViewData[indexPath.row].integerValue
-																													granularity:self.currentGranularity]
+
+	cell.graphicView.title = [self titleForGraph:self.tableViewData[indexPath.row].integerValue];
+	cell.graphicView.metricText = NSLocalizedString(@"StatisticsGraphMetric", nil);
+
+	[cell.graphicView transitionToValues:[self aggregateStatisticDataForGranularity:self.currentGranularity
+																																				 forGraph:self.tableViewData[indexPath.row].integerValue]
 													 withMetrics:[self metricsForGranularity:self.currentGranularity]
 															animated:NO];
 	return cell;
@@ -85,12 +89,7 @@ UITableViewDelegate>
 	[self.tableView reloadData];
 }
 
-#pragma mark - Exploitable Statistic Data
-
-- (NSArray<NSNumber *> *)gatherStatisticsForGraph:(MZStatisticsGraph)graph
-																			granularity:(MZStatisticsGranularity)granularity {
-	return [self aggregateStatisticDataForGranularity:granularity];	 // TODO: Will probably remove this method
-}
+#pragma mark - Table View Population
 
 - (NSArray<NSString *> *)metricsForGranularity:(MZStatisticsGranularity)granularity {
 	NSMutableArray *mutableMetricsData = [[NSMutableArray alloc] init];
@@ -115,16 +114,34 @@ UITableViewDelegate>
 	return [[mutableMetricsData reverseObjectEnumerator] allObjects];
 }
 
+- (NSString *)titleForGraph:(MZStatisticsGraph)graph {
+	switch (graph) {
+		case MZStatisticsGraphTotalTranslations:
+			return NSLocalizedString(@"StatisticsGraphTotalTitle", nil);
+		case MZStatisticsGraphSuccessfulTranslations:
+			return NSLocalizedString(@"StatisticsGraphSuccessfulTitle", nil);
+	}
+}
+
 #pragma mark - Statistic Data Aggregation
 
-- (NSArray<NSNumber *> *)aggregateStatisticDataForGranularity:(MZStatisticsGranularity)granularity {
+- (NSUInteger)valueForGraph:(MZStatisticsGraph)graph language:(MZLanguage)language day:(NSDate *)day {
+	switch (graph) {
+		case MZStatisticsGraphTotalTranslations:
+			return [MZStatisticsProvider translationsForLanguage:language forDay:day].count;
+		case MZStatisticsGraphSuccessfulTranslations:
+			return [MZStatisticsProvider successfulTranslationsForLanguage:language forDay:day].count;
+	}
+}
+
+- (NSArray<NSNumber *> *)aggregateStatisticDataForGranularity:(MZStatisticsGranularity)granularity
+																										 forGraph:(MZStatisticsGraph)graph {
 	NSMutableArray *mutableStatisticData = [[NSMutableArray alloc] init];
 
 	switch (granularity) {
 		case MZStatisticsGranularityWeek:
 			for (NSUInteger days = 0; days < 7; days++) {
-				NSUInteger count = [MZStatisticsProvider translationsForLanguage:self.language
-																																	forDay:[[NSDate date] dayForDaysInThePast:days]].count;
+				NSUInteger count = [self valueForGraph:graph language:self.language day:[[NSDate date] dayForDaysInThePast:days]];
 				[mutableStatisticData addObject:@(count)];
 			}
 			break;
@@ -132,8 +149,7 @@ UITableViewDelegate>
 			for (NSUInteger period = 0; period < kMonthGranularityNumberMeasures; period++) {
 				NSUInteger count = 0;
 				for (NSUInteger daysInPeriod = period * kMonthGranularityNumberMeasures; daysInPeriod < 31 / kMonthGranularityNumberMeasures; daysInPeriod++) {
-					count += [MZStatisticsProvider translationsForLanguage:self.language
-																													forDay:[[NSDate date] dayForDaysInThePast:daysInPeriod]].count;
+					count += [self valueForGraph:graph language:self.language day:[[NSDate date] dayForDaysInThePast:daysInPeriod]];
 				}
 				[mutableStatisticData addObject:@(count)];
 			}
@@ -142,8 +158,7 @@ UITableViewDelegate>
 			for (NSUInteger period = 0; period < kYearGranularityNumberMeasures; period++) {
 				NSUInteger count = 0;
 				for (NSUInteger daysInPeriod = period * kYearGranularityNumberMeasures; daysInPeriod < 365 / kYearGranularityNumberMeasures; daysInPeriod++) {
-					count += [MZStatisticsProvider translationsForLanguage:self.language
-																													forDay:[[NSDate date] dayForDaysInThePast:daysInPeriod]].count;
+					count += [self valueForGraph:graph language:self.language day:[[NSDate date] dayForDaysInThePast:daysInPeriod]];
 				}
 				[mutableStatisticData addObject:@(count)];
 			}

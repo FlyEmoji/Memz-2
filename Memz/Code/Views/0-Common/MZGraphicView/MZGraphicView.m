@@ -41,13 +41,11 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 @property (nonatomic, strong) IBOutlet UIView *metricsContainerView;
 
-@property (nonatomic, strong) UIBezierPath *graphLine;
-@property (nonatomic, strong) UIBezierPath *averageDashedLine;
-@property (nonatomic, strong) NSMutableArray<UIBezierPath *> *dots;
-
 @property (nonatomic, strong) NSMutableArray<UIView *> *metricsViews;
 @property (nonatomic, strong) UILabel *topBoundaryLabel;
 @property (nonatomic, strong) UILabel *bottomBoundaryLabel;
+
+@property (nonatomic, assign, readonly) BOOL isDataEmpty;
 
 @end
 
@@ -142,6 +140,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 	_yOriginType = yOriginType;
 
 	[self transitionToValues:self.values withMetrics:self.metrics animated:NO];
+}
+
+- (BOOL)isDataEmpty {
+	return self.values.count == 0 || [self sumValue].floatValue == 0.0f;
 }
 
 #pragma mark - Global Overridden Methods
@@ -275,6 +277,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 }
 
 - (void)drawUnderGraphGradient {
+	if (self.isDataEmpty) {
+		return;
+	}
+
 	CGContextSaveGState(UIGraphicsGetCurrentContext());
 
 	UIBezierPath *graphPath = [self generateGraphLine];
@@ -306,7 +312,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 #pragma mark - No Data Label Show Hide
 
 - (void)updateShowNoDataLabelIfNeeded {
-	self.noDataLabel.hidden = self.values.count == 0 || [self sumValue].floatValue == 0.0f;
+	self.noDataLabel.hidden = !self.isDataEmpty;
 }
 
 #pragma mark - Graph Line
@@ -330,16 +336,14 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 }
 
 - (void)drawLine {
-	self.graphLine = [self generateGraphLine];
-	self.graphLine.lineWidth = 1.0f;
-	[self.graphLine stroke];
+	UIBezierPath *graphLine = [self generateGraphLine];
+	graphLine.lineWidth = 1.0f;
+	[graphLine stroke];
 }
 
 #pragma mark - Points
 
 - (void)drawPoints {
-	[self.dots removeAllObjects];
-
 	for (NSUInteger i = 0; i < self.values.count; i++) {
 		CGPoint point = CGPointMake([self xPointForColumn:i], [self yPointForColumn:i]);
 		point.x -= kPointRadius / 2.0f;
@@ -359,27 +363,25 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 		[[UIColor averageColorBetweenColor:DEFAULT_GRADIENT_START_COLOR andColor:DEFAULT_GRADIENT_END_COLOR] setFill];
 		[innerCircle fill];
-
-		[self.dots addObjectsFromArray:@[circle, innerCircle]];
 	}
 }
 
 #pragma mark - Horizontal Average Dashed Line
 
 - (void)drawDashedLine {
-	self.averageDashedLine = [[UIBezierPath alloc] init];
+	UIBezierPath *linePath = [[UIBezierPath alloc] init];
 
 	CGFloat dashArray[2] = {2.0f, 2.0f};
-	[self.averageDashedLine setLineDash:dashArray count:2 phase:0];
+	[linePath setLineDash:dashArray count:2 phase:0];
 
 	NSNumber *average = [self averageValue];
 
-	[self.averageDashedLine moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
-	[self.averageDashedLine addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
+	[linePath moveToPoint:CGPointMake(kHorizontalInsets, [self yPointForValue:average])];
+	[linePath addLineToPoint:CGPointMake(self.frame.size.width - kHorizontalInsets, [self yPointForValue:average])];
 
 	[[[UIColor whiteColor] colorWithAlphaComponent:0.5f] setStroke];
-	self.averageDashedLine.lineWidth = 1.0f;
-	[self.averageDashedLine stroke];
+	linePath.lineWidth = 1.0f;
+	[linePath stroke];
 }
 
 #pragma mark - Horizontal Separator Lines
@@ -538,7 +540,14 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 		return nil;
 	}
 
-	NSString *sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue ?: 0.0f];
+	NSString *sumValuesString;
+
+	if (self.values.lastObject.floatValue == floorf(self.values.lastObject.floatValue)) {
+		sumValuesString = [NSString stringWithFormat:@"%ld", self.values.lastObject.integerValue];
+	} else {
+		sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue];
+	}
+
 	NSString *totalValuesString = [NSString stringWithFormat:@"%@ %@", sumValuesString, self.metricText];
 
 	NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:totalValuesString];
