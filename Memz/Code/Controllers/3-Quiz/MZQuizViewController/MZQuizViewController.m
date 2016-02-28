@@ -140,12 +140,10 @@ MZCountDownDelegate>
 		[self.tableViewEnteredData addObject:buildTranslation(MZTranslationResponseTableViewCellTypeUnaswered, @"", @"", NO)];
 	}
 
-	dispatch_async(dispatch_get_main_queue(), ^(void){
-		self.tableViewHeader.word = self.response.word;
-		self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
-		[self.tableView reloadData];
-		self.tableView.tableFooterView = [[UIView alloc] init];
-	});
+	self.tableViewHeader.word = self.response.word;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+	[self.tableView reloadData];
+	self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
