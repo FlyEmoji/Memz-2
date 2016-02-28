@@ -7,6 +7,9 @@
 //
 
 #import "MZPresentableViewController.h"
+#import "CADisplayLink+MemzBlocks.h"
+
+const NSTimeInterval kDismissAnimationDuration = 0.15f;
 
 @interface MZPresentableViewController ()
 
@@ -30,6 +33,21 @@
 	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidFinishPresentAnimatedTransition:)]) {
 		[self.transitionDelegate presentableViewControllerDidFinishPresentAnimatedTransition:self];
 	}
+}
+
+#pragma mark - Trigger Dismiss Behavior
+
+- (void)dismissViewControllerWithCompletion:(void (^)())completionHandler {
+	[self.transitionDelegate presentableViewControllerDidStartDismissalAnimatedTransition:self];
+
+	[UIView animateWithDuration:kDismissAnimationDuration animations:^{
+		[self.transitionDelegate presentableViewController:self didUpdateDismissalAnimatedTransition:1.0f];
+	} completion:^(BOOL finished) {
+		[self.transitionDelegate presentableViewController:self didFinishDismissalAnimatedTransitionWithDirection:MZPullViewControllerTransitionDown];
+		if (completionHandler) {
+			completionHandler();
+		}
+	}];
 }
 
 #pragma mark - Statius Bar Handling

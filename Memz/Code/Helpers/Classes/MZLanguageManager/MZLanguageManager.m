@@ -37,7 +37,7 @@ NSString * const kToLanguageKey = @"ToLanguageKey";
 - (MZLanguage)fromLanguage {
 	// Initialize From Language if never initialized yet
 	if ([[NSUserDefaults standardUserDefaults] valueForKey:kFromLanguageKey] == nil) {
-		self.fromLanguage = MZLanguageFrench;
+		self.fromLanguage = MZLanguageEnglish;
 	}
 
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kFromLanguageKey] integerValue];
@@ -46,7 +46,7 @@ NSString * const kToLanguageKey = @"ToLanguageKey";
 - (MZLanguage)toLanguage {
 	// Initialize To Language if never initialized yet
 	if ([[NSUserDefaults standardUserDefaults] valueForKey:kToLanguageKey] == nil) {
-		self.toLanguage = MZLanguageEnglish;
+		self.toLanguage = MZLanguageFrench;
 	}
 
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kToLanguageKey] integerValue];

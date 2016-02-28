@@ -7,8 +7,15 @@
 //
 
 #import "MZPushNotificationManager.h"
+#import "UIViewController+MemzAdditions.h"
+#import "UIAlertController+MemzAdditions.h"
+#import "MZQuizViewController.h"
+#import "MZMainViewController.h"
+#import "MZLanguageManager.h"
+#import "MZQuiz.h"
 
 NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
+NSString * const MZQuizKey = @"MZQuizKey";
 
 @implementation MZPushNotificationManager
 
@@ -19,6 +26,20 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 		_sharedManager = [[self alloc] init];
 	});
 	return _sharedManager;
+}
+
+- (instancetype)init {
+	if (self = [super init]) {
+		if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+			[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
+																																					 settingsForTypes:(UIUserNotificationTypeSound
+																																														 | UIUserNotificationTypeAlert
+																																														 | UIUserNotificationTypeBadge)
+																																					 categories:nil]];
+			[[UIApplication sharedApplication] registerForRemoteNotifications];
+		}
+	}
+	return self;
 }
 
 #pragma mark - Public Methods 
@@ -63,9 +84,19 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 - (void)handleLocalNotification:(UILocalNotification *)notification {
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
 	switch (notificationType) {
-		case MZLocalPushNotificationTypeQuizz:
-			// TODO: To Implement
+		case MZLocalPushNotificationTypeQuizz: {
+			MZQuiz *quiz = [MZQuiz randomQuizFromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																				 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+			if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+				[MZQuizViewController askQuiz:quiz fromViewController:[UIViewController topMostViewController] completionBlock:nil];
+			} else {
+				[self showAlertForNotificationType:notificationType
+													inViewController:[UIViewController topMostViewController]
+																	userInfo:@{MZQuizKey: quiz}];
+			}
 			break;
+		}
 		default:
 			break;
 	}
@@ -93,6 +124,34 @@ NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
 	localNotification.userInfo = userInfo;
 
 	[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+}
+
+#pragma mark - Alert Display
+
+- (void)showAlertForNotificationType:(MZLocalPushNotificationType)type
+										inViewController:(UIViewController *)viewController
+														userInfo:(NSDictionary *)userInfo {
+	switch (type) {
+		case MZLocalPushNotificationTypeQuizz: {
+		 [UIAlertController showWithStyle:UIAlertControllerStyleAlert
+																title:NSLocalizedString(@"LocalPushNotificationAlertTitle", @"")
+															message:NSLocalizedString(@"LocalPushNotificationAlertDescription", @"")
+																block:^(UIAlertController *alertController, NSUInteger indexes) {
+																	if (MZCancelButtonIndex(indexes) == MZTappedButtonIndex(indexes)) {
+																		return;
+																	}
+
+																	[MZQuizViewController askQuiz:userInfo[MZQuizKey]
+																						 fromViewController:[UIViewController topMostViewController]
+																								completionBlock:nil];
+																}
+										cancelButtonTitle:NSLocalizedString(@"CommonCancel", @"")
+										otherButtonTitles:NSLocalizedString(@"LocalPushNotificationAlertButtonTitle", @""), nil];
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 @end

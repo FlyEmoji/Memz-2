@@ -49,6 +49,7 @@
 		0C75360B1C5B18F700810402 /* MZGradientCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C75360A1C5B18F700810402 /* MZGradientCollectionViewLayout.m */; };
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
+		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
 		0CA04A2A1C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */; };
 		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
@@ -202,6 +203,8 @@
 		0C7A22E41C20B92E00774B95 /* MZFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedTableViewCell.h; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedTableViewCell.m; path = "Code/Views/2-Feed/MZFeedTableViewCell/MZFeedTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
+		0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CA04A261C3325FA0078C8EE /* MZWordDescriptionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionHeaderView.h; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.h"; sourceTree = SOURCE_ROOT; };
 		0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionHeaderView.m; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.m"; sourceTree = SOURCE_ROOT; };
 		0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
@@ -721,6 +724,15 @@
 			name = MZFeedTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C7B5C471C82CD0000C7B051 /* UIAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */,
+				0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */,
+			);
+			name = UIAlertController;
+			sourceTree = "<group>";
+		};
 		0CA04A251C3325C40078C8EE /* 0-Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +908,7 @@
 				0CEFD19D1C3CB52C00EB60DE /* UINavigationController */,
 				0CEFD19E1C3CB53800EB60DE /* UINavigationItem */,
 				0CEFD1A61C3CB59100EB60DE /* UIViewController */,
+				0C7B5C471C82CD0000C7B051 /* UIAlertController */,
 				0CEFD1A21C3CB55F00EB60DE /* UIView */,
 				0CEFD1A31C3CB56900EB60DE /* UIColor */,
 				0CEFD1A11C3CB55700EB60DE /* UIImageView */,
@@ -1636,6 +1649,7 @@
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
 				0C5042261C59B01D0045E6FC /* constants.m in Sources */,
+				0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */,
 				0CCE607F1C66BCEF008D70BF /* MZGraphicView.m in Sources */,
 				0CEFD1B21C3CB6FC00EB60DE /* NSObject+MemzAdditions.m in Sources */,
 				0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */,

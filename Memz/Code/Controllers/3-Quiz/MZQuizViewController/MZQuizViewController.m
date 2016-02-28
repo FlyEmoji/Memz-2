@@ -74,7 +74,9 @@ MZCountDownDelegate>
 			quiz.isAnswered = @YES;
 			quiz.date = [NSDate date];
 			[fromViewController.navigationController dismissViewControllerAnimated:YES completion:^{
-				completionBlock();
+				if (completionBlock) {
+					completionBlock();
+				}
 			}];
 			return;
 		}
@@ -140,12 +142,12 @@ MZCountDownDelegate>
 		[self.tableViewEnteredData addObject:buildTranslation(MZTranslationResponseTableViewCellTypeUnaswered, @"", @"", NO)];
 	}
 
-	dispatch_async(dispatch_get_main_queue(), ^(void){
-		self.tableViewHeader.word = self.response.word;
-		self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
-		[self.tableView reloadData];
-		self.tableView.tableFooterView = [[UIView alloc] init];
-	});
+	self.tableViewHeader.word = self.response.word;
+	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeReadonly;
+	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
+
+	[self.tableView reloadData];
+	self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -157,6 +159,7 @@ MZCountDownDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZTranslationResponseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslationResponseTableViewCellIdentifier
 																																						 forIndexPath:indexPath];
+
 	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZLanguageManager sharedManager].toLanguage];
 	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row + 1];
 	cell.textField.returnKeyType = indexPath.row == self.tableViewEnteredData.count - 1 ? UIReturnKeyDone : UIReturnKeyNext;

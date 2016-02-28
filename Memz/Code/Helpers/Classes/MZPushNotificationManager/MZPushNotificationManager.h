@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, MZLocalPushNotificationType) {
 	MZLocalPushNotificationTypeNone = 0,
-	MZLocalPushNotificationTypeQuizz
+	MZLocalPushNotificationTypeQuizz,
+	MZLocalPushNotificationTypeReminder			// TODO: To implement, schedule local in 1/2 weeks "Your are loosing your [to_language] ..."
 };
 
 extern NSString * const MZNotificationTypeKey;

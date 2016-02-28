@@ -439,7 +439,7 @@ MZWordAdditionTableViewHeaderDelegate>
 			 toLanguage:[MZLanguageManager sharedManager].toLanguage];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[self dismissViewControllerAnimated:YES completion:nil];
+		[self dismissViewControllerWithCompletion:nil];
 	}];
 }
 

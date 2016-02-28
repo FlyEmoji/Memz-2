@@ -26,6 +26,7 @@
 @property (nonatomic, strong) id<MZPresentableViewControllerTransitioning> transitionDelegate;
 
 - (void)showStatusBar:(BOOL)show;
+- (void)dismissViewControllerWithCompletion:(void (^)())completionHandler;		// TODO: See if can not find something more elegant
 
 @end
 
