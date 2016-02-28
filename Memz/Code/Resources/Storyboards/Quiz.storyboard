@@ -184,10 +184,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykn-9u-40g" userLabel="Top Shrinkable View" customClass="MZQuizInfoView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="9fX-QM-VeF"/>
+                                    <constraint firstAttribute="height" constant="60" id="9fX-QM-VeF"/>
                                 </constraints>
                             </view>
                         </subviews>

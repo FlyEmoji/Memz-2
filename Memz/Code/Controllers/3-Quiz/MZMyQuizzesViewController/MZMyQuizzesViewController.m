@@ -20,8 +20,8 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionUp
 };
 
-const CGFloat kTopShrinkableViewMinimumHeight = 40.0f;
-const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
+const CGFloat kTopShrinkableViewMinimumHeight = 0.0f;
+const CGFloat kTopShrinkableViewMaximumHeight = 60.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
@@ -154,7 +154,6 @@ MZQuizInfoViewDelegate>
 
 	if (scrollView.contentOffset.y < -scrollView.contentInset.top
 			|| scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height + scrollView.contentInset.bottom)) {
-		// TODO: Second condition doesn't work if contentSize.height < scrollView.frame.size.height
 		self.lastContentOffset = scrollView.contentOffset;
 		return;
 	}
@@ -203,10 +202,6 @@ MZQuizInfoViewDelegate>
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
 		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 	}];
-}
-
-- (void)quizInfoViewDidRequestStatistics:(MZQuizInfoView *)quizInfoView {
-	[self performSegueWithIdentifier:kLanguagePickerViewControllerSegue sender:self];
 }
 
 @end
