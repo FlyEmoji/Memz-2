@@ -18,7 +18,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9o-nf-w9u">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="114"/>
-                    <color key="backgroundColor" red="0.30390537207583229" green="0.56333246883295185" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <state key="normal" title="NEW QUIZZ">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,12 +28,12 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.30390537210000002" green="0.56333246879999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="H9o-nf-w9u" secondAttribute="bottom" id="KfN-CG-lNh"/>
-                <constraint firstItem="H9o-nf-w9u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NFJ-Gk-kqD"/>
-                <constraint firstAttribute="trailing" secondItem="H9o-nf-w9u" secondAttribute="trailing" id="czL-eN-uIm"/>
-                <constraint firstItem="H9o-nf-w9u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tkp-el-khA"/>
+                <constraint firstItem="H9o-nf-w9u" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BSB-br-2yu"/>
+                <constraint firstAttribute="bottom" secondItem="H9o-nf-w9u" secondAttribute="bottom" id="LUu-s3-drP"/>
+                <constraint firstItem="H9o-nf-w9u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="x2H-cc-lAQ"/>
+                <constraint firstAttribute="trailing" secondItem="H9o-nf-w9u" secondAttribute="trailing" id="yEv-Fk-RUJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

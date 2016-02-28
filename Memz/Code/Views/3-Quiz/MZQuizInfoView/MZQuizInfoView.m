@@ -9,6 +9,8 @@
 #import "MZQuizInfoView.h"
 #import "UIView+MemzAdditions.h"
 
+const CGFloat kHeightTriggersContentFade = 35.0f;
+
 @interface MZQuizInfoView ()
 
 @property (nonatomic, strong) IBOutlet UIButton *createNewQuizButton;
@@ -16,6 +18,12 @@
 @end
 
 @implementation MZQuizInfoView
+
+- (void)layoutSubviews {
+	[super layoutSubviews];
+
+	self.createNewQuizButton.alpha = fminf(self.bounds.size.height / kHeightTriggersContentFade, 1.0f);
+}
 
 #pragma mark - Actions
 
