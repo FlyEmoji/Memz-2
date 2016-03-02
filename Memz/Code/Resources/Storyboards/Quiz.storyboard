@@ -307,7 +307,7 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
-        <image name="Navigation-Forward-Tap" width="9" height="17"/>
+        <image name="Navigation-Forward-Tap" width="12" height="23"/>
         <image name="Navigation-Large-Tick" width="96" height="96"/>
         <image name="Quiz-Cross" width="24" height="24"/>
     </resources>
