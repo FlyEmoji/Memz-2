@@ -30,3 +30,9 @@ MZCOLOR(statisticsSegmentedControlTintColor, 233.0f, 63.0f, 51.0f);
 MZCOLOR(graphGradientDefaultStartColor, 239.0f, 152.0f, 93.0f);
 MZCOLOR(graphGradientDefaultEndColor, 234.0f, 86.0f, 68.0f);
 MZCOLOR(graphGradientDefaultUnderGraphStartColor, 244.0f, 185.0f, 113.0f);
+
+MZCOLOR(mainBlueColor, 92.0f, 201.0f, 221.0f);
+MZCOLOR(mainLightGrayColor, 241.0f, 244.0f, 245.0f);
+MZCOLOR(mainMediumGrayColor, 228.0f, 230.0f, 234.0f);
+MZCOLOR(mainDarkGrayColor, 151.0f, 159.0f, 187.0f);
+MZCOLOR(mainVeryDarkGrayColor, 114.0f, 124.0f, 140.0f);

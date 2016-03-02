@@ -75,3 +75,10 @@
 "StatisticsGraphTotalTitle" = "Translations";
 "StatisticsGraphSuccessfulTitle" = "Successful Translations";
 "StatisticsGraphMetric" = "translations";
+
+"DateTodayTitle" = "Today";
+"DateYesterdayTitle" = "Yesterday";
+"DateThisWeekTitle" = "This Week";
+"DateLastWeekTitle" = "Last Week";
+"DateThisMonthTitle" = "This Month";
+"DateLastMonthTitle" = "Last Month";

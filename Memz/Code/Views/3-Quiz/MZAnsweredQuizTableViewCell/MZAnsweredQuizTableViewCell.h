@@ -1,5 +1,5 @@
 //
-//  MZMyQuizzesTableViewCell.h
+//  MZAnsweredQuizTableViewCell.h
 //  Memz
 //
 //  Created by Bastien Falcou on 12/16/15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MZQuiz.h"
 
-@interface MZMyQuizzesTableViewCell : UITableViewCell
+@interface MZAnsweredQuizTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) MZQuiz *quiz;
 

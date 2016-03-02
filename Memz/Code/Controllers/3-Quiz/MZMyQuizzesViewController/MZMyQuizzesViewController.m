@@ -7,7 +7,7 @@
 //
 
 #import "MZMyQuizzesViewController.h"
-#import "MZMyQuizzesTableViewCell.h"
+#import "MZAnsweredQuizTableViewCell.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
@@ -26,7 +26,7 @@ const CGFloat kTopShrinkableViewMaximumHeight = 60.0f;
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
 NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
-NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
+NSString * const kAnsweredQuizTableViewCell = @"MZAnsweredQuizTableViewCellIdentifier";
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -88,7 +88,7 @@ MZQuizInfoViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZMyQuizzesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
+	MZAnsweredQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAnsweredQuizTableViewCell
 																																	 forIndexPath:indexPath];
 	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
 	cell.quiz = quiz;
@@ -127,7 +127,7 @@ MZQuizInfoViewDelegate>
 			break;
 		}
 		case NSFetchedResultsChangeUpdate: {
-			MZMyQuizzesTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			MZAnsweredQuizTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 			cell.quiz = [anObject safeCastToClass:[MZQuiz class]];
 			break;
 		}
