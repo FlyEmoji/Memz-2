@@ -34,6 +34,10 @@
 			return [UIImage imageNamed:@"Navigation-Cancel"];
 		case MZAssetIdentifierNavigationSettings:
 			return [UIImage imageNamed:@"Navigation-Settings"];
+		case MZAssetIdentifierNavigationLargeTick:
+			return [UIImage imageNamed:@"Navigation-Large-Tick"];
+		case MZAssetIdentifierNavigationForwardTap:
+			return [UIImage imageNamed:@"Navigation-Forward-Tap"];
 		case MZAssetIdentifierFeedGradient:
 			return [UIImage imageNamed:@"Feed-Gradient"];
 		case MZAssetIdentifierQuizBell:

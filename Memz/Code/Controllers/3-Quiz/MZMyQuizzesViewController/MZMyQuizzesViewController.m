@@ -8,6 +8,7 @@
 
 #import "MZMyQuizzesViewController.h"
 #import "MZAnsweredQuizTableViewCell.h"
+#import "MZPendingQuizTableViewCell.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
@@ -21,12 +22,13 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 };
 
 const CGFloat kTopShrinkableViewMinimumHeight = 0.0f;
-const CGFloat kTopShrinkableViewMaximumHeight = 60.0f;
+const CGFloat kTopShrinkableViewMaximumHeight = 67.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
 NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
-NSString * const kAnsweredQuizTableViewCell = @"MZAnsweredQuizTableViewCellIdentifier";
+NSString * const kAnsweredQuizTableViewCellIdentifier = @"MZAnsweredQuizTableViewCellIdentifier";
+NSString * const kPendingQuizTableViewCellIdentifier = @"MZPendingQuizTableViewCellIdentifier";
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -88,11 +90,19 @@ MZQuizInfoViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZAnsweredQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAnsweredQuizTableViewCell
-																																	 forIndexPath:indexPath];
 	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
-	cell.quiz = quiz;
-	return cell;
+
+	if (quiz.isAnswered.boolValue) {
+		MZAnsweredQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAnsweredQuizTableViewCellIdentifier
+																																				forIndexPath:indexPath];
+		cell.quiz = quiz;
+		return cell;
+	} else {
+		MZPendingQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPendingQuizTableViewCellIdentifier
+																																			 forIndexPath:indexPath];
+		cell.quiz = quiz;
+		return cell;
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
