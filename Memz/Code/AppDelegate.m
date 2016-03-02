@@ -10,18 +10,25 @@
 #import "MZPushNotificationManager.h"
 #import "MZMainViewController.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	[self setupCommonDesigns];
+
 	return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
 	[[MZPushNotificationManager sharedManager] handleLocalNotification:notification];
+}
+
+#pragma mark - Common Setups
+
+- (void)setupCommonDesigns {
+	[[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+	[[UINavigationBar appearance] setTintColor:[UIColor mainBlueColor]];
+	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f],
+																												 NSForegroundColorAttributeName: [UIColor mainLightBlackColor]}];
 }
 
 @end

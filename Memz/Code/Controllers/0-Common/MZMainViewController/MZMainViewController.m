@@ -76,13 +76,13 @@ const NSUInteger kNumberPages = 3;
 	NSString * title = nil;
 	switch (page) {
 		case MZMainViewControllerPageFeed:
-			title = [NSLocalizedString(@"NavigationFeedTitle", @"") uppercaseString];
+			title = NSLocalizedString(@"NavigationFeedTitle", @"");
 			break;
 		case MZMainViewControllerPageQuizzes:
-			title = [NSLocalizedString(@"NavigationQuizzesTitle", @"") uppercaseString];
+			title = NSLocalizedString(@"NavigationQuizzesTitle", @"");
 			break;
 		case MZMainViewControllerPageMyDictionary:
-			title = [NSLocalizedString(@"NavigationMyDictionaryTitle", @"") uppercaseString];
+			title = NSLocalizedString(@"NavigationMyDictionaryTitle", @"");
 			break;
 		default:
 			break;
@@ -91,7 +91,7 @@ const NSUInteger kNumberPages = 3;
 	return [NSAttributedString attributedStringWithString:title
 																									 font:[[UINavigationBar appearance] titleTextAttributes][NSFontAttributeName]
 																									color:[[UINavigationBar appearance] titleTextAttributes][NSForegroundColorAttributeName]
-																							kernValue:2.0f];
+																							kernValue:0.0f];
 }
 
 - (NSInteger)numberOfPage {

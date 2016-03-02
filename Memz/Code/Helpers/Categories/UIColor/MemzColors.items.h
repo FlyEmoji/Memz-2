@@ -36,3 +36,4 @@ MZCOLOR(mainLightGrayColor, 241.0f, 244.0f, 245.0f);
 MZCOLOR(mainMediumGrayColor, 228.0f, 230.0f, 234.0f);
 MZCOLOR(mainDarkGrayColor, 151.0f, 159.0f, 187.0f);
 MZCOLOR(mainVeryDarkGrayColor, 114.0f, 124.0f, 140.0f);
+MZCOLOR(mainLightBlackColor, 76.0f, 82.0f, 93.0f);
