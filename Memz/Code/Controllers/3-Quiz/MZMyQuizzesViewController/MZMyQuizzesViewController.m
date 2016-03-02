@@ -65,8 +65,9 @@ MZQuizInfoViewDelegate>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
 	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
-	NSSortDescriptor *descriptorDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-	request.sortDescriptors = @[descriptorIsAnswered, descriptorDate];
+	NSSortDescriptor *descriptorAnswerDate = [NSSortDescriptor sortDescriptorWithKey:@"answerDate" ascending:NO];
+	NSSortDescriptor *descriptorCreationDate = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
+	request.sortDescriptors = @[descriptorIsAnswered, descriptorAnswerDate, descriptorCreationDate];
 
 	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
 																																			managedObjectContext:[MZDataManager sharedDataManager].managedObjectContext

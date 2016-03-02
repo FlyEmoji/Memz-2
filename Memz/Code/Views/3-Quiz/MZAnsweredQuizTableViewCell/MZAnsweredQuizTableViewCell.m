@@ -27,7 +27,7 @@
 - (void)setQuiz:(MZQuiz *)quiz {
 	_quiz = quiz;
 
-	self.dateLabel.text = [quiz.date relativeOrAbsoluteDateString].uppercaseString;
+	self.dateLabel.text = [quiz.answerDate relativeOrAbsoluteDateString].uppercaseString;
 	self.isAnsweredLabel.text = quiz.isAnswered.boolValue ? NSLocalizedString(@"QuizResponseIsAnswered", nil) : NSLocalizedString(@"QuizResponsePending", nil);
 }
 

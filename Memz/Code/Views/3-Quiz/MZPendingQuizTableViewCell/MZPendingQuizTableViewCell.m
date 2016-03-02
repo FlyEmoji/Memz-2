@@ -20,7 +20,7 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
-	self.dateLabel.hidden = self.quiz ? [self.quiz.date isToday] : YES;
+	self.dateLabel.hidden = self.quiz ? ![self.quiz.creationDate isToday] : YES;
 }
 
 #pragma mark - Custom Setter
@@ -28,7 +28,7 @@
 - (void)setQuiz:(MZQuiz *)quiz {
 	_quiz = quiz;
 
-	self.dateLabel.hidden = [quiz.date isToday];
+	self.dateLabel.hidden = ![quiz.creationDate isToday];		// TODO: Not only display TODAY but 2D, 1W, 1M..
 }
 
 @end

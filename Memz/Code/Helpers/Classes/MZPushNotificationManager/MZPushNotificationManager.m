@@ -124,7 +124,6 @@ NSString * const MZQuizKey = @"MZQuizKey";
 	localNotification.userInfo = userInfo;
 
 	[[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-	[[UIApplication sharedApplication] presentLocalNotificationNow:localNotification];
 }
 
 #pragma mark - Alert Display

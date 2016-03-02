@@ -16,6 +16,7 @@
 + (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage {
 	MZQuiz *newQuiz = [MZQuiz newInstance];
 	newQuiz.toLanguage = @(toLanguage);
+	newQuiz.creationDate = [NSDate date];
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
 
