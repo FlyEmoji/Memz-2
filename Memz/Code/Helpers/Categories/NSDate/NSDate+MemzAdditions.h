@@ -10,6 +10,7 @@
 
 @interface NSDate (MemzAdditions)			// TODO: Write documentation and examples
 
+- (NSString *)relativeOrAbsoluteDateString;  // Yesterday, 2 days ago, last week .. humanReadableDateString
 - (NSString *)humanReadableDateString;  // MMM d, y, h:mm a
 - (NSString *)weekDay;  // uppercased first letter of the day
 - (NSString *)month;  // MMM
@@ -27,12 +28,14 @@
 - (NSDate *)dayAfter;
 - (NSDate *)hoursBefore:(NSInteger)hoursBefore;
 
-- (BOOL)isLaterToday;
-- (BOOL)isSameDay:(NSDate *)date;
-- (BOOL)isToday;
-- (BOOL)isTomorrow;
-- (BOOL)isTomorrowOrLater;
 - (BOOL)isBeforeDate:(NSDate *)date;
 - (BOOL)isBeforeNow;
+- (BOOL)isSameDay:(NSDate *)date;
+
+- (BOOL)isYesterday;
+- (BOOL)isToday;
+- (BOOL)isLaterToday;
+- (BOOL)isTomorrow;
+- (BOOL)isTomorrowOrLater;
 
 @end

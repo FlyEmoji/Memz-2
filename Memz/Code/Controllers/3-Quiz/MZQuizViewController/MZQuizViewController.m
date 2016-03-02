@@ -72,7 +72,7 @@ MZCountDownDelegate>
 	didGiveTranslationResponseBlock = ^{
 		if (currentResponseIndex >= quiz.responses.count) {
 			quiz.isAnswered = @YES;
-			quiz.date = [NSDate date];
+			quiz.answerDate = [NSDate date];
 			[fromViewController.navigationController dismissViewControllerAnimated:YES completion:^{
 				if (completionBlock) {
 					completionBlock();

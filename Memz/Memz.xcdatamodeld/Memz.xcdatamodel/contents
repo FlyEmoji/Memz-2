@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
     <entity name="Quiz" representedClassName="MZQuiz" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="answerDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isAnswered" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="toLanguage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="responses" optional="YES" toMany="YES" minCount="1" maxCount="3" deletionRule="Nullify" destinationEntity="Response" inverseName="quiz" inverseEntity="Response" syncable="YES"/>
@@ -19,7 +20,7 @@
         <relationship name="translation" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translation" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Quiz" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="Quiz" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="Response" positionX="-45" positionY="45" width="128" height="90"/>
         <element name="Word" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>

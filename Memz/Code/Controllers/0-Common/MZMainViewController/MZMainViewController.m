@@ -8,7 +8,6 @@
 
 #import "MZMainViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
-#import "MZWordAdditionViewController.h"
 #import "MZQuizManager.h"
 
 NSString * const MZFeedViewControllerIdentifier = @"MZFeedViewControllerIdentifier";

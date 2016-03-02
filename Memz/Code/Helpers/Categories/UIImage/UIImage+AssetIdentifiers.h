@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierNavigationBack,
 	MZAssetIdentifierNavigationCancel,
 	MZAssetIdentifierNavigationSettings,
+	MZAssetIdentifierNavigationLargeTick,
+	MZAssetIdentifierNavigationForwardTap,
 	MZAssetIdentifierFeedGradient,
 	MZAssetIdentifierQuizBell,
 	MZAssetIdentifierQuizCross,

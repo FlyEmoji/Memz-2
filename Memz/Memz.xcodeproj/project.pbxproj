@@ -36,7 +36,6 @@
 		0C5F57D21C619F16003CA161 /* MZStatisticsProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F57D11C619F16003CA161 /* MZStatisticsProvider.m */; };
 		0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */; };
 		0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */; };
-		0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */; };
 		0C711C8F1C3179FA00E0BB43 /* MZQuizInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C8D1C3179FA00E0BB43 /* MZQuizInfoView.m */; };
 		0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C711C8E1C3179FA00E0BB43 /* MZQuizInfoView.xib */; };
 		0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C711C931C317F2900E0BB43 /* MZQuizViewController.m */; };
@@ -77,6 +76,19 @@
 		0CD881701C4350B800F57279 /* MZSettingsTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8816F1C4350B800F57279 /* MZSettingsTitleTableViewCell.m */; };
 		0CD881741C43522300F57279 /* MZSettingsTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD881731C43522300F57279 /* MZSettingsTableViewHeader.m */; };
 		0CD881761C43524E00F57279 /* MZSettingsTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD881751C43524E00F57279 /* MZSettingsTableViewHeader.xib */; };
+		0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA21C867601005BDA3B /* MaisonNeue-Bold.ttf */; };
+		0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA31C867601005BDA3B /* MaisonNeue-BoldItalic.ttf */; };
+		0CDA4AAE1C867625005BDA3B /* MaisonNeue-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA41C867601005BDA3B /* MaisonNeue-Book.ttf */; };
+		0CDA4AAF1C867625005BDA3B /* MaisonNeue-BookItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA51C867601005BDA3B /* MaisonNeue-BookItalic.ttf */; };
+		0CDA4AB01C867625005BDA3B /* MaisonNeue-Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA61C867601005BDA3B /* MaisonNeue-Demi.ttf */; };
+		0CDA4AB11C867625005BDA3B /* MaisonNeue-DemiItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA71C867601005BDA3B /* MaisonNeue-DemiItalic.ttf */; };
+		0CDA4AB21C867625005BDA3B /* MaisonNeue-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA81C867601005BDA3B /* MaisonNeue-Light.ttf */; };
+		0CDA4AB31C867625005BDA3B /* MaisonNeue-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AA91C867601005BDA3B /* MaisonNeue-LightItalic.ttf */; };
+		0CDA4AB41C867625005BDA3B /* MaisonNeue-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AAA1C867601005BDA3B /* MaisonNeue-Medium.ttf */; };
+		0CDA4AB51C867625005BDA3B /* MaisonNeue-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AAB1C867601005BDA3B /* MaisonNeue-MediumItalic.ttf */; };
+		0CDA4ABC1C86776F005BDA3B /* UIFont+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4ABB1C86776F005BDA3B /* UIFont+MemzAdditions.m */; };
+		0CDA4ABF1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4ABE1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m */; };
+		0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4AC21C86831A005BDA3B /* MZPendingQuizTableViewCell.m */; };
 		0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */; };
 		0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82791C2ECBF700EADB05 /* MZWordDescriptionViewController.m */; };
 		0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */; };
@@ -180,8 +192,6 @@
 		0C5FC1581C3A05A900FF83E7 /* MZResponseComparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparator.m; path = Code/Helpers/Classes/MZResponseComparator/MZResponseComparator.m; sourceTree = SOURCE_ROOT; };
 		0C711C861C3179AF00E0BB43 /* MZMyQuizzesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesViewController.h; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMyQuizzesViewController.m; path = "Code/Controllers/3-Quiz/MZMyQuizzesViewController/MZMyQuizzesViewController.m"; sourceTree = SOURCE_ROOT; };
-		0C711C891C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyQuizzesTableViewCell.h; path = "Code/Views/3-Quiz/MZMyQuizzesTableViewCell/MZMyQuizzesTableViewCell.h"; sourceTree = SOURCE_ROOT; };
-		0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMyQuizzesTableViewCell.m; path = "Code/Views/3-Quiz/MZMyQuizzesTableViewCell/MZMyQuizzesTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C711C8C1C3179FA00E0BB43 /* MZQuizInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZQuizInfoView.h; path = "Code/Views/3-Quiz/MZQuizInfoView/MZQuizInfoView.h"; sourceTree = SOURCE_ROOT; };
 		0C711C8D1C3179FA00E0BB43 /* MZQuizInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizInfoView.m; path = "Code/Views/3-Quiz/MZQuizInfoView/MZQuizInfoView.m"; sourceTree = SOURCE_ROOT; };
 		0C711C8E1C3179FA00E0BB43 /* MZQuizInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZQuizInfoView.xib; path = "Code/Views/3-Quiz/MZQuizInfoView/MZQuizInfoView.xib"; sourceTree = SOURCE_ROOT; };
@@ -257,6 +267,22 @@
 		0CD881721C43522300F57279 /* MZSettingsTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsTableViewHeader.h; path = "Code/Views/6-Settings/MZSettingsTableViewHeader/MZSettingsTableViewHeader.h"; sourceTree = SOURCE_ROOT; };
 		0CD881731C43522300F57279 /* MZSettingsTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsTableViewHeader.m; path = "Code/Views/6-Settings/MZSettingsTableViewHeader/MZSettingsTableViewHeader.m"; sourceTree = SOURCE_ROOT; };
 		0CD881751C43524E00F57279 /* MZSettingsTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZSettingsTableViewHeader.xib; path = "Code/Views/6-Settings/MZSettingsTableViewHeader/MZSettingsTableViewHeader.xib"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA21C867601005BDA3B /* MaisonNeue-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-Bold.ttf"; path = "Code/Resources/Fonts/MaisonNeue-Bold.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA31C867601005BDA3B /* MaisonNeue-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-BoldItalic.ttf"; path = "Code/Resources/Fonts/MaisonNeue-BoldItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA41C867601005BDA3B /* MaisonNeue-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-Book.ttf"; path = "Code/Resources/Fonts/MaisonNeue-Book.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA51C867601005BDA3B /* MaisonNeue-BookItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-BookItalic.ttf"; path = "Code/Resources/Fonts/MaisonNeue-BookItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA61C867601005BDA3B /* MaisonNeue-Demi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-Demi.ttf"; path = "Code/Resources/Fonts/MaisonNeue-Demi.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA71C867601005BDA3B /* MaisonNeue-DemiItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-DemiItalic.ttf"; path = "Code/Resources/Fonts/MaisonNeue-DemiItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA81C867601005BDA3B /* MaisonNeue-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-Light.ttf"; path = "Code/Resources/Fonts/MaisonNeue-Light.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AA91C867601005BDA3B /* MaisonNeue-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-LightItalic.ttf"; path = "Code/Resources/Fonts/MaisonNeue-LightItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AAA1C867601005BDA3B /* MaisonNeue-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-Medium.ttf"; path = "Code/Resources/Fonts/MaisonNeue-Medium.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4AAB1C867601005BDA3B /* MaisonNeue-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "MaisonNeue-MediumItalic.ttf"; path = "Code/Resources/Fonts/MaisonNeue-MediumItalic.ttf"; sourceTree = SOURCE_ROOT; };
+		0CDA4ABA1C86776F005BDA3B /* UIFont+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+MemzAdditions.h"; path = "Code/Helpers/Categories/UIFont/UIFont+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0CDA4ABB1C86776F005BDA3B /* UIFont+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+MemzAdditions.m"; path = "Code/Helpers/Categories/UIFont/UIFont+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CDA4ABD1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAnsweredQuizTableViewCell.h; path = "Code/Views/3-Quiz/MZAnsweredQuizTableViewCell/MZAnsweredQuizTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CDA4ABE1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnsweredQuizTableViewCell.m; path = "Code/Views/3-Quiz/MZAnsweredQuizTableViewCell/MZAnsweredQuizTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0CDA4AC11C86831A005BDA3B /* MZPendingQuizTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPendingQuizTableViewCell.h; path = "Code/Views/3-Quiz/MZPendingQuizTableViewCell/MZPendingQuizTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0CDA4AC21C86831A005BDA3B /* MZPendingQuizTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPendingQuizTableViewCell.m; path = "Code/Views/3-Quiz/MZPendingQuizTableViewCell/MZPendingQuizTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CDB82741C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSuggestedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSuggestedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CDB82781C2ECBF700EADB05 /* MZWordDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionViewController.h; path = "Code/Controllers/4-My Dictionary/MZWordDescriptionViewController/MZWordDescriptionViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -619,19 +645,20 @@
 			isa = PBXGroup;
 			children = (
 				0CBF7ABA1C217A1600F5D91B /* MZQuizInfoView */,
-				0C6891B01C20DE550069E39A /* MZMyQuizzesTableViewCell */,
+				0C6891B01C20DE550069E39A /* MZAnsweredQuizTableViewCell */,
+				0CDA4AC01C8682E5005BDA3B /* MZPendingQuizTableViewCell */,
 				0C711C951C31936C00E0BB43 /* MZTranslationResponseTableViewCell */,
 			);
 			name = "3-Quiz";
 			sourceTree = "<group>";
 		};
-		0C6891B01C20DE550069E39A /* MZMyQuizzesTableViewCell */ = {
+		0C6891B01C20DE550069E39A /* MZAnsweredQuizTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				0C711C891C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.h */,
-				0C711C8A1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m */,
+				0CDA4ABD1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.h */,
+				0CDA4ABE1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m */,
 			);
-			name = MZMyQuizzesTableViewCell;
+			name = MZAnsweredQuizTableViewCell;
 			sourceTree = "<group>";
 		};
 		0C711C911C317DA900E0BB43 /* MZQuizViewController */ = {
@@ -851,6 +878,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA58BE21C20501C000E19D4 /* Assets.xcassets */,
+				0CDA4AA11C8675DB005BDA3B /* Fonts */,
 				0CA58BDB1C204EFB000E19D4 /* Supporting Files */,
 				0CA58BDC1C204F15000E19D4 /* Localizables */,
 				0CA58BE41C205033000E19D4 /* Storyboards */,
@@ -911,6 +939,7 @@
 				0C7B5C471C82CD0000C7B051 /* UIAlertController */,
 				0CEFD1A21C3CB55F00EB60DE /* UIView */,
 				0CEFD1A31C3CB56900EB60DE /* UIColor */,
+				0CDA4AB61C867656005BDA3B /* UIFont */,
 				0CEFD1A11C3CB55700EB60DE /* UIImageView */,
 				0CEFD19F1C3CB54200EB60DE /* UIImage */,
 				0CEFD1A01C3CB54D00EB60DE /* NSObject */,
@@ -1134,6 +1163,41 @@
 				0CD881751C43524E00F57279 /* MZSettingsTableViewHeader.xib */,
 			);
 			name = MZSettingsTableViewHeader;
+			sourceTree = "<group>";
+		};
+		0CDA4AA11C8675DB005BDA3B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA4AA21C867601005BDA3B /* MaisonNeue-Bold.ttf */,
+				0CDA4AA31C867601005BDA3B /* MaisonNeue-BoldItalic.ttf */,
+				0CDA4AA41C867601005BDA3B /* MaisonNeue-Book.ttf */,
+				0CDA4AA51C867601005BDA3B /* MaisonNeue-BookItalic.ttf */,
+				0CDA4AA61C867601005BDA3B /* MaisonNeue-Demi.ttf */,
+				0CDA4AA71C867601005BDA3B /* MaisonNeue-DemiItalic.ttf */,
+				0CDA4AA81C867601005BDA3B /* MaisonNeue-Light.ttf */,
+				0CDA4AA91C867601005BDA3B /* MaisonNeue-LightItalic.ttf */,
+				0CDA4AAA1C867601005BDA3B /* MaisonNeue-Medium.ttf */,
+				0CDA4AAB1C867601005BDA3B /* MaisonNeue-MediumItalic.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		0CDA4AB61C867656005BDA3B /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA4ABA1C86776F005BDA3B /* UIFont+MemzAdditions.h */,
+				0CDA4ABB1C86776F005BDA3B /* UIFont+MemzAdditions.m */,
+			);
+			name = UIFont;
+			sourceTree = "<group>";
+		};
+		0CDA4AC01C8682E5005BDA3B /* MZPendingQuizTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA4AC11C86831A005BDA3B /* MZPendingQuizTableViewCell.h */,
+				0CDA4AC21C86831A005BDA3B /* MZPendingQuizTableViewCell.m */,
+			);
+			name = MZPendingQuizTableViewCell;
 			sourceTree = "<group>";
 		};
 		0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */ = {
@@ -1494,6 +1558,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */,
+				0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */,
+				0CDA4AAE1C867625005BDA3B /* MaisonNeue-Book.ttf in Resources */,
+				0CDA4AAF1C867625005BDA3B /* MaisonNeue-BookItalic.ttf in Resources */,
+				0CDA4AB01C867625005BDA3B /* MaisonNeue-Demi.ttf in Resources */,
+				0CDA4AB11C867625005BDA3B /* MaisonNeue-DemiItalic.ttf in Resources */,
+				0CDA4AB21C867625005BDA3B /* MaisonNeue-Light.ttf in Resources */,
+				0CDA4AB31C867625005BDA3B /* MaisonNeue-LightItalic.ttf in Resources */,
+				0CDA4AB41C867625005BDA3B /* MaisonNeue-Medium.ttf in Resources */,
+				0CDA4AB51C867625005BDA3B /* MaisonNeue-MediumItalic.ttf in Resources */,
 				0C0550811C585442005924A9 /* AddWord.storyboard in Resources */,
 				0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */,
 				0CCE60811C66BD02008D70BF /* MZGraphicView.xib in Resources */,
@@ -1595,6 +1669,7 @@
 				0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */,
 				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
+				0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */,
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,
 				0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */,
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
@@ -1622,6 +1697,7 @@
 				0C72F1A01C646D8D00EABC16 /* MZStatisticsExtendedNavigationBarView.m in Sources */,
 				0CD8816B1C433C2900F57279 /* MZSettingsViewController.m in Sources */,
 				0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */,
+				0CDA4ABF1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m in Sources */,
 				0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */,
 				0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */,
 				0CEFD1B81C3CB70700EB60DE /* NSString+MemzAdditions.m in Sources */,
@@ -1637,10 +1713,10 @@
 				0CEFD1C11C3CB72100EB60DE /* UIImageView+MemzDownloadImage.m in Sources */,
 				0CD881741C43522300F57279 /* MZSettingsTableViewHeader.m in Sources */,
 				0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */,
+				0CDA4ABC1C86776F005BDA3B /* UIFont+MemzAdditions.m in Sources */,
 				0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */,
 				0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */,
 				0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */,
-				0C711C8B1C3179ED00E0BB43 /* MZMyQuizzesTableViewCell.m in Sources */,
 				0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */,
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,

@@ -12,6 +12,16 @@
 
 #pragma mark - String Formatting
 
+- (NSString *)relativeOrAbsoluteDateString {
+	if ([self isToday]) {
+		return NSLocalizedString(@"DateTodayTitle", nil);
+	} else if ([self isYesterday]) {
+		return NSLocalizedString(@"DateYesterdayTitle", nil);
+	}
+	// TODO: Implement this week, last week, this month, last month
+	return [self humanReadableDateString];
+}
+
 - (NSString *)humanReadableDateString {
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateStyle:NSDateFormatterMediumStyle];
@@ -102,6 +112,8 @@
 	return dateBeforeDays;
 }
 
+#pragma mark - Checks
+
 - (BOOL)isLaterToday {
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 	NSDateComponents *selectedDateComponents = [calendar components:(NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:self];
@@ -160,6 +172,13 @@
 
 - (BOOL)isBeforeNow {
 	return [self isBeforeDate:[NSDate date]];
+}
+
+- (BOOL)isYesterday {
+	NSDate *yesterday = [NSDate dateWithTimeInterval:-(24 * 60 * 60) sinceDate:[NSDate date]];
+	NSUInteger yesterdayDayOfYear = [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:yesterday];
+	NSUInteger dateDayOfYear = [[NSCalendar currentCalendar] ordinalityOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitYear forDate:self];
+	return yesterdayDayOfYear == dateDayOfYear;
 }
 
 @end

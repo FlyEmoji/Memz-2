@@ -7,7 +7,8 @@
 //
 
 #import "MZMyQuizzesViewController.h"
-#import "MZMyQuizzesTableViewCell.h"
+#import "MZAnsweredQuizTableViewCell.h"
+#import "MZPendingQuizTableViewCell.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
@@ -20,13 +21,14 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionUp
 };
 
-const CGFloat kTopShrinkableViewMinimumHeight = 40.0f;
-const CGFloat kTopShrinkableViewMaximumHeight = 100.0f;
+const CGFloat kTopShrinkableViewMinimumHeight = 0.0f;
+const CGFloat kTopShrinkableViewMaximumHeight = 67.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
 NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
-NSString * const kQuizTableViewCellIdentifier = @"MZMyQuizzesTableViewCellIdentifier";
+NSString * const kAnsweredQuizTableViewCellIdentifier = @"MZAnsweredQuizTableViewCellIdentifier";
+NSString * const kPendingQuizTableViewCellIdentifier = @"MZPendingQuizTableViewCellIdentifier";
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -63,8 +65,9 @@ MZQuizInfoViewDelegate>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
 	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
-	NSSortDescriptor *descriptorDate = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-	request.sortDescriptors = @[descriptorIsAnswered, descriptorDate];
+	NSSortDescriptor *descriptorAnswerDate = [NSSortDescriptor sortDescriptorWithKey:@"answerDate" ascending:NO];
+	NSSortDescriptor *descriptorCreationDate = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
+	request.sortDescriptors = @[descriptorIsAnswered, descriptorAnswerDate, descriptorCreationDate];
 
 	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
 																																			managedObjectContext:[MZDataManager sharedDataManager].managedObjectContext
@@ -88,11 +91,19 @@ MZQuizInfoViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZMyQuizzesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuizTableViewCellIdentifier
-																																	 forIndexPath:indexPath];
 	MZQuiz *quiz = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZQuiz class]];
-	cell.quiz = quiz;
-	return cell;
+
+	if (quiz.isAnswered.boolValue) {
+		MZAnsweredQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAnsweredQuizTableViewCellIdentifier
+																																				forIndexPath:indexPath];
+		cell.quiz = quiz;
+		return cell;
+	} else {
+		MZPendingQuizTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPendingQuizTableViewCellIdentifier
+																																			 forIndexPath:indexPath];
+		cell.quiz = quiz;
+		return cell;
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -127,7 +138,7 @@ MZQuizInfoViewDelegate>
 			break;
 		}
 		case NSFetchedResultsChangeUpdate: {
-			MZMyQuizzesTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+			MZAnsweredQuizTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
 			cell.quiz = [anObject safeCastToClass:[MZQuiz class]];
 			break;
 		}
@@ -154,7 +165,6 @@ MZQuizInfoViewDelegate>
 
 	if (scrollView.contentOffset.y < -scrollView.contentInset.top
 			|| scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height + scrollView.contentInset.bottom)) {
-		// TODO: Second condition doesn't work if contentSize.height < scrollView.frame.size.height
 		self.lastContentOffset = scrollView.contentOffset;
 		return;
 	}
@@ -203,10 +213,6 @@ MZQuizInfoViewDelegate>
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
 		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 	}];
-}
-
-- (void)quizInfoViewDidRequestStatistics:(MZQuizInfoView *)quizInfoView {
-	[self performSegueWithIdentifier:kLanguagePickerViewControllerSegue sender:self];
 }
 
 @end
