@@ -89,6 +89,8 @@
 		0CDA4ABC1C86776F005BDA3B /* UIFont+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4ABB1C86776F005BDA3B /* UIFont+MemzAdditions.m */; };
 		0CDA4ABF1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4ABE1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m */; };
 		0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4AC21C86831A005BDA3B /* MZPendingQuizTableViewCell.m */; };
+		0CDA4AC71C87E0EC005BDA3B /* MZWordStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDA4AC61C87E0EC005BDA3B /* MZWordStatusView.m */; };
+		0CDA4AC91C87E133005BDA3B /* MZWordStatusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDA4AC81C87E133005BDA3B /* MZWordStatusView.xib */; };
 		0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */; };
 		0CDB827A1C2ECBF700EADB05 /* MZWordDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82791C2ECBF700EADB05 /* MZWordDescriptionViewController.m */; };
 		0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB82861C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m */; };
@@ -283,6 +285,9 @@
 		0CDA4ABE1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnsweredQuizTableViewCell.m; path = "Code/Views/3-Quiz/MZAnsweredQuizTableViewCell/MZAnsweredQuizTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CDA4AC11C86831A005BDA3B /* MZPendingQuizTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPendingQuizTableViewCell.h; path = "Code/Views/3-Quiz/MZPendingQuizTableViewCell/MZPendingQuizTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CDA4AC21C86831A005BDA3B /* MZPendingQuizTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPendingQuizTableViewCell.m; path = "Code/Views/3-Quiz/MZPendingQuizTableViewCell/MZPendingQuizTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0CDA4AC51C87E0EC005BDA3B /* MZWordStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordStatusView.h; path = "Code/Views/0-Common/MZWordStatusView/MZWordStatusView.h"; sourceTree = SOURCE_ROOT; };
+		0CDA4AC61C87E0EC005BDA3B /* MZWordStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordStatusView.m; path = "Code/Views/0-Common/MZWordStatusView/MZWordStatusView.m"; sourceTree = SOURCE_ROOT; };
+		0CDA4AC81C87E133005BDA3B /* MZWordStatusView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordStatusView.xib; path = "Code/Views/0-Common/MZWordStatusView/MZWordStatusView.xib"; sourceTree = SOURCE_ROOT; };
 		0CDB82741C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSuggestedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CDB82751C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSuggestedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZSuggestedWordTableViewCell/MZSuggestedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CDB82781C2ECBF700EADB05 /* MZWordDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionViewController.h; path = "Code/Controllers/4-My Dictionary/MZWordDescriptionViewController/MZWordDescriptionViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -764,6 +769,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2DC8721C4BE596005B11F5 /* MZTableView */,
+				0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */,
 				0CCE607C1C66BCC5008D70BF /* MZGraphicView */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
 			);
@@ -1200,6 +1206,16 @@
 			name = MZPendingQuizTableViewCell;
 			sourceTree = "<group>";
 		};
+		0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				0CDA4AC51C87E0EC005BDA3B /* MZWordStatusView.h */,
+				0CDA4AC61C87E0EC005BDA3B /* MZWordStatusView.m */,
+				0CDA4AC81C87E133005BDA3B /* MZWordStatusView.xib */,
+			);
+			name = MZWordStatusView;
+			sourceTree = "<group>";
+		};
 		0CDB82731C2DC39900EADB05 /* MZSuggestedWordTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1576,6 +1592,7 @@
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
 				0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */,
 				0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */,
+				0CDA4AC91C87E133005BDA3B /* MZWordStatusView.xib in Resources */,
 				0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */,
 				0C3726F31C270D6900C9879F /* Localizable.strings in Resources */,
 				0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */,
@@ -1673,6 +1690,7 @@
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,
 				0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */,
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
+				0CDA4AC71C87E0EC005BDA3B /* MZWordStatusView.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */,
 				0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */,

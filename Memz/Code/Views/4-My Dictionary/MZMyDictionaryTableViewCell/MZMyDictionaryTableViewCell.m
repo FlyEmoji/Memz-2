@@ -10,8 +10,9 @@
 
 @interface MZMyDictionaryTableViewCell ()
 
+@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 @property (nonatomic, strong) IBOutlet UILabel *countTranslationsLabel;
-@property (nonatomic, strong) IBOutlet UILabel *translationsLabel;
+@property (nonatomic, strong) IBOutlet MZWordStatusView *wordStatusView;
 
 @end
 
@@ -21,16 +22,22 @@
 	[super prepareForReuse];
 
 	self.wordLabel.text = @"";
-	self.translationsLabel.text = @"";
 	self.countTranslationsLabel.text = @"";
 }
 
-- (void)setupTranslations:(NSArray<MZWord *> *)translations {
-	self.translationsLabel.text = @"";
-	[translations enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
-		self.translationsLabel.text = [self.translationsLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@ - ", translation.word]];
-	}];
+#pragma mark - Custom Setter
 
+- (void)setWord:(MZWord *)word {
+	_word = word;
+
+	self.wordLabel.text = word.word;
+	self.wordStatusView.word = word;
+	[self setupTranslations:word.translation.allObjects];
+}
+
+#pragma mark - Private Methods
+
+- (void)setupTranslations:(NSArray<MZWord *> *)translations {
 	self.countTranslationsLabel.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)translations.count, NSLocalizedString(@" translations", nil)];
 }
 

@@ -13,8 +13,8 @@ MZCOLOR(mainBackgroundColor, 255.0f, 255.0f, 255.0f);
 MZCOLOR(secondaryBackgroundColor, 77.0f, 144.0f, 228.0f);
 
 MZCOLOR(wordDescriptionLearnedStatusColor, 3.0f, 187.0f, 9.0f);
-MZCOLOR(wordDescriptionLearningInProgressColor, 228.0f, 143.0f, 12.0f);
-MZCOLOR(wordDescriptionNotLearedColor, 228.0f, 42.0f, 42.0f);
+MZCOLOR(wordDescriptionLearningInProgressColor, 243.0f, 178.0f, 50.0f);
+MZCOLOR(wordDescriptionNotLearedColor, 234.0f, 80.0f, 51.0f);
 
 MZCOLOR(quizSubmitButtonColor, 77.0f, 144.0f, 228.0f);
 MZCOLOR(quizNextButtonRightColor, 3.0f, 187.0f, 9.0f);
