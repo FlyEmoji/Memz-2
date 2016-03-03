@@ -10,7 +10,17 @@
 
 @interface UIView (MemzAdditions)
 
+// Corner Radius
+
 - (void)applyCornerRadius:(CGFloat)cornerRadius;
 - (void)makeCircular;
+
+// Glow
+
+- (void)glowOnce;  // Fade up, then down.
+
+- (void)startGlowing;
+- (void)startGlowingWithColor:(UIColor *)color intensity:(CGFloat)intensity;
+- (void)stopGlowing;
 
 @end

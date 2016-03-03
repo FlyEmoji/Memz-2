@@ -35,6 +35,8 @@
 	} else {
 		self.statusView.backgroundColor = [UIColor wordDescriptionNotLearedColor];
 	}
+
+	[self.statusView startGlowing];
 }
 
 @end
