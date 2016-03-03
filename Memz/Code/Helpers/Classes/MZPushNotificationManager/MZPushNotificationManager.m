@@ -12,6 +12,7 @@
 #import "MZQuizViewController.h"
 #import "MZMainViewController.h"
 #import "MZLanguageManager.h"
+#import "MZDataManager.h"
 #import "MZQuiz.h"
 
 NSString * const MZNotificationTypeKey = @"MZNotificationTypeKey";
@@ -87,6 +88,8 @@ NSString * const MZQuizKey = @"MZQuizKey";
 		case MZLocalPushNotificationTypeQuizz: {
 			MZQuiz *quiz = [MZQuiz randomQuizFromLanguage:[MZLanguageManager sharedManager].fromLanguage
 																				 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 
 			if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
 				[MZQuizViewController askQuiz:quiz fromViewController:[UIViewController topMostViewController] completionBlock:nil];

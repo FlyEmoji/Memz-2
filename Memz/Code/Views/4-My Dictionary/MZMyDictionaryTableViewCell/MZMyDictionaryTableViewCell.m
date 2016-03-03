@@ -27,6 +27,7 @@
 
 - (void)setupTranslations:(NSArray<MZWord *> *)translations {
 	self.translationsLabel.text = @"";
+	
 	[translations enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
 		self.translationsLabel.text = [self.translationsLabel.text stringByAppendingString:[NSString stringWithFormat:@"%@ - ", translation.word]];
 	}];

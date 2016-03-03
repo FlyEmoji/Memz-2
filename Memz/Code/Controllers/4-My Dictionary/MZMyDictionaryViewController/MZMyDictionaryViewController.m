@@ -81,7 +81,7 @@ NSFetchedResultsControllerDelegate>
 	MZMyDictionaryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMyDictionaryTableViewCellIdentifier
 																																			forIndexPath:indexPath];
 	MZWord *word = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
-	cell.wordLabel.text = word.word;
+	cell.wordLabel.text = word.word.uppercaseString;
 	[cell setupTranslations:[word.translation allObjects]];
 	return cell;
 }

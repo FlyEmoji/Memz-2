@@ -6,6 +6,11 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--My Dictionary View Controller-->
         <scene sceneID="zAS-VI-36P">
@@ -19,51 +24,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="76" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6iB-bH-gfd">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6iB-bH-gfd">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZMyDictionaryTableViewCellIdentifier" rowHeight="76" id="Kqp-6c-vWR" customClass="MZMyDictionaryTableViewCell">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="76"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZMyDictionaryTableViewCellIdentifier" rowHeight="80" id="Kqp-6c-vWR" customClass="MZMyDictionaryTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kqp-6c-vWR" id="3bu-Kt-DbN">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWR-9f-JLC">
-                                                    <rect key="frame" x="8" y="8" width="41" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORD" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWR-9f-JLC">
+                                                    <rect key="frame" x="16" y="20" width="41" height="14"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="14"/>
+                                                    <color key="textColor" red="0.59215686274509804" green="0.62352941176470589" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-Xz-kqZ" userLabel="Word Status View">
+                                                    <rect key="frame" x="65" y="16" width="15" height="15"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="Ldl-5K-MNj"/>
+                                                        <constraint firstAttribute="width" secondItem="RuM-Xz-kqZ" secondAttribute="height" multiplier="1:1" id="r4Y-rh-ji8"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwf-Jd-fb9" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="0.0" y="77" width="600" height="3"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="3" id="gv6-He-Phb"/>
+                                                    </constraints>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x translations" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JL8-Hu-psc">
-                                                    <rect key="frame" x="490" y="8" width="102" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="39" width="87" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Translations" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMY-fn-kwz">
-                                                    <rect key="frame" x="24" y="40" width="93" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Navigation-Arrow-Right" translatesAutoresizingMaskIntoConstraints="NO" id="kIx-y9-u85">
+                                                    <rect key="frame" x="545" y="30" width="35" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="erE-9o-AJv"/>
+                                                        <constraint firstAttribute="width" constant="35" id="sBy-A2-cVR"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="CMY-fn-kwz" firstAttribute="top" secondItem="eWR-9f-JLC" secondAttribute="bottom" constant="11" id="1pl-zo-MT7"/>
-                                                <constraint firstItem="CMY-fn-kwz" firstAttribute="leading" secondItem="3bu-Kt-DbN" secondAttribute="leading" constant="24" id="BE1-75-pyj"/>
-                                                <constraint firstItem="eWR-9f-JLC" firstAttribute="top" secondItem="3bu-Kt-DbN" secondAttribute="top" constant="8" id="HPW-WZ-vCp"/>
-                                                <constraint firstAttribute="bottom" secondItem="CMY-fn-kwz" secondAttribute="bottom" constant="14" id="HTy-a2-2dz"/>
-                                                <constraint firstItem="JL8-Hu-psc" firstAttribute="top" secondItem="3bu-Kt-DbN" secondAttribute="top" constant="8" id="OWV-T5-hRI"/>
-                                                <constraint firstAttribute="trailing" secondItem="JL8-Hu-psc" secondAttribute="trailing" constant="8" id="Qyx-tg-i7r"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CMY-fn-kwz" secondAttribute="trailing" constant="24" id="epV-dT-u5J"/>
-                                                <constraint firstItem="eWR-9f-JLC" firstAttribute="leading" secondItem="3bu-Kt-DbN" secondAttribute="leading" constant="8" id="tt7-il-JTL"/>
-                                                <constraint firstItem="JL8-Hu-psc" firstAttribute="leading" relation="lessThanOrEqual" secondItem="eWR-9f-JLC" secondAttribute="trailing" constant="500" id="zuh-7W-S6s"/>
+                                                <constraint firstItem="kIx-y9-u85" firstAttribute="centerY" secondItem="3bu-Kt-DbN" secondAttribute="centerY" id="4dg-Ve-asm"/>
+                                                <constraint firstAttribute="trailing" secondItem="xwf-Jd-fb9" secondAttribute="trailing" id="MU3-eE-pwO"/>
+                                                <constraint firstItem="eWR-9f-JLC" firstAttribute="leading" secondItem="3bu-Kt-DbN" secondAttribute="leading" constant="16" id="NDp-wq-Rh7"/>
+                                                <constraint firstItem="JL8-Hu-psc" firstAttribute="top" secondItem="eWR-9f-JLC" secondAttribute="bottom" constant="5" id="Up0-tQ-JV3"/>
+                                                <constraint firstAttribute="bottom" secondItem="xwf-Jd-fb9" secondAttribute="bottom" id="cur-f4-FOB"/>
+                                                <constraint firstItem="eWR-9f-JLC" firstAttribute="top" secondItem="3bu-Kt-DbN" secondAttribute="top" constant="20" id="ihS-S9-DE8"/>
+                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="baseline" secondItem="eWR-9f-JLC" secondAttribute="baseline" id="ip1-33-sM9"/>
+                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="leading" secondItem="eWR-9f-JLC" secondAttribute="trailing" constant="8" id="p9J-dB-6a9"/>
+                                                <constraint firstAttribute="trailing" secondItem="kIx-y9-u85" secondAttribute="trailing" constant="20" id="pWy-wV-iO0"/>
+                                                <constraint firstItem="xwf-Jd-fb9" firstAttribute="top" secondItem="JL8-Hu-psc" secondAttribute="bottom" constant="21" id="tAU-HI-Mza"/>
+                                                <constraint firstItem="xwf-Jd-fb9" firstAttribute="leading" secondItem="3bu-Kt-DbN" secondAttribute="leading" id="wHc-9g-xKh"/>
+                                                <constraint firstItem="JL8-Hu-psc" firstAttribute="leading" secondItem="eWR-9f-JLC" secondAttribute="leading" constant="-1" id="xtE-wA-Ax9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94509803921568625" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="countTranslationsLabel" destination="JL8-Hu-psc" id="kYX-f8-NRa"/>
-                                            <outlet property="translationsLabel" destination="CMY-fn-kwz" id="hQJ-id-k7f"/>
                                             <outlet property="wordLabel" destination="eWR-9f-JLC" id="VYs-ar-pU9"/>
                                         </connections>
                                     </tableViewCell>
@@ -198,5 +222,6 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
+        <image name="Navigation-Arrow-Right" width="30" height="17"/>
     </resources>
 </document>
