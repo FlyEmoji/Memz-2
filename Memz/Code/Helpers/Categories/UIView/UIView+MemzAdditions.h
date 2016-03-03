@@ -17,7 +17,7 @@
 
 // Glow
 
-- (void)glowOnce;  // Fade up, then down.
+- (void)glowOnce;  // fade up and down once
 
 - (void)startGlowing;
 - (void)startGlowingWithColor:(UIColor *)color intensity:(CGFloat)intensity;

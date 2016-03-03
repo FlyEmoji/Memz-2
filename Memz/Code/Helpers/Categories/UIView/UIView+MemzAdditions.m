@@ -20,6 +20,7 @@ const CGFloat kCircularRadius = 0.5f;
 @interface UIView (MemzAdditionsAttributes)
 
 @property (nonatomic, weak, readonly) UIView *glowView;
+@property (nonatomic, assign, readonly) BOOL isLightening;
 
 @end
 

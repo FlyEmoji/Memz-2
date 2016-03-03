@@ -9,9 +9,13 @@
 #import "MZWordStatusView.h"
 #import "UIView+MemzAdditions.h"
 
+NSString * const kColorChangeAnimationKey = @"MZColorChangeAnimationKey";
+
 @interface MZWordStatusView ()
 
-@property (strong, nonatomic) IBOutlet UIView *statusView;
+@property (nonatomic, strong) IBOutlet UIView *statusView;
+
+@property (nonatomic, strong) CABasicAnimation *animation;
 
 @end
 
@@ -36,7 +40,27 @@
 		self.statusView.backgroundColor = [UIColor wordDescriptionNotLearedColor];
 	}
 
-	[self.statusView startGlowing];
+	[self startLightening];
+}
+
+#pragma mark - Private Color Continuous Change Animation
+
+- (void)startLightening {		// TODO: Should be triggered in sync, every two seconds
+	[self stopLightening];
+
+	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+	animation.fromValue = @(1.0f);
+	animation.toValue = @(0.3f);
+	animation.repeatCount = HUGE_VAL;
+	animation.duration = 1.0f;
+	animation.autoreverses = YES;
+	animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+	[self.statusView.layer addAnimation:animation forKey:kColorChangeAnimationKey];
+}
+
+- (void)stopLightening {
+	[self.statusView.layer removeAnimationForKey:kColorChangeAnimationKey];
 }
 
 @end
