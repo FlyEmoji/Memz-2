@@ -49,13 +49,6 @@
                                                         <constraint firstAttribute="width" secondItem="RuM-Xz-kqZ" secondAttribute="height" multiplier="1:1" id="r4Y-rh-ji8"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwf-Jd-fb9" userLabel="Bottom Separator View">
-                                                    <rect key="frame" x="0.0" y="77" width="600" height="3"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="3" id="gv6-He-Phb"/>
-                                                    </constraints>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x translations" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JL8-Hu-psc">
                                                     <rect key="frame" x="15" y="39" width="87" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -69,6 +62,13 @@
                                                         <constraint firstAttribute="width" constant="35" id="sBy-A2-cVR"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwf-Jd-fb9" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="0.0" y="77" width="600" height="3"/>
+                                                    <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="3" id="gv6-He-Phb"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="kIx-y9-u85" firstAttribute="centerY" secondItem="3bu-Kt-DbN" secondAttribute="centerY" id="4dg-Ve-asm"/>
@@ -98,7 +98,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6iB-bH-gfd" firstAttribute="leading" secondItem="ePi-6j-mUI" secondAttribute="leading" id="1re-Q6-JYr"/>
                             <constraint firstItem="6iB-bH-gfd" firstAttribute="top" secondItem="uhH-2Y-1QC" secondAttribute="bottom" id="KqB-GM-dac"/>
