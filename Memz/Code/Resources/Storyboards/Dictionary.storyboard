@@ -41,9 +41,9 @@
                                                     <color key="textColor" red="0.59215686274509804" green="0.62352941176470589" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-Xz-kqZ" userLabel="Word Status View">
-                                                    <rect key="frame" x="65" y="16" width="15" height="15"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-Xz-kqZ" userLabel="Word Status View" customClass="MZWordStatusView">
+                                                    <rect key="frame" x="63" y="20" width="15" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="15" id="Ldl-5K-MNj"/>
                                                         <constraint firstAttribute="width" secondItem="RuM-Xz-kqZ" secondAttribute="height" multiplier="1:1" id="r4Y-rh-ji8"/>
@@ -77,10 +77,10 @@
                                                 <constraint firstItem="JL8-Hu-psc" firstAttribute="top" secondItem="eWR-9f-JLC" secondAttribute="bottom" constant="5" id="Up0-tQ-JV3"/>
                                                 <constraint firstAttribute="bottom" secondItem="xwf-Jd-fb9" secondAttribute="bottom" id="cur-f4-FOB"/>
                                                 <constraint firstItem="eWR-9f-JLC" firstAttribute="top" secondItem="3bu-Kt-DbN" secondAttribute="top" constant="20" id="ihS-S9-DE8"/>
-                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="baseline" secondItem="eWR-9f-JLC" secondAttribute="baseline" id="ip1-33-sM9"/>
-                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="leading" secondItem="eWR-9f-JLC" secondAttribute="trailing" constant="8" id="p9J-dB-6a9"/>
+                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="leading" secondItem="eWR-9f-JLC" secondAttribute="trailing" constant="6" id="p9J-dB-6a9"/>
                                                 <constraint firstAttribute="trailing" secondItem="kIx-y9-u85" secondAttribute="trailing" constant="20" id="pWy-wV-iO0"/>
                                                 <constraint firstItem="xwf-Jd-fb9" firstAttribute="top" secondItem="JL8-Hu-psc" secondAttribute="bottom" constant="21" id="tAU-HI-Mza"/>
+                                                <constraint firstItem="RuM-Xz-kqZ" firstAttribute="centerY" secondItem="eWR-9f-JLC" secondAttribute="centerY" id="uAN-V9-73T"/>
                                                 <constraint firstItem="xwf-Jd-fb9" firstAttribute="leading" secondItem="3bu-Kt-DbN" secondAttribute="leading" id="wHc-9g-xKh"/>
                                                 <constraint firstItem="JL8-Hu-psc" firstAttribute="leading" secondItem="eWR-9f-JLC" secondAttribute="leading" constant="-1" id="xtE-wA-Ax9"/>
                                             </constraints>
@@ -89,6 +89,7 @@
                                         <connections>
                                             <outlet property="countTranslationsLabel" destination="JL8-Hu-psc" id="kYX-f8-NRa"/>
                                             <outlet property="wordLabel" destination="eWR-9f-JLC" id="VYs-ar-pU9"/>
+                                            <outlet property="wordStatusView" destination="RuM-Xz-kqZ" id="OS7-sa-yRr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

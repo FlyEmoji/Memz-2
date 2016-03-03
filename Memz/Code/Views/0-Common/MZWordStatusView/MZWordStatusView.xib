@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9531"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZWordStatusView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="gVO-0U-VXB"/>
+                <outlet property="statusView" destination="nvY-IK-H3C" id="U50-An-h4w"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="69" height="57"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nvY-IK-H3C" userLabel="Status Colored View">
+                    <rect key="frame" x="31" y="25" width="7" height="7"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="nvY-IK-H3C" secondAttribute="height" multiplier="1:1" id="6pc-GU-Bbu"/>
+                        <constraint firstAttribute="width" constant="7" id="zaf-W2-1et"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nvY-IK-H3C" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eO1-0f-w7N"/>
+                <constraint firstItem="nvY-IK-H3C" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="hMs-QQ-nV7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="289.5" y="422.5"/>
+        </view>
+    </objects>
+</document>

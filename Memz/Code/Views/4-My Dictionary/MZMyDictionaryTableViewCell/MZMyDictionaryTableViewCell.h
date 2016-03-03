@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZWordStatusView.h"
 #import "MZWord+CoreDataProperties.h"
 
 @interface MZMyDictionaryTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *wordLabel;
-
-- (void)setupTranslations:(NSArray<MZWord *> *)translations;
+@property (nonatomic, strong) MZWord *word;
 
 @end
