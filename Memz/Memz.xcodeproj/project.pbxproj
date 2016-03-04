@@ -49,6 +49,8 @@
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
+		0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */; };
+		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
 		0CA04A2A1C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */; };
 		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
@@ -218,6 +220,8 @@
 		0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
+		0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZRemoteServerCoordinator.h; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.h; sourceTree = SOURCE_ROOT; };
+		0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinator.m; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.m; sourceTree = SOURCE_ROOT; };
 		0CA04A261C3325FA0078C8EE /* MZWordDescriptionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionHeaderView.h; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.h"; sourceTree = SOURCE_ROOT; };
 		0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionHeaderView.m; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.m"; sourceTree = SOURCE_ROOT; };
 		0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
@@ -532,6 +536,7 @@
 		0C3726F61C271F8400C9879F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0C95C18A1C8941CD00FEAB49 /* MZRemoteServerCoordinator */,
 				0C3726F71C271F9200C9879F /* MZBingTranslatorCoordinator */,
 			);
 			name = API;
@@ -772,6 +777,15 @@
 				0C95C1891C8933D200FEAB49 /* feed.json */,
 			);
 			name = Feed;
+			sourceTree = "<group>";
+		};
+		0C95C18A1C8941CD00FEAB49 /* MZRemoteServerCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */,
+				0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */,
+			);
+			name = MZRemoteServerCoordinator;
 			sourceTree = "<group>";
 		};
 		0CA04A251C3325C40078C8EE /* 0-Common */ = {
@@ -1584,6 +1598,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C95C18E1C8943C200FEAB49 /* feed.json in Resources */,
 				0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */,
 				0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */,
 				0CDA4AAE1C867625005BDA3B /* MaisonNeue-Book.ttf in Resources */,
@@ -1687,6 +1702,7 @@
 				0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */,
 				0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,
+				0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */,
 				0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */,
 				0C75360B1C5B18F700810402 /* MZGradientCollectionViewLayout.m in Sources */,
 				0C5FC1591C3A05A900FF83E7 /* MZResponseComparator.m in Sources */,
