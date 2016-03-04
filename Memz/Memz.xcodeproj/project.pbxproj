@@ -217,6 +217,7 @@
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
 		0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
 		0CA04A261C3325FA0078C8EE /* MZWordDescriptionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordDescriptionHeaderView.h; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.h"; sourceTree = SOURCE_ROOT; };
 		0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordDescriptionHeaderView.m; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.m"; sourceTree = SOURCE_ROOT; };
 		0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
@@ -765,6 +766,14 @@
 			name = UIAlertController;
 			sourceTree = "<group>";
 		};
+		0C95C1861C89330A00FEAB49 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0C95C1891C8933D200FEAB49 /* feed.json */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
 		0CA04A251C3325C40078C8EE /* 0-Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,6 +894,7 @@
 			children = (
 				0CA58BE21C20501C000E19D4 /* Assets.xcassets */,
 				0CDA4AA11C8675DB005BDA3B /* Fonts */,
+				0C95C1861C89330A00FEAB49 /* Feed */,
 				0CA58BDB1C204EFB000E19D4 /* Supporting Files */,
 				0CA58BDC1C204F15000E19D4 /* Localizables */,
 				0CA58BE41C205033000E19D4 /* Storyboards */,
