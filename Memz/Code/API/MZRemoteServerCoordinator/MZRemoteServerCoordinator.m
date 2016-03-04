@@ -10,16 +10,16 @@
 
 @implementation MZRemoteServerCoordinator
 
-+ (void)fetchFeedWithCompletionHandler:(void (^)(NSDictionary *, NSError *))completionHandler {
++ (void)fetchFeedWithCompletionHandler:(void (^)(NSArray *, NSError *))completionHandler {
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"feed.json".stringByDeletingPathExtension ofType:@"feed.json".pathExtension];
 	NSParameterAssert(filePath != nil);
 	NSData *data = [NSData dataWithContentsOfFile:filePath];
 
 	NSError *error;
-	NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+	NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
 
 	if (completionHandler) {
-		completionHandler(dictionary, error);
+		completionHandler(array, error);
 	}
 }
 

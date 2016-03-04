@@ -15,6 +15,6 @@
  */
 @interface MZRemoteServerCoordinator : NSObject
 
-+ (void)fetchFeedWithCompletionHandler:(void (^)(NSDictionary *response, NSError *error))completionHandler;
++ (void)fetchFeedWithCompletionHandler:(void (^)(NSArray *response, NSError *error))completionHandler;
 
 @end

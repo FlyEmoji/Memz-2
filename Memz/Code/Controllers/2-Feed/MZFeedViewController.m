@@ -8,6 +8,7 @@
 
 #import "MZFeedViewController.h"
 #import "MZFeedTableViewCell.h"
+#import "MZRemoteServerCoordinator.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 
@@ -28,18 +29,31 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 	[super viewDidLoad];
 
 	[self setupTableViewData];
-	[self.tableView reloadData];
 
 	self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)setupTableViewData {
-	self.tableViewData = @[@{kCellTitleKey: @"Learn how to talk about cooking!",
-													 kCellSubTitleKey: @"Add everything or part of our cooking vocabular selection of words, and become the expert in the kitchen ;)",
-													 kCellPictureURLKey: [NSURL URLWithString:@"http://blog.chegg.com/wp-content/uploads/2013/02/cooking-college.jpg"]},
-												 @{kCellTitleKey: @"#$@&%*!",
-													 kCellSubTitleKey: @"Learn the best of the worst swear words in English",
-													 kCellPictureURLKey: [NSURL URLWithString:@"http://images.medicaldaily.com/sites/medicaldaily.com/files/styles/full_breakpoints_theme_medicaldaily_desktop_1x/public/2015/04/29/science-swearing.jpg"]}];
+	// TODO: Display loader
+
+	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray *response, NSError *error) {
+		// TODO: Hide loader
+		if (error) {
+			// TODO: Display error
+			return;
+		}
+
+		NSMutableArray *feedContent = [[NSMutableArray alloc] initWithCapacity:response.count];
+
+		for (NSDictionary *dictionary in response) {		// TODO: Should not parse response here, but in the coordinator
+			[feedContent addObject:@{kCellTitleKey: dictionary[@"title"],
+															 kCellSubTitleKey: dictionary[@"subtitle"],
+															 kCellPictureURLKey: [NSURL URLWithString:dictionary[@"image_url"]]}];
+		}
+
+		self.tableViewData = feedContent;
+		[self.tableView reloadData];
+	}];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
