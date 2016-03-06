@@ -119,12 +119,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s22-K5-IY0" customClass="MZTableView">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="152" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s22-K5-IY0" customClass="MZTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZArticlePictureTableViewCellIdentifier" rowHeight="150" id="3ZR-jK-vq6" customClass="MZArticlePictureTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ZR-jK-vq6" id="3ow-10-IcH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="82t-7N-3y9">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="82t-7N-3y9" secondAttribute="trailing" id="7L3-2e-bQS"/>
+                                                <constraint firstItem="82t-7N-3y9" firstAttribute="leading" secondItem="3ow-10-IcH" secondAttribute="leading" id="K6n-7g-Nf7"/>
+                                                <constraint firstItem="82t-7N-3y9" firstAttribute="top" secondItem="3ow-10-IcH" secondAttribute="top" id="Yg2-yM-4SV"/>
+                                                <constraint firstAttribute="bottom" secondItem="82t-7N-3y9" secondAttribute="bottom" id="jxN-yD-n9T"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="imageView" destination="82t-7N-3y9" id="VQz-LC-hQy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="progressiveBackgroundColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -144,6 +171,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="ta1-IF-MGv"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="s22-K5-IY0" id="wRX-2s-HKe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5h-qb-M3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
