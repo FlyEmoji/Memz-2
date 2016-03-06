@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *body;
 @property (nullable, nonatomic, retain) NSString *subTitle;
 @property (nullable, nonatomic, retain) NSString *title;
-@property (nullable, nonatomic, retain) NSString *imageUrlString;
+@property (nullable, nonatomic, retain) NSURL *imageUrl;
 @property (nullable, nonatomic, retain) NSSet<MZWord *> *suggestedWords;
 
 @end

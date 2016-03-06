@@ -3,7 +3,7 @@
     <entity name="Article" representedClassName="MZArticle" parentEntity="BaseEntity" syncable="YES">
         <attribute name="additionDate" attributeType="Date" syncable="YES"/>
         <attribute name="body" attributeType="String" syncable="YES"/>
-        <attribute name="imageUrlString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="Transformable" valueTransformerName="MZNSRULToNSDataValueTransformer" syncable="YES"/>
         <attribute name="subTitle" attributeType="String" maxValueString="200" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="40" syncable="YES"/>
         <relationship name="suggestedWords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="suggestionArticles" inverseEntity="Word" syncable="YES"/>

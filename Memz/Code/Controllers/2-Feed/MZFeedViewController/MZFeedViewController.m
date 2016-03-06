@@ -49,7 +49,7 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 		for (MZArticle *article in articles) {
 			[feedContent addObject:@{kCellTitleKey: article.title,
 															 kCellSubTitleKey: article.subTitle,
-															 kCellPictureURLKey: [NSURL URLWithString:article.imageUrlString]}];
+															 kCellPictureURLKey: article.imageUrl}];
 		}
 
 		self.tableViewData = feedContent;

@@ -17,7 +17,7 @@
 @dynamic body;
 @dynamic subTitle;
 @dynamic title;
-@dynamic imageUrlString;
+@dynamic imageUrl;
 @dynamic suggestedWords;
 
 @end
