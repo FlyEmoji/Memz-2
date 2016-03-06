@@ -145,7 +145,35 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="imageView" destination="82t-7N-3y9" id="VQz-LC-hQy"/>
+                                            <outlet property="articleImageView" destination="82t-7N-3y9" id="Syy-6I-uUz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZArticleTitleTableViewCellIdentifier" rowHeight="59" id="Mop-Gn-LnE" customClass="MZArticleTitleTableViewCell">
+                                        <rect key="frame" x="0.0" y="178" width="600" height="59"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mop-Gn-LnE" id="oD3-Ja-BnJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqf-wM-dQb">
+                                                    <rect key="frame" x="12" y="16" width="41" height="28"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jqf-wM-dQb" secondAttribute="bottom" constant="15" id="8Rj-bB-NKE"/>
+                                                <constraint firstItem="jqf-wM-dQb" firstAttribute="top" secondItem="oD3-Ja-BnJ" secondAttribute="top" constant="16" id="azf-NX-Jbk"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jqf-wM-dQb" secondAttribute="trailing" constant="14" id="mer-GL-ovw"/>
+                                                <constraint firstItem="jqf-wM-dQb" firstAttribute="leading" secondItem="oD3-Ja-BnJ" secondAttribute="leading" constant="12" id="yvV-wT-fx7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="jqf-wM-dQb" id="9tX-ky-Dic"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -177,32 +205,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5h-qb-M3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4629" y="408"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="COc-Zl-6zb">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ofj-QS-eFW" customClass="MZNavigationController" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3b6-ps-oI2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lbz-vz-ZTR" kind="relationship" relationship="rootViewController" id="6qY-7A-Kx6"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="83T-Ad-FeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3802" y="408"/>
+            <point key="canvasLocation" x="3802" y="452"/>
         </scene>
     </scenes>
     <resources>
         <image name="Feed-Gradient" width="375" height="375"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="I7l-8V-XYK"/>
-    </inferredMetricsTieBreakers>
 </document>

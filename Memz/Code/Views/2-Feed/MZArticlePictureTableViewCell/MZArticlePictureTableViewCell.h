@@ -10,6 +10,6 @@
 
 @interface MZArticlePictureTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong, nonatomic) IBOutlet UIImageView *articleImageView;
 
 @end

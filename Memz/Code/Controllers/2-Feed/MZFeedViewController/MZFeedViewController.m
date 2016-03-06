@@ -7,20 +7,19 @@
 //
 
 #import "MZFeedViewController.h"
+#import "MZArticleViewController.h"
 #import "MZFeedTableViewCell.h"
 #import "MZRemoteServerCoordinator.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
 
-NSString * const kCellTitleKey = @"kCellTitleKey";
-NSString * const kCellSubTitleKey = @"kCellSubTitleKey";
-NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
-
 @interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *tableViewData;
+@property (nonatomic, strong) NSArray<MZArticle *> *tableViewData;
+
+@property (nonatomic, strong) MZArticle *selectedArticle;
 
 @end
 
@@ -34,6 +33,13 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 	self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kPresentArticleViewControllerSegue]) {
+		MZArticleViewController *controller = [segue.destinationViewController safeCastToClass:[MZArticleViewController class]];
+		controller.article = self.selectedArticle;
+	}
+}
+
 - (void)setupTableViewData {
 	// TODO: Display loader
 
@@ -44,15 +50,7 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 			return;
 		}
 
-		NSMutableArray *feedContent = [[NSMutableArray alloc] initWithCapacity:articles.count];
-
-		for (MZArticle *article in articles) {
-			[feedContent addObject:@{kCellTitleKey: article.title,
-															 kCellSubTitleKey: article.subTitle,
-															 kCellPictureURLKey: article.imageUrl}];
-		}
-
-		self.tableViewData = feedContent;
+		self.tableViewData = articles;
 		[self.tableView reloadData];
 	}];
 }
@@ -64,19 +62,18 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedTableViewCellIdentifier
-																													forIndexPath:indexPath];
-	MZFeedTableViewCell *feedCell = [cell safeCastToClass:[MZFeedTableViewCell class]];
+	MZFeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFeedTableViewCellIdentifier
+																															forIndexPath:indexPath];
 
-	feedCell.cellTitle = self.tableViewData[indexPath.row][kCellTitleKey];
-	feedCell.cellSubTitle = self.tableViewData[indexPath.row][kCellSubTitleKey];
-	feedCell.backgroundImageURL = self.tableViewData[indexPath.row][kCellPictureURLKey];
-	feedCell.selectionStyle = UITableViewCellSelectionStyleNone;
+	cell.cellTitle = self.tableViewData[indexPath.row].title;
+	cell.cellSubTitle = self.tableViewData[indexPath.row].subTitle;
+	cell.backgroundImageURL = self.tableViewData[indexPath.row].imageUrl;
 
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	self.selectedArticle = self.tableViewData[indexPath.row];
 	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];
 }
 

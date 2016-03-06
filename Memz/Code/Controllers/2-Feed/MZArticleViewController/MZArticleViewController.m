@@ -8,6 +8,7 @@
 
 #import "MZArticleViewController.h"
 #import "MZArticlePictureTableViewCell.h"
+#import "MZArticleTitleTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
 #import "MZTableView.h"
 
@@ -18,6 +19,7 @@ typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
+NSString * const kArticleTitleTableViewCellIdentifier = @"MZArticleTitleTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
@@ -34,22 +36,36 @@ UITableViewDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+	self.tableView.estimatedRowHeight = kArticleTableViewEstimatedRowHeight;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
-
-	[self setupTableViewData];
-	[self.tableView reloadData];
 }
 
 - (void)setupTableViewData {
+	if (!self.article) {
+		return;
+	}
+
 	self.tableViewData = @[@{@"cellType": @(MZArticleTableViewRowTypePicture),
-													 @"content": [NSURL URLWithString:@"http://2.bp.blogspot.com/-QE32IeFhaTw/T3LUeIlyp1I/AAAAAAAAAtk/w3ID_Z6YF0E/s1600/Oliver+Sweeney+Shades.jpg"]}];
+													 @"content": self.article.imageUrl},
+												 @{@"cellType": @(MZArticleTableViewRowTypeTitle),
+													 @"content": self.article.title}];
+}
+
+#pragma mark - Custom Setters
+
+- (void)setArticle:(MZArticle *)article {
+	_article = article;
+
+	[self setupTableViewData];
+	[self.tableView reloadData];
 }
 
 #pragma mark - Table View Data Source & Delegate Methods
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([self.tableViewData[indexPath.row][@"cellType"] integerValue] == MZArticleTableViewRowTypePicture) {
-		return 150.0f;
+		return self.view.frame.size.height / 4.0f;
 	}
 	return UITableViewAutomaticDimension;
 }
@@ -59,10 +75,24 @@ UITableViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZArticlePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticlePictureTableViewCellIdentifier
-																																				 forIndexPath:indexPath];
-	[cell.imageView setImageWithURL:self.tableViewData[indexPath.row][@"content"]];
-	return cell;
+	switch ([self.tableViewData[indexPath.row][@"cellType"] integerValue]) {
+		case MZArticleTableViewRowTypePicture: {
+			MZArticlePictureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticlePictureTableViewCellIdentifier
+																																						forIndexPath:indexPath];
+			[cell.articleImageView setImageWithURL:self.tableViewData[indexPath.row][@"content"]];
+			return cell;
+		}
+		case MZArticleTableViewRowTypeTitle: {
+			MZArticleTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleTitleTableViewCellIdentifier
+																																						forIndexPath:indexPath];
+			cell.titleLabel.text = self.tableViewData[indexPath.row][@"content"];
+			return cell;
+		}
+
+  default:
+			return nil;
+			break;
+	}
 }
 
 @end

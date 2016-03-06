@@ -7,7 +7,10 @@
 //
 
 #import "MZPresentableViewController.h"
+#import "MZArticle.h"
 
 @interface MZArticleViewController : MZPresentableViewController
+
+@property (nonatomic, strong) MZArticle *article;
 
 @end
