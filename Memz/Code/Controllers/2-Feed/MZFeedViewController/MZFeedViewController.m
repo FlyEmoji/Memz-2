@@ -11,6 +11,7 @@
 #import "MZRemoteServerCoordinator.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
+NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
 
 NSString * const kCellTitleKey = @"kCellTitleKey";
 NSString * const kCellSubTitleKey = @"kCellSubTitleKey";
@@ -73,6 +74,10 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 	feedCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
 	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];
 }
 
 @end

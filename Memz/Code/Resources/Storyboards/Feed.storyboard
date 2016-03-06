@@ -100,14 +100,79 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="4zs-YR-0wX" id="jva-ln-eSP"/>
+                        <segue destination="lbz-vz-ZTR" kind="presentation" identifier="MZPresentArticleViewControllerSegue" customClass="MZStoryboardSegue" id="I7l-8V-XYK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxW-Vq-XpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3802" y="-366"/>
         </scene>
+        <!--Transition Delegate-->
+        <scene sceneID="4cq-CP-8wX">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="lbz-vz-ZTR" customClass="MZArticleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="54D-hh-ica"/>
+                        <viewControllerLayoutGuide type="bottom" id="XKa-7i-U2G"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nFo-KY-jcV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s22-K5-IY0" customClass="MZTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressiveBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lbz-vz-ZTR" id="yHl-JL-ap4"/>
+                                    <outlet property="delegate" destination="lbz-vz-ZTR" id="GXx-Hn-MQO"/>
+                                    <outlet property="transitionDelegate" destination="lbz-vz-ZTR" id="dgC-fd-SAI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="s22-K5-IY0" secondAttribute="trailing" id="8K8-Um-A9T"/>
+                            <constraint firstItem="s22-K5-IY0" firstAttribute="leading" secondItem="nFo-KY-jcV" secondAttribute="leading" id="ECp-6n-Akk"/>
+                            <constraint firstItem="XKa-7i-U2G" firstAttribute="top" secondItem="s22-K5-IY0" secondAttribute="bottom" id="KyT-4v-6dC"/>
+                            <constraint firstItem="s22-K5-IY0" firstAttribute="top" secondItem="54D-hh-ica" secondAttribute="bottom" id="bhX-AF-lfO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ta1-IF-MGv"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5h-qb-M3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4629" y="408"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="COc-Zl-6zb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ofj-QS-eFW" customClass="MZNavigationController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3b6-ps-oI2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lbz-vz-ZTR" kind="relationship" relationship="rootViewController" id="6qY-7A-Kx6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="83T-Ad-FeZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3802" y="408"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Feed-Gradient" width="375" height="375"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="I7l-8V-XYK"/>
+    </inferredMetricsTieBreakers>
 </document>

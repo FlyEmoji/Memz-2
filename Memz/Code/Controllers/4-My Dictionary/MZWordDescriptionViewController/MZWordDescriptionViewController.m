@@ -53,7 +53,6 @@ MZTableViewTransitionDelegate>
 	self.tableView.estimatedRowHeight = kWordDescriptionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
-	self.tableView.transitionDelegate = self;
 
 	self.tableViewHeader.delegate = self;
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;

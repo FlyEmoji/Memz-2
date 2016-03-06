@@ -68,7 +68,6 @@ MZWordAdditionTableViewHeaderDelegate>
 
 	self.tableView.estimatedRowHeight = kWordAdditionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
-	self.tableView.transitionDelegate = self;
 
 	[self setupTableView];
 	[self.tableView reloadData];

@@ -61,7 +61,6 @@
 		0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF41C20542A000E19D4 /* LaunchScreen.storyboard */; };
 		0CA58BF91C205474000E19D4 /* UserEntrance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BF81C205474000E19D4 /* UserEntrance.storyboard */; };
 		0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C071C206BA5000E19D4 /* MZInjector.m */; };
-		0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */; };
 		0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C211C209D9E000E19D4 /* MZPageViewController.m */; };
 		0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C271C209DC7000E19D4 /* MZMainViewController.m */; };
@@ -70,6 +69,8 @@
 		0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607A1C66BC83008D70BF /* MZLanguageCollectionViewCell.m */; };
 		0CCE607F1C66BCEF008D70BF /* MZGraphicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607E1C66BCEF008D70BF /* MZGraphicView.m */; };
 		0CCE60811C66BD02008D70BF /* MZGraphicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CCE60801C66BD02008D70BF /* MZGraphicView.xib */; };
+		0CD0CD951C8CAF9A0091CE1E /* MZArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0CD941C8CAF9A0091CE1E /* MZArticleViewController.m */; };
+		0CD0CD981C8CAFBE0091CE1E /* MZFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0CD971C8CAFBE0091CE1E /* MZFeedViewController.m */; };
 		0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */; };
 		0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CD2F02B1C2320E600636588 /* MZWordAdditionTableViewHeader.m */; };
 		0CD2F02E1C23222200636588 /* MZWordAdditionTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CD2F02D1C23222200636588 /* MZWordAdditionTableViewHeader.xib */; };
@@ -243,8 +244,6 @@
 		0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Memz-Prefiz.pch"; path = "Code/Resources/Supporting Files/Memz-Prefiz.pch"; sourceTree = SOURCE_ROOT; };
 		0CA58C061C206BA5000E19D4 /* MZInjector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZInjector.h; path = Code/Helpers/Classes/MZInjector/MZInjector.h; sourceTree = SOURCE_ROOT; };
 		0CA58C071C206BA5000E19D4 /* MZInjector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZInjector.m; path = Code/Helpers/Classes/MZInjector/MZInjector.m; sourceTree = SOURCE_ROOT; };
-		0CA58C1D1C209C9C000E19D4 /* MZFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedViewController.h; path = "Code/Controllers/2-Feed/MZFeedViewController.h"; sourceTree = SOURCE_ROOT; };
-		0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedViewController.m; path = "Code/Controllers/2-Feed/MZFeedViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C201C209D9E000E19D4 /* MZPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageViewController.h; path = Code/Helpers/Classes/MZPageViewController/MZPageViewController.h; sourceTree = SOURCE_ROOT; };
 		0CA58C211C209D9E000E19D4 /* MZPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageViewController.m; path = Code/Helpers/Classes/MZPageViewController/MZPageViewController.m; sourceTree = SOURCE_ROOT; };
 		0CA58C231C209DBC000E19D4 /* MZUserEntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZUserEntranceViewController.h; path = "Code/Controllers/1-User Entrance/MZUserEntranceViewController/MZUserEntranceViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -260,6 +259,10 @@
 		0CCE607D1C66BCEF008D70BF /* MZGraphicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZGraphicView.h; path = "Code/Views/0-Common/MZGraphicView/MZGraphicView.h"; sourceTree = SOURCE_ROOT; };
 		0CCE607E1C66BCEF008D70BF /* MZGraphicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZGraphicView.m; path = "Code/Views/0-Common/MZGraphicView/MZGraphicView.m"; sourceTree = SOURCE_ROOT; };
 		0CCE60801C66BD02008D70BF /* MZGraphicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZGraphicView.xib; path = "Code/Views/0-Common/MZGraphicView/MZGraphicView.xib"; sourceTree = SOURCE_ROOT; };
+		0CD0CD931C8CAF9A0091CE1E /* MZArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticleViewController.h; path = "Code/Controllers/2-Feed/MZArticleViewController/MZArticleViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CD0CD941C8CAF9A0091CE1E /* MZArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleViewController.m; path = "Code/Controllers/2-Feed/MZArticleViewController/MZArticleViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CD0CD961C8CAFBE0091CE1E /* MZFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFeedViewController.h; path = "Code/Controllers/2-Feed/MZFeedViewController/MZFeedViewController.h"; sourceTree = SOURCE_ROOT; };
+		0CD0CD971C8CAFBE0091CE1E /* MZFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFeedViewController.m; path = "Code/Controllers/2-Feed/MZFeedViewController/MZFeedViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CD2F0261C2316B000636588 /* MZTextFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTextFieldTableViewCell.h; path = "Code/Views/5-Add Word/MZTextFieldTableViewCell/MZTextFieldTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CD2F0271C2316B000636588 /* MZTextFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTextFieldTableViewCell.m; path = "Code/Views/5-Add Word/MZTextFieldTableViewCell/MZTextFieldTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CD2F02A1C2320E600636588 /* MZWordAdditionTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionTableViewHeader.h; path = "Code/Views/5-Add Word/MZWordAdditionTableViewHeader/MZWordAdditionTableViewHeader.h"; sourceTree = SOURCE_ROOT; };
@@ -1039,6 +1042,7 @@
 			isa = PBXGroup;
 			children = (
 				0CA58C1C1C209C1A000E19D4 /* MZFeedViewController */,
+				0CD0CD921C8CAF550091CE1E /* MZNewsViewController */,
 			);
 			name = "2-Feed";
 			sourceTree = "<group>";
@@ -1064,8 +1068,8 @@
 		0CA58C1C1C209C1A000E19D4 /* MZFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58C1D1C209C9C000E19D4 /* MZFeedViewController.h */,
-				0CA58C1E1C209C9C000E19D4 /* MZFeedViewController.m */,
+				0CD0CD961C8CAFBE0091CE1E /* MZFeedViewController.h */,
+				0CD0CD971C8CAFBE0091CE1E /* MZFeedViewController.m */,
 			);
 			name = MZFeedViewController;
 			sourceTree = "<group>";
@@ -1106,6 +1110,15 @@
 				0CCE60801C66BD02008D70BF /* MZGraphicView.xib */,
 			);
 			name = MZGraphicView;
+			sourceTree = "<group>";
+		};
+		0CD0CD921C8CAF550091CE1E /* MZNewsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CD0CD931C8CAF9A0091CE1E /* MZArticleViewController.h */,
+				0CD0CD941C8CAF9A0091CE1E /* MZArticleViewController.m */,
+			);
+			name = MZNewsViewController;
 			sourceTree = "<group>";
 		};
 		0CD2F0241C23166600636588 /* 5-Add Word */ = {
@@ -1710,7 +1723,6 @@
 				0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */,
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */,
-				0CA58C1F1C209C9C000E19D4 /* MZFeedViewController.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */,
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,
@@ -1742,9 +1754,11 @@
 				0CD8816B1C433C2900F57279 /* MZSettingsViewController.m in Sources */,
 				0CD2F0281C2316B000636588 /* MZTextFieldTableViewCell.m in Sources */,
 				0CDA4ABF1C8681D6005BDA3B /* MZAnsweredQuizTableViewCell.m in Sources */,
+				0CD0CD951C8CAF9A0091CE1E /* MZArticleViewController.m in Sources */,
 				0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */,
 				0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */,
 				0CEFD1B81C3CB70700EB60DE /* NSString+MemzAdditions.m in Sources */,
+				0CD0CD981C8CAFBE0091CE1E /* MZFeedViewController.m in Sources */,
 				0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */,
 				0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */,
 				0C50422A1C59CBCC0045E6FC /* MZStoryboardSegue.m in Sources */,

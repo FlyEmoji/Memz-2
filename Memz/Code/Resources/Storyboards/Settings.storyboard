@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Settings-->
+        <!--Transition Delegate-->
         <scene sceneID="CJ2-oZ-Kv5">
             <objects>
                 <viewController storyboardIdentifier="MZSettingsViewControllerIdentifier" title="Settings" automaticallyAdjustsScrollViewInsets="NO" id="vF7-DI-xAs" customClass="MZSettingsViewController" sceneMemberID="viewController">
@@ -145,6 +145,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="vF7-DI-xAs" id="YK1-Pe-RPJ"/>
                                     <outlet property="delegate" destination="vF7-DI-xAs" id="8KY-g4-RzY"/>
+                                    <outlet property="transitionDelegate" destination="vF7-DI-xAs" id="VHX-Jh-3za"/>
                                 </connections>
                             </tableView>
                         </subviews>

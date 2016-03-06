@@ -117,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="2990" y="1026"/>
         </scene>
-        <!--Word Description View Controller-->
+        <!--Transition Delegate-->
         <scene sceneID="ggF-WN-DpJ">
             <objects>
                 <viewController id="nMe-o3-j5J" customClass="MZWordDescriptionViewController" sceneMemberID="viewController">
@@ -181,6 +181,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="nMe-o3-j5J" id="s5E-F9-h3W"/>
                                     <outlet property="delegate" destination="nMe-o3-j5J" id="dha-6d-2Vi"/>
+                                    <outlet property="transitionDelegate" destination="nMe-o3-j5J" id="L1D-o4-cvF"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-Fv-m1b">

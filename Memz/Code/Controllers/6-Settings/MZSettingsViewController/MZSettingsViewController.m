@@ -79,8 +79,6 @@ UIScrollViewDelegate>
 	self.tableViewHeader.delegate = self;
 
 	// (3) Reload Data
-	self.tableView.transitionDelegate = self;
-	self.tableView.delegate = self;
 	[self.tableView reloadData];
 }
 
