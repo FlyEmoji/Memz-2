@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZArticle.h"
 
 /*
  * Will in the long run implement the actual api calls, when api will be ready.
@@ -15,6 +16,6 @@
  */
 @interface MZRemoteServerCoordinator : NSObject
 
-+ (void)fetchFeedWithCompletionHandler:(void (^)(NSArray *response, NSError *error))completionHandler;
++ (void)fetchFeedWithCompletionHandler:(void (^)(NSArray<MZArticle *> *articles, NSError *error))completionHandler;
 
 @end

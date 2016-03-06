@@ -3,12 +3,13 @@
     <entity name="Article" representedClassName="MZArticle" parentEntity="BaseEntity" syncable="YES">
         <attribute name="additionDate" attributeType="Date" syncable="YES"/>
         <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrlString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subTitle" attributeType="String" maxValueString="200" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="40" syncable="YES"/>
         <relationship name="suggestedWords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="suggestionArticles" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="BaseEntity" representedClassName="MZBaseEntity" isAbstract="YES" syncable="YES">
-        <attribute name="remoteID" attributeType="Transformable" syncable="YES"/>
+        <attribute name="remoteID" attributeType="Transformable" valueTransformerName="MZNSUUIDToNSDataValueTransformer" syncable="YES"/>
     </entity>
     <entity name="Quiz" representedClassName="MZQuiz" syncable="YES">
         <attribute name="answerDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -31,7 +32,7 @@
         <relationship name="translation" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translation" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="-45" positionY="45" width="128" height="120"/>
+        <element name="Article" positionX="-45" positionY="45" width="128" height="135"/>
         <element name="BaseEntity" positionX="-36" positionY="54" width="128" height="60"/>
         <element name="Quiz" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="Response" positionX="-45" positionY="45" width="128" height="90"/>

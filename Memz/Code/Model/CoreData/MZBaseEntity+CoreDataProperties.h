@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZBaseEntity (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) id remoteID;
+@property (nullable, nonatomic, retain) NSUUID *remoteID;
 
 @end
 

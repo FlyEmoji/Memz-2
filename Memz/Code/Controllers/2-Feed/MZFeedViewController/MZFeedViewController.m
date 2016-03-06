@@ -37,19 +37,19 @@ NSString * const kCellPictureURLKey = @"kCellPictureURLKey";
 - (void)setupTableViewData {
 	// TODO: Display loader
 
-	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray *response, NSError *error) {
+	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray<MZArticle *> *articles, NSError *error) {
 		// TODO: Hide loader
 		if (error) {
 			// TODO: Display error
 			return;
 		}
 
-		NSMutableArray *feedContent = [[NSMutableArray alloc] initWithCapacity:response.count];
+		NSMutableArray *feedContent = [[NSMutableArray alloc] initWithCapacity:articles.count];
 
-		for (NSDictionary *dictionary in response) {		// TODO: Should not parse response here, but in the coordinator
-			[feedContent addObject:@{kCellTitleKey: dictionary[@"title"],
-															 kCellSubTitleKey: dictionary[@"subtitle"],
-															 kCellPictureURLKey: [NSURL URLWithString:dictionary[@"image_url"]]}];
+		for (MZArticle *article in articles) {
+			[feedContent addObject:@{kCellTitleKey: article.title,
+															 kCellSubTitleKey: article.subTitle,
+															 kCellPictureURLKey: [NSURL URLWithString:article.imageUrlString]}];
 		}
 
 		self.tableViewData = feedContent;

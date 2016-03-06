@@ -14,6 +14,7 @@
 		0C0740D81C8CCCA100676A22 /* MZArticle+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */; };
 		0C0740DB1C8CCD2300676A22 /* MZBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */; };
 		0C0740DE1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */; };
+		0C0740E21C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740E11C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.m */; };
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
@@ -164,6 +165,8 @@
 		0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBaseEntity.m; path = Code/Model/CoreData/MZBaseEntity.m; sourceTree = SOURCE_ROOT; };
 		0C0740DC1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZBaseEntity+CoreDataProperties.h"; path = "Code/Model/CoreData/MZBaseEntity+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZBaseEntity+CoreDataProperties.m"; path = "Code/Model/CoreData/MZBaseEntity+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		0C0740E01C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZNSUUIDToNSDataValueTransformer.h; path = Code/Model/Transformers/MZNSUUIDToNSDataValueTransformer/MZNSUUIDToNSDataValueTransformer.h; sourceTree = SOURCE_ROOT; };
+		0C0740E11C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNSUUIDToNSDataValueTransformer.m; path = Code/Model/Transformers/MZNSUUIDToNSDataValueTransformer/MZNSUUIDToNSDataValueTransformer.m; sourceTree = SOURCE_ROOT; };
 		0C13AC191C24611D007A1AD5 /* MZTranslatedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslatedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslatedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -449,6 +452,15 @@
 				0C711C871C3179AF00E0BB43 /* MZMyQuizzesViewController.m */,
 			);
 			name = MZMyQuizzesViewController;
+			sourceTree = "<group>";
+		};
+		0C0740DF1C8CCE9000676A22 /* MZNSUUIDToNSDataValueTransformer */ = {
+			isa = PBXGroup;
+			children = (
+				0C0740E01C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.h */,
+				0C0740E11C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.m */,
+			);
+			name = MZNSUUIDToNSDataValueTransformer;
 			sourceTree = "<group>";
 		};
 		0C13AC181C2460D0007A1AD5 /* MZTranslatedWordTableViewCell */ = {
@@ -1158,6 +1170,7 @@
 		0CD0CD9E1C8CC5610091CE1E /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
+				0C0740DF1C8CCE9000676A22 /* MZNSUUIDToNSDataValueTransformer */,
 			);
 			name = Transformers;
 			sourceTree = "<group>";
@@ -1824,6 +1837,7 @@
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */,
 				0C57F5841C4B2DFD0055532E /* MZPresentViewControllerTransition.m in Sources */,
+				0C0740E21C8CCEBA00676A22 /* MZNSUUIDToNSDataValueTransformer.m in Sources */,
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
 				0C0740DB1C8CCD2300676A22 /* MZBaseEntity.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
