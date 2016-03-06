@@ -2,7 +2,7 @@
 //  MZWord+CoreDataProperties.m
 //  
 //
-//  Created by Bastien Falcou on 12/27/15.
+//  Created by Bastien Falcou on 3/6/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,9 +14,10 @@
 @implementation MZWord (CoreDataProperties)
 
 @dynamic language;
-@dynamic word;
 @dynamic learningIndex;
-@dynamic translation;
+@dynamic word;
 @dynamic responses;
+@dynamic translation;
+@dynamic suggestionArticles;
 
 @end

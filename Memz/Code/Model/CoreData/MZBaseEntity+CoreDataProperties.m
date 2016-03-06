@@ -1,5 +1,5 @@
 //
-//  MZResponse+CoreDataProperties.m
+//  MZBaseEntity+CoreDataProperties.m
 //  
 //
 //  Created by Bastien Falcou on 3/6/16.
@@ -9,12 +9,10 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZResponse+CoreDataProperties.h"
+#import "MZBaseEntity+CoreDataProperties.h"
 
-@implementation MZResponse (CoreDataProperties)
+@implementation MZBaseEntity (CoreDataProperties)
 
-@dynamic result;
-@dynamic quiz;
-@dynamic word;
+@dynamic remoteID;
 
 @end

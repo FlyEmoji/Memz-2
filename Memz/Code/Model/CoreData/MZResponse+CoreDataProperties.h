@@ -2,7 +2,7 @@
 //  MZResponse+CoreDataProperties.h
 //  
 //
-//  Created by Bastien Falcou on 12/27/15.
+//  Created by Bastien Falcou on 3/6/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MZResponse (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *result;
-@property (nullable, nonatomic, retain) MZWord *word;
 @property (nullable, nonatomic, retain) MZQuiz *quiz;
+@property (nullable, nonatomic, retain) MZWord *word;
 
 @end
 

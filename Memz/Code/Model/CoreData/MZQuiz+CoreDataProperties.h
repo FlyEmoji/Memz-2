@@ -2,7 +2,7 @@
 //  MZQuiz+CoreDataProperties.h
 //  
 //
-//  Created by Bastien Falcou on 3/1/16.
+//  Created by Bastien Falcou on 3/6/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,17 +10,16 @@
 //
 
 #import "MZQuiz.h"
+#import "MZResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-@class MZResponse;
 
 @interface MZQuiz (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSDate *answerDate;
+@property (nullable, nonatomic, retain) NSDate *creationDate;
 @property (nullable, nonatomic, retain) NSNumber *isAnswered;
 @property (nullable, nonatomic, retain) NSNumber *toLanguage;
-@property (nullable, nonatomic, retain) NSDate *creationDate;
 @property (nullable, nonatomic, retain) NSSet<MZResponse *> *responses;
 
 @end

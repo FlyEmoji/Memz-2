@@ -1,5 +1,5 @@
 //
-//  MZResponse+CoreDataProperties.m
+//  MZArticle+CoreDataProperties.m
 //  
 //
 //  Created by Bastien Falcou on 3/6/16.
@@ -9,12 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZResponse+CoreDataProperties.h"
+#import "MZArticle+CoreDataProperties.h"
 
-@implementation MZResponse (CoreDataProperties)
+@implementation MZArticle (CoreDataProperties)
 
-@dynamic result;
-@dynamic quiz;
-@dynamic word;
+@dynamic additionDate;
+@dynamic body;
+@dynamic subTitle;
+@dynamic title;
+@dynamic suggestedWords;
 
 @end

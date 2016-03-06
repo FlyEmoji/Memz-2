@@ -10,6 +10,10 @@
 		0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */; };
 		0C0550811C585442005924A9 /* AddWord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0550801C585442005924A9 /* AddWord.storyboard */; };
 		0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0550821C5855A0005924A9 /* Settings.storyboard */; };
+		0C0740D71C8CCCA100676A22 /* MZArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740D41C8CCCA100676A22 /* MZArticle.m */; };
+		0C0740D81C8CCCA100676A22 /* MZArticle+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */; };
+		0C0740DB1C8CCD2300676A22 /* MZBaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */; };
+		0C0740DE1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */; };
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
@@ -152,6 +156,14 @@
 		0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionViewController.m; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C0550801C585442005924A9 /* AddWord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWord.storyboard; path = Code/Resources/Storyboards/AddWord.storyboard; sourceTree = SOURCE_ROOT; };
 		0C0550821C5855A0005924A9 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Settings.storyboard; path = Code/Resources/Storyboards/Settings.storyboard; sourceTree = SOURCE_ROOT; };
+		0C0740D31C8CCCA100676A22 /* MZArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticle.h; path = Code/Model/CoreData/MZArticle.h; sourceTree = SOURCE_ROOT; };
+		0C0740D41C8CCCA100676A22 /* MZArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticle.m; path = Code/Model/CoreData/MZArticle.m; sourceTree = SOURCE_ROOT; };
+		0C0740D51C8CCCA100676A22 /* MZArticle+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZArticle+CoreDataProperties.h"; path = "Code/Model/CoreData/MZArticle+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
+		0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZArticle+CoreDataProperties.m"; path = "Code/Model/CoreData/MZArticle+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		0C0740D91C8CCD2300676A22 /* MZBaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZBaseEntity.h; path = Code/Model/CoreData/MZBaseEntity.h; sourceTree = SOURCE_ROOT; };
+		0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBaseEntity.m; path = Code/Model/CoreData/MZBaseEntity.m; sourceTree = SOURCE_ROOT; };
+		0C0740DC1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZBaseEntity+CoreDataProperties.h"; path = "Code/Model/CoreData/MZBaseEntity+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
+		0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZBaseEntity+CoreDataProperties.m"; path = "Code/Model/CoreData/MZBaseEntity+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC191C24611D007A1AD5 /* MZTranslatedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslatedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslatedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -460,6 +472,10 @@
 		0C13AC231C24854B007A1AD5 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				0C0740D91C8CCD2300676A22 /* MZBaseEntity.h */,
+				0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */,
+				0C0740DC1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.h */,
+				0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */,
 				0CDB82D91C30A0BD00EADB05 /* MZQuiz.h */,
 				0CDB82DA1C30A0BD00EADB05 /* MZQuiz.m */,
 				0CDB82DB1C30A0BD00EADB05 /* MZQuiz+CoreDataProperties.h */,
@@ -472,6 +488,10 @@
 				0CDB82E21C30A0BD00EADB05 /* MZWord.m */,
 				0CDB82E31C30A0BD00EADB05 /* MZWord+CoreDataProperties.h */,
 				0CDB82E41C30A0BD00EADB05 /* MZWord+CoreDataProperties.m */,
+				0C0740D31C8CCCA100676A22 /* MZArticle.h */,
+				0C0740D41C8CCCA100676A22 /* MZArticle.m */,
+				0C0740D51C8CCCA100676A22 /* MZArticle+CoreDataProperties.h */,
+				0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -904,8 +924,9 @@
 		0CA58BD91C204ED2000E19D4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0C13AC231C24854B007A1AD5 /* CoreData */,
 				0C13AC1C1C24716B007A1AD5 /* MZDataManager */,
+				0C13AC231C24854B007A1AD5 /* CoreData */,
+				0CD0CD9E1C8CC5610091CE1E /* Transformers */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1132,6 +1153,13 @@
 				0CD0CD9B1C8CB7230091CE1E /* MZArticlePictureTableViewCell.m */,
 			);
 			name = MZArticlePictureTableViewCell;
+			sourceTree = "<group>";
+		};
+		0CD0CD9E1C8CC5610091CE1E /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Transformers;
 			sourceTree = "<group>";
 		};
 		0CD2F0241C23166600636588 /* 5-Add Word */ = {
@@ -1759,6 +1787,7 @@
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */,
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
+				0C0740D81C8CCCA100676A22 /* MZArticle+CoreDataProperties.m in Sources */,
 				0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */,
 				0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */,
 				0CE0515B1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m in Sources */,
@@ -1791,10 +1820,12 @@
 				0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */,
 				0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */,
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
+				0C0740DE1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
 				0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */,
 				0C57F5841C4B2DFD0055532E /* MZPresentViewControllerTransition.m in Sources */,
 				0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */,
+				0C0740DB1C8CCD2300676A22 /* MZBaseEntity.m in Sources */,
 				0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */,
 				0C5042261C59B01D0045E6FC /* constants.m in Sources */,
 				0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */,
@@ -1807,6 +1838,7 @@
 				0CDB82EB1C30A0BD00EADB05 /* MZResponse.m in Sources */,
 				0CDB82EA1C30A0BD00EADB05 /* MZQuiz+CoreDataProperties.m in Sources */,
 				0CD2F02C1C2320E600636588 /* MZWordAdditionTableViewHeader.m in Sources */,
+				0C0740D71C8CCCA100676A22 /* MZArticle.m in Sources */,
 				0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */,
 				0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */,
 				0CD881701C4350B800F57279 /* MZSettingsTitleTableViewCell.m in Sources */,

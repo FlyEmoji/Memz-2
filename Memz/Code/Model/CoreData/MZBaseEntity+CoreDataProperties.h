@@ -1,5 +1,5 @@
 //
-//  MZResponse+CoreDataProperties.m
+//  MZBaseEntity+CoreDataProperties.h
 //  
 //
 //  Created by Bastien Falcou on 3/6/16.
@@ -9,12 +9,14 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZResponse+CoreDataProperties.h"
+#import "MZBaseEntity.h"
 
-@implementation MZResponse (CoreDataProperties)
+NS_ASSUME_NONNULL_BEGIN
 
-@dynamic result;
-@dynamic quiz;
-@dynamic word;
+@interface MZBaseEntity (CoreDataProperties)
+
+@property (nullable, nonatomic, retain) id remoteID;
 
 @end
+
+NS_ASSUME_NONNULL_END
