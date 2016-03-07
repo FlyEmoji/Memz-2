@@ -9,17 +9,21 @@
 #import "MZArticleViewController.h"
 #import "MZArticlePictureTableViewCell.h"
 #import "MZArticleTitleTableViewCell.h"
+#import "MZArticleDetailsTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
+#import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
 
 typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypePicture,
 	MZArticleTableViewRowTypeTitle,
+	MZArticleTableViewRowTypeDetails,
 	MZArticleTableViewRowTypeText
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
 NSString * const kArticleTitleTableViewCellIdentifier = @"MZArticleTitleTableViewCellIdentifier";
+NSString * const kArticleDetailsTableViewCellIdentifier = @"MZArticleDetailsTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
@@ -49,7 +53,9 @@ UITableViewDelegate>
 	self.tableViewData = @[@{@"cellType": @(MZArticleTableViewRowTypePicture),
 													 @"content": self.article.imageUrl},
 												 @{@"cellType": @(MZArticleTableViewRowTypeTitle),
-													 @"content": self.article.title}];
+													 @"content": self.article.title},
+												 @{@"cellType": @(MZArticleTableViewRowTypeDetails),
+													 @"content": self.article.additionDate}];
 }
 
 #pragma mark - Custom Setters
@@ -86,6 +92,13 @@ UITableViewDelegate>
 			MZArticleTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleTitleTableViewCellIdentifier
 																																						forIndexPath:indexPath];
 			cell.titleLabel.text = self.tableViewData[indexPath.row][@"content"];
+			return cell;
+		}
+		case MZArticleTableViewRowTypeDetails: {
+			MZArticleDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleDetailsTableViewCellIdentifier
+																																						forIndexPath:indexPath];
+			NSDate *articleDate = [self.tableViewData[indexPath.row][@"content"] safeCastToClass:[NSDate class]];
+			cell.dateLabel.text = [articleDate humanReadableDateString];
 			return cell;
 		}
 
