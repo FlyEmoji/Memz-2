@@ -10,6 +10,7 @@
 #import "MZArticlePictureTableViewCell.h"
 #import "MZArticleTitleTableViewCell.h"
 #import "MZArticleDetailsTableViewCell.h"
+#import "MZArticleBodyTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
@@ -18,12 +19,13 @@ typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypePicture,
 	MZArticleTableViewRowTypeTitle,
 	MZArticleTableViewRowTypeDetails,
-	MZArticleTableViewRowTypeText
+	MZArticleTableViewRowTypeBody
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
 NSString * const kArticleTitleTableViewCellIdentifier = @"MZArticleTitleTableViewCellIdentifier";
 NSString * const kArticleDetailsTableViewCellIdentifier = @"MZArticleDetailsTableViewCellIdentifier";
+NSString * const kArticleBodyTableViewCellIdentifier = @"MZArticleBodyTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
@@ -56,7 +58,9 @@ UITableViewDelegate>
 													 @"content": self.article.title},
 												 @{@"cellType": @(MZArticleTableViewRowTypeDetails),
 													 @"content": self.article.additionDate,
-													 @"secondaryContent": self.article.source}];
+													 @"secondaryContent": self.article.source},
+												 @{@"cellType": @(MZArticleTableViewRowTypeBody),
+													 @"content": self.article.body}];
 }
 
 #pragma mark - Custom Setters
@@ -101,6 +105,12 @@ UITableViewDelegate>
 			NSDate *articleDate = [self.tableViewData[indexPath.row][@"content"] safeCastToClass:[NSDate class]];
 			cell.dateLabel.text = [articleDate humanReadableDateString];
 			cell.sourceLabel.text = self.tableViewData[indexPath.row][@"secondaryContent"];
+			return cell;
+		}
+		case MZArticleTableViewRowTypeBody: {
+			MZArticleBodyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleBodyTableViewCellIdentifier
+																																				 forIndexPath:indexPath];
+			cell.bodyLabel.text = self.tableViewData[indexPath.row][@"content"];
 			return cell;
 		}
 

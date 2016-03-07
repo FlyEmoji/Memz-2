@@ -18,6 +18,7 @@
 		0C0740E61C8CEC4500676A22 /* MZNSRULToNSDataValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740E51C8CEC4500676A22 /* MZNSRULToNSDataValueTransformer.m */; };
 		0C0740EA1C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740E91C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m */; };
 		0C0740EE1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740ED1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m */; };
+		0C0740F21C8D027200676A22 /* MZArticleBodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740F11C8D027200676A22 /* MZArticleBodyTableViewCell.m */; };
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
@@ -176,6 +177,8 @@
 		0C0740E91C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleTitleTableViewCell.m; path = "Code/Views/2-Feed/MZArticleTitleTableViewCell/MZArticleTitleTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C0740EC1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticleDetailsTableViewCell.h; path = "Code/Views/2-Feed/MZArticleDetailsTableViewCell/MZArticleDetailsTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C0740ED1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleDetailsTableViewCell.m; path = "Code/Views/2-Feed/MZArticleDetailsTableViewCell/MZArticleDetailsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C0740F01C8D027200676A22 /* MZArticleBodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticleBodyTableViewCell.h; path = "Code/Views/2-Feed/MZArticleBodyTableViewCell/MZArticleBodyTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C0740F11C8D027200676A22 /* MZArticleBodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleBodyTableViewCell.m; path = "Code/Views/2-Feed/MZArticleBodyTableViewCell/MZArticleBodyTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC191C24611D007A1AD5 /* MZTranslatedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslatedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslatedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -497,6 +500,15 @@
 				0C0740ED1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m */,
 			);
 			name = MZArticleDetailsTableViewCell;
+			sourceTree = "<group>";
+		};
+		0C0740EF1C8D024800676A22 /* MZArticleBodyTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C0740F01C8D027200676A22 /* MZArticleBodyTableViewCell.h */,
+				0C0740F11C8D027200676A22 /* MZArticleBodyTableViewCell.m */,
+			);
+			name = MZArticleBodyTableViewCell;
 			sourceTree = "<group>";
 		};
 		0C13AC181C2460D0007A1AD5 /* MZTranslatedWordTableViewCell */ = {
@@ -826,6 +838,7 @@
 				0CD0CD991C8CB6EB0091CE1E /* MZArticlePictureTableViewCell */,
 				0C0740E71C8CF47E00676A22 /* MZArticleTitleTableViewCell */,
 				0C0740EB1C8CFC2000676A22 /* MZArticleDetailsTableViewCell */,
+				0C0740EF1C8D024800676A22 /* MZArticleBodyTableViewCell */,
 			);
 			name = "2-Feed";
 			sourceTree = "<group>";
@@ -1834,6 +1847,7 @@
 				0C711C8F1C3179FA00E0BB43 /* MZQuizInfoView.m in Sources */,
 				0CEFD1BD1C3CB71400EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
 				0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */,
+				0C0740F21C8D027200676A22 /* MZArticleBodyTableViewCell.m in Sources */,
 				0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
 				0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */,

@@ -185,7 +185,10 @@ const CGFloat kTableViewOffsetTriggersDismiss = 70.0f;
 
 - (void)updateProgressiveBackgroundViewFrame {
 	dispatch_async(dispatch_get_main_queue(), ^(void){
-		CGRect newProgressiveBackgroundViewFrame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
+		CGRect newProgressiveBackgroundViewFrame = CGRectMake(0.0f,
+																													0.0f,
+																													fmaxf(self.contentSize.width, self.frame.size.width),
+																													fmaxf(self.contentSize.height, self.frame.size.height));
 		self.progressiveBackgroundView.frame = newProgressiveBackgroundViewFrame;
 	});
 }
