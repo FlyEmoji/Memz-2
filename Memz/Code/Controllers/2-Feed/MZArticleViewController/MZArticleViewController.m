@@ -55,7 +55,8 @@ UITableViewDelegate>
 												 @{@"cellType": @(MZArticleTableViewRowTypeTitle),
 													 @"content": self.article.title},
 												 @{@"cellType": @(MZArticleTableViewRowTypeDetails),
-													 @"content": self.article.additionDate}];
+													 @"content": self.article.additionDate,
+													 @"secondaryContent": self.article.source}];
 }
 
 #pragma mark - Custom Setters
@@ -71,7 +72,7 @@ UITableViewDelegate>
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([self.tableViewData[indexPath.row][@"cellType"] integerValue] == MZArticleTableViewRowTypePicture) {
-		return self.view.frame.size.height / 4.0f;
+		return self.view.frame.size.height / 3.0f;
 	}
 	return UITableViewAutomaticDimension;
 }
@@ -99,6 +100,7 @@ UITableViewDelegate>
 																																						forIndexPath:indexPath];
 			NSDate *articleDate = [self.tableViewData[indexPath.row][@"content"] safeCastToClass:[NSDate class]];
 			cell.dateLabel.text = [articleDate humanReadableDateString];
+			cell.sourceLabel.text = self.tableViewData[indexPath.row][@"secondaryContent"];
 			return cell;
 		}
 

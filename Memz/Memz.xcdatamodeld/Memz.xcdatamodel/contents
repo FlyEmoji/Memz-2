@@ -4,6 +4,7 @@
         <attribute name="additionDate" attributeType="Date" syncable="YES"/>
         <attribute name="body" attributeType="String" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="Transformable" valueTransformerName="MZNSRULToNSDataValueTransformer" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subTitle" attributeType="String" maxValueString="200" syncable="YES"/>
         <attribute name="title" attributeType="String" maxValueString="40" syncable="YES"/>
         <relationship name="suggestedWords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="suggestionArticles" inverseEntity="Word" syncable="YES"/>
@@ -32,7 +33,7 @@
         <relationship name="translation" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translation" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="-45" positionY="45" width="128" height="135"/>
+        <element name="Article" positionX="-45" positionY="45" width="128" height="150"/>
         <element name="BaseEntity" positionX="-36" positionY="54" width="128" height="60"/>
         <element name="Quiz" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="Response" positionX="-45" positionY="45" width="128" height="90"/>

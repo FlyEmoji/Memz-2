@@ -140,12 +140,19 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feed-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="g7n-R7-WLl" userLabel="Gradient Image View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="82t-7N-3y9" secondAttribute="trailing" id="7L3-2e-bQS"/>
+                                                <constraint firstItem="g7n-R7-WLl" firstAttribute="bottom" secondItem="82t-7N-3y9" secondAttribute="bottom" id="HdP-R3-URx"/>
                                                 <constraint firstItem="82t-7N-3y9" firstAttribute="leading" secondItem="3ow-10-IcH" secondAttribute="leading" id="K6n-7g-Nf7"/>
+                                                <constraint firstItem="g7n-R7-WLl" firstAttribute="trailing" secondItem="82t-7N-3y9" secondAttribute="trailing" id="MfB-qB-4AQ"/>
+                                                <constraint firstItem="g7n-R7-WLl" firstAttribute="top" secondItem="82t-7N-3y9" secondAttribute="top" id="Y2k-1T-ZNM"/>
                                                 <constraint firstItem="82t-7N-3y9" firstAttribute="top" secondItem="3ow-10-IcH" secondAttribute="top" id="Yg2-yM-4SV"/>
+                                                <constraint firstItem="g7n-R7-WLl" firstAttribute="leading" secondItem="82t-7N-3y9" secondAttribute="leading" id="eCs-gP-QG9"/>
                                                 <constraint firstAttribute="bottom" secondItem="82t-7N-3y9" secondAttribute="bottom" id="jxN-yD-n9T"/>
                                             </constraints>
                                         </tableViewCellContentView>

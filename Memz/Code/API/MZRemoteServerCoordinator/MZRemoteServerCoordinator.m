@@ -41,6 +41,7 @@
 		article.title = articleDictionary[@"title"];
 		article.subTitle = articleDictionary[@"subtitle"];
 		article.body = articleDictionary[@"body"];
+		article.source = articleDictionary[@"source"];
 		article.imageUrl = [NSURL URLWithString:articleDictionary[@"image_url"]];
 
 		// TODO: Fetch Words
