@@ -13,6 +13,7 @@
 #import "MZArticleBodyTableViewCell.h"
 #import "MZArticleAddAllTableViewCell.h"
 #import "MZArticleSuggestedWordTableViewCell.h"
+#import "MZArticleShareTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
@@ -23,7 +24,8 @@ typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypeDetails,
 	MZArticleTableViewRowTypeBody,
 	MZArticleTableViewRowTypeAddAll,
-	MZArticleTableViewRowTypeSuggestedWord
+	MZArticleTableViewRowTypeSuggestedWord,
+	MZArticleTableViewRowTypeShare
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
@@ -32,6 +34,7 @@ NSString * const kArticleDetailsTableViewCellIdentifier = @"MZArticleDetailsTabl
 NSString * const kArticleBodyTableViewCellIdentifier = @"MZArticleBodyTableViewCellIdentifier";
 NSString * const kArticleAddAllTableViewCellIdentifier = @"MZArticleAddAllTableViewCellIdentifier";
 NSString * const kArticleSuggestedWordTableViewCellIdentifier = @"MZArticleSuggestedWordTableViewCellIdentifier";
+NSString * const kArticleShareTableViewCellIdentifier = @"MZArticleShareTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
@@ -70,7 +73,7 @@ MZArticleSuggestedWordTableViewCellDelegate>
 												  @{@"cellType": @(MZArticleTableViewRowTypeBody),
 													 @"content": self.article.body}] mutableCopy];
 
-	if (self.article.suggestedWords) {
+	if (self.article.suggestedWords.count > 0) {
 		[self.tableViewData addObject:@{@"cellType": @(MZArticleTableViewRowTypeAddAll)}];
 
 		for (MZWord *suggestedWord in self.article.suggestedWords) {
@@ -78,6 +81,8 @@ MZArticleSuggestedWordTableViewCellDelegate>
 																			@"content": suggestedWord}];
 		}
 	}
+
+	[self.tableViewData addObject:@{@"cellType": @(MZArticleTableViewRowTypeShare)}];
 }
 
 #pragma mark - Custom Setters
@@ -141,6 +146,11 @@ MZArticleSuggestedWordTableViewCellDelegate>
 																																					 forIndexPath:indexPath];
 			cell.word = self.tableViewData[indexPath.row][@"content"];
 			cell.delegate = self;
+			return cell;
+		}
+		case MZArticleTableViewRowTypeShare: {
+			MZArticleShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleShareTableViewCellIdentifier
+																																					forIndexPath:indexPath];
 			return cell;
 		}
 	}

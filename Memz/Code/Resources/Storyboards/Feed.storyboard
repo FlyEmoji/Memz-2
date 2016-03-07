@@ -353,6 +353,31 @@
                                             <outlet property="wordTranslation" destination="3fl-Qk-e2f" id="tbI-mh-UxM"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZArticleShareTableViewCellIdentifier" rowHeight="58" id="BFM-Zr-380" customClass="MZArticleShareTableViewCell">
+                                        <rect key="frame" x="0.0" y="438" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BFM-Zr-380" id="k4P-ch-lzi">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZH-0g-oUF" userLabel="Twitter Share Button">
+                                                    <rect key="frame" x="270" y="22" width="61" height="53"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="8tY-r2-ah8"/>
+                                                        <constraint firstAttribute="width" secondItem="1ZH-0g-oUF" secondAttribute="height" multiplier="61:53" id="T5I-DU-H0L"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Common-Social-Twitter"/>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="1ZH-0g-oUF" firstAttribute="top" secondItem="k4P-ch-lzi" secondAttribute="top" constant="22" id="tmb-nA-7cc"/>
+                                                <constraint firstAttribute="bottom" secondItem="1ZH-0g-oUF" secondAttribute="bottom" constant="14" id="uNb-Wv-YFv"/>
+                                                <constraint firstItem="1ZH-0g-oUF" firstAttribute="centerX" secondItem="k4P-ch-lzi" secondAttribute="centerX" id="ymu-1x-Rny"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="progressiveBackgroundColor">
@@ -386,6 +411,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Common-Social-Twitter" width="61" height="53"/>
         <image name="Feed-Gradient" width="375" height="375"/>
     </resources>
 </document>
