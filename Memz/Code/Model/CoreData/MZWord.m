@@ -27,17 +27,11 @@
 
 #pragma mark - Public Methods
 
-+ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
-	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
-}
-
 + (MZWord *)addWord:(NSString *)word
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", word, fromLanguage];
-	MZWord *existingWord = [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate].firstObject;
+	MZWord *existingWord = [MZWord existingWordForString:word fromLanguage:fromLanguage];
 
 	if (!existingWord) {
 		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage];
@@ -45,6 +39,16 @@
 		[existingWord updateTranslations:translations toLanguage:toLanguage];
 		return existingWord;
 	}
+}
+
++ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
+	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
+}
+
++ (MZWord *)existingWordForString:(NSString *)string fromLanguage:(MZLanguage)fromLanguage {
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", string, fromLanguage];
+	return [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate].firstObject;
 }
 
 - (void)updateTranslations:(NSArray<NSString *> *)translations

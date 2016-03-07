@@ -12,6 +12,7 @@
 #import "MZArticleDetailsTableViewCell.h"
 #import "MZArticleBodyTableViewCell.h"
 #import "MZArticleAddAllTableViewCell.h"
+#import "MZArticleSuggestedWordTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
@@ -21,7 +22,8 @@ typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypeTitle,
 	MZArticleTableViewRowTypeDetails,
 	MZArticleTableViewRowTypeBody,
-	MZArticleTableViewRowTypeAddAll
+	MZArticleTableViewRowTypeAddAll,
+	MZArticleTableViewRowTypeSuggestedWord
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
@@ -29,12 +31,14 @@ NSString * const kArticleTitleTableViewCellIdentifier = @"MZArticleTitleTableVie
 NSString * const kArticleDetailsTableViewCellIdentifier = @"MZArticleDetailsTableViewCellIdentifier";
 NSString * const kArticleBodyTableViewCellIdentifier = @"MZArticleBodyTableViewCellIdentifier";
 NSString * const kArticleAddAllTableViewCellIdentifier = @"MZArticleAddAllTableViewCellIdentifier";
+NSString * const kArticleSuggestedWordTableViewCellIdentifier = @"MZArticleSuggestedWordTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZArticleViewController () <UITableViewDataSource,
 UITableViewDelegate,
-MZArticleAddAllTableViewCellDelegate>
+MZArticleAddAllTableViewCellDelegate,
+MZArticleSuggestedWordTableViewCellDelegate>
 
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *tableViewData;
@@ -68,6 +72,11 @@ MZArticleAddAllTableViewCellDelegate>
 
 	if (self.article.suggestedWords) {
 		[self.tableViewData addObject:@{@"cellType": @(MZArticleTableViewRowTypeAddAll)}];
+
+		for (MZWord *suggestedWord in self.article.suggestedWords) {
+			[self.tableViewData addObject:@{@"cellType": @(MZArticleTableViewRowTypeSuggestedWord),
+																			@"content": suggestedWord}];
+		}
 	}
 }
 
@@ -127,6 +136,13 @@ MZArticleAddAllTableViewCellDelegate>
 			cell.delegate = self;
 			return cell;
 		}
+		case MZArticleTableViewRowTypeSuggestedWord: {
+			MZArticleSuggestedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleSuggestedWordTableViewCellIdentifier
+																																					 forIndexPath:indexPath];
+			cell.word = self.tableViewData[indexPath.row][@"content"];
+			cell.delegate = self;
+			return cell;
+		}
 	}
 	return nil;
 }
@@ -134,6 +150,12 @@ MZArticleAddAllTableViewCellDelegate>
 #pragma mark - Add All Suggested Words Cell Delegate
 
 - (void)articleAddAllTableViewCellDidTap:(MZArticleAddAllTableViewCell *)cell {
+	// TODO
+}
+
+#pragma mark - Add Suggested Word Cell Delegate
+
+- (void)articleSuggestedWordTableViewCellDidTap:(MZArticleSuggestedWordTableViewCell *)cell {
 	// TODO
 }
 

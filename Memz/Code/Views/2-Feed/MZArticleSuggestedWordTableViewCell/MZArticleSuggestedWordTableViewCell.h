@@ -1,0 +1,27 @@
+//
+//  MZArticleSuggestedWordTableViewCell.h
+//  Memz
+//
+//  Created by Bastien Falcou on 3/6/16.
+//  Copyright © 2016 Falcou. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "MZWord.h"
+
+@protocol MZArticleSuggestedWordTableViewCellDelegate;
+
+@interface MZArticleSuggestedWordTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) MZWord *word;
+@property (nonatomic, weak) id<MZArticleSuggestedWordTableViewCellDelegate> delegate;
+
+@end
+
+@protocol MZArticleSuggestedWordTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)articleSuggestedWordTableViewCellDidTap:(MZArticleSuggestedWordTableViewCell *)cell;
+
+@end

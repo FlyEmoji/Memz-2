@@ -3,9 +3,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
             <string>MaisonNeue-Bold</string>
             <string>MaisonNeue-Bold</string>
         </mutableArray>
@@ -255,15 +257,15 @@
                                             <outlet property="bodyLabel" destination="NbK-0i-Vkb" id="4FF-LC-yQP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZArticleAddAllTableViewCellIdentifier" rowHeight="60" id="xQH-cG-l6e" customClass="MZArticleAddAllTableViewCell">
-                                        <rect key="frame" x="0.0" y="310" width="600" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZArticleAddAllTableViewCellIdentifier" rowHeight="70" id="xQH-cG-l6e" customClass="MZArticleAddAllTableViewCell">
+                                        <rect key="frame" x="0.0" y="310" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQH-cG-l6e" id="YB3-DB-5Jl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O0-M7-jyU">
-                                                    <rect key="frame" x="0.0" y="10" width="600" height="40"/>
+                                                    <rect key="frame" x="0.0" y="15" width="600" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="HnA-uW-jDF"/>
                                                     </constraints>
@@ -278,15 +280,77 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="1O0-M7-jyU" firstAttribute="top" secondItem="YB3-DB-5Jl" secondAttribute="top" constant="10" id="8QQ-lJ-wan"/>
+                                                <constraint firstItem="1O0-M7-jyU" firstAttribute="top" secondItem="YB3-DB-5Jl" secondAttribute="top" constant="15" id="8QQ-lJ-wan"/>
                                                 <constraint firstAttribute="trailing" secondItem="1O0-M7-jyU" secondAttribute="trailing" id="FQC-yj-6kn"/>
-                                                <constraint firstAttribute="bottom" secondItem="1O0-M7-jyU" secondAttribute="bottom" constant="10" id="Zz2-wP-NRu"/>
+                                                <constraint firstAttribute="bottom" secondItem="1O0-M7-jyU" secondAttribute="bottom" constant="15" id="Zz2-wP-NRu"/>
                                                 <constraint firstItem="1O0-M7-jyU" firstAttribute="leading" secondItem="YB3-DB-5Jl" secondAttribute="leading" id="qac-ZE-v7Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="addAllButton" destination="1O0-M7-jyU" id="lcn-Xt-EpD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZArticleSuggestedWordTableViewCellIdentifier" rowHeight="58" id="NhC-fc-FNq" customClass="MZArticleSuggestedWordTableViewCell">
+                                        <rect key="frame" x="0.0" y="380" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NhC-fc-FNq" id="QYo-Lw-9Em">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" verticalCompressionResistancePriority="1000" text="FROM WORD" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbS-eG-DGQ">
+                                                    <rect key="frame" x="14" y="14" width="88" height="15"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29770771499999998" green="0.3219824724" blue="0.36595852829999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Word" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fl-Qk-e2f">
+                                                    <rect key="frame" x="14" y="33" width="54" height="14"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.29770771499999998" green="0.3219824724" blue="0.36595852829999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXh-ZV-0g2">
+                                                    <rect key="frame" x="545" y="9" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="RXh-ZV-0g2" secondAttribute="height" multiplier="1:1" id="AG9-vL-Els"/>
+                                                        <constraint firstAttribute="height" constant="40" id="lUb-41-sXW"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="didTapButton:" destination="NhC-fc-FNq" eventType="touchUpInside" id="yZs-HX-65b"/>
+                                                    </connections>
+                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iul-2t-exy" userLabel="Bottom Separator View">
+                                                    <rect key="frame" x="30" y="57" width="570" height="1"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Pag-ap-zVK"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="fbS-eG-DGQ" firstAttribute="top" secondItem="QYo-Lw-9Em" secondAttribute="top" constant="14" id="6Y3-yG-W7g"/>
+                                                <constraint firstItem="Iul-2t-exy" firstAttribute="top" secondItem="3fl-Qk-e2f" secondAttribute="bottom" constant="10" id="7cg-dx-1rv"/>
+                                                <constraint firstItem="fbS-eG-DGQ" firstAttribute="leading" secondItem="QYo-Lw-9Em" secondAttribute="leading" constant="14" id="Aqv-30-7o7"/>
+                                                <constraint firstItem="Iul-2t-exy" firstAttribute="leading" secondItem="QYo-Lw-9Em" secondAttribute="leading" constant="30" id="PpK-9D-Hnb"/>
+                                                <constraint firstAttribute="bottom" secondItem="Iul-2t-exy" secondAttribute="bottom" id="Sk3-JG-ZzM"/>
+                                                <constraint firstAttribute="trailing" secondItem="RXh-ZV-0g2" secondAttribute="trailing" constant="15" id="aK9-pV-7w3"/>
+                                                <constraint firstAttribute="trailing" secondItem="Iul-2t-exy" secondAttribute="trailing" id="cvm-XN-0AR"/>
+                                                <constraint firstItem="RXh-ZV-0g2" firstAttribute="centerY" secondItem="QYo-Lw-9Em" secondAttribute="centerY" id="eJb-Sy-cUn"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3fl-Qk-e2f" secondAttribute="trailing" constant="14" id="gfc-aX-qnX"/>
+                                                <constraint firstItem="3fl-Qk-e2f" firstAttribute="leading" secondItem="fbS-eG-DGQ" secondAttribute="leading" id="njT-el-oYh"/>
+                                                <constraint firstItem="3fl-Qk-e2f" firstAttribute="top" secondItem="fbS-eG-DGQ" secondAttribute="bottom" constant="4" id="xvB-Pn-5Tm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="leftButton" destination="RXh-ZV-0g2" id="B18-cv-gpP"/>
+                                            <outlet property="wordLabel" destination="fbS-eG-DGQ" id="dOj-7A-s64"/>
+                                            <outlet property="wordTranslation" destination="3fl-Qk-e2f" id="tbI-mh-UxM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
