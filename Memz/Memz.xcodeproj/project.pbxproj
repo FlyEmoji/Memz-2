@@ -19,6 +19,7 @@
 		0C0740EA1C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740E91C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m */; };
 		0C0740EE1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740ED1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m */; };
 		0C0740F21C8D027200676A22 /* MZArticleBodyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740F11C8D027200676A22 /* MZArticleBodyTableViewCell.m */; };
+		0C0740F61C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C0740F51C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m */; };
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
@@ -179,6 +180,8 @@
 		0C0740ED1C8CFC4C00676A22 /* MZArticleDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleDetailsTableViewCell.m; path = "Code/Views/2-Feed/MZArticleDetailsTableViewCell/MZArticleDetailsTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C0740F01C8D027200676A22 /* MZArticleBodyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticleBodyTableViewCell.h; path = "Code/Views/2-Feed/MZArticleBodyTableViewCell/MZArticleBodyTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C0740F11C8D027200676A22 /* MZArticleBodyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleBodyTableViewCell.m; path = "Code/Views/2-Feed/MZArticleBodyTableViewCell/MZArticleBodyTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C0740F41C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZArticleAddAllTableViewCell.h; path = "Code/Views/2-Feed/MZArticleAddAllTableViewCell/MZArticleAddAllTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C0740F51C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZArticleAddAllTableViewCell.m; path = "Code/Views/2-Feed/MZArticleAddAllTableViewCell/MZArticleAddAllTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC191C24611D007A1AD5 /* MZTranslatedWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTranslatedWordTableViewCell.h; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTranslatedWordTableViewCell.m; path = "Code/Views/5-Add Word/MZTranslatedWordTableViewCell/MZTranslatedWordTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
@@ -511,6 +514,15 @@
 			name = MZArticleBodyTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C0740F31C8D1B5500676A22 /* MZArticleAddAllTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C0740F41C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.h */,
+				0C0740F51C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m */,
+			);
+			name = MZArticleAddAllTableViewCell;
+			sourceTree = "<group>";
+		};
 		0C13AC181C2460D0007A1AD5 /* MZTranslatedWordTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,6 +851,7 @@
 				0C0740E71C8CF47E00676A22 /* MZArticleTitleTableViewCell */,
 				0C0740EB1C8CFC2000676A22 /* MZArticleDetailsTableViewCell */,
 				0C0740EF1C8D024800676A22 /* MZArticleBodyTableViewCell */,
+				0C0740F31C8D1B5500676A22 /* MZArticleAddAllTableViewCell */,
 			);
 			name = "2-Feed";
 			sourceTree = "<group>";
@@ -1830,6 +1843,7 @@
 				0CD0CD9C1C8CB7230091CE1E /* MZArticlePictureTableViewCell.m in Sources */,
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */,
+				0C0740F61C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */,
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,

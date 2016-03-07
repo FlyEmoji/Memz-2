@@ -11,6 +11,7 @@
 #import "MZArticleTitleTableViewCell.h"
 #import "MZArticleDetailsTableViewCell.h"
 #import "MZArticleBodyTableViewCell.h"
+#import "MZArticleAddAllTableViewCell.h"
 #import "UIImageView+MemzDownloadImage.h"
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
@@ -19,21 +20,24 @@ typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypePicture,
 	MZArticleTableViewRowTypeTitle,
 	MZArticleTableViewRowTypeDetails,
-	MZArticleTableViewRowTypeBody
+	MZArticleTableViewRowTypeBody,
+	MZArticleTableViewRowTypeAddAll
 };
 
 NSString * const kArticlePictureTableViewCellIdentifier = @"MZArticlePictureTableViewCellIdentifier";
 NSString * const kArticleTitleTableViewCellIdentifier = @"MZArticleTitleTableViewCellIdentifier";
 NSString * const kArticleDetailsTableViewCellIdentifier = @"MZArticleDetailsTableViewCellIdentifier";
 NSString * const kArticleBodyTableViewCellIdentifier = @"MZArticleBodyTableViewCellIdentifier";
+NSString * const kArticleAddAllTableViewCellIdentifier = @"MZArticleAddAllTableViewCellIdentifier";
 
 const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZArticleViewController () <UITableViewDataSource,
-UITableViewDelegate>
+UITableViewDelegate,
+MZArticleAddAllTableViewCellDelegate>
 
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
-@property (nonatomic, copy) NSArray<NSDictionary *> *tableViewData;
+@property (nonatomic, strong) NSMutableArray<NSDictionary *> *tableViewData;
 
 @end
 
@@ -52,15 +56,19 @@ UITableViewDelegate>
 		return;
 	}
 
-	self.tableViewData = @[@{@"cellType": @(MZArticleTableViewRowTypePicture),
+	self.tableViewData = [@[@{@"cellType": @(MZArticleTableViewRowTypePicture),
 													 @"content": self.article.imageUrl},
-												 @{@"cellType": @(MZArticleTableViewRowTypeTitle),
+												  @{@"cellType": @(MZArticleTableViewRowTypeTitle),
 													 @"content": self.article.title},
-												 @{@"cellType": @(MZArticleTableViewRowTypeDetails),
+												  @{@"cellType": @(MZArticleTableViewRowTypeDetails),
 													 @"content": self.article.additionDate,
 													 @"secondaryContent": self.article.source},
-												 @{@"cellType": @(MZArticleTableViewRowTypeBody),
-													 @"content": self.article.body}];
+												  @{@"cellType": @(MZArticleTableViewRowTypeBody),
+													 @"content": self.article.body}] mutableCopy];
+
+	if (self.article.suggestedWords) {
+		[self.tableViewData addObject:@{@"cellType": @(MZArticleTableViewRowTypeAddAll)}];
+	}
 }
 
 #pragma mark - Custom Setters
@@ -113,11 +121,20 @@ UITableViewDelegate>
 			cell.bodyLabel.text = self.tableViewData[indexPath.row][@"content"];
 			return cell;
 		}
-
-  default:
-			return nil;
-			break;
+		case MZArticleTableViewRowTypeAddAll: {
+			MZArticleAddAllTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleAddAllTableViewCellIdentifier
+																																					 forIndexPath:indexPath];
+			cell.delegate = self;
+			return cell;
+		}
 	}
+	return nil;
+}
+
+#pragma mark - Add All Suggested Words Cell Delegate
+
+- (void)articleAddAllTableViewCellDidTap:(MZArticleAddAllTableViewCell *)cell {
+	// TODO
 }
 
 @end

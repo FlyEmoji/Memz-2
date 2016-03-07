@@ -9,6 +9,7 @@
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZDataManager.h"
+#import "MZWord.h"
 
 @implementation MZRemoteServerCoordinator
 
@@ -31,6 +32,7 @@
 	NSMutableArray<MZArticle *> *articles = [[NSMutableArray alloc] initWithCapacity:array.count];
 
 	for (NSDictionary *articleDictionary in array) {
+		// (1) Create and populate article from response
 		MZArticle *article = [MZArticle newInstance];
 
 		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -44,9 +46,33 @@
 		article.source = articleDictionary[@"source"];
 		article.imageUrl = [NSURL URLWithString:articleDictionary[@"image_url"]];
 
-		// TODO: Fetch Words
-
 		[articles addObject:article];
+
+		// (2) Skip the step that populates suggested words if none sent
+		NSArray<NSDictionary *> *responseSuggestedWords = [articleDictionary[@"words"] safeCastToClass:[NSArray class]];
+		if (!responseSuggestedWords) {
+			continue;
+		}
+
+		NSString *APICodeFromLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].fromLanguage];
+		NSString *APICodeToLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+		// (3) Loop through all suggested words, only add the ones fitting our language preferences if exists
+		for (NSDictionary *wordDictionary in responseSuggestedWords) {
+			NSString *fromLanguageWord = wordDictionary[APICodeFromLanguage];
+			NSString *toLanguageWord = wordDictionary[APICodeToLanguage];
+
+			if (!fromLanguageWord || !toLanguageWord) {
+				continue;
+			}
+
+			MZWord *suggestedWord = [MZWord addWord:fromLanguageWord
+																 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																 translations:@[toLanguageWord]
+																	 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+
+			[article addSuggestedWordsObject:suggestedWord];
+		}
 	}
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
@@ -54,6 +80,23 @@
 			completionHandler(articles, nil);
 		}
 	}];
+}
+
+#pragma mark - Language Parser
+
++ (NSString *)APILanguageCodeForLanguage:(MZLanguage)language {
+	switch (language) {
+		case MZLanguageEnglish:
+			return @"en";
+		case MZLanguageFrench:
+			return @"fr";
+		case MZLanguageSpanish:
+			return @"es";
+		case MZLanguageItalian:
+			return @"it";
+		case MZLanguagePortuguese:
+			return @"pr";
+	}
 }
 
 @end

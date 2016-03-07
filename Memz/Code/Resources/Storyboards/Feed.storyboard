@@ -9,6 +9,9 @@
             <string>MaisonNeue-Bold</string>
             <string>MaisonNeue-Bold</string>
         </mutableArray>
+        <mutableArray key="MaisonNeue-Medium.ttf">
+            <string>MaisonNeue-Medium</string>
+        </mutableArray>
     </customFonts>
     <scenes>
         <!--Feed View Controller-->
@@ -250,6 +253,40 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="bodyLabel" destination="NbK-0i-Vkb" id="4FF-LC-yQP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZArticleAddAllTableViewCellIdentifier" rowHeight="60" id="xQH-cG-l6e" customClass="MZArticleAddAllTableViewCell">
+                                        <rect key="frame" x="0.0" y="310" width="600" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xQH-cG-l6e" id="YB3-DB-5Jl">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O0-M7-jyU">
+                                                    <rect key="frame" x="0.0" y="10" width="600" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="HnA-uW-jDF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Medium" family="Maison Neue" pointSize="17"/>
+                                                    <state key="normal" title="ADD ALL SUGGESTED WORDS">
+                                                        <color key="titleColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapButton:" destination="xQH-cG-l6e" eventType="touchUpInside" id="l6T-ic-IaX"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="1O0-M7-jyU" firstAttribute="top" secondItem="YB3-DB-5Jl" secondAttribute="top" constant="10" id="8QQ-lJ-wan"/>
+                                                <constraint firstAttribute="trailing" secondItem="1O0-M7-jyU" secondAttribute="trailing" id="FQC-yj-6kn"/>
+                                                <constraint firstAttribute="bottom" secondItem="1O0-M7-jyU" secondAttribute="bottom" constant="10" id="Zz2-wP-NRu"/>
+                                                <constraint firstItem="1O0-M7-jyU" firstAttribute="leading" secondItem="YB3-DB-5Jl" secondAttribute="leading" id="qac-ZE-v7Q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="addAllButton" destination="1O0-M7-jyU" id="lcn-Xt-EpD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
