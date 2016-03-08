@@ -20,24 +20,29 @@ NS_ASSUME_NONNULL_BEGIN
 + (MZWord *)addWord:(NSString *)word
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
-				 toLanguage:(MZLanguage)toLanguage;
+				 toLanguage:(MZLanguage)toLanguage
+					inContext:(nullable NSManagedObjectContext *)context;
 
 /*
  * Returns an ordered set of existing words starting by specified string
  */
 + (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language
-																		startingByString:(NSString *)string;
+																		startingByString:(NSString *)string
+																					 inContext:(nullable NSManagedObjectContext *)context;
 
 /*
  * Returns existing word if matches exactly string and language
  */
-+ (MZWord *)existingWordForString:(NSString *)string fromLanguage:(MZLanguage)fromLanguage;
++ (MZWord *)existingWordForString:(NSString *)string
+										 fromLanguage:(MZLanguage)fromLanguage
+												inContext:(nullable NSManagedObjectContext *)context;
 
 /*
  * Updates existing word (adds new translations, remove no longer needed ones)
  */
 - (void)updateTranslations:(NSArray<NSString *> *)translations
-								toLanguage:(MZLanguage)toLanguage;
+								toLanguage:(MZLanguage)toLanguage
+								 inContext:(nullable NSManagedObjectContext *)context;
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage;
 

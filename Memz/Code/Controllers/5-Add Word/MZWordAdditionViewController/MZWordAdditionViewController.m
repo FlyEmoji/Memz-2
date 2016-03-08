@@ -259,7 +259,8 @@ MZWordAdditionTableViewHeaderDelegate>
 
 - (void)updateExistingWords {
 	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZLanguageManager sharedManager].fromLanguage
-																																		startingByString:self.wordToTranslate];
+																																		startingByString:self.wordToTranslate
+																																					 inContext:nil];
 
 	if (newAlreadyExistingWords.count > self.alreadyExistingWords.count) {
 		// (1) Case existing words to insert
@@ -435,7 +436,8 @@ MZWordAdditionTableViewHeaderDelegate>
 	[MZWord addWord:self.wordToTranslate
 		 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
 		 translations:self.wordTranslations
-			 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+			 toLanguage:[MZLanguageManager sharedManager].toLanguage
+				inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 		[self dismissViewControllerWithCompletion:nil];

@@ -10,6 +10,7 @@
 #import "MZArticleViewController.h"
 #import "MZFeedTableViewCell.h"
 #import "MZRemoteServerCoordinator.h"
+#import "NSManagedObject+MemzCoreData.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
@@ -17,7 +18,7 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 @interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray<MZArticle *> *tableViewData;
+@property (nonatomic, copy) NSArray<MZArticle *> *tableViewData;
 
 @property (nonatomic, strong) MZArticle *selectedArticle;
 

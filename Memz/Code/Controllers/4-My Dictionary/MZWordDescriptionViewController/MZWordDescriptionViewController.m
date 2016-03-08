@@ -100,7 +100,7 @@ MZTableViewTransitionDelegate>
 	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
 		[translationStrings addObject:word.word];
 	}];
-	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage];
+	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }

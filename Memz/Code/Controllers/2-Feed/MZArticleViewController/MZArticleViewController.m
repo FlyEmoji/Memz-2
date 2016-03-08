@@ -17,6 +17,7 @@
 #import "UIImageView+MemzDownloadImage.h"
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
+#import "MZDataManager.h"
 
 typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypePicture,
