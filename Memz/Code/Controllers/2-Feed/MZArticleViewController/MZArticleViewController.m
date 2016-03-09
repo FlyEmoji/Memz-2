@@ -179,7 +179,8 @@ MZArticleShareTableViewCellDelegate>
 
 - (void)articleShareTableViewCell:(MZArticleShareTableViewCell *)cell didTapShareOption:(MZShareOption)shareOption {
 	[MZShareManager shareForType:shareOption title:self.article.title images:nil urls:nil completionHandler:nil];
-	// TODO: Might want to populate with Memz URL or image
+	// TODO 1: Fix issue does not present if pull and reveal view controller underneath
+	// TODO 2: Might want to populate with Memz URL or image
 }
 
 @end

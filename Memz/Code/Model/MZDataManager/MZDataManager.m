@@ -93,6 +93,11 @@
 	NSManagedObjectContext *context = notification.object;
 	MZDataBackgroundTaskWrapper *dataBackgroundTask = [self dataBackgroundTaskForContext:context];
 
+	// (3) Exit if not saving background context
+	if (![self.dataBackgroundTasks containsObject:dataBackgroundTask]) {
+		return;
+	}
+
 	// (3) Merge main and background contexts
 	[self.managedObjectContext mergeChangesFromContextDidSaveNotification:notification];
 

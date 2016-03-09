@@ -8,7 +8,23 @@
 
 #import "MZArticleShareTableViewCell.h"
 
+@interface MZArticleShareTableViewCell ()
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *shareButtons;
+
+@end
+
 @implementation MZArticleShareTableViewCell
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	for (UIButton *button in self.shareButtons) {
+		button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+	}
+}
+
+#pragma mark - Actions
 
 - (IBAction)didTapTwitterButton:(id)sender {
 	if ([self.delegate respondsToSelector:@selector(articleShareTableViewCell:didTapShareOption:)]) {
