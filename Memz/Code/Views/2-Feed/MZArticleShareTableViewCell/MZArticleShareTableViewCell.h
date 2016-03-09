@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZShareManager.h"
+
+@protocol MZArticleShareTableViewCellDelegate;
 
 @interface MZArticleShareTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) id<MZArticleShareTableViewCellDelegate> delegate;
+
+@end
+
+@protocol MZArticleShareTableViewCellDelegate <NSObject>
+
+@optional
+
+- (void)articleShareTableViewCell:(MZArticleShareTableViewCell *)cell
+								didTapShareOption:(MZShareOption)shareOption;
 
 @end

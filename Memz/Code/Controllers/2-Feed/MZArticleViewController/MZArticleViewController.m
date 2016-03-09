@@ -18,6 +18,9 @@
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
 #import "MZDataManager.h"
+#import "UIAlertController+MemzAdditions.h"
+
+@import Social;
 
 typedef NS_ENUM(NSUInteger, MZArticleTableViewRowType) {
 	MZArticleTableViewRowTypePicture,
@@ -42,7 +45,8 @@ const CGFloat kArticleTableViewEstimatedRowHeight = 100.0f;
 @interface MZArticleViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZArticleAddAllTableViewCellDelegate,
-MZArticleSuggestedWordTableViewCellDelegate>
+MZArticleSuggestedWordTableViewCellDelegate,
+MZArticleShareTableViewCellDelegate>
 
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
 @property (nonatomic, strong) NSMutableArray<NSDictionary *> *tableViewData;
@@ -152,6 +156,7 @@ MZArticleSuggestedWordTableViewCellDelegate>
 		case MZArticleTableViewRowTypeShare: {
 			MZArticleShareTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kArticleShareTableViewCellIdentifier
 																																					forIndexPath:indexPath];
+			cell.delegate = self;
 			return cell;
 		}
 	}
@@ -168,6 +173,12 @@ MZArticleSuggestedWordTableViewCellDelegate>
 
 - (void)articleSuggestedWordTableViewCellDidTap:(MZArticleSuggestedWordTableViewCell *)cell {
 	// TODO
+}
+
+#pragma mark - Social Media Cell Delegate 
+
+- (void)articleShareTableViewCell:(MZArticleShareTableViewCell *)cell didTapShareOption:(MZShareOption)shareOption {
+	// TODO: Invoke ShareManager
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "MZFeedTableViewCell.h"
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "MZNavigationController.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
@@ -36,8 +37,9 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kPresentArticleViewControllerSegue]) {
-		MZArticleViewController *controller = [segue.destinationViewController safeCastToClass:[MZArticleViewController class]];
-		controller.article = self.selectedArticle;
+		MZNavigationController *navigationController = [segue.destinationViewController safeCastToClass:[MZNavigationController class]];
+		MZArticleViewController *articleController = [navigationController.viewControllers.firstObject safeCastToClass:[MZArticleViewController class]];
+		articleController.article = self.selectedArticle;
 	}
 }
 

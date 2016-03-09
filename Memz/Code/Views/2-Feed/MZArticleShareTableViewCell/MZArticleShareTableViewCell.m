@@ -10,4 +10,10 @@
 
 @implementation MZArticleShareTableViewCell
 
+- (IBAction)didTapTwitterButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(articleShareTableViewCell:didTapShareOption:)]) {
+		[self.delegate articleShareTableViewCell:self didTapShareOption:MZShareOptionTwitter];
+	}
+}
+
 @end
