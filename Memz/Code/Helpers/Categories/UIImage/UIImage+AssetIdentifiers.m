@@ -26,6 +26,10 @@
 			return [UIImage imageNamed:@"Common-Cross"];
 		case MZAssetIdentifierCommonTick:
 			return [UIImage imageNamed:@"Common-Tick"];
+		case MZAssetIdentifierCommonSocialTwitter:
+			return [UIImage imageNamed:@"Common-Social-Twitter"];
+		case MZAssetIdentifierCommonSocialFacebook:
+			return [UIImage imageNamed:@"Common-Social-Facebook"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:

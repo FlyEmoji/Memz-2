@@ -16,4 +16,16 @@
 	}
 }
 
+- (IBAction)didTapFacebookButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(articleShareTableViewCell:didTapShareOption:)]) {
+		[self.delegate articleShareTableViewCell:self didTapShareOption:MZShareOptionFacebook];
+	}
+}
+
+- (IBAction)didTapOthersButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(articleShareTableViewCell:didTapShareOption:)]) {
+		[self.delegate articleShareTableViewCell:self didTapShareOption:MZShareOptionShareSheet];
+	}
+}
+
 @end

@@ -18,6 +18,8 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierFlagPortugal,
 	MZAssetIdentifierCommonCross,
 	MZAssetIdentifierCommonTick,
+	MZAssetIdentifierCommonSocialTwitter,
+	MZAssetIdentifierCommonSocialFacebook,
 	MZAssetIdentifierNavigationBarPixel,
 	MZAssetIdentifierNavigationBarTransparentPixel,
 	MZAssetIdentifierNavigationAdd,

@@ -33,4 +33,11 @@ typedef NS_ENUM(NSUInteger, MZShareOption) {
 							 messageComposeDelegate:(id<MFMessageComposeViewControllerDelegate>)delegate
 										completionHandler:(void(^)(void))completionHandler;
 
++ (UIViewController *)sendEmailWithSubject:(NSString *)subject
+																			body:(NSString *)body
+																		isHTML:(BOOL)isHTML
+																recipients:(NSArray<NSString *> *)recipients
+											 mailComposeDelegate:(id<MFMailComposeViewControllerDelegate>)delegate
+												 completionHandler:(void(^)(void))completionHandler;
+
 @end
