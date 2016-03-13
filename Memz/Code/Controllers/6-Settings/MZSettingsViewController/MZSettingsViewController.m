@@ -17,20 +17,26 @@
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
-	MZSettingsTableViewSectionTypeQuiz
+	MZSettingsTableViewSectionTypeQuiz,
+	MZSettingsTableViewSectionTypeOthers
 };
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	MZSettingsTableViewRowTypeNotificationMain,
 	MZSettingsTableViewRowTypeNotificationNumber,
 	MZSettingsTableViewRowTypeNotificationHours,
-	MZSettingsTableViewRowTypeReverseQuiz
+	MZSettingsTableViewRowTypeReverseQuiz,
+	MZSettingsTableViewRowTypeStatistics
+	// TODO: MZSettingsTableViewRowTypeTermsAndConditions
 };
 
+NSString * const kPresentStatisticsViewControllerSegue = @"MZPresentStatisticsViewControllerSegue";
+
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
-NSString * const kSettingsTitleTableViewCellIdentifier = @"MZSettingsTitleTableViewCellIdentifier";
+NSString * const kSettingsSwitchTableViewCellIdentifier = @"MZSettingsSwitchTableViewCellIdentifier";
 NSString * const kSettingsStepperTableViewCellIdentifier = @"MZSettingsStepperTableViewCellIdentifier";
 NSString * const kSettingsSliderTableViewCellIdentifier = @"MZSettingsSliderTableViewCellIdentifier";
+NSString * const kSettingsTitleTableViewCellIdentifier = @"MZSettingsTitleTableViewCellIdentifier";
 
 NSString * const kSectionKey = @"SectionKey";
 NSString * const kDataKey = @"DataKey";
@@ -108,11 +114,17 @@ UIScrollViewDelegate>
 																		kTitleKey: NSLocalizedString(@"SettingsQuizReverseTitle", nil),
 																		kIsActiveKey: @([MZQuizManager sharedManager].isReversed)}.mutableCopy].mutableCopy;
 
-	// (3) Unify Table View Data and Return
+	// (3) Setup Table View Data: Others
+	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
+															 kTitleKey: NSLocalizedString(@"SettingsOthersStatisticsTitle", nil)}.mutableCopy].mutableCopy;
+
+	// (4) Unify Table View Data and Return
 	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
 						 kDataKey: notificationsSettings},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeQuiz),
-						 kDataKey: reverseQuiz}].mutableCopy;
+						 kDataKey: reverseQuiz},
+					 @{kSectionKey: @(MZSettingsTableViewSectionTypeOthers),
+						 kDataKey: others}].mutableCopy;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -127,6 +139,8 @@ UIScrollViewDelegate>
 			return NSLocalizedString(@"SettingsNotificationSectionTitle", nil);
 		case MZSettingsTableViewSectionTypeQuiz:
 			return NSLocalizedString(@"SettingsQuizSetionTitle", nil);
+		case MZSettingsTableViewSectionTypeOthers:
+			return NSLocalizedString(@"SettingsOthersSectionTitle", nil);
 	}
 	return nil;
 }
@@ -147,8 +161,16 @@ UIScrollViewDelegate>
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	MZSettingsTitleTableViewCell * (^ buildTitleCell)(NSString *, BOOL) = ^(NSString *title, BOOL isActive) {
-		MZSettingsTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsTitleTableViewCellIdentifier
+	UITableViewCell * (^ buildTitleCell)(NSString *) = ^(NSString *title) {
+		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsTitleTableViewCellIdentifier
+																														forIndexPath:indexPath];
+		cell.textLabel.text = title;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		return cell;
+	};
+
+	MZSettingsTitleTableViewCell * (^ buildSwitchCell)(NSString *, BOOL) = ^(NSString *title, BOOL isActive) {
+		MZSettingsTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsSwitchTableViewCellIdentifier
 																																				 forIndexPath:indexPath];
 		cell.settingsNameLabel.text = title;
 		cell.settingsSwitch.on = isActive;
@@ -186,8 +208,8 @@ UIScrollViewDelegate>
 	switch ([data[kRowKey] integerValue]) {
 		case MZSettingsTableViewRowTypeNotificationMain:
 		case MZSettingsTableViewRowTypeReverseQuiz:
-			return buildTitleCell(data[kTitleKey],
-														[data[kIsActiveKey] boolValue]);
+			return buildSwitchCell(data[kTitleKey],
+														 [data[kIsActiveKey] boolValue]);
 
 		case MZSettingsTableViewRowTypeNotificationNumber:
 			return buildStepperCell(data[kTitleKey],
@@ -201,35 +223,16 @@ UIScrollViewDelegate>
 														 [data[kTimeEndKey] integerValue],
 														 [data[kMinimumValueKey] integerValue],
 														 [data[kMaximumValueKey] integerValue]);
+
+		case MZSettingsTableViewRowTypeStatistics:
+			return buildTitleCell(data[kTitleKey]);
 	}
 	return nil;
 }
 
-#pragma mark - Table View Transition Delegate Methods
-
-- (void)tableViewDidStartScrollOutOfBounds:(MZTableView *)tableView {
-	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidStartDismissalAnimatedTransition:)]) {
-		[self.transitionDelegate presentableViewControllerDidStartDismissalAnimatedTransition:self];
-	}
-}
-
-- (void)tableView:(MZTableView *)tableView didScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didUpdateDismissalAnimatedTransition:)]
-			&& percentage >= 0.0f && percentage < 1.0f) {
-		[self.transitionDelegate presentableViewController:self didUpdateDismissalAnimatedTransition:percentage];
-	}
-}
-
-- (void)tableView:(MZTableView *)tableView didEndScrollOutOfBoundsPercentage:(CGFloat)percentage goingUp:(BOOL)goingUp {
-	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewController:didFinishDismissalAnimatedTransitionWithDirection:)]
-			&& percentage >= 1.0f) {
-		MZPullViewControllerTransitionDirection direction = goingUp ? MZPullViewControllerTransitionUp : MZPullViewControllerTransitionDown;
-		[self.transitionDelegate presentableViewController:self didFinishDismissalAnimatedTransitionWithDirection:direction];
-	}
-	
-	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidCancelDismissalAnimatedTransition:)]
-			&& percentage < 1.0f) {
-		[self.transitionDelegate presentableViewControllerDidCancelDismissalAnimatedTransition:self];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue] == MZSettingsTableViewRowTypeStatistics) {
+		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegue sender:self];
 	}
 }
 

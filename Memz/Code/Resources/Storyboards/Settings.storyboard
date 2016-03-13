@@ -26,8 +26,17 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsTitleTableViewCellIdentifier" rowHeight="58" id="bwn-qp-QZF" customClass="MZSettingsTitleTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsTitleTableViewCellIdentifier" id="iqS-W4-F5k">
                                         <rect key="frame" x="0.0" y="106" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iqS-W4-F5k" id="LmX-u6-UBU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsSwitchTableViewCellIdentifier" rowHeight="58" id="bwn-qp-QZF" customClass="MZSettingsTitleTableViewCell">
+                                        <rect key="frame" x="0.0" y="164" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bwn-qp-QZF" id="RrJ-wm-97r">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -60,7 +69,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsStepperTableViewCellIdentifier" id="eXq-dM-0n1" customClass="MZSettingsStepperTableViewCell">
-                                        <rect key="frame" x="0.0" y="164" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="222" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eXq-dM-0n1" id="zgG-CB-d64">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
@@ -102,7 +111,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSettingsSliderTableViewCellIdentifier" rowHeight="100" id="YNa-Ni-Aws" customClass="MZSettingsSliderTableViewCell">
-                                        <rect key="frame" x="0.0" y="222" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="280" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNa-Ni-Aws" id="Guh-9O-KV4">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
@@ -163,11 +172,20 @@
                     <connections>
                         <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
                         <outlet property="tableViewHeader" destination="IKM-GF-Fd0" id="yO7-vW-Ge3"/>
+                        <segue destination="B3Q-a8-bhg" kind="presentation" identifier="MZPresentStatisticsViewControllerSegue" id="tI6-ax-1VB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2167" y="1160"/>
+        </scene>
+        <!--Statistics-->
+        <scene sceneID="pLI-Ax-Dh3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistics" id="B3Q-a8-bhg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4j-cW-5fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="1621"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h5B-p9-GUZ">

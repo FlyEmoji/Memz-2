@@ -55,6 +55,8 @@
 "SettingsNotificationsHoursTitle" = "Daily Quizzes Time Frame";
 "SettingsQuizSetionTitle" = "Quizzes";
 "SettingsQuizReverseTitle" = "Random Questions Reverse Languages";
+"SettingsOthersSectionTitle" = "Others";
+"SettingsOthersStatisticsTitle" = "Statistics";
 
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";

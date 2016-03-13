@@ -26,6 +26,8 @@ NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSe
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
+	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
 	self.collectionController = [[MZLanguagesPickerCollectionController alloc] initWithCollectionView:self.collectionView];
 	self.collectionController.collectionViewData = [MZLanguageManager sharedManager].allLanguages;
 	self.collectionController.delegate = self;

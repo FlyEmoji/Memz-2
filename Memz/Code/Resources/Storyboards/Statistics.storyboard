@@ -272,7 +272,7 @@
         <!--Navigation Controller-->
         <scene sceneID="gg7-l7-2S2">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MDq-rn-Utn" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MDq-rn-Utn" customClass="MZNavigationController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="guA-Rl-Ohm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
