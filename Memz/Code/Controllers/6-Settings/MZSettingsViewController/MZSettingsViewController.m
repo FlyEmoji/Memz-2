@@ -50,7 +50,7 @@ NSString * const kTimeEndKey = @"TimeEndKey";
 NSString * const kMinimumValueKey = @"MinimumValueKey";
 NSString * const kMaximumValueKey = @"MaximumValueKey";
 
-const CGFloat kSettingsTableViewHeaderHeight = 200.0f;
+const CGFloat kSettingsTableViewHeaderHeight = 180.0f;
 const CGFloat kCellRegularHeight = 50.0f;
 const CGFloat kCellSliderHeight = 95.0f;
 
@@ -165,7 +165,7 @@ UIScrollViewDelegate>
 		UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSettingsTitleTableViewCellIdentifier
 																														forIndexPath:indexPath];
 		cell.textLabel.text = title;
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		cell.textLabel.textColor = [UIColor mainLightBlackColor];
 		return cell;
 	};
 

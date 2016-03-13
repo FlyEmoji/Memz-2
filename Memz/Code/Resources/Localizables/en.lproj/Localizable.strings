@@ -54,7 +54,7 @@
 "SettingsNotificationsNumberTitle" = "Daily Number of Quizzes";
 "SettingsNotificationsHoursTitle" = "Daily Quizzes Time Frame";
 "SettingsQuizSetionTitle" = "Quizzes";
-"SettingsQuizReverseTitle" = "Random Questions Reverse Languages";
+"SettingsQuizReverseTitle" = "Random Language Order";
 "SettingsOthersSectionTitle" = "Others";
 "SettingsOthersStatisticsTitle" = "Statistics";
 
