@@ -145,6 +145,16 @@ UIScrollViewDelegate>
 	return nil;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
+		case MZSettingsTableViewSectionTypeNotifications:
+			return NSLocalizedString(@"SettingsNotificationsSectionFooterTitle", nil);
+		case MZSettingsTableViewSectionTypeQuiz:
+			return NSLocalizedString(@"SettingsQuizSectionFooterTitle", nil);
+	}
+	return nil;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSMutableDictionary *data = [self.tableViewData[indexPath.section][kDataKey][indexPath.row] safeCastToClass:[NSMutableDictionary class]];
 	switch ([data[kRowKey] integerValue]) {

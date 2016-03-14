@@ -58,6 +58,9 @@
 "SettingsOthersSectionTitle" = "Others";
 "SettingsOthersStatisticsTitle" = "Statistics";
 
+"SettingsNotificationsSectionFooterTitle" = "Activate automatic quizzes if you want them delivered every day and receive a notification when it happens.";
+"SettingsQuizSectionFooterTitle" = "Activate if you want the targeted translation language to be randomly switched in your quizzes.";
+
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";
 "LanguageNameSpanish" = "Spanish";
