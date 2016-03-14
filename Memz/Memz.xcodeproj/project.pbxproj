@@ -127,6 +127,7 @@
 		0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CDFDA101C5732EA007EBCA6 /* MZPresenterViewController.m */; };
 		0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */; };
 		0CE0515B1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE0515A1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m */; };
+		0CE3294C1C96370200CC7C2F /* MZSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3294B1C96370200CC7C2F /* MZSwitch.m */; };
 		0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */; };
 		0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE624491C8FC1A300F7B9EB /* MZShareManager.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
@@ -378,6 +379,8 @@
 		0CE051511C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCollectionViewLayoutAttributes.m; path = Code/Helpers/Classes/MZCollectionViewLayoutAttributes/MZCollectionViewLayoutAttributes.m; sourceTree = SOURCE_ROOT; };
 		0CE051591C5DCBCB0011091D /* MZLanguagesPickerCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguagesPickerCollectionController.h; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerCollectionController/MZLanguagesPickerCollectionController.h"; sourceTree = SOURCE_ROOT; };
 		0CE0515A1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLanguagesPickerCollectionController.m; path = "Code/Controllers/7-Statistiques/MZLanguagesPickerCollectionController/MZLanguagesPickerCollectionController.m"; sourceTree = SOURCE_ROOT; };
+		0CE3294A1C96370200CC7C2F /* MZSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSwitch.h; path = "Code/Views/0-Common/MZSwitch/MZSwitch.h"; sourceTree = SOURCE_ROOT; };
+		0CE3294B1C96370200CC7C2F /* MZSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSwitch.m; path = "Code/Views/0-Common/MZSwitch/MZSwitch.m"; sourceTree = SOURCE_ROOT; };
 		0CE449A41C70233000E40180 /* UIColor+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+MemzAdditions.h"; path = "Code/Helpers/Categories/UIColor/UIColor+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MemzAdditions.m"; path = "Code/Helpers/Categories/UIColor/UIColor+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CE624481C8FC1A300F7B9EB /* MZShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZShareManager.h; path = Code/Helpers/Classes/MZShareManager/MZShareManager.h; sourceTree = SOURCE_ROOT; };
@@ -953,6 +956,7 @@
 			children = (
 				0C2DC8721C4BE596005B11F5 /* MZTableView */,
 				0C429E931CD1A24700AB7029 /* MZLoaderView */,
+				0CE329491C9636CD00CC7C2F /* MZSwitch */,
 				0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */,
 				0CCE607C1C66BCC5008D70BF /* MZGraphicView */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
@@ -1550,6 +1554,15 @@
 			name = MZLanguagesPickerCollectionController;
 			sourceTree = "<group>";
 		};
+		0CE329491C9636CD00CC7C2F /* MZSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				0CE3294A1C96370200CC7C2F /* MZSwitch.h */,
+				0CE3294B1C96370200CC7C2F /* MZSwitch.m */,
+			);
+			name = MZSwitch;
+			sourceTree = "<group>";
+		};
 		0CE624471C8FC16000F7B9EB /* MZShareManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1961,6 +1974,7 @@
 				0CDFD9F31C54874D007EBCA6 /* MZPresentableViewController.m in Sources */,
 				0C711C941C317F2900E0BB43 /* MZQuizViewController.m in Sources */,
 				0C5F57D21C619F16003CA161 /* MZStatisticsProvider.m in Sources */,
+				0CE3294C1C96370200CC7C2F /* MZSwitch.m in Sources */,
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
 				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
 				0C0741051C8E7CF400676A22 /* MZDataBackgroundTaskWrapper.m in Sources */,

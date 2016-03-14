@@ -4,6 +4,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Transition Delegate-->
         <scene sceneID="CJ2-oZ-Kv5">
@@ -44,8 +49,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iM6-Kx-3bA">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iM6-Kx-3bA" customClass="MZSwitch">
                                                     <rect key="frame" x="536" y="13" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="didSwitchValueChange:" destination="bwn-qp-QZF" eventType="valueChanged" id="hOp-j3-snT"/>
                                                     </connections>
@@ -92,18 +98,18 @@
                                                     </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htp-CP-NRo">
-                                                    <rect key="frame" x="469" y="18" width="9" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="473" y="23" width="8" height="14"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="14"/>
                                                     <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="33a-PA-hxA" firstAttribute="leading" secondItem="htp-CP-NRo" secondAttribute="trailing" constant="13" id="3Ot-lq-dSy"/>
+                                                <constraint firstItem="33a-PA-hxA" firstAttribute="leading" secondItem="htp-CP-NRo" secondAttribute="trailing" constant="10" id="3Ot-lq-dSy"/>
                                                 <constraint firstItem="33a-PA-hxA" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="8m2-ka-6Kt"/>
                                                 <constraint firstItem="nAb-ee-bkO" firstAttribute="leading" secondItem="zgG-CB-d64" secondAttribute="leading" constant="15" id="CfU-pI-cDY"/>
                                                 <constraint firstAttribute="trailing" secondItem="33a-PA-hxA" secondAttribute="trailing" constant="15" id="PWa-3J-Wtt"/>
-                                                <constraint firstItem="htp-CP-NRo" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="d3O-QP-6a1"/>
+                                                <constraint firstItem="nAb-ee-bkO" firstAttribute="baseline" secondItem="htp-CP-NRo" secondAttribute="baseline" id="YvX-ml-uWS"/>
                                                 <constraint firstItem="htp-CP-NRo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nAb-ee-bkO" secondAttribute="trailing" constant="15" id="pR9-2w-89y"/>
                                                 <constraint firstItem="nAb-ee-bkO" firstAttribute="centerY" secondItem="zgG-CB-d64" secondAttribute="centerY" id="s3A-rd-zQk"/>
                                             </constraints>

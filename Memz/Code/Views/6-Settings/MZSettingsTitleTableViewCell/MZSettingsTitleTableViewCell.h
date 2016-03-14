@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZSwitch.h"
 
 @protocol MZSettingsTitleTableViewCellDelegate;
 
 @interface MZSettingsTitleTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *settingsNameLabel;
-@property (nonatomic, strong) IBOutlet UISwitch *settingsSwitch;
+@property (nonatomic, strong) IBOutlet MZSwitch *settingsSwitch;
 
 @property (nonatomic, strong) id<MZSettingsTitleTableViewCellDelegate> delegate;
 
