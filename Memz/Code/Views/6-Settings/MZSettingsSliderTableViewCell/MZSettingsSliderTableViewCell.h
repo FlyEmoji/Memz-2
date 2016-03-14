@@ -13,7 +13,6 @@
 @interface MZSettingsSliderTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
-// TODO: Add left and right labels to display actual values
 
 @property (nonatomic, strong) id<MZSettingsSliderTableViewCellDelegate> delegate;
 
@@ -29,7 +28,8 @@
 
 @optional
 
-- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeStartHour:(NSUInteger)startHour;
-- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeEndHour:(NSUInteger)endHour;
+- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell
+								 didChangeStartHour:(NSUInteger)startHour
+														endHour:(NSUInteger)endHour;
 
 @end

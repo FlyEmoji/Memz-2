@@ -42,6 +42,19 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 - (instancetype)init {
 	if (self = [super init]) {
 		_quizPerDay = kDefaultQuizPerDay;
+
+		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] == nil) {
+			self.startHour = kDefaultIsActive;
+		}
+		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] == nil) {
+			self.startHour = kDefaultStartTimeHour;
+		}
+		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] == nil) {
+			self.endHour = kDefaultEndTimeHour;
+		}
+		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
+			self.reversed = kDefaultIsReversed;
+		}
 	}
 	return self;
 }
@@ -107,10 +120,6 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 #pragma mark - Settings Persistance
 
 - (BOOL)isActive {
-	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] == nil) {
-		self.startHour = kDefaultIsActive;
-	}
-
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] integerValue];
 }
 
@@ -126,36 +135,28 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 }
 
 - (NSUInteger)startHour {
-	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] == nil) {
-		self.startHour = kDefaultStartTimeHour;
-	}
-
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] integerValue];
 }
 
 - (void)setStartHour:(NSUInteger)startHour {
 	[[NSUserDefaults standardUserDefaults] setObject:@(startHour) forKey:kSettingsStartHourKey];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+
+	[self scheduleQuizNotifications];
 }
 
 - (NSUInteger)endHour {
-	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] == nil) {
-		self.endHour = kDefaultEndTimeHour;
-	}
-
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] integerValue];
 }
 
 - (void)setEndHour:(NSUInteger)endHour {
 	[[NSUserDefaults standardUserDefaults] setObject:@(MIN(endHour, 24)) forKey:kSettingsEndHourHey];
 	[[NSUserDefaults standardUserDefaults] synchronize];
+
+	[self scheduleQuizNotifications];
 }
 
 - (BOOL)isReversed {
-	if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
-		self.reversed = kDefaultIsReversed;
-	}
-
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] integerValue];
 }
 

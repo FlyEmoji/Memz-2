@@ -52,7 +52,7 @@ NSString * const kMaximumValueKey = @"MaximumValueKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 180.0f;
 const CGFloat kCellRegularHeight = 50.0f;
-const CGFloat kCellSliderHeight = 95.0f;
+const CGFloat kCellSliderHeight = 105.0f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -286,11 +286,10 @@ UIScrollViewDelegate>
 
 #pragma mark - Slider Table View Cell Delegate Methods
 
-- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeStartHour:(NSUInteger)startHour {
+- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell
+								 didChangeStartHour:(NSUInteger)startHour
+														endHour:(NSUInteger)endHour {
 	[MZQuizManager sharedManager].startHour = startHour;
-}
-
-- (void)settingsSliderTableViewCell:(MZSettingsSliderTableViewCell *)cell didChangeEndHour:(NSUInteger)endHour {
 	[MZQuizManager sharedManager].endHour = endHour;
 }
 

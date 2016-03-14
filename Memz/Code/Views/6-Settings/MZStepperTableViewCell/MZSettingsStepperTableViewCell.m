@@ -27,9 +27,6 @@ const NSUInteger kStepperDefaultMaximumValue = 10;
 	self.stepper.value = kStepperDefaultValue;
 	self.stepper.minimumValue = kStepperDefaultMinimumValue;
 	self.stepper.maximumValue = kStepperDefaultMaximumValue;
-
-	// TODO: Might want to refactor in superclass Settings Table View Cell for common designs
-	self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 #pragma mark - Custom Getters/Setters

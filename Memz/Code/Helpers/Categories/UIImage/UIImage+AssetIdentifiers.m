@@ -58,6 +58,12 @@
 			return [UIImage imageNamed:@"Add-Word-Plus-Icon"];
 		case MZAssetIdentifierAddWordTriangleIcon:
 			return [UIImage imageNamed:@"Add-Word-Triangle-Icon"];
+		case MZAssetIdentifierSettingsRangeSlider:
+			return [UIImage imageNamed:@"Settings-Range-Slider"];
+		case MZAssetIdentifierSettingSliderLineFaded:
+			return [UIImage imageNamed:@"Settings-Slider-Line-Faded"];
+		case MZAssetIdentifierSettingSliderLineChosen:
+			return [UIImage imageNamed:@"Settings-Slider-Line-Chosen"];
 		}
 	NSAssert(NO, @"+[UIImage imageWithAssetIdentifier:]: Invalid asset identifier provided '%ld'", (long)assetIdentifier);
 	return nil;
