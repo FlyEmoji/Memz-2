@@ -79,7 +79,7 @@ func createUser() {
 **Objective-C**
 ```objc
 - (void)createUser {
-    [self.dataStack performInNewBackgroundContext:^(NSManagedObjectContext *backgroundContext) {
+    [self.dataStack performInNewBackgroundContext:^(NSManagedObjectContext * _Nonnull backgroundContext) {
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"User" inManagedObjectContext:backgroundContext];
         NSManagedObject *object = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:backgroundContext];
         [object setValue:@"Background" forKey:@"name"];
@@ -88,6 +88,8 @@ func createUser() {
     }];
 }
 ```
+
+When using Xcode's autocompletion the `backgroundContext` parameter name doesn't get included. Make sure to add it.
 
 ## Clean up
 
@@ -136,6 +138,10 @@ DATAStack *dataStack = [[DATAStack alloc] initWithModelName:@"MyAppModel"
 ```
 
 _(Hint: Maybe you haven't found the best way to use NSFetchedResultsController, well [here it is](https://github.com/3lvis/DATASource).)_
+
+## Migrations
+
+If `DATAStack` has troubles creating your persistent coordinator because a migration wasn't properly handled it will destroy your data and create a new sqlite file. The normal Core Data behaviour for this is making your app crash on start. This is not fun.
 
 ## Installation
 
