@@ -26,6 +26,9 @@
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
+		0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */; };
+		0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */; };
+		0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */; };
 		0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */; };
 		0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726D61C25485500C9879F /* MZLanguageManager.m */; };
 		0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E41C255A7800C9879F /* MZMyDictionaryViewController.m */; };
@@ -200,6 +203,12 @@
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
 		0C13AC1E1C247196007A1AD5 /* MZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDataManager.m; path = Code/Model/MZDataManager/MZDataManager.m; sourceTree = SOURCE_ROOT; };
 		0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memz.xcdatamodel; sourceTree = "<group>"; };
+		0C1EF48C1C9795890076526B /* UIScrollView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
+		0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
+		0C1EF48F1C97A4100076526B /* UIView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
+		0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
+		0C1EF4921C97A68E0076526B /* NSObject+ExecuteOnDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ExecuteOnDealloc.h"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.h"; sourceTree = SOURCE_ROOT; };
+		0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ExecuteOnDealloc.m"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.m"; sourceTree = SOURCE_ROOT; };
 		0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableView.h; path = "Code/Views/0-Common/MZTableView/MZTableView.h"; sourceTree = SOURCE_ROOT; };
 		0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableView.m; path = "Code/Views/0-Common/MZTableView/MZTableView.m"; sourceTree = SOURCE_ROOT; };
 		0C3726D51C25485500C9879F /* MZLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageManager.h; path = Code/Helpers/Classes/MZLanguageManager/MZLanguageManager.h; sourceTree = SOURCE_ROOT; };
@@ -614,6 +623,15 @@
 				0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		0C1EF48B1C9795260076526B /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				0C1EF48C1C9795890076526B /* UIScrollView+KeyboardHelper.h */,
+				0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */,
+			);
+			name = UIScrollView;
 			sourceTree = "<group>";
 		};
 		0C2DC8721C4BE596005B11F5 /* MZTableView */ = {
@@ -1134,6 +1152,7 @@
 				0CEFD19E1C3CB53800EB60DE /* UINavigationItem */,
 				0CEFD1A61C3CB59100EB60DE /* UIViewController */,
 				0C7B5C471C82CD0000C7B051 /* UIAlertController */,
+				0C1EF48B1C9795260076526B /* UIScrollView */,
 				0CEFD1A21C3CB55F00EB60DE /* UIView */,
 				0CEFD1A31C3CB56900EB60DE /* UIColor */,
 				0CDA4AB61C867656005BDA3B /* UIFont */,
@@ -1624,6 +1643,8 @@
 			children = (
 				0CEFD1B01C3CB6FC00EB60DE /* NSObject+MemzAdditions.h */,
 				0CEFD1B11C3CB6FC00EB60DE /* NSObject+MemzAdditions.m */,
+				0C1EF4921C97A68E0076526B /* NSObject+ExecuteOnDealloc.h */,
+				0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */,
 			);
 			name = NSObject;
 			sourceTree = "<group>";
@@ -1642,6 +1663,8 @@
 			children = (
 				0CEFD1C61C3CB73A00EB60DE /* UIView+MemzAdditions.h */,
 				0CEFD1C71C3CB73A00EB60DE /* UIView+MemzAdditions.m */,
+				0C1EF48F1C97A4100076526B /* UIView+KeyboardHelper.h */,
+				0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -1912,6 +1935,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */,
+				0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */,
 				0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */,
 				0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */,
 				0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */,
@@ -1989,6 +2014,7 @@
 				0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */,
 				0C711C881C3179AF00E0BB43 /* MZMyQuizzesViewController.m in Sources */,
 				0CDB82EC1C30A0BD00EADB05 /* MZResponse+CoreDataProperties.m in Sources */,
+				0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */,
 				0C0740EA1C8CF4DE00676A22 /* MZArticleTitleTableViewCell.m in Sources */,
 				0C0740DE1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m in Sources */,
 				0C01CD1E1C21990C00F604A2 /* MZWordAdditionViewController.m in Sources */,
