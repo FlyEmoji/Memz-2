@@ -7,6 +7,7 @@
 //
 
 #import "MZDataManager.h"
+#import "MZArticle.h"
 #import "NSManagedObject+MemzCoreData.h"
 
 @interface MZDataManager ()
@@ -32,10 +33,10 @@
 		_dataStack = [[DATAStack alloc] initWithModelName:@"Memz"];
 
 		self.dataBackgroundTasks = [[NSMutableSet alloc] init];
-
+		
 		[[NSNotificationCenter defaultCenter] addObserver:self
-																						 selector:@selector(objectContextWillSave:)
-																								 name:NSManagedObjectContextWillSaveNotification
+																						 selector:@selector(objectContextDidSave:)
+																								 name:NSManagedObjectContextDidSaveNotification
 																							 object:nil];
 	}
 	return self;
@@ -82,10 +83,10 @@
 
 #pragma mark - Private Methods
 
-- (void)objectContextWillSave:(NSNotification *)notification {
+- (void)objectContextDidSave:(NSNotification *)notification {
 	// (1) Manage object contexts need to be merged on main thread only
 	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(objectContextWillSave:) withObject:notification waitUntilDone:YES];
+		[self performSelectorOnMainThread:@selector(objectContextDidSave:) withObject:notification waitUntilDone:YES];
 		return;
 	}
 

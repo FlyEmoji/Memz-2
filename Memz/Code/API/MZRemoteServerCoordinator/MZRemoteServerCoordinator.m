@@ -85,7 +85,7 @@
 		// (5) Save changes in background (handled by manager)
 		[[MZDataManager sharedDataManager] saveChangesInBackground:backgroundContext completionHandler:^(NSError *error) {
 			if (completionHandler) {
-				completionHandler(articles, error);
+				completionHandler([MZArticle allObjects], error);
 			}
 		}];
 	});
