@@ -30,6 +30,8 @@
 			return [UIImage imageNamed:@"Common-Social-Twitter"];
 		case MZAssetIdentifierCommonSocialFacebook:
 			return [UIImage imageNamed:@"Common-Social-Facebook"];
+		case MZAssetIdentifierCommonLoaderLarge:
+			return [UIImage imageNamed:@"Loader-Large"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:

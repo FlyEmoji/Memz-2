@@ -12,6 +12,7 @@
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZNavigationController.h"
+#import "MZLoaderView.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
@@ -30,9 +31,9 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	[self setupTableViewData];
-
 	self.tableView.tableFooterView = [[UIView alloc] init];
+
+	[self setupTableViewData];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -44,10 +45,13 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 }
 
 - (void)setupTableViewData {
-	// TODO: Display loader
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+		[MZLoaderView showInView:self.view];	// TODO: Fix where the slight delay comes from
+	});
 
 	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray<MZArticle *> *articles, NSError *error) {
-		// TODO: Hide loader
+		[MZLoaderView hideAllLoadersFromView:self.view];
+
 		if (error) {
 			// TODO: Display error
 			return;

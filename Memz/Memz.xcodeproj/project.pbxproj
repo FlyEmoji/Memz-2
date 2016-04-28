@@ -36,6 +36,8 @@
 		0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */; };
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
+		0C429E961CD1A28600AB7029 /* MZLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C429E951CD1A28600AB7029 /* MZLoaderView.m */; };
+		0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
 		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
 		0C5042261C59B01D0045E6FC /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5042251C59B01D0045E6FC /* constants.m */; };
@@ -216,6 +218,9 @@
 		0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorToken.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorToken/MZBingTranslatorToken.m; sourceTree = SOURCE_ROOT; };
 		0C3727071C29BF9E00C9879F /* MZErrorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZErrorCreator.h; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.h; sourceTree = SOURCE_ROOT; };
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
+		0C429E941CD1A28600AB7029 /* MZLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLoaderView.h; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.h"; sourceTree = SOURCE_ROOT; };
+		0C429E951CD1A28600AB7029 /* MZLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLoaderView.m; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.m"; sourceTree = SOURCE_ROOT; };
+		0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZLoaderView.xib; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.xib"; sourceTree = SOURCE_ROOT; };
 		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
 		0C5042231C59AD690045E6FC /* Dictionary.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Dictionary.storyboard; path = Code/Resources/Storyboards/Dictionary.storyboard; sourceTree = SOURCE_ROOT; };
 		0C5042251C59B01D0045E6FC /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = constants.m; path = "Code/Resources/Supporting Files/constants.m"; sourceTree = SOURCE_ROOT; };
@@ -718,6 +723,16 @@
 			name = MZErrorCreator;
 			sourceTree = "<group>";
 		};
+		0C429E931CD1A24700AB7029 /* MZLoaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0C429E941CD1A28600AB7029 /* MZLoaderView.h */,
+				0C429E951CD1A28600AB7029 /* MZLoaderView.m */,
+				0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */,
+			);
+			name = MZLoaderView;
+			sourceTree = "<group>";
+		};
 		0C5042271C59CBA90045E6FC /* MZStoryboardSegue */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,6 +952,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2DC8721C4BE596005B11F5 /* MZTableView */,
+				0C429E931CD1A24700AB7029 /* MZLoaderView */,
 				0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */,
 				0CCE607C1C66BCC5008D70BF /* MZGraphicView */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
@@ -1792,6 +1808,7 @@
 				0CDA4AB21C867625005BDA3B /* MaisonNeue-Light.ttf in Resources */,
 				0CDA4AB31C867625005BDA3B /* MaisonNeue-LightItalic.ttf in Resources */,
 				0CDA4AB41C867625005BDA3B /* MaisonNeue-Medium.ttf in Resources */,
+				0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */,
 				0CDA4AB51C867625005BDA3B /* MaisonNeue-MediumItalic.ttf in Resources */,
 				0C0550811C585442005924A9 /* AddWord.storyboard in Resources */,
 				0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */,
@@ -1923,6 +1940,7 @@
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
 				0C0740D81C8CCCA100676A22 /* MZArticle+CoreDataProperties.m in Sources */,
 				0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */,
+				0C429E961CD1A28600AB7029 /* MZLoaderView.m in Sources */,
 				0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */,
 				0CE0515B1C5DCBCB0011091D /* MZLanguagesPickerCollectionController.m in Sources */,
 				0CDB82EE1C30A0BD00EADB05 /* MZWord+CoreDataProperties.m in Sources */,

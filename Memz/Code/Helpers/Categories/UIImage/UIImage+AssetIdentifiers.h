@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierCommonTick,
 	MZAssetIdentifierCommonSocialTwitter,
 	MZAssetIdentifierCommonSocialFacebook,
+	MZAssetIdentifierCommonLoaderLarge,
 	MZAssetIdentifierNavigationBarPixel,
 	MZAssetIdentifierNavigationBarTransparentPixel,
 	MZAssetIdentifierNavigationAdd,
