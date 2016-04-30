@@ -7,18 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZDataBackgroundTaskWrapper.h"
 
 @import CoreData;
 @import DATAStack;
 
 @interface MZDataManager : NSObject
 
-@property (nonatomic, strong, readonly, nonnull) DATAStack *dataStack;
+@property (nonatomic, strong, readonly) DATAStack *dataStack;
 @property (nonatomic, weak, readonly) NSManagedObjectContext *managedObjectContext;
 
-+ (nonnull instancetype)sharedDataManager;
++ (instancetype)sharedDataManager;
 
-- (void)saveChangesWithCompletionHandler:(void (^ __nullable)(void))completionHandler;
+- (void)saveChangesWithCompletionHandler:(void(^)(void))completionHandler;
+
+- (void)saveChangesInBackground:(NSManagedObjectContext *)backgroundContext
+							completionHandler:(MZDataTaskCompletionBlock)completionHandler;
+
 - (void)rollBackChanges;
 
 @end

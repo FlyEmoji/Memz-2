@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8yc-D0-kdp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8yc-D0-kdp">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -102,8 +102,8 @@
                         <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6iB-bH-gfd" firstAttribute="leading" secondItem="ePi-6j-mUI" secondAttribute="leading" id="1re-Q6-JYr"/>
-                            <constraint firstItem="6iB-bH-gfd" firstAttribute="top" secondItem="uhH-2Y-1QC" secondAttribute="bottom" id="KqB-GM-dac"/>
                             <constraint firstItem="BvF-1d-0Ax" firstAttribute="top" secondItem="6iB-bH-gfd" secondAttribute="bottom" id="Xol-lm-Oz7"/>
+                            <constraint firstItem="6iB-bH-gfd" firstAttribute="top" secondItem="uhH-2Y-1QC" secondAttribute="bottom" id="bA2-lZ-ZNr"/>
                             <constraint firstAttribute="trailing" secondItem="6iB-bH-gfd" secondAttribute="trailing" id="srn-yE-elp"/>
                         </constraints>
                     </view>
@@ -117,7 +117,7 @@
             </objects>
             <point key="canvasLocation" x="2990" y="1026"/>
         </scene>
-        <!--Word Description View Controller-->
+        <!--Transition Delegate-->
         <scene sceneID="ggF-WN-DpJ">
             <objects>
                 <viewController id="nMe-o3-j5J" customClass="MZWordDescriptionViewController" sceneMemberID="viewController">
@@ -130,7 +130,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="52" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0WD-Zb-A3Q" customClass="MZTableView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="wCm-i6-bOq" customClass="MZWordDescriptionHeaderView">
                                     <rect key="frame" x="0.0" y="64" width="600" height="51"/>
@@ -181,6 +181,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="nMe-o3-j5J" id="s5E-F9-h3W"/>
                                     <outlet property="delegate" destination="nMe-o3-j5J" id="dha-6d-2Vi"/>
+                                    <outlet property="transitionDelegate" destination="nMe-o3-j5J" id="L1D-o4-cvF"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYf-Fv-m1b">
@@ -199,8 +200,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0WD-Zb-A3Q" firstAttribute="top" secondItem="6Xb-b3-ggp" secondAttribute="bottom" id="2PV-gG-xFq"/>
                             <constraint firstItem="0WD-Zb-A3Q" firstAttribute="leading" secondItem="OH8-s5-VhR" secondAttribute="leading" id="7TD-UP-Kfr"/>
+                            <constraint firstItem="0WD-Zb-A3Q" firstAttribute="top" secondItem="OH8-s5-VhR" secondAttribute="top" id="Dgk-b0-9kT"/>
                             <constraint firstAttribute="trailing" secondItem="0WD-Zb-A3Q" secondAttribute="trailing" id="HLF-8Q-2nY"/>
                             <constraint firstAttribute="trailing" secondItem="SYf-Fv-m1b" secondAttribute="trailing" id="KVL-0J-nKk"/>
                             <constraint firstItem="hIA-Vt-hCe" firstAttribute="top" secondItem="SYf-Fv-m1b" secondAttribute="bottom" id="Od2-O9-AFz"/>

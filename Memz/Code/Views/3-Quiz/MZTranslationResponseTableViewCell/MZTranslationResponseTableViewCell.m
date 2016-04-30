@@ -69,7 +69,7 @@ const NSTimeInterval kCorrectionAnimationDuration = 0.3;
 #pragma mark - Animations 
 
 - (void)animateCorrectionIsRight:(BOOL)isRight {
-	UIImage *image = [UIImage imageWithAssetIdentifier:isRight ? MZAssetIdentifierQuizTick : MZAssetIdentifierQuizCross];
+	UIImage *image = [UIImage imageWithAssetIdentifier:isRight ? MZAssetIdentifierCommonTick : MZAssetIdentifierCommonCross];
 	self.rightImageView.image = image;
 
 	self.rightImageViewWidthConstraint.constant = kRightImageWidthCorrectionConstant;

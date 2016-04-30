@@ -22,6 +22,16 @@
 			return [UIImage imageNamed:@"Flag-Italy"];
 		case MZAssetIdentifierFlagPortugal:
 			return [UIImage imageNamed:@"Flag-Portugal"];
+		case MZAssetIdentifierCommonCross:
+			return [UIImage imageNamed:@"Common-Cross"];
+		case MZAssetIdentifierCommonTick:
+			return [UIImage imageNamed:@"Common-Tick"];
+		case MZAssetIdentifierCommonSocialTwitter:
+			return [UIImage imageNamed:@"Common-Social-Twitter"];
+		case MZAssetIdentifierCommonSocialFacebook:
+			return [UIImage imageNamed:@"Common-Social-Facebook"];
+		case MZAssetIdentifierCommonLoaderLarge:
+			return [UIImage imageNamed:@"Loader-Large"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:
@@ -40,12 +50,8 @@
 			return [UIImage imageNamed:@"Navigation-Forward-Tap"];
 		case MZAssetIdentifierFeedGradient:
 			return [UIImage imageNamed:@"Feed-Gradient"];
-		case MZAssetIdentifierQuizBell:
-			return [UIImage imageNamed:@"Quiz-Bell"];
-		case MZAssetIdentifierQuizCross:
-			return [UIImage imageNamed:@"Quiz-Cross"];
-		case MZAssetIdentifierQuizTick:
-			return [UIImage imageNamed:@"Quiz-Tick"];
+		case MZAssetIdentifierFeedActiveTick:
+			return [UIImage imageNamed:@"Feed-Active-Tick"];
 		case MZAssetIdentifierAddWordMinusIcon:
 			return [UIImage imageNamed:@"Add-Word-Minus-Icon"];
 		case MZAssetIdentifierAddWordPlusIcon:

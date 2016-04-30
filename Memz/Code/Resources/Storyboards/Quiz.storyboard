@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UYH-Eu-4rs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UYH-Eu-4rs">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -274,13 +274,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="1tS-8s-5d3" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="3yP-Ka-2es"/>
                             <constraint firstItem="ykn-9u-40g" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="5oJ-5e-4C0"/>
                             <constraint firstItem="g3g-5T-yTP" firstAttribute="top" secondItem="1tS-8s-5d3" secondAttribute="bottom" id="7pd-va-NpO"/>
                             <constraint firstItem="1tS-8s-5d3" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AX5-it-ihU"/>
                             <constraint firstItem="ykn-9u-40g" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AXn-bN-taB"/>
                             <constraint firstAttribute="trailing" secondItem="ykn-9u-40g" secondAttribute="trailing" id="WWk-60-5Wa"/>
                             <constraint firstAttribute="trailing" secondItem="1tS-8s-5d3" secondAttribute="trailing" id="Xi8-w4-pMA"/>
+                            <constraint firstItem="1tS-8s-5d3" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="pa9-dN-lRz"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

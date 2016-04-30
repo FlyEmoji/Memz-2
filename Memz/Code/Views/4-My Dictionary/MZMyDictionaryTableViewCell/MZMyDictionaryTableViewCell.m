@@ -30,7 +30,7 @@
 - (void)setWord:(MZWord *)word {
 	_word = word;
 
-	self.wordLabel.text = word.word;
+	self.wordLabel.text = word.word.uppercaseString;
 	self.wordStatusView.word = word;
 	[self setupTranslations:word.translation.allObjects];
 }

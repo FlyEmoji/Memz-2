@@ -9,8 +9,9 @@
 #import "MZWordDescriptionViewController.h"
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
-#import "MZDataManager.h"
 #import "UIImage+MemzAdditions.h"
+#import "MZDataManager.h"
+#import "MZShareManager.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 
@@ -53,7 +54,6 @@ MZTableViewTransitionDelegate>
 	self.tableView.estimatedRowHeight = kWordDescriptionTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
-	self.tableView.transitionDelegate = self;
 
 	self.tableViewHeader.delegate = self;
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
@@ -101,7 +101,7 @@ MZTableViewTransitionDelegate>
 	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
 		[translationStrings addObject:word.word];
 	}];
-	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage];
+	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }

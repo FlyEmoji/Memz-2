@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Word Addition View Controller-->
+        <!--Transition Delegate-->
         <scene sceneID="WOX-1S-wxr">
             <objects>
                 <viewController storyboardIdentifier="MZWordAdditionViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="hko-ZM-ogh" customClass="MZWordAdditionViewController" sceneMemberID="viewController">
@@ -251,6 +251,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="hko-ZM-ogh" id="0wI-HC-PAo"/>
                                     <outlet property="delegate" destination="hko-ZM-ogh" id="EAS-f2-ckI"/>
+                                    <outlet property="transitionDelegate" destination="hko-ZM-ogh" id="JAK-iJ-lmw"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrp-eF-sJu" userLabel="Add Button">

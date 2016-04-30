@@ -22,7 +22,7 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable UIColor *progressiveBackgroundColor;	// Default transparent
 
-@property (nonatomic, strong) id<MZTableViewTransitionDelegate> transitionDelegate;
+@property (nonatomic, strong) IBOutlet id<MZTableViewTransitionDelegate> transitionDelegate;
 @property (nonatomic, assign, readonly) CGFloat percentageOutOfBounds;
 
 @end

@@ -17,45 +17,67 @@
 - (instancetype)initWithWord:(NSString *)word
 								fromLanguage:(MZLanguage)fromLanguage
 								translations:(NSArray<NSString *> *)translations
-									toLanguage:(MZLanguage)toLanguage {
-	MZWord *newWord = [MZWord newInstance];
+									toLanguage:(MZLanguage)toLanguage
+									 inContext:(NSManagedObjectContext *)context {
+	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
+
+	MZWord *newWord = [MZWord newInstanceInContext:context];
 	newWord.word = word;
 	newWord.language = @(fromLanguage);
-	[newWord updateTranslations:translations toLanguage:toLanguage];
+	[newWord updateTranslations:translations toLanguage:toLanguage inContext:context];
 	return newWord;
 }
 
 #pragma mark - Public Methods
 
-+ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language startingByString:(NSString *)string {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
-	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
-}
-
 + (MZWord *)addWord:(NSString *)word
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
-				 toLanguage:(MZLanguage)toLanguage {
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", word, fromLanguage];
-	MZWord *existingWord = [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate].firstObject;
+				 toLanguage:(MZLanguage)toLanguage
+					inContext:(NSManagedObjectContext *)context {
+	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
+
+	MZWord *existingWord = [MZWord existingWordForString:word fromLanguage:fromLanguage inContext:context];
 
 	if (!existingWord) {
-		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage];
+		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage inContext:context];
 	} else {
-		[existingWord updateTranslations:translations toLanguage:toLanguage];
+		[existingWord updateTranslations:translations toLanguage:toLanguage inContext:context];
 		return existingWord;
 	}
 }
 
++ (NSOrderedSet<MZWord *> *)existingWordsForLanguage:(MZLanguage)language
+																		startingByString:(NSString *)string
+																					 inContext:(NSManagedObjectContext *)context {
+	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
+
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
+	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
+}
+
++ (MZWord *)existingWordForString:(NSString *)string
+										 fromLanguage:(MZLanguage)fromLanguage
+												inContext:(NSManagedObjectContext *)context {
+	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
+	
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", string, fromLanguage];
+	return [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate context:context].firstObject;
+}
+
 - (void)updateTranslations:(NSArray<NSString *> *)translations
-								toLanguage:(MZLanguage)toLanguage {
-	// (1) Add new translations
+								toLanguage:(MZLanguage)toLanguage
+								 inContext:(NSManagedObjectContext *)context {
+	// (1) Initialize context if not specified
+	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
+
+	// (2) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", translation, toLanguage];
-		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate].firstObject;
+		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate context:context].firstObject;
 
 		if (!wordTranslation) {
-			wordTranslation = [MZWord newInstance];
+			wordTranslation = [MZWord newInstanceInContext:context];
 			wordTranslation.word = translation;
 			wordTranslation.language = @(toLanguage);
 		}
@@ -63,13 +85,13 @@
 		[self addTranslationObject:wordTranslation];
 	}];
 
-	// (2) Remove no longer needed translations
+	// (3) Remove no longer needed translations
 	[self.translation.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
 		if (![translations containsObject:translation.word]) {
 			[self removeTranslation:[NSSet setWithObject:translation]];
 
 			if (translation.translation.count == 0) {
-				[[MZDataManager sharedDataManager].managedObjectContext deleteObject:translation];
+				[context deleteObject:translation];
 			}
 		}
 	}];

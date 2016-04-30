@@ -57,12 +57,12 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 
 	// (2) Freeze source view setting snapshot on top before animation
 	UIImageView *snapshotSourceImageView = [[UIImageView alloc] initWithImage:[UIImage snapshotFromView:sourceView]];
-	[sourceView addSubview:snapshotSourceImageView];
+	[transitionContext.containerView addSubview:snapshotSourceImageView];
 
 	// (3) Insert and prepare views to their final state before animation
 	sourceView.frame = CGRectMake(0.0f, destinationView.frame.size.height, sourceView.frame.size.width, sourceView.frame.size.height);
 	destinationView.transform = CGAffineTransformIdentity;
-	[[sourceView superview] insertSubview:destinationView belowSubview:sourceView];		// Refactor using transitionContext.containerView and finalFrameForViewController
+	[transitionContext.containerView insertSubview:destinationView belowSubview:sourceView];		// Refactor using transitionContext.containerView and finalFrameForViewController
 
 	// (4) Prepare completion block
 	MZAnimationCompletionBlock completionBlock = ^(void) {
@@ -111,7 +111,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	CGRect fadeViewFrame = CGRectMake(0.0f, 0.0f, self.sourceView.frame.size.width, self.sourceView.frame.size.height);
 	self.fadeView = [[UIView alloc] initWithFrame:fadeViewFrame];
 	self.fadeView.backgroundColor = [UIColor blackColor];
-	[self.destinationView.superview insertSubview:self.fadeView aboveSubview:self.destinationView];
+	[transitionContext.containerView insertSubview:self.fadeView aboveSubview:self.destinationView];
 }
 
 - (void)updateInteractiveTransition:(CGFloat)percentComplete {

@@ -2,7 +2,7 @@
 //  MZResponse+CoreDataProperties.m
 //  
 //
-//  Created by Bastien Falcou on 12/27/15.
+//  Created by Bastien Falcou on 3/6/16.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,7 @@
 @implementation MZResponse (CoreDataProperties)
 
 @dynamic result;
-@dynamic word;
 @dynamic quiz;
+@dynamic word;
 
 @end

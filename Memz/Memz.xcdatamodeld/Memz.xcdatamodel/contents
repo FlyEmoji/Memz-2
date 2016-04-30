@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="Article" representedClassName="MZArticle" parentEntity="BaseEntity" syncable="YES">
+        <attribute name="additionDate" attributeType="Date" syncable="YES"/>
+        <attribute name="body" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="Transformable" valueTransformerName="MZNSRULToNSDataValueTransformer" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subTitle" attributeType="String" maxValueString="200" syncable="YES"/>
+        <attribute name="title" attributeType="String" maxValueString="40" syncable="YES"/>
+        <relationship name="suggestedWords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Word" inverseName="suggestionArticles" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="BaseEntity" representedClassName="MZBaseEntity" isAbstract="YES" syncable="YES">
+        <attribute name="remoteID" attributeType="Transformable" valueTransformerName="MZNSUUIDToNSDataValueTransformer" syncable="YES"/>
+    </entity>
     <entity name="Quiz" representedClassName="MZQuiz" syncable="YES">
         <attribute name="answerDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="isAnswered" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="toLanguage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="toLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="responses" optional="YES" toMany="YES" minCount="1" maxCount="3" deletionRule="Nullify" destinationEntity="Response" inverseName="quiz" inverseEntity="Response" syncable="YES"/>
     </entity>
     <entity name="Response" representedClassName="MZResponse" syncable="YES">
@@ -13,15 +25,18 @@
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="responses" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="MZWord" syncable="YES">
-        <attribute name="language" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="learningIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="word" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="learningIndex" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="word" attributeType="String" syncable="YES"/>
         <relationship name="responses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Response" inverseName="word" inverseEntity="Response" syncable="YES"/>
+        <relationship name="suggestionArticles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="suggestedWords" inverseEntity="Article" syncable="YES"/>
         <relationship name="translation" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translation" inverseEntity="Word" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Article" positionX="-45" positionY="45" width="128" height="150"/>
+        <element name="BaseEntity" positionX="-36" positionY="54" width="128" height="60"/>
         <element name="Quiz" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="Response" positionX="-45" positionY="45" width="128" height="90"/>
-        <element name="Word" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Word" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
