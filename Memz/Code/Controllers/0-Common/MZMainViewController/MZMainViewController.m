@@ -51,6 +51,9 @@ const NSUInteger kNumberPages = 3;
 
 	// (3) Initialize managers
 	[[MZQuizManager sharedManager] scheduleQuizNotifications];
+
+	// (4) Initialize main designs
+	self.view.backgroundColor = [UIColor mainMediumGrayColor];
 }
 
 - (void)goToAddWordView:(id)sender {
