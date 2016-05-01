@@ -1,5 +1,5 @@
 //
-//  MZLanguageManager.h
+//  MZLanguageDefinition.h
 //  Memz
 //
 //  Created by Bastien Falcou on 12/19/15.
@@ -15,14 +15,3 @@ typedef NS_ENUM(NSInteger, MZLanguage) {
 	MZLanguageItalian,
 	MZLanguagePortuguese
 };
-
-@interface MZLanguageManager : NSObject
-
-+ (MZLanguageManager *)sharedManager;
-
-@property (nonatomic, assign) MZLanguage fromLanguage;
-@property (nonatomic, assign) MZLanguage toLanguage;
-
-@property (nonatomic, weak, readonly) NSArray<NSNumber *> *allLanguages;
-
-@end

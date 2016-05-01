@@ -18,12 +18,16 @@
 								fromLanguage:(MZLanguage)fromLanguage
 								translations:(NSArray<NSString *> *)translations
 									toLanguage:(MZLanguage)toLanguage
+										 forUser:(MZUser *)user
 									 inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	MZWord *newWord = [MZWord newInstanceInContext:context];
 	newWord.word = word;
 	newWord.language = @(fromLanguage);
+	if (user) {
+		[newWord addUsersObject:user];
+	}
 	[newWord updateTranslations:translations toLanguage:toLanguage inContext:context];
 	return newWord;
 }
@@ -34,13 +38,14 @@
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage
+						forUser:(MZUser *)user
 					inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	MZWord *existingWord = [MZWord existingWordForString:word fromLanguage:fromLanguage inContext:context];
 
 	if (!existingWord) {
-		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage inContext:context];
+		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage forUser:user inContext:context];
 	} else {
 		[existingWord updateTranslations:translations toLanguage:toLanguage inContext:context];
 		return existingWord;
@@ -100,13 +105,13 @@
 #pragma mark - Statistics
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
 - (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
-	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
+	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 
 	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:successCountPredicate];
 	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:allObjectsCountPredicate];

@@ -163,7 +163,7 @@ MZCountDownDelegate>
 	MZTranslationResponseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslationResponseTableViewCellIdentifier
 																																						 forIndexPath:indexPath];
 
-	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZLanguageManager sharedManager].toLanguage];
+	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZUser currentUser].toLanguage.integerValue];
 	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row + 1];
 	cell.textField.returnKeyType = indexPath.row == self.tableViewEnteredData.count - 1 ? UIReturnKeyDone : UIReturnKeyNext;
 	cell.delegate = self;
@@ -193,8 +193,6 @@ MZCountDownDelegate>
 		NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:index + 1 inSection:0];
 		MZTranslationResponseTableViewCell *nextCell = [self.tableView cellForRowAtIndexPath:nextIndexPath];
 		[nextCell.textField becomeFirstResponder];
-
-		// TODO: Check if workds if there are invisible cells
 	}
 }
 

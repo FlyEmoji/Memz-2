@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
 
 @interface UIImage (MemzAdditions)
 

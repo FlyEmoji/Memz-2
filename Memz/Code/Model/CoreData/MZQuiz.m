@@ -9,16 +9,29 @@
 #import "MZQuiz.h"
 #import "MZWord.h"
 #import "NSManagedObject+MemzCoreData.h"
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
 
 @implementation MZQuiz
 
-+ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage {
++ (MZQuiz *)randomQuizForUser:(MZUser *)user {
+	if (!user) {
+		return nil;
+	}
+	return [MZQuiz randomQuizFromLanguage:user.fromLanguage.integerValue
+														 toLanguage:user.toLanguage.integerValue
+																forUser:user];
+}
+
++ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage forUser:(nullable MZUser *)user {
 	MZQuiz *newQuiz = [MZQuiz newInstance];
 	newQuiz.toLanguage = @(toLanguage);
 	newQuiz.creationDate = [NSDate date];
+	newQuiz.user = user;
 
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
+	if (user) {
+	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", fromLanguage, MZWordIndexLearned, user.objectID];
+	}
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;
 	NSMutableArray<MZWord *> *selectedWords = [[NSMutableArray alloc] init];
@@ -38,6 +51,14 @@
 	}
 
 	return newQuiz.responses.count > 0 ? newQuiz : nil;
+}
+
++ (NSArray<NSNumber *> *)allLanguages {
+	return @[@(MZLanguageEnglish),
+					 @(MZLanguageFrench),
+					 @(MZLanguageSpanish),
+					 @(MZLanguageItalian),
+					 @(MZLanguagePortuguese)];
 }
 
 - (MZLanguage)fromLanguage {

@@ -64,6 +64,10 @@ MZQuizInfoViewDelegate>
 
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
+
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user == %@ && toLanguage == %ld", [MZUser currentUser].objectID, [MZUser currentUser].toLanguage.integerValue];
+	request.predicate = predicate;
+
 	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];
 	NSSortDescriptor *descriptorAnswerDate = [NSSortDescriptor sortDescriptorWithKey:@"answerDate" ascending:NO];
 	NSSortDescriptor *descriptorCreationDate = [NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO];
@@ -202,8 +206,7 @@ MZQuizInfoViewDelegate>
 #pragma mark - Quiz Info View Delegate Methods
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
-	MZQuiz *quiz = [MZQuiz randomQuizFromLanguage:[MZLanguageManager sharedManager].fromLanguage
-																		 toLanguage:[MZLanguageManager sharedManager].toLanguage];
+	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];
 
 	if (!quiz) {
 		// TODO: Display message saying no words to translate

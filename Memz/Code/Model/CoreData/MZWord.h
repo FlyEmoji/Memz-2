@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
+#import "MZUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage
+						forUser:(nullable MZUser *)user
 					inContext:(nullable NSManagedObjectContext *)context;
 
 /*

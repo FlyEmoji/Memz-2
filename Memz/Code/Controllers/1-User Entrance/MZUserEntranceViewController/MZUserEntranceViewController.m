@@ -7,9 +7,12 @@
 //
 
 #import "MZUserEntranceViewController.h"
-#import "MZMainViewController.h"
-#import "MZLanguageManager.h"
 #import "UINavigationController+MemzTransitions.h"
+#import "NSManagedObject+MemzCoreData.h"
+#import "MZMainViewController.h"
+#import "MZLanguageDefinition.h"
+#import "MZDataManager.h"
+#import "MZUser.h"
 
 @interface MZUserEntranceViewController ()
 
@@ -22,9 +25,13 @@
 #pragma mark - Actions
 
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
-	// TODO: Create user object
+	MZUser *user = [MZUser newInstance];
+	user.fromLanguage = @(MZLanguageEnglish);
+	user.toLanguage = @(MZLanguageFrench);
 
-	[self dismissViewControllerAnimated:YES completion:nil];
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}];
 }
 
 @end

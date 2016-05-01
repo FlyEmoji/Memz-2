@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (MZUser *)currentUser;
 
+- (MZWord *)addWord:(NSString *)word
+			 translations:(NSArray<NSString *> *)translations
+					inContext:(nullable NSManagedObjectContext *)context;
+
 @end
 
 NS_ASSUME_NONNULL_END

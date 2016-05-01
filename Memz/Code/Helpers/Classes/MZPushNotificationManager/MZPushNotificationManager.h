@@ -11,7 +11,7 @@
 typedef NS_ENUM(NSUInteger, MZLocalPushNotificationType) {
 	MZLocalPushNotificationTypeNone = 0,
 	MZLocalPushNotificationTypeQuizz,
-	MZLocalPushNotificationTypeReminder			// TODO: To implement, schedule local in 1/2 weeks "Your are loosing your [to_language] ..."
+	MZLocalPushNotificationTypeReminder	 // TODO: To implement, schedule local in 1/2 weeks "Your are loosing your [to_language] ..."
 };
 
 extern NSString * const MZNotificationTypeKey;
@@ -24,6 +24,6 @@ extern NSString * const MZNotificationTypeKey;
 - (void)cancelLocalNotifications:(MZLocalPushNotificationType)notificationType;
 - (void)cancelAllLocalNotifications;
 
-- (void)handleLocalNotification:(UILocalNotification *)notification;
+- (void)handleLocalNotification:(UILocalNotification *)notification;  // might not do anything if no current user
 
 @end

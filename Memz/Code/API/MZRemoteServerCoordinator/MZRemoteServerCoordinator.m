@@ -60,8 +60,8 @@
 				continue;
 			}
 
-			NSString *APICodeFromLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].fromLanguage];
-			NSString *APICodeToLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].toLanguage];
+			NSString *APICodeFromLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZUser currentUser].fromLanguage.integerValue];
+			NSString *APICodeToLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZUser currentUser].toLanguage.integerValue];
 
 			// (4) Loop through all suggested words, only add the ones fitting our language preferences if exists
 			for (NSDictionary *wordDictionary in responseSuggestedWords) {
@@ -73,9 +73,10 @@
 				}
 
 				MZWord *suggestedWord = [MZWord addWord:fromLanguageWord
-																	 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																	 fromLanguage:[MZUser currentUser].fromLanguage.integerValue
 																	 translations:@[toLanguageWord]
-																		 toLanguage:[MZLanguageManager sharedManager].toLanguage
+																		 toLanguage:[MZUser currentUser].toLanguage.integerValue
+																				forUser:nil
 																			inContext:backgroundContext];
 
 				[article addSuggestedWordsObject:suggestedWord];

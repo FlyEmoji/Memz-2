@@ -19,6 +19,6 @@
 @dynamic responses;
 @dynamic suggestionArticles;
 @dynamic translation;
-@dynamic user;
+@dynamic users;
 
 @end

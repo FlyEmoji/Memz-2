@@ -72,7 +72,7 @@
 	if (error) {
 		[self.dataBackgroundTasks removeObject:backgroundTask];
 		if (completionHandler) {
-			completionHandler(error);		// TODO: Should send back error if needed
+			completionHandler(error);
 		}
 	}
 }

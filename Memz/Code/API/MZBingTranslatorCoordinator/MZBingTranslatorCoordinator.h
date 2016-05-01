@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MZBingTranslationWrapper.h"
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
 
 @interface MZBingTranslatorCoordinator : NSObject
 

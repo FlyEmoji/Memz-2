@@ -22,4 +22,13 @@
 	return users.firstObject;
 }
 
+- (MZWord *)addWord:(NSString *)word translations:(NSArray<NSString *> *)translations inContext:(NSManagedObjectContext *)context {
+	return [MZWord addWord:word
+						fromLanguage:self.fromLanguage.integerValue
+						translations:translations
+							toLanguage:self.toLanguage.integerValue
+								 forUser:self
+							 inContext:context];
+}
+
 @end

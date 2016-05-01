@@ -51,15 +51,20 @@ const NSUInteger kNumberPages = 3;
 
 	self.settingsButton = leftButton;
 
-	// (3) Initialize managers
-	[[MZQuizManager sharedManager] scheduleQuizNotifications];
-
-	// (4) Initialize main designs
+	// (3) Initialize main designs
 	self.view.backgroundColor = [UIColor mainMediumGrayColor];
 
-	// (5) Present user entrance flow if no user connected
+	// (4) Present user entrance flow if no user connected
 	if (![MZUser currentUser]) {
 		[self performSegueWithIdentifier:MZUserEntranceViewControllerSegue sender:self];
+	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	if ([MZUser currentUser]) {
+		[[MZQuizManager sharedManager] scheduleQuizNotifications];
 	}
 }
 
