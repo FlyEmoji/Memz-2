@@ -29,6 +29,7 @@
 		0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */; };
 		0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */; };
 		0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */; };
+		0C2C5E0E1CD69ED300E766A5 /* MZUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */; };
 		0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */; };
 		0C3726D71C25485500C9879F /* MZLanguageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726D61C25485500C9879F /* MZLanguageManager.m */; };
 		0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E41C255A7800C9879F /* MZMyDictionaryViewController.m */; };
@@ -48,6 +49,7 @@
 		0C5180201C31BA520072FEB0 /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C51801F1C31BA520072FEB0 /* Quiz.storyboard */; };
 		0C5180241C331A790072FEB0 /* MZCountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5180231C331A790072FEB0 /* MZCountDown.m */; };
 		0C539E021CD67C1D009C6CB7 /* MZWordAdditionViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C539E011CD67C1D009C6CB7 /* MZWordAdditionViewHeader.m */; };
+		0C539E161CD69E63009C6CB7 /* MZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C539E151CD69E63009C6CB7 /* MZUser.m */; };
 		0C57F5351C48848F0055532E /* MZSettingsSliderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */; };
 		0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5381C488B200055532E /* MZSettingsStepperTableViewCell.m */; };
 		0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C57F5801C4B26A60055532E /* MZPullViewControllerTransition.m */; };
@@ -210,6 +212,8 @@
 		0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
 		0C1EF4921C97A68E0076526B /* NSObject+ExecuteOnDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ExecuteOnDealloc.h"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.h"; sourceTree = SOURCE_ROOT; };
 		0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ExecuteOnDealloc.m"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.m"; sourceTree = SOURCE_ROOT; };
+		0C2C5E0C1CD69ED300E766A5 /* MZUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZUser+CoreDataProperties.h"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
+		0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZUser+CoreDataProperties.m"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableView.h; path = "Code/Views/0-Common/MZTableView/MZTableView.h"; sourceTree = SOURCE_ROOT; };
 		0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableView.m; path = "Code/Views/0-Common/MZTableView/MZTableView.m"; sourceTree = SOURCE_ROOT; };
 		0C3726D51C25485500C9879F /* MZLanguageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageManager.h; path = Code/Helpers/Classes/MZLanguageManager/MZLanguageManager.h; sourceTree = SOURCE_ROOT; };
@@ -242,6 +246,8 @@
 		0C5180231C331A790072FEB0 /* MZCountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZCountDown.m; path = Code/Helpers/Classes/MZCountDown/MZCountDown.m; sourceTree = SOURCE_ROOT; };
 		0C539E001CD67C1D009C6CB7 /* MZWordAdditionViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionViewHeader.h; path = "Code/Views/5-Add Word/MZWordAdditionViewHeader/MZWordAdditionViewHeader.h"; sourceTree = SOURCE_ROOT; };
 		0C539E011CD67C1D009C6CB7 /* MZWordAdditionViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionViewHeader.m; path = "Code/Views/5-Add Word/MZWordAdditionViewHeader/MZWordAdditionViewHeader.m"; sourceTree = SOURCE_ROOT; };
+		0C539E141CD69E63009C6CB7 /* MZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZUser.h; path = Code/Model/CoreData/MZUser.h; sourceTree = SOURCE_ROOT; };
+		0C539E151CD69E63009C6CB7 /* MZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUser.m; path = Code/Model/CoreData/MZUser.m; sourceTree = SOURCE_ROOT; };
 		0C57F5331C48848F0055532E /* MZSettingsSliderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsSliderTableViewCell.h; path = "Code/Views/6-Settings/MZSettingsSliderTableViewCell/MZSettingsSliderTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C57F5341C48848F0055532E /* MZSettingsSliderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSettingsSliderTableViewCell.m; path = "Code/Views/6-Settings/MZSettingsSliderTableViewCell/MZSettingsSliderTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C57F5371C488B200055532E /* MZSettingsStepperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZSettingsStepperTableViewCell.h; path = "Code/Views/6-Settings/MZStepperTableViewCell/MZSettingsStepperTableViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -608,6 +614,10 @@
 				0C0740DA1C8CCD2300676A22 /* MZBaseEntity.m */,
 				0C0740DC1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.h */,
 				0C0740DD1C8CCD3500676A22 /* MZBaseEntity+CoreDataProperties.m */,
+				0C539E141CD69E63009C6CB7 /* MZUser.h */,
+				0C539E151CD69E63009C6CB7 /* MZUser.m */,
+				0C2C5E0C1CD69ED300E766A5 /* MZUser+CoreDataProperties.h */,
+				0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */,
 				0CDB82D91C30A0BD00EADB05 /* MZQuiz.h */,
 				0CDB82DA1C30A0BD00EADB05 /* MZQuiz.m */,
 				0CDB82DB1C30A0BD00EADB05 /* MZQuiz+CoreDataProperties.h */,
@@ -1973,6 +1983,7 @@
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
 				0CDA4AC71C87E0EC005BDA3B /* MZWordStatusView.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
+				0C539E161CD69E63009C6CB7 /* MZUser.m in Sources */,
 				0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */,
 				0C3726EA1C255C4300C9879F /* MZMyDictionaryTableViewCell.m in Sources */,
 				0C72F19C1C64684200EABC16 /* MZStatisticsViewController.m in Sources */,
@@ -2018,6 +2029,7 @@
 				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
 				0C0741051C8E7CF400676A22 /* MZDataBackgroundTaskWrapper.m in Sources */,
 				0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */,
+				0C2C5E0E1CD69ED300E766A5 /* MZUser+CoreDataProperties.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,
 				0CEFD1C11C3CB72100EB60DE /* UIImageView+MemzDownloadImage.m in Sources */,
 				0CD881741C43522300F57279 /* MZSettingsTableViewHeader.m in Sources */,

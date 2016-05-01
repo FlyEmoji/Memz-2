@@ -1,5 +1,5 @@
 //
-//  MZQuiz+CoreDataProperties.m
+//  MZUser+CoreDataProperties.m
 //  
 //
 //  Created by Bastien Falcou on 5/1/16.
@@ -9,15 +9,13 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "MZQuiz+CoreDataProperties.h"
+#import "MZUser+CoreDataProperties.h"
 
-@implementation MZQuiz (CoreDataProperties)
+@implementation MZUser (CoreDataProperties)
 
-@dynamic answerDate;
-@dynamic creationDate;
-@dynamic isAnswered;
+@dynamic fromLanguage;
 @dynamic toLanguage;
-@dynamic responses;
-@dynamic user;
+@dynamic translations;
+@dynamic quizzes;
 
 @end
