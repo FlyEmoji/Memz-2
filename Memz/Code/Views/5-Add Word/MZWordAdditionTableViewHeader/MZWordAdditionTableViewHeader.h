@@ -19,8 +19,6 @@ typedef NS_ENUM(NSInteger, MZWordAdditionSectionType) {
 
 @interface MZWordAdditionTableViewHeader : UITableViewHeaderFooterView
 
-@property (nonatomic, strong) IBOutlet UIView *bottomSeparatorView;
-
 @property (nonatomic, assign) MZWordAdditionSectionType sectionType;
 @property (nonatomic, weak) id<MZWordAdditionTableViewHeaderDelegate> delegate;
 

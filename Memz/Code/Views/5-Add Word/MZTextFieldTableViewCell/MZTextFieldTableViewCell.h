@@ -19,7 +19,6 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 @interface MZTextFieldTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UITextField *textField;
-@property (nonatomic, strong) IBOutlet UIView *bottomSeparator;
 
 @property (nonatomic, weak) id<MZTextFieldTableViewCellDelegate> delegate;
 @property (nonatomic, assign) MZTextFieldTableViewCellType cellType;
@@ -31,5 +30,6 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 
 - (void)textFieldTableViewCellDidTapAddButton:(MZTextFieldTableViewCell *)cell;
 - (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text;
+- (void)textFieldTableViewCellDidHitReturnKey:(MZTextFieldTableViewCell *)cell;
 
 @end

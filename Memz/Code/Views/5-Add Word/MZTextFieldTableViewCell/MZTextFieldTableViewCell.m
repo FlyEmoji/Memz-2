@@ -26,6 +26,7 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 	_cellType = cellType;
 
 	self.addButton.hidden = cellType == MZTextFieldTableViewCellTypeRegular;
+	self.textField.returnKeyType = cellType == MZTextFieldTableViewCellTypeRegular ? UIReturnKeyDefault : UIReturnKeyNext;
 }
 
 - (void)setLanguage:(MZLanguage)language {
@@ -45,6 +46,12 @@ CGFloat const kAddButtonDefaultWidthConstraint = 30.0f;
 - (IBAction)editingDidChange:(id)sender {
 	if ([self.delegate respondsToSelector:@selector(textFieldTableViewCell:textDidChange:)]) {
 		[self.delegate textFieldTableViewCell:self textDidChange:self.textField.text];
+	}
+}
+
+- (IBAction)editingDidEndOnExit:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(textFieldTableViewCellDidHitReturnKey:)]) {
+		[self.delegate textFieldTableViewCellDidHitReturnKey:self];
 	}
 }
 
