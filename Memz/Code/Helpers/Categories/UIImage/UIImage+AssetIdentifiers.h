@@ -33,7 +33,10 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierFeedActiveTick,
 	MZAssetIdentifierAddWordMinusIcon,
 	MZAssetIdentifierAddWordPlusIcon,
-	MZAssetIdentifierAddWordTriangleIcon
+	MZAssetIdentifierAddWordTriangleIcon,
+	MZAssetIdentifierSettingsRangeSlider,
+	MZAssetIdentifierSettingSliderLineFaded,
+	MZAssetIdentifierSettingSliderLineChosen
 };
 
 @interface UIImage (AssetIdentifier)

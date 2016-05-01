@@ -183,7 +183,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	// (6) Prepare completion block
 	MZAnimationCompletionBlock completionBlock = ^(void) {
 		[self.fadeView removeFromSuperview];
-		[self.transitionContext completeTransition:YES];
+		[self.transitionContext completeTransition:NO];
 		if ([self.delegate respondsToSelector:@selector(pullViewControllerTransitionDidFinish:)]) {
 			[self.delegate pullViewControllerTransitionDidFinish:self];
 		}
@@ -195,6 +195,7 @@ CGFloat const kPercentageShortenAnimation = 0.1f;
 	frameAnimation.toValue = @(self.destinationView.layer.position.y);
 	frameAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 	frameAnimation.duration = kCancelAnimationDuration;
+	frameAnimation.delegate = self;
 	[frameAnimation setValue:completionBlock forKey:kPullAnimationCompletionBlockKey];
 	[self.sourceView.layer addAnimation:frameAnimation forKey:kPullFrameAnimationKey];
 

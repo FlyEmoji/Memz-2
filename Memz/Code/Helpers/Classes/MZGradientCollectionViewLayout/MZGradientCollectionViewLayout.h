@@ -23,7 +23,7 @@
 /* 
  * Optional progressive delay before cells appear/disappear according to their indexPath. For a given cell, the delay
  * before animation will be equal to indexPath.item * indexRelativeDelayCellAnimations.
- * This notably allows a nice global appearance effect if inserting all cells at once (wave effect with cells appearing
+ * This notably allows a nice global appearance effect if inserting all cells at once (cascade effect with cells appearing
  * or disappearing successively, one by one from left to right). No delay by default (0.0 second).
  */
 @property (nonatomic, assign) NSTimeInterval relativeDelayCellAnimations;

@@ -5,4 +5,5 @@ use_frameworks!
 
 pod 'SDWebImage', '~> 3.6'
 pod 'DATAStack'
+pod 'NMRangeSlider'
 

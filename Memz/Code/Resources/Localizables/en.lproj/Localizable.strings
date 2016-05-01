@@ -54,7 +54,12 @@
 "SettingsNotificationsNumberTitle" = "Daily Number of Quizzes";
 "SettingsNotificationsHoursTitle" = "Daily Quizzes Time Frame";
 "SettingsQuizSetionTitle" = "Quizzes";
-"SettingsQuizReverseTitle" = "Random Questions Reverse Languages";
+"SettingsQuizReverseTitle" = "Random Language Order";
+"SettingsOthersSectionTitle" = "Others";
+"SettingsOthersStatisticsTitle" = "Statistics";
+
+"SettingsNotificationsSectionFooterTitle" = "Activate automatic quizzes if you want them delivered every day and receive a notification when it happens.";
+"SettingsQuizSectionFooterTitle" = "Activate if you want the targeted translation language to be randomly switched in your quizzes.";
 
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";

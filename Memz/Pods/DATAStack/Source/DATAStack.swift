@@ -13,6 +13,8 @@ import TestCheck
 
     private var storeType: DATAStackStoreType = .SQLite
 
+    private var storeName: String?
+
     private var modelName: String = ""
 
     private var modelBundle: NSBundle = NSBundle.mainBundle()
@@ -26,7 +28,7 @@ import TestCheck
                 context.undoManager = nil
                 context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
                 context.parentContext = self.writerContext
-                
+
                 _mainContext = context
             }
 
@@ -56,12 +58,23 @@ import TestCheck
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator {
         get {
             if _persistentStoreCoordinator == nil {
-                let filePath = self.modelName + ".sqlite"
+                let filePath = (self.storeName ?? self.modelName) + ".sqlite"
 
-                guard let modelURL = self.modelBundle.URLForResource(self.modelName, withExtension: "momd"), model = NSManagedObjectModel(contentsOfURL: modelURL)
-                    else { fatalError("Model with model name \(self.modelName) not found in bundle \(self.modelBundle)") }
+                var model: NSManagedObjectModel?
 
-                let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+                if let momdModelURL = self.modelBundle.URLForResource(self.modelName, withExtension: "momd") {
+                    model = NSManagedObjectModel(contentsOfURL: momdModelURL)
+                }
+
+                if let momModelURL = self.modelBundle.URLForResource(self.modelName, withExtension: "mom") {
+                    model = NSManagedObjectModel(contentsOfURL: momModelURL)
+                }
+
+                if model == nil {
+                    fatalError("Model with model name \(self.modelName) not found in bundle \(self.modelBundle)")
+                }
+
+                let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model!)
 
                 switch self.storeType {
                 case .InMemory:
@@ -115,10 +128,10 @@ import TestCheck
                             fatalError("Excluding SQLite file from backup caused an error: \(excludingError)")
                         }
                     }
-                    
+
                     break
                 }
-                
+
                 _persistentStoreCoordinator = persistentStoreCoordinator
             }
 
@@ -146,9 +159,9 @@ import TestCheck
         } catch let error as NSError {
             fatalError("There was an error creating the disposablePersistentStoreCoordinator: \(error)")
         }
-        
+
         return persistentStoreCoordinator
-        }()
+    }()
 
     // MARK: - Initalizers
 
@@ -167,6 +180,13 @@ import TestCheck
         self.modelName = modelName
         self.modelBundle = bundle
         self.storeType = storeType
+    }
+
+    public init(modelName: String, bundle: NSBundle, storeType: DATAStackStoreType, storeName: String) {
+        self.modelName = modelName
+        self.modelBundle = bundle
+        self.storeType = storeType
+        self.storeName = storeName
     }
 
     deinit {

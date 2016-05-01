@@ -6,6 +6,12 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
+            <string>MaisonNeue-Bold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZSettingsTableViewHeader">
             <connections>
@@ -22,40 +28,34 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v35-DV-ihl" userLabel="Top Separator">
-                    <rect key="frame" x="233" y="0.0" width="0.0" height="13"/>
+                    <rect key="frame" x="233" y="0.0" width="0.0" height="19"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdD-Oy-cP6">
-                    <rect key="frame" x="194" y="13" width="78" height="21"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <rect key="frame" x="193" y="19" width="81" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rya-Bn-oQr" userLabel="Title Separator">
-                    <rect key="frame" x="233" y="34" width="0.0" height="14"/>
+                    <rect key="frame" x="233" y="40" width="0.0" height="18"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-Yo-THa">
-                    <rect key="frame" x="0.0" y="48" width="234" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learned Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-aa-6fD">
-                    <rect key="frame" x="234" y="48" width="233" height="21"/>
+                    <rect key="frame" x="234" y="58" width="233" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOw-ad-0sO" userLabel="Flag Separator View">
-                    <rect key="frame" x="117" y="69" width="0.0" height="19"/>
+                    <rect key="frame" x="117" y="79" width="0.0" height="27"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" id="zZm-pc-cBV"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Ym-lGF" userLabel="Your Language Button">
-                    <rect key="frame" x="70" y="88" width="93" height="60"/>
+                    <rect key="frame" x="70" y="106" width="93" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="hWr-Ym-lGF" secondAttribute="height" multiplier="82:53" id="X4X-bz-yEF"/>
                     </constraints>
@@ -65,34 +65,40 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dcx-DI-yGh" userLabel="Learned Language Button">
-                    <rect key="frame" x="304" y="88" width="93" height="60"/>
+                    <rect key="frame" x="304" y="106" width="93" height="60"/>
                     <state key="normal" image="Flag-United-Kingdom"/>
                     <connections>
                         <action selector="didTapLearnedLanguageButton:" destination="-1" eventType="touchUpInside" id="zam-1u-haF"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbW-rc-2sX" userLabel="Language Title Separator">
-                    <rect key="frame" x="117" y="148" width="0.0" height="12"/>
+                    <rect key="frame" x="117" y="166" width="0.0" height="16"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36a-qh-z6J">
-                    <rect key="frame" x="90" y="160" width="53" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRENCH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36a-qh-z6J">
+                    <rect key="frame" x="88" y="182" width="57" height="15"/>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="15"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyN-HS-DRW">
-                    <rect key="frame" x="323" y="160" width="56" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENGLISH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZyN-HS-DRW">
+                    <rect key="frame" x="320" y="182" width="61" height="15"/>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="15"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLM-WT-ZzG" userLabel="Bottom Separator">
-                    <rect key="frame" x="117" y="181" width="0.0" height="19"/>
+                    <rect key="frame" x="117" y="197" width="0.0" height="3"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Language" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5a-Yo-THa">
+                    <rect key="frame" x="0.0" y="58" width="234" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="TLM-WT-ZzG" secondAttribute="bottom" id="0xD-Z7-blN"/>
                 <constraint firstItem="6uM-aa-6fD" firstAttribute="top" secondItem="rya-Bn-oQr" secondAttribute="bottom" id="0zu-fA-uCe"/>
@@ -119,7 +125,7 @@
                 <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="JbW-rc-2sX" secondAttribute="centerX" id="SfC-r1-Cgh"/>
                 <constraint firstItem="AOw-ad-0sO" firstAttribute="width" secondItem="rya-Bn-oQr" secondAttribute="width" id="T4E-jv-hRT"/>
                 <constraint firstItem="rya-Bn-oQr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Tje-K1-9if"/>
-                <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="TLM-WT-ZzG" secondAttribute="height" id="UnI-Nc-uLu"/>
+                <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="TLM-WT-ZzG" secondAttribute="height" multiplier="1:0.12" id="UnI-Nc-uLu"/>
                 <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="n5a-Yo-THa" secondAttribute="centerX" id="egM-on-8Gt"/>
                 <constraint firstItem="AOw-ad-0sO" firstAttribute="height" secondItem="JbW-rc-2sX" secondAttribute="height" multiplier="1:0.6" id="ffg-S2-bOq"/>
                 <constraint firstItem="AOw-ad-0sO" firstAttribute="centerX" secondItem="TLM-WT-ZzG" secondAttribute="centerX" id="gL6-o8-AP5"/>
