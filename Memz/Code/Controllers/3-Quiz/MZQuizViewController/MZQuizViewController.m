@@ -11,6 +11,7 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
+#import "UIScrollView+KeyboardHelper.h"
 #import "MZCountDown.h"
 #import "MZWord.h"
 
@@ -96,6 +97,8 @@ MZCountDownDelegate>
 	[super viewDidLoad];
 
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
+	[self.tableView handleKeyboardNotifications];
+
 	[self setupResponse];
 }
 

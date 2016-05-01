@@ -99,16 +99,4 @@ static char keyboardScrollOffsetKey;
   return defaultBlock;
 }
 
-- (void)handleKeyboardNotifications {
-  return [self handleKeyboardNotifications];
-}
-
-- (void)handleKeyboardNotificationsWithOffset:(CGFloat)keyboardOffset {
-  return [self handleKeyboardNotificationsWithOffset:keyboardOffset];
-}
-
-- (MZKeyboardNotificationBlock)defaultKeyboardNotificationBlock {
-  return [self defaultKeyboardNotificationBlock];
-}
-
 @end

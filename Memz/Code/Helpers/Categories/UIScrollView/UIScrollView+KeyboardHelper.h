@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^ MZKeyboardNotificationBlock)(BOOL show, CGRect startKeyboardRect, CGRect endKeyboardRect, NSTimeInterval duration, UIViewAnimationOptions options);
+
 @protocol MZKeyboardNotificationBehavior;
 
 @interface UIScrollView (KeyboardHelper)
