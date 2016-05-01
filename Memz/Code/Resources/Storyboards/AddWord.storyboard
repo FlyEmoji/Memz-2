@@ -98,6 +98,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="editingDidChange:" destination="26E-MQ-oFk" eventType="editingChanged" id="fdz-0V-5s2"/>
+                                                        <action selector="editingDidEndOnExit:" destination="26E-MQ-oFk" eventType="editingDidEndOnExit" id="cZ6-Tf-Q7A"/>
                                                     </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHw-Kz-UZi">

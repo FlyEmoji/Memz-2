@@ -154,7 +154,6 @@ MZWordAdditionViewHeaderProtocol>
 				case MZWordAdditionWordRowTypeNewWord: {
 					MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																					 forIndexPath:indexPath];
-					cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
 					cell.textField.text = self.wordToTranslate;
 					cell.cellType = MZTextFieldTableViewCellTypeRegular;
 					cell.language = [MZLanguageManager sharedManager].fromLanguage;
@@ -175,7 +174,6 @@ MZWordAdditionViewHeaderProtocol>
 			MZSuggestedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuggestedWordTableViewCellIdentifier
 																																					 forIndexPath:indexPath];
 			cell.suggestedWordLabel.text = self.wordSuggestions[indexPath.row];
-			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
 			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			return cell;
 		}
@@ -183,7 +181,6 @@ MZWordAdditionViewHeaderProtocol>
 		case MZWordAdditionSectionTypeManual: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
-			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
 			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			cell.cellType = MZTextFieldTableViewCellTypeAddition;
 			cell.delegate = self;
@@ -194,7 +191,6 @@ MZWordAdditionViewHeaderProtocol>
 			MZTranslatedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslatedWordTableViewCellIdentifier
 																																						forIndexPath:indexPath];
 			cell.translatedWordLabel.text = self.wordTranslations[indexPath.row];
-			cell.bottomSeparator.backgroundColor = [UIColor secondaryBackgroundColor];
 			cell.language = [MZLanguageManager sharedManager].toLanguage;
 			cell.delegate = self;
 			return cell;
@@ -242,9 +238,7 @@ MZWordAdditionViewHeaderProtocol>
 	// TODO: Check if valid
 
 	[self addTranslations:cell.textField.text];
-
 	cell.textField.text = @"";
-	[self.view endEditing:YES];
 }
 
 - (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text {
@@ -257,6 +251,19 @@ MZWordAdditionViewHeaderProtocol>
 		[self updateExistingWords];
 		[self updateSuggestedTranslations];
 	}
+}
+
+- (void)textFieldTableViewCellDidHitReturnKey:(MZTextFieldTableViewCell *)cell {
+	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+	if (cell.textField.text.length == 0 || indexPath.section == MZWordAdditionSectionTypeWord) {
+		[self.view endEditing:YES];
+		return;
+	}
+
+	// TODO: Check if valid
+
+	[self addTranslations:cell.textField.text];
+	cell.textField.text = @"";
 }
 
 #pragma mark - Updates Upon Text Change
@@ -385,9 +392,11 @@ MZWordAdditionViewHeaderProtocol>
 		return;
 	}
 
+	// (1) Add translation to internal array and update header
 	[self.wordTranslations addObject:translation];
 	[self updateViewHeaderEnabled];
 
+	// (2) Add translation to table view
 	if (self.wordTranslations.count == 1) {
 		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
 									withRowAnimation:UITableViewRowAnimationFade];

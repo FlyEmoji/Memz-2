@@ -62,7 +62,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="bottomSeparatorView" destination="nF8-ZE-RWy" id="enW-Ps-jn0"/>
                 <outlet property="clearButton" destination="Xj7-Zl-xPo" id="3CO-MT-fWA"/>
                 <outlet property="headerTitle" destination="lXC-dx-HGh" id="5xS-yz-Ldw"/>
             </connections>

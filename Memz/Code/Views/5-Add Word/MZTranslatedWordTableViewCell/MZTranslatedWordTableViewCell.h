@@ -17,7 +17,6 @@
 @property (nonatomic, assign) MZLanguage language;
 
 @property (nonatomic, strong) IBOutlet UILabel *translatedWordLabel;
-@property (nonatomic, strong) IBOutlet UIView *bottomSeparator;
 
 @end
 
