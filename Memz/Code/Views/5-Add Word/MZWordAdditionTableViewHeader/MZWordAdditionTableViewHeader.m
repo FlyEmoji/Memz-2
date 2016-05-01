@@ -38,16 +38,16 @@
 
 	switch (sectionType) {
 		case MZWordAdditionSectionTypeWord:
-			self.headerTitle.text = NSLocalizedString(@"WordAdditionYourWordTitle", nil);
+			self.headerTitle.text = [NSLocalizedString(@"WordAdditionYourWordTitle", nil) uppercaseString];
 			break;
 		case MZWordAdditionSectionTypeSuggestions:
-			self.headerTitle.text = NSLocalizedString(@"WordAdditionSuggestedTranslationsTitle", nil);
+			self.headerTitle.text = [NSLocalizedString(@"WordAdditionSuggestedTranslationsTitle", nil) uppercaseString];
 			break;
 		case MZWordAdditionSectionTypeTranslations:
-			self.headerTitle.text = NSLocalizedString(@"WordAdditionCustomTranslationTitle", nil);
+			self.headerTitle.text = [NSLocalizedString(@"WordAdditionCustomTranslationTitle", nil) uppercaseString];
 			break;
 		case MZWordAdditionSectionTypeManual:
-			self.headerTitle.text = NSLocalizedString(@"WordAdditionYourTranslationsTitle", nil);
+			self.headerTitle.text = [NSLocalizedString(@"WordAdditionYourTranslationsTitle", nil) uppercaseString];
 			break;
 	}
 }

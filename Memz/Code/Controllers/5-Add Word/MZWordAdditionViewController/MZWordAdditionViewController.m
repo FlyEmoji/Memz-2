@@ -133,8 +133,7 @@ MZWordAdditionTableViewHeaderDelegate>
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   MZWordAdditionTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kWordAdditionTableViewHeaderIdentifier];
 	headerView.sectionType = [self.tableViewData[section][kSectionTypeKey] integerValue] ;
-	headerView.backgroundColor = [UIColor mainBackgroundColor];
-	headerView.bottomSeparatorView.backgroundColor = [UIColor secondaryBackgroundColor];
+	headerView.backgroundColor = [UIColor mainMediumGrayColor];
 	headerView.delegate = self;
 	return headerView;
 }
