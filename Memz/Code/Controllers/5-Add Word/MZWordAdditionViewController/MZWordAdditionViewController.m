@@ -15,6 +15,7 @@
 #import "NSManagedObject+MemzCoreData.h"
 #import "MZBingTranslatorCoordinator.h"
 #import "MZWord+CoreDataProperties.h"
+#import "UIScrollView+KeyboardHelper.h"
 #import "MZDataManager.h"
 #import "MZTableView.h"
 
@@ -66,9 +67,6 @@ MZWordAdditionTableViewHeaderDelegate>
 	self.wordTranslations = [[NSMutableArray alloc] init];
 	self.alreadyExistingWords = [[NSMutableOrderedSet alloc] init];
 
-	self.tableView.estimatedRowHeight = kWordAdditionTableViewEstimatedRowHeight;
-	self.tableView.rowHeight = UITableViewAutomaticDimension;
-
 	[self setupTableView];
 	[self.tableView reloadData];
 }
@@ -76,6 +74,11 @@ MZWordAdditionTableViewHeaderDelegate>
 #pragma mark - Setups
 
 - (void)setupTableView {
+	self.tableView.estimatedRowHeight = kWordAdditionTableViewEstimatedRowHeight;
+	self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+	[self.tableView handleKeyboardNotifications];
+
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZWordAdditionTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kWordAdditionTableViewHeaderIdentifier];
 }
 

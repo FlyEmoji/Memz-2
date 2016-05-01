@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MZCollectionViewLayoutAttributes.h"
 
-/* Subclasses that need to provide custom collection attributes must override class method layoutAttributesClass to
- * provide new attributes class. It must be a subclass of MZCollectionViewLayoutAttributes.
+/* Subclasses that need to provide custom collection attributes must override class method layoutAttributesClass.
+ * It must be a subclass of MZCollectionViewLayoutAttributes.
  */
 
 @interface MZGradientCollectionViewLayout : UICollectionViewLayout
