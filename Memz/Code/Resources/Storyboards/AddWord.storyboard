@@ -10,6 +10,9 @@
         <mutableArray key="MaisonNeue-Bold.ttf">
             <string>MaisonNeue-Bold</string>
         </mutableArray>
+        <mutableArray key="MaisonNeue-Demi.ttf">
+            <string>MaisonNeue-Demi</string>
+        </mutableArray>
         <mutableArray key="MaisonNeue-Medium.ttf">
             <string>MaisonNeue-Medium</string>
         </mutableArray>
@@ -30,9 +33,48 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Fwu-Pf-C5m" customClass="MZTableView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="l86-W2-hhG" userLabel="Table Header View" customClass="MZWordAdditionViewHeader">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD NEW WORD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-dI-FeM">
+                                            <rect key="frame" x="240" y="22" width="120" height="16"/>
+                                            <fontDescription key="fontDescription" name="MaisonNeue-Demi" family="Maison Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.29803921568627451" green="0.32156862745098036" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVP-UV-tAi">
+                                            <rect key="frame" x="550" y="13" width="32" height="30"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                            <state key="normal" title="ADD">
+                                                <color key="titleColor" red="0.43921568630000002" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="disabled">
+                                                <color key="titleColor" red="0.59215686274509804" green="0.62352941176470589" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addButtonTapped:" destination="l86-W2-hhG" eventType="touchUpInside" id="i8s-fo-2es"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IDf-dI-FeM" secondAttribute="bottom" constant="4" id="7go-gI-vmQ"/>
+                                        <constraint firstItem="IDf-dI-FeM" firstAttribute="centerY" secondItem="l86-W2-hhG" secondAttribute="centerY" multiplier="1:1" constant="3" id="9My-N6-7cI"/>
+                                        <constraint firstItem="IDf-dI-FeM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="l86-W2-hhG" secondAttribute="top" constant="4" id="OfA-uS-p0V"/>
+                                        <constraint firstItem="hVP-UV-tAi" firstAttribute="baseline" secondItem="IDf-dI-FeM" secondAttribute="baseline" id="PaQ-Eo-vRC"/>
+                                        <constraint firstItem="IDf-dI-FeM" firstAttribute="centerX" secondItem="l86-W2-hhG" secondAttribute="centerX" id="T8b-aS-2dh"/>
+                                        <constraint firstItem="hVP-UV-tAi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IDf-dI-FeM" secondAttribute="trailing" constant="20" id="YTg-g3-oEz"/>
+                                        <constraint firstItem="IDf-dI-FeM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l86-W2-hhG" secondAttribute="leading" constant="20" id="e43-eL-V9G"/>
+                                        <constraint firstAttribute="trailing" secondItem="hVP-UV-tAi" secondAttribute="trailing" constant="18" id="ybi-P5-JUy"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="addButton" destination="hVP-UV-tAi" id="AuS-JE-vUK"/>
+                                    </connections>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTextFieldTableViewCellIdentifier" rowHeight="69" id="26E-MQ-oFk" customClass="MZTextFieldTableViewCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="82" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="26E-MQ-oFk" id="aO7-qT-f1Q">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -51,6 +93,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="VZQ-CO-avJ"/>
                                                     </constraints>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
@@ -98,7 +141,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZAutoCompletionTableViewCellIdentifier" rowHeight="44" id="wEt-SO-wkb" customClass="MZAutoCompletionTableViewCell">
-                                        <rect key="frame" x="0.0" y="97" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEt-SO-wkb" id="Pts-iB-OIX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -141,7 +184,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSuggestedWordTableViewCellIdentifier" rowHeight="69" id="t7o-fq-Iez" customClass="MZSuggestedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="141" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="195" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7o-fq-Iez" id="NgG-F7-gmJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -200,7 +243,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTranslatedWordTableViewCellIdentifier" rowHeight="69" id="vta-mD-ZFq" customClass="MZTranslatedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="210" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="264" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vta-mD-ZFq" id="LSb-M8-quD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -218,7 +261,7 @@
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="is2-s2-vAx"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFu-gt-UEl">
@@ -274,29 +317,12 @@
                                     <outlet property="transitionDelegate" destination="hko-ZM-ogh" id="JAK-iJ-lmw"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hrp-eF-sJu" userLabel="Add Button">
-                                <rect key="frame" x="30" y="535" width="540" height="50"/>
-                                <color key="backgroundColor" red="0.1171962347" green="0.070841617839999996" blue="0.5315466244" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Eod-go-ZgT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Add Word">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapAddWordButton:" destination="hko-ZM-ogh" eventType="touchUpInside" id="cxm-5v-VWt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="top" secondItem="0fl-7w-hRt" secondAttribute="top" id="0Sv-Dk-4ch"/>
                             <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="Fwu-Pf-C5m" secondAttribute="bottom" id="MVe-Sh-0zo"/>
-                            <constraint firstItem="hrp-eF-sJu" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" constant="30" id="ZsZ-mE-MwJ"/>
                             <constraint firstItem="Fwu-Pf-C5m" firstAttribute="leading" secondItem="0fl-7w-hRt" secondAttribute="leading" id="j3N-EC-Kxq"/>
-                            <constraint firstItem="XD5-Gd-9Ck" firstAttribute="top" secondItem="hrp-eF-sJu" secondAttribute="bottom" constant="15" id="lg9-VE-b0I"/>
-                            <constraint firstAttribute="trailing" secondItem="hrp-eF-sJu" secondAttribute="trailing" constant="30" id="qmR-AX-JTS"/>
                             <constraint firstAttribute="trailing" secondItem="Fwu-Pf-C5m" secondAttribute="trailing" id="zn2-T7-Efl"/>
                         </constraints>
                     </view>
@@ -304,7 +330,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="bottomButton" destination="hrp-eF-sJu" id="yCy-pc-E98"/>
+                        <outlet property="tableHeaderView" destination="l86-W2-hhG" id="Glj-Aa-SMM"/>
                         <outlet property="tableView" destination="Fwu-Pf-C5m" id="1xw-7x-5j6"/>
                         <outlet property="tableViewTopConstraint" destination="0Sv-Dk-4ch" id="GtV-OT-dWy"/>
                     </connections>
@@ -335,7 +361,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add-Word-Minus-Icon" width="256" height="256"/>
+        <image name="Add-Word-Minus-Icon" width="22" height="22"/>
         <image name="Add-Word-Triangle-Icon" width="263" height="315"/>
         <image name="Flag-France" width="48" height="36"/>
         <image name="Flag-United-Kingdom" width="48" height="36"/>

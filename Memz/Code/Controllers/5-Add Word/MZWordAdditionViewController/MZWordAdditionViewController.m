@@ -16,6 +16,7 @@
 #import "MZBingTranslatorCoordinator.h"
 #import "MZWord+CoreDataProperties.h"
 #import "UIScrollView+KeyboardHelper.h"
+#import "MZWordAdditionViewHeader.h"
 #import "MZDataManager.h"
 #import "MZTableView.h"
 
@@ -41,11 +42,12 @@ const CGFloat kWordAdditionTableViewEstimatedRowHeight = 100.0f;
 UITableViewDelegate,
 MZTextFieldTableViewCellDelegate,
 MZTranslatedWordTableViewCellDelegate,
-MZWordAdditionTableViewHeaderDelegate>
+MZWordAdditionTableViewHeaderDelegate,
+MZWordAdditionViewHeaderProtocol>
 
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
-@property (nonatomic, strong) IBOutlet UIButton *bottomButton;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+@property (nonatomic, strong) IBOutlet MZWordAdditionViewHeader *tableHeaderView;
 
 @property (nonatomic, weak, readonly) NSArray<NSDictionary *> *tableViewData;
 
@@ -80,6 +82,8 @@ MZWordAdditionTableViewHeaderDelegate>
 	[self.tableView handleKeyboardNotifications];
 
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZWordAdditionTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kWordAdditionTableViewHeaderIdentifier];
+
+	self.tableHeaderView.delegate = self;
 }
 
 #pragma mark - Data Management Calculated Property
@@ -209,7 +213,6 @@ MZWordAdditionTableViewHeaderDelegate>
 		case MZWordAdditionSectionTypeWord: {
 			if ([self.tableViewData[indexPath.section][kContentTypeKey][indexPath.row][kWordRowTypeKey] integerValue] == MZWordAdditionWordRowTypeAlreadyExisting) {
 				[self setupWithWord:self.alreadyExistingWords[indexPath.row - 1]];  // first cell is word to translate
-				[self.bottomButton setTitle:NSLocalizedString(@"WordAdditionEditWordButtonTitle", nil) forState:UIControlStateNormal];
 			}
 			break;
 		}
@@ -249,7 +252,6 @@ MZWordAdditionTableViewHeaderDelegate>
 	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
 		self.wordToTranslate = text;
 
-		[self.bottomButton setTitle:NSLocalizedString(@"WordAdditionAddWordButtonTitle", nil) forState:UIControlStateNormal];
 		[self removeTranslationsAnimated:YES];
 
 		[self updateExistingWords];
@@ -369,6 +371,9 @@ MZWordAdditionTableViewHeaderDelegate>
 	}
 	[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
 																							withRowAnimation:UITableViewRowAnimationFade];
+
+	// (5) Update table view header
+	[self updateViewHeaderEnabled];
 }
 
 - (void)addTranslations:(NSString *)translation {
@@ -378,6 +383,7 @@ MZWordAdditionTableViewHeaderDelegate>
 	}
 
 	[self.wordTranslations addObject:translation];
+	[self updateViewHeaderEnabled];
 
 	if (self.wordTranslations.count == 1) {
 		[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
@@ -407,31 +413,14 @@ MZWordAdditionTableViewHeaderDelegate>
 	}
 }
 
-#pragma mark - Table View Header Delegate
-
-- (void)wordAdditionTableViewHeaderDidTapClearButton:(MZWordAdditionTableViewHeader *)tableViewHeader {
-	[self removeTranslationsAnimated:YES];
+- (void)updateViewHeaderEnabled {
+	BOOL isEnabled = self.wordToTranslate.length > 0 && self.wordTranslations.count > 0;
+	self.tableHeaderView.enable = isEnabled;
 }
 
-#pragma mark - Translated Word Cells Delegate Methods
+#pragma mark ; View Header Delegate
 
-- (void)translatedWordTableViewCellDidTapRemoveButton:(MZTranslatedWordTableViewCell *)cell {
-	NSUInteger wordTranslationIndex = [self.wordTranslations indexOfObject:cell.translatedWordLabel.text];
-	[self.wordTranslations removeObjectAtIndex:wordTranslationIndex];
-
-	if (self.wordTranslations.count == 0) {
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
-									withRowAnimation:UITableViewRowAnimationFade];
-	} else {
-		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:wordTranslationIndex
-																																inSection:self.tableView.numberOfSections - 1]]
-													withRowAnimation:UITableViewRowAnimationFade];
-	}
-}
-
-#pragma mark - Actions
-
-- (IBAction)didTapAddWordButton:(id)sender {
+- (void)wordAdditionViewHeaderDidTapAddButton:(MZWordAdditionViewHeader *)header {
 	// TODO: Test texts not empty, etc.
 	// TODO: In edit mode, remove no longer needed translations
 
@@ -444,6 +433,30 @@ MZWordAdditionTableViewHeaderDelegate>
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 		[self dismissViewControllerWithCompletion:nil];
 	}];
+}
+
+#pragma mark - Table View Header Delegate
+
+- (void)wordAdditionTableViewHeaderDidTapClearButton:(MZWordAdditionTableViewHeader *)tableViewHeader {
+	[self removeTranslationsAnimated:YES];
+	[self updateViewHeaderEnabled];
+}
+
+#pragma mark - Translated Word Cells Delegate Methods
+
+- (void)translatedWordTableViewCellDidTapRemoveButton:(MZTranslatedWordTableViewCell *)cell {
+	NSUInteger wordTranslationIndex = [self.wordTranslations indexOfObject:cell.translatedWordLabel.text];
+	[self.wordTranslations removeObjectAtIndex:wordTranslationIndex];
+	[self updateViewHeaderEnabled];
+
+	if (self.wordTranslations.count == 0) {
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections - 1]
+									withRowAnimation:UITableViewRowAnimationFade];
+	} else {
+		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:wordTranslationIndex
+																																inSection:self.tableView.numberOfSections - 1]]
+													withRowAnimation:UITableViewRowAnimationFade];
+	}
 }
 
 @end
