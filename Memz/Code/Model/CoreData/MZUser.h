@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZUser : NSManagedObject
 
++ (MZUser *)currentUser;
+
 @end
 
 NS_ASSUME_NONNULL_END

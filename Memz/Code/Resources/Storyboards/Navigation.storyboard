@@ -14,11 +14,20 @@
                     <connections>
                         <segue destination="MRV-1q-3R5" kind="presentation" identifier="MZWordAdditionViewControllerSegue" customClass="MZStoryboardSegue" id="tJd-VW-eVU"/>
                         <segue destination="vsG-5D-Spl" kind="presentation" identifier="MZSettingsViewControllerSegue" customClass="MZStoryboardSegue" id="HTT-PF-4e3"/>
+                        <segue destination="Ike-fu-ese" kind="presentation" identifier="MZUserEntranceViewControllerSegue" id="vS3-h4-Her"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5v-zu-ZdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2159" y="275"/>
+        </scene>
+        <!--UserEntrance-->
+        <scene sceneID="XGt-vs-vek">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UserEntrance" id="Ike-fu-ese" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsr-fG-kgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2159.5" y="724"/>
         </scene>
         <!--AddWord-->
         <scene sceneID="jQE-mV-abQ">

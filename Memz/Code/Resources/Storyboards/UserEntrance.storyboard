@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LAJ-4J-vII">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LAJ-4J-vII">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--User Entrance View Controller-->
@@ -34,20 +34,11 @@
                     <navigationItem key="navigationItem" id="3cr-kN-Yv7"/>
                     <connections>
                         <outlet property="enterNavigationButton" destination="5Ss-MS-bXC" id="e4o-nO-FGi"/>
-                        <segue destination="Io8-Rl-NrL" kind="presentation" identifier="MZMainViewControllerSegue" id="Q9C-uX-Yl5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1015" y="311"/>
-        </scene>
-        <!--Navigation-->
-        <scene sceneID="z0b-yf-hcC">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Navigation" id="Io8-Rl-NrL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TCO-5O-u1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1535.5" y="311"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7kc-Oi-B65">
