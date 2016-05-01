@@ -350,7 +350,10 @@ MZWordAdditionViewHeaderProtocol>
 
 - (void)setupWithWord:(MZWord *)word {
 	// (1) Update current word
-	self.wordToTranslate = word.word;
+	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:MZWordAdditionSectionTypeWord];
+	MZTextFieldTableViewCell *wordToTranslateCell = [[self.tableView cellForRowAtIndexPath:indexPath]
+																									 safeCastToClass:[MZTextFieldTableViewCell class]];
+	wordToTranslateCell.textField.text = word.word;
 
 	// (2) Remove current existing words suggested
 	NSMutableArray *indexesToRemove = [[NSMutableArray alloc] init];
