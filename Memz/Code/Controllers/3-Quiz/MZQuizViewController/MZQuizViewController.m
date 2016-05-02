@@ -140,8 +140,8 @@ MZCountDownDelegate>
 
 	self.translating = YES;
 
-	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translation.count];
-	for (NSUInteger i = 0; i < self.response.word.translation.count; i++) {
+	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translations.count];
+	for (NSUInteger i = 0; i < self.response.word.translations.count; i++) {
 		[self.tableViewEnteredData addObject:buildTranslation(MZTranslationResponseTableViewCellTypeUnaswered, @"", @"", NO)];
 	}
 

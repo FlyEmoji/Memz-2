@@ -22,7 +22,7 @@
 - (NSArray<MZWord *> *)wordsTranslationsForLanguage:(MZLanguage)language {
 	NSMutableArray<MZWord *> *mutableWordsTranslations = [[NSMutableArray alloc] init];
 	for (MZWord *word in [self wordsForLanguage:language]) {
-		[mutableWordsTranslations addObjectsFromArray:word.translation.allObjects];
+		[mutableWordsTranslations addObjectsFromArray:word.translations.allObjects];
 	}
 	return mutableWordsTranslations;
 }

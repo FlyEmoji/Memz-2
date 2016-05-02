@@ -18,7 +18,7 @@
 @dynamic word;
 @dynamic responses;
 @dynamic suggestionArticles;
-@dynamic translation;
+@dynamic translations;
 @dynamic users;
 
 @end

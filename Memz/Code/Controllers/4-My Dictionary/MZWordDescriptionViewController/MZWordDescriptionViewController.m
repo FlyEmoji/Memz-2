@@ -60,7 +60,7 @@ MZTableViewTransitionDelegate>
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	self.tableViewHeader.word = self.word;
 
-	self.tableViewData = self.word.translation.allObjects.mutableCopy;
+	self.tableViewData = self.word.translations.allObjects.mutableCopy;
 	[self.tableView reloadData];
 }
 

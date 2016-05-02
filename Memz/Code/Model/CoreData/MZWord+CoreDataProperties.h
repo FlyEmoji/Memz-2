@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *word;
 @property (nullable, nonatomic, retain) NSSet<MZResponse *> *responses;
 @property (nullable, nonatomic, retain) NSSet<MZArticle *> *suggestionArticles;
-@property (nullable, nonatomic, retain) NSSet<MZWord *> *translation;
+@property (nullable, nonatomic, retain) NSSet<MZWord *> *translations;
 @property (nullable, nonatomic, retain) NSSet<MZUser *> *users;
 
 @end
@@ -41,10 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addSuggestionArticles:(NSSet<MZArticle *> *)values;
 - (void)removeSuggestionArticles:(NSSet<MZArticle *> *)values;
 
-- (void)addTranslationObject:(MZWord *)value;
-- (void)removeTranslationObject:(MZWord *)value;
-- (void)addTranslation:(NSSet<MZWord *> *)values;
-- (void)removeTranslation:(NSSet<MZWord *> *)values;
+- (void)addTranslationsObject:(MZWord *)value;
+- (void)removeTranslationsObject:(MZWord *)value;
+- (void)addTranslations:(NSSet<MZWord *> *)values;
+- (void)removeTranslations:(NSSet<MZWord *> *)values;
 
 - (void)addUsersObject:(MZUser *)value;
 - (void)removeUsersObject:(MZUser *)value;

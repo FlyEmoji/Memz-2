@@ -87,15 +87,15 @@
 			wordTranslation.language = @(toLanguage);
 		}
 
-		[self addTranslationObject:wordTranslation];
+		[self addTranslationsObject:wordTranslation];
 	}];
 
 	// (3) Remove no longer needed translations
-	[self.translation.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
+	[self.translations.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
 		if (![translations containsObject:translation.word]) {
-			[self removeTranslation:[NSSet setWithObject:translation]];
+			[self removeTranslations:[NSSet setWithObject:translation]];
 
-			if (translation.translation.count == 0) {
+			if (translation.translations.count == 0) {
 				[context deleteObject:translation];
 			}
 		}

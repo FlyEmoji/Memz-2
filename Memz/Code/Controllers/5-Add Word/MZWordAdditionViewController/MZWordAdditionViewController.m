@@ -376,7 +376,7 @@ MZWordAdditionViewHeaderProtocol>
 
 	// (4) Insert existing translations for already existing word chosen
 	[self removeTranslationsAnimated:NO];
-	for (MZWord *translation in word.translation) {
+	for (MZWord *translation in word.translations) {
 		[self.wordTranslations addObject:translation.word];
 	}
 	[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]

@@ -37,7 +37,7 @@
         <attribute name="word" attributeType="String" syncable="YES"/>
         <relationship name="responses" toMany="YES" deletionRule="Nullify" destinationEntity="Response" inverseName="word" inverseEntity="Response" syncable="YES"/>
         <relationship name="suggestionArticles" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="suggestedWords" inverseEntity="Article" syncable="YES"/>
-        <relationship name="translation" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translation" inverseEntity="Word" syncable="YES"/>
+        <relationship name="translations" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="translations" inverseEntity="Word" syncable="YES"/>
         <relationship name="users" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="translations" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>

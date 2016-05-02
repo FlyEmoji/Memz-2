@@ -26,7 +26,7 @@
 
 - (void)updateUI {
 	self.wordLabel.text = self.word.word.uppercaseString;
-	self.wordTranslation.text = self.word.translation.allObjects.firstObject.word.capitalizedString;
+	self.wordTranslation.text = self.word.translations.allObjects.firstObject.word.capitalizedString;
 
 	if ([MZWord existingWordForString:self.word.word fromLanguage:self.word.language.integerValue inContext:nil]) {  // TODO: check in user object instead
 		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
