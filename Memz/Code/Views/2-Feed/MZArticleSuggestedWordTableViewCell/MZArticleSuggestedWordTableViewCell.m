@@ -21,14 +21,14 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
-	[self updateUI];
+	[self forceUpdate];
 }
 
-- (void)updateUI {
+- (void)forceUpdate {
 	self.wordLabel.text = self.word.word.uppercaseString;
 	self.wordTranslation.text = self.word.translations.allObjects.firstObject.word.capitalizedString;
 
-	if ([MZWord existingWordForString:self.word.word fromLanguage:self.word.language.integerValue inContext:nil]) {  // TODO: check in user object instead
+	if ([[MZUser currentUser].translations containsObject:self.word]) {
 		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
 										 forState:UIControlStateNormal];
 	} else {
@@ -42,7 +42,7 @@
 - (void)setWord:(MZWord *)word {
 	_word = word;
 
-	[self updateUI];
+	[self forceUpdate];
 }
 
 #pragma mark - Actions

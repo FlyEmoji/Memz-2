@@ -16,6 +16,8 @@
 @property (nonatomic, strong) MZWord *word;
 @property (nonatomic, weak) id<MZArticleSuggestedWordTableViewCellDelegate> delegate;
 
+- (void)forceUpdate;
+
 @end
 
 @protocol MZArticleSuggestedWordTableViewCellDelegate <NSObject>
