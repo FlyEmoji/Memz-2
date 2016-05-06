@@ -44,6 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)updateTranslations:(NSArray<NSString *> *)translations
 								toLanguage:(MZLanguage)toLanguage
+									 forUser:(nullable MZUser *)user
 								 inContext:(nullable NSManagedObjectContext *)context;
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage;

@@ -28,7 +28,7 @@
 	if (user) {
 		[newWord addUsersObject:user];
 	}
-	[newWord updateTranslations:translations toLanguage:toLanguage inContext:context];
+	[newWord updateTranslations:translations toLanguage:toLanguage forUser:user inContext:context];
 	return newWord;
 }
 
@@ -47,7 +47,7 @@
 	if (!existingWord) {
 		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage forUser:user inContext:context];
 	} else {
-		[existingWord updateTranslations:translations toLanguage:toLanguage inContext:context];
+		[existingWord updateTranslations:translations toLanguage:toLanguage forUser:user inContext:context];
 		return existingWord;
 	}
 }
@@ -72,6 +72,7 @@
 
 - (void)updateTranslations:(NSArray<NSString *> *)translations
 								toLanguage:(MZLanguage)toLanguage
+									 forUser:(MZUser *)user
 								 inContext:(NSManagedObjectContext *)context {
 	// (1) Initialize context if not specified
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
@@ -100,6 +101,17 @@
 			}
 		}
 	}];
+
+	// (4) Set translation and reverse relationship user if exists
+	if (user && ![user.translations containsObject:self]) {
+		[user addTranslationsObject:self];
+	}
+
+	// (5) Remove word if no translations anymore
+	if (self.translations.count == 0) {
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@", self.objectID];
+		[MZWord deleteAllObjectsMatchingPredicate:predicate context:context];
+	}
 }
 
 #pragma mark - Statistics
