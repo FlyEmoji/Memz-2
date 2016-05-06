@@ -135,7 +135,11 @@
 	}
 
 	NSError *error;
-	NSArray *objects = [context executeFetchRequest:request error:&error];
+	NSArray *objects = @[];
+	
+	@synchronized(context) {
+		objects = [context executeFetchRequest:request error:&error];
+	}
 	return objects;
 }
 

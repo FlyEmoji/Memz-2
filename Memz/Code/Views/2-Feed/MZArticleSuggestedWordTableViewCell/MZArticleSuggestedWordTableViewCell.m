@@ -25,16 +25,18 @@
 }
 
 - (void)forceUpdate {
-	self.wordLabel.text = self.word.word.uppercaseString;
-	self.wordTranslation.text = self.word.translations.allObjects.firstObject.word.capitalizedString;
+	dispatch_async(dispatch_get_main_queue(), ^(void){
+		self.wordLabel.text = self.word.word.uppercaseString;
+		self.wordTranslation.text = self.word.translations.allObjects.firstObject.word.capitalizedString;
 
-	if ([[MZUser currentUser].translations containsObject:self.word]) {
-		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
-										 forState:UIControlStateNormal];
-	} else {
-		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonTick]
-										 forState:UIControlStateNormal];
-	}
+		if ([[MZUser currentUser].translations containsObject:self.word]) {
+			[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
+											 forState:UIControlStateNormal];
+		} else {
+			[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonTick]
+											 forState:UIControlStateNormal];
+		}
+	});
 }
 
 #pragma mark - Custom Setter
