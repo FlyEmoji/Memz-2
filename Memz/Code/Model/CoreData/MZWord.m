@@ -108,11 +108,7 @@
 	}
 
 	// (5) Remove word if no translations anymore
-	// TODO: Finish this part
-	/*if (self.translations.count == 0) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@", self.objectID];
-		[MZWord deleteAllObjectsMatchingPredicate:predicate context:context];
-	}*/
+	// TODO: Actually perform deletion 
 }
 
 #pragma mark - Statistics

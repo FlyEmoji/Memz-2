@@ -17,6 +17,7 @@
 #import "MZWord+CoreDataProperties.h"
 #import "UIScrollView+KeyboardHelper.h"
 #import "MZWordAdditionViewHeader.h"
+#import "NSArray+MemzAdditions.h"
 #import "MZDataManager.h"
 #import "MZTableView.h"
 
@@ -316,41 +317,46 @@ MZWordAdditionViewHeaderProtocol>
 	 ^(NSArray<NSString *> *translations, NSError *error) {
 		 if (!error) {
 			 dispatch_async(dispatch_get_main_queue(), ^{
-				 // (1) Delete section if needed
-				 if (translations.count == 0 && self.wordSuggestions.count > 0) {
-					 self.wordSuggestions = translations.mutableCopy;
+				 // (1) Remove translations already entered by user
+				 NSMutableSet *mutableSet = [NSMutableSet setWithArray:[translations allLowercaseStrings]];
+				 [mutableSet minusSet:[NSSet setWithArray:[self.wordTranslations allLowercaseStrings]]];
+				 NSArray<NSString *> *refinedTranslations = mutableSet.allObjects;
+
+				 // (2) Delete section if needed
+				 if (refinedTranslations.count == 0 && self.wordSuggestions.count > 0) {
+					 self.wordSuggestions = refinedTranslations.mutableCopy;
 					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
 				 }
 
-				 // (2) Insert section if needed
-				 if (self.wordSuggestions.count == 0 && translations.count > 0) {
-					 self.wordSuggestions = translations.mutableCopy;
+				 // (3) Insert section if needed
+				 if (self.wordSuggestions.count == 0 && refinedTranslations.count > 0) {
+					 self.wordSuggestions = refinedTranslations.mutableCopy;
 					 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
 				 }
 
-				 // (3) Otherwise, update currently displayed suggestion cells if applicable
-				 for (NSInteger i = 0; i < translations.count && i < self.wordSuggestions.count; i++) {
+				 // (4) Otherwise, update currently displayed suggestion cells if applicable
+				 for (NSInteger i = 0; i < refinedTranslations.count && i < self.wordSuggestions.count; i++) {
 					 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions];
 					 MZSuggestedWordTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-					 cell.suggestedWordLabel.text = translations[i];
+					 cell.suggestedWordLabel.text = refinedTranslations[i];
 				 }
 
-				 // (4) Update number of suggestion cells according to new needs
+				 // (5) Update number of suggestion cells according to new needs
 				 NSMutableArray<NSIndexPath *> *indexPathsToDelete = [[NSMutableArray alloc] init];
-				 for (NSInteger i = translations.count; i < self.wordSuggestions.count; i++) {
+				 for (NSInteger i = refinedTranslations.count; i < self.wordSuggestions.count; i++) {
 					 [indexPathsToDelete addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
 				 NSMutableArray<NSIndexPath *> *indexPathsToInsert = [[NSMutableArray alloc] init];
-				 for (NSInteger i = self.wordSuggestions.count; i < translations.count; i++) {
+				 for (NSInteger i = self.wordSuggestions.count; i < refinedTranslations.count; i++) {
 					 [indexPathsToInsert addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
-				 self.wordSuggestions = translations.mutableCopy;
+				 self.wordSuggestions = refinedTranslations.mutableCopy;
 				 if (indexPathsToDelete.count > 0) {
 					 [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationFade];
 				 }
@@ -439,7 +445,7 @@ MZWordAdditionViewHeaderProtocol>
 	self.tableHeaderView.enable = isEnabled;
 }
 
-#pragma mark ; View Header Delegate
+#pragma mark - View Header Delegate
 
 - (void)wordAdditionViewHeaderDidTapAddButton:(MZWordAdditionViewHeader *)header {
 	// TODO: Test texts not empty, etc.
