@@ -15,7 +15,7 @@
 
 + (void)fetchFeedWithCompletionHandler:(void (^)(NSArray<MZArticle *> *articles, NSError *))completionHandler {
 	// The following CoreData computations can be time consuming and freeze the UI: we execute them in background
-	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSString *filePath = [[NSBundle mainBundle] pathForResource:@"feed.json".stringByDeletingPathExtension ofType:@"feed.json".pathExtension];
 		NSParameterAssert(filePath != nil);
 		NSData *data = [NSData dataWithContentsOfFile:filePath];

@@ -50,15 +50,17 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 	});
 
 	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray<MZArticle *> *articles, NSError *error) {
-		[MZLoaderView hideAllLoadersFromView:self.view];
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[MZLoaderView hideAllLoadersFromView:self.view];
 
-		if (error) {
-			// TODO: Display error
-			return;
-		}
+			if (error) {
+				// TODO: Display error
+				return;
+			}
 
-		self.tableViewData = articles;
-		[self.tableView reloadData];
+			self.tableViewData = articles;
+			[self.tableView reloadData];
+		});
 	}];
 }
 
