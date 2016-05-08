@@ -11,7 +11,7 @@
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
 #import "MZWord+CoreDataProperties.h"
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
 #import "MZDataManager.h"
 
 NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
@@ -51,9 +51,11 @@ NSFetchedResultsControllerDelegate>
 
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZWord entityName]];
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d", [MZLanguageManager sharedManager].fromLanguage];
-	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"learningIndex" ascending:NO];
+
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN users", [MZUser currentUser].fromLanguage.integerValue, [MZUser currentUser].objectID];
 	request.predicate = predicate;
+
+	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"learningIndex" ascending:NO];
 	request.sortDescriptors = @[descriptor];
 
 	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
+#import "MZUser.h"
 
 @class MZWord;
 
@@ -18,7 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, readonly) MZLanguage fromLanguage;
 
-+ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage;
++ (NSArray<NSNumber *> *)allLanguages;
+
++ (MZQuiz *)randomQuizForUser:(MZUser *)user;  
+
++ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage
+												toLanguage:(MZLanguage)toLanguage
+													 forUser:(nullable MZUser *)user; 
 
 @end
 

@@ -17,6 +17,7 @@
 #import "MZWord+CoreDataProperties.h"
 #import "UIScrollView+KeyboardHelper.h"
 #import "MZWordAdditionViewHeader.h"
+#import "NSArray+MemzAdditions.h"
 #import "MZDataManager.h"
 #import "MZTableView.h"
 
@@ -156,7 +157,7 @@ MZWordAdditionViewHeaderProtocol>
 																																					 forIndexPath:indexPath];
 					cell.textField.text = self.wordToTranslate;
 					cell.cellType = MZTextFieldTableViewCellTypeRegular;
-					cell.language = [MZLanguageManager sharedManager].fromLanguage;
+					cell.language = [MZUser currentUser].fromLanguage.integerValue;
 					cell.delegate = self;
 					return cell;
 				}
@@ -174,14 +175,14 @@ MZWordAdditionViewHeaderProtocol>
 			MZSuggestedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuggestedWordTableViewCellIdentifier
 																																					 forIndexPath:indexPath];
 			cell.suggestedWordLabel.text = self.wordSuggestions[indexPath.row];
-			cell.language = [MZLanguageManager sharedManager].toLanguage;
+			cell.language = [MZUser currentUser].toLanguage.integerValue;
 			return cell;
 		}
 
 		case MZWordAdditionSectionTypeManual: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
-			cell.language = [MZLanguageManager sharedManager].toLanguage;
+			cell.language = [MZUser currentUser].toLanguage.integerValue;
 			cell.cellType = MZTextFieldTableViewCellTypeAddition;
 			cell.delegate = self;
 			return cell;
@@ -191,7 +192,7 @@ MZWordAdditionViewHeaderProtocol>
 			MZTranslatedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslatedWordTableViewCellIdentifier
 																																						forIndexPath:indexPath];
 			cell.translatedWordLabel.text = self.wordTranslations[indexPath.row];
-			cell.language = [MZLanguageManager sharedManager].toLanguage;
+			cell.language = [MZUser currentUser].toLanguage.integerValue;
 			cell.delegate = self;
 			return cell;
 		}
@@ -244,10 +245,19 @@ MZWordAdditionViewHeaderProtocol>
 - (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text {
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
+		// (1) Update current word to translate
 		self.wordToTranslate = text;
 
+		// (2) If word matches an existing one, update and populate table view with its existing tranlations
+		if ([text.lowercaseString isEqualToString:self.alreadyExistingWords.firstObject.word.lowercaseString]) {
+			[self setupWithWord:self.alreadyExistingWords.firstObject];
+			return;
+		}
+
+		// (3) Remove current translations if word is ammended
 		[self removeTranslationsAnimated:YES];
 
+		// (4) Update existing word suggestions and translation suggestions
 		[self updateExistingWords];
 		[self updateSuggestedTranslations];
 	}
@@ -269,7 +279,7 @@ MZWordAdditionViewHeaderProtocol>
 #pragma mark - Updates Upon Text Change
 
 - (void)updateExistingWords {
-	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZLanguageManager sharedManager].fromLanguage
+	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZUser currentUser].fromLanguage.integerValue
 																																		startingByString:self.wordToTranslate
 																																					 inContext:nil];
 
@@ -301,47 +311,52 @@ MZWordAdditionViewHeaderProtocol>
 
 - (void)updateSuggestedTranslations {
 	[[MZBingTranslatorCoordinator sharedManager] translateString:self.wordToTranslate
-																									fromLanguage:[MZLanguageManager sharedManager].fromLanguage
-																										toLanguage:[MZLanguageManager sharedManager].toLanguage
+																									fromLanguage:[MZUser currentUser].fromLanguage.integerValue
+																										toLanguage:[MZUser currentUser].toLanguage.integerValue
 																						 completionHandler:
 	 ^(NSArray<NSString *> *translations, NSError *error) {
 		 if (!error) {
 			 dispatch_async(dispatch_get_main_queue(), ^{
-				 // (1) Delete section if needed
-				 if (translations.count == 0 && self.wordSuggestions.count > 0) {
-					 self.wordSuggestions = translations.mutableCopy;
+				 // (1) Remove translations already entered by user
+				 NSMutableSet *mutableSet = [NSMutableSet setWithArray:[translations allLowercaseStrings]];
+				 [mutableSet minusSet:[NSSet setWithArray:[self.wordTranslations allLowercaseStrings]]];
+				 NSArray<NSString *> *refinedTranslations = mutableSet.allObjects;
+
+				 // (2) Delete section if needed
+				 if (refinedTranslations.count == 0 && self.wordSuggestions.count > 0) {
+					 self.wordSuggestions = refinedTranslations.mutableCopy;
 					 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
 				 }
 
-				 // (2) Insert section if needed
-				 if (self.wordSuggestions.count == 0 && translations.count > 0) {
-					 self.wordSuggestions = translations.mutableCopy;
+				 // (3) Insert section if needed
+				 if (self.wordSuggestions.count == 0 && refinedTranslations.count > 0) {
+					 self.wordSuggestions = refinedTranslations.mutableCopy;
 					 [self.tableView insertSections:[NSIndexSet indexSetWithIndex:MZWordAdditionSectionTypeSuggestions]
 												 withRowAnimation:UITableViewRowAnimationFade];
 					 return;
 				 }
 
-				 // (3) Otherwise, update currently displayed suggestion cells if applicable
-				 for (NSInteger i = 0; i < translations.count && i < self.wordSuggestions.count; i++) {
+				 // (4) Otherwise, update currently displayed suggestion cells if applicable
+				 for (NSInteger i = 0; i < refinedTranslations.count && i < self.wordSuggestions.count; i++) {
 					 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions];
 					 MZSuggestedWordTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-					 cell.suggestedWordLabel.text = translations[i];
+					 cell.suggestedWordLabel.text = refinedTranslations[i];
 				 }
 
-				 // (4) Update number of suggestion cells according to new needs
+				 // (5) Update number of suggestion cells according to new needs
 				 NSMutableArray<NSIndexPath *> *indexPathsToDelete = [[NSMutableArray alloc] init];
-				 for (NSInteger i = translations.count; i < self.wordSuggestions.count; i++) {
+				 for (NSInteger i = refinedTranslations.count; i < self.wordSuggestions.count; i++) {
 					 [indexPathsToDelete addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
 				 NSMutableArray<NSIndexPath *> *indexPathsToInsert = [[NSMutableArray alloc] init];
-				 for (NSInteger i = self.wordSuggestions.count; i < translations.count; i++) {
+				 for (NSInteger i = self.wordSuggestions.count; i < refinedTranslations.count; i++) {
 					 [indexPathsToInsert addObject:[NSIndexPath indexPathForItem:i inSection:MZWordAdditionSectionTypeSuggestions]];
 				 }
 
-				 self.wordSuggestions = translations.mutableCopy;
+				 self.wordSuggestions = refinedTranslations.mutableCopy;
 				 if (indexPathsToDelete.count > 0) {
 					 [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationFade];
 				 }
@@ -376,7 +391,7 @@ MZWordAdditionViewHeaderProtocol>
 
 	// (4) Insert existing translations for already existing word chosen
 	[self removeTranslationsAnimated:NO];
-	for (MZWord *translation in word.translation) {
+	for (MZWord *translation in word.translations) {
 		[self.wordTranslations addObject:translation.word];
 	}
 	[self.tableView insertSections:[NSIndexSet indexSetWithIndex:self.tableView.numberOfSections]
@@ -430,17 +445,13 @@ MZWordAdditionViewHeaderProtocol>
 	self.tableHeaderView.enable = isEnabled;
 }
 
-#pragma mark ; View Header Delegate
+#pragma mark - View Header Delegate
 
 - (void)wordAdditionViewHeaderDidTapAddButton:(MZWordAdditionViewHeader *)header {
 	// TODO: Test texts not empty, etc.
 	// TODO: In edit mode, remove no longer needed translations
 
-	[MZWord addWord:self.wordToTranslate
-		 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
-		 translations:self.wordTranslations
-			 toLanguage:[MZLanguageManager sharedManager].toLanguage
-				inContext:nil];
+	[[MZUser currentUser] addWord:self.wordToTranslate translations:self.wordTranslations inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 		[self dismissViewControllerWithCompletion:nil];

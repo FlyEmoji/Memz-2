@@ -60,8 +60,8 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 	}
 
 	// (3) Update Statistics (Right)
-	NSUInteger numberTranslations = [self.word numberTranslationsToLanguage:[MZLanguageManager sharedManager].toLanguage];
-	CGFloat percentageSuccess = [self.word percentageSuccessTranslationsToLanguage:[MZLanguageManager sharedManager].toLanguage];
+	NSUInteger numberTranslations = [self.word numberTranslationsToLanguage:[MZUser currentUser].toLanguage.integerValue];
+	CGFloat percentageSuccess = [self.word percentageSuccessTranslationsToLanguage:[MZUser currentUser].toLanguage.integerValue];
 	NSString *numberOfTranslationsString, *percentageSuccessString;
 
 	if (numberTranslations == 0) {

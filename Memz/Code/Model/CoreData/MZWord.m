@@ -18,13 +18,17 @@
 								fromLanguage:(MZLanguage)fromLanguage
 								translations:(NSArray<NSString *> *)translations
 									toLanguage:(MZLanguage)toLanguage
+										 forUser:(MZUser *)user
 									 inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	MZWord *newWord = [MZWord newInstanceInContext:context];
 	newWord.word = word;
 	newWord.language = @(fromLanguage);
-	[newWord updateTranslations:translations toLanguage:toLanguage inContext:context];
+	if (user) {
+		[newWord addUsersObject:user];
+	}
+	[newWord updateTranslations:translations toLanguage:toLanguage forUser:user inContext:context];
 	return newWord;
 }
 
@@ -34,15 +38,16 @@
 			 fromLanguage:(MZLanguage)fromLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage
+						forUser:(MZUser *)user
 					inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	MZWord *existingWord = [MZWord existingWordForString:word fromLanguage:fromLanguage inContext:context];
 
 	if (!existingWord) {
-		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage inContext:context];
+		return [[MZWord alloc] initWithWord:word fromLanguage:fromLanguage translations:translations toLanguage:toLanguage forUser:user inContext:context];
 	} else {
-		[existingWord updateTranslations:translations toLanguage:toLanguage inContext:context];
+		[existingWord updateTranslations:translations toLanguage:toLanguage forUser:user inContext:context];
 		return existingWord;
 	}
 }
@@ -52,7 +57,7 @@
 																					 inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH %@) AND language = %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH[cd] %@) AND language = %d", string, language];
 	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
 }
 
@@ -61,19 +66,20 @@
 												inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 	
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", string, fromLanguage];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND language = %d", string, fromLanguage];
 	return [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate context:context].firstObject;
 }
 
 - (void)updateTranslations:(NSArray<NSString *> *)translations
 								toLanguage:(MZLanguage)toLanguage
+									 forUser:(MZUser *)user
 								 inContext:(NSManagedObjectContext *)context {
 	// (1) Initialize context if not specified
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
 	// (2) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND language = %d", translation, toLanguage];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word ==[cd] %@ AND language = %d", translation, toLanguage];
 		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate context:context].firstObject;
 
 		if (!wordTranslation) {
@@ -82,31 +88,39 @@
 			wordTranslation.language = @(toLanguage);
 		}
 
-		[self addTranslationObject:wordTranslation];
+		[self addTranslationsObject:wordTranslation];
 	}];
 
 	// (3) Remove no longer needed translations
-	[self.translation.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
+	[self.translations.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
 		if (![translations containsObject:translation.word]) {
-			[self removeTranslation:[NSSet setWithObject:translation]];
+			[self removeTranslations:[NSSet setWithObject:translation]];
 
-			if (translation.translation.count == 0) {
+			if (translation.translations.count == 0) {
 				[context deleteObject:translation];
 			}
 		}
 	}];
+
+	// (4) Set translation and reverse relationship user if exists
+	if (user && ![user.translations containsObject:self]) {
+		[user addTranslationsObject:self];
+	}
+
+	// (5) Remove word if no translations anymore
+	// TODO: Actually perform deletion 
 }
 
 #pragma mark - Statistics
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
 - (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
-	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, [MZLanguageManager sharedManager].toLanguage];
+	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
+	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 
 	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:successCountPredicate];
 	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:allObjectsCountPredicate];

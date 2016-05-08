@@ -72,7 +72,7 @@
 	if (error) {
 		[self.dataBackgroundTasks removeObject:backgroundTask];
 		if (completionHandler) {
-			completionHandler(error);		// TODO: Should send back error if needed
+			completionHandler(error);
 		}
 	}
 }
@@ -84,15 +84,19 @@
 #pragma mark - Private Methods
 
 - (void)objectContextDidSave:(NSNotification *)notification {
-	// (1) Manage object contexts need to be merged on main thread only
+	// (1) Get back completion handler using background context
+	NSManagedObjectContext *context = notification.object;
+	MZDataBackgroundTaskWrapper *dataBackgroundTask = [self dataBackgroundTaskForContext:context];
+
+	if (!dataBackgroundTask) {
+		return;
+	}
+
+	// (2) Manage object contexts need to be merged on main thread only
 	if (![NSThread isMainThread]) {
 		[self performSelectorOnMainThread:@selector(objectContextDidSave:) withObject:notification waitUntilDone:YES];
 		return;
 	}
-
-	// (2) Get back completion handler using background context
-	NSManagedObjectContext *context = notification.object;
-	MZDataBackgroundTaskWrapper *dataBackgroundTask = [self dataBackgroundTaskForContext:context];
 
 	// (3) Exit if not saving background context
 	if (![self.dataBackgroundTasks containsObject:dataBackgroundTask]) {

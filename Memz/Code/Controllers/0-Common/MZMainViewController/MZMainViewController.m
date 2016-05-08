@@ -9,6 +9,7 @@
 #import "MZMainViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
 #import "MZQuizManager.h"
+#import "MZUser.h"
 
 NSString * const MZFeedViewControllerIdentifier = @"MZFeedViewControllerIdentifier";
 NSString * const MZMyQuizzesViewControllerIdentifier = @"MZMyQuizzesViewControllerIdentifier";
@@ -16,6 +17,7 @@ NSString * const MZMyDictionaryViewControllerIdentifier = @"MZMyDictionaryViewCo
 
 NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
 NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue";
+NSString * const MZUserEntranceViewControllerSegue = @"MZUserEntranceViewControllerSegue";
 
 const NSUInteger kNumberPages = 3;
 
@@ -49,8 +51,21 @@ const NSUInteger kNumberPages = 3;
 
 	self.settingsButton = leftButton;
 
-	// (3) Initialize managers
-	[[MZQuizManager sharedManager] scheduleQuizNotifications];
+	// (3) Initialize main designs
+	self.view.backgroundColor = [UIColor mainMediumGrayColor];
+
+	// (4) Present user entrance flow if no user connected
+	if (![MZUser currentUser]) {
+		[self performSegueWithIdentifier:MZUserEntranceViewControllerSegue sender:self];
+	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	if ([MZUser currentUser]) {
+		[[MZQuizManager sharedManager] scheduleQuizNotifications];
+	}
 }
 
 - (void)goToAddWordView:(id)sender {

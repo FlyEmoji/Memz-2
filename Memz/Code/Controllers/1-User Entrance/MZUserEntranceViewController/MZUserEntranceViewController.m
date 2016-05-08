@@ -7,12 +7,12 @@
 //
 
 #import "MZUserEntranceViewController.h"
-#import "MZMainViewController.h"
-#import "MZLanguageManager.h"
 #import "UINavigationController+MemzTransitions.h"
-
-NSString * const MZMainViewControllerIdentifier = @"MZMainViewControllerIdentifier";
-NSString * const MZMainViewControllerSegue = @"MZMainViewControllerSegue";
+#import "NSManagedObject+MemzCoreData.h"
+#import "MZMainViewController.h"
+#import "MZLanguageDefinition.h"
+#import "MZDataManager.h"
+#import "MZUser.h"
 
 @interface MZUserEntranceViewController ()
 
@@ -22,36 +22,14 @@ NSString * const MZMainViewControllerSegue = @"MZMainViewControllerSegue";
 
 @implementation MZUserEntranceViewController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-
-	[MZLanguageManager sharedManager];
-}
-
 #pragma mark - Actions
 
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
-	[self goToNavigationController];
-}
+	MZUser *user = [MZUser signUpUserFromLanguage:MZLanguageEnglish toLanguage:MZLanguageFrench];
 
-#pragma mark - Helpers
-
-- (void)goToNavigationController {
-	UIStoryboard *navigationStoryboard = [UIStoryboard storyboardWithName:MZNavigationStoryboard bundle:nil];
-	MZMainViewController *mainViewController = [navigationStoryboard instantiateViewControllerWithIdentifier:MZMainViewControllerIdentifier];
-
-	NSArray *viewControllers = @[mainViewController];
-
-	UINavigationController *navigationController = [navigationStoryboard instantiateInitialViewController];
-	navigationController.viewControllers = viewControllers;
-
-	UIWindow *mainWindow = [[UIApplication sharedApplication].windows firstObject];
-	UINavigationController *mainNavigationController = [mainWindow.rootViewController safeCastToClass:[UINavigationController class]];
-
-	[mainNavigationController transitionToNewRootViewController:navigationController
-																											options:MZAnimatedTransitionNewRootOptionNone
-																						 transitionOption:UIViewAnimationOptionTransitionCrossDissolve
-																									 completion:nil];
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}];
 }
 
 @end

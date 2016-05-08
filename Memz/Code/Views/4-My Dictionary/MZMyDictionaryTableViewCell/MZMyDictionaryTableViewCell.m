@@ -32,7 +32,7 @@
 
 	self.wordLabel.text = word.word.uppercaseString;
 	self.wordStatusView.word = word;
-	[self setupTranslations:word.translation.allObjects];
+	[self setupTranslations:word.translations.allObjects];
 }
 
 #pragma mark - Private Methods

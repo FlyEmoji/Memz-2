@@ -8,9 +8,9 @@
 
 #import "MZLanguageCollectionViewCell.h"
 #import "MZCollectionViewLayoutAttributes.h"
-#import "MZStatisticsProvider.h"
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
+#import "MZUser+StatisticsProvider.h"
 
 NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 
@@ -44,21 +44,21 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 	self.flagImageView.image = [UIImage flagImageForLanguage:language];
 	self.languageTitleLabel.text = [NSString languageNameForLanguage:language];
 
-	if ([MZStatisticsProvider wordsForLanguage:language].count == 0) {
+	if ([[MZUser currentUser] wordsForLanguage:language].count == 0) {
 		self.noDataContainerView.hidden = NO;
 		return;
 	}
 
 	self.numberWordsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberWordsTitle", nil),
-																[MZStatisticsProvider wordsForLanguage:language].count];
+																[[MZUser currentUser] wordsForLanguage:language].count];
 	self.numberTranslationsLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberTranslationsTitle", nil),
-																			 [MZStatisticsProvider translationsForLanguage:language].count];
+																			 [[MZUser currentUser] translationsForLanguage:language].count];
 	self.numberGoodAnswersLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberGoodAnswersTitle", nil),
-																			[MZStatisticsProvider successfulTranslationsForLanguage:language].count];
+																			[[MZUser currentUser] successfulTranslationsForLanguage:language].count];
 	self.numberWordsLearnedLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsNumberWordsLearnedTitle", nil),
-																			 [MZStatisticsProvider wordsLearnedForLanguage:language].count];
+																			 [[MZUser currentUser] wordsLearnedForLanguage:language].count];
 	self.percentageSuccessLabel.text = [NSString stringWithFormat:NSLocalizedString(@"StatisticsPercentageTranslationsSuccessTitle", nil),
-																			[MZStatisticsProvider percentageTranslationSuccessForLanguage:language]];
+																			[[MZUser currentUser] percentageTranslationSuccessForLanguage:language]];
 }
 
 #pragma mark - Animation

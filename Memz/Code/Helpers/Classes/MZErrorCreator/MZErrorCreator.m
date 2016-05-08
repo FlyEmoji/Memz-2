@@ -28,7 +28,10 @@ static NSString * const MZErrorDomain = @"Falcou.com.memz.error";
 			return @{NSLocalizedDescriptionKey: NSLocalizedString(@"Failed To Parse API Response", nil),
 							 NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"App failed to parse bing translation XML response", nil),
 							 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"", nil)};
-	}
+		case MZErrorTypeNoWordToTranslate:
+			return @{NSLocalizedDescriptionKey: NSLocalizedString(@"Cannot Create Quiz", nil),
+							 NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"You need to create new words to translate to create a quiz!", nil),
+							 NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"", nil)};	}
 }
 
 @end

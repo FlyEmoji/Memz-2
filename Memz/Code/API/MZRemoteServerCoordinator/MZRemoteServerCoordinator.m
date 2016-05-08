@@ -15,7 +15,7 @@
 
 + (void)fetchFeedWithCompletionHandler:(void (^)(NSArray<MZArticle *> *articles, NSError *))completionHandler {
 	// The following CoreData computations can be time consuming and freeze the UI: we execute them in background
-	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSString *filePath = [[NSBundle mainBundle] pathForResource:@"feed.json".stringByDeletingPathExtension ofType:@"feed.json".pathExtension];
 		NSParameterAssert(filePath != nil);
 		NSData *data = [NSData dataWithContentsOfFile:filePath];
@@ -34,6 +34,7 @@
 		NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 		backgroundContext.parentContext = [MZDataManager sharedDataManager].managedObjectContext;
 
+		// TODO: Need to sync the articles
 		[MZArticle deleteAllObjectsInContext:backgroundContext];
 		NSMutableArray<MZArticle *> *articles = [[NSMutableArray alloc] initWithCapacity:array.count];
 
@@ -60,8 +61,8 @@
 				continue;
 			}
 
-			NSString *APICodeFromLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].fromLanguage];
-			NSString *APICodeToLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZLanguageManager sharedManager].toLanguage];
+			NSString *APICodeFromLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZUser currentUser].fromLanguage.integerValue];
+			NSString *APICodeToLanguage = [MZRemoteServerCoordinator APILanguageCodeForLanguage:[MZUser currentUser].toLanguage.integerValue];
 
 			// (4) Loop through all suggested words, only add the ones fitting our language preferences if exists
 			for (NSDictionary *wordDictionary in responseSuggestedWords) {
@@ -73,9 +74,10 @@
 				}
 
 				MZWord *suggestedWord = [MZWord addWord:fromLanguageWord
-																	 fromLanguage:[MZLanguageManager sharedManager].fromLanguage
+																	 fromLanguage:[MZUser currentUser].fromLanguage.integerValue
 																	 translations:@[toLanguageWord]
-																		 toLanguage:[MZLanguageManager sharedManager].toLanguage
+																		 toLanguage:[MZUser currentUser].toLanguage.integerValue
+																				forUser:nil
 																			inContext:backgroundContext];
 
 				[article addSuggestedWordsObject:suggestedWord];

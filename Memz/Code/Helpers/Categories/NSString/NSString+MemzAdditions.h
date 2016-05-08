@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MZLanguageManager.h"
+#import "MZLanguageDefinition.h"
 
 @interface NSString (MemzAdditions)
 

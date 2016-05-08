@@ -11,8 +11,10 @@
 #import "MZFeedTableViewCell.h"
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "UIViewController+MemzAdditions.h"
 #import "MZNavigationController.h"
 #import "MZLoaderView.h"
+#import "MZUser.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
@@ -33,7 +35,17 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
-	[self setupTableViewData];
+	if ([MZUser currentUser]) {
+		[self setupTableViewData];
+	}
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MZUserDidAuthenticateNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification *notification) {
+		 [self setupTableViewData];
+	 }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -50,15 +62,17 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 	});
 
 	[MZRemoteServerCoordinator fetchFeedWithCompletionHandler:^(NSArray<MZArticle *> *articles, NSError *error) {
-		[MZLoaderView hideAllLoadersFromView:self.view];
+		dispatch_async(dispatch_get_main_queue(), ^(void){
+			[MZLoaderView hideAllLoadersFromView:self.view];
 
-		if (error) {
-			// TODO: Display error
-			return;
-		}
+			if (error) {
+				[self presentError:error];
+				return;
+			}
 
-		self.tableViewData = articles;
-		[self.tableView reloadData];
+			self.tableViewData = articles;
+			[self.tableView reloadData];
+		});
 	}];
 }
 

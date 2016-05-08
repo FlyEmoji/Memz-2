@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, MZErrorType) {
 	MZErrorTypeUnknown = 0,
-	MZErrorTypeAPIParseResponse
+	MZErrorTypeAPIParseResponse,
+	MZErrorTypeNoWordToTranslate
 };
 
 @interface MZErrorCreator : NSObject

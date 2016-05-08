@@ -18,7 +18,6 @@
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
 #import "MZDataManager.h"
-#import "UIAlertController+MemzAdditions.h"
 
 @import Social;
 
@@ -166,21 +165,35 @@ MZArticleShareTableViewCellDelegate>
 #pragma mark - Add All Suggested Words Cell Delegate
 
 - (void)articleAddAllTableViewCellDidTap:(MZArticleAddAllTableViewCell *)cell {
-	// TODO
+	for (MZWord *word in self.article.suggestedWords) {
+		[[MZUser currentUser] addTranslationsObject:word];
+	}
+
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+		for (UITableViewCell *cell in self.tableView.visibleCells) {
+			[[cell safeCastToClass:[MZArticleSuggestedWordTableViewCell class]] forceUpdate];
+		}
+	}];
 }
 
 #pragma mark - Add Suggested Word Cell Delegate
 
 - (void)articleSuggestedWordTableViewCellDidTap:(MZArticleSuggestedWordTableViewCell *)cell {
-	// TODO
+	if (![[MZUser currentUser].translations containsObject:cell.word]) {
+		[[MZUser currentUser] addTranslationsObject:cell.word];
+	} else {
+		[[MZUser currentUser] removeTranslationsObject:cell.word];
+	}
+
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+	[cell forceUpdate];
 }
 
 #pragma mark - Social Media Cell Delegate 
 
 - (void)articleShareTableViewCell:(MZArticleShareTableViewCell *)cell didTapShareOption:(MZShareOption)shareOption {
 	[MZShareManager shareForType:shareOption title:self.article.title images:nil urls:nil completionHandler:nil];
-	// TODO 1: Fix issue does not present if pull and reveal view controller underneath
-	// TODO 2: Might want to populate with Memz URL or image
+	// TODO: Might want to populate with Memz URL or image
 }
 
 @end

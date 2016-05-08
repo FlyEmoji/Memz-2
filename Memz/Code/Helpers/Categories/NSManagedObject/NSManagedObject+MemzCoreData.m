@@ -135,8 +135,7 @@
 	}
 
 	NSError *error;
-	NSArray *objects = [context executeFetchRequest:request error:&error];
-	return objects;
+	return [context executeFetchRequest:request error:&error];
 }
 
 + (void)deleteAllObjectsMatchingPredicate:(NSPredicate *)predicate {

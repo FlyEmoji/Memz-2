@@ -62,7 +62,7 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 #pragma mark - Public Methods
 
 - (void)scheduleQuizNotifications {
-	if (!self.isActive) {
+	if (!self.isActive || ![MZUser currentUser]) {
 		return;
 	}
 

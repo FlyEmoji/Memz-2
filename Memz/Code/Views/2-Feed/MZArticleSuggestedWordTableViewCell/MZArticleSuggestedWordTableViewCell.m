@@ -21,20 +21,22 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
-	[self updateUI];
+	[self forceUpdate];
 }
 
-- (void)updateUI {
-	self.wordLabel.text = self.word.word.uppercaseString;
-	self.wordTranslation.text = self.word.translation.allObjects.firstObject.word.capitalizedString;
+- (void)forceUpdate {
+	dispatch_async(dispatch_get_main_queue(), ^(void){
+		self.wordLabel.text = self.word.word.uppercaseString;
+		self.wordTranslation.text = self.word.translations.allObjects.firstObject.word.capitalizedString;
 
-	if ([MZWord existingWordForString:self.word.word fromLanguage:self.word.language.integerValue inContext:nil]) {  // TODO: check in user object instead
-		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
-										 forState:UIControlStateNormal];
-	} else {
-		[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonTick]
-										 forState:UIControlStateNormal];
-	}
+		if ([[MZUser currentUser].translations containsObject:self.word]) {
+			[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierFeedActiveTick]
+											 forState:UIControlStateNormal];
+		} else {
+			[self.leftButton setImage:[UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonTick]
+											 forState:UIControlStateNormal];
+		}
+	});
 }
 
 #pragma mark - Custom Setter
@@ -42,7 +44,7 @@
 - (void)setWord:(MZWord *)word {
 	_word = word;
 
-	[self updateUI];
+	[self forceUpdate];
 }
 
 #pragma mark - Actions

@@ -35,7 +35,7 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 	// (1) Build arrays of similarity percentage, on translations to correct language only (can be translations to several languages)
 	// For each correct translation, calculate percentage of similarity with each proposed translation.
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %ld", language];
-	NSArray<MZWord *> *correctTranslations = [self.response.word.translation.allObjects filteredArrayUsingPredicate:predicate];
+	NSArray<MZWord *> *correctTranslations = [self.response.word.translations.allObjects filteredArrayUsingPredicate:predicate];
 
 	NSMutableArray<NSMutableArray<NSNumber *> *> *arrayPercentages = [NSMutableArray arrayWithCapacity:correctTranslations.count];
 

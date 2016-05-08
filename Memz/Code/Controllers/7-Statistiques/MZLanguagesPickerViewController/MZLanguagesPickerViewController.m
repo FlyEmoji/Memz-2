@@ -9,6 +9,7 @@
 #import "MZLanguagesPickerViewController.h"
 #import "MZLanguagesPickerCollectionController.h"
 #import "MZStatisticsViewController.h"
+#import "MZQuiz.h"
 
 NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSegue";
 
@@ -29,7 +30,7 @@ NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSe
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 
 	self.collectionController = [[MZLanguagesPickerCollectionController alloc] initWithCollectionView:self.collectionView];
-	self.collectionController.collectionViewData = [MZLanguageManager sharedManager].allLanguages;
+	self.collectionController.collectionViewData = [MZQuiz allLanguages];
 	self.collectionController.delegate = self;
 	[self.collectionController reloadDataAnimated:YES completionHandler:nil];
 }

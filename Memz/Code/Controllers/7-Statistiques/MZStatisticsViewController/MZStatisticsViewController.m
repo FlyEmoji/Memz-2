@@ -9,7 +9,7 @@
 #import "MZStatisticsViewController.h"
 #import "MZStatisticsExtendedNavigationBarView.h"
 #import "MZGraphicTableViewCell.h"
-#import "MZStatisticsProvider.h"
+#import "MZUser+StatisticsProvider.h"
 #import "NSDate+MemzAdditions.h"
 
 typedef NS_ENUM(NSInteger, MZStatisticsGraph) {
@@ -128,9 +128,9 @@ UITableViewDelegate>
 - (NSUInteger)valueForGraph:(MZStatisticsGraph)graph language:(MZLanguage)language day:(NSDate *)day {
 	switch (graph) {
 		case MZStatisticsGraphTotalTranslations:
-			return [MZStatisticsProvider translationsForLanguage:language forDay:day].count;
+			return [[MZUser currentUser] translationsForLanguage:language forDay:day].count;
 		case MZStatisticsGraphSuccessfulTranslations:
-			return [MZStatisticsProvider successfulTranslationsForLanguage:language forDay:day].count;
+			return [[MZUser currentUser] successfulTranslationsForLanguage:language forDay:day].count;
 	}
 }
 

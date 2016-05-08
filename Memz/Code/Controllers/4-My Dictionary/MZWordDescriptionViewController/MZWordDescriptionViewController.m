@@ -60,7 +60,7 @@ MZTableViewTransitionDelegate>
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	self.tableViewHeader.word = self.word;
 
-	self.tableViewData = self.word.translation.allObjects.mutableCopy;
+	self.tableViewData = self.word.translations.allObjects.mutableCopy;
 	[self.tableView reloadData];
 }
 
@@ -81,7 +81,7 @@ MZTableViewTransitionDelegate>
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (self.tableViewData.count <= 1) {
 		[self removeWordWithCompletionHandler:^{
-			[self dismissViewControllerAnimated:YES completion:nil];
+			[self dismissViewControllerWithCompletion:nil];
 		}];
 	} else {
 		[self removeTranslation:self.tableViewData[indexPath.row] completionHandler:nil];
@@ -101,13 +101,13 @@ MZTableViewTransitionDelegate>
 	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
 		[translationStrings addObject:word.word];
 	}];
-	[self.word updateTranslations:translationStrings toLanguage:[MZLanguageManager sharedManager].toLanguage inContext:nil];
+	[self.word updateTranslations:translationStrings toLanguage:[MZUser currentUser].toLanguage.integerValue forUser:nil inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }
 
 - (void)removeWordWithCompletionHandler:(void (^ __nullable)(void))completionHandler {
-	[[MZDataManager sharedDataManager].managedObjectContext deleteObject:self.word];
+	[[MZUser currentUser] removeTranslationsObject:self.word];
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }
 
