@@ -18,7 +18,6 @@
 #import "NSDate+MemzAdditions.h"
 #import "MZTableView.h"
 #import "MZDataManager.h"
-#import "UIAlertController+MemzAdditions.h"
 
 @import Social;
 

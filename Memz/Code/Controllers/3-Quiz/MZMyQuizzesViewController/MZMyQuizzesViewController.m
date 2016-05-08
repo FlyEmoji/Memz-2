@@ -12,6 +12,7 @@
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "UIViewController+MemzAdditions.h"
 #import "MZDataManager.h"
 #import "MZQuiz.h"
 
@@ -209,7 +210,7 @@ MZQuizInfoViewDelegate>
 	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];
 
 	if (!quiz) {
-		// TODO: Display message saying no words to translate
+		[self presentError:[MZErrorCreator errorWithType:MZErrorTypeNoWordToTranslate]];
 		return;
 	}
 

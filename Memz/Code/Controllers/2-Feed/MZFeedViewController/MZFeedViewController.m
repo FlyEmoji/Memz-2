@@ -11,6 +11,7 @@
 #import "MZFeedTableViewCell.h"
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
+#import "UIViewController+MemzAdditions.h"
 #import "MZNavigationController.h"
 #import "MZLoaderView.h"
 #import "MZUser.h"
@@ -65,7 +66,7 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 			[MZLoaderView hideAllLoadersFromView:self.view];
 
 			if (error) {
-				// TODO: Display error
+				[self presentError:error];
 				return;
 			}
 

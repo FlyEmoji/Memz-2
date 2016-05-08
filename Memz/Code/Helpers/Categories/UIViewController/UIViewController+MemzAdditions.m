@@ -8,6 +8,7 @@
 
 #import "UIViewController+MemzAdditions.h"
 #import "UINavigationController+MemzTransitions.h"
+#import "UIAlertController+MemzAdditions.h"
 #import "MZNavigationController.h"
 #import "MZMainViewController.h"
 
@@ -46,6 +47,15 @@
 	}
 
 	return topController;
+}
+
+- (void)presentError:(NSError *)error {
+	[UIAlertController showWithStyle:UIAlertControllerStyleAlert
+														 title:NSLocalizedString(@"CommonError", @"")
+													 message:error.localizedDescription
+														 block:nil
+								 cancelButtonTitle:NSLocalizedString(@"CommonCancel", @"")
+								 otherButtonTitles:nil];
 }
 
 @end

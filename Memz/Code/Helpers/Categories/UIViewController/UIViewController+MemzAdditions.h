@@ -12,4 +12,6 @@
 
 + (UIViewController *)topMostViewController;
 
+- (void)presentError:(NSError *)error;
+
 @end

@@ -79,7 +79,7 @@
 
 	// (2) Add new translations
 	[translations enumerateObjectsUsingBlock:^(NSString *translation, NSUInteger idx, BOOL *stop) {
-		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND language = %d", translation, toLanguage];
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word ==[cd] %@ AND language = %d", translation, toLanguage];
 		MZWord *wordTranslation = [MZWord allObjectsMatchingPredicate:predicate context:context].firstObject;
 
 		if (!wordTranslation) {

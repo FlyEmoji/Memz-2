@@ -34,6 +34,7 @@
 		NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 		backgroundContext.parentContext = [MZDataManager sharedDataManager].managedObjectContext;
 
+		// TODO: Need to sync the articles
 		[MZArticle deleteAllObjectsInContext:backgroundContext];
 		NSMutableArray<MZArticle *> *articles = [[NSMutableArray alloc] initWithCapacity:array.count];
 

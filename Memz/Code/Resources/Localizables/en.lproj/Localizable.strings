@@ -87,3 +87,5 @@
 "DateLastWeekTitle" = "Last Week";
 "DateThisMonthTitle" = "This Month";
 "DateLastMonthTitle" = "Last Month";
+
+"ErrorMappingArticlesDescription" = "An error occurred when trying to map the articles, please try again.";
