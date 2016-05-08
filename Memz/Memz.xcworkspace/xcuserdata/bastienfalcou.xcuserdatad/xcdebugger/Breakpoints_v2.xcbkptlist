@@ -52,11 +52,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Code/Model/CoreData/MZWord.m"
-            timestampString = "484418913.357938"
+            timestampString = "484431841.983349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "+addWord:fromLanguage:translations:toLanguage:forUser:inContext:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Model/CoreData/MZWord.m"
+            timestampString = "484431887.360965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-updateTranslations:toLanguage:forUser:inContext:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Model/CoreData/MZWord.m"
+            timestampString = "484433243.372325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-updateTranslations:toLanguage:forUser:inContext:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MZWord updateTranslations:toLanguage:forUser:inContext:]"
+                  moduleName = "Memz"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bastienfalcou/Documents/memz-ios/Memz/Code/Model/CoreData/MZWord.m"
+                  timestampString = "484434636.78203"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__58-[MZWord updateTranslations:toLanguage:forUser:inContext:]_block_invoke.46"
+                  moduleName = "Memz"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bastienfalcou/Documents/memz-ios/Memz/Code/Model/CoreData/MZWord.m"
+                  timestampString = "484434636.782169"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Code/Model/CoreData/MZWord.m"
+            timestampString = "484433603.500416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-updateTranslations:toLanguage:forUser:inContext:"
             landmarkType = "5">
          </BreakpointContent>

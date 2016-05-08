@@ -11,6 +11,8 @@
 #import "MZWord.h"
 #import "NSManagedObject+MemzCoreData.h"
 
+NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNotification";
+
 @implementation MZUser
 
 + (MZUser *)currentUser {
@@ -20,6 +22,16 @@
 		return nil;
 	}
 	return users.firstObject;
+}
+
++ (MZUser *)signUpUserFromLanguage:(MZLanguage)fromLanguage
+												toLanguage:(MZLanguage)toLanguage {
+	MZUser *user = [MZUser newInstance];
+	user.fromLanguage = @(fromLanguage);
+	user.toLanguage = @(toLanguage);
+
+	[[NSNotificationCenter defaultCenter] postNotificationName:MZUserDidAuthenticateNotification object:user];
+	return user;
 }
 
 - (MZWord *)addWord:(NSString *)word translations:(NSArray<NSString *> *)translations inContext:(NSManagedObjectContext *)context {

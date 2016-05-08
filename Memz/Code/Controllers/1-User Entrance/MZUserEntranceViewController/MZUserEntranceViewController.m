@@ -25,9 +25,7 @@
 #pragma mark - Actions
 
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
-	MZUser *user = [MZUser newInstance];
-	user.fromLanguage = @(MZLanguageEnglish);
-	user.toLanguage = @(MZLanguageFrench);
+	MZUser *user = [MZUser signUpUserFromLanguage:MZLanguageEnglish toLanguage:MZLanguageFrench];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 		[self dismissViewControllerAnimated:YES completion:nil];
