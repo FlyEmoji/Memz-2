@@ -244,10 +244,19 @@ MZWordAdditionViewHeaderProtocol>
 - (void)textFieldTableViewCell:(MZTextFieldTableViewCell *)cell textDidChange:(NSString *)text {
 	NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 	if (indexPath.section == MZWordAdditionSectionTypeWord && indexPath.row == MZWordAdditionWordRowTypeNewWord) {
+		// (1) Update current word to translate
 		self.wordToTranslate = text;
 
+		// (2) If word matches an existing one, update and populate table view with its existing tranlations
+		if ([text.lowercaseString isEqualToString:self.alreadyExistingWords.firstObject.word.lowercaseString]) {
+			[self setupWithWord:self.alreadyExistingWords.firstObject];
+			return;
+		}
+
+		// (3) Remove current translations if word is ammended
 		[self removeTranslationsAnimated:YES];
 
+		// (4) Update existing word suggestions and translation suggestions
 		[self updateExistingWords];
 		[self updateSuggestedTranslations];
 	}
