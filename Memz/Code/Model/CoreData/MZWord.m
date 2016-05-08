@@ -114,13 +114,13 @@
 #pragma mark - Statistics
 
 - (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
 - (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage {
-	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
-	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
+	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
+	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.toLanguage = %ld AND quiz.isAnswered = true", self, toLanguage];
 
 	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:successCountPredicate];
 	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:allObjectsCountPredicate];
