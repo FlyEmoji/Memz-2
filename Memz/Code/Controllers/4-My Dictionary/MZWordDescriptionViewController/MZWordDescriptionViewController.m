@@ -81,7 +81,7 @@ MZTableViewTransitionDelegate>
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (self.tableViewData.count <= 1) {
 		[self removeWordWithCompletionHandler:^{
-			[self dismissViewControllerAnimated:YES completion:nil];
+			[self dismissViewControllerWithCompletion:nil];
 		}];
 	} else {
 		[self removeTranslation:self.tableViewData[indexPath.row] completionHandler:nil];
@@ -107,7 +107,7 @@ MZTableViewTransitionDelegate>
 }
 
 - (void)removeWordWithCompletionHandler:(void (^ __nullable)(void))completionHandler {
-	[[MZDataManager sharedDataManager].managedObjectContext deleteObject:self.word];
+	[[MZUser currentUser] removeTranslationsObject:self.word];
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }
 
