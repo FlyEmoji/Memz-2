@@ -16,8 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupCommonDesigns];
-	[self setupInjections];
-	
+
 	return YES;
 }
 
@@ -32,11 +31,6 @@
 	[[UINavigationBar appearance] setTintColor:[UIColor mainBlueColor]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f],
 																												 NSForegroundColorAttributeName: [UIColor mainLightBlackColor]}];
-}
-
-- (void)setupInjections {
-	MZInjector *injector = [[MZInjector alloc] init];
-	[injector bindClass:[MZPageControl class] toClass:[UIPageControl class]];
 }
 
 @end

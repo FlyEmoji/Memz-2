@@ -19,7 +19,7 @@ const CGFloat kTitleViewMinimumAlpha = 0.45f;
 
 const CGFloat kPageControlHeight = 6.0f;
 const CGFloat kPageControlTopMargin = 2.0f;
-const CGFloat kPageControlDotsSoace = 5.0f;
+const CGFloat kPageControlDotsSoace = 7.0f;
 
 @interface MZPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate>
 
