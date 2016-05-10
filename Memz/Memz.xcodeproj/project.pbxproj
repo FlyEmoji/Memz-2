@@ -136,6 +136,7 @@
 		0CE3294C1C96370200CC7C2F /* MZSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE3294B1C96370200CC7C2F /* MZSwitch.m */; };
 		0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */; };
 		0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE624491C8FC1A300F7B9EB /* MZShareManager.m */; };
+		0CE764A61CE16D53001852D1 /* MZPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE764A51CE16D53001852D1 /* MZPageControl.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -404,6 +405,8 @@
 		0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+MemzAdditions.m"; path = "Code/Helpers/Categories/UIColor/UIColor+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CE624481C8FC1A300F7B9EB /* MZShareManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZShareManager.h; path = Code/Helpers/Classes/MZShareManager/MZShareManager.h; sourceTree = SOURCE_ROOT; };
 		0CE624491C8FC1A300F7B9EB /* MZShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZShareManager.m; path = Code/Helpers/Classes/MZShareManager/MZShareManager.m; sourceTree = SOURCE_ROOT; };
+		0CE764A41CE16D53001852D1 /* MZPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageControl.h; path = "Code/Views/0-Common/MZPageControl/MZPageControl.h"; sourceTree = SOURCE_ROOT; };
+		0CE764A51CE16D53001852D1 /* MZPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageControl.m; path = "Code/Views/0-Common/MZPageControl/MZPageControl.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -1012,6 +1015,7 @@
 				0C2DC8721C4BE596005B11F5 /* MZTableView */,
 				0C429E931CD1A24700AB7029 /* MZLoaderView */,
 				0CE329491C9636CD00CC7C2F /* MZSwitch */,
+				0CE764A31CE16CFD001852D1 /* MZPageControl */,
 				0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */,
 				0CCE607C1C66BCC5008D70BF /* MZGraphicView */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
@@ -1640,6 +1644,15 @@
 			name = MZShareManager;
 			sourceTree = "<group>";
 		};
+		0CE764A31CE16CFD001852D1 /* MZPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				0CE764A41CE16D53001852D1 /* MZPageControl.h */,
+				0CE764A51CE16D53001852D1 /* MZPageControl.m */,
+			);
+			name = MZPageControl;
+			sourceTree = "<group>";
+		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -2024,6 +2037,7 @@
 				0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
 				0CDFDA111C5732EA007EBCA6 /* MZPresenterViewController.m in Sources */,
+				0CE764A61CE16D53001852D1 /* MZPageControl.m in Sources */,
 				0CDB82ED1C30A0BD00EADB05 /* MZWord.m in Sources */,
 				0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */,
 				0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */,
