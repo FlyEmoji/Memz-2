@@ -8,20 +8,22 @@
 
 #import "MZPageViewController.h"
 #import "MZInjector.h"
+#import "MZPageControl.h"
 #import "CADisplayLink+MemzBlocks.h"
+#import "UIPageControl+MemzCompatibility.h"
+#import "UIImage+AssetIdentifiers.h"
 
-#define kTitleViewHorizontalMargin 80.0f
-#define kTitleViewMaxHeight 26.0f
+const CGFloat kTitleViewHorizontalMargin = 80.0f;
+const CGFloat kTitleViewMaxHeight = 26.0f;
+const CGFloat kTitleViewMinimumAlpha = 0.45f;
 
-#define kPageControlHeight 6.0f
-
-#define kPageControlTopMargin 2.0f
-
-#define kTitleViewMinimumAlpha 0.45f
+const CGFloat kPageControlHeight = 6.0f;
+const CGFloat kPageControlTopMargin = 2.0f;
+const CGFloat kPageControlDotsSoace = 5.0f;
 
 @interface MZPageViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong, readonly) UIPageControl *pageControl;
+@property (nonatomic, strong, readonly) MZPageControl *pageControl;
 @property (nonatomic, strong, readonly) UIScrollView *titleScrollView;
 @property (nonatomic, strong, readonly) UIView *titleView;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
@@ -187,11 +189,14 @@
 
 #pragma mark - Custom getters
 
-- (UIPageControl *)pageControl {
+- (MZPageControl *)pageControl {
 	if (_pageControl == nil) {
-		_pageControl = [[MZInjector alloc] instanceForClass:[UIPageControl class]];
+		_pageControl = [[MZPageControl alloc] init];
 		_pageControl.numberOfPages = [self numberOfPage];
 		_pageControl.currentPage = 0;
+		_pageControl.dotsSpace = kPageControlDotsSoace;
+		_pageControl.middleDotImageInactive = [UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonCarouselDotInactive];
+		_pageControl.middleDotImageActive = [UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonCarouselDotActive];
 	}
 	return _pageControl;
 }

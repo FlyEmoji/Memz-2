@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierCommonSocialTwitter,
 	MZAssetIdentifierCommonSocialFacebook,
 	MZAssetIdentifierCommonLoaderLarge,
+	MZAssetIdentifierCommonCarouselDotInactive,
+	MZAssetIdentifierCommonCarouselDotActive,
 	MZAssetIdentifierNavigationBarPixel,
 	MZAssetIdentifierNavigationBarTransparentPixel,
 	MZAssetIdentifierNavigationAdd,
