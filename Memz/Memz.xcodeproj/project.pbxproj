@@ -137,6 +137,7 @@
 		0CE449A61C70233000E40180 /* UIColor+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE449A51C70233000E40180 /* UIColor+MemzAdditions.m */; };
 		0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE624491C8FC1A300F7B9EB /* MZShareManager.m */; };
 		0CE764A61CE16D53001852D1 /* MZPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE764A51CE16D53001852D1 /* MZPageControl.m */; };
+		0CE764AA1CE1775F001852D1 /* UIPageControl+MemzCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CE764A91CE1775F001852D1 /* UIPageControl+MemzCompatibility.m */; };
 		0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */; };
 		0CEFD1AC1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AB1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.m */; };
 		0CEFD1AF1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1AE1C3CB6F200EB60DE /* NSManagedObject+MemzCoreData.m */; };
@@ -407,6 +408,8 @@
 		0CE624491C8FC1A300F7B9EB /* MZShareManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZShareManager.m; path = Code/Helpers/Classes/MZShareManager/MZShareManager.m; sourceTree = SOURCE_ROOT; };
 		0CE764A41CE16D53001852D1 /* MZPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZPageControl.h; path = "Code/Views/0-Common/MZPageControl/MZPageControl.h"; sourceTree = SOURCE_ROOT; };
 		0CE764A51CE16D53001852D1 /* MZPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageControl.m; path = "Code/Views/0-Common/MZPageControl/MZPageControl.m"; sourceTree = SOURCE_ROOT; };
+		0CE764A81CE1775F001852D1 /* UIPageControl+MemzCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIPageControl+MemzCompatibility.h"; path = "Code/Helpers/Categories/UIPageControl/UIPageControl+MemzCompatibility.h"; sourceTree = SOURCE_ROOT; };
+		0CE764A91CE1775F001852D1 /* UIPageControl+MemzCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIPageControl+MemzCompatibility.m"; path = "Code/Helpers/Categories/UIPageControl/UIPageControl+MemzCompatibility.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A71C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CADisplayLink+MemzBlocks.h"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1A81C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CADisplayLink+MemzBlocks.m"; path = "Code/Helpers/Categories/CADisplayLink/CADisplayLink+MemzBlocks.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1AA1C3CB6E500EB60DE /* NSAttributedString+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+MemzAdditions.h"; path = "Code/Helpers/Categories/NSAttributedString/NSAttributedString+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -1193,6 +1196,7 @@
 				0CEFD19E1C3CB53800EB60DE /* UINavigationItem */,
 				0CEFD1A61C3CB59100EB60DE /* UIViewController */,
 				0C7B5C471C82CD0000C7B051 /* UIAlertController */,
+				0CE764A71CE17725001852D1 /* UIPageControl */,
 				0C1EF48B1C9795260076526B /* UIScrollView */,
 				0CEFD1A21C3CB55F00EB60DE /* UIView */,
 				0CEFD1A31C3CB56900EB60DE /* UIColor */,
@@ -1653,6 +1657,15 @@
 			name = MZPageControl;
 			sourceTree = "<group>";
 		};
+		0CE764A71CE17725001852D1 /* UIPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				0CE764A81CE1775F001852D1 /* UIPageControl+MemzCompatibility.h */,
+				0CE764A91CE1775F001852D1 /* UIPageControl+MemzCompatibility.m */,
+			);
+			name = UIPageControl;
+			sourceTree = "<group>";
+		};
 		0CEFD19B1C3CB51300EB60DE /* CADisplayLink */ = {
 			isa = PBXGroup;
 			children = (
@@ -2001,6 +2014,7 @@
 				0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */,
 				0CDB82871C2EE44700EADB05 /* MZWordDescriptionTableViewCell.m in Sources */,
 				0CE051521C5DA7F70011091D /* MZCollectionViewLayoutAttributes.m in Sources */,
+				0CE764AA1CE1775F001852D1 /* UIPageControl+MemzCompatibility.m in Sources */,
 				0C57F5811C4B26A60055532E /* MZPullViewControllerTransition.m in Sources */,
 				0CC3726F1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m in Sources */,
 				0CA58C081C206BA5000E19D4 /* MZInjector.m in Sources */,

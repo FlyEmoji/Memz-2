@@ -9,12 +9,15 @@
 #import "AppDelegate.h"
 #import "MZPushNotificationManager.h"
 #import "MZMainViewController.h"
+#import "MZPageControl.h"
+#import "MZInjector.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	[self setupCommonDesigns];
-
+	[self setupInjections];
+	
 	return YES;
 }
 
@@ -29,6 +32,11 @@
 	[[UINavigationBar appearance] setTintColor:[UIColor mainBlueColor]];
 	[[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f],
 																												 NSForegroundColorAttributeName: [UIColor mainLightBlackColor]}];
+}
+
+- (void)setupInjections {
+	MZInjector *injector = [[MZInjector alloc] init];
+	[injector bindClass:[MZPageControl class] toClass:[UIPageControl class]];
 }
 
 @end

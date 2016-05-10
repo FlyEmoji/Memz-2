@@ -1,8 +1,8 @@
 //
 //  MZPageControl.h
-//  Ethanol
+//  Memz
 //
-//  Created by Bastien Falcou on 1/9/15.
+//  Created by Bastien Falcou on 5/9/16.
 //  Copyright (c) 2015 Fueled. All rights reserved.
 //
 
