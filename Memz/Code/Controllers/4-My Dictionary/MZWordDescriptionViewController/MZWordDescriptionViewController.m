@@ -16,7 +16,7 @@
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 
 const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
-const CGFloat kBottomButtonDeleteHeight = 50.0f;
+const CGFloat kBottomButtonDeleteHeight = 60.0f;
 
 const NSTimeInterval kEditAnimationDuration = 0.3;
 
@@ -116,6 +116,9 @@ MZTableViewTransitionDelegate>
 - (void)wordDescriptionHeaderViewDidStartEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:YES animated:YES];
 
+	self.tableView.backgroundColor = self.tableView.progressiveBackgroundColor;
+	self.tableView.transitionDelegate = nil;
+
 	self.bottomButtonHeightConstraint.constant = kBottomButtonDeleteHeight;
 	[UIView animateWithDuration:kEditAnimationDuration
 									 animations:^{
@@ -125,6 +128,9 @@ MZTableViewTransitionDelegate>
 
 - (void)wordDescriptionHeaderViewDidStopEditing:(MZWordDescriptionHeaderView *)headerView {
 	[self.tableView setEditing:NO animated:YES];
+
+	self.tableView.backgroundColor = [UIColor clearColor];
+	self.tableView.transitionDelegate = self;
 
 	self.bottomButtonHeightConstraint.constant = 0.0f;
 	[UIView animateWithDuration:kEditAnimationDuration

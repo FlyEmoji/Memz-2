@@ -12,6 +12,7 @@
         </mutableArray>
         <mutableArray key="MaisonNeue-Book.ttf">
             <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -216,8 +217,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" id="e6M-n0-U7P"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="16"/>
                                 <state key="normal" title="REMOVE">
-                                    <color key="titleColor" red="0.93864425510000005" green="0.93864425510000005" blue="0.93864425510000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="bottomButtonTapped:" destination="nMe-o3-j5J" eventType="touchUpInside" id="JbC-8q-YSQ"/>
@@ -232,7 +234,7 @@
                             <constraint firstAttribute="trailing" secondItem="SYf-Fv-m1b" secondAttribute="trailing" id="KVL-0J-nKk"/>
                             <constraint firstItem="hIA-Vt-hCe" firstAttribute="top" secondItem="SYf-Fv-m1b" secondAttribute="bottom" id="Od2-O9-AFz"/>
                             <constraint firstItem="SYf-Fv-m1b" firstAttribute="leading" secondItem="OH8-s5-VhR" secondAttribute="leading" id="X7t-JZ-azS"/>
-                            <constraint firstItem="SYf-Fv-m1b" firstAttribute="top" secondItem="0WD-Zb-A3Q" secondAttribute="bottom" id="nvX-s3-7EO"/>
+                            <constraint firstItem="hIA-Vt-hCe" firstAttribute="top" secondItem="0WD-Zb-A3Q" secondAttribute="bottom" id="bRH-ZJ-nDa"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

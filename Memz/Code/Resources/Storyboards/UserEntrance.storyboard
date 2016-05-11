@@ -5,8 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="MaisonNeue-Demi.ttf">
-            <string>MaisonNeue-Demi</string>
+        <mutableArray key="MaisonNeue-Book.ttf">
+            <string>MaisonNeue-Book</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -23,12 +23,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ss-MS-bXC">
-                                <rect key="frame" x="0.0" y="535" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="3ez-9O-9tL"/>
+                                    <constraint firstAttribute="height" constant="60" id="3ez-9O-9tL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="MaisonNeue-Demi" family="Maison Neue" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="16"/>
                                 <state key="normal" title="LEARN A NEW LANGUAGE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -37,18 +37,18 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5v3-rq-U2D">
-                                <rect key="frame" x="0.0" y="64" width="600" height="471"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="476"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-BK-KmS" userLabel="Page 1">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="471"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="476"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBG-dn-VSB" userLabel="Page 2">
-                                        <rect key="frame" x="600" y="0.0" width="600" height="471"/>
+                                        <rect key="frame" x="600" y="0.0" width="600" height="476"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HC2-N0-aCI" userLabel="Page 3">
-                                        <rect key="frame" x="1200" y="0.0" width="600" height="471"/>
+                                        <rect key="frame" x="1200" y="0.0" width="600" height="476"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -74,7 +74,7 @@
                                 </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-ZX-JjO" customClass="MZPageControl">
-                                <rect key="frame" x="10" y="505" width="580" height="20"/>
+                                <rect key="frame" x="10" y="510" width="580" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ehB-e1-9rt"/>

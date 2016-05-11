@@ -240,7 +240,8 @@ MZCountDownDelegate>
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
 										 self.submitButton.backgroundColor = submitButtonColor;
-										 [self.submitButton setTitle:NSLocalizedString(@"CommonNext", nil) forState:UIControlStateNormal];
+										 [self.submitButton setTitle:NSLocalizedString(@"CommonNext", nil).uppercaseString
+																				forState:UIControlStateNormal];
 									 }];
 }
 
