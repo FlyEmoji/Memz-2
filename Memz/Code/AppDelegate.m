@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "MZPushNotificationManager.h"
 #import "MZMainViewController.h"
+#import "MZPageControl.h"
+#import "MZInjector.h"
 
 @implementation AppDelegate
 

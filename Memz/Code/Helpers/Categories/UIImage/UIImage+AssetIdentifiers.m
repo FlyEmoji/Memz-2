@@ -30,6 +30,10 @@
 			return [UIImage imageNamed:@"Common-Social-Twitter"];
 		case MZAssetIdentifierCommonSocialFacebook:
 			return [UIImage imageNamed:@"Common-Social-Facebook"];
+		case MZAssetIdentifierCommonCarouselDotInactive:
+			return [UIImage imageNamed:@"Common-Carousel-Dot-Inactive"];
+		case MZAssetIdentifierCommonCarouselDotActive:
+			return [UIImage imageNamed:@"Common-Carousel-Dot-Active"];
 		case MZAssetIdentifierCommonLoaderLarge:
 			return [UIImage imageNamed:@"Loader-Large"];
 		case MZAssetIdentifierNavigationBarPixel:

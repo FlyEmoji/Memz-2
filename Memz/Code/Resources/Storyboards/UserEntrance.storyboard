@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LAJ-4J-vII">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LAJ-4J-vII">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Demi.ttf">
+            <string>MaisonNeue-Demi</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--User Entrance View Controller-->
+        <!--Memz-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MZUserEntranceViewController" sceneMemberID="viewController">
@@ -18,22 +23,97 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ss-MS-bXC">
-                                <rect key="frame" x="209" y="93" width="183" height="30"/>
-                                <state key="normal" title="Push Navigation Controller"/>
+                                <rect key="frame" x="0.0" y="535" width="600" height="65"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="3ez-9O-9tL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MaisonNeue-Demi" family="Maison Neue" pointSize="16"/>
+                                <state key="normal" title="LEARN A NEW LANGUAGE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapEnterNavigationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="POh-uJ-aVn"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5v3-rq-U2D">
+                                <rect key="frame" x="0.0" y="64" width="600" height="471"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ytk-BK-KmS" userLabel="Page 1">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="471"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rBG-dn-VSB" userLabel="Page 2">
+                                        <rect key="frame" x="600" y="0.0" width="600" height="471"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HC2-N0-aCI" userLabel="Page 3">
+                                        <rect key="frame" x="1200" y="0.0" width="600" height="471"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94509803921568625" green="0.95686274509803915" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="rBG-dn-VSB" firstAttribute="top" secondItem="5v3-rq-U2D" secondAttribute="top" id="9as-JV-pQI"/>
+                                    <constraint firstItem="rBG-dn-VSB" firstAttribute="leading" secondItem="Ytk-BK-KmS" secondAttribute="trailing" id="BgT-0K-jC6"/>
+                                    <constraint firstAttribute="trailing" secondItem="HC2-N0-aCI" secondAttribute="trailing" id="IBN-Ie-5MX"/>
+                                    <constraint firstItem="HC2-N0-aCI" firstAttribute="leading" secondItem="rBG-dn-VSB" secondAttribute="trailing" id="JOT-FA-PsU"/>
+                                    <constraint firstItem="Ytk-BK-KmS" firstAttribute="leading" secondItem="5v3-rq-U2D" secondAttribute="leading" id="LXz-VY-mHC"/>
+                                    <constraint firstAttribute="bottom" secondItem="rBG-dn-VSB" secondAttribute="bottom" id="O8n-hf-uVv"/>
+                                    <constraint firstItem="HC2-N0-aCI" firstAttribute="top" secondItem="5v3-rq-U2D" secondAttribute="top" id="OCQ-il-iXZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ytk-BK-KmS" secondAttribute="bottom" id="RiZ-bS-j0N"/>
+                                    <constraint firstAttribute="bottom" secondItem="HC2-N0-aCI" secondAttribute="bottom" id="XRn-dt-Ii7"/>
+                                    <constraint firstItem="Ytk-BK-KmS" firstAttribute="top" secondItem="5v3-rq-U2D" secondAttribute="top" id="e9q-gY-jW4"/>
+                                    <constraint firstItem="Ytk-BK-KmS" firstAttribute="width" secondItem="5v3-rq-U2D" secondAttribute="width" id="ec7-7w-N5x"/>
+                                    <constraint firstItem="Ytk-BK-KmS" firstAttribute="height" secondItem="5v3-rq-U2D" secondAttribute="height" id="f6e-1g-vVV"/>
+                                    <constraint firstItem="rBG-dn-VSB" firstAttribute="width" secondItem="HC2-N0-aCI" secondAttribute="width" id="jrn-66-mUW"/>
+                                    <constraint firstItem="Ytk-BK-KmS" firstAttribute="width" secondItem="rBG-dn-VSB" secondAttribute="width" id="tmd-pf-ZBW"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="YBY-hQ-GJ6"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-ZX-JjO" customClass="MZPageControl">
+                                <rect key="frame" x="10" y="505" width="580" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ehB-e1-9rt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="currentPage">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsSpace">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesForSinglePage" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="middleDotImageInactive" value="Common-Carousel-Dot-Inactive"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="middleDotImageActive" value="Common-Carousel-Dot-Active"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="5Ss-MS-bXC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="PAb-QN-87O"/>
-                            <constraint firstItem="5Ss-MS-bXC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="k8t-gX-1H4"/>
+                            <constraint firstItem="hyB-ZX-JjO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="7Jz-ln-WXD"/>
+                            <constraint firstAttribute="trailing" secondItem="5Ss-MS-bXC" secondAttribute="trailing" id="933-4y-9da"/>
+                            <constraint firstItem="5Ss-MS-bXC" firstAttribute="top" secondItem="5v3-rq-U2D" secondAttribute="bottom" id="F5Z-xU-YTY"/>
+                            <constraint firstItem="5Ss-MS-bXC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L9A-Hb-lod"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5Ss-MS-bXC" secondAttribute="bottom" id="Nje-IG-eMW"/>
+                            <constraint firstItem="5Ss-MS-bXC" firstAttribute="top" secondItem="hyB-ZX-JjO" secondAttribute="bottom" constant="10" id="ONJ-tD-ql5"/>
+                            <constraint firstItem="5v3-rq-U2D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Qks-li-CLT"/>
+                            <constraint firstAttribute="trailing" secondItem="hyB-ZX-JjO" secondAttribute="trailing" constant="10" id="Wyi-oK-jqJ"/>
+                            <constraint firstAttribute="trailing" secondItem="5v3-rq-U2D" secondAttribute="trailing" id="aNP-ft-gju"/>
+                            <constraint firstItem="5v3-rq-U2D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u6B-mX-tzk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3cr-kN-Yv7"/>
+                    <navigationItem key="navigationItem" title="Memz" id="3cr-kN-Yv7"/>
                     <connections>
                         <outlet property="enterNavigationButton" destination="5Ss-MS-bXC" id="e4o-nO-FGi"/>
+                        <outlet property="pageControl" destination="hyB-ZX-JjO" id="ine-dr-imN"/>
+                        <outlet property="scrollView" destination="5v3-rq-U2D" id="v3Y-fr-FVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -59,4 +139,8 @@
             <point key="canvasLocation" x="203" y="311"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Common-Carousel-Dot-Active" width="7" height="7"/>
+        <image name="Common-Carousel-Dot-Inactive" width="7" height="7"/>
+    </resources>
 </document>

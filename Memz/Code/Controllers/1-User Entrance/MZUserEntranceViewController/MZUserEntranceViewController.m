@@ -7,16 +7,16 @@
 //
 
 #import "MZUserEntranceViewController.h"
-#import "UINavigationController+MemzTransitions.h"
-#import "NSManagedObject+MemzCoreData.h"
-#import "MZMainViewController.h"
 #import "MZLanguageDefinition.h"
+#import "MZPageControl.h"
 #import "MZDataManager.h"
 #import "MZUser.h"
 
-@interface MZUserEntranceViewController ()
+@interface MZUserEntranceViewController () <UIScrollViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIButton *enterNavigationButton;
+@property (nonatomic, weak) IBOutlet UIButton *enterNavigationButton;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, weak) IBOutlet MZPageControl *pageControl;
 
 @end
 
@@ -25,11 +25,18 @@
 #pragma mark - Actions
 
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
-	MZUser *user = [MZUser signUpUserFromLanguage:MZLanguageEnglish toLanguage:MZLanguageFrench];
+	[MZUser signUpUserFromLanguage:MZLanguageEnglish toLanguage:MZLanguageFrench];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}];
+}
+
+#pragma mark - Scroll View Delegate Methods
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	NSUInteger page = scrollView.contentOffset.x / scrollView.frame.size.width;
+	self.pageControl.currentPage = page;
 }
 
 @end
