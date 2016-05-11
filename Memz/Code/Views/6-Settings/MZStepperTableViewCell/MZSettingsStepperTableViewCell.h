@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
 @protocol MZSettingsStepperTableViewCellDelegate;
 
-@interface MZSettingsStepperTableViewCell : UITableViewCell
+@interface MZSettingsStepperTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 

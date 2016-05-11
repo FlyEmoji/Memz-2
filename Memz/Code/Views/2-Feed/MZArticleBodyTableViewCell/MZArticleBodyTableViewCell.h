@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZArticleBodyTableViewCell : UITableViewCell
+@interface MZArticleBodyTableViewCell : MZTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *bodyLabel;
 

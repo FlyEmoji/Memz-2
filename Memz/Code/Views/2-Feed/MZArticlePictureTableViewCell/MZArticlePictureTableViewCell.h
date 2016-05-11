@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZArticlePictureTableViewCell : UITableViewCell
+@interface MZArticlePictureTableViewCell : MZTableViewCell
 
 @property (strong, nonatomic) IBOutlet UIImageView *articleImageView;
 

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZArticleTitleTableViewCell : UITableViewCell
+@interface MZArticleTitleTableViewCell : MZTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 

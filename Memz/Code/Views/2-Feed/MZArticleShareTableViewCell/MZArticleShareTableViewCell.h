@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MZShareManager.h"
+#import "MZTableViewCell.h"
 
 @protocol MZArticleShareTableViewCellDelegate;
 
-@interface MZArticleShareTableViewCell : UITableViewCell
+@interface MZArticleShareTableViewCell : MZTableViewCell
 
 @property (nonatomic, weak) id<MZArticleShareTableViewCellDelegate> delegate;
 

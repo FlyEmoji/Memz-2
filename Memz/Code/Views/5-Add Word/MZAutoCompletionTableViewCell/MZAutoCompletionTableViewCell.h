@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZAutoCompletionTableViewCell : UITableViewCell
+@interface MZAutoCompletionTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 

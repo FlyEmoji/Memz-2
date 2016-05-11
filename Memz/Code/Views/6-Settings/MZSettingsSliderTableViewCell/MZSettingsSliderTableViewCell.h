@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
 @protocol MZSettingsSliderTableViewCellDelegate;
 
-@interface MZSettingsSliderTableViewCell : UITableViewCell
+@interface MZSettingsSliderTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 

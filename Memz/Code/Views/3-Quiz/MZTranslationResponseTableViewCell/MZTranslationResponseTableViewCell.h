@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
 typedef NS_ENUM(NSUInteger, MZTranslationResponseTableViewCellType) {
 	MZTranslationResponseTableViewCellTypeUnaswered = 0,
@@ -15,7 +16,7 @@ typedef NS_ENUM(NSUInteger, MZTranslationResponseTableViewCellType) {
 
 @protocol MZTranslationResponseTableViewCellDelegate;
 
-@interface MZTranslationResponseTableViewCell : UITableViewCell
+@interface MZTranslationResponseTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 @property (nonatomic, strong) IBOutlet UITextField *textField;

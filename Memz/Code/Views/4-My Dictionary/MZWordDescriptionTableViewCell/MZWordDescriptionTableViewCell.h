@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZWordDescriptionTableViewCell : UITableViewCell
+@interface MZWordDescriptionTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 @property (nonatomic, strong) IBOutlet UILabel *wordLabel;

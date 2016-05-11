@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
 @protocol MZArticleAddAllTableViewCellDelegate;
 
-@interface MZArticleAddAllTableViewCell : UITableViewCell
+@interface MZArticleAddAllTableViewCell : MZTableViewCell
 
 @property (nonatomic, weak) id<MZArticleAddAllTableViewCellDelegate> delegate;
 
