@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZFeedTableViewCell : UITableViewCell
+@interface MZFeedTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) NSString *cellTitle;
 @property (nonatomic, strong) NSString *cellSubTitle;

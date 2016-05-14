@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 #import "MZLanguageDefinition.h"
 
 typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
@@ -16,7 +17,7 @@ typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 
 @protocol MZTextFieldTableViewCellDelegate;
 
-@interface MZTextFieldTableViewCell : UITableViewCell
+@interface MZTextFieldTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UITextField *textField;
 

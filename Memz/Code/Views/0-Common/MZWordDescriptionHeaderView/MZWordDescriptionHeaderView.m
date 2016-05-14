@@ -7,6 +7,7 @@
 //
 
 #import "MZWordDescriptionHeaderView.h"
+#import "MZWordStatusView.h"
 #import "UIVIew+MemzAdditions.h"
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
@@ -19,7 +20,7 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 @property (nonatomic, strong) IBOutlet UILabel *wordLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
 @property (nonatomic, strong) IBOutlet UILabel *learnedStatusLabel;
-@property (nonatomic, strong) IBOutlet UIView *learnedStatusView;
+@property (nonatomic, strong) IBOutlet MZWordStatusView *learnedStatusView;
 @property (nonatomic, strong) IBOutlet UILabel *numberOfTranslationsLabel;
 @property (nonatomic, strong) IBOutlet UILabel *percentageSuccessLabel;
 @property (nonatomic, strong) IBOutlet UIButton *editButton;
@@ -34,12 +35,6 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 
 @implementation MZWordDescriptionHeaderView
 
-- (void)awakeFromNib {
-	[super awakeFromNib];
-
-	[self.learnedStatusView makeCircular];
-}
-
 - (void)setWord:(MZWord *)word {
 	_word = word;
 
@@ -48,16 +43,7 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 	self.flagImageView.image = [UIImage flagImageForLanguage:self.word.language.integerValue];
 
 	// (2) Update Status (Left)
-	if (word.learningIndex.integerValue == MZWordIndexLearned) {
-		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearnedStatusColor];
-		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearned", nil);
-	} else if (word.learningIndex.integerValue >= trunc(MZWordIndexLearned / 2.0f)) {
-		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionLearningInProgressColor];
-		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionLearningInProgressStatus", nil);
-	} else {
-		self.learnedStatusView.backgroundColor = [UIColor wordDescriptionNotLearedColor];
-		self.learnedStatusLabel.text = NSLocalizedString(@"WordDescriptionNotLearnedStatus", nil);
-	}
+	self.learnedStatusView.word = word;
 
 	// (3) Update Statistics (Right)
 	NSUInteger numberTranslations = [self.word numberTranslationsToLanguage:[MZUser currentUser].toLanguage.integerValue];
@@ -109,12 +95,16 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 	_isEditing = isEditing;
 
 	if (isEditing) {
-		[self.editButton setTitle:NSLocalizedString(@"CommonDone", nil) forState:UIControlStateNormal];
+		[self.editButton setTitle:NSLocalizedString(@"CommonDone", nil).uppercaseString
+										 forState:UIControlStateNormal];
+
 		if ([self.delegate respondsToSelector:@selector(wordDescriptionHeaderViewDidStartEditing:)]) {
 			[self.delegate wordDescriptionHeaderViewDidStartEditing:self];
 		}
 	} else {
-		[self.editButton setTitle:NSLocalizedString(@"CommonEdit", nil) forState:UIControlStateNormal];
+		[self.editButton setTitle:NSLocalizedString(@"CommonEdit", nil).uppercaseString
+										 forState:UIControlStateNormal];
+
 		if ([self.delegate respondsToSelector:@selector(wordDescriptionHeaderViewDidStopEditing:)]) {
 			[self.delegate wordDescriptionHeaderViewDidStopEditing:self];
 		}

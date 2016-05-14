@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 
-@interface MZArticleDetailsTableViewCell : UITableViewCell
+@interface MZArticleDetailsTableViewCell : MZTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sourceLabel;

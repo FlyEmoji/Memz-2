@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 #import "MZGraphicView.h"
 
-@interface MZGraphicTableViewCell : UITableViewCell
+@interface MZGraphicTableViewCell : MZTableViewCell
 
 @property (strong, nonatomic) IBOutlet MZGraphicView *graphicView;
 

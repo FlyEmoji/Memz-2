@@ -13,5 +13,6 @@
 + (UIViewController *)topMostViewController;
 
 - (void)presentError:(NSError *)error;
+- (void)configureTapEndEditing;
 
 @end

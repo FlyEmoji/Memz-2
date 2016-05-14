@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 #import "MZWord.h"
 
 @protocol MZArticleSuggestedWordTableViewCellDelegate;
 
-@interface MZArticleSuggestedWordTableViewCell : UITableViewCell
+@interface MZArticleSuggestedWordTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) MZWord *word;
 @property (nonatomic, weak) id<MZArticleSuggestedWordTableViewCellDelegate> delegate;

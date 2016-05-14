@@ -12,6 +12,7 @@
 #import "UIImage+MemzAdditions.h"
 #import "NSString+MemzAdditions.h"
 #import "UIScrollView+KeyboardHelper.h"
+#import "UIViewController+MemzAdditions.h"
 #import "MZCountDown.h"
 #import "MZWord.h"
 
@@ -98,6 +99,7 @@ MZCountDownDelegate>
 
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[self.tableView handleKeyboardNotifications];
+	[self configureTapEndEditing];
 
 	[self setupResponse];
 }
@@ -240,7 +242,8 @@ MZCountDownDelegate>
 	[UIView animateWithDuration:kSubmitButtonAnimationDuration
 									 animations:^{
 										 self.submitButton.backgroundColor = submitButtonColor;
-										 [self.submitButton setTitle:NSLocalizedString(@"CommonNext", nil) forState:UIControlStateNormal];
+										 [self.submitButton setTitle:NSLocalizedString(@"CommonNext", nil).uppercaseString
+																				forState:UIControlStateNormal];
 									 }];
 }
 

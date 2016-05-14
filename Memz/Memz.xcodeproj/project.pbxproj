@@ -69,6 +69,7 @@
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
+		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */; };
 		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
@@ -286,6 +287,8 @@
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
 		0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableViewCell.h; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
 		0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZRemoteServerCoordinator.h; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.h; sourceTree = SOURCE_ROOT; };
 		0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinator.m; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.m; sourceTree = SOURCE_ROOT; };
@@ -995,6 +998,15 @@
 			name = UIAlertController;
 			sourceTree = "<group>";
 		};
+		0C8FD8D11CE2C84900FFC0A9 /* MZTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */,
+				0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */,
+			);
+			name = MZTableViewCell;
+			sourceTree = "<group>";
+		};
 		0C95C1861C89330A00FEAB49 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,6 +1028,7 @@
 			isa = PBXGroup;
 			children = (
 				0C2DC8721C4BE596005B11F5 /* MZTableView */,
+				0C8FD8D11CE2C84900FFC0A9 /* MZTableViewCell */,
 				0C429E931CD1A24700AB7029 /* MZLoaderView */,
 				0CE329491C9636CD00CC7C2F /* MZSwitch */,
 				0CE764A31CE16CFD001852D1 /* MZPageControl */,
@@ -2028,6 +2041,7 @@
 				0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */,
 				0CEFD1A91C3CB6D900EB60DE /* CADisplayLink+MemzBlocks.m in Sources */,
 				0C0740F61C8D1B7E00676A22 /* MZArticleAddAllTableViewCell.m in Sources */,
+				0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */,
 				0C3726F01C25B51400C9879F /* MZAutoCompletionTableViewCell.m in Sources */,
 				0CDA4AC31C86831A005BDA3B /* MZPendingQuizTableViewCell.m in Sources */,
 				0CEFD1C51C3CB72D00EB60DE /* UIColor+MemzColors.m in Sources */,

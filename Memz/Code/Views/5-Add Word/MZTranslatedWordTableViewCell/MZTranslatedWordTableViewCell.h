@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 #import "MZLanguageDefinition.h"
 
 @protocol MZTranslatedWordTableViewCellDelegate;
 
-@interface MZTranslatedWordTableViewCell : UITableViewCell
+@interface MZTranslatedWordTableViewCell : MZTableViewCell
 
 @property (nonatomic, weak) id<MZTranslatedWordTableViewCellDelegate> delegate;
 @property (nonatomic, assign) MZLanguage language;

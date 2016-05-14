@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MZTableViewCell.h"
 #import "MZLanguageDefinition.h"
 
-@interface MZSuggestedWordTableViewCell : UITableViewCell
+@interface MZSuggestedWordTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel *suggestedWordLabel;
 

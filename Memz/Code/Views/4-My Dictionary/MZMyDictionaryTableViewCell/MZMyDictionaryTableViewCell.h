@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MZWordStatusView.h"
+#import "MZTableViewCell.h"
 #import "MZWord+CoreDataProperties.h"
 
-@interface MZMyDictionaryTableViewCell : UITableViewCell
+@interface MZMyDictionaryTableViewCell : MZTableViewCell
 
 @property (nonatomic, strong) MZWord *word;
 
