@@ -71,6 +71,7 @@
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
+		0C8FD8FE1CE7C3A700FFC0A9 /* Pods.production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */; };
 		0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */; };
 		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
@@ -292,6 +293,7 @@
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configurations.m; path = "Code/Resources/Supporting Files/Configurations.m"; sourceTree = SOURCE_ROOT; };
+		0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
 		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
 		0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZRemoteServerCoordinator.h; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.h; sourceTree = SOURCE_ROOT; };
 		0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinator.m; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.m; sourceTree = SOURCE_ROOT; };
@@ -447,7 +449,7 @@
 		0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MemzTransitions.m"; path = "Code/Helpers/Categories/UINavigationController/UINavigationController+MemzTransitions.m"; sourceTree = SOURCE_ROOT; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.snapshot.xcconfig; path = "Pods/Target Support Files/Pods/Pods.snapshot.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1807,7 +1809,8 @@
 			isa = PBXGroup;
 			children = (
 				8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */,
-				E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */,
+				E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */,
+				0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1927,6 +1930,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C8FD8FE1CE7C3A700FFC0A9 /* Pods.production.xcconfig in Resources */,
 				0C95C18E1C8943C200FEAB49 /* feed.json in Resources */,
 				0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */,
 				0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */,
@@ -2191,6 +2195,170 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0C8FD8F31CE7BFF700FFC0A9 /* Snapshot */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Snapshot;
+		};
+		0C8FD8F41CE7BFF700FFC0A9 /* Snapshot */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.Memz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Snapshot;
+		};
+		0C8FD8F51CE7BFF700FFC0A9 /* Snapshot */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MemzTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memz.app/Memz";
+			};
+			name = Snapshot;
+		};
+		0C8FD8F61CE7BFF700FFC0A9 /* Snapshot */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MemzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Memz;
+				USES_XCTRUNNER = YES;
+			};
+			name = Snapshot;
+		};
+		0C8FD8F71CE7C09700FFC0A9 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Production;
+		};
+		0C8FD8F81CE7C09700FFC0A9 /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.Memz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Production;
+		};
+		0C8FD8F91CE7C09700FFC0A9 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MemzTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memz.app/Memz";
+			};
+			name = Production;
+		};
+		0C8FD8FA1CE7C09700FFC0A9 /* Production */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MemzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Memz;
+				USES_XCTRUNNER = YES;
+			};
+			name = Production;
+		};
 		0CA58BCB1C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2234,43 +2402,6 @@
 			};
 			name = Debug;
 		};
-		0CA58BCC1C204C7F000E19D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		0CA58BCE1C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */;
@@ -2286,21 +2417,6 @@
 			};
 			name = Debug;
 		};
-		0CA58BCF1C204C7F000E19D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6443E2A240E3D88A2BFCFF6 /* Pods.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
-				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.Memz;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		0CA58BD11C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2312,18 +2428,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memz.app/Memz";
 			};
 			name = Debug;
-		};
-		0CA58BD21C204C7F000E19D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MemzTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memz.app/Memz";
-			};
-			name = Release;
 		};
 		0CA58BD41C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2337,18 +2441,6 @@
 			};
 			name = Debug;
 		};
-		0CA58BD51C204C7F000E19D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = MemzUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = Memz;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2356,37 +2448,41 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA58BCB1C204C7F000E19D4 /* Debug */,
-				0CA58BCC1C204C7F000E19D4 /* Release */,
+				0C8FD8F71CE7C09700FFC0A9 /* Production */,
+				0C8FD8F31CE7BFF700FFC0A9 /* Snapshot */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		0CA58BCD1C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "Memz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA58BCE1C204C7F000E19D4 /* Debug */,
-				0CA58BCF1C204C7F000E19D4 /* Release */,
+				0C8FD8F81CE7C09700FFC0A9 /* Production */,
+				0C8FD8F41CE7BFF700FFC0A9 /* Snapshot */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		0CA58BD01C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "MemzTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA58BD11C204C7F000E19D4 /* Debug */,
-				0CA58BD21C204C7F000E19D4 /* Release */,
+				0C8FD8F91CE7C09700FFC0A9 /* Production */,
+				0C8FD8F51CE7BFF700FFC0A9 /* Snapshot */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		0CA58BD31C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "MemzUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA58BD41C204C7F000E19D4 /* Debug */,
-				0CA58BD51C204C7F000E19D4 /* Release */,
+				0C8FD8FA1CE7C09700FFC0A9 /* Production */,
+				0C8FD8F61CE7BFF700FFC0A9 /* Snapshot */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
