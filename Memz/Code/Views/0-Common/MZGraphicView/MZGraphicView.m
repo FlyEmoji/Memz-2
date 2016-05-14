@@ -366,7 +366,7 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 																																									kInnerPointRadius,
 																																									kInnerPointRadius)];
 
-		[[UIColor averageColorBetweenColor:DEFAULT_GRADIENT_START_COLOR andColor:DEFAULT_GRADIENT_END_COLOR] setFill];
+		[[UIColor averageColorBetweenColor:self.gradientStartColor andColor:self.gradientEndColor] setFill];
 		[innerCircle fill];
 	}
 }

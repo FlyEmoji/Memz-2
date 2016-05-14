@@ -9,7 +9,6 @@
 #import "MZLanguagesPickerCollectionController.h"
 #import "MZGradientCollectionViewLayout.h"
 #import "MZLanguageCollectionViewCell.h"
-#import "UIView+MemzAdditions.h"
 
 #define COMPLETION_IF_NEEDED() \
 if (completionHandler) { \
@@ -177,7 +176,6 @@ UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
 	cell.layer.cornerRadius = kCellsCornerRadius;
-	[cell applyShadows];
 }
 
 @end
