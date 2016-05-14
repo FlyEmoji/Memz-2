@@ -37,6 +37,15 @@ const CGFloat kCircularRadius = 0.5f;
 	[self applyCornerRadius:kCircularRadius];
 }
 
+#pragma mark - Shadows
+
+- (void)applyShadows {
+	self.layer.shadowColor = [[UIColor blackColor] CGColor];
+	self.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);
+	self.layer.shadowRadius = 3.0f;
+	self.layer.shadowOpacity = 1.0f;
+}
+
 #pragma mark - Glow
 
 - (UIView *)glowView {

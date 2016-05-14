@@ -18,6 +18,8 @@ completionHandler(); \
 const NSTimeInterval kAppearanceCellsDuration = 0.4;
 const NSTimeInterval kDelayAppearanceCells = 0.2;
 
+const CGFloat kCellsCornerRadius = 5.0f;
+
 NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionViewCellIdentifier";
 
 @interface MZLanguagesPickerCollectionController () <UICollectionViewDataSource,
@@ -170,6 +172,10 @@ UICollectionViewDelegate>
 		[self.delegate languagesPickerCollectionController:self
 																		 didSelectLanguage:self.mutableCollectionViewData[indexPath.row].integerValue];
 	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+	cell.layer.cornerRadius = kCellsCornerRadius;
 }
 
 @end

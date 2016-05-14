@@ -42,7 +42,7 @@ NSString * const kAnimationKey = @"MZLanguageCollectionViewCellAnimationKey";
 	_language = language;
 
 	self.flagImageView.image = [UIImage flagImageForLanguage:language];
-	self.languageTitleLabel.text = [NSString languageNameForLanguage:language];
+	self.languageTitleLabel.text = [NSString languageNameForLanguage:language].uppercaseString;
 
 	if ([[MZUser currentUser] wordsForLanguage:language].count == 0) {
 		self.noDataContainerView.hidden = NO;

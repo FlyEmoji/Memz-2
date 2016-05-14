@@ -12,7 +12,6 @@
 
 #define DEFAULT_GRADIENT_START_COLOR [UIColor graphGradientDefaultStartColor]
 #define DEFAULT_GRADIENT_END_COLOR [UIColor graphGradientDefaultEndColor]
-#define DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR [UIColor graphGradientDefaultUnderGraphStartColor]
 
 const CGFloat kHorizontalInsets = 20.0f;
 
@@ -28,6 +27,8 @@ const CGFloat kTopBoundaryLabelInset = 5.0f;
 const CGFloat kTintColorMakeBrighterPercentage = 0.2f;
 const CGFloat kTextAlphaPercentage = 0.7f;
 const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
+
+const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 
 @interface MZGraphicView ()
 
@@ -45,6 +46,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 @property (nonatomic, strong) UILabel *topBoundaryLabel;
 @property (nonatomic, strong) UILabel *bottomBoundaryLabel;
 
+@property (nonatomic, weak, readonly) UIColor *gradientUnderGraphStartColor;
 @property (nonatomic, assign, readonly) BOOL isDataEmpty;
 
 @end
@@ -79,7 +81,6 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 - (void)commonInit {
 	self.gradientStartColor = DEFAULT_GRADIENT_START_COLOR;
 	self.gradientEndColor = DEFAULT_GRADIENT_END_COLOR;
-	self.gradientUnderGraphStartColor = DEFAULT_GRADIENT_UNDER_GRAPH_START_COLOR;
 
 	self.showAverageLine = YES;
 	self.textColor = [UIColor whiteColor];
@@ -144,6 +145,10 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 
 - (BOOL)isDataEmpty {
 	return self.values.count == 0 || [self sumValue].floatValue == 0.0f;
+}
+
+- (UIColor *)gradientUnderGraphStartColor {
+	return [self.gradientStartColor colorWithAlphaComponent:kGradientUnderGraphStartColorAlpha];
 }
 
 #pragma mark - Global Overridden Methods
@@ -361,7 +366,7 @@ const CGFloat kPercentageShouldDisplayOriginZero = 0.3f;
 																																									kInnerPointRadius,
 																																									kInnerPointRadius)];
 
-		[[UIColor averageColorBetweenColor:DEFAULT_GRADIENT_START_COLOR andColor:DEFAULT_GRADIENT_END_COLOR] setFill];
+		[[UIColor averageColorBetweenColor:self.gradientStartColor andColor:self.gradientEndColor] setFill];
 		[innerCircle fill];
 	}
 }

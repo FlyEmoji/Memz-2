@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MDq-rn-Utn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MDq-rn-Utn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
+        </mutableArray>
+        <mutableArray key="MaisonNeue-Book.ttf">
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Statistics-->
         <scene sceneID="RmB-0q-GvJ">
@@ -19,6 +32,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient-Reversed" translatesAutoresizingMaskIntoConstraints="NO" id="yHv-eS-HET">
+                                <rect key="frame" x="0.0" y="64" width="600" height="268"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="l6B-Kx-fLB">
+                                <rect key="frame" x="0.0" y="332" width="600" height="268"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-id-wZr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -46,16 +65,16 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSd-Rv-VXy">
-                                                            <rect key="frame" x="150" y="145" width="51" height="30"/>
+                                                            <rect key="frame" x="150" y="145" width="50" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="pE6-UX-493"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="20"/>
+                                                            <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.61075876285105701" green="0.74072292245901783" blue="0.84346846219548421" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="kSd-Rv-VXy" firstAttribute="top" secondItem="b5z-bO-Zvf" secondAttribute="bottom" constant="18" id="QzC-YY-to1"/>
                                                         <constraint firstItem="b5z-bO-Zvf" firstAttribute="centerX" secondItem="gwR-OT-64G" secondAttribute="centerX" id="XXP-d2-xoA"/>
@@ -66,42 +85,42 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4C-JW-DTS">
-                                                    <rect key="frame" x="15" y="214" width="55" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="214" width="56" height="15"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 translations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH0-gO-gQk">
-                                                    <rect key="frame" x="15" y="238" width="94" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="235" width="95" height="15"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 good answers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioV-dw-pXe">
-                                                    <rect key="frame" x="15" y="262" width="109" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="256" width="111" height="15"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 words learned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4A-6h-e2J">
-                                                    <rect key="frame" x="15" y="286" width="111" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="277" width="112" height="15"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0% successful translations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHC-Ms-5EJ">
-                                                    <rect key="frame" x="15" y="310" width="182" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="15" y="298" width="188" height="15"/>
+                                                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cw-xo-oAI" userLabel="No Data Container View">
                                                     <rect key="frame" x="0.0" y="200" width="350" height="261"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Yet!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NzF-yd-s6b">
-                                                            <rect key="frame" x="126" y="98" width="98" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <rect key="frame" x="127" y="100" width="96" height="17"/>
+                                                            <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="17"/>
+                                                            <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -114,7 +133,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.94117647058823528" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95686274510000002" green="0.95294117649999999" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="6cw-xo-oAI" secondAttribute="trailing" id="1fA-g6-9eI"/>
                                             <constraint firstItem="n4A-6h-e2J" firstAttribute="top" secondItem="ioV-dw-pXe" secondAttribute="bottom" constant="6" id="9yr-FA-IHX"/>
@@ -149,11 +168,19 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.24313725490196078" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.29803921568627451" green="0.32156862745098036" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yHv-eS-HET" secondAttribute="trailing" id="6PV-kv-J2o"/>
+                            <constraint firstItem="l6B-Kx-fLB" firstAttribute="height" secondItem="oGw-id-wZr" secondAttribute="height" multiplier="1:2" id="8Qq-07-7kr"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="top" secondItem="FrC-uN-lDh" secondAttribute="bottom" id="FOr-kc-lum"/>
                             <constraint firstItem="oGw-id-wZr" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="GQc-Ac-8iu"/>
+                            <constraint firstItem="l6B-Kx-fLB" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="GmM-Ou-ZPE"/>
                             <constraint firstAttribute="trailing" secondItem="oGw-id-wZr" secondAttribute="trailing" id="Jg6-D4-Wzu"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="SlS-Ju-Zsf"/>
+                            <constraint firstItem="WFu-B7-e7i" firstAttribute="top" secondItem="l6B-Kx-fLB" secondAttribute="bottom" id="Wqq-NN-CAo"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="height" secondItem="l6B-Kx-fLB" secondAttribute="height" id="rmu-z2-4gt"/>
                             <constraint firstItem="WFu-B7-e7i" firstAttribute="top" secondItem="oGw-id-wZr" secondAttribute="bottom" id="t6A-YW-D6H"/>
+                            <constraint firstAttribute="trailing" secondItem="l6B-Kx-fLB" secondAttribute="trailing" id="uxI-ez-TTJ"/>
                             <constraint firstItem="oGw-id-wZr" firstAttribute="top" secondItem="FrC-uN-lDh" secondAttribute="bottom" id="vwm-lt-d6G"/>
                         </constraints>
                     </view>
@@ -190,12 +217,13 @@
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3X2-BZ-gtg">
                                         <rect key="frame" x="6" y="7" width="588" height="29"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <segments>
                                             <segment title="Week"/>
                                             <segment title="Month"/>
                                             <segment title="Year"/>
                                         </segments>
-                                        <color key="tintColor" red="0.9137254901960784" green="0.24705882352941178" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="segmentedControlValueChanged:" destination="Epx-el-GTz" eventType="valueChanged" id="Ywu-vF-ccX"/>
                                         </connections>
@@ -226,7 +254,16 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="III-xE-0zS" customClass="MZGraphicView">
                                                     <rect key="frame" x="0.0" y="0.0" width="588" height="196"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="gradientStartColor">
+                                                            <color key="value" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
+                                                            <color key="value" red="0.25991977652013432" green="0.57569362657285272" blue="0.63481691922525252" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="showAverageLine" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -249,7 +286,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Psf-rq-e1I" firstAttribute="top" secondItem="fgR-bB-8w8" secondAttribute="bottom" id="5H9-02-X5L"/>
                             <constraint firstItem="fgR-bB-8w8" firstAttribute="leading" secondItem="GEF-j5-I5T" secondAttribute="leading" constant="6" id="AO4-zZ-lUR"/>
@@ -289,6 +326,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Common-Gradient" width="375" height="375"/>
+        <image name="Common-Gradient-Reversed" width="375" height="370"/>
         <image name="Flag-France" width="48" height="36"/>
         <image name="Navigation-Back" width="27" height="22"/>
     </resources>

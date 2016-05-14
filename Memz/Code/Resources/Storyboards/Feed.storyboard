@@ -42,7 +42,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EvT-m7-RvZ" userLabel="Background Image View">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="197"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feed-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Cum-NS-6C1" userLabel="Gradient">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Cum-NS-6C1" userLabel="Gradient">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="197"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SES-sj-KHm">
@@ -145,7 +145,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Feed-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="g7n-R7-WLl" userLabel="Gradient Image View">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="g7n-R7-WLl" userLabel="Gradient Image View">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                                 </imageView>
                                             </subviews>
@@ -500,9 +500,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Common-Gradient" width="375" height="375"/>
         <image name="Common-Social-Facebook" width="32" height="68"/>
         <image name="Common-Social-Twitter" width="61" height="53"/>
-        <image name="Feed-Gradient" width="375" height="375"/>
         <image name="Navigation-Add" width="26" height="26"/>
     </resources>
 </document>

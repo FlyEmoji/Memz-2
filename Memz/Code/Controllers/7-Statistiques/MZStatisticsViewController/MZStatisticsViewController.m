@@ -23,6 +23,8 @@ const NSUInteger kWeekGranularityNumberMeasures = 7;
 const NSUInteger kMonthGranularityNumberMeasures = 31;
 const NSUInteger kYearGranularityNumberMeasures = 20;
 
+const CGFloat kTableViewTopInset = 5.0f;
+
 @interface MZStatisticsViewController () <MZStatisticsExtendedNavigationBarViewDelegate,
 UITableViewDataSource,
 UITableViewDelegate>
@@ -45,6 +47,7 @@ UITableViewDelegate>
 
 	self.tableViewData = @[@(MZStatisticsGraphTotalTranslations), @(MZStatisticsGraphSuccessfulTranslations)];
 	self.tableView.tableFooterView = [[UIView alloc] init];
+	self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopInset, 0.0f, 0.0f, 0.0f);
 	[self.tableView reloadData];
 }
 
@@ -146,18 +149,22 @@ UITableViewDelegate>
 			}
 			break;
 		case MZStatisticsGranularityMonth:
-			for (NSUInteger period = 0; period < kMonthGranularityNumberMeasures; period++) {
+			for (NSUInteger period = 0; period <= kMonthGranularityNumberMeasures; period++) {
+				NSUInteger numberDaysPerPeriod = 31 / kMonthGranularityNumberMeasures;
 				NSUInteger count = 0;
-				for (NSUInteger daysInPeriod = period * kMonthGranularityNumberMeasures; daysInPeriod < 31 / kMonthGranularityNumberMeasures; daysInPeriod++) {
+
+				for (NSUInteger daysInPeriod = period * numberDaysPerPeriod; daysInPeriod < (period + 1) * numberDaysPerPeriod; daysInPeriod++) {
 					count += [self valueForGraph:graph language:self.language day:[[NSDate date] dayForDaysInThePast:daysInPeriod]];
 				}
 				[mutableStatisticData addObject:@(count)];
 			}
 			break;
 		case MZStatisticsGranularityYear:
-			for (NSUInteger period = 0; period < kYearGranularityNumberMeasures; period++) {
+			for (NSUInteger period = 0; period <= kYearGranularityNumberMeasures; period++) {
+				NSUInteger numberDaysPerPeriod = 365 / kYearGranularityNumberMeasures;
 				NSUInteger count = 0;
-				for (NSUInteger daysInPeriod = period * kYearGranularityNumberMeasures; daysInPeriod < 365 / kYearGranularityNumberMeasures; daysInPeriod++) {
+
+				for (NSUInteger daysInPeriod = period * numberDaysPerPeriod; daysInPeriod < (period + 1) * numberDaysPerPeriod; daysInPeriod++) {
 					count += [self valueForGraph:graph language:self.language day:[[NSDate date] dayForDaysInThePast:daysInPeriod]];
 				}
 				[mutableStatisticData addObject:@(count)];

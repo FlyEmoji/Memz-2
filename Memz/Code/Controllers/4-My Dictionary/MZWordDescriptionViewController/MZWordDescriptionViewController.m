@@ -10,8 +10,9 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
 #import "UIImage+MemzAdditions.h"
-#import "MZDataManager.h"
+#import "UIView+MemzAdditions.h"
 #import "MZShareManager.h"
+#import "MZDataManager.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
 

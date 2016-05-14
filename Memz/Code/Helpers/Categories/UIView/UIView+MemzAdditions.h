@@ -15,6 +15,10 @@
 - (void)applyCornerRadius:(CGFloat)cornerRadius;
 - (void)makeCircular;
 
+// Shadows
+
+- (void)applyShadows;
+
 // Glow
 
 - (void)glowOnce;  // fade up and down once
