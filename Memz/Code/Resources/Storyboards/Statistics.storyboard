@@ -64,11 +64,11 @@
                                                                 <constraint firstAttribute="height" constant="30" id="pE6-UX-493"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="20"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="0.64455764358108103" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="kSd-Rv-VXy" firstAttribute="top" secondItem="b5z-bO-Zvf" secondAttribute="bottom" constant="18" id="QzC-YY-to1"/>
                                                         <constraint firstItem="b5z-bO-Zvf" firstAttribute="centerX" secondItem="gwR-OT-64G" secondAttribute="centerX" id="XXP-d2-xoA"/>
@@ -247,9 +247,6 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="gradientEndColor">
                                                             <color key="value" red="0.25991977652013432" green="0.57569362657285272" blue="0.63481691922525252" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="gradientUnderGraphStartColor">
-                                                            <color key="value" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="0.7998838682432432" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="showAverageLine" value="YES"/>
                                                     </userDefinedRuntimeAttributes>

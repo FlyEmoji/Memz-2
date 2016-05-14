@@ -9,6 +9,7 @@
 #import "MZLanguagesPickerCollectionController.h"
 #import "MZGradientCollectionViewLayout.h"
 #import "MZLanguageCollectionViewCell.h"
+#import "UIView+MemzAdditions.h"
 
 #define COMPLETION_IF_NEEDED() \
 if (completionHandler) { \
@@ -17,6 +18,8 @@ completionHandler(); \
 
 const NSTimeInterval kAppearanceCellsDuration = 0.4;
 const NSTimeInterval kDelayAppearanceCells = 0.2;
+
+const CGFloat kCellsCornerRadius = 5.0f;
 
 NSString * const kLanguageCollectionViewCellIdentifier = @"MZLanguageCollectionViewCellIdentifier";
 
@@ -170,6 +173,11 @@ UICollectionViewDelegate>
 		[self.delegate languagesPickerCollectionController:self
 																		 didSelectLanguage:self.mutableCollectionViewData[indexPath.row].integerValue];
 	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+	cell.layer.cornerRadius = kCellsCornerRadius;
+	[cell applyShadows];
 }
 
 @end

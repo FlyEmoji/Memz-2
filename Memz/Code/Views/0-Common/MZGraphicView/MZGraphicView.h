@@ -21,7 +21,6 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) IBInspectable UIColor *gradientStartColor;	// default iOS yellow to red colors
 @property (nonatomic, strong) IBInspectable UIColor *gradientEndColor;
-@property (nonatomic, strong) IBInspectable UIColor *gradientUnderGraphStartColor;  // TODO: Should be generated
 
 @property (nonatomic, assign) IBInspectable BOOL showAverageLine;	 // default YES
 
