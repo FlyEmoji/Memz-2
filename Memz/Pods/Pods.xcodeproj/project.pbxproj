@@ -129,10 +129,11 @@
 		01B42935A415C0BEBD79417A825719DD /* slider-metal-handle@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "slider-metal-handle@2x.png"; path = "NMRangeSlider/MetalTheme/slider-metal-handle@2x.png"; sourceTree = "<group>"; };
 		03B4E571A83C7139215C766DF64FCFC5 /* SDWebImageDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageDecoder.m; path = SDWebImage/SDWebImageDecoder.m; sourceTree = "<group>"; };
 		065352E6AEDDBF7E5A7A30AFEC26570D /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/SDWebImageManager.h; sourceTree = "<group>"; };
+		0C8FD8FB1CE7C10100FFC0A9 /* Pods.production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pods.production.xcconfig; sourceTree = "<group>"; };
+		0C8FD8FC1CE7C10100FFC0A9 /* Pods.snapshot.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Pods.snapshot.xcconfig; sourceTree = "<group>"; };
 		0EB8F84003EAC8D25AAA335FB4891742 /* SDImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCache.m; path = SDWebImage/SDImageCache.m; sourceTree = "<group>"; };
 		0FC9DDBF3A73BB5638D9D74D495839D3 /* SDWebImage-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SDWebImage-Private.xcconfig"; sourceTree = "<group>"; };
 		1244CADDF20771D037E1454D14AD41AE /* UIImageView+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+WebCache.h"; path = "SDWebImage/UIImageView+WebCache.h"; sourceTree = "<group>"; };
-		13AA9487106393FB7F0C9D8B0071521F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
 		13EB293E7C15F6358B7CF0B3961410F4 /* NMRangeSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NMRangeSlider-umbrella.h"; sourceTree = "<group>"; };
 		14FED9A8AC7EC655AD8DB36D27291CEA /* slider-default7-handle@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "slider-default7-handle@2x.png"; path = "NMRangeSlider/DefaultTheme7/slider-default7-handle@2x.png"; sourceTree = "<group>"; };
 		15AC9AEB7BDB95ACD0D5408787FB1341 /* NMRangeSlider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NMRangeSlider.m; path = NMRangeSlider/NMRangeSlider.m; sourceTree = "<group>"; };
@@ -374,7 +375,8 @@
 				CBC0F7C552B739C909B650A0F42F7F38 /* Pods-resources.sh */,
 				8524F654A8BC8355FB14328E70630F0A /* Pods-umbrella.h */,
 				F3CEA6244BFA950484B59AF34B396740 /* Pods.debug.xcconfig */,
-				13AA9487106393FB7F0C9D8B0071521F /* Pods.release.xcconfig */,
+				0C8FD8FB1CE7C10100FFC0A9 /* Pods.production.xcconfig */,
+				0C8FD8FC1CE7C10100FFC0A9 /* Pods.snapshot.xcconfig */,
 			);
 			name = Pods;
 			path = "Target Support Files/Pods";
@@ -870,7 +872,6 @@
 		};
 		0B9802FFB617B7A71C66B343E014AE48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13AA9487106393FB7F0C9D8B0071521F /* Pods.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
