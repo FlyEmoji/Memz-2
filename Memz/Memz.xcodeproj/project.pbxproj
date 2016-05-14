@@ -70,6 +70,7 @@
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
+		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
 		0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */; };
 		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
@@ -289,6 +290,8 @@
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableViewCell.h; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
+		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
+		0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configurations.m; path = "Code/Resources/Supporting Files/Configurations.m"; sourceTree = SOURCE_ROOT; };
 		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
 		0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZRemoteServerCoordinator.h; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.h; sourceTree = SOURCE_ROOT; };
 		0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinator.m; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.m; sourceTree = SOURCE_ROOT; };
@@ -1164,6 +1167,8 @@
 				0CA58BE61C205111000E19D4 /* Info.plist */,
 				0CA58BEF1C205387000E19D4 /* constants.h */,
 				0C5042251C59B01D0045E6FC /* constants.m */,
+				0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */,
+				0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */,
 				0CA58BFA1C20549D000E19D4 /* Memz-Prefiz.pch */,
 				0CA58BE71C205111000E19D4 /* main.m */,
 			);
@@ -2061,6 +2066,7 @@
 				0C711C8F1C3179FA00E0BB43 /* MZQuizInfoView.m in Sources */,
 				0CEFD1BD1C3CB71400EB60DE /* UIImage+AssetIdentifiers.m in Sources */,
 				0CDFD9EC1C5462EC007EBCA6 /* MZNavigationController.m in Sources */,
+				0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */,
 				0C0740F21C8D027200676A22 /* MZArticleBodyTableViewCell.m in Sources */,
 				0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */,
 				0CEFD1BE1C3CB71400EB60DE /* UIImage+MemzAdditions.m in Sources */,
