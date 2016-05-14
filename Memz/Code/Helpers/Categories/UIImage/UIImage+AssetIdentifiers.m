@@ -36,6 +36,10 @@
 			return [UIImage imageNamed:@"Common-Carousel-Dot-Active"];
 		case MZAssetIdentifierCommonLoaderLarge:
 			return [UIImage imageNamed:@"Loader-Large"];
+		case MZAssetIdentifierCommonGradient:
+			return [UIImage imageNamed:@"Common-Gradient"];
+		case MZAssetIdentifierCommonGradientReversed:
+			return [UIImage imageNamed:@"Common-Gradient-Reversed"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:
@@ -52,8 +56,6 @@
 			return [UIImage imageNamed:@"Navigation-Large-Tick"];
 		case MZAssetIdentifierNavigationForwardTap:
 			return [UIImage imageNamed:@"Navigation-Forward-Tap"];
-		case MZAssetIdentifierFeedGradient:
-			return [UIImage imageNamed:@"Feed-Gradient"];
 		case MZAssetIdentifierFeedActiveTick:
 			return [UIImage imageNamed:@"Feed-Active-Tick"];
 		case MZAssetIdentifierAddWordMinusIcon:

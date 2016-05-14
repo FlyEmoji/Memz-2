@@ -32,6 +32,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient-Reversed" translatesAutoresizingMaskIntoConstraints="NO" id="yHv-eS-HET">
+                                <rect key="frame" x="0.0" y="64" width="600" height="268"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="l6B-Kx-fLB">
+                                <rect key="frame" x="0.0" y="332" width="600" height="268"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oGw-id-wZr">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -164,9 +170,17 @@
                         </subviews>
                         <color key="backgroundColor" red="0.29803921568627451" green="0.32156862745098036" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yHv-eS-HET" secondAttribute="trailing" id="6PV-kv-J2o"/>
+                            <constraint firstItem="l6B-Kx-fLB" firstAttribute="height" secondItem="oGw-id-wZr" secondAttribute="height" multiplier="1:2" id="8Qq-07-7kr"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="top" secondItem="FrC-uN-lDh" secondAttribute="bottom" id="FOr-kc-lum"/>
                             <constraint firstItem="oGw-id-wZr" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="GQc-Ac-8iu"/>
+                            <constraint firstItem="l6B-Kx-fLB" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="GmM-Ou-ZPE"/>
                             <constraint firstAttribute="trailing" secondItem="oGw-id-wZr" secondAttribute="trailing" id="Jg6-D4-Wzu"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="leading" secondItem="vLs-yN-R9d" secondAttribute="leading" id="SlS-Ju-Zsf"/>
+                            <constraint firstItem="WFu-B7-e7i" firstAttribute="top" secondItem="l6B-Kx-fLB" secondAttribute="bottom" id="Wqq-NN-CAo"/>
+                            <constraint firstItem="yHv-eS-HET" firstAttribute="height" secondItem="l6B-Kx-fLB" secondAttribute="height" id="rmu-z2-4gt"/>
                             <constraint firstItem="WFu-B7-e7i" firstAttribute="top" secondItem="oGw-id-wZr" secondAttribute="bottom" id="t6A-YW-D6H"/>
+                            <constraint firstAttribute="trailing" secondItem="l6B-Kx-fLB" secondAttribute="trailing" id="uxI-ez-TTJ"/>
                             <constraint firstItem="oGw-id-wZr" firstAttribute="top" secondItem="FrC-uN-lDh" secondAttribute="bottom" id="vwm-lt-d6G"/>
                         </constraints>
                     </view>
@@ -312,6 +326,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Common-Gradient" width="375" height="375"/>
+        <image name="Common-Gradient-Reversed" width="375" height="370"/>
         <image name="Flag-France" width="48" height="36"/>
         <image name="Navigation-Back" width="27" height="22"/>
     </resources>
