@@ -12,6 +12,9 @@
 #import "MZSettingsStepperTableViewCell.h"
 #import "MZSettingsSliderTableViewCell.h"
 #import "MZPushNotificationManager.h"
+#import "UIImage+MemzAdditions.h"
+#import "MZFlightPickerView.h"
+#import "MZDataManager.h"
 #import "MZQuizManager.h"
 #import "MZTableView.h"
 
@@ -66,7 +69,10 @@ UIScrollViewDelegate>
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
 @property (nonatomic, strong) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
 
+@property (nonatomic, weak) MZFlightPickerView *languagePickerView;
+
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
+@property (nonatomic, weak, readonly) NSArray<UIImage *> *languageFlagImages;
 
 @end
 
@@ -125,6 +131,14 @@ UIScrollViewDelegate>
 						 kDataKey: reverseQuiz},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeOthers),
 						 kDataKey: others}].mutableCopy;
+}
+
+- (NSArray<UIImage *> *)languageFlagImages {
+	return @[[UIImage flagImageForLanguage:MZLanguageEnglish],
+					 [UIImage flagImageForLanguage:MZLanguageFrench],
+					 [UIImage flagImageForLanguage:MZLanguageSpanish],
+					 [UIImage flagImageForLanguage:MZLanguageItalian],
+					 [UIImage flagImageForLanguage:MZLanguagePortuguese]];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -249,11 +263,39 @@ UIScrollViewDelegate>
 #pragma mark - Table View Header Delegate Methods
 
 - (void)settingsTableViewHeaderDidRequestChangeFromLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
-	// TODO: To implement
+	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
+																												startingFromPoint:self.tableViewHeader.center
+																																 withData:self.languageFlagImages
+																																 animated:YES
+																												 pickAtIndexBlock:
+														 ^(NSUInteger selectedIndex) {
+															 if (selectedIndex != NO_INDEX) {
+																 [MZUser currentUser].fromLanguage = @(selectedIndex);
+																 self.tableViewHeader.fromLanguage = selectedIndex;
+
+																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																	 [self.languagePickerView dismissAnimated:YES];
+																 }];
+															 }
+														 }];
 }
 
 - (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
-	// TODO: To implement
+	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
+																												startingFromPoint:self.tableViewHeader.center
+																																 withData:self.languageFlagImages
+																																 animated:YES
+																												 pickAtIndexBlock:
+														 ^(NSUInteger selectedIndex) {
+															 if (selectedIndex != NO_INDEX) {
+																 [MZUser currentUser].toLanguage = @(selectedIndex);
+																 self.tableViewHeader.toLanguage = selectedIndex;
+
+																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																	 [self.languagePickerView dismissAnimated:YES];
+																 }];
+															 }
+														 }];
 }
 
 #pragma mark - Title Table View Cell Delegate Methods
