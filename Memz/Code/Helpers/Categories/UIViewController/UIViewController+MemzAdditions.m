@@ -58,4 +58,13 @@
 								 otherButtonTitles:nil];
 }
 
+- (void)configureTapEndEditing {
+	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+	[self.view addGestureRecognizer:tapGestureRecognizer];
+}
+
+- (void)didTapView:(UITapGestureRecognizer *)tapGestureRecognizer {
+	[self.view endEditing:YES];
+}
+
 @end
