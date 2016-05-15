@@ -69,7 +69,7 @@ UIScrollViewDelegate>
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
 @property (nonatomic, strong) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
 
-@property (nonatomic, weak) MZFlightPickerView *languagePickerView;
+@property (nonatomic, strong) MZFlightPickerView *languagePickerView;
 
 @property (nonatomic, strong) NSMutableArray<NSMutableDictionary *> *tableViewData;
 @property (nonatomic, weak, readonly) NSArray<UIImage *> *languageFlagImages;
@@ -139,6 +139,14 @@ UIScrollViewDelegate>
 					 [UIImage flagImageForLanguage:MZLanguageSpanish],
 					 [UIImage flagImageForLanguage:MZLanguageItalian],
 					 [UIImage flagImageForLanguage:MZLanguagePortuguese]];
+}
+
+- (void)setLanguagePickerView:(MZFlightPickerView *)languagePickerView {
+	if (_languagePickerView) {
+		[_languagePickerView removeFromSuperview];
+		_languagePickerView = nil;
+	}
+	_languagePickerView = languagePickerView;
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -263,8 +271,13 @@ UIScrollViewDelegate>
 #pragma mark - Table View Header Delegate Methods
 
 - (void)settingsTableViewHeaderDidRequestChangeFromLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
+	CGPoint startPoint = CGPointMake(self.tableViewHeader.fromLanguageFlagFrame.origin.x + self.tableViewHeader.fromLanguageFlagFrame.size.width / 2.0f,
+																	 self.tableViewHeader.fromLanguageFlagFrame.origin.y + self.tableViewHeader.fromLanguageFlagFrame.size.height);
+
+	startPoint = [self.tableView convertPoint:startPoint toView:self.view];
+
 	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
-																												startingFromPoint:self.tableViewHeader.center
+																												startingFromPoint:startPoint
 																																 withData:self.languageFlagImages
 																																 animated:YES
 																												 pickAtIndexBlock:
@@ -281,8 +294,13 @@ UIScrollViewDelegate>
 }
 
 - (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
+	CGPoint startPoint = CGPointMake(self.tableViewHeader.toLanguageFlagFrame.origin.x + self.tableViewHeader.toLanguageFlagFrame.size.width / 2.0f,
+																	 self.tableViewHeader.toLanguageFlagFrame.origin.y + self.tableViewHeader.toLanguageFlagFrame.size.height);
+
+	startPoint = [self.tableView convertPoint:startPoint toView:self.view];
+
 	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
-																												startingFromPoint:self.tableViewHeader.center
+																												startingFromPoint:startPoint
 																																 withData:self.languageFlagImages
 																																 animated:YES
 																												 pickAtIndexBlock:

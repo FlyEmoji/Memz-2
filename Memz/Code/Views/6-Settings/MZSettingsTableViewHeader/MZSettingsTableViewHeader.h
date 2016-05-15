@@ -19,6 +19,9 @@
 @property (nonatomic, assign) MZLanguage fromLanguage;
 @property (nonatomic, assign) MZLanguage toLanguage;
 
+@property (nonatomic, assign, readonly) CGRect fromLanguageFlagFrame;
+@property (nonatomic, assign, readonly) CGRect toLanguageFlagFrame;
+
 @end
 
 @protocol MZSettingsTableViewHeaderDelegate <NSObject>

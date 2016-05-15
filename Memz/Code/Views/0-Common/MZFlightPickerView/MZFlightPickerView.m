@@ -11,14 +11,20 @@
 
 NSString * const kFlightPickerViewCellIdentifier = @"MZFlightPickerViewCellIdentifier";
 
-const CGFloat kFlightPickerWidth = 40.0f;
+const CGFloat kFlightPickerWidth = 60.0f;
 const CGFloat kBottomSpaceInset = 30.0f;
-const NSTimeInterval kFadeInOutAnimationDuration = 0.3;
+const CGFloat kCornerRadius = 5.0f;
+
+const CGFloat kTableViewCellHeight = 50.0f;
+
+const NSTimeInterval kFadeInOutAnimationDuration = 0.2;
 
 @interface MZFlightPickerView () <UITableViewDelegate,
 UITableViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+
 @property (nonatomic, copy) MZFlightPickerCompletionHandler completionBlock;
 
 @end
@@ -33,11 +39,15 @@ UITableViewDataSource>
 	MZFlightPickerView *flightPickerView = [[MZFlightPickerView alloc] init];
 	flightPickerView.pickableData = data;
 	flightPickerView.completionBlock = completionHandler;
-	flightPickerView.frame = CGRectMake(topCenterPoint.x - kFlightPickerWidth,
+	flightPickerView.frame = CGRectMake(topCenterPoint.x - kFlightPickerWidth / 2.0f,
 																			topCenterPoint.y,
 																			kFlightPickerWidth,
-																			containerView.frame.size.height - topCenterPoint.y - kBottomSpaceInset);
+																			fmin(containerView.frame.size.height - topCenterPoint.y - kBottomSpaceInset,
+																					 data.count * kTableViewCellHeight + flightPickerView.tableViewTopConstraint.constant));
+	flightPickerView.layer.cornerRadius = kCornerRadius;
+	flightPickerView.layer.masksToBounds = YES;
 	flightPickerView.alpha = 0.0f;
+
 	[containerView addSubview:flightPickerView];
 
 	[UIView animateWithDuration:animated ? kFadeInOutAnimationDuration : 0.0 animations:^{
@@ -75,7 +85,7 @@ UITableViewDataSource>
 			 forCellReuseIdentifier:kFlightPickerViewCellIdentifier];
 }
 
-#pragma mark - Public 
+#pragma mark - Public
 
 - (void)dismissAnimated:(BOOL)animated {
 	if (self.completionBlock) {
@@ -92,6 +102,10 @@ UITableViewDataSource>
 
 #pragma mark - Table View Data Source & Delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return kTableViewCellHeight;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return self.pickableData.count;
 }
@@ -99,7 +113,7 @@ UITableViewDataSource>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZFlightPickerViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kFlightPickerViewCellIdentifier
 																																 forIndexPath:indexPath];
-	cell.imageView.image = self.pickableData[indexPath.row];
+	cell.pickerImageView.image = self.pickableData[indexPath.row];
 	return cell;
 }
 
