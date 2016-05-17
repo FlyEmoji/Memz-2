@@ -90,6 +90,10 @@ UIScrollViewDelegate>
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
 	self.tableViewHeader.delegate = self;
 
+	// (3) Setup Gesture Recognizer
+	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
+	[self.view addGestureRecognizer:tapGestureRecognizer];
+
 	// (3) Reload Data
 	[self.tableView reloadData];
 }
@@ -147,6 +151,18 @@ UIScrollViewDelegate>
 		_languagePickerView = nil;
 	}
 	_languagePickerView = languagePickerView;
+}
+
+- (void)didTapView:(UITapGestureRecognizer *)tapGestureRecognizer {
+	[self dismissLanguagePickerViewIfNeeded];
+}
+
+#pragma mark - Helpers
+
+- (void)dismissLanguagePickerViewIfNeeded {
+	if (self.languagePickerView) {
+		[self.languagePickerView dismissAnimated:YES];
+	}
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -266,6 +282,10 @@ UIScrollViewDelegate>
 	if ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue] == MZSettingsTableViewRowTypeStatistics) {
 		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegue sender:self];
 	}
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	[self dismissLanguagePickerViewIfNeeded];
 }
 
 #pragma mark - Table View Header Delegate Methods
