@@ -17,8 +17,6 @@ const CGFloat kCornerRadius = 5.0f;
 
 const CGFloat kTableViewCellHeight = 50.0f;
 
-const NSTimeInterval kFadeInOutAnimationDuration = 0.2;
-
 @interface MZFlightPickerView () <UITableViewDelegate,
 UITableViewDataSource>
 
@@ -34,7 +32,7 @@ UITableViewDataSource>
 + (MZFlightPickerView *)displayFlightPickerInView:(UIView *)containerView
 																startingFromPoint:(CGPoint)topCenterPoint
 																				 withData:(NSArray<UIImage *> *)data
-																				 animated:(BOOL)animated
+																		 fadeDuration:(NSTimeInterval)duration
 																 pickAtIndexBlock:(MZFlightPickerCompletionHandler)completionHandler {
 	MZFlightPickerView *flightPickerView = [[MZFlightPickerView alloc] init];
 	flightPickerView.pickableData = data;
@@ -50,7 +48,7 @@ UITableViewDataSource>
 
 	[containerView addSubview:flightPickerView];
 
-	[UIView animateWithDuration:animated ? kFadeInOutAnimationDuration : 0.0 animations:^{
+	[UIView animateWithDuration:duration animations:^{
 		flightPickerView.alpha = 1.0f;
 	}];
 	
@@ -87,16 +85,19 @@ UITableViewDataSource>
 
 #pragma mark - Public
 
-- (void)dismissAnimated:(BOOL)animated {
+- (void)dismissWithDuration:(NSTimeInterval)duration withCompletionHandler:(void(^)(void))completionHandler {
 	if (self.completionBlock) {
 		self.completionBlock(NO_INDEX);
 		self.completionBlock = nil;
 	}
 
-	[UIView animateWithDuration:animated ? kFadeInOutAnimationDuration : 0.0 animations:^{
+	[UIView animateWithDuration:duration animations:^{
 		self.alpha = 0.0f;
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
+		if (completionHandler) {
+			completionHandler();
+		}
 	}];
 }
 

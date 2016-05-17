@@ -20,9 +20,10 @@ typedef void (^ MZFlightPickerCompletionHandler)(NSUInteger selectedIndex);  // 
 + (MZFlightPickerView *)displayFlightPickerInView:(UIView *)containerView
 																startingFromPoint:(CGPoint)topCenterPoint
 																				 withData:(NSArray<UIImage *> *)data
-																				 animated:(BOOL)animated
+																		 fadeDuration:(NSTimeInterval)duration
 																 pickAtIndexBlock:(MZFlightPickerCompletionHandler)completionHandler;
 
-- (void)dismissAnimated:(BOOL)animated;  // calls completion handler with value NO_INDEX and nullifies it
+- (void)dismissWithDuration:(NSTimeInterval)duration
+			withCompletionHandler:(void(^)(void))completionHandler;
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5i0-xN-Bdu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5i0-xN-Bdu">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -194,12 +194,20 @@
                                     <outlet property="transitionDelegate" destination="vF7-DI-xAs" id="VHX-Jh-3za"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xoh-jy-bZq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25153082770270269" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xNH-1K-Cea" firstAttribute="top" secondItem="Xoh-jy-bZq" secondAttribute="bottom" id="478-55-y1W"/>
                             <constraint firstItem="5u5-4G-Ao8" firstAttribute="top" secondItem="UMM-9f-GpV" secondAttribute="bottom" id="4IM-Ji-FSB"/>
+                            <constraint firstAttribute="trailing" secondItem="Xoh-jy-bZq" secondAttribute="trailing" id="4Mp-lg-Eby"/>
+                            <constraint firstItem="Xoh-jy-bZq" firstAttribute="leading" secondItem="tx2-Cg-30r" secondAttribute="leading" id="bcc-KJ-rqg"/>
                             <constraint firstItem="5u5-4G-Ao8" firstAttribute="leading" secondItem="tx2-Cg-30r" secondAttribute="leading" id="cGC-jQ-Z4q"/>
                             <constraint firstAttribute="trailing" secondItem="5u5-4G-Ao8" secondAttribute="trailing" id="g78-rn-eM8"/>
+                            <constraint firstItem="Xoh-jy-bZq" firstAttribute="top" secondItem="UMM-9f-GpV" secondAttribute="bottom" id="jj5-xp-dOA"/>
                             <constraint firstItem="xNH-1K-Cea" firstAttribute="top" secondItem="5u5-4G-Ao8" secondAttribute="bottom" id="keG-Mc-nPL"/>
                         </constraints>
                     </view>
@@ -207,6 +215,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="overlayView" destination="Xoh-jy-bZq" id="QUs-8u-Ktf"/>
                         <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
                         <outlet property="tableViewHeader" destination="IKM-GF-Fd0" id="yO7-vW-Ge3"/>
                         <segue destination="B3Q-a8-bhg" kind="presentation" identifier="MZPresentStatisticsViewControllerSegue" id="tI6-ax-1VB"/>

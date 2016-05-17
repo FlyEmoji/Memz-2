@@ -56,6 +56,7 @@ NSString * const kMaximumValueKey = @"MaximumValueKey";
 const CGFloat kSettingsTableViewHeaderHeight = 180.0f;
 const CGFloat kCellRegularHeight = 50.0f;
 const CGFloat kCellSliderHeight = 105.0f;
+const NSTimeInterval kFadeDuration = 0.2f;
 
 @interface MZSettingsViewController () <UITableViewDataSource,
 UITableViewDelegate,
@@ -66,8 +67,9 @@ MZSettingsSliderTableViewCellDelegate,
 MZTableViewTransitionDelegate,
 UIScrollViewDelegate>
 
-@property (nonatomic, strong) IBOutlet MZTableView *tableView;
-@property (nonatomic, strong) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
+@property (nonatomic, weak) IBOutlet MZTableView *tableView;
+@property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
+@property (nonatomic, weak) IBOutlet UIView *overlayView;
 
 @property (nonatomic, strong) MZFlightPickerView *languagePickerView;
 
@@ -92,7 +94,7 @@ UIScrollViewDelegate>
 
 	// (3) Setup Gesture Recognizer
 	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
-	[self.view addGestureRecognizer:tapGestureRecognizer];
+	[self.overlayView addGestureRecognizer:tapGestureRecognizer];
 
 	// (3) Reload Data
 	[self.tableView reloadData];
@@ -161,8 +163,15 @@ UIScrollViewDelegate>
 
 - (void)dismissLanguagePickerViewIfNeeded {
 	if (self.languagePickerView) {
-		[self.languagePickerView dismissAnimated:YES];
+		[self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
+		[self showOverlayView:NO withDuration:kFadeDuration];
 	}
+}
+
+- (void)showOverlayView:(BOOL)show withDuration:(NSTimeInterval)duration {
+	[UIView animateWithDuration:duration animations:^{
+		self.overlayView.alpha = show ? 1.0f : 0.0f;
+	}];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -291,6 +300,8 @@ UIScrollViewDelegate>
 #pragma mark - Table View Header Delegate Methods
 
 - (void)settingsTableViewHeaderDidRequestChangeFromLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
+	[self showOverlayView:YES withDuration:kFadeDuration];
+
 	CGPoint startPoint = CGPointMake(self.tableViewHeader.fromLanguageFlagFrame.origin.x + self.tableViewHeader.fromLanguageFlagFrame.size.width / 2.0f,
 																	 self.tableViewHeader.fromLanguageFlagFrame.origin.y + self.tableViewHeader.fromLanguageFlagFrame.size.height);
 
@@ -299,7 +310,7 @@ UIScrollViewDelegate>
 	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
 																												startingFromPoint:startPoint
 																																 withData:self.languageFlagImages
-																																 animated:YES
+																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
 															 if (selectedIndex != NO_INDEX) {
@@ -307,13 +318,16 @@ UIScrollViewDelegate>
 																 self.tableViewHeader.fromLanguage = selectedIndex;
 
 																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																	 [self.languagePickerView dismissAnimated:YES];
+																	 [self showOverlayView:NO withDuration:kFadeDuration];
+																	 [self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
 																 }];
 															 }
 														 }];
 }
 
 - (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
+	[self showOverlayView:YES withDuration:kFadeDuration];
+
 	CGPoint startPoint = CGPointMake(self.tableViewHeader.toLanguageFlagFrame.origin.x + self.tableViewHeader.toLanguageFlagFrame.size.width / 2.0f,
 																	 self.tableViewHeader.toLanguageFlagFrame.origin.y + self.tableViewHeader.toLanguageFlagFrame.size.height);
 
@@ -322,7 +336,7 @@ UIScrollViewDelegate>
 	self.languagePickerView = [MZFlightPickerView displayFlightPickerInView:self.view
 																												startingFromPoint:startPoint
 																																 withData:self.languageFlagImages
-																																 animated:YES
+																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
 															 if (selectedIndex != NO_INDEX) {
@@ -330,7 +344,8 @@ UIScrollViewDelegate>
 																 self.tableViewHeader.toLanguage = selectedIndex;
 
 																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																	 [self.languagePickerView dismissAnimated:YES];
+																	 [self showOverlayView:NO withDuration:kFadeDuration];
+																	 [self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
 																 }];
 															 }
 														 }];
