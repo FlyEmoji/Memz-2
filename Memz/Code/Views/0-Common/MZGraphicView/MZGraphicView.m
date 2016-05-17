@@ -162,6 +162,8 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
 
+	// TODO: Refactor CoreGraphics context handling
+
 	// (1) Add rounded corners
 	UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect
 																						 byRoundingCorners:UIRectCornerAllCorners

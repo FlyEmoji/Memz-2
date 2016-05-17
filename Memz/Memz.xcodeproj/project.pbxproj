@@ -72,6 +72,10 @@
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
 		0C8FD8FE1CE7C3A700FFC0A9 /* Pods.production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */; };
+		0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */; };
+		0C8FD9041CE7CCD300FFC0A9 /* MZFlightPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD9031CE7CCD300FFC0A9 /* MZFlightPickerView.xib */; };
+		0C8FD9071CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD9061CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib */; };
+		0C8FD90A1CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9091CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m */; };
 		0C95C18D1C89423100FEAB49 /* MZRemoteServerCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */; };
 		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
@@ -294,6 +298,12 @@
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configurations.m; path = "Code/Resources/Supporting Files/Configurations.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
+		0C8FD9001CE7CCB200FFC0A9 /* MZFlightPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFlightPickerView.h; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.h"; sourceTree = SOURCE_ROOT; };
+		0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFlightPickerView.m; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.m"; sourceTree = SOURCE_ROOT; };
+		0C8FD9031CE7CCD300FFC0A9 /* MZFlightPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZFlightPickerView.xib; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.xib"; sourceTree = SOURCE_ROOT; };
+		0C8FD9061CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZFlightPickerViewCell.xib; path = "Code/Views/0-Common/MZFlightPickerViewCell/MZFlightPickerViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		0C8FD9081CE7CEE900FFC0A9 /* MZFlightPickerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFlightPickerViewCell.h; path = "Code/Views/0-Common/MZFlightPickerViewCell/MZFlightPickerViewCell.h"; sourceTree = SOURCE_ROOT; };
+		0C8FD9091CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFlightPickerViewCell.m; path = "Code/Views/0-Common/MZFlightPickerViewCell/MZFlightPickerViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C95C1891C8933D200FEAB49 /* feed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = feed.json; path = Code/Resources/Feed/feed.json; sourceTree = SOURCE_ROOT; };
 		0C95C18B1C89423100FEAB49 /* MZRemoteServerCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZRemoteServerCoordinator.h; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.h; sourceTree = SOURCE_ROOT; };
 		0C95C18C1C89423100FEAB49 /* MZRemoteServerCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinator.m; path = Code/API/MZRemoteServerCoordinator/MZRemoteServerCoordinator.m; sourceTree = SOURCE_ROOT; };
@@ -1012,6 +1022,26 @@
 			name = MZTableViewCell;
 			sourceTree = "<group>";
 		};
+		0C8FD8FF1CE7CA6100FFC0A9 /* MZFlightPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				0C8FD9001CE7CCB200FFC0A9 /* MZFlightPickerView.h */,
+				0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */,
+				0C8FD9031CE7CCD300FFC0A9 /* MZFlightPickerView.xib */,
+			);
+			name = MZFlightPickerView;
+			sourceTree = "<group>";
+		};
+		0C8FD9051CE7CEA200FFC0A9 /* MZFlightPickerViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0C8FD9081CE7CEE900FFC0A9 /* MZFlightPickerViewCell.h */,
+				0C8FD9091CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m */,
+				0C8FD9061CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib */,
+			);
+			name = MZFlightPickerViewCell;
+			sourceTree = "<group>";
+		};
 		0C95C1861C89330A00FEAB49 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,6 +1069,8 @@
 				0CE764A31CE16CFD001852D1 /* MZPageControl */,
 				0CDA4AC41C87E0AE005BDA3B /* MZWordStatusView */,
 				0CCE607C1C66BCC5008D70BF /* MZGraphicView */,
+				0C8FD8FF1CE7CA6100FFC0A9 /* MZFlightPickerView */,
+				0C8FD9051CE7CEA200FFC0A9 /* MZFlightPickerViewCell */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
 			);
 			name = "0-Common";
@@ -1939,6 +1971,7 @@
 				0CDA4AB01C867625005BDA3B /* MaisonNeue-Demi.ttf in Resources */,
 				0CDA4AB11C867625005BDA3B /* MaisonNeue-DemiItalic.ttf in Resources */,
 				0CDA4AB21C867625005BDA3B /* MaisonNeue-Light.ttf in Resources */,
+				0C8FD9071CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib in Resources */,
 				0CDA4AB31C867625005BDA3B /* MaisonNeue-LightItalic.ttf in Resources */,
 				0CDA4AB41C867625005BDA3B /* MaisonNeue-Medium.ttf in Resources */,
 				0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */,
@@ -1948,6 +1981,7 @@
 				0CCE60811C66BD02008D70BF /* MZGraphicView.xib in Resources */,
 				0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */,
 				0C7536071C5B0C2B00810402 /* Statistics.storyboard in Resources */,
+				0C8FD9041CE7CCD300FFC0A9 /* MZFlightPickerView.xib in Resources */,
 				0CA58BF51C20542A000E19D4 /* LaunchScreen.storyboard in Resources */,
 				0C0550831C5855A0005924A9 /* Settings.storyboard in Resources */,
 				0C711C901C3179FA00E0BB43 /* MZQuizInfoView.xib in Resources */,
@@ -2059,6 +2093,7 @@
 				0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */,
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
 				0CDA4AC71C87E0EC005BDA3B /* MZWordStatusView.m in Sources */,
+				0C8FD90A1CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0C539E161CD69E63009C6CB7 /* MZUser.m in Sources */,
 				0CDFDA0D1C5721A4007EBCA6 /* MZTransitioningDefaultBehavior.m in Sources */,
@@ -2106,6 +2141,7 @@
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
 				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
 				0C0741051C8E7CF400676A22 /* MZDataBackgroundTaskWrapper.m in Sources */,
+				0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */,
 				0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */,
 				0C2C5E0E1CD69ED300E766A5 /* MZUser+CoreDataProperties.m in Sources */,
 				0CA58BEA1C205111000E19D4 /* main.m in Sources */,

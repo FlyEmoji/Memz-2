@@ -27,15 +27,25 @@
 	_fromLanguage = fromLanguage;
 
 	[self.yourLanguageFlagButton setImage:[UIImage flagImageForLanguage:fromLanguage] forState:UIControlStateNormal];
-	self.yourLanguageLabel.text = [NSString languageNameForLanguage:fromLanguage];
+	self.yourLanguageLabel.text = [NSString languageNameForLanguage:fromLanguage].uppercaseString;
 }
 
 - (void)setToLanguage:(MZLanguage)toLanguage {
 	_toLanguage = toLanguage;
 
 	[self.learnedLanguageFlagButton setImage:[UIImage flagImageForLanguage:toLanguage] forState:UIControlStateNormal];
-	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:toLanguage];
+	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:toLanguage].uppercaseString;
 }
+
+- (CGRect)fromLanguageFlagFrame {
+	return self.yourLanguageFlagButton.frame;
+}
+
+- (CGRect)toLanguageFlagFrame {
+	return self.learnedLanguageFlagButton.frame;
+}
+
+#pragma mark - Actions
 
 - (IBAction)didTapYourLanguageFlagButton:(id)sender {
 	if ([self.delegate respondsToSelector:@selector(settingsTableViewHeaderDidRequestChangeFromLanguage:)]) {
