@@ -163,7 +163,7 @@ UIScrollViewDelegate>
 
 - (void)dismissLanguagePickerViewIfNeeded {
 	if (self.languagePickerView) {
-		[self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
+		[self.languagePickerView dismissWithDuration:kFadeDuration];
 		[self showOverlayView:NO withDuration:kFadeDuration];
 	}
 }
@@ -313,15 +313,13 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
-															 if (selectedIndex != NO_INDEX) {
-																 [MZUser currentUser].fromLanguage = @(selectedIndex);
-																 self.tableViewHeader.fromLanguage = selectedIndex;
+															 [MZUser currentUser].fromLanguage = @(selectedIndex);
+															 self.tableViewHeader.fromLanguage = selectedIndex;
 
-																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																	 [self showOverlayView:NO withDuration:kFadeDuration];
-																	 [self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
-																 }];
-															 }
+															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																 [self showOverlayView:NO withDuration:kFadeDuration];
+																 [self.languagePickerView dismissWithDuration:kFadeDuration];
+															 }];
 														 }];
 }
 
@@ -339,15 +337,13 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
-															 if (selectedIndex != NO_INDEX) {
-																 [MZUser currentUser].toLanguage = @(selectedIndex);
-																 self.tableViewHeader.toLanguage = selectedIndex;
+															 [MZUser currentUser].toLanguage = @(selectedIndex);
+															 self.tableViewHeader.toLanguage = selectedIndex;
 
-																 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																	 [self showOverlayView:NO withDuration:kFadeDuration];
-																	 [self.languagePickerView dismissWithDuration:kFadeDuration withCompletionHandler:nil];
-																 }];
-															 }
+															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																 [self showOverlayView:NO withDuration:kFadeDuration];
+																 [self.languagePickerView dismissWithDuration:kFadeDuration];
+															 }];
 														 }];
 }
 

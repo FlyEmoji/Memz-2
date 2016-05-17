@@ -81,23 +81,35 @@ UITableViewDataSource>
 - (void)commonInit {
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZFlightPickerViewCell class]) bundle:nil]
 			 forCellReuseIdentifier:kFlightPickerViewCellIdentifier];
+	self.opaque = NO;
+}
+
+- (void)drawRect:(CGRect)rect {
+	[super drawRect:rect];
+
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+
+	UIBezierPath *graphPath = [[UIBezierPath alloc] init];
+
+	[graphPath moveToPoint:CGPointMake(rect.size.width / 2.0f, 0.0f)];
+	[graphPath addLineToPoint:CGPointMake(rect.size.width, self.tableView.frame.origin.y)];
+	[graphPath addLineToPoint:CGPointMake(0.0f, self.tableView.frame.origin.y)];
+	[graphPath closePath];
+
+	[self.tableView.backgroundColor setFill];
+	[graphPath fill];
+
+	CGContextRestoreGState(context);
 }
 
 #pragma mark - Public
 
-- (void)dismissWithDuration:(NSTimeInterval)duration withCompletionHandler:(void(^)(void))completionHandler {
-	if (self.completionBlock) {
-		self.completionBlock(NO_INDEX);
-		self.completionBlock = nil;
-	}
-
+- (void)dismissWithDuration:(NSTimeInterval)duration {
 	[UIView animateWithDuration:duration animations:^{
 		self.alpha = 0.0f;
 	} completion:^(BOOL finished) {
 		[self removeFromSuperview];
-		if (completionHandler) {
-			completionHandler();
-		}
 	}];
 }
 

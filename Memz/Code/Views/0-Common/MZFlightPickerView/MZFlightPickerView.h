@@ -9,9 +9,7 @@
 #import "MZNibView.h"
 #import "MZLanguageDefinition.h"
 
-#define NO_INDEX -1
-
-typedef void (^ MZFlightPickerCompletionHandler)(NSUInteger selectedIndex);  // NO_INDEX if dismissed without picking any cell
+typedef void (^ MZFlightPickerCompletionHandler)(NSUInteger selectedIndex);
 
 @interface MZFlightPickerView : MZNibView
 
@@ -23,7 +21,6 @@ typedef void (^ MZFlightPickerCompletionHandler)(NSUInteger selectedIndex);  // 
 																		 fadeDuration:(NSTimeInterval)duration
 																 pickAtIndexBlock:(MZFlightPickerCompletionHandler)completionHandler;
 
-- (void)dismissWithDuration:(NSTimeInterval)duration
-			withCompletionHandler:(void(^)(void))completionHandler;
+- (void)dismissWithDuration:(NSTimeInterval)duration;
 
 @end
