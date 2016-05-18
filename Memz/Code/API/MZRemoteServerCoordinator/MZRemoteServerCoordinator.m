@@ -80,7 +80,7 @@
 																				forUser:nil
 																			inContext:backgroundContext];
 
-				[article addSuggestedWordsObject:suggestedWord];
+				[article addSuggestedWordsObject:suggestedWord.translations.anyObject];
 			}
 		}
 

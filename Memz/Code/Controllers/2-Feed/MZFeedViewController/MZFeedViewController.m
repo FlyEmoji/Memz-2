@@ -95,7 +95,7 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedArticle = self.tableViewData[indexPath.row];
-	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];
+	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];  // TODO: Set cell as sender
 }
 
 @end
