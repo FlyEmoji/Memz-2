@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Creates or Updates existing word if needed
  */
 + (MZWord *)addWord:(NSString *)word
-			 fromLanguage:(MZLanguage)fromLanguage
+				 inLanguage:(MZLanguage)wordLanguage
 			 translations:(NSArray<NSString *> *)translations
 				 toLanguage:(MZLanguage)toLanguage
 						forUser:(nullable MZUser *)user
@@ -36,20 +36,20 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns existing word if matches exactly string and language
  */
 + (MZWord *)existingWordForString:(NSString *)string
-										 fromLanguage:(MZLanguage)fromLanguage
+											 inLanguage:(MZLanguage)fromLanguage
 												inContext:(nullable NSManagedObjectContext *)context;
 
 /*
  * Updates existing word (adds new translations, remove no longer needed ones)
  */
 - (void)updateTranslations:(NSArray<NSString *> *)translations
-								toLanguage:(MZLanguage)toLanguage
+								inLanguage:(MZLanguage)language
 									 forUser:(nullable MZUser *)user
 								 inContext:(nullable NSManagedObjectContext *)context;
 
-- (NSUInteger)numberTranslationsToLanguage:(MZLanguage)toLanguage;
+- (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language;
 
-- (CGFloat)percentageSuccessTranslationsToLanguage:(MZLanguage)toLanguage;
+- (CGFloat)percentageSuccessTranslationsInLanguage:(MZLanguage)language;
 
 @end
 

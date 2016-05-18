@@ -71,7 +71,6 @@
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
-		0C8FD8FE1CE7C3A700FFC0A9 /* Pods.production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */; };
 		0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */; };
 		0C8FD9041CE7CCD300FFC0A9 /* MZFlightPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD9031CE7CCD300FFC0A9 /* MZFlightPickerView.xib */; };
 		0C8FD9071CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C8FD9061CE7CECB00FFC0A9 /* MZFlightPickerViewCell.xib */; };
@@ -1921,7 +1920,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Falcou;
 				TargetAttributes = {
 					0CA58B9C1C204C7F000E19D4 = {
@@ -1962,7 +1961,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C8FD8FE1CE7C3A700FFC0A9 /* Pods.production.xcconfig in Resources */,
 				0C95C18E1C8943C200FEAB49 /* feed.json in Resources */,
 				0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */,
 				0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */,

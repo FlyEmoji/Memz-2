@@ -23,25 +23,25 @@
 
 #pragma mark - Custom Getters / Setters
 
-- (void)setFromLanguage:(MZLanguage)fromLanguage {
-	_fromLanguage = fromLanguage;
+- (void)setKnownLanguage:(MZLanguage)knownLanguage {
+	_knownLanguage = knownLanguage;
 
-	[self.yourLanguageFlagButton setImage:[UIImage flagImageForLanguage:fromLanguage] forState:UIControlStateNormal];
-	self.yourLanguageLabel.text = [NSString languageNameForLanguage:fromLanguage].uppercaseString;
+	[self.yourLanguageFlagButton setImage:[UIImage flagImageForLanguage:knownLanguage] forState:UIControlStateNormal];
+	self.yourLanguageLabel.text = [NSString languageNameForLanguage:knownLanguage].uppercaseString;
 }
 
-- (void)setToLanguage:(MZLanguage)toLanguage {
-	_toLanguage = toLanguage;
+- (void)setNewLanguage:(MZLanguage)newLanguage {
+	_newLanguage = newLanguage;
 
-	[self.learnedLanguageFlagButton setImage:[UIImage flagImageForLanguage:toLanguage] forState:UIControlStateNormal];
-	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:toLanguage].uppercaseString;
+	[self.learnedLanguageFlagButton setImage:[UIImage flagImageForLanguage:newLanguage] forState:UIControlStateNormal];
+	self.learnedLanguageLabel.text = [NSString languageNameForLanguage:newLanguage].uppercaseString;
 }
 
-- (CGRect)fromLanguageFlagFrame {
+- (CGRect)knownLanguageFlagFrame {
 	return self.yourLanguageFlagButton.frame;
 }
 
-- (CGRect)toLanguageFlagFrame {
+- (CGRect)newLanguageFlagFrame {
 	return self.learnedLanguageFlagButton.frame;
 }
 

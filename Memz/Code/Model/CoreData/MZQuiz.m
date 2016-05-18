@@ -17,20 +17,20 @@
 	if (!user) {
 		return nil;
 	}
-	return [MZQuiz randomQuizFromLanguage:user.fromLanguage.integerValue
-														 toLanguage:user.toLanguage.integerValue
-																forUser:user];
+	return [MZQuiz randomQuizKnownLanguage:user.knownLanguage.integerValue
+														 newLanguage:user.newLanguage.integerValue
+																 forUser:user];
 }
 
-+ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage forUser:(nullable MZUser *)user {
++ (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage newLanguage:(MZLanguage)newLanguage forUser:(nullable MZUser *)user {
 	MZQuiz *newQuiz = [MZQuiz newInstance];
-	newQuiz.toLanguage = @(toLanguage);
+	newQuiz.toLanguage = @(newLanguage);
 	newQuiz.creationDate = [NSDate date];
 	newQuiz.user = user;
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", toLanguage, MZWordIndexLearned];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", newLanguage, MZWordIndexLearned];
 	if (user) {
-	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", toLanguage, MZWordIndexLearned, user.objectID];
+	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", newLanguage, MZWordIndexLearned, user.objectID];
 	}
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;

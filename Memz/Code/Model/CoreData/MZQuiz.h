@@ -23,9 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (MZQuiz *)randomQuizForUser:(MZUser *)user;  
 
-+ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage
-												toLanguage:(MZLanguage)toLanguage
-													 forUser:(nullable MZUser *)user; 
++ (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage
+												newLanguage:(MZLanguage)newLanguage
+														forUser:(nullable MZUser *)user; 
 
 @end
 

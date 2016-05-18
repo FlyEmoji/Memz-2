@@ -102,7 +102,7 @@ MZTableViewTransitionDelegate>
 	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
 		[translationStrings addObject:word.word];
 	}];
-	[self.word updateTranslations:translationStrings toLanguage:[MZUser currentUser].toLanguage.integerValue forUser:nil inContext:nil];
+	[self.word updateTranslations:translationStrings inLanguage:[MZUser currentUser].knownLanguage.integerValue forUser:nil inContext:nil];
 
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }

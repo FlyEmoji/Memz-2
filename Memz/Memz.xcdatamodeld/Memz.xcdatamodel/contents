@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Article" representedClassName="MZArticle" parentEntity="BaseEntity" syncable="YES">
         <attribute name="additionDate" attributeType="Date" syncable="YES"/>
         <attribute name="body" attributeType="String" syncable="YES"/>
@@ -26,8 +26,8 @@
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="responses" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="MZUser" syncable="YES">
-        <attribute name="fromLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="toLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="knownLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="newLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="quizzes" toMany="YES" deletionRule="Cascade" destinationEntity="Quiz" inverseName="user" inverseEntity="Quiz" syncable="YES"/>
         <relationship name="translations" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="users" inverseEntity="Word" syncable="YES"/>
     </entity>

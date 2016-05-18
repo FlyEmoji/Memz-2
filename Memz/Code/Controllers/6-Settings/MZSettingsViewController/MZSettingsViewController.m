@@ -92,8 +92,8 @@ UIScrollViewDelegate>
 
 	// (2) Setup Table View Header
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
-	self.tableViewHeader.fromLanguage = [MZUser currentUser].fromLanguage.integerValue;
-	self.tableViewHeader.toLanguage = [MZUser currentUser].toLanguage.integerValue;
+	self.tableViewHeader.knownLanguage = [MZUser currentUser].knownLanguage.integerValue;
+	self.tableViewHeader.newLanguage = [MZUser currentUser].newLanguage.integerValue;
 	self.tableViewHeader.delegate = self;
 
 	// (3) Setup Gesture Recognizer
@@ -306,8 +306,8 @@ UIScrollViewDelegate>
 - (void)settingsTableViewHeaderDidRequestChangeFromLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
 	[self showOverlayView:YES withDuration:kFadeDuration];
 
-	CGPoint startPoint = CGPointMake(self.tableViewHeader.fromLanguageFlagFrame.origin.x + self.tableViewHeader.fromLanguageFlagFrame.size.width / 2.0f,
-																	 self.tableViewHeader.fromLanguageFlagFrame.origin.y + self.tableViewHeader.fromLanguageFlagFrame.size.height);
+	CGPoint startPoint = CGPointMake(self.tableViewHeader.knownLanguageFlagFrame.origin.x + self.tableViewHeader.knownLanguageFlagFrame.size.width / 2.0f,
+																	 self.tableViewHeader.knownLanguageFlagFrame.origin.y + self.tableViewHeader.knownLanguageFlagFrame.size.height);
 
 	startPoint = [self.tableView convertPoint:startPoint toView:self.view];
 
@@ -317,8 +317,8 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
-															 [MZUser currentUser].fromLanguage = @(selectedIndex);
-															 self.tableViewHeader.fromLanguage = selectedIndex;
+															 [MZUser currentUser].knownLanguage = @(selectedIndex);
+															 self.tableViewHeader.knownLanguage = selectedIndex;
 
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
@@ -332,8 +332,8 @@ UIScrollViewDelegate>
 - (void)settingsTableViewHeaderDidRequestChangeToLanguage:(MZSettingsTableViewHeader *)tableViewHeader {
 	[self showOverlayView:YES withDuration:kFadeDuration];
 
-	CGPoint startPoint = CGPointMake(self.tableViewHeader.toLanguageFlagFrame.origin.x + self.tableViewHeader.toLanguageFlagFrame.size.width / 2.0f,
-																	 self.tableViewHeader.toLanguageFlagFrame.origin.y + self.tableViewHeader.toLanguageFlagFrame.size.height);
+	CGPoint startPoint = CGPointMake(self.tableViewHeader.newLanguageFlagFrame.origin.x + self.tableViewHeader.newLanguageFlagFrame.size.width / 2.0f,
+																	 self.tableViewHeader.newLanguageFlagFrame.origin.y + self.tableViewHeader.newLanguageFlagFrame.size.height);
 
 	startPoint = [self.tableView convertPoint:startPoint toView:self.view];
 
@@ -343,8 +343,8 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
-															 [MZUser currentUser].toLanguage = @(selectedIndex);
-															 self.tableViewHeader.toLanguage = selectedIndex;
+															 [MZUser currentUser].newLanguage = @(selectedIndex);
+															 self.tableViewHeader.newLanguage = selectedIndex;
 
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification

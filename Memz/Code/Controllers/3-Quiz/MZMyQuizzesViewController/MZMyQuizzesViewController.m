@@ -76,7 +76,7 @@ MZQuizInfoViewDelegate>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZQuiz entityName]];
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user == %@ && toLanguage == %ld", [MZUser currentUser].objectID, [MZUser currentUser].toLanguage.integerValue];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"user == %@ && toLanguage == %ld", [MZUser currentUser].objectID, [MZUser currentUser].newLanguage.integerValue];
 	request.predicate = predicate;
 
 	NSSortDescriptor *descriptorIsAnswered = [NSSortDescriptor sortDescriptorWithKey:@"isAnswered" ascending:YES];

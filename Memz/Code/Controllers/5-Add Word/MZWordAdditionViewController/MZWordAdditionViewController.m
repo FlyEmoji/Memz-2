@@ -157,7 +157,7 @@ MZWordAdditionViewHeaderProtocol>
 																																					 forIndexPath:indexPath];
 					cell.textField.text = self.wordToTranslate;
 					cell.cellType = MZTextFieldTableViewCellTypeRegular;
-					cell.language = [MZUser currentUser].toLanguage.integerValue;
+					cell.language = [MZUser currentUser].newLanguage.integerValue;
 					cell.delegate = self;
 					return cell;
 				}
@@ -175,14 +175,14 @@ MZWordAdditionViewHeaderProtocol>
 			MZSuggestedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kSuggestedWordTableViewCellIdentifier
 																																					 forIndexPath:indexPath];
 			cell.suggestedWordLabel.text = self.wordSuggestions[indexPath.row];
-			cell.language = [MZUser currentUser].fromLanguage.integerValue;
+			cell.language = [MZUser currentUser].knownLanguage.integerValue;
 			return cell;
 		}
 
 		case MZWordAdditionSectionTypeManual: {
 			MZTextFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTextFieldTableViewCellIdentifier
 																																			 forIndexPath:indexPath];
-			cell.language = [MZUser currentUser].fromLanguage.integerValue;
+			cell.language = [MZUser currentUser].knownLanguage.integerValue;
 			cell.cellType = MZTextFieldTableViewCellTypeAddition;
 			cell.delegate = self;
 			return cell;
@@ -192,7 +192,7 @@ MZWordAdditionViewHeaderProtocol>
 			MZTranslatedWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslatedWordTableViewCellIdentifier
 																																						forIndexPath:indexPath];
 			cell.translatedWordLabel.text = self.wordTranslations[indexPath.row];
-			cell.language = [MZUser currentUser].fromLanguage.integerValue;
+			cell.language = [MZUser currentUser].knownLanguage.integerValue;
 			cell.delegate = self;
 			return cell;
 		}
@@ -279,7 +279,7 @@ MZWordAdditionViewHeaderProtocol>
 #pragma mark - Updates Upon Text Change
 
 - (void)updateExistingWords {
-	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZUser currentUser].toLanguage.integerValue
+	NSOrderedSet<MZWord *> *newAlreadyExistingWords = [MZWord existingWordsForLanguage:[MZUser currentUser].newLanguage.integerValue
 																																		startingByString:self.wordToTranslate
 																																					 inContext:nil];
 
@@ -311,8 +311,8 @@ MZWordAdditionViewHeaderProtocol>
 
 - (void)updateSuggestedTranslations {
 	[[MZBingTranslatorCoordinator sharedManager] translateString:self.wordToTranslate
-																									fromLanguage:[MZUser currentUser].toLanguage.integerValue
-																										toLanguage:[MZUser currentUser].fromLanguage.integerValue
+																									fromLanguage:[MZUser currentUser].newLanguage.integerValue
+																										toLanguage:[MZUser currentUser].knownLanguage.integerValue
 																						 completionHandler:
 	 ^(NSArray<NSString *> *translations, NSError *error) {
 		 if (!error) {

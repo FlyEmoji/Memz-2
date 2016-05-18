@@ -62,7 +62,7 @@ NSFetchedResultsControllerDelegate>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZWord entityName]];
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN users", [MZUser currentUser].toLanguage.integerValue, [MZUser currentUser].objectID];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN users", [MZUser currentUser].newLanguage.integerValue, [MZUser currentUser].objectID];
 	request.predicate = predicate;
 
 	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"learningIndex" ascending:NO];
