@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZQuiz : NSManagedObject
 
-@property (nonatomic, assign, readonly) MZLanguage fromLanguage;
-
 + (NSArray<NSNumber *> *)allLanguages;
 
 + (MZQuiz *)randomQuizForUser:(MZUser *)user;  

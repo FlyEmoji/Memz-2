@@ -24,7 +24,8 @@
 
 + (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage newLanguage:(MZLanguage)newLanguage forUser:(nullable MZUser *)user {
 	MZQuiz *newQuiz = [MZQuiz newInstance];
-	newQuiz.toLanguage = @(newLanguage);
+	newQuiz.knownLanguage = @(knownLanguage);
+	newQuiz.newLanguage = @(newLanguage);
 	newQuiz.creationDate = [NSDate date];
 	newQuiz.user = user;
 
@@ -59,10 +60,6 @@
 					 @(MZLanguageSpanish),
 					 @(MZLanguageItalian),
 					 @(MZLanguagePortuguese)];
-}
-
-- (MZLanguage)fromLanguage {
-	return self.responses.allObjects.firstObject.word.language.integerValue;
 }
 
 @end

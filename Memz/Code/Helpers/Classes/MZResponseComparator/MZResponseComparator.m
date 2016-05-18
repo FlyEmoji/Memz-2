@@ -28,7 +28,7 @@ const CGFloat kMinimumPercentageConsiderLearningInProgress = 0.65f;
 }
 
 - (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations {
-	return [self checkTranslations:translations inLanguage:self.response.quiz.toLanguage.integerValue];
+	return [self checkTranslations:translations inLanguage:self.response.quiz.knownLanguage.integerValue];
 }
 
 - (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations inLanguage:(MZLanguage)language {

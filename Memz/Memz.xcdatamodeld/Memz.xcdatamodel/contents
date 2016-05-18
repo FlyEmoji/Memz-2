@@ -16,7 +16,8 @@
         <attribute name="answerDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="isAnswered" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="toLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="knownLanguage" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="newLanguage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="responses" toMany="YES" minCount="1" maxCount="3" deletionRule="Nullify" destinationEntity="Response" inverseName="quiz" inverseEntity="Response" syncable="YES"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="quizzes" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -43,7 +44,7 @@
     <elements>
         <element name="Article" positionX="-45" positionY="45" width="128" height="150"/>
         <element name="BaseEntity" positionX="-36" positionY="54" width="128" height="60"/>
-        <element name="Quiz" positionX="-54" positionY="18" width="128" height="135"/>
+        <element name="Quiz" positionX="-54" positionY="18" width="128" height="150"/>
         <element name="Response" positionX="-45" positionY="45" width="128" height="90"/>
         <element name="User" positionX="-45" positionY="72" width="128" height="105"/>
         <element name="Word" positionX="-63" positionY="-18" width="128" height="150"/>

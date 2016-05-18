@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns existing word if matches exactly string and language
  */
 + (MZWord *)existingWordForString:(NSString *)string
-											 inLanguage:(MZLanguage)fromLanguage
+											 inLanguage:(MZLanguage)language
 												inContext:(nullable NSManagedObjectContext *)context;
 
 /*
