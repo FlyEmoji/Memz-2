@@ -9,6 +9,7 @@
 #import "MZMyQuizzesViewController.h"
 #import "MZAnsweredQuizTableViewCell.h"
 #import "MZPendingQuizTableViewCell.h"
+#import "MZSettingsViewController.h"
 #import "MZQuizInfoView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
@@ -61,6 +62,15 @@ MZQuizInfoViewDelegate>
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
 	self.topShrinkableView.delegate = self;
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification * _Nonnull note) {
+		 [self setupTableViewData];
+		 [self.tableView reloadData];
+	 }];
 }
 
 - (void)setupTableViewData {
@@ -86,6 +96,10 @@ MZQuizInfoViewDelegate>
 	if (error) {
 		NSLog(@"%@, %@", error, error.localizedDescription);
 	}
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods

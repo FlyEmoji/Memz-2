@@ -33,6 +33,8 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	// TODO: MZSettingsTableViewRowTypeTermsAndConditions
 };
 
+NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
+
 NSString * const kPresentStatisticsViewControllerSegue = @"MZPresentStatisticsViewControllerSegue";
 
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
@@ -90,6 +92,8 @@ UIScrollViewDelegate>
 
 	// (2) Setup Table View Header
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, kSettingsTableViewHeaderHeight);
+	self.tableViewHeader.fromLanguage = [MZUser currentUser].fromLanguage.integerValue;
+	self.tableViewHeader.toLanguage = [MZUser currentUser].toLanguage.integerValue;
 	self.tableViewHeader.delegate = self;
 
 	// (3) Setup Gesture Recognizer
@@ -317,6 +321,8 @@ UIScrollViewDelegate>
 															 self.tableViewHeader.fromLanguage = selectedIndex;
 
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
+																																										 object:@(selectedIndex)];
 																 [self showOverlayView:NO withDuration:kFadeDuration];
 																 [self.languagePickerView dismissWithDuration:kFadeDuration];
 															 }];
@@ -341,6 +347,8 @@ UIScrollViewDelegate>
 															 self.tableViewHeader.toLanguage = selectedIndex;
 
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
+																																										 object:@(selectedIndex)];
 																 [self showOverlayView:NO withDuration:kFadeDuration];
 																 [self.languagePickerView dismissWithDuration:kFadeDuration];
 															 }];
