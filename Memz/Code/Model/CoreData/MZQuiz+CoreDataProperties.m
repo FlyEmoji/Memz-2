@@ -16,7 +16,8 @@
 @dynamic answerDate;
 @dynamic creationDate;
 @dynamic isAnswered;
-@dynamic toLanguage;
+@dynamic knownLanguage;
+@dynamic newLanguage;
 @dynamic responses;
 @dynamic user;
 

@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MZUser (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSNumber *fromLanguage;
-@property (nullable, nonatomic, retain) NSNumber *toLanguage;
+@property (nullable, nonatomic, retain) NSNumber *knownLanguage;
+@property (nullable, nonatomic, retain) NSNumber *newLanguage;
 @property (nullable, nonatomic, retain) NSSet<MZWord *> *translations;
 @property (nullable, nonatomic, retain) NSSet<MZQuiz *> *quizzes;
 

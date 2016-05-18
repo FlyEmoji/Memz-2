@@ -13,8 +13,8 @@
 
 @implementation MZUser (CoreDataProperties)
 
-@dynamic fromLanguage;
-@dynamic toLanguage;
+@dynamic knownLanguage;
+@dynamic newLanguage;
 @dynamic translations;
 @dynamic quizzes;
 

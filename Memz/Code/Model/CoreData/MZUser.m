@@ -24,11 +24,11 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 	return users.firstObject;
 }
 
-+ (MZUser *)signUpUserFromLanguage:(MZLanguage)fromLanguage
-												toLanguage:(MZLanguage)toLanguage {
++ (MZUser *)signUpUserKnownLanguage:(MZLanguage)knownLanguage
+												newLanguage:(MZLanguage)newLanguage {
 	MZUser *user = [MZUser newInstance];
-	user.fromLanguage = @(fromLanguage);
-	user.toLanguage = @(toLanguage);
+	user.knownLanguage = @(knownLanguage);
+	user.newLanguage = @(newLanguage);
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:MZUserDidAuthenticateNotification object:user];
 	return user;
@@ -36,9 +36,9 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 
 - (MZWord *)addWord:(NSString *)word translations:(NSArray<NSString *> *)translations inContext:(NSManagedObjectContext *)context {
 	return [MZWord addWord:word
-						fromLanguage:self.fromLanguage.integerValue
+							inLanguage:self.newLanguage.integerValue
 						translations:translations
-							toLanguage:self.toLanguage.integerValue
+							toLanguage:self.knownLanguage.integerValue
 								 forUser:self
 							 inContext:context];
 }

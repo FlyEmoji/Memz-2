@@ -20,8 +20,8 @@ extern NSString * const MZUserDidAuthenticateNotification;
 
 + (MZUser *)currentUser;
 
-+ (MZUser *)signUpUserFromLanguage:(MZLanguage)fromLanguage
-												toLanguage:(MZLanguage)toLanguage;
++ (MZUser *)signUpUserKnownLanguage:(MZLanguage)knownLanguage
+												newLanguage:(MZLanguage)newLanguage;
 
 - (MZWord *)addWord:(NSString *)word
 			 translations:(NSArray<NSString *> *)translations

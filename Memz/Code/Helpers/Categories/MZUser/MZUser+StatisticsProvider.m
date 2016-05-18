@@ -35,7 +35,7 @@
 #pragma mark - Quizzes
 
 - (NSArray<MZQuiz *> *)quizzesForLanguage:(MZLanguage)language {
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"toLanguage = %ld AND user = %@", language, self.objectID];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"newLanguage = %ld AND user = %@", language, self.objectID];
 	return [MZQuiz allObjectsMatchingPredicate:predicate];
 }
 
@@ -62,8 +62,8 @@
 }
 
 - (CGFloat)percentageTranslationSuccessForLanguage:(MZLanguage)language {
-	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"result = true AND quiz.toLanguage = %ld AND quiz.isAnswered = true AND quiz.user = %@", [MZUser currentUser].toLanguage.integerValue, self.objectID];
-	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"quiz.toLanguage = %ld AND quiz.isAnswered = true AND quiz.user = %@", [MZUser currentUser].toLanguage.integerValue, self.objectID];
+	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"result = true AND quiz.newLanguage = %ld AND quiz.isAnswered = true AND quiz.user = %@", [MZUser currentUser].newLanguage.integerValue, self.objectID];
+	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"quiz.newLanguage = %ld AND quiz.isAnswered = true AND quiz.user = %@", [MZUser currentUser].newLanguage.integerValue, self.objectID];
 
 	NSUInteger successCount = [MZResponse countOfObjectsMatchingPredicate:successCountPredicate];
 	NSUInteger allObjectsCount = [MZResponse countOfObjectsMatchingPredicate:allObjectsCountPredicate];

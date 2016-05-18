@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSDate *answerDate;
 @property (nullable, nonatomic, retain) NSDate *creationDate;
 @property (nullable, nonatomic, retain) NSNumber *isAnswered;
-@property (nullable, nonatomic, retain) NSNumber *toLanguage;
+@property (nullable, nonatomic, retain) NSNumber *knownLanguage;
+@property (nullable, nonatomic, retain) NSNumber *newLanguage;
 @property (nullable, nonatomic, retain) NSSet<MZResponse *> *responses;
 @property (nullable, nonatomic, retain) MZUser *user;
 

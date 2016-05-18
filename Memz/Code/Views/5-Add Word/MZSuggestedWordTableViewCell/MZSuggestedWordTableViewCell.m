@@ -7,7 +7,20 @@
 //
 
 #import "MZSuggestedWordTableViewCell.h"
+#import "UIImage+MemzAdditions.h"
+
+@interface MZSuggestedWordTableViewCell ()
+
+@property (nonatomic, strong) IBOutlet UIImageView *flagImageView;
+
+@end
 
 @implementation MZSuggestedWordTableViewCell
+
+- (void)setLanguage:(MZLanguage)language {
+	_language = language;
+
+	self.flagImageView.image = [UIImage flagImageForLanguage:language];
+}
 
 @end

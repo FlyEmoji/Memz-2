@@ -16,11 +16,11 @@
 
 @property (nonatomic, weak) id<MZSettingsTableViewHeaderDelegate> delegate;
 
-@property (nonatomic, assign) MZLanguage fromLanguage;
-@property (nonatomic, assign) MZLanguage toLanguage;
+@property (nonatomic, assign) MZLanguage knownLanguage;
+@property (nonatomic, assign) MZLanguage newLanguage;
 
-@property (nonatomic, assign, readonly) CGRect fromLanguageFlagFrame;
-@property (nonatomic, assign, readonly) CGRect toLanguageFlagFrame;
+@property (nonatomic, assign, readonly) CGRect knownLanguageFlagFrame;
+@property (nonatomic, assign, readonly) CGRect newLanguageFlagFrame;
 
 @end
 

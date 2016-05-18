@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MZPresentableViewController.h"
 
+extern NSString * const MZSettingsDidChangeLanguageNotification;
+
 @interface MZSettingsViewController : MZPresentableViewController
 
 @end

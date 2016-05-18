@@ -17,22 +17,19 @@
 	if (!user) {
 		return nil;
 	}
-	return [MZQuiz randomQuizFromLanguage:user.fromLanguage.integerValue
-														 toLanguage:user.toLanguage.integerValue
-																forUser:user];
+	return [MZQuiz randomQuizKnownLanguage:user.knownLanguage.integerValue
+														 newLanguage:user.newLanguage.integerValue
+																 forUser:user];
 }
 
-+ (MZQuiz *)randomQuizFromLanguage:(MZLanguage)fromLanguage toLanguage:(MZLanguage)toLanguage forUser:(nullable MZUser *)user {
-	MZQuiz *newQuiz = [MZQuiz newInstance];
-	newQuiz.toLanguage = @(toLanguage);
-	newQuiz.creationDate = [NSDate date];
-	newQuiz.user = user;
-
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
++ (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage newLanguage:(MZLanguage)newLanguage forUser:(nullable MZUser *)user {
+	// (1) Fetch all not yet learned words in targeted language
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", newLanguage, MZWordIndexLearned];
 	if (user) {
-	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", fromLanguage, MZWordIndexLearned, user.objectID];
+	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", newLanguage, MZWordIndexLearned, user.objectID];
 	}
 
+	// (2) Pick words to translate randomly
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;
 	NSMutableArray<MZWord *> *selectedWords = [[NSMutableArray alloc] init];
 
@@ -42,6 +39,19 @@
 		[words removeObject:randomWord];
 	}
 
+	// (3) If no word to translate returns nil
+	if (selectedWords.count < 1) {
+		return nil;
+	}
+
+	// (4) Create new quiz and populate properties
+	MZQuiz *newQuiz = [MZQuiz newInstance];
+	newQuiz.knownLanguage = @(knownLanguage);
+	newQuiz.newLanguage = @(newLanguage);
+	newQuiz.creationDate = [NSDate date];
+	newQuiz.user = user;
+
+	// (5) Populate new quiz with randomly selected words to translate
 	for (MZWord *selectedWord in selectedWords) {
 		MZResponse *response = [MZResponse newInstance];
 		response.word = selectedWord;
@@ -50,7 +60,7 @@
 		[newQuiz addResponsesObject:response];
 	}
 
-	return newQuiz.responses.count > 0 ? newQuiz : nil;
+	return newQuiz;
 }
 
 + (NSArray<NSNumber *> *)allLanguages {
@@ -59,10 +69,6 @@
 					 @(MZLanguageSpanish),
 					 @(MZLanguageItalian),
 					 @(MZLanguagePortuguese)];
-}
-
-- (MZLanguage)fromLanguage {
-	return self.responses.allObjects.firstObject.word.language.integerValue;
 }
 
 @end

@@ -29,8 +29,8 @@ typedef NS_ENUM(NSUInteger, MZResponseResult) {
 - (instancetype)initWithResponse:(MZResponse *)response;
 + (instancetype)responseComparatorWithResponse:(MZResponse *)response;
 
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;	// will use response.quiz.toLanguage by default
-- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations toLanguage:(MZLanguage)language;
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations;	// quiz.newLanguage by default
+- (MZResponseResult)checkTranslations:(NSArray<NSString *> *)translations inLanguage:(MZLanguage)language;
 
 @end
 

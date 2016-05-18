@@ -9,6 +9,7 @@
 #import "MZFeedViewController.h"
 #import "MZArticleViewController.h"
 #import "MZFeedTableViewCell.h"
+#import "MZSettingsViewController.h"
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
@@ -46,6 +47,14 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 	 ^(NSNotification *notification) {
 		 [self setupTableViewData];
 	 }];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification *notification) {
+		 [self setupTableViewData];
+	 }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -76,6 +85,10 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 	}];
 }
 
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Table View DataSource & Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,7 +108,7 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedArticle = self.tableViewData[indexPath.row];
-	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];
+	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];  // TODO: Set cell as sender
 }
 
 @end
