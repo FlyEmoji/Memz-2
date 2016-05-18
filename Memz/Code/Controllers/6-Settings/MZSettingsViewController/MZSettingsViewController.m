@@ -317,9 +317,17 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
+															 // (1) Switch languages if selected known language same as new one
+															 if ([MZUser currentUser].newLanguage.integerValue == selectedIndex) {
+																 [MZUser currentUser].newLanguage = [MZUser currentUser].knownLanguage;
+																 self.tableViewHeader.newLanguage = [MZUser currentUser].knownLanguage.integerValue;
+															 }
+
+															 // (2) Update known language
 															 [MZUser currentUser].knownLanguage = @(selectedIndex);
 															 self.tableViewHeader.knownLanguage = selectedIndex;
 
+															 // (3) Update views and rest of the application via notification center
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
 																																										 object:@(selectedIndex)];
@@ -343,9 +351,17 @@ UIScrollViewDelegate>
 																														 fadeDuration:kFadeDuration
 																												 pickAtIndexBlock:
 														 ^(NSUInteger selectedIndex) {
+															 // (1) Switch languages if selected new language same as known one
+															 if ([MZUser currentUser].knownLanguage.integerValue == selectedIndex) {
+																 [MZUser currentUser].knownLanguage = [MZUser currentUser].newLanguage;
+																 self.tableViewHeader.knownLanguage = [MZUser currentUser].newLanguage.integerValue;
+															 }
+
+															 // (2) Update known language
 															 [MZUser currentUser].newLanguage = @(selectedIndex);
 															 self.tableViewHeader.newLanguage = selectedIndex;
 
+															 // (3) Update views and rest of the application via notification center
 															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
 																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
 																																										 object:@(selectedIndex)];
