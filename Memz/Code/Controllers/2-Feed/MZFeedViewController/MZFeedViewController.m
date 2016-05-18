@@ -9,6 +9,7 @@
 #import "MZFeedViewController.h"
 #import "MZArticleViewController.h"
 #import "MZFeedTableViewCell.h"
+#import "MZSettingsViewController.h"
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
@@ -46,6 +47,14 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 	 ^(NSNotification *notification) {
 		 [self setupTableViewData];
 	 }];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification *notification) {
+		 [self setupTableViewData];
+	 }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -74,6 +83,10 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 			[self.tableView reloadData];
 		});
 	}];
+}
+
+- (void)dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods

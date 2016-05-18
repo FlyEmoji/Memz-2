@@ -36,9 +36,9 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 
 - (MZWord *)addWord:(NSString *)word translations:(NSArray<NSString *> *)translations inContext:(NSManagedObjectContext *)context {
 	return [MZWord addWord:word
-						fromLanguage:self.fromLanguage.integerValue
+						fromLanguage:self.toLanguage.integerValue
 						translations:translations
-							toLanguage:self.toLanguage.integerValue
+							toLanguage:self.fromLanguage.integerValue
 								 forUser:self
 							 inContext:context];
 }

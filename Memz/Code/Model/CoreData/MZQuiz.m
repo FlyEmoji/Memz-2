@@ -28,9 +28,9 @@
 	newQuiz.creationDate = [NSDate date];
 	newQuiz.user = user;
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", fromLanguage, MZWordIndexLearned];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", toLanguage, MZWordIndexLearned];
 	if (user) {
-	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", fromLanguage, MZWordIndexLearned, user.objectID];
+	predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d AND %@ in users", toLanguage, MZWordIndexLearned, user.objectID];
 	}
 
 	NSMutableArray<MZWord *> *words = [MZWord allObjectsMatchingPredicate:predicate].mutableCopy;

@@ -165,7 +165,7 @@ MZCountDownDelegate>
 	MZTranslationResponseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTranslationResponseTableViewCellIdentifier
 																																						 forIndexPath:indexPath];
 
-	cell.flagImageView.image = [UIImage flagImageForLanguage:[MZUser currentUser].toLanguage.integerValue];
+	cell.flagImageView.image = [UIImage flagImageForLanguage:self.response.quiz.toLanguage.integerValue];
 	cell.textField.placeholder = [NSString stringWithFormat:NSLocalizedString(@"QuizResponseTextFieldPlaceholder", nil), indexPath.row + 1];
 	cell.textField.returnKeyType = indexPath.row == self.tableViewEnteredData.count - 1 ? UIReturnKeyDone : UIReturnKeyNext;
 	cell.delegate = self;
