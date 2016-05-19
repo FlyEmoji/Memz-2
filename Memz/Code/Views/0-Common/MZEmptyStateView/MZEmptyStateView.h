@@ -13,6 +13,6 @@ IB_DESIGNABLE
 @interface MZEmptyStateView : MZNibView
 
 @property (nonatomic, strong) IBInspectable UIImage *emptyStateImage;
-@property (nonatomic, strong) IBInspectable NSString *emptyStateDescription;
+@property (nonatomic, strong) IBInspectable NSString *emptyStateDescription;  
 
 @end

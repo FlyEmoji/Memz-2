@@ -33,13 +33,13 @@
 - (void)setEmptyStateImage:(UIImage *)emptyStateImage {
 	_emptyStateImage = emptyStateImage;
 
-	self.emptyStateImageView.image = emptyStateImage;
+	[self updateElements];
 }
 
 - (void)setEmptyStateDescription:(NSString *)emptyStateDescription {
 	_emptyStateDescription = emptyStateDescription;
 
-	self.emptyStateLabel.text = emptyStateDescription;
+	[self updateElements];
 }
 
 @end
