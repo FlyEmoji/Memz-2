@@ -45,6 +45,13 @@ NSString * const MZQuizKey = @"MZQuizKey";
 
 #pragma mark - Public Methods 
 
+- (void)registerLocalNotifications {
+	UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+	UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+
+	[[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+}
+
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat {
 	NSDictionary *userInfo = @{MZNotificationTypeKey: @(notificationType)};
 
@@ -83,7 +90,12 @@ NSString * const MZQuizKey = @"MZQuizKey";
 }
 
 - (void)handleLocalNotification:(UILocalNotification *)notification {
+	if (notification == nil) {
+		return;
+	}
+
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
+	
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz: {
 			MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];

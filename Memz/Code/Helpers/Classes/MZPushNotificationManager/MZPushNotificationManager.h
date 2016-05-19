@@ -20,6 +20,8 @@ extern NSString * const MZNotificationTypeKey;
 
 + (MZPushNotificationManager *)sharedManager;
 
+- (void)registerLocalNotifications;
+
 - (void)scheduleLocalNotifications:(MZLocalPushNotificationType)notificationType forDate:(NSDate *)date repeat:(BOOL)repeat;
 - (void)cancelLocalNotifications:(MZLocalPushNotificationType)notificationType;
 - (void)cancelAllLocalNotifications;

@@ -15,8 +15,27 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// (1) Setup appearance designs throughout
 	[self setupCommonDesigns];
 
+	// (2) Register for local push notifications
+	[[MZPushNotificationManager sharedManager] registerLocalNotifications];
+
+	// (3) Recover and handle last push notification if exists
+	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	[[MZPushNotificationManager sharedManager] handleLocalNotification:localNotif];
+
+	/*
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(applicationWillEnterBackground:)
+																							 name:UIApplicationWillResignActiveNotification
+																						 object:nil];
+	 */
+
+	[[NSNotificationCenter defaultCenter] addObserver:self
+																					 selector:@selector(applicationWillTerminate:)
+																							 name:UIApplicationWillTerminateNotification
+																						 object:nil];
 	return YES;
 }
 
