@@ -11,6 +11,7 @@
 #import "MZMainViewController.h"
 #import "MZPageControl.h"
 #import "MZInjector.h"
+#import "UIAlertController+MemzAdditions.h"
 
 @implementation AppDelegate
 
@@ -25,17 +26,6 @@
 	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 	[[MZPushNotificationManager sharedManager] handleLocalNotification:localNotif];
 
-	/*
-	[[NSNotificationCenter defaultCenter] addObserver:self
-																					 selector:@selector(applicationWillEnterBackground:)
-																							 name:UIApplicationWillResignActiveNotification
-																						 object:nil];
-	 */
-
-	[[NSNotificationCenter defaultCenter] addObserver:self
-																					 selector:@selector(applicationWillTerminate:)
-																							 name:UIApplicationWillTerminateNotification
-																						 object:nil];
 	return YES;
 }
 

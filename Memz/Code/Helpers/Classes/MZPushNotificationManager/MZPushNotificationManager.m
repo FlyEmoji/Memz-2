@@ -29,20 +29,6 @@ NSString * const MZQuizKey = @"MZQuizKey";
 	return _sharedManager;
 }
 
-- (instancetype)init {
-	if (self = [super init]) {
-		if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-			[[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings
-																																					 settingsForTypes:(UIUserNotificationTypeSound
-																																														 | UIUserNotificationTypeAlert
-																																														 | UIUserNotificationTypeBadge)
-																																					 categories:nil]];
-			[[UIApplication sharedApplication] registerForRemoteNotifications];
-		}
-	}
-	return self;
-}
-
 #pragma mark - Public Methods 
 
 - (void)registerLocalNotifications {
@@ -95,7 +81,8 @@ NSString * const MZQuizKey = @"MZQuizKey";
 	}
 
 	MZLocalPushNotificationType notificationType = [notification.userInfo[MZNotificationTypeKey] integerValue];
-	
+	UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
+
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz: {
 			MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];
@@ -103,15 +90,19 @@ NSString * const MZQuizKey = @"MZQuizKey";
 				return;
 			}
 
-			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
-
-			if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
-				[MZQuizViewController askQuiz:quiz fromViewController:[UIViewController topMostViewController] completionBlock:nil];
-			} else {
-				[self showAlertForNotificationType:notificationType
-													inViewController:[UIViewController topMostViewController]
-																	userInfo:@{MZQuizKey: quiz}];
-			}
+			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
+				dispatch_async(dispatch_get_main_queue(),^{
+					if (applicationState == UIApplicationStateActive) {
+						[self showAlertForNotificationType:notificationType
+															inViewController:[UIViewController topMostViewController]
+																			userInfo:@{MZQuizKey: quiz}];
+					} else {
+						[MZQuizViewController askQuiz:quiz
+											 fromViewController:[UIViewController topMostViewController]
+													completionBlock:nil];
+					}
+				});
+			}];
 			break;
 		}
 		default:
@@ -150,10 +141,10 @@ NSString * const MZQuizKey = @"MZQuizKey";
 														userInfo:(NSDictionary *)userInfo {
 	switch (type) {
 		case MZLocalPushNotificationTypeQuizz: {
-		 [UIAlertController showWithStyle:UIAlertControllerStyleAlert
-																title:NSLocalizedString(@"LocalPushNotificationAlertTitle", @"")
-															message:NSLocalizedString(@"LocalPushNotificationAlertDescription", @"")
-																block:^(UIAlertController *alertController, NSUInteger indexes) {
+			[UIAlertController showWithStyle:UIAlertControllerStyleAlert
+																 title:NSLocalizedString(@"LocalPushNotificationAlertTitle", @"")
+															 message:NSLocalizedString(@"LocalPushNotificationAlertDescription", @"")
+																 block:^(UIAlertController *alertController, NSUInteger indexes) {
 																	if (MZCancelButtonIndex(indexes) == MZTappedButtonIndex(indexes)) {
 																		return;
 																	}
