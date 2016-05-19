@@ -13,18 +13,21 @@
 #import "MZWordDescriptionViewController.h"
 #import "MZWord+CoreDataProperties.h"
 #import "MZLanguageDefinition.h"
+#import "MZEmptyStateView.h"
 #import "MZDataManager.h"
 
 NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
 NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
 
+const NSTimeInterval kDictionaryEmptyStateFadeAnimationDuration = 0.2;
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
 NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet MZEmptyStateView *emptyStateView;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) MZWord *selectedWord;
@@ -49,6 +52,7 @@ NSFetchedResultsControllerDelegate>
 	 ^(NSNotification * _Nonnull note) {
 		 [self setupTableViewData];
 		 [self.tableView reloadData];
+		 [self updateEmptyState];
 	 }];
 }
 
@@ -76,6 +80,7 @@ NSFetchedResultsControllerDelegate>
 
 	NSError *error = nil;
 	[self.fetchedResultsController performFetch:&error];
+	[self updateEmptyState];
 
 	if (error) {
 		NSLog(@"%@, %@", error, error.localizedDescription);
@@ -84,6 +89,17 @@ NSFetchedResultsControllerDelegate>
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private Helpers
+
+- (void)updateEmptyState {
+	BOOL show = [self.tableView numberOfRowsInSection:0] == 0;
+
+	[UIView animateWithDuration:kDictionaryEmptyStateFadeAnimationDuration animations:^{
+		self.emptyStateView.alpha = show ? 1.0f : 0.0f;
+		self.tableView.alpha = show ? 0.0f : 1.0f;
+	}];
 }
 
 #pragma mark - Table View Data Source & Delegate Methods
@@ -142,6 +158,7 @@ NSFetchedResultsControllerDelegate>
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	[self.tableView endUpdates];
+	[self updateEmptyState];
 }
 
 @end
