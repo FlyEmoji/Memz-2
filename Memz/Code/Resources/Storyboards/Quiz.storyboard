@@ -285,6 +285,14 @@
                                     <outlet property="delegate" destination="UYH-Eu-4rs" id="C3p-Lz-6hg"/>
                                 </connections>
                             </tableView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfY-88-m0P" customClass="MZEmptyStateView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStateImage" value="Quiz-Empty-State"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="emptyStateDescription" value="You haven't answered any quiz yet!"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykn-9u-40g" userLabel="Top Shrinkable View" customClass="MZQuizInfoView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="67"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -299,14 +307,19 @@
                             <constraint firstItem="g3g-5T-yTP" firstAttribute="top" secondItem="1tS-8s-5d3" secondAttribute="bottom" id="7pd-va-NpO"/>
                             <constraint firstItem="1tS-8s-5d3" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AX5-it-ihU"/>
                             <constraint firstItem="ykn-9u-40g" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="AXn-bN-taB"/>
+                            <constraint firstItem="yfY-88-m0P" firstAttribute="leading" secondItem="q7u-9N-x3b" secondAttribute="leading" id="PIp-AJ-anZ"/>
                             <constraint firstAttribute="trailing" secondItem="ykn-9u-40g" secondAttribute="trailing" id="WWk-60-5Wa"/>
                             <constraint firstAttribute="trailing" secondItem="1tS-8s-5d3" secondAttribute="trailing" id="Xi8-w4-pMA"/>
+                            <constraint firstItem="g3g-5T-yTP" firstAttribute="top" secondItem="yfY-88-m0P" secondAttribute="bottom" id="kmN-lf-oGa"/>
                             <constraint firstItem="1tS-8s-5d3" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="pa9-dN-lRz"/>
+                            <constraint firstItem="yfY-88-m0P" firstAttribute="top" secondItem="cqm-s4-ezu" secondAttribute="bottom" id="qbA-BE-Z8j"/>
+                            <constraint firstAttribute="trailing" secondItem="yfY-88-m0P" secondAttribute="trailing" id="vGV-4R-egX"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="emptyStateView" destination="yfY-88-m0P" id="4de-Vl-uIM"/>
                         <outlet property="tableView" destination="1tS-8s-5d3" id="zgv-17-vId"/>
                         <outlet property="topShrinkableView" destination="ykn-9u-40g" id="MZ8-Fy-CR9"/>
                         <outlet property="topShrinkableViewHeightConstraint" destination="9fX-QM-VeF" id="wvw-op-hLU"/>
@@ -331,5 +344,6 @@
         <image name="Navigation-Forward-Tap" width="12" height="23"/>
         <image name="Navigation-Large-Tick" width="96" height="96"/>
         <image name="Quiz-Cross" width="24" height="24"/>
+        <image name="Quiz-Empty-State" width="201" height="201"/>
     </resources>
 </document>

@@ -11,6 +11,7 @@
 #import "MZPendingQuizTableViewCell.h"
 #import "MZSettingsViewController.h"
 #import "MZQuizInfoView.h"
+#import "MZEmptyStateView.h"
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
@@ -22,6 +23,8 @@ typedef NS_ENUM(NSInteger, MZScrollDirection) {
 	MZScrollDirectionDown,
 	MZScrollDirectionUp
 };
+
+const NSTimeInterval kQuizEmptyStateFadeAnimationDuration = 0.2;
 
 const CGFloat kTopShrinkableViewMinimumHeight = 0.0f;
 const CGFloat kTopShrinkableViewMaximumHeight = 67.0f;
@@ -37,10 +40,11 @@ UITableViewDelegate,
 NSFetchedResultsControllerDelegate,
 MZQuizInfoViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) IBOutlet MZQuizInfoView *topShrinkableView;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
+@property (nonatomic, weak) IBOutlet MZQuizInfoView *topShrinkableView;
+@property (nonatomic, weak) IBOutlet MZEmptyStateView *emptyStateView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *topShrinkableViewHeightConstraint;
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, assign) CGPoint lastContentOffset;
@@ -70,6 +74,7 @@ MZQuizInfoViewDelegate>
 	 ^(NSNotification * _Nonnull note) {
 		 [self setupTableViewData];
 		 [self.tableView reloadData];
+		 [self updateEmptyState];
 	 }];
 }
 
@@ -92,6 +97,7 @@ MZQuizInfoViewDelegate>
 
 	NSError *error = nil;
 	[self.fetchedResultsController performFetch:&error];
+	[self updateEmptyState];
 
 	if (error) {
 		NSLog(@"%@, %@", error, error.localizedDescription);
@@ -100,6 +106,17 @@ MZQuizInfoViewDelegate>
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Private Helpers
+
+- (void)updateEmptyState {
+	BOOL show = [self.tableView numberOfRowsInSection:0] == 0;
+
+	[UIView animateWithDuration:kQuizEmptyStateFadeAnimationDuration animations:^{
+		self.emptyStateView.alpha = show ? 1.0f : 0.0f;
+		self.tableView.alpha = show ? 0.0f : 1.0f;
+	}];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
@@ -171,6 +188,7 @@ MZQuizInfoViewDelegate>
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	[self.tableView endUpdates];
+	[self updateEmptyState];
 }
 
 #pragma mark - Scroll Management

@@ -58,6 +58,10 @@
 			return [UIImage imageNamed:@"Navigation-Forward-Tap"];
 		case MZAssetIdentifierFeedActiveTick:
 			return [UIImage imageNamed:@"Feed-Active-Tick"];
+		case MZAssetIdentifierQuizEmptyState:
+			return [UIImage imageNamed:@"Quiz-Empty-State"];
+		case MZAssetIdentifierMyDictionaryEmptyState:
+			return [UIImage imageNamed:@"My-Dictionary-Empty-State"];
 		case MZAssetIdentifierAddWordMinusIcon:
 			return [UIImage imageNamed:@"Add-Word-Minus-Icon"];
 		case MZAssetIdentifierAddWordPlusIcon:

@@ -107,17 +107,30 @@
                                     <outlet property="delegate" destination="8yc-D0-kdp" id="D6r-z7-vFY"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8RT-Sy-Y9l" customClass="MZEmptyStateView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyStateImage" value="My-Dictionary-Empty-State"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="emptyStateDescription" value="There is no word for this language yet. Let's add a new one! "/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6iB-bH-gfd" firstAttribute="leading" secondItem="ePi-6j-mUI" secondAttribute="leading" id="1re-Q6-JYr"/>
+                            <constraint firstAttribute="trailing" secondItem="8RT-Sy-Y9l" secondAttribute="trailing" id="Fyu-pV-1xx"/>
+                            <constraint firstItem="8RT-Sy-Y9l" firstAttribute="leading" secondItem="ePi-6j-mUI" secondAttribute="leading" id="U99-cd-pcG"/>
                             <constraint firstItem="BvF-1d-0Ax" firstAttribute="top" secondItem="6iB-bH-gfd" secondAttribute="bottom" id="Xol-lm-Oz7"/>
                             <constraint firstItem="6iB-bH-gfd" firstAttribute="top" secondItem="uhH-2Y-1QC" secondAttribute="bottom" id="bA2-lZ-ZNr"/>
+                            <constraint firstItem="8RT-Sy-Y9l" firstAttribute="top" secondItem="uhH-2Y-1QC" secondAttribute="bottom" id="ett-3C-0VF"/>
+                            <constraint firstItem="BvF-1d-0Ax" firstAttribute="top" secondItem="8RT-Sy-Y9l" secondAttribute="bottom" id="fmu-lq-ya0"/>
                             <constraint firstAttribute="trailing" secondItem="6iB-bH-gfd" secondAttribute="trailing" id="srn-yE-elp"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="emptyStateView" destination="8RT-Sy-Y9l" id="6oF-S4-Q3H"/>
                         <outlet property="tableView" destination="6iB-bH-gfd" id="fcB-XO-8RA"/>
                         <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegue" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
                     </connections>
@@ -252,6 +265,7 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
+        <image name="My-Dictionary-Empty-State" width="154" height="154"/>
         <image name="Navigation-Arrow-Right" width="30" height="17"/>
     </resources>
 </document>
