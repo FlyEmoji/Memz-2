@@ -69,7 +69,7 @@ NSString * const kLastClosedDateStorageKey = @"MZLastClosedDateStorageKey";
 
 - (void)didReceiveCloseNotification:(NSNotification *)notification {
 	self.lastOpenedDate = [NSDate date];
-	[[NSNotificationCenter defaultCenter] postNotificationName:MZApplicationSessionDidOpenNotification
+	[[NSNotificationCenter defaultCenter] postNotificationName:MZApplicationSessionDidCloseNotification
 																											object:self];
 }
 

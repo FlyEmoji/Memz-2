@@ -28,6 +28,8 @@
 - (NSDate *)dayAfter;
 - (NSDate *)hoursBefore:(NSInteger)hoursBefore;
 
+- (NSInteger)numberDaysDifferenceWithDate:(NSDate *)date;
+
 - (BOOL)isBeforeDate:(NSDate *)date;
 - (BOOL)isBeforeNow;
 - (BOOL)isSameDay:(NSDate *)date;

@@ -8,6 +8,7 @@
 
 #import "MZMainViewController.h"
 #import "NSAttributedString+MemzAdditions.h"
+#import "MZApplicationSessionManager.h"
 #import "MZQuizManager.h"
 #import "MZUser.h"
 
@@ -51,10 +52,13 @@ const NSUInteger kNumberPages = 3;
 
 	self.settingsButton = leftButton;
 
-	// (3) Initialize main designs
+	// (3) Initialize central managers
+	[MZApplicationSessionManager sharedManager];
+
+	// (4) Initialize main designs
 	self.view.backgroundColor = [UIColor mainMediumGrayColor];
 
-	// (4) Present user entrance flow if no user connected
+	// (5) Present user entrance flow if no user connected
 	if (![MZUser currentUser]) {
 		[self performSegueWithIdentifier:MZUserEntranceViewControllerSegue sender:self];
 	}

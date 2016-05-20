@@ -8,6 +8,8 @@
 
 #import "MZQuizManager.h"
 #import "MZPushNotificationManager.h"
+#import "MZApplicationSessionManager.h"
+#import "NSDate+MemzAdditions.h"
 
 const NSUInteger kDefaultQuizPerDay = 3;
 
@@ -16,6 +18,9 @@ const NSUInteger kDefaultEndTimeHour = 20;
 
 const BOOL kDefaultIsActive = YES;
 const BOOL kDefaultIsReversed = NO;
+
+NSString * const MZQuizManagerMissedQuizzesNotification = @"MZQuizManagerMissedQuizzesNotification";
+NSString * const MZNotificationNumberMissedQuizzesKey = @"MZNotificationNumberMissedQuizzesKey";
 
 NSString * const kSettingsIsActiveKey = @"SettingsIsActiveKey";
 NSString * const kSettingsStartHourKey = @"SettingsStartHourKey";
@@ -55,6 +60,11 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
 			self.reversed = kDefaultIsReversed;
 		}
+
+		[[NSNotificationCenter defaultCenter] addObserver:self
+																						 selector:@selector(didReceiveApplicationOpenNotification:)
+																								 name:MZApplicationSessionDidOpenNotification
+																							 object:nil];
 	}
 	return self;
 }
@@ -119,6 +129,29 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 	}
 
 	return mutableQuizTrigerDates;
+}
+
+#pragma mark - Missing Quizzes Number Computation
+
+- (void)didReceiveApplicationOpenNotification:(NSNotification *)notification {
+	NSUInteger missedQuizzesNumber = 0;
+
+	// (1) Add number of missed quizzes for whole days
+	MZApplicationSessionManager *applicationSessionManager = [MZApplicationSessionManager sharedManager];
+	NSInteger numberDaysDifference = [[NSDate date] numberDaysDifferenceWithDate:applicationSessionManager.lastOpenedDate];
+
+	missedQuizzesNumber += missedQuizzesNumber * self.quizPerDay;
+
+	// (2) Add number of missed quizzes within the first day (not a whole day)
+	// TODO
+
+	// (3) Add number of missed quizzes today (not a whole day)
+	// TODO
+
+	NSDictionary *userInfo = @{MZNotificationNumberMissedQuizzesKey: @(missedQuizzesNumber)};
+	[[NSNotificationCenter defaultCenter] postNotificationName:MZQuizManagerMissedQuizzesNotification
+																											object:self
+																										userInfo:userInfo];
 }
 
 #pragma mark - Settings Persistance
