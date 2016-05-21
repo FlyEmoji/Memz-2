@@ -85,7 +85,7 @@ NSString * const MZQuizKey = @"MZQuizKey";
 
 	switch (notificationType) {
 		case MZLocalPushNotificationTypeQuizz: {
-			MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];
+			MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser] creationDate:nil];
 			if (!quiz) {
 				return;
 			}

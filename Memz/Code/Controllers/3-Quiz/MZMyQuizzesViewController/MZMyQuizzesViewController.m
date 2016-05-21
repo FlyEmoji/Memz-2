@@ -239,7 +239,7 @@ MZQuizInfoViewDelegate>
 #pragma mark - Quiz Info View Delegate Methods
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
-	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser]];
+	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser] creationDate:nil];
 
 	if (!quiz) {
 		[self presentError:[MZErrorCreator errorWithType:MZErrorTypeNoWordToTranslate]];

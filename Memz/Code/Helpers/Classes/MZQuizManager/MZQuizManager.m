@@ -29,7 +29,7 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 @interface MZQuizManager ()
 
-@property (nonatomic, weak, readonly) NSArray<NSDate *> *quizTrigerDates;
+@property (nonatomic, weak, readonly) NSArray<NSDate *> *quizTriggerDates;
 
 @end
 
@@ -77,7 +77,7 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 	[[MZPushNotificationManager sharedManager] cancelLocalNotifications:MZLocalPushNotificationTypeQuizz];
 
-	[self.quizTrigerDates enumerateObjectsUsingBlock:^(NSDate *trigerDate, NSUInteger idx, BOOL *stop) {
+	[self.quizTriggerDates enumerateObjectsUsingBlock:^(NSDate *trigerDate, NSUInteger idx, BOOL *stop) {
 		[[MZPushNotificationManager sharedManager] scheduleLocalNotifications:MZLocalPushNotificationTypeQuizz forDate:trigerDate repeat:YES];
 	}];
 }
@@ -100,13 +100,13 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 #pragma mark - Calculated Properties
 
-- (NSArray<NSDate *> *)quizTrigerDates {
+- (NSArray<NSDate *> *)quizTriggerDates {
 	NSMutableArray<NSDate *> *mutableQuizTrigerDates = [NSMutableArray arrayWithCapacity:self.quizPerDay];
-	NSTimeInterval quizTimeInterval = (self.endHour - self.startHour) * 60.0 * 60.0 / (self.quizPerDay - 1);
+	NSTimeInterval quizTimeInterval = self.quizPerDay == 1 ? 0.0 : (self.endHour - self.startHour) * 60.0 * 60.0 / (self.quizPerDay - 1);
 	NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
 
 	NSDate *baseDate = [NSDate date];
-	NSDateComponents *dateComponents = [calendar components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay)
+	NSDateComponents *dateComponents = [calendar components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|kCFCalendarUnitMinute)
 																								 fromDate:baseDate];
 	dateComponents.hour = self.startHour;
 	dateComponents.minute = 0;
@@ -129,18 +129,38 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 #pragma mark - Missing Quizzes Handling
 
 - (NSArray<NSDate *> *)datesMissedQuizzes {
-	NSMutableArray<NSDate *> *datesMissedQuizzes = @[];
+	NSDate *lastSessionDate = [MZApplicationSessionManager sharedManager].lastClosedDate;
+	if (!lastSessionDate || [[NSDate date] isBeforeDate:lastSessionDate]) {
+		return nil;
+	}
 
-	// (1) Add number of missed quizzes for whole days
-	MZApplicationSessionManager *applicationSessionManager = [MZApplicationSessionManager sharedManager];
-	NSInteger numberDaysDifference = [[NSDate date] numberDaysDifferenceWithDate:applicationSessionManager.lastOpenedDate];
+	NSMutableArray<NSDate *> *datesMissedQuizzes = [[NSMutableArray alloc] init];
+	NSTimeInterval quizTimeInterval = self.quizPerDay == 1 ? 0.0 : (self.endHour - self.startHour) * 60.0 * 60.0 / (self.quizPerDay - 1);
+	NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
 
-	// (2) Add number of missed quizzes within the first day (not a whole day)
-	// TODO
+	NSDate *baseDate = [NSDate date];
+	NSDateComponents *dateComponents = [calendar components:(NSCalendarUnitEra|NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|kCFCalendarUnitMinute)
+																								 fromDate:baseDate];
+	dateComponents.hour = self.startHour;
+	dateComponents.minute = 0;
+	baseDate = [calendar dateFromComponents:dateComponents];
 
-	// (3) Add number of missed quizzes today (not a whole day)
-	// TODO
+	NSUInteger daysDifference = [lastSessionDate numberDaysDifferenceWithDate:[NSDate date]];
 
+	for (NSInteger i = daysDifference; i >= 0; i--) {
+		for (NSUInteger j = 0; j < self.quizPerDay; j++) {
+			NSDateComponents *additionalDayComponents = [[NSDateComponents alloc] init];
+			additionalDayComponents.day = -i;
+			additionalDayComponents.second = self.quizPerDay > 1 ? j * quizTimeInterval :
+				(self.endHour - self.startHour) * 60.0 * 60.0 / 2.0;
+
+			NSDate *pastQuizDate = [calendar dateByAddingComponents:additionalDayComponents toDate:baseDate options:0];
+
+			if (![pastQuizDate isBeforeDate:lastSessionDate]) {
+				[datesMissedQuizzes addObject:pastQuizDate];
+			}
+		}
+	}
 	return datesMissedQuizzes;
 }
 
