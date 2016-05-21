@@ -60,11 +60,6 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
 			self.reversed = kDefaultIsReversed;
 		}
-
-		[[NSNotificationCenter defaultCenter] addObserver:self
-																						 selector:@selector(didReceiveApplicationOpenNotification:)
-																								 name:MZApplicationSessionDidOpenNotification
-																							 object:nil];
 	}
 	return self;
 }
@@ -131,16 +126,14 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 	return mutableQuizTrigerDates;
 }
 
-#pragma mark - Missing Quizzes Number Computation
+#pragma mark - Missing Quizzes Handling
 
-- (void)didReceiveApplicationOpenNotification:(NSNotification *)notification {
-	NSUInteger missedQuizzesNumber = 0;
+- (NSArray<NSDate *> *)datesMissedQuizzes {
+	NSMutableArray<NSDate *> *datesMissedQuizzes = @[];
 
 	// (1) Add number of missed quizzes for whole days
 	MZApplicationSessionManager *applicationSessionManager = [MZApplicationSessionManager sharedManager];
 	NSInteger numberDaysDifference = [[NSDate date] numberDaysDifferenceWithDate:applicationSessionManager.lastOpenedDate];
-
-	missedQuizzesNumber += missedQuizzesNumber * self.quizPerDay;
 
 	// (2) Add number of missed quizzes within the first day (not a whole day)
 	// TODO
@@ -148,10 +141,7 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 	// (3) Add number of missed quizzes today (not a whole day)
 	// TODO
 
-	NSDictionary *userInfo = @{MZNotificationNumberMissedQuizzesKey: @(missedQuizzesNumber)};
-	[[NSNotificationCenter defaultCenter] postNotificationName:MZQuizManagerMissedQuizzesNotification
-																											object:self
-																										userInfo:userInfo];
+	return datesMissedQuizzes;
 }
 
 #pragma mark - Settings Persistance

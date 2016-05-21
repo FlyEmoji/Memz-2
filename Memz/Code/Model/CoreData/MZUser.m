@@ -9,6 +9,7 @@
 #import "MZUser.h"
 #import "MZQuiz.h"
 #import "MZWord.h"
+#import "MZDataManager.h"
 #import "NSManagedObject+MemzCoreData.h"
 
 NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNotification";
@@ -41,6 +42,16 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 							toLanguage:self.knownLanguage.integerValue
 								 forUser:self
 							 inContext:context];
+}
+
+- (void)addPendingQuizzesForCreationDates:(NSArray<NSDate *> *)quizzesDates {
+	[quizzesDates enumerateObjectsUsingBlock:^(NSDate *creationDate, NSUInteger idx, BOOL *stop) {
+		MZQuiz *quiz = [MZQuiz randomQuizForUser:self creationDate:creationDate];
+		if (quiz) {
+			[self addQuizzesObject:quiz];
+		}
+	}];
+	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 }
 
 @end

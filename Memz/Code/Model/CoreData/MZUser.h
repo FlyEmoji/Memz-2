@@ -27,6 +27,8 @@ extern NSString * const MZUserDidAuthenticateNotification;
 			 translations:(NSArray<NSString *> *)translations
 					inContext:(nullable NSManagedObjectContext *)context;
 
+- (void)addPendingQuizzesForCreationDates:(NSArray<NSDate *> *)quizzesDates;
+
 @end
 
 NS_ASSUME_NONNULL_END

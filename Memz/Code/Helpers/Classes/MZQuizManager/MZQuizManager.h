@@ -9,21 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "MZQuiz.h"
 
-extern NSString * const MZQuizManagerMissedQuizzesNotification;  // number of untracked missed quizzes notification
-extern NSString * const MZNotificationNumberMissedQuizzesKey;  // notification key to extract number
-
 const NSUInteger kDayMinimumQuizNumber = 1;
 const NSUInteger kDayMaximumQuizNumber = 5;
 
 @interface MZQuizManager : NSObject
 
-@property (nonatomic, assign) NSUInteger quizPerDay;	// between kDayMinimumQuizNumber and kDayMaximumQuizNumber, default 3
+@property (nonatomic, assign) NSUInteger quizPerDay;  // between kDayMinimumQuizNumber and kDayMaximumQuizNumber, default 3
 
-@property (nonatomic, assign) NSUInteger startHour;		// defaut 8 (8am)
-@property (nonatomic, assign) NSUInteger endHour;		// defaut 20 (8pm)
+@property (nonatomic, assign) NSUInteger startHour;	 // defaut 8 (8am)
+@property (nonatomic, assign) NSUInteger endHour;	 // defaut 20 (8pm)
 
 @property (nonatomic, assign, getter=isActive) BOOL active;	 // default YES
 @property (nonatomic, assign, getter=isReversed) BOOL reversed;	 // will allow for translations both ways (randomly)
+
+@property (nonatomic, weak, readonly) NSArray<NSDate *> *datesMissedQuizzes; // connected user unanswered quiz dates since last app session
 
 + (MZQuizManager *)sharedManager;
 
