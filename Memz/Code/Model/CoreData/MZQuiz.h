@@ -19,11 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray<NSNumber *> *)allLanguages;
 
-+ (MZQuiz *)randomQuizForUser:(MZUser *)user;  
++ (MZQuiz *)randomQuizForUser:(MZUser *)user
+								 creationDate:(nullable NSDate *)creationDate;  // default creation current date
 
 + (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage
 												newLanguage:(MZLanguage)newLanguage
-														forUser:(nullable MZUser *)user; 
+														forUser:(nullable MZUser *)user
+											 creationDate:(nullable NSDate *)creationDate;  // default creation current date
 
 @end
 

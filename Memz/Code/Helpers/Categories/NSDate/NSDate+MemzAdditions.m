@@ -12,6 +12,8 @@
 
 #pragma mark - String Formatting
 
+// TODO: NSDateFormatter make static
+
 - (NSString *)relativeOrAbsoluteDateString {
 	if ([self isToday]) {
 		return NSLocalizedString(@"DateTodayTitle", nil);
@@ -110,6 +112,20 @@
 - (NSDate *)hoursBefore:(NSInteger)hoursBefore {
 	NSDate *dateBeforeDays = [self dateByAddingTimeInterval:-60 * 60 * (double)hoursBefore];
 	return dateBeforeDays;
+}
+
+- (NSInteger)numberDaysDifferenceWithDate:(NSDate *)date {
+	NSDate *fromDate;
+	NSDate *toDate;
+
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&fromDate interval:nil forDate:self];
+	[calendar rangeOfUnit:NSCalendarUnitDay startDate:&toDate interval:nil forDate:date];
+
+	NSDateComponents *difference = [calendar components:NSCalendarUnitDay fromDate:fromDate toDate:toDate options:0];
+
+	return [difference day];
 }
 
 #pragma mark - Checks

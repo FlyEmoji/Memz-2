@@ -10,7 +10,8 @@
 #import "MZPushNotificationManager.h"
 #import "MZMainViewController.h"
 #import "MZPageControl.h"
-#import "MZInjector.h"
+#import "MZQuizManager.h"
+#import "MZUser.h"
 #import "UIAlertController+MemzAdditions.h"
 
 @implementation AppDelegate
@@ -23,13 +24,26 @@
 	[[MZPushNotificationManager sharedManager] registerLocalNotifications];
 
 	// (3) Recover and handle last push notification if exists
-	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-	[[MZPushNotificationManager sharedManager] handleLocalNotification:localNotif];
+	UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	[[MZPushNotificationManager sharedManager] handleLocalNotification:localNotification];
+
+	// (4) Generate pending unanswered quizzes since last application session
+	NSMutableArray<NSDate *> *pendingQuizDates = [MZQuizManager sharedManager].datesMissedQuizzes.mutableCopy;
+	if (localNotification) {
+		[pendingQuizDates removeObjectAtIndex:pendingQuizDates.count - 1];
+	}
+	[[MZUser currentUser] addPendingQuizzesForCreationDates:pendingQuizDates];
 
 	return YES;
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+	// (1) Generate pending unanswered quizzes since last application session minus last one being answered now
+	NSMutableArray<NSDate *> *pendingQuizDates = [MZQuizManager sharedManager].datesMissedQuizzes.mutableCopy;
+	[pendingQuizDates removeObjectAtIndex:pendingQuizDates.count - 1];
+	[[MZUser currentUser] addPendingQuizzesForCreationDates:pendingQuizDates];
+
+	// (2) Handle push notification will present quiz
 	[[MZPushNotificationManager sharedManager] handleLocalNotification:notification];
 }
 

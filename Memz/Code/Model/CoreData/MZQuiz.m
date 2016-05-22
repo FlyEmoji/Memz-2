@@ -13,16 +13,20 @@
 
 @implementation MZQuiz
 
-+ (MZQuiz *)randomQuizForUser:(MZUser *)user {
++ (MZQuiz *)randomQuizForUser:(MZUser *)user creationDate:(nullable NSDate *)creationDate {
 	if (!user) {
 		return nil;
 	}
 	return [MZQuiz randomQuizKnownLanguage:user.knownLanguage.integerValue
 														 newLanguage:user.newLanguage.integerValue
-																 forUser:user];
+																 forUser:user
+														creationDate:creationDate];
 }
 
-+ (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage newLanguage:(MZLanguage)newLanguage forUser:(nullable MZUser *)user {
++ (MZQuiz *)randomQuizKnownLanguage:(MZLanguage)knownLanguage
+												newLanguage:(MZLanguage)newLanguage
+														forUser:(nullable MZUser *)user
+											 creationDate:(nullable NSDate *)creationDate {
 	// (1) Fetch all not yet learned words in targeted language
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND learningIndex < %d", newLanguage, MZWordIndexLearned];
 	if (user) {

@@ -81,8 +81,6 @@
 		0C95C18E1C8943C200FEAB49 /* feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 0C95C1891C8933D200FEAB49 /* feed.json */; };
 		0CA04A291C3325FA0078C8EE /* MZWordDescriptionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA04A271C3325FA0078C8EE /* MZWordDescriptionHeaderView.m */; };
 		0CA04A2A1C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */; };
-		0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BBD1C204C7F000E19D4 /* MemzTests.m */; };
-		0CA58BC91C204C7F000E19D4 /* MemzUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BC81C204C7F000E19D4 /* MemzUITests.m */; };
 		0CA58BE31C20501C000E19D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA58BE21C20501C000E19D4 /* Assets.xcassets */; };
 		0CA58BEA1C205111000E19D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BE71C205111000E19D4 /* main.m */; };
 		0CA58BED1C20534E000E19D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58BEC1C20534E000E19D4 /* AppDelegate.m */; };
@@ -92,6 +90,8 @@
 		0CA58C221C209D9E000E19D4 /* MZPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C211C209D9E000E19D4 /* MZPageViewController.m */; };
 		0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C271C209DC7000E19D4 /* MZMainViewController.m */; };
+		0CAFF3831CEEB91600F2860B /* MZApplicationSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */; };
+		0CAFF3941CF0F57700F2860B /* MZQuizManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */; };
 		0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7ABD1C217BA400F5D91B /* MZNibView.m */; };
 		0CC3726F1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */; };
 		0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */; };
@@ -316,10 +316,8 @@
 		0CA04A281C3325FA0078C8EE /* MZWordDescriptionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZWordDescriptionHeaderView.xib; path = "Code/Views/0-Common/MZWordDescriptionHeaderView/MZWordDescriptionHeaderView.xib"; sourceTree = SOURCE_ROOT; };
 		0CA58B9D1C204C7F000E19D4 /* Memz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA58BB91C204C7F000E19D4 /* MemzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CA58BBD1C204C7F000E19D4 /* MemzTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzTests.m; sourceTree = "<group>"; };
 		0CA58BBF1C204C7F000E19D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA58BC41C204C7F000E19D4 /* MemzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CA58BC81C204C7F000E19D4 /* MemzUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemzUITests.m; sourceTree = "<group>"; };
 		0CA58BCA1C204C7F000E19D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CA58BE21C20501C000E19D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Code/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		0CA58BE61C205111000E19D4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Code/Resources/Supporting Files/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -338,6 +336,9 @@
 		0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserEntranceViewController.m; path = "Code/Controllers/1-User Entrance/MZUserEntranceViewController/MZUserEntranceViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CA58C261C209DC7000E19D4 /* MZMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMainViewController.h; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.h"; sourceTree = SOURCE_ROOT; };
 		0CA58C271C209DC7000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
+		0CAFF3811CEEB91600F2860B /* MZApplicationSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZApplicationSessionManager.h; path = Code/Helpers/Classes/MZApplicationSessionManager/MZApplicationSessionManager.h; sourceTree = SOURCE_ROOT; };
+		0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZApplicationSessionManager.m; path = Code/Helpers/Classes/MZApplicationSessionManager/MZApplicationSessionManager.m; sourceTree = SOURCE_ROOT; };
+		0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManagerTest.m; path = Helpers/MZQuizManager/MZQuizManagerTest.m; sourceTree = "<group>"; };
 		0CBF7ABC1C217BA400F5D91B /* MZNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZNibView.h; path = Code/Helpers/Classes/MZNibView/MZNibView.h; sourceTree = SOURCE_ROOT; };
 		0CBF7ABD1C217BA400F5D91B /* MZNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibView.m; path = Code/Helpers/Classes/MZNibView/MZNibView.m; sourceTree = SOURCE_ROOT; };
 		0CC3726D1CDFBDAD0034E1AE /* NSArray+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+MemzAdditions.h"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -727,13 +728,6 @@
 				0CDFD9F21C54874D007EBCA6 /* MZPresentableViewController.m */,
 			);
 			name = MZPresentableViewController;
-			sourceTree = "<group>";
-		};
-		0C3726D41C25483000C9879F /* MZLanguageManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MZLanguageManager;
 			sourceTree = "<group>";
 		};
 		0C3726E21C255A4900C9879F /* MZMyDictionaryViewController */ = {
@@ -1133,7 +1127,7 @@
 		0CA58BBC1C204C7F000E19D4 /* MemzTests */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BBD1C204C7F000E19D4 /* MemzTests.m */,
+				0CAFF3911CF0F52A00F2860B /* Helpers */,
 				0CA58BBF1C204C7F000E19D4 /* Info.plist */,
 			);
 			path = MemzTests;
@@ -1142,7 +1136,6 @@
 		0CA58BC71C204C7F000E19D4 /* MemzUITests */ = {
 			isa = PBXGroup;
 			children = (
-				0CA58BC81C204C7F000E19D4 /* MemzUITests.m */,
 				0CA58BCA1C204C7F000E19D4 /* Info.plist */,
 			);
 			path = MemzUITests;
@@ -1239,8 +1232,8 @@
 				0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */,
 				0C5FC1561C3A057800FF83E7 /* MZResponseComparator */,
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
-				0C3726D41C25483000C9879F /* MZLanguageManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
+				0CAFF3801CEEB8DB00F2860B /* MZApplicationSessionManager */,
 				0C5042271C59CBA90045E6FC /* MZStoryboardSegue */,
 				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C57F5851C4B2E050055532E /* MZPresentViewControllerTransition */,
@@ -1369,6 +1362,31 @@
 				0CD0CD971C8CAFBE0091CE1E /* MZFeedViewController.m */,
 			);
 			name = MZFeedViewController;
+			sourceTree = "<group>";
+		};
+		0CAFF3801CEEB8DB00F2860B /* MZApplicationSessionManager */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFF3811CEEB91600F2860B /* MZApplicationSessionManager.h */,
+				0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */,
+			);
+			name = MZApplicationSessionManager;
+			sourceTree = "<group>";
+		};
+		0CAFF3911CF0F52A00F2860B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFF3921CF0F53400F2860B /* MZQuizManager */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0CAFF3921CF0F53400F2860B /* MZQuizManager */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */,
+			);
+			name = MZQuizManager;
 			sourceTree = "<group>";
 		};
 		0CBF7ABA1C217A1600F5D91B /* MZQuizInfoView */ = {
@@ -2155,6 +2173,7 @@
 				0CE3294C1C96370200CC7C2F /* MZSwitch.m in Sources */,
 				0CEFD1B71C3CB70700EB60DE /* NSString+LevenshteinDistances.m in Sources */,
 				0C57F5391C488B200055532E /* MZSettingsStepperTableViewCell.m in Sources */,
+				0CAFF3831CEEB91600F2860B /* MZApplicationSessionManager.m in Sources */,
 				0C0741051C8E7CF400676A22 /* MZDataBackgroundTaskWrapper.m in Sources */,
 				0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */,
 				0CE6244A1C8FC1A300F7B9EB /* MZShareManager.m in Sources */,
@@ -2207,7 +2226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA58BBE1C204C7F000E19D4 /* MemzTests.m in Sources */,
+				0CAFF3941CF0F57700F2860B /* MZQuizManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2215,7 +2234,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CA58BC91C204C7F000E19D4 /* MemzUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
