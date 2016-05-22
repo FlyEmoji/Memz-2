@@ -145,13 +145,6 @@ const NSTimeInterval kSwitchAnimationDuration = 0.2f;
   self.layer.cornerRadius = kSwitchCurveRadius;
 }
 
-- (void)hideColors {
-  self.backgroundColor = [UIColor clearColor];
-  self.tintColor = [UIColor clearColor];
-  self.onTintColor = [UIColor clearColor];
-  self.offTintColor = [UIColor clearColor];
-}
-
 #pragma mark - Helpers 
 
 - (void)restoreOnTintColor {

@@ -42,6 +42,11 @@
 		0C3727011C28994800C9879F /* MZBingTranslationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727001C28994800C9879F /* MZBingTranslationWrapper.m */; };
 		0C3727051C293EBD00C9879F /* MZBingTranslatorToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */; };
 		0C3727091C29BF9E00C9879F /* MZErrorCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3727081C29BF9E00C9879F /* MZErrorCreator.m */; };
+		0C40A4F91CF14EF900BD7F9B /* Tests.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C40A4F81CF14EF900BD7F9B /* Tests.xcassets */; };
+		0C40A4FB1CF14F2300BD7F9B /* Views.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C40A4FA1CF14F2300BD7F9B /* Views.storyboard */; };
+		0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A4FC1CF14F3400BD7F9B /* MZPageControlTests.m */; };
+		0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A4FE1CF14F3B00BD7F9B /* MZSwitchTests.m */; };
+		0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */; };
 		0C429E961CD1A28600AB7029 /* MZLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C429E951CD1A28600AB7029 /* MZLoaderView.m */; };
 		0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
@@ -247,6 +252,12 @@
 		0C3727041C293EBD00C9879F /* MZBingTranslatorToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorToken.m; path = Code/API/MZBingTranslatorCoordinator/MZBingTranslatorToken/MZBingTranslatorToken.m; sourceTree = SOURCE_ROOT; };
 		0C3727071C29BF9E00C9879F /* MZErrorCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZErrorCreator.h; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.h; sourceTree = SOURCE_ROOT; };
 		0C3727081C29BF9E00C9879F /* MZErrorCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZErrorCreator.m; path = Code/Helpers/Classes/MZErrorCreator/MZErrorCreator.m; sourceTree = SOURCE_ROOT; };
+		0C40A4F81CF14EF900BD7F9B /* Tests.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Tests.xcassets; path = Ressources/Tests.xcassets; sourceTree = "<group>"; };
+		0C40A4FA1CF14F2300BD7F9B /* Views.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Views.storyboard; path = Ressources/Storyboards/Views.storyboard; sourceTree = "<group>"; };
+		0C40A4FC1CF14F3400BD7F9B /* MZPageControlTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZPageControlTests.m; path = "Views/0-Common/MZPageControl/MZPageControlTests.m"; sourceTree = "<group>"; };
+		0C40A4FE1CF14F3B00BD7F9B /* MZSwitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSwitchTests.m; path = "Views/0-Common/MZSwitch/MZSwitchTests.m"; sourceTree = "<group>"; };
+		0C40A5031CF1513200BD7F9B /* MZTestControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTestControlsViewController.h; path = "Controllers/8-Tests/MZTestControlsViewController/MZTestControlsViewController.h"; sourceTree = "<group>"; };
+		0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTestControlsViewController.m; path = "Controllers/8-Tests/MZTestControlsViewController/MZTestControlsViewController.m"; sourceTree = "<group>"; };
 		0C429E941CD1A28600AB7029 /* MZLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLoaderView.h; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.h"; sourceTree = SOURCE_ROOT; };
 		0C429E951CD1A28600AB7029 /* MZLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLoaderView.m; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.m"; sourceTree = SOURCE_ROOT; };
 		0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZLoaderView.xib; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.xib"; sourceTree = SOURCE_ROOT; };
@@ -813,6 +824,81 @@
 			name = MZErrorCreator;
 			sourceTree = "<group>";
 		};
+		0C40A4F21CF14DC000BD7F9B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4F31CF14DCD00BD7F9B /* 0-Common */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0C40A4F31CF14DCD00BD7F9B /* 0-Common */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4F41CF14DDD00BD7F9B /* MZSwitch */,
+				0C40A4F51CF14DE300BD7F9B /* MZPageControl */,
+			);
+			name = "0-Common";
+			sourceTree = "<group>";
+		};
+		0C40A4F41CF14DDD00BD7F9B /* MZSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4FE1CF14F3B00BD7F9B /* MZSwitchTests.m */,
+			);
+			name = MZSwitch;
+			sourceTree = "<group>";
+		};
+		0C40A4F51CF14DE300BD7F9B /* MZPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4FC1CF14F3400BD7F9B /* MZPageControlTests.m */,
+			);
+			name = MZPageControl;
+			sourceTree = "<group>";
+		};
+		0C40A4F61CF14E0A00BD7F9B /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4F81CF14EF900BD7F9B /* Tests.xcassets */,
+				0C40A4F71CF14E1800BD7F9B /* Storyboards */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		0C40A4F71CF14E1800BD7F9B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A4FA1CF14F2300BD7F9B /* Views.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		0C40A5001CF150AE00BD7F9B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A5011CF150BB00BD7F9B /* 8-Tests */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0C40A5011CF150BB00BD7F9B /* 8-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A5021CF1512700BD7F9B /* MZTestControlsViewController */,
+			);
+			name = "8-Tests";
+			sourceTree = "<group>";
+		};
+		0C40A5021CF1512700BD7F9B /* MZTestControlsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A5031CF1513200BD7F9B /* MZTestControlsViewController.h */,
+				0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */,
+			);
+			name = MZTestControlsViewController;
+			sourceTree = "<group>";
+		};
 		0C429E931CD1A24700AB7029 /* MZLoaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1127,7 +1213,10 @@
 		0CA58BBC1C204C7F000E19D4 /* MemzTests */ = {
 			isa = PBXGroup;
 			children = (
+				0C40A5001CF150AE00BD7F9B /* Controllers */,
+				0C40A4F21CF14DC000BD7F9B /* Views */,
 				0CAFF3911CF0F52A00F2860B /* Helpers */,
+				0C40A4F61CF14E0A00BD7F9B /* Ressources */,
 				0CA58BBF1C204C7F000E19D4 /* Info.plist */,
 			);
 			path = MemzTests;
@@ -2034,6 +2123,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C40A4F91CF14EF900BD7F9B /* Tests.xcassets in Resources */,
+				0C40A4FB1CF14F2300BD7F9B /* Views.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2227,6 +2318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CAFF3941CF0F57700F2860B /* MZQuizManagerTest.m in Sources */,
+				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,
+				0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

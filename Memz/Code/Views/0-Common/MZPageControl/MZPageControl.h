@@ -16,7 +16,7 @@ IB_DESIGNABLE
  * This class implements all public UIPageControl methods/functions in order to allow for injection.
  */
 
-@interface MZPageControl : UIView
+@interface MZPageControl : UIControl
 
 @property (nonatomic, assign) IBInspectable NSInteger numberOfPages;
 @property (nonatomic, assign) IBInspectable NSInteger currentPage;
