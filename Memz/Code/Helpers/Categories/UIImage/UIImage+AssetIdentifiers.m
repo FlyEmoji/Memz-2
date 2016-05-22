@@ -40,6 +40,12 @@
 			return [UIImage imageNamed:@"Common-Gradient"];
 		case MZAssetIdentifierCommonGradientReversed:
 			return [UIImage imageNamed:@"Common-Gradient-Reversed"];
+		case MZAssetIdentifierUserEntranceFlag:
+			return [UIImage imageNamed:@"User-Entrance-Flag"];
+		case MZAssetIdentifierUserEntranceDictionary:
+			return [UIImage imageNamed:@"User-Entrance-Dictionary"];
+		case MZAssetIdentifierUserEntranceNotification:
+			return [UIImage imageNamed:@"User-Entrance-Notification"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:

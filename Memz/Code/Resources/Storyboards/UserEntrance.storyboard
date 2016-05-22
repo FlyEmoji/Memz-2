@@ -91,7 +91,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dz-SL-LV3" userLabel="Illustration Container View">
                                                 <rect key="frame" x="30" y="60" width="540" height="420"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-Entrance-Dictionary" translatesAutoresizingMaskIntoConstraints="NO" id="eeG-1K-Ikn">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-Entrance-Flag" translatesAutoresizingMaskIntoConstraints="NO" id="eeG-1K-Ikn">
                                                         <rect key="frame" x="0.0" y="0.0" width="581" height="367"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="SELECT THE LANGUAGE YOU WISH TO LEARN FROM A WIDE SELECTION" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PK-3h-ESW">
@@ -114,7 +114,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="4dz-SL-LV3" firstAttribute="centerX" secondItem="rBG-dn-VSB" secondAttribute="centerX" id="9zn-ft-74i"/>
                                             <constraint firstItem="4dz-SL-LV3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rBG-dn-VSB" secondAttribute="top" constant="30" id="JNY-Pg-CKS"/>
@@ -167,7 +167,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eug-5x-c61" userLabel="Illustration Container View">
                                                 <rect key="frame" x="30" y="60" width="540" height="420"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-Entrance-Dictionary" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-gr-qAL">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User-Entrance-Notification" translatesAutoresizingMaskIntoConstraints="NO" id="mC8-gr-qAL">
                                                         <rect key="frame" x="0.0" y="0.0" width="581" height="367"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" text="PRACTICE BY GETTING NOTIFICATIONS EVERY DAY ASKING YOU TO TRANSLATE THE WORDS YOU ENTERED" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jni-8R-la0">
@@ -190,7 +190,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Eug-5x-c61" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UuZ-hZ-PNi" secondAttribute="leading" constant="30" id="1pK-dA-3sS"/>
                                             <constraint firstItem="Eug-5x-c61" firstAttribute="centerX" secondItem="UuZ-hZ-PNi" secondAttribute="centerX" id="Jz7-94-aT2"/>
@@ -301,5 +301,7 @@
         <image name="Common-Carousel-Dot-Active" width="7" height="7"/>
         <image name="Common-Carousel-Dot-Inactive" width="7" height="7"/>
         <image name="User-Entrance-Dictionary" width="796" height="714"/>
+        <image name="User-Entrance-Flag" width="836" height="714"/>
+        <image name="User-Entrance-Notification" width="796" height="714"/>
     </resources>
 </document>
