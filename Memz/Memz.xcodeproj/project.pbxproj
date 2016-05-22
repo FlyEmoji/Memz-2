@@ -47,6 +47,10 @@
 		0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A4FC1CF14F3400BD7F9B /* MZPageControlTests.m */; };
 		0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A4FE1CF14F3B00BD7F9B /* MZSwitchTests.m */; };
 		0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */; };
+		0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A5071CF1628700BD7F9B /* MZQuizManagerTest.m */; };
+		0C40A50B1CF162EA00BD7F9B /* MZNibViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A50A1CF162EA00BD7F9B /* MZNibViewTests.m */; };
+		0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C40A50F1CF163DB00BD7F9B /* MZNibViewTest.m */; };
+		0C40A5121CF163DB00BD7F9B /* MZNibViewTest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C40A5101CF163DB00BD7F9B /* MZNibViewTest.xib */; };
 		0C429E961CD1A28600AB7029 /* MZLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C429E951CD1A28600AB7029 /* MZLoaderView.m */; };
 		0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
@@ -96,7 +100,6 @@
 		0CA58C251C209DBC000E19D4 /* MZUserEntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C241C209DBC000E19D4 /* MZUserEntranceViewController.m */; };
 		0CA58C281C209DC7000E19D4 /* MZMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA58C271C209DC7000E19D4 /* MZMainViewController.m */; };
 		0CAFF3831CEEB91600F2860B /* MZApplicationSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */; };
-		0CAFF3941CF0F57700F2860B /* MZQuizManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */; };
 		0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7ABD1C217BA400F5D91B /* MZNibView.m */; };
 		0CC3726F1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */; };
 		0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */; };
@@ -258,6 +261,11 @@
 		0C40A4FE1CF14F3B00BD7F9B /* MZSwitchTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZSwitchTests.m; path = "Views/0-Common/MZSwitch/MZSwitchTests.m"; sourceTree = "<group>"; };
 		0C40A5031CF1513200BD7F9B /* MZTestControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTestControlsViewController.h; path = "Controllers/8-Tests/MZTestControlsViewController/MZTestControlsViewController.h"; sourceTree = "<group>"; };
 		0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTestControlsViewController.m; path = "Controllers/8-Tests/MZTestControlsViewController/MZTestControlsViewController.m"; sourceTree = "<group>"; };
+		0C40A5071CF1628700BD7F9B /* MZQuizManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManagerTest.m; path = Helpers/Classes/MZQuizManager/MZQuizManagerTest.m; sourceTree = "<group>"; };
+		0C40A50A1CF162EA00BD7F9B /* MZNibViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibViewTests.m; path = Helpers/Classes/MZNibView/MZNibViewTests.m; sourceTree = "<group>"; };
+		0C40A50E1CF163DB00BD7F9B /* MZNibViewTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZNibViewTest.h; path = "Views/7-Tests/MZNibViewTest/MZNibViewTest.h"; sourceTree = "<group>"; };
+		0C40A50F1CF163DB00BD7F9B /* MZNibViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibViewTest.m; path = "Views/7-Tests/MZNibViewTest/MZNibViewTest.m"; sourceTree = "<group>"; };
+		0C40A5101CF163DB00BD7F9B /* MZNibViewTest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZNibViewTest.xib; path = "Views/7-Tests/MZNibViewTest/MZNibViewTest.xib"; sourceTree = "<group>"; };
 		0C429E941CD1A28600AB7029 /* MZLoaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLoaderView.h; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.h"; sourceTree = SOURCE_ROOT; };
 		0C429E951CD1A28600AB7029 /* MZLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLoaderView.m; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.m"; sourceTree = SOURCE_ROOT; };
 		0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZLoaderView.xib; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.xib"; sourceTree = SOURCE_ROOT; };
@@ -349,7 +357,6 @@
 		0CA58C271C209DC7000E19D4 /* MZMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMainViewController.m; path = "Code/Controllers/0-Common/MZMainViewController/MZMainViewController.m"; sourceTree = SOURCE_ROOT; };
 		0CAFF3811CEEB91600F2860B /* MZApplicationSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZApplicationSessionManager.h; path = Code/Helpers/Classes/MZApplicationSessionManager/MZApplicationSessionManager.h; sourceTree = SOURCE_ROOT; };
 		0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZApplicationSessionManager.m; path = Code/Helpers/Classes/MZApplicationSessionManager/MZApplicationSessionManager.m; sourceTree = SOURCE_ROOT; };
-		0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZQuizManagerTest.m; path = Helpers/MZQuizManager/MZQuizManagerTest.m; sourceTree = "<group>"; };
 		0CBF7ABC1C217BA400F5D91B /* MZNibView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZNibView.h; path = Code/Helpers/Classes/MZNibView/MZNibView.h; sourceTree = SOURCE_ROOT; };
 		0CBF7ABD1C217BA400F5D91B /* MZNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibView.m; path = Code/Helpers/Classes/MZNibView/MZNibView.m; sourceTree = SOURCE_ROOT; };
 		0CC3726D1CDFBDAD0034E1AE /* NSArray+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+MemzAdditions.h"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
@@ -828,6 +835,7 @@
 			isa = PBXGroup;
 			children = (
 				0C40A4F31CF14DCD00BD7F9B /* 0-Common */,
+				0C40A50C1CF1633700BD7F9B /* 7-Tests */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -897,6 +905,41 @@
 				0C40A5041CF1513200BD7F9B /* MZTestControlsViewController.m */,
 			);
 			name = MZTestControlsViewController;
+			sourceTree = "<group>";
+		};
+		0C40A5061CF1626500BD7F9B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFF3921CF0F53400F2860B /* MZQuizManager */,
+				0C40A5091CF1628D00BD7F9B /* MZNibView */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		0C40A5091CF1628D00BD7F9B /* MZNibView */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A50A1CF162EA00BD7F9B /* MZNibViewTests.m */,
+			);
+			name = MZNibView;
+			sourceTree = "<group>";
+		};
+		0C40A50C1CF1633700BD7F9B /* 7-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A50D1CF1636A00BD7F9B /* MZNibViewTest */,
+			);
+			name = "7-Tests";
+			sourceTree = "<group>";
+		};
+		0C40A50D1CF1636A00BD7F9B /* MZNibViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				0C40A50E1CF163DB00BD7F9B /* MZNibViewTest.h */,
+				0C40A50F1CF163DB00BD7F9B /* MZNibViewTest.m */,
+				0C40A5101CF163DB00BD7F9B /* MZNibViewTest.xib */,
+			);
+			name = MZNibViewTest;
 			sourceTree = "<group>";
 		};
 		0C429E931CD1A24700AB7029 /* MZLoaderView */ = {
@@ -1465,7 +1508,7 @@
 		0CAFF3911CF0F52A00F2860B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0CAFF3921CF0F53400F2860B /* MZQuizManager */,
+				0C40A5061CF1626500BD7F9B /* Classes */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1473,7 +1516,7 @@
 		0CAFF3921CF0F53400F2860B /* MZQuizManager */ = {
 			isa = PBXGroup;
 			children = (
-				0CAFF3931CF0F57700F2860B /* MZQuizManagerTest.m */,
+				0C40A5071CF1628700BD7F9B /* MZQuizManagerTest.m */,
 			);
 			name = MZQuizManager;
 			sourceTree = "<group>";
@@ -2123,6 +2166,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C40A5121CF163DB00BD7F9B /* MZNibViewTest.xib in Resources */,
 				0C40A4F91CF14EF900BD7F9B /* Tests.xcassets in Resources */,
 				0C40A4FB1CF14F2300BD7F9B /* Views.storyboard in Resources */,
 			);
@@ -2317,9 +2361,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CAFF3941CF0F57700F2860B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
+				0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,
+				0C40A50B1CF162EA00BD7F9B /* MZNibViewTests.m in Sources */,
 				0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

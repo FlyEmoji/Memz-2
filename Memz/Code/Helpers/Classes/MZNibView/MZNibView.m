@@ -2,8 +2,8 @@
 //  MZNibView.m
 //  Memz
 //
-//  Created by Bastien Falcou on 12/16/15.
-//  Copyright © 2015 Falcou. All rights reserved.
+//  Created by Bastien Falcou on 5/21/16.
+//  Copyright © 2016 Falcou. All rights reserved.
 //
 
 #import "MZNibView.h"
@@ -11,6 +11,7 @@
 @interface MZNibView ()
 
 @property (nonatomic, strong) IBOutlet UIView *contentView;
+@property (nonatomic, assign) BOOL shouldAwakeFromNib;
 
 @end
 
@@ -18,77 +19,70 @@
 @synthesize contentView = _contentView;
 
 - (id)init {
-	if (self = [super init]) {
+	self = [super init];
+	if(self) {
+		self.shouldAwakeFromNib = YES;
 		[self createFromNib];
-		[self doInit];
+	}
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if(self) {
+
 	}
 	return self;
 }
 
 - (id)initWithFrame:(CGRect)frame {
-	if ([super initWithFrame:frame]) {
+	self = [super initWithFrame:frame];
+	if(self) {
+		self.shouldAwakeFromNib = YES;
 		[self createFromNib];
-		[self doInit];
 	}
 	return self;
 }
 
-- (void)doInit {
-}
-
-- (NSString *)cellNibName {
-	// Legacy code will override cellNibName, so it must still implement the default behavior
+- (NSString *)nibName {
 	return NSStringFromClass([self class]);
 }
 
-- (NSString *)nibName {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-	return [self cellNibName];
-#pragma clang diagnostic pop
+- (NSBundle *)nibBundle {
+	return [NSBundle bundleForClass:[self class]];
+}
+
+- (UINib *)nib {
+	return [UINib nibWithNibName:[self nibName] bundle:[self nibBundle]];
 }
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
 
+	self.shouldAwakeFromNib = NO;
 	[self createFromNib];
-	[self doInit];
-}
-
-- (void)layoutSubviews {
-	[super layoutSubviews];
-
-	[self layoutIfNeeded];
-	[self updateContentFrame];
 }
 
 - (void)createFromNib {
-	NSLog(@"Creating %@ from nib", NSStringFromClass([self class]));
 	if (self.contentView == nil) {
-		NSLog(@"Loading contentView from nib");
-		[[NSBundle mainBundle] loadNibNamed:[self nibName] owner:self options:nil];
+		[[self nib] instantiateWithOwner:self options:nil];
 
-		[self updateContentFrame];
+		// If code crashes here (above or below) you probably forgot to link contentView in IB
+		NSAssert(self.contentView != nil, @"contentView is nil. Did you forgot to link it in IB?");
+		if (self.shouldAwakeFromNib) {
+			[self awakeFromNib];
+		}
 
+		self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
 		[self addSubview:self.contentView];
 
-		self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	} else {
-		NSLog(@"contentView already loaded, not loading it again");
+		NSLayoutConstraint * leadingConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+		NSLayoutConstraint * topConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+		NSLayoutConstraint * trailingConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+		NSLayoutConstraint * bottomConstraint = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+
+		[self addConstraints:@[leadingConstraint, topConstraint, trailingConstraint, bottomConstraint]];
 	}
-}
-
-- (void)updateContentFrame {
-	self.contentView.frame = CGRectMake(0.0f, 0.0f, self.frame.size.width, self.frame.size.height);
-	NSLog(@"Updating contentView frame to %@", [NSValue valueWithCGRect:self.contentView.frame]);
-}
-
-- (UIView *)contentCellView {
-	return self.contentView;
-}
-
-- (void)setContentCellView:(UIView *)contentCellView {
-	self.contentView = contentCellView;
 }
 
 @end

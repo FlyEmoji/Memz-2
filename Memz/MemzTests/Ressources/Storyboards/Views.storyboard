@@ -24,11 +24,16 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hch-PM-vhO" customClass="MZSwitch">
                                 <rect key="frame" x="276" y="486" width="51" height="31"/>
                             </switch>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tK-o9-rPs" customClass="MZNibViewTest">
+                                <rect key="frame" x="180" y="426" width="240" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="WqU-hD-6dC"/>
                     <connections>
+                        <outlet property="testNibView" destination="2tK-o9-rPs" id="kZX-j4-Ei9"/>
                         <outlet property="testPageControl" destination="eAS-5o-v6y" id="85X-fE-W8M"/>
                         <outlet property="testSwitch" destination="hch-PM-vhO" id="0X4-l5-A3S"/>
                     </connections>

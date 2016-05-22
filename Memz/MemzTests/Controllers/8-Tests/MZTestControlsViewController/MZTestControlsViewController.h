@@ -10,10 +10,12 @@
 
 #import "MZSwitch.h"
 #import "MZPageControl.h"
+#import "MZNibViewTest.h"
 
 @interface MZTestControlsViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet MZSwitch *testSwitch;
-@property (strong, nonatomic) IBOutlet MZPageControl *testPageControl;
+@property (nonatomic, weak) IBOutlet MZSwitch *testSwitch;
+@property (nonatomic, weak) IBOutlet MZPageControl *testPageControl;
+@property (nonatomic, weak) IBOutlet MZNibViewTest *testNibView;
 
 @end
