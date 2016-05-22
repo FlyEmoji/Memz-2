@@ -31,6 +31,10 @@
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
+- (BOOL)prefersStatusBarHidden {
+	return NO;
+}
+
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
 	[MZUser signUpUserKnownLanguage:MZLanguageEnglish newLanguage:MZLanguageFrench];
 
