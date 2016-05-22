@@ -94,10 +94,14 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="middleDotImageActive" value="Common-Carousel-Dot-Active"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezI-ra-MZt" customClass="MZSwitch">
+                                <rect key="frame" x="276" y="285" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hyB-ZX-JjO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="7Jz-ln-WXD"/>
+                            <constraint firstItem="ezI-ra-MZt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8Ly-Vm-nlZ"/>
                             <constraint firstAttribute="trailing" secondItem="5Ss-MS-bXC" secondAttribute="trailing" id="933-4y-9da"/>
                             <constraint firstItem="5Ss-MS-bXC" firstAttribute="top" secondItem="5v3-rq-U2D" secondAttribute="bottom" id="F5Z-xU-YTY"/>
                             <constraint firstItem="5Ss-MS-bXC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L9A-Hb-lod"/>
@@ -106,6 +110,7 @@
                             <constraint firstItem="5v3-rq-U2D" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Qks-li-CLT"/>
                             <constraint firstAttribute="trailing" secondItem="hyB-ZX-JjO" secondAttribute="trailing" constant="10" id="Wyi-oK-jqJ"/>
                             <constraint firstAttribute="trailing" secondItem="5v3-rq-U2D" secondAttribute="trailing" id="aNP-ft-gju"/>
+                            <constraint firstItem="ezI-ra-MZt" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cxZ-Q1-kb1"/>
                             <constraint firstItem="5v3-rq-U2D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="u6B-mX-tzk"/>
                         </constraints>
                     </view>
@@ -114,6 +119,7 @@
                         <outlet property="enterNavigationButton" destination="5Ss-MS-bXC" id="e4o-nO-FGi"/>
                         <outlet property="pageControl" destination="hyB-ZX-JjO" id="ine-dr-imN"/>
                         <outlet property="scrollView" destination="5v3-rq-U2D" id="v3Y-fr-FVQ"/>
+                        <outlet property="theSwitch" destination="ezI-ra-MZt" id="12V-19-tCw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

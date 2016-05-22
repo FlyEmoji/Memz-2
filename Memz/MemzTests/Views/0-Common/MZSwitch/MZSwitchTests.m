@@ -30,7 +30,7 @@
 - (void)setUp {
   [super setUp];
   
-  self.image = [UIImage imageNamed:@"Switch-Test-Image" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.image = [UIImage imageNamed:@"Common-Test-Switch-Dot" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
 }
 
 - (void)testLoadSwitchInView {
@@ -46,8 +46,9 @@
   MZSwitch *theSwitch = [[MZSwitch alloc] init];
   theSwitch.onTintColor = [UIColor redColor];
   theSwitch.on = YES;
-  
-  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor redColor]);
+
+	// native superclass onTintColor if on, custom switch sets transparent background
+  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor clearColor]);
 }
 
 - (void)testTurnSwitchOffColorOffSwitch {
@@ -153,15 +154,6 @@
   XCTAssertEqualObjects(theSwitch.backgroundImage.image, self.image);
 }
 
-- (void)testSwitchOnImageOffOnly {
-  MZSwitch *theSwitch = [[MZSwitch alloc] init];
-  theSwitch.on = YES;
-  theSwitch.offImage = self.image;
-  theSwitch.onImage = nil;
-  
-  XCTAssertNil(theSwitch.backgroundColor);
-}
-
 - (void)testSwitchChangeImage {
   MZSwitch *theSwitch = [[MZSwitch alloc] init];
   theSwitch.on = YES;
@@ -230,8 +222,9 @@
   theSwitch.offImage = nil;
   theSwitch.on = YES;
   theSwitch.onTintColor = [UIColor blueColor];
-  
-  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor blueColor]);
+
+	// native superclass onTintColor if on, custom switch sets transparent background
+  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor clearColor]);
 }
 
 - (void)testSwitchExtensiveProcess2 {
@@ -252,8 +245,9 @@
   theSwitch.onImage = self.image;
   theSwitch.onTintColor = [UIColor blueColor];
   theSwitch.onImage = nil;
+	theSwitch.on = NO;
   
-  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor blueColor]);
+  XCTAssertEqualObjects(theSwitch.backgroundColor, [UIColor redColor]);
 }
 
 - (void)testSwitchExtensiveProcess3 {
@@ -265,7 +259,7 @@
   theSwitch.onTintColor = nil;
   theSwitch.onImage = nil;
   theSwitch.on = YES;
-  
+
   XCTAssertNotEqualObjects(theSwitch.backgroundColor, nil); // Default ON color
 }
 

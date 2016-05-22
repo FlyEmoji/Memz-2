@@ -37,13 +37,13 @@
 - (void)setUp {
   [super setUp];
   
-  self.inactiveLeftImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-  self.inactiveMiddleImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-  self.inactiveRightImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.inactiveLeftImage = [UIImage imageNamed:@"Common-Test-Carousel-Left-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.inactiveMiddleImage = [UIImage imageNamed:@"Common-Test-Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.inactiveRightImage = [UIImage imageNamed:@"Common-Test-Carousel-Left-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
   
-  self.activeLeftImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-  self.activeMiddleImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
-  self.activeRightImage = [UIImage imageNamed:@"Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.activeLeftImage = [UIImage imageNamed:@"Common-Test-Carousel-Right-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.activeMiddleImage = [UIImage imageNamed:@"Common-Test-Carousel-Middle-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
+  self.activeRightImage = [UIImage imageNamed:@"Common-Test-Carousel-Right-Active" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
 }
 
 #pragma mark - Test Load View
