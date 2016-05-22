@@ -265,7 +265,7 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
-        <image name="My-Dictionary-Empty-State" width="154" height="154"/>
+        <image name="My-Dictionary-Empty-State" width="177" height="177"/>
         <image name="Navigation-Arrow-Right" width="30" height="17"/>
     </resources>
 </document>
