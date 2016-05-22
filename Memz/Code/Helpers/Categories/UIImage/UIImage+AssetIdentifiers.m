@@ -22,6 +22,14 @@
 			return [UIImage imageNamed:@"Flag-Italy"];
 		case MZAssetIdentifierFlagPortugal:
 			return [UIImage imageNamed:@"Flag-Portugal"];
+		case MZAssetIdentifierCommonIconWhite:
+			return [UIImage imageNamed:@"Common-Icon-White"];
+		case MZAssetIdentifierCommonIconWhiteShadows:
+			return [UIImage imageNamed:@"Common-Icon-White-Shadows"];
+		case MZAssetIdentifierCommonIconBlue:
+			return [UIImage imageNamed:@"Common-Icon-Blue"];
+		case MZAssetIdentifierCommonIconBlueShadows:
+			return [UIImage imageNamed:@"Common-Icon-Blue-Shadows"];
 		case MZAssetIdentifierCommonCross:
 			return [UIImage imageNamed:@"Common-Cross"];
 		case MZAssetIdentifierCommonTick:
