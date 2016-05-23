@@ -59,10 +59,11 @@ MZTutorialViewProtocol>
 	 ^(NSNotification *notification) {
 		 [self setupTableViewData];
 
-		 if (!self.hasApplicationAlreadyOpened && [MZUser currentUser]) {
+		 // TODO: Would be amazing if the blurred background behind was updating live
+		 if (!self.hasApplicationAlreadyOpened) {
 			 [self showTutorial:YES];
 			 self.hasApplicationAlreadyOpened = YES;
-		 }
+		 };
 	 }];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
@@ -109,7 +110,8 @@ MZTutorialViewProtocol>
 #pragma mark - Tutorial View Handling
 
 - (void)showTutorial:(BOOL)show {
-	UIImage *screenSnapshot = [UIImage snapshotFromScreenWithblurRadius:kScreenSnapshotBlurRadius iterations:kScreenSnapshotIterations];
+	UIImage *screenSnapshot = [UIImage snapshotFromView:self.view blurRadius:kScreenSnapshotBlurRadius
+																					 iterations:kScreenSnapshotIterations];
 	self.tutorialView.backgroundImageView.image = screenSnapshot;
 
 	self.tutorialView.delegate = self;
