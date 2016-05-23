@@ -18,7 +18,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *enterNavigationButton;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet MZPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet MZSwitch *theSwitch;
 
 @end
 
@@ -26,17 +25,14 @@
 
 #pragma mark - Actions
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+- (void)viewDidLoad {
+	[super viewDidLoad];
 
-	self.theSwitch.on = NO;
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
+}
 
-	self.theSwitch.onTintColor = [UIColor redColor];
-	self.theSwitch.on = YES;
-
-	if (self.theSwitch.backgroundColor == [UIColor redColor]) {
-		NSLog(@"YAY");
-	}
+- (BOOL)prefersStatusBarHidden {
+	return NO;
 }
 
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {

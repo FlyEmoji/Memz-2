@@ -22,6 +22,14 @@
 			return [UIImage imageNamed:@"Flag-Italy"];
 		case MZAssetIdentifierFlagPortugal:
 			return [UIImage imageNamed:@"Flag-Portugal"];
+		case MZAssetIdentifierCommonIconWhite:
+			return [UIImage imageNamed:@"Common-Icon-White"];
+		case MZAssetIdentifierCommonIconWhiteShadows:
+			return [UIImage imageNamed:@"Common-Icon-White-Shadows"];
+		case MZAssetIdentifierCommonIconBlue:
+			return [UIImage imageNamed:@"Common-Icon-Blue"];
+		case MZAssetIdentifierCommonIconBlueShadows:
+			return [UIImage imageNamed:@"Common-Icon-Blue-Shadows"];
 		case MZAssetIdentifierCommonCross:
 			return [UIImage imageNamed:@"Common-Cross"];
 		case MZAssetIdentifierCommonTick:
@@ -40,6 +48,12 @@
 			return [UIImage imageNamed:@"Common-Gradient"];
 		case MZAssetIdentifierCommonGradientReversed:
 			return [UIImage imageNamed:@"Common-Gradient-Reversed"];
+		case MZAssetIdentifierUserEntranceFlag:
+			return [UIImage imageNamed:@"User-Entrance-Flag"];
+		case MZAssetIdentifierUserEntranceDictionary:
+			return [UIImage imageNamed:@"User-Entrance-Dictionary"];
+		case MZAssetIdentifierUserEntranceNotification:
+			return [UIImage imageNamed:@"User-Entrance-Notification"];
 		case MZAssetIdentifierNavigationBarPixel:
 			return [UIImage imageNamed:@"Navigation-Bar-Pixel"];
 		case MZAssetIdentifierNavigationBarTransparentPixel:
