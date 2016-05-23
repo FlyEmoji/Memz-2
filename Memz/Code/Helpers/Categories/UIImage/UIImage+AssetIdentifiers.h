@@ -29,6 +29,8 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierCommonCarouselDotActive,
 	MZAssetIdentifierCommonGradient,
 	MZAssetIdentifierCommonGradientReversed,
+	MZAssetIdentifierCommonTutorialRightArrow,
+	MZAssetIdentifierCommonTutorialLeftArrow,
 	MZAssetIdentifierUserEntranceFlag,
 	MZAssetIdentifierUserEntranceDictionary,
 	MZAssetIdentifierUserEntranceNotification,

@@ -48,6 +48,10 @@
 			return [UIImage imageNamed:@"Common-Gradient"];
 		case MZAssetIdentifierCommonGradientReversed:
 			return [UIImage imageNamed:@"Common-Gradient-Reversed"];
+		case MZAssetIdentifierCommonTutorialRightArrow:
+			return [UIImage imageNamed:@"Common-Tutoral-Right-Arrow"];
+		case MZAssetIdentifierCommonTutorialLeftArrow:
+			return [UIImage imageNamed:@"Common-Tutoral-Left-Arrow"];
 		case MZAssetIdentifierUserEntranceFlag:
 			return [UIImage imageNamed:@"User-Entrance-Flag"];
 		case MZAssetIdentifierUserEntranceDictionary:

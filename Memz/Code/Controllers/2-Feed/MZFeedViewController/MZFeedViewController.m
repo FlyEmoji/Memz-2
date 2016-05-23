@@ -13,19 +13,31 @@
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
+#import "UIImage+MemzAdditions.h"
 #import "MZNavigationController.h"
+#import "MZTutorialView.h"
 #import "MZLoaderView.h"
 #import "MZUser.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
 
-@interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+NSString * const kHasApplicationAlreadyOpened = @"MZHasApplicationAlreadyOpened";
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+const NSTimeInterval kFadeTutorialAnimationDuration = 0.2;
+const CGFloat kScreenSnapshotBlurRadius = 20.0f;
+const NSInteger kScreenSnapshotIterations = 5;
+
+@interface MZFeedViewController () <UITableViewDataSource,
+UITableViewDelegate,
+MZTutorialViewProtocol>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet MZTutorialView *tutorialView;
+
 @property (nonatomic, copy) NSArray<MZArticle *> *tableViewData;
-
 @property (nonatomic, strong) MZArticle *selectedArticle;
+@property (nonatomic, assign) BOOL hasApplicationAlreadyOpened;
 
 @end
 
@@ -46,6 +58,11 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 																								usingBlock:
 	 ^(NSNotification *notification) {
 		 [self setupTableViewData];
+
+		 if (!self.hasApplicationAlreadyOpened && [MZUser currentUser]) {
+			 [self showTutorial:YES];
+			 self.hasApplicationAlreadyOpened = YES;
+		 }
 	 }];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
@@ -87,6 +104,40 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Tutorial View Handling
+
+- (void)showTutorial:(BOOL)show {
+	UIImage *screenSnapshot = [UIImage snapshotFromScreenWithblurRadius:kScreenSnapshotBlurRadius iterations:kScreenSnapshotIterations];
+	self.tutorialView.backgroundImageView.image = screenSnapshot;
+
+	self.tutorialView.delegate = self;
+	[self.tutorialView setType:MZTutorialViewTypeAddWord animated:NO];
+
+	[UIView animateWithDuration:kFadeTutorialAnimationDuration animations:^{
+		self.tutorialView.alpha = show ? 1.0f : 0.0f;
+	}];
+}
+
+- (void)tutorialView:(MZTutorialView *)view didRequestDismissForType:(MZTutorialViewType)type {
+	switch (type) {
+		case MZTutorialViewTypeAddWord:
+			[view setType:MZTutorialViewTypeSettings animated:YES];
+			break;
+		case MZTutorialViewTypeSettings:
+			[self showTutorial:NO];
+			break;
+	}
+}
+
+- (BOOL)hasApplicationAlreadyOpened {
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kHasApplicationAlreadyOpened] boolValue];
+}
+
+- (void)setHasApplicationAlreadyOpened:(BOOL)hasApplicationAlreadyOpened {
+	[[NSUserDefaults standardUserDefaults] setObject:@(hasApplicationAlreadyOpened) forKey:kHasApplicationAlreadyOpened];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
