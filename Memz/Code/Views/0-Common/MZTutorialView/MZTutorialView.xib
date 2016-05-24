@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Bold.ttf">
+            <string>MaisonNeue-Bold</string>
+            <string>MaisonNeue-Bold</string>
+            <string>MaisonNeue-Bold</string>
+            <string>MaisonNeue-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZTutorialView">
+            <connections>
+                <outlet property="addWordTutorialContainerView" destination="kbY-O8-ATn" id="7rj-dn-bhw"/>
+                <outlet property="backgroundImageView" destination="93K-hQ-fGe" id="lx3-iK-mVb"/>
+                <outlet property="bottomAnimatedArrowView" destination="aQy-MI-6Y0" id="ZVi-Fz-2Vc"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="JVg-Mt-6gt"/>
+                <outlet property="presentableViewsTutorialContainerView" destination="pTN-8i-vfi" id="7iP-mi-Yy7"/>
+                <outlet property="settingsTutorialContainerView" destination="PBC-RJ-awe" id="YjQ-9G-XSu"/>
+                <outlet property="topAnimatedArrowView" destination="7PF-yb-LgR" id="mZA-wE-dod"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93K-hQ-fGe">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
+                <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbY-O8-ATn" userLabel="Add Word Tutorial Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Tutoral-Right-Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NFZ-d5-bF3">
+                            <rect key="frame" x="532" y="8" width="53" height="102"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="102" id="I4y-0q-EgE"/>
+                                <constraint firstAttribute="width" constant="53" id="Tyb-sx-2ke"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP + BUTTON TO ADD NEW TRANSLATIONS YOU WOULD LIKE TO KEEP TRACK OF AND LEARN" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-q1-DqX">
+                            <rect key="frame" x="47" y="119" width="478" height="32"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="NFZ-d5-bF3" firstAttribute="top" secondItem="kbY-O8-ATn" secondAttribute="top" constant="8" id="JVc-Id-Zdd"/>
+                        <constraint firstAttribute="trailing" secondItem="NFZ-d5-bF3" secondAttribute="trailing" constant="15" id="LeY-ex-avi"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="QsH-q1-DqX" secondAttribute="bottom" constant="30" id="bqp-4D-R7i"/>
+                        <constraint firstItem="QsH-q1-DqX" firstAttribute="top" secondItem="kbY-O8-ATn" secondAttribute="top" constant="119" id="c4b-iK-ssv"/>
+                        <constraint firstAttribute="trailing" secondItem="QsH-q1-DqX" secondAttribute="trailing" constant="75" id="iQ0-Zl-7a7"/>
+                        <constraint firstItem="QsH-q1-DqX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kbY-O8-ATn" secondAttribute="leading" constant="30" id="z4K-1o-39M"/>
+                    </constraints>
+                </view>
+                <view userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBC-RJ-awe" userLabel="Settings Tutorial Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Common-Tutoral-Left-Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="IBL-Ly-wDq">
+                            <rect key="frame" x="15" y="8" width="53" height="102"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="IBL-Ly-wDq" secondAttribute="height" multiplier="53:102" id="SP0-Nd-Cdv"/>
+                                <constraint firstAttribute="height" constant="102" id="bfN-MS-olW"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP SETTINGS TO CHANGE YOUR LANGUAGE AND OTHER CONFIGURATIONS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-xu-2FD">
+                            <rect key="frame" x="75" y="119" width="417" height="32"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Xvd-xu-2FD" firstAttribute="top" secondItem="PBC-RJ-awe" secondAttribute="top" constant="119" id="3Ui-qt-Dk1"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xvd-xu-2FD" secondAttribute="trailing" constant="30" id="O81-nh-3EX"/>
+                        <constraint firstItem="Xvd-xu-2FD" firstAttribute="leading" secondItem="PBC-RJ-awe" secondAttribute="leading" constant="75" id="QXF-bJ-ISN"/>
+                        <constraint firstItem="IBL-Ly-wDq" firstAttribute="top" secondItem="PBC-RJ-awe" secondAttribute="top" constant="8" id="Vac-vX-CFG"/>
+                        <constraint firstItem="IBL-Ly-wDq" firstAttribute="leading" secondItem="PBC-RJ-awe" secondAttribute="leading" constant="15" id="Y6l-j1-Rk3"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xvd-xu-2FD" secondAttribute="bottom" constant="30" id="alh-ey-emC"/>
+                    </constraints>
+                </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTN-8i-vfi" userLabel="Presentable Views Tutorial Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PF-yb-LgR" customClass="MZAnimatedArrow">
+                            <rect key="frame" x="275" y="30" width="50" height="35"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="VeQ-YH-Ydr"/>
+                                <constraint firstAttribute="width" constant="50" id="wNP-o5-Hgi"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                    <color key="value" red="0.44705882352941173" green="0.48627450980392156" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-MI-6Y0" customClass="MZAnimatedArrow">
+                            <rect key="frame" x="275" y="533" width="50" height="37"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="nVM-6V-tOy"/>
+                                <constraint firstAttribute="height" constant="37" id="pHP-jN-amu"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                    <color key="value" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-2d-KG4">
+                            <rect key="frame" x="143" y="90" width="315" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-Wf-bak">
+                            <rect key="frame" x="143" y="492" width="315" height="16"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="7PF-yb-LgR" firstAttribute="top" secondItem="pTN-8i-vfi" secondAttribute="top" constant="30" id="CD2-1T-TZf"/>
+                        <constraint firstItem="aQy-MI-6Y0" firstAttribute="top" secondItem="Kmu-Wf-bak" secondAttribute="bottom" constant="25" id="D49-89-xl0"/>
+                        <constraint firstAttribute="bottom" secondItem="aQy-MI-6Y0" secondAttribute="bottom" constant="30" id="PFj-95-9xb"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pTN-8i-vfi" secondAttribute="leading" constant="30" id="RpT-Z6-Zin"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="top" secondItem="7PF-yb-LgR" secondAttribute="bottom" constant="25" id="ZLz-bw-Sw8"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="aan-lX-sfK"/>
+                        <constraint firstItem="aQy-MI-6Y0" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="d2Y-mz-73u"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kmu-Wf-bak" secondAttribute="trailing" constant="30" id="eQB-db-rya"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qd7-2d-KG4" secondAttribute="trailing" constant="30" id="mfT-Je-B0O"/>
+                        <constraint firstItem="Kmu-Wf-bak" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="qfz-eq-Z9u"/>
+                        <constraint firstItem="7PF-yb-LgR" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="uFQ-fs-goN"/>
+                        <constraint firstItem="Kmu-Wf-bak" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pTN-8i-vfi" secondAttribute="leading" constant="30" id="uGx-hl-YlH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="93K-hQ-fGe" secondAttribute="bottom" id="9K1-eU-4Kn"/>
+                <constraint firstItem="pTN-8i-vfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9M4-hG-rnV"/>
+                <constraint firstItem="93K-hQ-fGe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B8G-b5-m4R"/>
+                <constraint firstItem="93K-hQ-fGe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IbO-yG-wlv"/>
+                <constraint firstItem="kbY-O8-ATn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KVS-In-sqF"/>
+                <constraint firstAttribute="trailing" secondItem="pTN-8i-vfi" secondAttribute="trailing" id="LOh-tN-RYb"/>
+                <constraint firstItem="kbY-O8-ATn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SSD-gc-R3W"/>
+                <constraint firstAttribute="bottom" secondItem="PBC-RJ-awe" secondAttribute="bottom" id="VUB-WZ-jo8"/>
+                <constraint firstAttribute="bottom" secondItem="pTN-8i-vfi" secondAttribute="bottom" id="X8R-tf-F42"/>
+                <constraint firstAttribute="trailing" secondItem="PBC-RJ-awe" secondAttribute="trailing" id="Xnw-7X-8L9"/>
+                <constraint firstAttribute="bottom" secondItem="kbY-O8-ATn" secondAttribute="bottom" id="cOE-od-JoL"/>
+                <constraint firstAttribute="trailing" secondItem="kbY-O8-ATn" secondAttribute="trailing" id="dd1-Gk-jY5"/>
+                <constraint firstItem="PBC-RJ-awe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eHI-QL-BbX"/>
+                <constraint firstAttribute="trailing" secondItem="93K-hQ-fGe" secondAttribute="trailing" id="eYD-mz-bdk"/>
+                <constraint firstItem="PBC-RJ-awe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qa3-mf-DCa"/>
+                <constraint firstItem="pTN-8i-vfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xOD-vg-9AR"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Common-Tutoral-Left-Arrow" width="48" height="90"/>
+        <image name="Common-Tutoral-Right-Arrow" width="48" height="91"/>
+    </resources>
+</document>

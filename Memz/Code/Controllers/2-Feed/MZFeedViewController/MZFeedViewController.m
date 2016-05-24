@@ -13,19 +13,26 @@
 #import "MZRemoteServerCoordinator.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
+#import "UIImage+MemzAdditions.h"
 #import "MZNavigationController.h"
+#import "MZTutorialView.h"
 #import "MZLoaderView.h"
 #import "MZUser.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
 NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
 
-@interface MZFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+NSString * const kHasApplicationAlreadyOpened = @"MZHasApplicationAlreadyOpened";
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@interface MZFeedViewController () <UITableViewDataSource,
+UITableViewDelegate,
+MZTutorialViewProtocol>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+
 @property (nonatomic, copy) NSArray<MZArticle *> *tableViewData;
-
 @property (nonatomic, strong) MZArticle *selectedArticle;
+@property (nonatomic, assign) BOOL hasApplicationAlreadyOpened;
 
 @end
 
@@ -46,6 +53,12 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 																								usingBlock:
 	 ^(NSNotification *notification) {
 		 [self setupTableViewData];
+
+		 // TODO: Would be amazing if the blurred background behind was updating live
+		 if (!self.hasApplicationAlreadyOpened) {
+			 [MZTutorialView showInView:self.view withType:MZTutorialViewTypeAddWord delegate:self];
+			 self.hasApplicationAlreadyOpened = YES;
+		 };
 	 }];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
@@ -87,6 +100,30 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Tutorial View Handling
+
+- (void)tutorialView:(MZTutorialView *)view didRequestDismissForType:(MZTutorialViewType)type {
+	switch (type) {
+		case MZTutorialViewTypeAddWord:
+			[view setType:MZTutorialViewTypeSettings animated:YES];
+			break;
+		case MZTutorialViewTypeSettings:
+			[view dismiss];
+			break;
+		default:
+			break;
+	}
+}
+
+- (BOOL)hasApplicationAlreadyOpened {
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kHasApplicationAlreadyOpened] boolValue];
+}
+
+- (void)setHasApplicationAlreadyOpened:(BOOL)hasApplicationAlreadyOpened {
+	[[NSUserDefaults standardUserDefaults] setObject:@(hasApplicationAlreadyOpened) forKey:kHasApplicationAlreadyOpened];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
