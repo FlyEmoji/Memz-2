@@ -32,6 +32,7 @@
 		0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */; };
 		0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */; };
 		0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */; };
+		0C26104F1CF3D38D0080DB2C /* MZAnimatedArrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */; };
 		0C2C5E0E1CD69ED300E766A5 /* MZUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */; };
 		0C2DC8751C4BE5D1005B11F5 /* MZTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */; };
 		0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C3726E41C255A7800C9879F /* MZMyDictionaryViewController.m */; };
@@ -237,6 +238,8 @@
 		0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
 		0C1EF4921C97A68E0076526B /* NSObject+ExecuteOnDealloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+ExecuteOnDealloc.h"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.h"; sourceTree = SOURCE_ROOT; };
 		0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+ExecuteOnDealloc.m"; path = "Code/Helpers/Categories/NSObject/NSObject+ExecuteOnDealloc.m"; sourceTree = SOURCE_ROOT; };
+		0C26104D1CF3D38D0080DB2C /* MZAnimatedArrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAnimatedArrow.h; path = "Code/Views/0-Common/MZAnimatedArrow/MZAnimatedArrow.h"; sourceTree = SOURCE_ROOT; };
+		0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnimatedArrow.m; path = "Code/Views/0-Common/MZAnimatedArrow/MZAnimatedArrow.m"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0C1CD69ED300E766A5 /* MZUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZUser+CoreDataProperties.h"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZUser+CoreDataProperties.m"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		0C2C5E111CD6A92F00E766A5 /* MZLanguageDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MZLanguageDefinition.h; path = Code/Helpers/Headers/MZLanguageDefinition/MZLanguageDefinition.h; sourceTree = SOURCE_ROOT; };
@@ -717,6 +720,15 @@
 				0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */,
 			);
 			name = UIScrollView;
+			sourceTree = "<group>";
+		};
+		0C26104C1CF3D3470080DB2C /* MZAnimatedArrow */ = {
+			isa = PBXGroup;
+			children = (
+				0C26104D1CF3D38D0080DB2C /* MZAnimatedArrow.h */,
+				0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */,
+			);
+			name = MZAnimatedArrow;
 			sourceTree = "<group>";
 		};
 		0C2C5E0F1CD6A8D100E766A5 /* Headers */ = {
@@ -1215,6 +1227,7 @@
 				0C8FD9051CE7CEA200FFC0A9 /* MZFlightPickerViewCell */,
 				0C131E131CED1F9E0044DD85 /* MZEmptyStateView */,
 				0CD6992C1CF28DDB0030BDCB /* MZTutorialView */,
+				0C26104C1CF3D3470080DB2C /* MZAnimatedArrow */,
 				0CDB827B1C2ED2A200EADB05 /* MZWordDescriptionHeaderView */,
 			);
 			name = "0-Common";
@@ -2358,6 +2371,7 @@
 				0C7536051C5B0B2B00810402 /* MZLanguagesPickerViewController.m in Sources */,
 				0C74E69C1C4DD60A00184C94 /* MZProtocolInterceptor.m in Sources */,
 				0C3726E51C255A7800C9879F /* MZMyDictionaryViewController.m in Sources */,
+				0C26104F1CF3D38D0080DB2C /* MZAnimatedArrow.m in Sources */,
 				0C0740FA1C8D240500676A22 /* MZArticleSuggestedWordTableViewCell.m in Sources */,
 				0CDB82EB1C30A0BD00EADB05 /* MZResponse.m in Sources */,
 				0C131E161CED1FF40044DD85 /* MZEmptyStateView.m in Sources */,

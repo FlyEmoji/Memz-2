@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, MZTutorialViewType) {
 	MZTutorialViewTypeAddWord,
-	MZTutorialViewTypeSettings
+	MZTutorialViewTypeSettings,
+	MZTutorialViewTypePresentableView
 };
 
 @protocol MZTutorialViewProtocol;
@@ -21,6 +22,12 @@ typedef NS_ENUM(NSInteger, MZTutorialViewType) {
 
 @property (nonatomic, strong) id<MZTutorialViewProtocol> delegate;
 @property (nonatomic, assign) MZTutorialViewType type;  // not animated
+
++ (instancetype)showInView:(UIView *)view
+									withType:(MZTutorialViewType)type
+									delegate:(id<MZTutorialViewProtocol>)delegate;  // animated
+
+- (void)dismiss;  // animated
 
 - (void)setType:(MZTutorialViewType)type animated:(BOOL)animated;
 

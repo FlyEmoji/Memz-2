@@ -99,19 +99,11 @@
                                     <outlet property="delegate" destination="rRx-I4-HYR" id="wAz-2e-fL3"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G2-Qz-FAN" customClass="MZTutorialView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94509803920000002" green="0.95686274510000002" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2G2-Qz-FAN" firstAttribute="leading" secondItem="1JT-3t-oU9" secondAttribute="leading" id="AfJ-gF-uYe"/>
-                            <constraint firstItem="2G2-Qz-FAN" firstAttribute="top" secondItem="1JT-3t-oU9" secondAttribute="top" id="KBm-8t-xxA"/>
-                            <constraint firstAttribute="trailing" secondItem="2G2-Qz-FAN" secondAttribute="trailing" id="P1b-gW-iRo"/>
                             <constraint firstItem="Lce-ZI-vWb" firstAttribute="top" secondItem="4zs-YR-0wX" secondAttribute="bottom" id="PU4-Yc-MhD"/>
                             <constraint firstItem="4zs-YR-0wX" firstAttribute="top" secondItem="QrX-Nj-FLO" secondAttribute="bottom" id="gaP-jE-wz3"/>
-                            <constraint firstItem="Lce-ZI-vWb" firstAttribute="top" secondItem="2G2-Qz-FAN" secondAttribute="bottom" id="n2x-ow-azw"/>
                             <constraint firstItem="4zs-YR-0wX" firstAttribute="leading" secondItem="1JT-3t-oU9" secondAttribute="leading" id="p9K-2e-DIU"/>
                             <constraint firstAttribute="trailing" secondItem="4zs-YR-0wX" secondAttribute="trailing" id="pVt-so-Nds"/>
                         </constraints>
@@ -119,7 +111,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="4zs-YR-0wX" id="jva-ln-eSP"/>
-                        <outlet property="tutorialView" destination="2G2-Qz-FAN" id="kb9-yQ-dwN"/>
                         <segue destination="dO9-eM-LYH" kind="presentation" identifier="MZPresentArticleViewControllerSegue" customClass="MZStoryboardSegue" id="I7l-8V-XYK"/>
                     </connections>
                 </viewController>

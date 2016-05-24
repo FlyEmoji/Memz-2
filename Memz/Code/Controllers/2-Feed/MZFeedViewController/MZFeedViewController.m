@@ -24,16 +24,11 @@ NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewCont
 
 NSString * const kHasApplicationAlreadyOpened = @"MZHasApplicationAlreadyOpened";
 
-const NSTimeInterval kFadeTutorialAnimationDuration = 0.2;
-const CGFloat kScreenSnapshotBlurRadius = 20.0f;
-const NSInteger kScreenSnapshotIterations = 5;
-
 @interface MZFeedViewController () <UITableViewDataSource,
 UITableViewDelegate,
 MZTutorialViewProtocol>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, weak) IBOutlet MZTutorialView *tutorialView;
 
 @property (nonatomic, copy) NSArray<MZArticle *> *tableViewData;
 @property (nonatomic, strong) MZArticle *selectedArticle;
@@ -61,7 +56,7 @@ MZTutorialViewProtocol>
 
 		 // TODO: Would be amazing if the blurred background behind was updating live
 		 if (!self.hasApplicationAlreadyOpened) {
-			 [self showTutorial:YES];
+			 [MZTutorialView showInView:self.view withType:MZTutorialViewTypeAddWord delegate:self];
 			 self.hasApplicationAlreadyOpened = YES;
 		 };
 	 }];
@@ -109,26 +104,15 @@ MZTutorialViewProtocol>
 
 #pragma mark - Tutorial View Handling
 
-- (void)showTutorial:(BOOL)show {
-	UIImage *screenSnapshot = [UIImage snapshotFromView:self.view blurRadius:kScreenSnapshotBlurRadius
-																					 iterations:kScreenSnapshotIterations];
-	self.tutorialView.backgroundImageView.image = screenSnapshot;
-
-	self.tutorialView.delegate = self;
-	[self.tutorialView setType:MZTutorialViewTypeAddWord animated:NO];
-
-	[UIView animateWithDuration:kFadeTutorialAnimationDuration animations:^{
-		self.tutorialView.alpha = show ? 1.0f : 0.0f;
-	}];
-}
-
 - (void)tutorialView:(MZTutorialView *)view didRequestDismissForType:(MZTutorialViewType)type {
 	switch (type) {
 		case MZTutorialViewTypeAddWord:
 			[view setType:MZTutorialViewTypeSettings animated:YES];
 			break;
 		case MZTutorialViewTypeSettings:
-			[self showTutorial:NO];
+			[view dismiss];
+			break;
+		default:
 			break;
 	}
 }

@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierCommonGradientReversed,
 	MZAssetIdentifierCommonTutorialRightArrow,
 	MZAssetIdentifierCommonTutorialLeftArrow,
+	MZAssetIdentifierCommonMask,
 	MZAssetIdentifierUserEntranceFlag,
 	MZAssetIdentifierUserEntranceDictionary,
 	MZAssetIdentifierUserEntranceNotification,

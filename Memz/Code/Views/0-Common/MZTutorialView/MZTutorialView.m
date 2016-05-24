@@ -7,30 +7,62 @@
 //
 
 #import "MZTutorialView.h"
+#import "MZAnimatedArrow.h"
+#import "UIImage+MemzAdditions.h"
 
+const NSTimeInterval kFadeTutorialViewDuration = 0.2;
 const NSTimeInterval kTutorialViewContainerDuration = 0.2;
+const NSTimeInterval kAnimatedArrowAnimationDuration = 3.0;
 
-@interface MZTutorialView ()
+const CGFloat kScreenSnapshotBlurRadius = 15.0f;
+const NSInteger kScreenSnapshotIterations = 4;
 
-@property (weak, nonatomic) IBOutlet UIView *addWordTutorialContainerView;
-@property (weak, nonatomic) IBOutlet UIView *settingsTutorialContainerView;
+@interface MZTutorialView () <UIGestureRecognizerDelegate>
+
+@property (nonatomic, weak) IBOutlet UIView *addWordTutorialContainerView;
+@property (nonatomic, weak) IBOutlet UIView *settingsTutorialContainerView;
+@property (nonatomic, weak) IBOutlet UIView *presentableViewsTutorialContainerView;
+
+@property (nonatomic, weak) IBOutlet MZAnimatedArrow *topAnimatedArrowView;
+@property (nonatomic, weak) IBOutlet MZAnimatedArrow *bottomAnimatedArrowView;
+
 
 @end
 
 @implementation MZTutorialView
 
-- (void)awakeFromNib {
-	[super awakeFromNib];
+#pragma mark - Public 
 
-	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-																																											action:@selector(didTapView:)];
-	[self addGestureRecognizer:gestureRecognizer];
++ (instancetype)showInView:(UIView *)view
+									withType:(MZTutorialViewType)type
+									delegate:(id<MZTutorialViewProtocol>)delegate {
+	MZTutorialView *tutorialView = [[MZTutorialView alloc] initWithFrame:view.frame];
+	tutorialView.type = type;
+	tutorialView.delegate = delegate;
+	tutorialView.backgroundImageView.image = [UIImage snapshotFromView:view
+																													blurRadius:kScreenSnapshotBlurRadius
+																													iterations:kScreenSnapshotIterations];
+
+	tutorialView.alpha = 0.0f;
+	[view addSubview:tutorialView];
+
+	[UIView animateWithDuration:kFadeTutorialViewDuration animations:^{
+		tutorialView.alpha = 1.0f;
+	} completion:^(BOOL finished) {
+		[tutorialView.topAnimatedArrowView animateContinuouslyWithDirection:MZAnimatedArrowDirectionUp
+																											animationDuration:kAnimatedArrowAnimationDuration];
+		[tutorialView.bottomAnimatedArrowView animateContinuouslyWithDirection:MZAnimatedArrowDirectionDown
+																												 animationDuration:kAnimatedArrowAnimationDuration];
+	}];
+	return tutorialView;
 }
 
-- (void)didTapView:(UITapGestureRecognizer *)gestureRecognizer {
-	if ([self.delegate respondsToSelector:@selector(tutorialView:didRequestDismissForType:)]) {
-		[self.delegate tutorialView:self didRequestDismissForType:self.type];
-	}
+- (void)dismiss {
+	[UIView animateWithDuration:kFadeTutorialViewDuration animations:^{
+		self.alpha = 0.0f;
+	} completion:^(BOOL finished) {
+		[self removeFromSuperview];
+	}];
 }
 
 #pragma mark - Custom Getters & Setters
@@ -46,7 +78,16 @@ const NSTimeInterval kTutorialViewContainerDuration = 0.2;
 									 animations:^{
 										 self.addWordTutorialContainerView.alpha = type == MZTutorialViewTypeAddWord ? 1.0f : 0.0f;
 										 self.settingsTutorialContainerView.alpha = type == MZTutorialViewTypeSettings ? 1.0f : 0.0f;
+										 self.presentableViewsTutorialContainerView.alpha = type == MZTutorialViewTypePresentableView ? 1.0f : 0.0f;
 									 }];
+}
+
+#pragma mark - Gesture Recognizer Delegate
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+	if ([self.delegate respondsToSelector:@selector(tutorialView:didRequestDismissForType:)]) {
+		[self.delegate tutorialView:self didRequestDismissForType:self.type];
+	}
 }
 
 @end

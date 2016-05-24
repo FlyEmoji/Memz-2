@@ -7,12 +7,18 @@
 //
 
 #import "MZPresentableViewController.h"
+#import "MZTutorialView.h"
 
-const NSTimeInterval kDismissAnimationDuration = 0.15f;
+NSString * const kHasPresentableViewAlreadyOpenedKey = @"MZHasPresentableViewAlreadyOpenedKey";
 
-@interface MZPresentableViewController ()
+const NSTimeInterval kDismissAnimationDuration = 0.15;
+
+@interface MZPresentableViewController () <MZTutorialViewProtocol>
+
+@property (nonatomic, strong) MZTutorialView *tutorialView;
 
 @property (nonatomic, assign) BOOL shouldHideStatusBar;
+@property (nonatomic, assign) BOOL hasPresentableViewAlreadyOpened;
 
 @end
 
@@ -23,6 +29,15 @@ const NSTimeInterval kDismissAnimationDuration = 0.15f;
 
 	if ([self.transitionDelegate respondsToSelector:@selector(presentableViewControllerDidStartPresentAnimatedTransition:)]) {
 		[self.transitionDelegate presentableViewControllerDidStartPresentAnimatedTransition:self];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+	if (!self.hasPresentableViewAlreadyOpened) {
+		[MZTutorialView showInView:self.view withType:MZTutorialViewTypePresentableView delegate:self];
+		// TODO: hasAlreadyOpened set to YES
 	}
 }
 
@@ -65,6 +80,23 @@ const NSTimeInterval kDismissAnimationDuration = 0.15f;
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
 	return UIStatusBarAnimationFade;
+}
+
+#pragma mark - Custom Getters & Setters 
+
+- (BOOL)hasPresentableViewAlreadyOpened {
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kHasPresentableViewAlreadyOpenedKey] boolValue];
+}
+
+- (void)setHasPresentableViewAlreadyOpened:(BOOL)hasPresentableViewAlreadyOpened {
+	[[NSUserDefaults standardUserDefaults] setObject:@(hasPresentableViewAlreadyOpened) forKey:kHasPresentableViewAlreadyOpenedKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Tutorial View Delegate 
+
+- (void)tutorialView:(MZTutorialView *)view didRequestDismissForType:(MZTutorialViewType)type {
+	[view dismiss];
 }
 
 #pragma mark - Table View Transition Delegate Methods

@@ -83,7 +83,7 @@ const CGFloat kPageControlDotsSoace = 7.0f;
 
 	self.pageControl.currentPage = 0;
 
-	__weak MZPageViewController * weakSelf = self;
+	__weak MZPageViewController *weakSelf = self;
 	self.displayLink = [CADisplayLink displayLinkWithBlock:^(CADisplayLink *displayLink) {
 		[weakSelf updateTitleViewPosition];
 	}];

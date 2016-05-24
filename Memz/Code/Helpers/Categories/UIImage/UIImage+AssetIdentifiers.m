@@ -52,6 +52,8 @@
 			return [UIImage imageNamed:@"Common-Tutoral-Right-Arrow"];
 		case MZAssetIdentifierCommonTutorialLeftArrow:
 			return [UIImage imageNamed:@"Common-Tutoral-Left-Arrow"];
+		case MZAssetIdentifierCommonMask:
+			return [UIImage imageNamed:@"Common-Mask"];
 		case MZAssetIdentifierUserEntranceFlag:
 			return [UIImage imageNamed:@"User-Entrance-Flag"];
 		case MZAssetIdentifierUserEntranceDictionary:

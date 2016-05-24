@@ -10,8 +10,11 @@
             <connections>
                 <outlet property="addWordTutorialContainerView" destination="kbY-O8-ATn" id="7rj-dn-bhw"/>
                 <outlet property="backgroundImageView" destination="93K-hQ-fGe" id="lx3-iK-mVb"/>
+                <outlet property="bottomAnimatedArrowView" destination="aQy-MI-6Y0" id="ZVi-Fz-2Vc"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="JVg-Mt-6gt"/>
+                <outlet property="presentableViewsTutorialContainerView" destination="pTN-8i-vfi" id="7iP-mi-Yy7"/>
                 <outlet property="settingsTutorialContainerView" destination="PBC-RJ-awe" id="YjQ-9G-XSu"/>
+                <outlet property="topAnimatedArrowView" destination="7PF-yb-LgR" id="mZA-wE-dod"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,9 +37,9 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap + button to add new translations you would like to keep track of and learn. " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-q1-DqX">
-                            <rect key="frame" x="67" y="119" width="458" height="41"/>
+                            <rect key="frame" x="56" y="119" width="469" height="41"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -62,9 +65,9 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Settings to change your language and other configurations" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-xu-2FD">
-                            <rect key="frame" x="75" y="119" width="482" height="21"/>
+                            <rect key="frame" x="75" y="119" width="493" height="21"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -79,21 +82,87 @@
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Xvd-xu-2FD" secondAttribute="bottom" constant="30" id="alh-ey-emC"/>
                     </constraints>
                 </view>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTN-8i-vfi" userLabel="Presentable Views Tutorial Container View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7PF-yb-LgR" customClass="MZAnimatedArrow">
+                            <rect key="frame" x="265" y="20" width="70" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="47" id="VeQ-YH-Ydr"/>
+                                <constraint firstAttribute="width" constant="70" id="wNP-o5-Hgi"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                    <color key="value" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-MI-6Y0" customClass="MZAnimatedArrow">
+                            <rect key="frame" x="265" y="533" width="70" height="47"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="47" id="GVJ-k7-2L1"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="KDV-gq-AjO"/>
+                                <constraint firstAttribute="width" constant="70" id="nVM-6V-tOy"/>
+                                <constraint firstAttribute="height" constant="47" id="pHP-jN-amu"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="arrowColor">
+                                    <color key="value" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to dismiss this view" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-2d-KG4">
+                            <rect key="frame" x="186" y="97" width="229" height="21"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to dismiss this view" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-Wf-bak">
+                            <rect key="frame" x="186" y="482" width="229" height="21"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="7PF-yb-LgR" firstAttribute="top" secondItem="pTN-8i-vfi" secondAttribute="top" constant="20" id="CD2-1T-TZf"/>
+                        <constraint firstItem="aQy-MI-6Y0" firstAttribute="top" secondItem="Kmu-Wf-bak" secondAttribute="bottom" constant="30" id="D49-89-xl0"/>
+                        <constraint firstAttribute="bottom" secondItem="aQy-MI-6Y0" secondAttribute="bottom" constant="20" id="PFj-95-9xb"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pTN-8i-vfi" secondAttribute="leading" constant="30" id="RpT-Z6-Zin"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="top" secondItem="7PF-yb-LgR" secondAttribute="bottom" constant="30" id="ZLz-bw-Sw8"/>
+                        <constraint firstItem="qd7-2d-KG4" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="aan-lX-sfK"/>
+                        <constraint firstItem="aQy-MI-6Y0" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="d2Y-mz-73u"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kmu-Wf-bak" secondAttribute="trailing" constant="30" id="eQB-db-rya"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qd7-2d-KG4" secondAttribute="trailing" constant="30" id="mfT-Je-B0O"/>
+                        <constraint firstItem="Kmu-Wf-bak" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="qfz-eq-Z9u"/>
+                        <constraint firstItem="7PF-yb-LgR" firstAttribute="centerX" secondItem="pTN-8i-vfi" secondAttribute="centerX" id="uFQ-fs-goN"/>
+                        <constraint firstItem="Kmu-Wf-bak" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pTN-8i-vfi" secondAttribute="leading" constant="30" id="uGx-hl-YlH"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="93K-hQ-fGe" secondAttribute="bottom" id="9K1-eU-4Kn"/>
+                <constraint firstItem="pTN-8i-vfi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9M4-hG-rnV"/>
                 <constraint firstItem="93K-hQ-fGe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B8G-b5-m4R"/>
                 <constraint firstItem="93K-hQ-fGe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IbO-yG-wlv"/>
                 <constraint firstItem="kbY-O8-ATn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KVS-In-sqF"/>
+                <constraint firstAttribute="trailing" secondItem="pTN-8i-vfi" secondAttribute="trailing" id="LOh-tN-RYb"/>
                 <constraint firstItem="kbY-O8-ATn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SSD-gc-R3W"/>
                 <constraint firstAttribute="bottom" secondItem="PBC-RJ-awe" secondAttribute="bottom" id="VUB-WZ-jo8"/>
+                <constraint firstAttribute="bottom" secondItem="pTN-8i-vfi" secondAttribute="bottom" id="X8R-tf-F42"/>
                 <constraint firstAttribute="trailing" secondItem="PBC-RJ-awe" secondAttribute="trailing" id="Xnw-7X-8L9"/>
                 <constraint firstAttribute="bottom" secondItem="kbY-O8-ATn" secondAttribute="bottom" id="cOE-od-JoL"/>
                 <constraint firstAttribute="trailing" secondItem="kbY-O8-ATn" secondAttribute="trailing" id="dd1-Gk-jY5"/>
                 <constraint firstItem="PBC-RJ-awe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="eHI-QL-BbX"/>
                 <constraint firstAttribute="trailing" secondItem="93K-hQ-fGe" secondAttribute="trailing" id="eYD-mz-bdk"/>
                 <constraint firstItem="PBC-RJ-awe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qa3-mf-DCa"/>
+                <constraint firstItem="pTN-8i-vfi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xOD-vg-9AR"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>
