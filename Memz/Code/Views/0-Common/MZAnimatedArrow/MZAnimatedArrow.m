@@ -10,18 +10,19 @@
 
 #define kDefaultColor [UIColor blackColor]
 
-NSString * const kArrowAnimationIdentifier = @"MZArrowAnimationIdentifier";
-NSString * const kContinuousSlideAnimationIdentifier = @"continuousSlideAnimationIdentifier";
+NSString * const kContinuousSlideAnimationIdentifier = @"MZContinuousSlideAnimationIdentifier";
 
-const CGFloat kLineWidth = 4.0f;
-const CGFloat kMaskHeightOffsetPercentage = 1.5f;
+const CGFloat kDefaultLineWidth = 2.5f;
+const CGFloat kNumberTimesOffset = 2.0f;
 
 @interface MZAnimatedArrow ()
 
-@property (nonatomic, strong) UIView *rotatableView;
+@property (nonatomic, assign) MZAnimatedArrowDirection animationDirection;
+
 @property (nonatomic, strong) CALayer *lineLayer;
 @property (nonatomic, strong) CALayer *maskLayer;
-@property (nonatomic, assign) CGFloat currentRotationAngle;
+
+@property (nonatomic, weak, readonly) NSString *animationKey;
 
 @end
 
@@ -49,7 +50,15 @@ const CGFloat kMaskHeightOffsetPercentage = 1.5f;
 }
 
 - (void)commonInit {
+	self.lineWidth = kDefaultLineWidth;
 	self.arrowColor = kDefaultColor;
+	self.animationDirection = MZAnimatedArrowDirectionUp;
+}
+
+#pragma mark - Custom Getter
+
+- (NSString *)animationKey {
+	return [NSString stringWithFormat:@"%@%@", kContinuousSlideAnimationIdentifier, self];
 }
 
 #pragma mark - Private
@@ -57,14 +66,11 @@ const CGFloat kMaskHeightOffsetPercentage = 1.5f;
 - (void)drawRect:(CGRect)rect {
 	[super drawRect:rect];
 
-	[self.rotatableView removeFromSuperview];
-	self.rotatableView = [[UIView alloc] initWithFrame:rect];
-	self.rotatableView.backgroundColor = [UIColor clearColor];
-	self.rotatableView.userInteractionEnabled = NO;
-	[self addSubview:self.rotatableView];
+	self.backgroundColor = [UIColor clearColor];
+	self.userInteractionEnabled = NO;
 
 	self.layer.backgroundColor = [[UIColor clearColor] CGColor];
-	UIImage *lineImage = [self generateLineImageWithColor:self.arrowColor];
+	UIImage *lineImage = [self generateLineImageWithColor:self.arrowColor direction:self.animationDirection];
 
 	self.lineLayer = [CALayer layer];
 	self.lineLayer.contents = (id)[lineImage CGImage];
@@ -79,14 +85,14 @@ const CGFloat kMaskHeightOffsetPercentage = 1.5f;
 
 	// (2) Center the mask image on twice the width of the text layer, so it starts to the left
 	// of the text layer and moves to its right when we translate it by width.
-	self.maskLayer.contentsGravity = kCAGravityCenter;
+	self.maskLayer.contentsGravity = kCAGravityResizeAspectFill;
 	self.maskLayer.frame = CGRectMake(0.0f,
-																		-lineImage.size.height * kMaskHeightOffsetPercentage,
-																		lineImage.size.width,
-																		lineImage.size.height * 2.0f);
+																		-kNumberTimesOffset * rect.size.height,
+																		rect.size.width,
+																		rect.size.height / kNumberTimesOffset);
 
 	self.lineLayer.mask = self.maskLayer;
-	[self.rotatableView.layer addSublayer:self.lineLayer];
+	[self.layer addSublayer:self.lineLayer];
 }
 
 #pragma mark - Generic Animation
@@ -95,36 +101,19 @@ const CGFloat kMaskHeightOffsetPercentage = 1.5f;
 					 animationDuration:(NSTimeInterval)animationDuration
 								 repeatCount:(NSInteger)repeatCount
 								animationKey:(NSString *)animationKey {
-	if ((direction == MZAnimatedArrowDirectionDown && self.currentRotationAngle != 180.0f)
-			|| (direction == MZAnimatedArrowDirectionUp && self.currentRotationAngle != 0.0f)) {
-		self.rotatableView.layer.transform = CATransform3DMakeRotation(180.0f / 180.0f * M_PI, 0.0f, 0.0f, 1.0f);
-		self.currentRotationAngle = direction == MZAnimatedArrowDirectionDown ? 180.0f : 0.0f;
-	}
-
-	// Swipe Animation
 	UIColor *lineColor = self.arrowColor;
-	UIImage *lineImage = [self generateLineImageWithColor:lineColor];
+	UIImage *lineImage = [self generateLineImageWithColor:lineColor direction:direction];
 	self.lineLayer.contents = (id)[lineImage CGImage];
+	self.animationDirection = direction;
 
 	CABasicAnimation *maskAnimation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-	maskAnimation.byValue = @(self.bounds.size.height * kMaskHeightOffsetPercentage);
+	maskAnimation.toValue = @(self.bounds.size.height * kNumberTimesOffset);
+	maskAnimation.duration = animationDuration;
+	maskAnimation.repeatCount = repeatCount;
+	maskAnimation.fillMode = kCAFillModeForwards;
+	maskAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
-	CAKeyframeAnimation *fadeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-	fadeAnimation.values = @[@0.0f, @0.0f, @1.0f, @1.0f, @0.0f];
-	fadeAnimation.keyTimes = @[@0.0f, @0.3f, @0.6f, @0.8f, @0.95f];
-
-	CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
-	groupAnimation.duration = animationDuration;
-	groupAnimation.repeatCount = repeatCount;
-	groupAnimation.fillMode = kCAFillModeForwards;
-	groupAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-	groupAnimation.animations = @[maskAnimation, fadeAnimation];
-	[groupAnimation setValue:animationKey forKey:kArrowAnimationIdentifier];
-
-	self.maskLayer.borderColor = [UIColor redColor].CGColor;
-	self.maskLayer.borderWidth = 2.0f;
-
-	[self.maskLayer addAnimation:groupAnimation forKey:animationKey];
+	[self.maskLayer addAnimation:maskAnimation forKey:animationKey];
 }
 
 #pragma mark - Continuous Animation
@@ -134,25 +123,32 @@ const CGFloat kMaskHeightOffsetPercentage = 1.5f;
 	[self animateWithDirection:direction
 					 animationDuration:animationDuration
 								 repeatCount:HUGE_VALF
-								animationKey:kContinuousSlideAnimationIdentifier];
+								animationKey:self.animationKey];
 }
 
 - (void)stopAnimation {
-	[self.layer removeAnimationForKey:kContinuousSlideAnimationIdentifier];
+	[self.layer removeAnimationForKey:self.animationKey];
 }
 
 #pragma mark - Line
 
-- (UIImage *)generateLineImageWithColor:(UIColor *)color {
+- (UIImage *)generateLineImageWithColor:(UIColor *)color direction:(MZAnimatedArrowDirection)direction {
 	UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 0.0f);
 
 	[[color colorWithAlphaComponent:0.8f] setStroke];
 
 	UIBezierPath *path = [UIBezierPath bezierPath];
-	path.lineWidth = kLineWidth;
-	[path moveToPoint:CGPointMake(0.0f, self.bounds.size.height)];
-	[path addLineToPoint:CGPointMake(self.bounds.size.width / 2.0f, 0.0f)];
-	[path addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
+	path.lineWidth = self.lineWidth;
+
+	if (direction == MZAnimatedArrowDirectionUp) {
+		[path moveToPoint:CGPointMake(0.0f, self.bounds.size.height)];
+		[path addLineToPoint:CGPointMake(self.bounds.size.width / 2.0f, 0.0f)];
+		[path addLineToPoint:CGPointMake(self.bounds.size.width, self.bounds.size.height)];
+	} else {
+		[path moveToPoint:CGPointMake(0.0f, 0.0f)];
+		[path addLineToPoint:CGPointMake(self.bounds.size.width / 2.0f, self.bounds.size.height)];
+		[path addLineToPoint:CGPointMake(self.bounds.size.width, 0.0f)];
+	}
 
 	[path stroke];
 

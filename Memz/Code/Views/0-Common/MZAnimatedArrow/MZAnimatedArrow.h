@@ -18,9 +18,11 @@ typedef NS_ENUM(NSInteger, MZAnimatedArrowDirection) {
 @interface MZAnimatedArrow : UIView
 
 @property (nonatomic, strong) IBInspectable UIColor *arrowColor;  // default black
+@property (nonatomic, assign) IBInspectable CGFloat lineWidth;  // defaut 2.5f
 
 - (void)animateContinuouslyWithDirection:(MZAnimatedArrowDirection)direction
 											 animationDuration:(NSTimeInterval)animationDuration;
+
 - (void)stopAnimation;
 
 @end

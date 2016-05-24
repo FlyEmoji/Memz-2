@@ -37,7 +37,7 @@ const NSTimeInterval kDismissAnimationDuration = 0.15;
 
 	if (!self.hasPresentableViewAlreadyOpened) {
 		[MZTutorialView showInView:self.view withType:MZTutorialViewTypePresentableView delegate:self];
-		// TODO: hasAlreadyOpened set to YES
+		self.hasPresentableViewAlreadyOpened = YES;
 	}
 }
 

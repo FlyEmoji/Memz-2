@@ -12,9 +12,9 @@
 
 const NSTimeInterval kFadeTutorialViewDuration = 0.2;
 const NSTimeInterval kTutorialViewContainerDuration = 0.2;
-const NSTimeInterval kAnimatedArrowAnimationDuration = 3.0;
+const NSTimeInterval kAnimatedArrowAnimationDuration = 2.2;
 
-const CGFloat kScreenSnapshotBlurRadius = 15.0f;
+const CGFloat kScreenSnapshotBlurRadius = 20.0f;
 const NSInteger kScreenSnapshotIterations = 4;
 
 @interface MZTutorialView () <UIGestureRecognizerDelegate>
@@ -25,7 +25,6 @@ const NSInteger kScreenSnapshotIterations = 4;
 
 @property (nonatomic, weak) IBOutlet MZAnimatedArrow *topAnimatedArrowView;
 @property (nonatomic, weak) IBOutlet MZAnimatedArrow *bottomAnimatedArrowView;
-
 
 @end
 
@@ -65,6 +64,16 @@ const NSInteger kScreenSnapshotIterations = 4;
 	}];
 }
 
+#pragma mark - Private
+
+- (void)awakeFromNib {
+	[super awakeFromNib];
+
+	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
+	panGestureRecognizer.delegate = self;
+	[self addGestureRecognizer:panGestureRecognizer];
+}
+
 #pragma mark - Custom Getters & Setters
 
 - (void)setType:(MZTutorialViewType)type {
@@ -84,10 +93,11 @@ const NSInteger kScreenSnapshotIterations = 4;
 
 #pragma mark - Gesture Recognizer Delegate
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
 	if ([self.delegate respondsToSelector:@selector(tutorialView:didRequestDismissForType:)]) {
 		[self.delegate tutorialView:self didRequestDismissForType:self.type];
 	}
+	return YES;
 }
 
 @end
