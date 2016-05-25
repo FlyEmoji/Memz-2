@@ -101,6 +101,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your New Word Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-hB-NhR">
                                                     <rect key="frame" x="56" y="8" width="498" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="VZQ-CO-avJ"/>
                                                     </constraints>
