@@ -156,8 +156,10 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 			NSDate *pastQuizDate = [calendar dateByAddingComponents:additionalDayComponents toDate:baseDate options:0];
 
-			if (![pastQuizDate isBeforeDate:lastSessionDate]) {
+			if (![pastQuizDate isBeforeDate:lastSessionDate] && [pastQuizDate isBeforeNow]) {
 				[datesMissedQuizzes addObject:pastQuizDate];
+			} else {
+				NSLog(@"");
 			}
 		}
 	}

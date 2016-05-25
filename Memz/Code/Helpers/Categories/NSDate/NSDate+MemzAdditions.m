@@ -172,18 +172,7 @@
 }
 
 - (BOOL)isBeforeDate:(NSDate *)date {
-	if ([self isToday]) {
-		return NO;
-	}
-
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSDateComponents *components = [calendar components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:self];
-
-	NSDateComponents *currentDateComponents = [calendar components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:date];
-
-	return (currentDateComponents.day >= components.day
-					&& currentDateComponents.month >= components.month
-					&& currentDateComponents.year >= components.year);
+	return [self compare:date] == NSOrderedAscending;
 }
 
 - (BOOL)isBeforeNow {
