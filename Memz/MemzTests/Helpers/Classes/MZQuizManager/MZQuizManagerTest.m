@@ -11,6 +11,7 @@
 #import "MZQuizManager.h"
 #import "MZApplicationSessionManager.h"
 #import "MZPushNotificationManager.h"
+#import "NSDate+MemzAdditions.h"
 
 @interface MZApplicationSessionManager (PrivateTests)
 
@@ -118,14 +119,9 @@
 	[MZQuizManager sharedManager].quizPerDay = kDayMaximumQuizNumber;
 
 	// Last app session closed today at midnight
-	NSDateComponents *closedDateComponents = [calendar components:(NSCalendarUnitHour|NSCalendarUnitMinute) fromDate:[NSDate date]];
-	closedDateComponents.hour = 0;
-	closedDateComponents.minute = 0;
-	NSDate *closedDate = [calendar dateByAddingComponents:closedDateComponents toDate:[NSDate date] options:0];
+	[MZApplicationSessionManager sharedManager].lastClosedDate = [[NSDate date] beginningDayDate];
 
-	[MZApplicationSessionManager sharedManager].lastClosedDate = closedDate;
-
-	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, kDayMaximumQuizNumber);
+	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, 5);
 }
 
 - (void)testDatesMissedQuizzesHour {
@@ -146,6 +142,26 @@
 	NSDateComponents *components = [calendar components:NSCalendarUnitHour fromDate:firstDate];
 
 	XCTAssertEqual(components.hour, 15);
+}
+
+- (void)testDatesMissedOneQuizOneTime {
+	[MZQuizManager sharedManager].startHour = 0;
+	[MZQuizManager sharedManager].endHour = 0;
+	[MZQuizManager sharedManager].quizPerDay = 1;
+
+	[MZApplicationSessionManager sharedManager].lastClosedDate = [[NSDate date] beginningDayDate];
+
+	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, 1);
+}
+
+- (void)testDatesMissedLaterToday {
+	[MZQuizManager sharedManager].startHour = 24;
+	[MZQuizManager sharedManager].endHour = 24;
+	[MZQuizManager sharedManager].quizPerDay = 1;
+
+	[MZApplicationSessionManager sharedManager].lastClosedDate = [[NSDate date] beginningDayDate];
+
+	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, 0);
 }
 
 - (void)testDatesMissedQuizzesFutureLastAppSessionDate {

@@ -20,7 +20,6 @@ const NSUInteger kDayMaximumQuizNumber = 5;
 @property (nonatomic, assign) NSUInteger endHour;	 // defaut 20 (8pm)
 
 @property (nonatomic, assign, getter=isActive) BOOL active;	 // default YES
-@property (nonatomic, assign, getter=isReversed) BOOL reversed;	 // will allow for translations both ways (randomly)
 
 @property (nonatomic, weak, readonly) NSArray<NSDate *> *datesMissedQuizzes; // connected user unanswered quiz dates since last app session
 

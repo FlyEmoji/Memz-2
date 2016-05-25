@@ -18,7 +18,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Transition Delegate-->
+        <!--Delegate-->
         <scene sceneID="WOX-1S-wxr">
             <objects>
                 <viewController storyboardIdentifier="MZWordAdditionViewControllerIdentifier" automaticallyAdjustsScrollViewInsets="NO" id="hko-ZM-ogh" customClass="MZWordAdditionViewController" sceneMemberID="viewController">
@@ -34,17 +34,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="l86-W2-hhG" userLabel="Table Header View" customClass="MZWordAdditionViewHeader">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADD NEW WORD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDf-dI-FeM">
-                                            <rect key="frame" x="240" y="22" width="120" height="16"/>
+                                            <rect key="frame" x="240" y="25" width="120" height="16"/>
                                             <fontDescription key="fontDescription" name="MaisonNeue-Demi" family="Maison Neue" pointSize="16"/>
                                             <color key="textColor" red="0.29803921568627451" green="0.32156862745098036" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVP-UV-tAi">
-                                            <rect key="frame" x="550" y="13" width="32" height="30"/>
+                                            <rect key="frame" x="550" y="16" width="32" height="30"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                             <state key="normal" title="ADD">
                                                 <color key="titleColor" red="0.43921568630000002" green="0.79215686269999996" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,11 +56,21 @@
                                                 <action selector="addButtonTapped:" destination="l86-W2-hhG" eventType="touchUpInside" id="i8s-fo-2es"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UkX-ca-odG" userLabel="Bottom Separator View">
+                                            <rect key="frame" x="0.0" y="58" width="600" height="2"/>
+                                            <color key="backgroundColor" red="0.85347969904856857" green="0.85950437516655132" blue="0.8775784035204991" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="1sZ-JM-ABe"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="IDf-dI-FeM" secondAttribute="bottom" constant="4" id="7go-gI-vmQ"/>
+                                        <constraint firstItem="UkX-ca-odG" firstAttribute="leading" secondItem="l86-W2-hhG" secondAttribute="leading" id="96N-nZ-5jI"/>
                                         <constraint firstItem="IDf-dI-FeM" firstAttribute="centerY" secondItem="l86-W2-hhG" secondAttribute="centerY" multiplier="1:1" constant="3" id="9My-N6-7cI"/>
+                                        <constraint firstAttribute="bottom" secondItem="UkX-ca-odG" secondAttribute="bottom" id="9cl-a8-yAB"/>
+                                        <constraint firstAttribute="trailing" secondItem="UkX-ca-odG" secondAttribute="trailing" id="A27-1o-06Z"/>
                                         <constraint firstItem="IDf-dI-FeM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="l86-W2-hhG" secondAttribute="top" constant="4" id="OfA-uS-p0V"/>
                                         <constraint firstItem="hVP-UV-tAi" firstAttribute="baseline" secondItem="IDf-dI-FeM" secondAttribute="baseline" id="PaQ-Eo-vRC"/>
                                         <constraint firstItem="IDf-dI-FeM" firstAttribute="centerX" secondItem="l86-W2-hhG" secondAttribute="centerX" id="T8b-aS-2dh"/>
@@ -70,11 +80,12 @@
                                     </constraints>
                                     <connections>
                                         <outlet property="addButton" destination="hVP-UV-tAi" id="AuS-JE-vUK"/>
+                                        <outlet property="delegate" destination="hko-ZM-ogh" id="gKc-za-xkw"/>
                                     </connections>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTextFieldTableViewCellIdentifier" rowHeight="69" id="26E-MQ-oFk" customClass="MZTextFieldTableViewCell">
-                                        <rect key="frame" x="0.0" y="82" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="88" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="26E-MQ-oFk" id="aO7-qT-f1Q">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -90,6 +101,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name Your New Word Here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hDE-hB-NhR">
                                                     <rect key="frame" x="56" y="8" width="498" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="VZQ-CO-avJ"/>
                                                     </constraints>
@@ -142,7 +154,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZAutoCompletionTableViewCellIdentifier" rowHeight="44" id="wEt-SO-wkb" customClass="MZAutoCompletionTableViewCell">
-                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="157" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wEt-SO-wkb" id="Pts-iB-OIX">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -185,7 +197,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZSuggestedWordTableViewCellIdentifier" rowHeight="69" id="t7o-fq-Iez" customClass="MZSuggestedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="195" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="201" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7o-fq-Iez" id="NgG-F7-gmJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
@@ -245,7 +257,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MZTranslatedWordTableViewCellIdentifier" rowHeight="69" id="vta-mD-ZFq" customClass="MZTranslatedWordTableViewCell">
-                                        <rect key="frame" x="0.0" y="264" width="600" height="69"/>
+                                        <rect key="frame" x="0.0" y="270" width="600" height="69"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vta-mD-ZFq" id="LSb-M8-quD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>

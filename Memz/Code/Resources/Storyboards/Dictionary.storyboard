@@ -217,7 +217,7 @@
                                                 <constraint firstItem="l0M-08-KNj" firstAttribute="centerY" secondItem="ZHu-Ls-3xv" secondAttribute="centerY" id="yNg-MI-zoL"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.94509803920000002" green="0.95686274510000002" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="selectedBackgroundColor">
                                                 <color key="value" red="0.95686274510000002" green="0.95294117649999999" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -281,7 +281,7 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
-        <image name="My-Dictionary-Empty-State" width="57" height="57"/>
+        <image name="My-Dictionary-Empty-State" width="55" height="55"/>
         <image name="Navigation-Arrow-Right" width="30" height="17"/>
     </resources>
 </document>
