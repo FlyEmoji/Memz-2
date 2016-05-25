@@ -20,7 +20,6 @@
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
-	MZSettingsTableViewSectionTypeQuiz,
 	MZSettingsTableViewSectionTypeOthers
 };
 
@@ -28,7 +27,6 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	MZSettingsTableViewRowTypeNotificationMain,
 	MZSettingsTableViewRowTypeNotificationNumber,
 	MZSettingsTableViewRowTypeNotificationHours,
-	MZSettingsTableViewRowTypeReverseQuiz,
 	MZSettingsTableViewRowTypeStatistics
 	// TODO: MZSettingsTableViewRowTypeTermsAndConditions
 };
@@ -125,20 +123,13 @@ UIScrollViewDelegate>
 																			 kMaximumValueKey: @(24)}.mutableCopy];
 	}
 
-	// (2) Setup Table View Data: Quiz
-	NSMutableArray *reverseQuiz = @[@{kRowKey: @(MZSettingsTableViewRowTypeReverseQuiz),
-																		kTitleKey: NSLocalizedString(@"SettingsQuizReverseTitle", nil),
-																		kIsActiveKey: @([MZQuizManager sharedManager].isReversed)}.mutableCopy].mutableCopy;
-
-	// (3) Setup Table View Data: Others
+	// (2) Setup Table View Data: Others
 	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
 															 kTitleKey: NSLocalizedString(@"SettingsOthersStatisticsTitle", nil)}.mutableCopy].mutableCopy;
 
-	// (4) Unify Table View Data and Return
+	// (3) Unify Table View Data and Return
 	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
 						 kDataKey: notificationsSettings},
-					 @{kSectionKey: @(MZSettingsTableViewSectionTypeQuiz),
-						 kDataKey: reverseQuiz},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeOthers),
 						 kDataKey: others}].mutableCopy;
 }
@@ -188,8 +179,6 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationSectionTitle", nil);
-		case MZSettingsTableViewSectionTypeQuiz:
-			return NSLocalizedString(@"SettingsQuizSetionTitle", nil);
 		case MZSettingsTableViewSectionTypeOthers:
 			return NSLocalizedString(@"SettingsOthersSectionTitle", nil);
 	}
@@ -200,8 +189,6 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationsSectionFooterTitle", nil);
-		case MZSettingsTableViewSectionTypeQuiz:
-			return NSLocalizedString(@"SettingsQuizSectionFooterTitle", nil);
 	}
 	return nil;
 }
@@ -268,7 +255,6 @@ UIScrollViewDelegate>
 
 	switch ([data[kRowKey] integerValue]) {
 		case MZSettingsTableViewRowTypeNotificationMain:
-		case MZSettingsTableViewRowTypeReverseQuiz:
 			return buildSwitchCell(data[kTitleKey],
 														 [data[kIsActiveKey] boolValue]);
 
@@ -395,9 +381,6 @@ UIScrollViewDelegate>
 			}
 			break;
 		}
-		case MZSettingsTableViewRowTypeReverseQuiz:
-			[MZQuizManager sharedManager].reversed = isOn;
-			break;
   default:
 			break;
 	}
