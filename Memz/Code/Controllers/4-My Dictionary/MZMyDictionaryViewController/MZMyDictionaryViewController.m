@@ -17,7 +17,7 @@
 #import "MZDataManager.h"
 
 NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
-NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
+NSString * const MZWordDescriptionViewControllerSegueIdentifier = @"MZWordDescriptionViewControllerSegueIdentifier";
 NSString * const MZAddWordViewControllerSegueIdentifier = @"MZAddWordViewControllerSegueIdentifier";
 
 const NSTimeInterval kDictionaryEmptyStateFadeAnimationDuration = 0.2;
@@ -59,7 +59,7 @@ MZEmptyStateViewProtocol>
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
+	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegueIdentifier]) {
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
 	}
@@ -121,7 +121,7 @@ MZEmptyStateViewProtocol>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedWord = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
-	[self performSegueWithIdentifier:MZWordDescriptionViewControllerSegue sender:self];
+	[self performSegueWithIdentifier:MZWordDescriptionViewControllerSegueIdentifier sender:self];
 }
 
 #pragma mark - Fetched Result Controller Delegate Methods

@@ -136,7 +136,7 @@
                     <connections>
                         <outlet property="emptyStateView" destination="8RT-Sy-Y9l" id="6oF-S4-Q3H"/>
                         <outlet property="tableView" destination="6iB-bH-gfd" id="fcB-XO-8RA"/>
-                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegue" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
+                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
                         <segue destination="huv-Gg-rhp" kind="presentation" identifier="MZAddWordViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="thf-cr-buM"/>
                     </connections>
                 </viewController>

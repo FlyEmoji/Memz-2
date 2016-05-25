@@ -218,7 +218,7 @@
                         <outlet property="overlayView" destination="Xoh-jy-bZq" id="QUs-8u-Ktf"/>
                         <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
                         <outlet property="tableViewHeader" destination="IKM-GF-Fd0" id="yO7-vW-Ge3"/>
-                        <segue destination="B3Q-a8-bhg" kind="presentation" identifier="MZPresentStatisticsViewControllerSegue" id="tI6-ax-1VB"/>
+                        <segue destination="B3Q-a8-bhg" kind="presentation" identifier="MZPresentStatisticsViewControllerSegueIdentifier" id="tI6-ax-1VB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>

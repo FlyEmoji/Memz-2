@@ -20,7 +20,7 @@
 #import "MZUser.h"
 
 NSString * const kFeedTableViewCellIdentifier = @"MZFeedTableViewCellIdentifier";
-NSString * const kPresentArticleViewControllerSegue = @"MZPresentArticleViewControllerSegue";
+NSString * const kPresentArticleViewControllerSegueIdentifier = @"MZPresentArticleViewControllerSegueIdentifier";
 
 NSString * const kHasApplicationAlreadyOpened = @"MZHasApplicationAlreadyOpened";
 
@@ -71,7 +71,7 @@ MZTutorialViewProtocol>
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:kPresentArticleViewControllerSegue]) {
+	if ([segue.identifier isEqualToString:kPresentArticleViewControllerSegueIdentifier]) {
 		MZNavigationController *navigationController = [segue.destinationViewController safeCastToClass:[MZNavigationController class]];
 		MZArticleViewController *articleController = [navigationController.viewControllers.firstObject safeCastToClass:[MZArticleViewController class]];
 		articleController.article = self.selectedArticle;
@@ -145,7 +145,7 @@ MZTutorialViewProtocol>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedArticle = self.tableViewData[indexPath.row];
-	[self performSegueWithIdentifier:kPresentArticleViewControllerSegue sender:nil];  // TODO: Set cell as sender
+	[self performSegueWithIdentifier:kPresentArticleViewControllerSegueIdentifier sender:nil];  // TODO: Set cell as sender
 }
 
 @end

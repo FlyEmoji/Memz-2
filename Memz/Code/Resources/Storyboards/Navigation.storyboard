@@ -12,9 +12,9 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="x72-Yg-2LO"/>
                     <connections>
-                        <segue destination="MRV-1q-3R5" kind="presentation" identifier="MZWordAdditionViewControllerSegue" customClass="MZStoryboardSegue" id="tJd-VW-eVU"/>
-                        <segue destination="vsG-5D-Spl" kind="presentation" identifier="MZSettingsViewControllerSegue" customClass="MZStoryboardSegue" id="HTT-PF-4e3"/>
-                        <segue destination="Ike-fu-ese" kind="presentation" identifier="MZUserEntranceViewControllerSegue" id="vS3-h4-Her"/>
+                        <segue destination="MRV-1q-3R5" kind="presentation" identifier="MZWordAdditionViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="tJd-VW-eVU"/>
+                        <segue destination="vsG-5D-Spl" kind="presentation" identifier="MZSettingsViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="HTT-PF-4e3"/>
+                        <segue destination="Ike-fu-ese" kind="presentation" identifier="MZUserEntranceViewControllerSegueIdentifier" id="vS3-h4-Her"/>
                     </connections>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5v-zu-ZdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

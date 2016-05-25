@@ -31,7 +31,6 @@ const CGFloat kTopShrinkableViewMaximumHeight = 67.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
-NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
 NSString * const kAnsweredQuizTableViewCellIdentifier = @"MZAnsweredQuizTableViewCellIdentifier";
 NSString * const kPendingQuizTableViewCellIdentifier = @"MZPendingQuizTableViewCellIdentifier";
 
