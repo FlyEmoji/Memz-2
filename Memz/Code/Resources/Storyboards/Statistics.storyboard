@@ -193,7 +193,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="oGw-id-wZr" id="qzt-6d-VSL"/>
-                        <segue destination="V71-Lo-2S0" kind="show" identifier="MZStatisticsViewControllerSegue" id="0wV-Py-PAg"/>
+                        <segue destination="V71-Lo-2S0" kind="show" identifier="MZStatisticsViewControllerSegueIdentifier" id="0wV-Py-PAg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGX-VR-5PJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

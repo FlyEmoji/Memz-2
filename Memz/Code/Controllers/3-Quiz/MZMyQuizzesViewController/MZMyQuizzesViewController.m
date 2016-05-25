@@ -31,14 +31,14 @@ const CGFloat kTopShrinkableViewMaximumHeight = 67.0f;
 
 const CGFloat kQuizzesTableViewEstimatedRowHeight = 100.0f;
 
-NSString * const kLanguagePickerViewControllerSegue = @"MZLanguagePickerViewControllerSegue";
 NSString * const kAnsweredQuizTableViewCellIdentifier = @"MZAnsweredQuizTableViewCellIdentifier";
 NSString * const kPendingQuizTableViewCellIdentifier = @"MZPendingQuizTableViewCellIdentifier";
 
 @interface MZMyQuizzesViewController () <UITableViewDataSource,
 UITableViewDelegate,
 NSFetchedResultsControllerDelegate,
-MZQuizInfoViewDelegate>
+MZQuizInfoViewDelegate,
+MZEmptyStateViewProtocol>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -64,8 +64,6 @@ MZQuizInfoViewDelegate>
 	self.tableView.contentInset = UIEdgeInsetsMake(kTopShrinkableViewMaximumHeight, 0.0f, 0.0f, 0.0f);
 	self.tableView.contentOffset = CGPointMake(0.0f, -self.topShrinkableViewHeightConstraint.constant);
 	self.tableView.tableFooterView = [[UIView alloc] init];
-
-	self.topShrinkableView.delegate = self;
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:MZSettingsDidChangeLanguageNotification
 																										object:nil
@@ -102,6 +100,19 @@ MZQuizInfoViewDelegate>
 	if (error) {
 		NSLog(@"%@, %@", error, error.localizedDescription);
 	}
+}
+
+- (void)createAndPresentQuiz {
+	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser] creationDate:nil];
+
+	if (!quiz) {
+		[self presentError:[MZErrorCreator errorWithType:MZErrorTypeNoWordToTranslate]];
+		return;
+	}
+
+	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
+		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+	}];
 }
 
 - (void)dealloc {
@@ -236,19 +247,16 @@ MZQuizInfoViewDelegate>
 	}
 }
 
+#pragma mark - Empty State View Delegate Method
+
+- (void)emptyStateViewDidTapSuggestionButton:(MZEmptyStateView *)view {
+	[self createAndPresentQuiz];
+}
+
 #pragma mark - Quiz Info View Delegate Methods
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
-	MZQuiz *quiz = [MZQuiz randomQuizForUser:[MZUser currentUser] creationDate:nil];
-
-	if (!quiz) {
-		[self presentError:[MZErrorCreator errorWithType:MZErrorTypeNoWordToTranslate]];
-		return;
-	}
-
-	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
-	}];
+	[self createAndPresentQuiz];
 }
 
 @end

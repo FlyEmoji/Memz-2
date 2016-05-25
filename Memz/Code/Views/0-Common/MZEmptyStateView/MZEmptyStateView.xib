@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZEmptyStateView">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="YES-7s-dlL"/>
+                <outlet property="emptyStateButton" destination="d3a-2G-ZZh" id="cv6-H2-qRy"/>
                 <outlet property="emptyStateImageView" destination="tyH-mt-Zi8" id="BlD-EW-MxI"/>
                 <outlet property="emptyStateLabel" destination="uYs-dP-p7d" id="pzu-OS-A8M"/>
             </connections>
@@ -23,28 +24,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-dE-g34" userLabel="Container View">
-                    <rect key="frame" x="109" y="90" width="201" height="244"/>
+                    <rect key="frame" x="164" y="132" width="91" height="161"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Empty-State" translatesAutoresizingMaskIntoConstraints="NO" id="tyH-mt-Zi8">
-                            <rect key="frame" x="0.0" y="0.0" width="201" height="201"/>
+                            <rect key="frame" x="0.0" y="0.0" width="91" height="61"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty State" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYs-dP-p7d">
-                            <rect key="frame" x="0.0" y="228" width="201" height="16"/>
+                            <rect key="frame" x="0.0" y="88" width="91" height="16"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Demi" family="Maison Neue" pointSize="16"/>
                             <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3a-2G-ZZh">
+                            <rect key="frame" x="0.0" y="131" width="91" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <state key="normal" title="Start adding">
+                                <color key="titleColor" red="0.36078431370000003" green="0.78823529410000004" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapSuggestionButton:" destination="-1" eventType="touchUpInside" id="fgl-yL-Vzk"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="uYs-dP-p7d" firstAttribute="centerX" secondItem="c3B-dE-g34" secondAttribute="centerX" id="3jM-j1-W4b"/>
                         <constraint firstItem="tyH-mt-Zi8" firstAttribute="top" secondItem="c3B-dE-g34" secondAttribute="top" id="4G3-Zy-6f7"/>
+                        <constraint firstItem="d3a-2G-ZZh" firstAttribute="top" secondItem="uYs-dP-p7d" secondAttribute="bottom" constant="27" id="Fdd-O6-GIv"/>
+                        <constraint firstAttribute="bottom" secondItem="d3a-2G-ZZh" secondAttribute="bottom" id="IBa-74-ApW"/>
+                        <constraint firstItem="d3a-2G-ZZh" firstAttribute="leading" secondItem="c3B-dE-g34" secondAttribute="leading" id="M8C-uA-8Ip"/>
                         <constraint firstAttribute="trailing" secondItem="tyH-mt-Zi8" secondAttribute="trailing" id="XaH-6V-kHX"/>
                         <constraint firstAttribute="trailing" secondItem="uYs-dP-p7d" secondAttribute="trailing" id="b1l-Hn-ggR"/>
                         <constraint firstItem="tyH-mt-Zi8" firstAttribute="leading" secondItem="c3B-dE-g34" secondAttribute="leading" id="bHm-v7-5lD"/>
-                        <constraint firstAttribute="bottom" secondItem="uYs-dP-p7d" secondAttribute="bottom" id="cHg-Od-YEQ"/>
+                        <constraint firstAttribute="trailing" secondItem="d3a-2G-ZZh" secondAttribute="trailing" id="gef-63-ibN"/>
                         <constraint firstItem="uYs-dP-p7d" firstAttribute="leading" secondItem="c3B-dE-g34" secondAttribute="leading" id="ptL-OG-MBC"/>
                         <constraint firstItem="uYs-dP-p7d" firstAttribute="top" secondItem="tyH-mt-Zi8" secondAttribute="bottom" constant="27" id="uug-cz-V7h"/>
                     </constraints>
@@ -65,6 +80,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Quiz-Empty-State" width="201" height="201"/>
+        <image name="Quiz-Empty-State" width="61" height="61"/>
     </resources>
 </document>

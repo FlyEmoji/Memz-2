@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 
 NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
 
-NSString * const kPresentStatisticsViewControllerSegue = @"MZPresentStatisticsViewControllerSegue";
+NSString * const kPresentStatisticsViewControllerSegueIdentifier = @"MZPresentStatisticsViewControllerSegueIdentifier";
 
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
 NSString * const kSettingsSwitchTableViewCellIdentifier = @"MZSettingsSwitchTableViewCellIdentifier";
@@ -293,7 +293,7 @@ UIScrollViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue] == MZSettingsTableViewRowTypeStatistics) {
-		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegue sender:self];
+		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
 	}
 }
 

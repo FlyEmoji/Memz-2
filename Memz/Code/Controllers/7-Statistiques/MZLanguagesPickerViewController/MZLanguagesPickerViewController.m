@@ -11,7 +11,7 @@
 #import "MZStatisticsViewController.h"
 #import "MZQuiz.h"
 
-NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSegue";
+NSString * const kStatisticsViewControllerSegueIdentifier = @"MZStatisticsViewControllerSegueIdentifier";
 
 @interface MZLanguagesPickerViewController () <MZLanguagesPickerCollectionControllerDelegate>
 
@@ -36,7 +36,7 @@ NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSe
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:kStatisticsViewControllerSegue]) {
+	if ([segue.identifier isEqualToString:kStatisticsViewControllerSegueIdentifier]) {
 		MZStatisticsViewController *viewController = [segue.destinationViewController safeCastToClass:[MZStatisticsViewController class]];
 		viewController.language = self.selectedLanguage;
 	}
@@ -47,7 +47,7 @@ NSString * const kStatisticsViewControllerSegue = @"MZStatisticsViewControllerSe
 - (void)languagesPickerCollectionController:(MZLanguagesPickerCollectionController *)collectionController
 													didSelectLanguage:(MZLanguage)language {
 	self.selectedLanguage = language;
-	[self performSegueWithIdentifier:kStatisticsViewControllerSegue sender:self];
+	[self performSegueWithIdentifier:kStatisticsViewControllerSegueIdentifier sender:self];
 }
 
 #pragma mark - Actions

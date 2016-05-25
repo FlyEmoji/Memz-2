@@ -16,7 +16,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--My Dictionary View Controller-->
+        <!--Delegate-->
         <scene sceneID="zAS-VI-36P">
             <objects>
                 <viewController storyboardIdentifier="MZMyDictionaryViewControllerIdentifier" id="8yc-D0-kdp" customClass="MZMyDictionaryViewController" sceneMemberID="viewController">
@@ -113,7 +113,11 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyStateImage" value="My-Dictionary-Empty-State"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="emptyStateDescription" value="There is no word for this language yet. Let's add a new one! "/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="suggestionButtonDescription" value="Start adding your first translation!"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="8yc-D0-kdp" id="ZwD-gE-MOB"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,14 +136,23 @@
                     <connections>
                         <outlet property="emptyStateView" destination="8RT-Sy-Y9l" id="6oF-S4-Q3H"/>
                         <outlet property="tableView" destination="6iB-bH-gfd" id="fcB-XO-8RA"/>
-                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegue" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
+                        <segue destination="nMe-o3-j5J" kind="presentation" identifier="MZWordDescriptionViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="VC7-0k-l2D"/>
+                        <segue destination="huv-Gg-rhp" kind="presentation" identifier="MZAddWordViewControllerSegueIdentifier" customClass="MZStoryboardSegue" id="thf-cr-buM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okv-fd-Ryk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2990" y="1026"/>
         </scene>
-        <!--Transition Delegate-->
+        <!--AddWord-->
+        <scene sceneID="IsO-6c-TX7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddWord" id="huv-Gg-rhp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwW-tW-HtO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2990" y="1498"/>
+        </scene>
+        <!--Delegate-->
         <scene sceneID="ggF-WN-DpJ">
             <objects>
                 <viewController id="nMe-o3-j5J" customClass="MZWordDescriptionViewController" sceneMemberID="viewController">
@@ -158,6 +171,9 @@
                                     <rect key="frame" x="0.0" y="64" width="600" height="51"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="nMe-o3-j5J" id="cm2-z6-c2d"/>
+                                    </connections>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZWordDescriptionTableViewCellIdentifier" rowHeight="73" id="bTA-Pv-qgg" customClass="MZWordDescriptionTableViewCell">
@@ -265,7 +281,7 @@
     </scenes>
     <resources>
         <image name="Flag-France" width="48" height="36"/>
-        <image name="My-Dictionary-Empty-State" width="177" height="177"/>
+        <image name="My-Dictionary-Empty-State" width="57" height="57"/>
         <image name="Navigation-Arrow-Right" width="30" height="17"/>
     </resources>
 </document>

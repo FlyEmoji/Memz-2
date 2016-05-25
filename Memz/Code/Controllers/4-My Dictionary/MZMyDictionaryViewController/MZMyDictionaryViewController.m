@@ -17,14 +17,16 @@
 #import "MZDataManager.h"
 
 NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
-NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
+NSString * const MZWordDescriptionViewControllerSegueIdentifier = @"MZWordDescriptionViewControllerSegueIdentifier";
+NSString * const MZAddWordViewControllerSegueIdentifier = @"MZAddWordViewControllerSegueIdentifier";
 
 const NSTimeInterval kDictionaryEmptyStateFadeAnimationDuration = 0.2;
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
-NSFetchedResultsControllerDelegate>
+NSFetchedResultsControllerDelegate,
+MZEmptyStateViewProtocol>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet MZEmptyStateView *emptyStateView;
@@ -57,7 +59,7 @@ NSFetchedResultsControllerDelegate>
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegue]) {
+	if ([segue.identifier isEqualToString:MZWordDescriptionViewControllerSegueIdentifier]) {
 		MZWordDescriptionViewController *viewController = segue.destinationViewController;
 		viewController.word = self.selectedWord;
 	}
@@ -119,7 +121,7 @@ NSFetchedResultsControllerDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	self.selectedWord = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
-	[self performSegueWithIdentifier:MZWordDescriptionViewControllerSegue sender:self];
+	[self performSegueWithIdentifier:MZWordDescriptionViewControllerSegueIdentifier sender:self];
 }
 
 #pragma mark - Fetched Result Controller Delegate Methods
@@ -159,6 +161,12 @@ NSFetchedResultsControllerDelegate>
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	[self.tableView endUpdates];
 	[self updateEmptyState];
+}
+
+#pragma mark - Empty State View Delegate Method
+
+- (void)emptyStateViewDidTapSuggestionButton:(MZEmptyStateView *)view {
+	[self performSegueWithIdentifier:MZAddWordViewControllerSegueIdentifier sender:self];
 }
 
 @end

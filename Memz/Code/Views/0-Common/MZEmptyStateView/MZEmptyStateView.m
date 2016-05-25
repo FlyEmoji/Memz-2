@@ -8,13 +8,13 @@
 
 #import "MZEmptyStateView.h"
 #import "UIFont+MemzAdditions.h"
-
-const CGFloat kEmptyStateLabelParagraphSpacing = 6.0f;
+#import "UILabel+MemzAdditions.h"
 
 @interface MZEmptyStateView ()
 
 @property (nonatomic, weak) IBOutlet UIImageView *emptyStateImageView;
 @property (nonatomic, weak) IBOutlet UILabel *emptyStateLabel;
+@property (nonatomic, weak) IBOutlet UIButton *emptyStateButton;
 
 @end
 
@@ -32,18 +32,16 @@ const CGFloat kEmptyStateLabelParagraphSpacing = 6.0f;
 	}
 
 	self.emptyStateImageView.image = self.emptyStateImage;
+	[self.emptyStateButton setTitle:self.suggestionButtonDescription forState:UIControlStateNormal];
 
-	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-	paragraphStyle.lineSpacing = kEmptyStateLabelParagraphSpacing;
-	paragraphStyle.alignment = NSTextAlignmentCenter;
+	self.emptyStateLabel.text = self.emptyStateDescription;
+	[self.emptyStateLabel applyParagraphStyle];
+}
 
-	NSDictionary *attributes = @{NSFontAttributeName: self.emptyStateLabel.font,
-															 NSForegroundColorAttributeName: self.emptyStateLabel.textColor,
-															 NSParagraphStyleAttributeName: paragraphStyle};
-
-	NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:self.emptyStateDescription
-																																										 attributes:attributes];
-	self.emptyStateLabel.attributedText = attributedText;
+- (IBAction)didTapSuggestionButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(emptyStateViewDidTapSuggestionButton:)]) {
+		[self.delegate emptyStateViewDidTapSuggestionButton:self];
+	}
 }
 
 #pragma mark - Custom Setters

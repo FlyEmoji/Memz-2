@@ -7,6 +7,7 @@
 //
 
 #import "MZUserEntranceViewController.h"
+#import "UILabel+MemzAdditions.h"
 #import "MZLanguageDefinition.h"
 #import "MZPageControl.h"
 #import "MZDataManager.h"
@@ -19,6 +20,8 @@
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, weak) IBOutlet MZPageControl *pageControl;
 
+@property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *descriptionLabels;
+
 @end
 
 @implementation MZUserEntranceViewController
@@ -30,6 +33,10 @@
 
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
+	[self.descriptionLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+		[label applyParagraphStyle];
+	}];
 }
 
 - (BOOL)prefersStatusBarHidden {

@@ -16,9 +16,9 @@ NSString * const MZFeedViewControllerIdentifier = @"MZFeedViewControllerIdentifi
 NSString * const MZMyQuizzesViewControllerIdentifier = @"MZMyQuizzesViewControllerIdentifier";
 NSString * const MZMyDictionaryViewControllerIdentifier = @"MZMyDictionaryViewControllerIdentifier";
 
-NSString * const MZWordAdditionViewControllerSegue = @"MZWordAdditionViewControllerSegue";
-NSString * const MZSettingsViewControllerSegue = @"MZSettingsViewControllerSegue";
-NSString * const MZUserEntranceViewControllerSegue = @"MZUserEntranceViewControllerSegue";
+NSString * const MZWordAdditionViewControllerSegueIdentifier = @"MZWordAdditionViewControllerSegueIdentifier";
+NSString * const MZSettingsViewControllerSegueIdentifier = @"MZSettingsViewControllerSegueIdentifier";
+NSString * const MZUserEntranceViewControllerSegueIdentifier = @"MZUserEntranceViewControllerSegueIdentifier";
 
 const NSUInteger kNumberPages = 3;
 
@@ -60,7 +60,7 @@ const NSUInteger kNumberPages = 3;
 
 	// (5) Present user entrance flow if no user connected
 	if (![MZUser currentUser]) {
-		[self performSegueWithIdentifier:MZUserEntranceViewControllerSegue sender:self];
+		[self performSegueWithIdentifier:MZUserEntranceViewControllerSegueIdentifier sender:self];
 	}
 }
 
@@ -73,11 +73,11 @@ const NSUInteger kNumberPages = 3;
 }
 
 - (void)goToAddWordView:(id)sender {
-	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegue sender:self];
+	[self performSegueWithIdentifier:MZWordAdditionViewControllerSegueIdentifier sender:self];
 }
 
 - (void)gotoSettingsView:(id)sender {
-	[self performSegueWithIdentifier:MZSettingsViewControllerSegue sender:self];
+	[self performSegueWithIdentifier:MZSettingsViewControllerSegueIdentifier sender:self];
 }
 
 - (MZPageViewControllerFactoryBlock)viewControllerFactoryForPage:(NSInteger)page {

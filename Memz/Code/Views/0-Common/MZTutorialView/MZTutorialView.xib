@@ -23,6 +23,10 @@
                 <outlet property="presentableViewsTutorialContainerView" destination="pTN-8i-vfi" id="7iP-mi-Yy7"/>
                 <outlet property="settingsTutorialContainerView" destination="PBC-RJ-awe" id="YjQ-9G-XSu"/>
                 <outlet property="topAnimatedArrowView" destination="7PF-yb-LgR" id="mZA-wE-dod"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="QsH-q1-DqX" id="QlK-Gr-6rQ"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="Xvd-xu-2FD" id="wRD-RZ-tmx"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="qd7-2d-KG4" id="6Qf-c8-KXa"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="Kmu-Wf-bak" id="4Nc-yF-hFb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

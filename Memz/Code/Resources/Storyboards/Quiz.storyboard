@@ -16,7 +16,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Quiz View Controller-->
+        <!--Delegate-->
         <scene sceneID="66E-bb-WaJ">
             <objects>
                 <viewController storyboardIdentifier="MZQuizViewControllerIdentifier" id="0rT-kj-9N3" customClass="MZQuizViewController" sceneMemberID="viewController">
@@ -49,6 +49,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.89411764709999997" green="0.90196078430000004" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="0rT-kj-9N3" id="Fke-Ph-iJc"/>
+                                    </connections>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MZTranslationResponseTableViewCellIdentifier" rowHeight="63" id="Vv3-Xe-F7n" customClass="MZTranslationResponseTableViewCell">
@@ -145,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="3854" y="367"/>
         </scene>
-        <!--My Quizzes View Controller-->
+        <!--Delegate-->
         <scene sceneID="8em-KK-jo6">
             <objects>
                 <viewController storyboardIdentifier="MZMyQuizzesViewControllerIdentifier" id="UYH-Eu-4rs" customClass="MZMyQuizzesViewController" sceneMemberID="viewController">
@@ -285,13 +288,17 @@
                                     <outlet property="delegate" destination="UYH-Eu-4rs" id="C3p-Lz-6hg"/>
                                 </connections>
                             </tableView>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfY-88-m0P" customClass="MZEmptyStateView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfY-88-m0P" customClass="MZEmptyStateView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyStateImage" value="Quiz-Empty-State"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="emptyStateDescription" value="You haven't answered any quiz yet!"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="suggestionButtonDescription" value="Start responding your first quiz!"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="UYH-Eu-4rs" id="FGD-v7-S26"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykn-9u-40g" userLabel="Top Shrinkable View" customClass="MZQuizInfoView">
                                 <rect key="frame" x="0.0" y="64" width="600" height="67"/>
@@ -299,6 +306,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="9fX-QM-VeF"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="UYH-Eu-4rs" id="g1W-tJ-NpS"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -323,20 +333,11 @@
                         <outlet property="tableView" destination="1tS-8s-5d3" id="zgv-17-vId"/>
                         <outlet property="topShrinkableView" destination="ykn-9u-40g" id="MZ8-Fy-CR9"/>
                         <outlet property="topShrinkableViewHeightConstraint" destination="9fX-QM-VeF" id="wvw-op-hLU"/>
-                        <segue destination="dQT-cP-BtT" kind="presentation" identifier="MZLanguagePickerViewControllerSegue" id="hpg-qf-rwP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbC-SN-usl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3044" y="367"/>
-        </scene>
-        <!--Statistics-->
-        <scene sceneID="TtQ-Az-GlR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Statistics" id="dQT-cP-BtT" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0NJ-hX-2a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3044" y="850"/>
         </scene>
     </scenes>
     <resources>
@@ -344,6 +345,6 @@
         <image name="Navigation-Forward-Tap" width="12" height="23"/>
         <image name="Navigation-Large-Tick" width="96" height="96"/>
         <image name="Quiz-Cross" width="24" height="24"/>
-        <image name="Quiz-Empty-State" width="201" height="201"/>
+        <image name="Quiz-Empty-State" width="59" height="59"/>
     </resources>
 </document>

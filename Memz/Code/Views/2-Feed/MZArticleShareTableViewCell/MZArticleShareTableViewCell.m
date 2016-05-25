@@ -10,7 +10,7 @@
 
 @interface MZArticleShareTableViewCell ()
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *shareButtons;
+@property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *shareButtons;
 
 @end
 
