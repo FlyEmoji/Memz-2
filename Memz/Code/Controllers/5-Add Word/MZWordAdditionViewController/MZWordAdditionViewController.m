@@ -18,6 +18,7 @@
 #import "UIScrollView+KeyboardHelper.h"
 #import "MZWordAdditionViewHeader.h"
 #import "NSArray+MemzAdditions.h"
+#import "UIView+MemzAdditions.h"
 #import "MZDataManager.h"
 #import "MZTableView.h"
 
@@ -36,7 +37,7 @@ NSString * const kSectionTypeKey = @"SectionTypeKey";
 NSString * const kWordRowTypeKey = @"WordRowTypeKey";
 NSString * const kContentTypeKey = @"ContentTypeKey";
 
-const CGFloat kTableViewSectionHeaderHeight = 40.0f;
+const CGFloat kTableViewSectionHeaderHeight = 45.0f;
 const CGFloat kWordAdditionTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZWordAdditionViewController () <UITableViewDataSource,
@@ -83,8 +84,6 @@ MZWordAdditionViewHeaderProtocol>
 	[self.tableView handleKeyboardNotifications];
 
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZWordAdditionTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kWordAdditionTableViewHeaderIdentifier];
-
-	self.tableHeaderView.delegate = self;
 }
 
 #pragma mark - Data Management Calculated Property

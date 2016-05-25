@@ -12,7 +12,7 @@
 
 @interface MZWordAdditionViewHeader : UIView
 
-@property (nonatomic, weak) id<MZWordAdditionViewHeaderProtocol> delegate;
+@property (nonatomic, weak) IBOutlet id<MZWordAdditionViewHeaderProtocol> delegate;
 @property (nonatomic, assign, getter=isEnabled) BOOL enable;  // controls add button enabled
 
 @end
