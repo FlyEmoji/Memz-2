@@ -9,14 +9,17 @@
 #import "MZWordDescriptionViewController.h"
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
+#import "MZWordAdditionTableViewHeader.h"
 #import "UIImage+MemzAdditions.h"
 #import "UIView+MemzAdditions.h"
 #import "MZShareManager.h"
 #import "MZDataManager.h"
 
 NSString * const kWordDescriptionTableViewCellIdentifier = @"MZWordDescriptionTableViewCellIdentifier";
+NSString * const kWordSuggestionsTableViewHeaderIdentifier = @"MZWordSuggestionsTableViewHeaderIdentifier";
 
 const CGFloat kWordDescriptionTableViewEstimatedRowHeight = 100.0f;
+const CGFloat kWordTableViewSectionHeaderHeight = 45.0f;
 const CGFloat kBottomButtonDeleteHeight = 60.0f;
 
 const NSTimeInterval kEditAnimationDuration = 0.3;
@@ -56,6 +59,8 @@ MZTableViewTransitionDelegate>
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
+	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZWordAdditionTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kWordSuggestionsTableViewHeaderIdentifier];
+
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	self.tableViewHeader.word = self.word;
@@ -70,9 +75,20 @@ MZTableViewTransitionDelegate>
 	return self.tableViewData.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	return kWordTableViewSectionHeaderHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	MZWordAdditionTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kWordSuggestionsTableViewHeaderIdentifier];
+	headerView.sectionType = MZWordAdditionSectionTypeManual;
+	headerView.backgroundColor = [UIColor mainMediumGrayColor];
+	return headerView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZWordDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kWordDescriptionTableViewCellIdentifier
-																																			forIndexPath:indexPath];
+																																				 forIndexPath:indexPath];
 	cell.wordLabel.text = self.tableViewData[indexPath.row].word;
 	cell.flagImageView.image = [UIImage flagImageForLanguage:self.tableViewData[indexPath.row].language.integerValue];
 	return cell;
