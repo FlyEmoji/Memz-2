@@ -12,49 +12,49 @@
 						 "en": "barbecue",
 						 "fr": "barbecul",
 						 "es": "barbacoa",
-						 "it": "",
+						 "it": "griglia",
 						 "pr": ""
 						 },
 						 {
 						 "en": "champagne cooler",
 						 "fr": "saut à champagne",
 						 "es": "refrigerador de champán",
-						 "it": "",
+						 "it": "dello champagne",
 						 "pr": ""
 						 },
 						 {
 						 "en": "stove",
 						 "fr": "four",
 						 "es": "horno",
-						 "it": "",
+						 "it": "stufa",
 						 "pr": ""
 						 },
 						 {
 						 "en": "corkscrew",
 						 "fr": "tire-bouchon",
 						 "es": "sacacorchos",
-						 "it": "",
+						 "it": "cavatappi",
 						 "pr": ""
 						 },
 						 {
 						 "en": "dishwasher",
 						 "fr": "lave vaisselle",
 						 "es": "lavavajillas",
-						 "it": "",
+						 "it": "lavastoviglie",
 						 "pr": ""
 						 },
 						 {
 						 "en": "extractor hood",
 						 "fr": "hôte aspirante",
 						 "es": "campana extractora",
-						 "it": "",
+						 "it": "cappa aspirante",
 						 "pr": ""
 						 },
 						 {
 						 "en": "fork",
 						 "fr": "fourchette",
 						 "es": "horquilla",
-						 "it": "",
+						 "it": "forchetta",
 						 "pr": ""
 						 },
 						 {
@@ -68,14 +68,14 @@
 						 "en": "glass",
 						 "fr": "verre",
 						 "es": "vidrio",
-						 "it": "",
+						 "it": "coltello",
 						 "pr": ""
 						 },
 						 {
 						 "en": "kettle",
 						 "fr": "bouilloire",
 						 "es": "tetera",
-						 "it": "",
+						 "it": "bollitore",
 						 "pr": ""
 						 },
 						 {
@@ -89,42 +89,42 @@
 						 "en": "microwave",
 						 "fr": "micro-ondes",
 						 "es": "microondas",
-						 "it": "",
+						 "it": "mestolo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "oven glove",
 						 "fr": "manique",
 						 "es": "manopola",
-						 "it": "",
+						 "it": "guanto da forno",
 						 "pr": ""
 						 },
 						 {
 						 "en": "pepper mill",
 						 "fr": "poivrier",
 						 "es": "pimiento",
-						 "it": "",
+						 "it": "macinapepe",
 						 "pr": ""
 						 },
 						 {
 						 "en": "fridge",
 						 "fr": "réfrigérateur",
 						 "es": "refrigerador",
-						 "it": "",
+						 "it": "frigo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "spoon",
 						 "fr": "cuillère",
 						 "es": "cuchara",
-						 "it": "",
+						 "it": "cucchiaio",
 						 "pr": ""
 						 },
 						 {
 						 "en": "toaster",
 						 "fr": "grille-pain",
 						 "es": "tostador",
-						 "it": "",
+						 "it": "tostapane",
 						 "pr": ""
 						 }
 						]
@@ -142,49 +142,49 @@
 						 "en": "rabbit",
 						 "fr": "lapin",
 						 "es": "conejo",
-						 "it": "",
+						 "it": "coniglio",
 						 "pr": ""
 						 },
 						 {
 						 "en": "antelope",
 						 "fr": "antilope",
 						 "es": "antilope",
-						 "it": "",
+						 "it": "antilope",
 						 "pr": ""
 						 },
 						 {
 						 "en": "beaver",
 						 "fr": "rat-gondin",
 						 "es": "castor",
-						 "it": "",
+						 "it": "castoro",
 						 "pr": ""
 						 },
 						 {
 						 "en": "bee",
 						 "fr": "abeille",
 						 "es": "abeja",
-						 "it": "",
+						 "it": "ape",
 						 "pr": ""
 						 },
 						 {
 						 "en": "budgie",
 						 "fr": "perruche",
 						 "es": "perico",
-						 "it": "",
+						 "it": "budgie",
 						 "pr": ""
 						 },
 						 {
 						 "en": "butterfly",
 						 "fr": "papillon",
 						 "es": "mariposa",
-						 "it": "",
+						 "it": "farfalla",
 						 "pr": ""
 						 },
 						 {
 						 "en": "cock",
 						 "fr": "coq",
 						 "es": "gallo",
-						 "it": "",
+						 "it": "gallo",
 						 "pr": ""
 						 },
 						 {
@@ -198,35 +198,35 @@
 						 "en": "duck",
 						 "fr": "canard",
 						 "es": "pato",
-						 "it": "",
+						 "it": "coccodrillo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "eagle owl",
 						 "fr": "hiboux",
 						 "es": "lechuzas",
-						 "it": "",
+						 "it": "aquila gufo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "elephant",
 						 "fr": "elephant",
 						 "es": "elephant",
-						 "it": "",
+						 "it": "elefante",
 						 "pr": ""
 						 },
 						 {
 						 "en": "ferret",
 						 "fr": "furet",
 						 "es": "hurón",
-						 "it": "",
+						 "it": "furetto",
 						 "pr": ""
 						 },
 						 {
 						 "en": "flamingo",
 						 "fr": "flammand-rose",
 						 "es": "flamenco",
-						 "it": "",
+						 "it": "fenicottero",
 						 "pr": ""
 						 },
 						 {
@@ -240,154 +240,154 @@
 						 "en": "goat",
 						 "fr": "chèvre",
 						 "es": "cabra",
-						 "it": "",
+						 "it": "girafe",
 						 "pr": ""
 						 },
 						 {
 						 "en": "gorilla",
 						 "fr": "gorille",
 						 "es": "gorille",
-						 "it": "",
+						 "it": "gorilla",
 						 "pr": ""
 						 },
 						 {
 						 "en": "guinea pig",
 						 "fr": "cochon d'inde",
 						 "es": "conejillo de Indias",
-						 "it": "",
+						 "it": "cavia",
 						 "pr": ""
 						 },
 						 {
 						 "en": "lizard",
 						 "fr": "lezard",
 						 "es": "lagarto",
-						 "it": "",
+						 "it": "lucertola",
 						 "pr": ""
 						 },
 						 {
 						 "en": "ladybird",
 						 "fr": "coccinelle",
 						 "es": "mariquita",
-						 "it": "",
+						 "it": "coccinella",
 						 "pr": ""
 						 },
 						 {
 						 "en": "lion",
 						 "fr": "lion",
 						 "es": "león",
-						 "it": "",
+						 "it": "leone",
 						 "pr": ""
 						 },
 						 {
 						 "en": "monkey",
 						 "fr": "singe",
 						 "es": "mono",
-						 "it": "",
+						 "it": "scimmia",
 						 "pr": ""
 						 },
 						 {
 						 "en": "orang-utan",
 						 "fr": "orang-outan",
 						 "es": "orangután",
-						 "it": "",
+						 "it": "orangutan",
 						 "pr": ""
 						 },
 						 {
 						 "en": "ostrich",
 						 "fr": "autruche",
 						 "es": "avestruz",
-						 "it": "",
+						 "it": "struzzo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "owl",
 						 "fr": "chouette",
 						 "es": "lechuza",
-						 "it": "",
+						 "it": "gufo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "peacock",
 						 "fr": "paon",
 						 "es": "pavo",
-						 "it": "",
+						 "it": "pavone",
 						 "pr": ""
 						 },
 						 {
 						 "en": "penguin",
 						 "fr": "pinguin",
 						 "es": "pingüino",
-						 "it": "",
+						 "it": "pinguino",
 						 "pr": ""
 						 },
 						 {
 						 "en": "bear",
 						 "fr": "ours",
 						 "es": "oso",
-						 "it": "",
+						 "it": "orso",
 						 "pr": ""
 						 },
 						 {
 						 "en": "polar bear",
 						 "fr": "ours polaire",
 						 "es": "oso polar",
-						 "it": "",
+						 "it": "orso polare",
 						 "pr": ""
 						 },
 						 {
 						 "en": "rhino",
 						 "fr": "rhinoceros",
 						 "es": "rinoceronte",
-						 "it": "",
+						 "it": "rinoceronte",
 						 "pr": ""
 						 },
 						 {
 						 "en": "shark",
 						 "fr": "requin",
 						 "es": "tiburón",
-						 "it": "",
+						 "it": "squalo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "sheep",
 						 "fr": "mouton",
 						 "es": "oveja",
-						 "it": "",
+						 "it": "pecora",
 						 "pr": ""
 						 },
 						 {
 						 "en": "starfish",
 						 "fr": "étoile de mer",
 						 "es": "estrella de mar",
-						 "it": "",
+						 "it": "stella di mare",
 						 "pr": ""
 						 },
 						 {
 						 "en": "swan",
 						 "fr": "cygne",
 						 "es": "cisne",
-						 "it": "",
+						 "it": "cigno",
 						 "pr": ""
 						 },
 						 {
 						 "en": "tiger",
 						 "fr": "tigre",
 						 "es": "tigre",
-						 "it": "",
+						 "it": "tigre",
 						 "pr": ""
 						 },
 						 {
 						 "en": "tortoise",
 						 "fr": "tortue",
 						 "es": "tortuga",
-						 "it": "",
+						 "it": "tartaruga",
 						 "pr": ""
 						 },
 						 {
 						 "en": "zebra",
 						 "fr": "zèbre",
 						 "es": "cebra",
-						 "it": "",
+						 "it": "zebra",
 						 "pr": ""
 						 }
 						]
@@ -414,133 +414,133 @@
 						 "en": "artichoke",
 						 "fr": "artichaut",
 						 "es": "alcachofa",
-						 "it": "",
+						 "it": "carciofo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "asparagus",
 						 "fr": "asperge",
-						 "es": "",
-						 "it": "",
+						 "es": "espárragos",
+						 "it": "asparago",
 						 "pr": ""
 						 },
 						 {
 						 "en": "egg plant",
 						 "fr": "aubergine",
 						 "es": "espárrago",
-						 "it": "",
+						 "it": "melanzana",
 						 "pr": ""
 						 },
 						 {
 						 "en": "bean",
 						 "fr": "aricot",
 						 "es": "judia",
-						 "it": "",
+						 "it": "fagiolo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "broccoli",
 						 "fr": "brocoli",
 						 "es": "brócoli",
-						 "it": "",
+						 "it": "broccoli",
 						 "pr": ""
 						 },
 						 {
 						 "en": "cabbage",
 						 "fr": "chou",
 						 "es": "cerdo",
-						 "it": "",
+						 "it": "cavolo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "cauliflower",
 						 "fr": "chou-fleur",
 						 "es": "coliflor",
-						 "it": "",
+						 "it": "cavolfiore",
 						 "pr": ""
 						 },
 						 {
 						 "en": "celery",
 						 "fr": "céleri",
 						 "es": "apio",
-						 "it": "",
+						 "it": "sedano",
 						 "pr": ""
 						 },
 						 {
 						 "en": "cucumber",
 						 "fr": "concombre",
 						 "es": "pepino",
-						 "it": "",
+						 "it": "cetriolo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "garlic",
 						 "fr": "ail",
 						 "es": "ajo",
-						 "it": "",
+						 "it": "aglio",
 						 "pr": ""
 						 },
 						 {
 						 "en": "mushroom",
 						 "fr": "champignons",
 						 "es": "hongos",
-						 "it": "",
+						 "it": "fungo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "onion",
 						 "fr": "ognon",
 						 "es": "cebolla",
-						 "it": "",
+						 "it": "cipolla",
 						 "pr": ""
 						 },
 						 {
 						 "en": "parsley",
 						 "fr": "persil",
-						 "es": "",
-						 "it": "",
+						 "es": "perejil",
+						 "it": "prezzemolo",
 						 "pr": ""
 						 },
 						 {
 						 "en": "pea",
 						 "fr": "petit pois",
 						 "es": "perejil",
-						 "it": "",
+						 "it": "pisello",
 						 "pr": ""
 						 },
 						 {
 						 "en": "pepper",
 						 "fr": "piment",
 						 "es": "pimiento",
-						 "it": "",
+						 "it": "pepe",
 						 "pr": ""
 						 },
 						 {
 						 "en": "potato",
 						 "fr": "pomme de terre",
 						 "es": "patata",
-						 "it": "",
+						 "it": "patata",
 						 "pr": ""
 						 },
 						 {
 						 "en": "radish",
 						 "fr": "radis",
 						 "es": "rábano",
-						 "it": "",
+						 "it": "ravanello",
 						 "pr": ""
 						 },
 						 {
 						 "en": "corn",
 						 "fr": "maïs",
 						 "es": "maíz",
-						 "it": "",
+						 "it": "mais",
 						 "pr": ""
 						 },
 						 {
 						 "en": "zucchini",
 						 "fr": "courgette",
 						 "es": "calabacín",
-						 "it": "",
+						 "it": "zucchine",
 						 "pr": ""
 						 }
 						]
