@@ -23,6 +23,10 @@
                 <outlet property="presentableViewsTutorialContainerView" destination="pTN-8i-vfi" id="7iP-mi-Yy7"/>
                 <outlet property="settingsTutorialContainerView" destination="PBC-RJ-awe" id="YjQ-9G-XSu"/>
                 <outlet property="topAnimatedArrowView" destination="7PF-yb-LgR" id="mZA-wE-dod"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="QsH-q1-DqX" id="QlK-Gr-6rQ"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="Xvd-xu-2FD" id="wRD-RZ-tmx"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="qd7-2d-KG4" id="6Qf-c8-KXa"/>
+                <outletCollection property="tutorialDescriptionLabels" destination="Kmu-Wf-bak" id="4Nc-yF-hFb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,7 +48,7 @@
                                 <constraint firstAttribute="width" constant="53" id="Tyb-sx-2ke"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TAP + BUTTON TO ADD NEW TRANSLATIONS YOU WOULD LIKE TO KEEP TRACK OF AND LEARN" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-q1-DqX">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP + BUTTON TO ADD NEW TRANSLATIONS YOU WOULD LIKE TO KEEP TRACK OF AND LEARN" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QsH-q1-DqX">
                             <rect key="frame" x="47" y="119" width="478" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
@@ -72,7 +76,7 @@
                                 <constraint firstAttribute="height" constant="102" id="bfN-MS-olW"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TAP SETTINGS TO CHANGE YOUR LANGUAGE AND OTHER CONFIGURATIONS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-xu-2FD">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP SETTINGS TO CHANGE YOUR LANGUAGE AND OTHER CONFIGURATIONS" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-xu-2FD">
                             <rect key="frame" x="75" y="119" width="417" height="32"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
@@ -119,14 +123,14 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-2d-KG4">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qd7-2d-KG4">
                             <rect key="frame" x="143" y="90" width="315" height="16"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>
                             <color key="textColor" red="0.44705882349999998" green="0.48627450979999998" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-Wf-bak">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIPE UP OR DOWN TO DISMISS THE VIEW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmu-Wf-bak">
                             <rect key="frame" x="143" y="492" width="315" height="16"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Bold" family="Maison Neue" pointSize="16"/>

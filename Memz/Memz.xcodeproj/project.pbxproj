@@ -81,6 +81,7 @@
 		0C7A22E61C20B92E00774B95 /* MZFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7A22E51C20B92E00774B95 /* MZFeedTableViewCell.m */; };
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
+		0C7CEB761CF5380600FB8617 /* UILabel+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
 		0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */; };
@@ -321,6 +322,8 @@
 		0C7A22E91C20CC4600774B95 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Navigation.storyboard; path = Code/Resources/Storyboards/Navigation.storyboard; sourceTree = SOURCE_ROOT; };
 		0C7B5C4B1C82CD9000C7B051 /* UIAlertController+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+MemzAdditions.h"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C7CEB741CF5380600FB8617 /* UILabel+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MemzAdditions.h"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
+		0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MemzAdditions.m"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableViewCell.h; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
@@ -1167,6 +1170,15 @@
 			name = UIAlertController;
 			sourceTree = "<group>";
 		};
+		0C7CEB731CF537DB00FB8617 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				0C7CEB741CF5380600FB8617 /* UILabel+MemzAdditions.h */,
+				0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */,
+			);
+			name = UILabel;
+			sourceTree = "<group>";
+		};
 		0C8FD8D11CE2C84900FFC0A9 /* MZTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1414,6 +1426,7 @@
 				0CDA4AB61C867656005BDA3B /* UIFont */,
 				0CEFD1A11C3CB55700EB60DE /* UIImageView */,
 				0CEFD19F1C3CB54200EB60DE /* UIImage */,
+				0C7CEB731CF537DB00FB8617 /* UILabel */,
 				0CEFD1A01C3CB54D00EB60DE /* NSObject */,
 				0CC3726C1CDFBD820034E1AE /* NSArray */,
 				0CD881631C409BE200F57279 /* NSDate */,
@@ -2291,6 +2304,7 @@
 				0CDB82F41C30A5E200EADB05 /* MZQuizManager.m in Sources */,
 				0CDB82761C2DC3C100EADB05 /* MZSuggestedWordTableViewCell.m in Sources */,
 				0CDA4AC71C87E0EC005BDA3B /* MZWordStatusView.m in Sources */,
+				0C7CEB761CF5380600FB8617 /* UILabel+MemzAdditions.m in Sources */,
 				0C8FD90A1CE7CEE900FFC0A9 /* MZFlightPickerViewCell.m in Sources */,
 				0C3726FA1C27209100C9879F /* MZBingTranslatorCoordinator.m in Sources */,
 				0C539E161CD69E63009C6CB7 /* MZUser.m in Sources */,

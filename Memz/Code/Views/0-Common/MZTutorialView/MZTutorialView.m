@@ -9,6 +9,7 @@
 #import "MZTutorialView.h"
 #import "MZAnimatedArrow.h"
 #import "UIImage+MemzAdditions.h"
+#import "UILabel+MemzAdditions.h"
 
 const NSTimeInterval kFadeTutorialViewDuration = 0.2;
 const NSTimeInterval kTutorialViewContainerDuration = 0.2;
@@ -25,6 +26,8 @@ const NSInteger kScreenSnapshotIterations = 4;
 
 @property (nonatomic, weak) IBOutlet MZAnimatedArrow *topAnimatedArrowView;
 @property (nonatomic, weak) IBOutlet MZAnimatedArrow *bottomAnimatedArrowView;
+
+@property (nonatomic, strong) IBOutletCollection(UILabel) NSArray *tutorialDescriptionLabels;
 
 @end
 
@@ -71,7 +74,16 @@ const NSInteger kScreenSnapshotIterations = 4;
 
 	UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] init];
 	panGestureRecognizer.delegate = self;
+
+	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+	tapGestureRecognizer.delegate = self;
+
 	[self addGestureRecognizer:panGestureRecognizer];
+	[self addGestureRecognizer:tapGestureRecognizer];
+
+	[self.tutorialDescriptionLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+		[label applyParagraphStyle];
+	}];
 }
 
 #pragma mark - Custom Getters & Setters
