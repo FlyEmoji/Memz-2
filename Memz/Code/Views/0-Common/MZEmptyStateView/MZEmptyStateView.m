@@ -15,6 +15,7 @@ const CGFloat kEmptyStateLabelParagraphSpacing = 6.0f;
 
 @property (nonatomic, weak) IBOutlet UIImageView *emptyStateImageView;
 @property (nonatomic, weak) IBOutlet UILabel *emptyStateLabel;
+@property (nonatomic, weak) IBOutlet UIButton *emptyStateButton;
 
 @end
 
@@ -44,6 +45,14 @@ const CGFloat kEmptyStateLabelParagraphSpacing = 6.0f;
 	NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:self.emptyStateDescription
 																																										 attributes:attributes];
 	self.emptyStateLabel.attributedText = attributedText;
+
+	[self.emptyStateButton setTitle:self.suggestionButtonDescription forState:UIControlStateNormal];
+}
+
+- (IBAction)didTapSuggestionButton:(id)sender {
+	if ([self.delegate respondsToSelector:@selector(emptyStateViewDidTapSuggestionButton:)]) {
+		[self.delegate emptyStateViewDidTapSuggestionButton:self];
+	}
 }
 
 #pragma mark - Custom Setters

@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, MZWordDescriptionHeaderType) {
 
 @interface MZWordDescriptionHeaderView : MZNibView
 
-@property (nonatomic, weak) id<MZWordDescriptionHeaderViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id<MZWordDescriptionHeaderViewDelegate> delegate;
 
 @property (nonatomic, strong) MZWord *word;
 @property (nonatomic, assign) MZWordDescriptionHeaderType headerType;

@@ -18,13 +18,15 @@
 
 NSString * const kMyDictionaryTableViewCellIdentifier = @"MZMyDictionaryTableViewCellIdentifier";
 NSString * const MZWordDescriptionViewControllerSegue = @"MZWordDescriptionViewControllerSegue";
+NSString * const MZAddWordViewControllerSegueIdentifier = @"MZAddWordViewControllerSegueIdentifier";
 
 const NSTimeInterval kDictionaryEmptyStateFadeAnimationDuration = 0.2;
 const CGFloat kMyDictionaryTableViewEstimatedRowHeight = 100.0f;
 
 @interface MZMyDictionaryViewController () <UITableViewDataSource,
 UITableViewDelegate,
-NSFetchedResultsControllerDelegate>
+NSFetchedResultsControllerDelegate,
+MZEmptyStateViewProtocol>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet MZEmptyStateView *emptyStateView;
@@ -159,6 +161,12 @@ NSFetchedResultsControllerDelegate>
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	[self.tableView endUpdates];
 	[self updateEmptyState];
+}
+
+#pragma mark - Empty State View Delegate Method
+
+- (void)emptyStateViewDidTapSuggestionButton:(MZEmptyStateView *)view {
+	[self performSegueWithIdentifier:MZAddWordViewControllerSegueIdentifier sender:self];
 }
 
 @end

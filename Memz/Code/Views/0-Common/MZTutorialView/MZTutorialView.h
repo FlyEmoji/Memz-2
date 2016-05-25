@@ -19,8 +19,8 @@ typedef NS_ENUM(NSInteger, MZTutorialViewType) {
 @interface MZTutorialView : MZNibView
 
 @property (nonatomic, weak) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, weak) IBOutlet id<MZTutorialViewProtocol> delegate;
 
-@property (nonatomic, strong) id<MZTutorialViewProtocol> delegate;
 @property (nonatomic, assign) MZTutorialViewType type;  // not animated
 
 + (instancetype)showInView:(UIView *)view

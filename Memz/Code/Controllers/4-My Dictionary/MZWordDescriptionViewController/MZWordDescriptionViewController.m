@@ -56,7 +56,6 @@ MZTableViewTransitionDelegate>
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
 
-	self.tableViewHeader.delegate = self;
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	self.tableViewHeader.word = self.word;

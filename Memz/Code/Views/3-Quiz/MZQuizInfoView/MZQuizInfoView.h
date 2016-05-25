@@ -12,7 +12,7 @@
 
 @interface MZQuizInfoView : MZNibView
 
-@property (nonatomic, weak) id<MZQuizInfoViewDelegate> delegate;
+@property (nonatomic, weak) IBOutlet id<MZQuizInfoViewDelegate> delegate;
 
 @end
 
