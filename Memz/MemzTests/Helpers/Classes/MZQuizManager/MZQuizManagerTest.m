@@ -121,7 +121,7 @@
 	// Last app session closed today at midnight
 	[MZApplicationSessionManager sharedManager].lastClosedDate = [[NSDate date] beginningDayDate];
 
-	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, 5);
+	XCTAssertEqual([MZQuizManager sharedManager].datesMissedQuizzes.count, kDayMaximumQuizNumber);
 }
 
 - (void)testDatesMissedQuizzesHour {
