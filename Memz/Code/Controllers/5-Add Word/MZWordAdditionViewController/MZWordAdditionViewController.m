@@ -7,6 +7,7 @@
 //
 
 #import "MZWordAdditionViewController.h"
+#import "UIViewController+MemzAdditions.h"
 #import "MZWordAdditionTableViewHeader.h"
 #import "MZTextFieldTableViewCell.h"
 #import "MZTranslatedWordTableViewCell.h"
@@ -70,6 +71,28 @@ MZWordAdditionViewHeaderProtocol>
 	
 	self.wordTranslations = [[NSMutableArray alloc] init];
 	self.alreadyExistingWords = [[NSMutableOrderedSet alloc] init];
+
+	[self configureTapEndEditing];
+
+	// (1) Disable iterative transition when editing
+	[[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification *notification) {
+		 self.tableView.backgroundColor = self.tableView.progressiveBackgroundColor;
+		 self.tableView.transitionDelegate = nil;
+	 }];
+
+	// (2) Re-enable iterative transition when end editing
+	[[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillHideNotification
+																										object:nil
+																										 queue:[NSOperationQueue mainQueue]
+																								usingBlock:
+	 ^(NSNotification *notification) {
+		 self.tableView.backgroundColor = [UIColor clearColor];
+		 self.tableView.transitionDelegate = self;
+	}];
 
 	[self setupTableView];
 	[self.tableView reloadData];
