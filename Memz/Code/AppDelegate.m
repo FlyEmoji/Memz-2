@@ -20,14 +20,11 @@
 	// (1) Setup appearance designs throughout
 	[self setupCommonDesigns];
 
-	// (2) Register for local push notifications
-	[[MZPushNotificationManager sharedManager] registerLocalNotifications];
-
-	// (3) Recover and handle last push notification if exists
+	// (2) Recover and handle last push notification if exists
 	UILocalNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 	[[MZPushNotificationManager sharedManager] handleLocalNotification:localNotification];
 
-	// (4) Generate pending unanswered quizzes since last application session
+	// (3) Generate pending unanswered quizzes since last application session
 	NSMutableArray<NSDate *> *pendingQuizDates = [MZQuizManager sharedManager].datesMissedQuizzes.mutableCopy;
 	if (localNotification) {
 		[pendingQuizDates removeObjectAtIndex:pendingQuizDates.count - 1];

@@ -15,6 +15,7 @@
 #import "MZQuizViewController.h"
 #import "NSManagedObject+MemzCoreData.h"
 #import "UIViewController+MemzAdditions.h"
+#import "MZPushNotificationManager.h"
 #import "MZDataManager.h"
 #import "MZQuiz.h"
 
@@ -74,6 +75,12 @@ MZEmptyStateViewProtocol>
 		 [self.tableView reloadData];
 		 [self updateEmptyState];
 	 }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+	[[MZPushNotificationManager sharedManager] registerLocalNotifications];
 }
 
 - (void)setupTableViewData {

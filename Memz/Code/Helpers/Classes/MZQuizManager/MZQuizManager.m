@@ -17,7 +17,6 @@ const NSUInteger kDefaultStartTimeHour = 8;
 const NSUInteger kDefaultEndTimeHour = 20;
 
 const BOOL kDefaultIsActive = YES;
-const BOOL kDefaultIsReversed = NO;
 
 NSString * const MZQuizManagerMissedQuizzesNotification = @"MZQuizManagerMissedQuizzesNotification";
 NSString * const MZNotificationNumberMissedQuizzesKey = @"MZNotificationNumberMissedQuizzesKey";
@@ -25,7 +24,6 @@ NSString * const MZNotificationNumberMissedQuizzesKey = @"MZNotificationNumberMi
 NSString * const kSettingsIsActiveKey = @"SettingsIsActiveKey";
 NSString * const kSettingsStartHourKey = @"SettingsStartHourKey";
 NSString * const kSettingsEndHourHey = @"SettingsEndHourHey";
-NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 @interface MZQuizManager ()
 
@@ -49,16 +47,13 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 		_quizPerDay = kDefaultQuizPerDay;
 
 		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsActiveKey] == nil) {
-			self.startHour = kDefaultIsActive;
+			self.active = kDefaultIsActive;
 		}
 		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsStartHourKey] == nil) {
 			self.startHour = kDefaultStartTimeHour;
 		}
 		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsEndHourHey] == nil) {
 			self.endHour = kDefaultEndTimeHour;
-		}
-		if ([[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] == nil) {
-			self.reversed = kDefaultIsReversed;
 		}
 	}
 	return self;
@@ -158,9 +153,7 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 
 			if (![pastQuizDate isBeforeDate:lastSessionDate] && [pastQuizDate isBeforeNow]) {
 				[datesMissedQuizzes addObject:pastQuizDate];
-			} else {
-				NSLog(@"");
-			}
+			} 
 		}
 	}
 	return datesMissedQuizzes;
@@ -203,15 +196,6 @@ NSString * const kSettingsIsReversedKey = @"SettingsIsReversedKey";
 	[[NSUserDefaults standardUserDefaults] synchronize];
 
 	[self scheduleQuizNotifications];
-}
-
-- (BOOL)isReversed {
-	return [[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsIsReversedKey] integerValue];
-}
-
-- (void)setReversed:(BOOL)reversed {
-	[[NSUserDefaults standardUserDefaults] setObject:@(reversed) forKey:kSettingsIsReversedKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

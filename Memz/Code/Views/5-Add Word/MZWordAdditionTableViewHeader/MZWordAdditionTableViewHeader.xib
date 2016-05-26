@@ -43,7 +43,7 @@
                         <color key="titleColor" red="0.20000000000000001" green="0.16078431369999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="clearButtonTapped:" destination="-1" eventType="touchUpInside" id="AtO-AN-usg"/>
+                        <action selector="clearButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hnj-DX-ZNW"/>
                     </connections>
                 </button>
             </subviews>

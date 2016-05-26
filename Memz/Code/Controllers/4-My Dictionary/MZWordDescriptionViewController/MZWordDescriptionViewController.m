@@ -159,7 +159,7 @@ MZTableViewTransitionDelegate>
 
 - (IBAction)bottomButtonTapped:(id)sender {
 	[self removeWordWithCompletionHandler:^{
-		[self dismissViewControllerAnimated:YES completion:nil];
+		[self dismissViewControllerWithCompletion:nil];
 	}];
 }
 

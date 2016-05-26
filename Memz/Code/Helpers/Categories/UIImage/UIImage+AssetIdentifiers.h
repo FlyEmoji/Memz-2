@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierNavigationLargeTick,
 	MZAssetIdentifierNavigationForwardTap,
 	MZAssetIdentifierFeedActiveTick,
+	MZAssetIdentifierQuizChronometerIcon,
 	MZAssetIdentifierQuizEmptyState,
 	MZAssetIdentifierMyDictionaryEmptyState,
 	MZAssetIdentifierAddWordMinusIcon,

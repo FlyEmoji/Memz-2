@@ -63,30 +63,30 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-zw-B3o" userLabel="Word Container View">
-                    <rect key="frame" x="204" y="25" width="89" height="104"/>
+                    <rect key="frame" x="204" y="27" width="89" height="100"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tqn-eu-04Z">
-                            <rect key="frame" x="0.0" y="0.0" width="35" height="32"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Chronometer-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="tqn-eu-04Z">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="tqn-eu-04Z" secondAttribute="height" multiplier="35:32" id="FeO-Hl-LC6"/>
-                                <constraint firstAttribute="width" constant="35" id="oUE-iJ-Up6"/>
+                                <constraint firstAttribute="width" constant="30" id="oUE-iJ-Up6"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeT-IM-0fN">
-                            <rect key="frame" x="0.0" y="40" width="89" height="24"/>
+                            <rect key="frame" x="0.0" y="36" width="89" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                             <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-United-Kingdom" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-Ta-NRQ" userLabel="Flag Image View">
-                            <rect key="frame" x="20" y="72" width="50" height="32"/>
+                            <rect key="frame" x="20" y="68" width="50" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="q6l-Ta-NRQ" secondAttribute="height" multiplier="17:11" id="SOS-ph-2TE"/>
                                 <constraint firstAttribute="width" constant="50" id="knA-mT-nzT"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-KV-QO6">
-                            <rect key="frame" x="35" y="0.0" width="54" height="32"/>
+                            <rect key="frame" x="30" y="0.0" width="59" height="28"/>
                             <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
                             <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -148,5 +148,6 @@
     </objects>
     <resources>
         <image name="Flag-United-Kingdom" width="48" height="36"/>
+        <image name="Quiz-Chronometer-Icon" width="70" height="81"/>
     </resources>
 </document>
