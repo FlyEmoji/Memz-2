@@ -72,6 +72,8 @@ MZWordAdditionViewHeaderProtocol>
 	self.wordTranslations = [[NSMutableArray alloc] init];
 	self.alreadyExistingWords = [[NSMutableOrderedSet alloc] init];
 
+	[self configureTapEndEditing];
+
 	// (1) Disable iterative transition when editing
 	[[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification
 																										object:nil
