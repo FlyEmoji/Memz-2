@@ -46,7 +46,7 @@ const NSTimeInterval kCorrectionAnimationDuration = 0.3;
 			// In that case and even if the right image shows correct indicator, we still want to display the wrong but almost
 			// true proposed translation, and the actual corrected translation for user to realize it was not exactly perfect, and learn.
 
-			if (![userTranslation isEqualToString:correction]) {
+			if (![userTranslation.lowercaseString isEqualToString:correction.lowercaseString]) {
 				NSMutableAttributedString *mutableAttributedString = [[NSMutableAttributedString alloc] initWithString:userTranslation];
 				[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:@" "]];
 				[mutableAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:correction]];
