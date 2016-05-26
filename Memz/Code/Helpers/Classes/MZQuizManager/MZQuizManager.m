@@ -153,9 +153,7 @@ NSString * const kSettingsEndHourHey = @"SettingsEndHourHey";
 
 			if (![pastQuizDate isBeforeDate:lastSessionDate] && [pastQuizDate isBeforeNow]) {
 				[datesMissedQuizzes addObject:pastQuizDate];
-			} else {
-				NSLog(@"");
-			}
+			} 
 		}
 	}
 	return datesMissedQuizzes;
