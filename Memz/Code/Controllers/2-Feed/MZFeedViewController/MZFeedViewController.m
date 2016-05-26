@@ -92,7 +92,11 @@ MZTutorialViewProtocol>
 				return;
 			}
 
-			self.tableViewData = articles;
+			NSMutableArray<MZArticle *> *mutableArticles = [NSMutableArray arrayWithArray:articles];
+			NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"additionDate" ascending:YES];
+			[mutableArticles sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+
+			self.tableViewData = mutableArticles;
 			[self.tableView reloadData];
 		});
 	}];
