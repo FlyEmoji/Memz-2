@@ -107,7 +107,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="editingDidChange:" destination="26E-MQ-oFk" eventType="editingChanged" id="fdz-0V-5s2"/>
                                                         <action selector="editingDidEndOnExit:" destination="26E-MQ-oFk" eventType="editingDidEndOnExit" id="cZ6-Tf-Q7A"/>
