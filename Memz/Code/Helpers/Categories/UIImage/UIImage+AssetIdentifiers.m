@@ -80,6 +80,8 @@
 			return [UIImage imageNamed:@"Feed-Active-Tick"];
 		case MZAssetIdentifierQuizEmptyState:
 			return [UIImage imageNamed:@"Quiz-Empty-State"];
+		case MZAssetIdentifierQuizChronometerIcon:
+			return [UIImage imageNamed:@"Quiz-Chronometer-Icon"];
 		case MZAssetIdentifierMyDictionaryEmptyState:
 			return [UIImage imageNamed:@"My-Dictionary-Empty-State"];
 		case MZAssetIdentifierAddWordMinusIcon:
