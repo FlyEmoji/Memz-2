@@ -54,4 +54,44 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 }
 
+#pragma mark - Custom Actions
+
+- (void)addTranslations:(NSSet<MZWord *> *)values {
+	for (MZWord *translation in values) {
+		[self addTranslationsObject:translation];
+	}
+}
+
+- (void)addTranslationsObject:(MZWord *)value {
+	if (![self.translations containsObject:value]) {
+		NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
+		[mutableSet addObject:value];
+		self.translations = mutableSet;
+	}
+
+	for (MZWord *translation in value.translations) {
+		if (![self.translations containsObject:translation]) {
+			[self addTranslationsObject:translation];
+		}
+	}
+}
+
+- (void)removeTranslations:(NSSet<MZWord *> *)values {
+	for (MZWord *translation in values) {
+		[self removeTranslationsObject:translation];
+	}
+}
+
+- (void)removeTranslationsObject:(MZWord *)value {
+	NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
+	[mutableSet removeObject:value];
+	self.translations = mutableSet;
+
+	for (MZWord *translation in value.translations) {
+		if ([self.translations containsObject:translation] && translation.translations.count < 2) {
+			[self removeTranslationsObject:translation];
+		}
+	}
+}
+
 @end
