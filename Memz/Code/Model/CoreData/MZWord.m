@@ -88,10 +88,15 @@
 			wordTranslation.language = @(language);
 		}
 
+		// (3) Set reverse translation and allow for both translation directions
+		if (user && ![user.translations containsObject:wordTranslation]) {
+			[user addTranslationsObject:wordTranslation];
+		}
+
 		[self addTranslationsObject:wordTranslation];
 	}];
 
-	// (3) Remove no longer needed translations
+	// (4) Remove no longer needed translations
 	[self.translations.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
 		if (![translations containsObject:translation.word]) {
 			[self removeTranslations:[NSSet setWithObject:translation]];
@@ -102,12 +107,12 @@
 		}
 	}];
 
-	// (4) Set translation and reverse relationship user if exists
+	// (5) Set initial translation for user
 	if (user && ![user.translations containsObject:self]) {
 		[user addTranslationsObject:self];
 	}
 
-	// (5) Remove word if no translations anymore
+	// (6) Remove word if no translations anymore
 	// TODO: Actually perform deletion 
 }
 
