@@ -57,7 +57,7 @@
 																					 inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH[cd] %@) AND language = %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word BEGINSWITH[cd] %@ AND language = %d", string, language];
 	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
 }
 
@@ -66,7 +66,7 @@
 												inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 	
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND language = %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word ==[cd] %@ AND language = %d", string, language];
 	return [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate context:context].firstObject;
 }
 
@@ -134,8 +134,7 @@
 
 	// (2) Remove translation from database if not connected to any other word
 	if (value.translations.count == 0) {
-		// TODO: Should not use managedObjectContext, we don't know at this point what is the managed object context used 
-		[[MZDataManager sharedDataManager].managedObjectContext deleteObject:value];
+		[self deleteObject];
 	}
 }
 
