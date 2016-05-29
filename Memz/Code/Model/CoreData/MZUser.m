@@ -54,7 +54,7 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
 }
 
-#pragma mark - Custom Actions
+#pragma mark - Custom Overrides
 
 - (void)addTranslations:(NSSet<MZWord *> *)values {
 	for (MZWord *translation in values) {
@@ -63,14 +63,14 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 }
 
 - (void)addTranslationsObject:(MZWord *)value {
+	// (1) Add translation if needed
 	if (![self.translations containsObject:value]) {
-		[value addUsersObject:self];
-
 		NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
 		[mutableSet addObject:value];
 		self.translations = mutableSet;
 	}
 
+	// (2) Add translation and user relationship the other way round if needed
 	for (MZWord *translation in value.translations) {
 		if (![self.translations containsObject:translation]) {
 			[translation addUsersObject:self];
@@ -86,12 +86,12 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 }
 
 - (void)removeTranslationsObject:(MZWord *)value {
-	[value removeUsersObject:self];
-
+	// (1) Remove translations / users relationship
 	NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
 	[mutableSet removeObject:value];
 	self.translations = mutableSet;
 
+	// (2) Remove translations the other way around, as well as user relationship
 	for (MZWord *translation in value.translations) {
 		if ([self.translations containsObject:translation] && translation.translations.count < 2) {
 			[translation removeUsersObject:self];
