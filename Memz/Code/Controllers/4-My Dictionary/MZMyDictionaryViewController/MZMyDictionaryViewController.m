@@ -137,22 +137,20 @@ MZEmptyStateViewProtocol>
 			newIndexPath:(NSIndexPath *)newIndexPath {
 	switch (type) {
 		case NSFetchedResultsChangeInsert: {
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeDelete: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeUpdate: {
-			MZMyDictionaryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-			MZWord *word = [anObject safeCastToClass:[MZWord class]];
-			cell.word = word;
+			[self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeMove: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 	}

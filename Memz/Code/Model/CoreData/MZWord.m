@@ -118,6 +118,19 @@
 	// TODO: Actually perform deletion 
 }
 
+#pragma mark - Custom Setters
+
+- (void)removeTranslationsObject:(MZWord *)value {
+	NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
+	[mutableSet removeObject:value];
+	self.translations = mutableSet;
+
+	if (value.translations.count == 0) {
+		// TODO: Should not use managedObjectContext, we don't know at this point what is the managed object context used 
+		[[MZDataManager sharedDataManager].managedObjectContext deleteObject:value];
+	}
+}
+
 #pragma mark - Statistics
 
 - (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language {

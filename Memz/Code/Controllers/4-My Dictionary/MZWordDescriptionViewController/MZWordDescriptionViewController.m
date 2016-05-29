@@ -41,7 +41,7 @@ MZTableViewTransitionDelegate>
 
 @end
 
-@implementation MZWordDescriptionViewController		// TODO: See if NSFetchRequestController applicable
+@implementation MZWordDescriptionViewController	
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -146,23 +146,20 @@ MZTableViewTransitionDelegate>
 			newIndexPath:(NSIndexPath *)newIndexPath {
 	switch (type) {
 		case NSFetchedResultsChangeInsert: {
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeDelete: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeUpdate: {
-			MZWordDescriptionTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-			MZWord *word = [anObject safeCastToClass:[MZWord class]];
-			cell.wordLabel.text = word.word;
-			cell.flagImageView.image = [UIImage flagImageForLanguage:word.language.integerValue];
+			[self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeMove: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 	}
