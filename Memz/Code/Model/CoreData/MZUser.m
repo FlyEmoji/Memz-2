@@ -64,6 +64,8 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 
 - (void)addTranslationsObject:(MZWord *)value {
 	if (![self.translations containsObject:value]) {
+		[value addUsersObject:self];
+
 		NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
 		[mutableSet addObject:value];
 		self.translations = mutableSet;
@@ -84,6 +86,8 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 }
 
 - (void)removeTranslationsObject:(MZWord *)value {
+	[value removeUsersObject:self];
+
 	NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
 	[mutableSet removeObject:value];
 	self.translations = mutableSet;

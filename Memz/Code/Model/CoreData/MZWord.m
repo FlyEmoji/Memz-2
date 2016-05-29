@@ -98,7 +98,9 @@
 
 	// (4) Remove no longer needed translations
 	[self.translations.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
-		if (![translations containsObject:translation.word]) {
+		if ([translations indexOfObjectPassingTest:^BOOL(NSString *obj, NSUInteger idx, BOOL *stop) {
+			return ([obj caseInsensitiveCompare:translation.word] == NSOrderedSame);
+		}] == NSNotFound) {
 			[self removeTranslations:[NSSet setWithObject:translation]];
 
 			if (translation.translations.count == 0) {
