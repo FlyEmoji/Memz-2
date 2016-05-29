@@ -71,6 +71,7 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 
 	for (MZWord *translation in value.translations) {
 		if (![self.translations containsObject:translation]) {
+			[translation addUsersObject:self];
 			[self addTranslationsObject:translation];
 		}
 	}
@@ -89,6 +90,7 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 
 	for (MZWord *translation in value.translations) {
 		if ([self.translations containsObject:translation] && translation.translations.count < 2) {
+			[translation removeUsersObject:self];
 			[self removeTranslationsObject:translation];
 		}
 	}
