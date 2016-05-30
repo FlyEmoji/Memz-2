@@ -10,6 +10,7 @@
 #define Memz_Prefiz_pch
 
 #import "constants.h"
+#import "Configurations.h"
 #import "NSObject+MemzAdditions.h"
 #import "UIColor+MemzColors.h"
 #import "UIImage+AssetIdentifiers.h"

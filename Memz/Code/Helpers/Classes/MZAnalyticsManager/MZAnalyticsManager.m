@@ -46,9 +46,7 @@ const NSUInteger kFlushValue = 10;
 #pragma mark - Setups
 
 - (void)setupAnalytics {
-	SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"EMCAdThjAGa6mYPiewkPzfvTAcErlgpT"];
-	configuration.trackApplicationLifecycleEvents = YES;
-	configuration.recordScreenViews = YES;
+	SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:MZSegmentToken];
 	configuration.flushAt = kFlushValue;
 	[SEGAnalytics setupWithConfiguration:configuration];
 

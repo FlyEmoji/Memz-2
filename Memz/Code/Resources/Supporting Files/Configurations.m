@@ -9,10 +9,10 @@
 #import "Configurations.h"
 
 #if DEBUG
-NSString * const MVMixpanelToken = @"";
+NSString * const MZSegmentToken = @"Y24rfqCbuUWtuP5uQnhbGr8foM9Rsipe";
 #elif SNAPSHOT
-NSString * const MVMixpanelToken = @"";
+NSString * const MZSegmentToken = @"Y24rfqCbuUWtuP5uQnhbGr8foM9Rsipe";
 #elif PRODUCTION
-NSString * const MVMixpanelToken = @"";
+NSString * const MZSegmentToken = @"EMCAdThjAGa6mYPiewkPzfvTAcErlgpT";
 #else
 #endif

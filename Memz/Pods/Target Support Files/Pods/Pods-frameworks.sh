@@ -86,18 +86,24 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Analytics.framework"
   install_framework "Pods/DATAStack.framework"
+  install_framework "Pods/Mixpanel.framework"
   install_framework "Pods/NMRangeSlider.framework"
   install_framework "Pods/SDWebImage.framework"
+  install_framework "Pods/Segment_Mixpanel.framework"
 fi
 if [[ "$CONFIGURATION" == "Production" ]]; then
   install_framework "Pods/Analytics.framework"
   install_framework "Pods/DATAStack.framework"
+  install_framework "Pods/Mixpanel.framework"
   install_framework "Pods/NMRangeSlider.framework"
   install_framework "Pods/SDWebImage.framework"
+  install_framework "Pods/Segment_Mixpanel.framework"
 fi
 if [[ "$CONFIGURATION" == "Snapshot" ]]; then
   install_framework "Pods/Analytics.framework"
   install_framework "Pods/DATAStack.framework"
+  install_framework "Pods/Mixpanel.framework"
   install_framework "Pods/NMRangeSlider.framework"
   install_framework "Pods/SDWebImage.framework"
+  install_framework "Pods/Segment_Mixpanel.framework"
 fi

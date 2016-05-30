@@ -1,21 +1,30 @@
 PODS:
-  - Analytics (3.1.1)
+  - Analytics (3.0.7)
   - DATAStack (5.2.1)
+  - Mixpanel (2.9.9):
+    - Mixpanel/Mixpanel (= 2.9.9)
+  - Mixpanel/Mixpanel (2.9.9)
   - NMRangeSlider (1.2.1)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - Segment-Mixpanel (1.0.4):
+    - Analytics (~> 3.0.0)
+    - Mixpanel (~> 2.9.0)
 
 DEPENDENCIES:
   - Analytics (~> 3.0)
   - DATAStack
   - NMRangeSlider
   - SDWebImage (~> 3.6)
+  - Segment-Mixpanel
 
 SPEC CHECKSUMS:
-  Analytics: 96ad217bd99f5c87d16cc97c1f0039231d935f99
+  Analytics: b342fb4f43fa4f97ca6f4358b44d3295217ba294
   DATAStack: c6432c89d0bd2b1d2a17c947ca8a2c81f389f06d
+  Mixpanel: 818d1940c2d9402453b349545022a86968097f57
   NMRangeSlider: 317ded652431eb90501c8421d9cddc3930d891e6
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  Segment-Mixpanel: dfa4297d1aa6ccea505efcc040d3adb0e19ed081
 
 COCOAPODS: 0.39.0

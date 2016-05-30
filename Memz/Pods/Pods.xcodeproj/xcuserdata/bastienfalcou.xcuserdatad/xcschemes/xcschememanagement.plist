@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NMRangeSlider.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,10 +34,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Segment-Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>418711683D66B23FF65A35D89AB42DD5</key>
+		<key>2644D58E374306BCC921D6CB94B9A953</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3392DAA9C94BC7D170DDA6A4533C8A0C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CD6D7203D25FEB744791E2449F88C96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,17 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7A915ACA63649CB4CB3C844599BDF8F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A35F61DF26A860373A3532912B8A7696</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAD8E804FD2EFFEA38AD0FF18DA996DE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CE4C30F7E1732647898FADB149CFE9CD</key>
+		<key>D4366019FDFD4968B0EE7D6057DFCEF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

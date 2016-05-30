@@ -15,7 +15,6 @@
 #import "SEGReachability.h"
 #import "SEGSegmentIntegration.h"
 #import "SEGSegmentIntegrationFactory.h"
-#import "UIViewController+SEGScreen.h"
 #import "SEGAnalytics.h"
 
 FOUNDATION_EXPORT double AnalyticsVersionNumber;

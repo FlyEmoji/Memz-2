@@ -44,4 +44,5 @@ const NSString *SEGCentralManagerClass = @"CBCentralManager";
 }
 
 - (void)centralManagerDidUpdateState:(id)central {}
+
 @end

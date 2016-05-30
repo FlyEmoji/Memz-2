@@ -332,7 +332,7 @@ static BOOL GetAdTrackingEnabled()
     [self enqueueAction:@"alias" dictionary:dictionary context:payload.context integrations:payload.integrations];
 }
 
-- (void)registeredForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+- (void)registerForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken options:(NSDictionary *)options
 {
     NSCParameterAssert(deviceToken != nil);
 
@@ -530,7 +530,7 @@ static BOOL GetAdTrackingEnabled()
 {
     [self dispatchBackgroundAndWait:^{
         if (self.queue.count)
-
+            
             [self persistQueue];
     }];
 }
