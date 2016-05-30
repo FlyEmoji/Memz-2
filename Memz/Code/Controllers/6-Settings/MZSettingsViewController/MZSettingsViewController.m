@@ -13,6 +13,7 @@
 #import "MZSettingsSliderTableViewCell.h"
 #import "MZPushNotificationManager.h"
 #import "UIImage+MemzAdditions.h"
+#import "MZWebViewController.h"
 #import "MZFlightPickerView.h"
 #import "MZDataManager.h"
 #import "MZQuizManager.h"
@@ -36,6 +37,7 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
 
 NSString * const kPresentStatisticsViewControllerSegueIdentifier = @"MZPresentStatisticsViewControllerSegueIdentifier";
+NSString * const kShowWebViewControllerSegueIdentifier = @"MZShowWebViewControllerSegueIdentifier";
 
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
 NSString * const kSettingsSwitchTableViewCellIdentifier = @"MZSettingsSwitchTableViewCellIdentifier";
@@ -54,6 +56,7 @@ NSString * const kTimeStartKey = @"TimeStartKey";
 NSString * const kTimeEndKey = @"TimeEndKey";
 NSString * const kMinimumValueKey = @"MinimumValueKey";
 NSString * const kMaximumValueKey = @"MaximumValueKey";
+NSString * const kWebViewTypeKey = @"WebViewTypeKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 180.0f;
 const CGFloat kCellRegularHeight = 50.0f;
@@ -85,8 +88,6 @@ UIScrollViewDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.navigationController.navigationBarHidden = YES;
-
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
 
@@ -102,6 +103,20 @@ UIScrollViewDelegate>
 
 	// (4) Reload Data
 	[self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kShowWebViewControllerSegueIdentifier]) {
+		MZWebViewController *controller = [segue.destinationViewController safeCastToClass:[MZWebViewController class]];
+		NSIndexPath *indexPath = [sender safeCastToClass:[NSIndexPath class]];
+		controller.webViewType = [self.tableViewData[indexPath.section][kDataKey][indexPath.row][kWebViewTypeKey] integerValue];
+	}
 }
 
 - (NSMutableArray<NSMutableDictionary *> *)tableViewData {
@@ -127,9 +142,11 @@ UIScrollViewDelegate>
 
 	// (2) Setup Table View Data: Legal
 	NSMutableArray *legal = @[@{kRowKey: @(MZSettingsTableViewRowTypeTermsAndConditions),
-															kTitleKey: NSLocalizedString(@"SettingsLegalTermsAndConditions", nil)}.mutableCopy,
+															kTitleKey: NSLocalizedString(@"SettingsLegalTermsAndConditions", nil),
+															kWebViewTypeKey: @(MZWebViewTypeTermsAndConditions)}.mutableCopy,
 														@{kRowKey: @(MZSettingsTableViewRowTypePrivacyPolicy),
-															kTitleKey: NSLocalizedString(@"SettingsLegalPrivacyPolicy", nil)}.mutableCopy].mutableCopy;
+															kTitleKey: NSLocalizedString(@"SettingsLegalPrivacyPolicy", nil),
+															kWebViewTypeKey: @(MZWebViewTypePrivacyPolicy)}.mutableCopy].mutableCopy;
 
 	// (3) Setup Table View Data: Others
 	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
@@ -294,8 +311,15 @@ UIScrollViewDelegate>
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue] == MZSettingsTableViewRowTypeStatistics) {
-		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
+	switch ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue]) {
+		case MZSettingsTableViewRowTypeStatistics:
+			[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
+			break;
+		case MZSettingsTableViewRowTypePrivacyPolicy:
+			[self performSegueWithIdentifier:kShowWebViewControllerSegueIdentifier sender:indexPath];
+			break;
+		default:
+			break;
 	}
 }
 
