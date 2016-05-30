@@ -17,12 +17,14 @@ static NSString * const MZTrackScreenStatisticsIdentifier = @"Statistics Screen"
 static NSString * const MZTrackScreenQuizIdentifier = @"Quiz Screen";
 
 static NSString * const MZTrackEventWordAdditionIdentifier = @"Word Addition";
+static NSString * const MZTrackEventNewQuizIdentifier = @"New Quiz";
 
 static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
 static NSString * const MZTrackWordIdentifier = @"Word Added";
 static NSString * const MZTrackKnownLanguageIdentifier = @"Known Language";
 static NSString * const MZTrackNewLanguageIdentifier = @"New Language";
 static NSString * const MZTrackNumberTranslationsIdentifier = @"Number Translations";
+static NSString * const MZTrackIsInitiatedByUserIdentifier = @"Is Initiated By User";
 
 @implementation MZAnalyticsManager
 
@@ -83,6 +85,11 @@ static NSString * const MZTrackNumberTranslationsIdentifier = @"Number Translati
 																					MZTrackNumberTranslationsIdentifier: [NSString stringWithFormat:@"%lu", (unsigned long)translations.count],
 																					MZTrackKnownLanguageIdentifier: [NSString languageNameForLanguage:knownLanguage],
 																					MZTrackNewLanguageIdentifier: [NSString languageNameForLanguage:newLanguage]}];
+}
+
+- (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser {
+	[[SEGAnalytics sharedAnalytics] track:MZTrackEventNewQuizIdentifier
+														 properties:@{MZTrackIsInitiatedByUserIdentifier: isInitiatedByUser ? @"YES" : @"NO"}];
 }
 
 @end

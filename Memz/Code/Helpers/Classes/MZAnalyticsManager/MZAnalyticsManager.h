@@ -29,4 +29,7 @@ typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 						 translations:(NSArray<NSString *> *)translations
 						knownLanguage:(MZLanguage)knownLanguage
 							newLanguage:(MZLanguage)newLanguage;
+
+- (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser;
+
 @end
