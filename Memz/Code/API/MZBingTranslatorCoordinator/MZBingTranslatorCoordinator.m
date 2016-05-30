@@ -221,11 +221,11 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 			return @"EN";
 		case MZLanguageFrench:
 			return @"FR";
-		case MZLanguageSpanish:		// TODO: To check
+		case MZLanguageSpanish:
 			return @"ES";
-		case MZLanguageItalian:		// TODO: To check
+		case MZLanguageItalian:
 			return @"IT";
-		case MZLanguagePortuguese:		// TODO: To check
+		case MZLanguagePortuguese:		// TODO: Only one wrong in the list
 			return @"PR";
 	}
 }

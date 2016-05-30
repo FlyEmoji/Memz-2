@@ -57,7 +57,7 @@
 																					 inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"(word BEGINSWITH[cd] %@) AND language = %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word BEGINSWITH[cd] %@ AND language = %d", string, language];
 	return [NSOrderedSet orderedSetWithArray:[MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate]];
 }
 
@@ -66,7 +66,7 @@
 												inContext:(NSManagedObjectContext *)context {
 	context = context ?: [MZDataManager sharedDataManager].managedObjectContext;
 	
-	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word CONTAINS[cd] %@ AND language = %d", string, language];
+	NSPredicate *alreadyExistsPrecidate = [NSPredicate predicateWithFormat:@"word ==[cd] %@ AND language = %d", string, language];
 	return [MZWord allObjectsMatchingPredicate:alreadyExistsPrecidate context:context].firstObject;
 }
 
@@ -98,7 +98,10 @@
 
 	// (4) Remove no longer needed translations
 	[self.translations.mutableCopy enumerateObjectsUsingBlock:^(MZWord *translation, NSUInteger idx, BOOL *stop) {
-		if (![translations containsObject:translation.word]) {
+		if (translation.language.integerValue == language
+				&& [translations indexOfObjectPassingTest:^BOOL(NSString *obj, NSUInteger idx, BOOL *stop) {
+			return ([obj caseInsensitiveCompare:translation.word] == NSOrderedSame);
+		}] == NSNotFound) {
 			[self removeTranslations:[NSSet setWithObject:translation]];
 
 			if (translation.translations.count == 0) {
@@ -116,14 +119,39 @@
 	// TODO: Actually perform deletion 
 }
 
-#pragma mark - Statistics
+#pragma mark - Custom Overrides
+
+- (void)removeTranslations:(NSSet<MZWord *> *)values {
+	for (MZWord *translation in values) {
+		[self removeTranslationsObject:translation];
+	}
+}
+
+- (void)removeTranslationsObject:(MZWord *)value {
+	// (1) Remove translation from current object
+	NSMutableSet<MZWord *> *mutableSet = self.translations.mutableCopy;
+	[mutableSet removeObject:value];
+	self.translations = mutableSet;
+
+	// (2) Remove translation from database if not connected to any other word
+	if (value.translations.count == 0) {
+		[self deleteObject];
+	}
+}
 
 - (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN translations AND %@ IN users", [MZUser currentUser].knownLanguage.integerValue, self.objectID, [MZUser currentUser].objectID];
+	return [MZWord countOfObjectsMatchingPredicate:predicate];
+}
+
+#pragma mark - Statistics
+
+- (NSUInteger)numberQuizTranslationsInLanguage:(MZLanguage)language {
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
-- (CGFloat)percentageSuccessTranslationsInLanguage:(MZLanguage)language {
+- (CGFloat)percentageSuccessQuizTranslationsInLanguage:(MZLanguage)language {
 	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 

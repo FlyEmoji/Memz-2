@@ -47,9 +47,20 @@ NS_ASSUME_NONNULL_BEGIN
 									 forUser:(nullable MZUser *)user
 								 inContext:(nullable NSManagedObjectContext *)context;
 
+/*
+ * Number of translations
+ */
 - (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language;
 
-- (CGFloat)percentageSuccessTranslationsInLanguage:(MZLanguage)language;
+/*
+ * Number of times word has been translated in quizzes
+ */
+- (NSUInteger)numberQuizTranslationsInLanguage:(MZLanguage)language;
+
+/*
+ * Number of times word has been successfully translated in quizzes
+ */
+- (CGFloat)percentageSuccessQuizTranslationsInLanguage:(MZLanguage)language;
 
 @end
 

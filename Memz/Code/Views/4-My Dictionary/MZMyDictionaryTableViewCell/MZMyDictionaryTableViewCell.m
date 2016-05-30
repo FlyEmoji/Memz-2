@@ -32,13 +32,7 @@
 
 	self.wordLabel.text = word.word.uppercaseString;
 	self.wordStatusView.word = word;
-	[self setupTranslations:word.translations.allObjects];
-}
-
-#pragma mark - Private Methods
-
-- (void)setupTranslations:(NSArray<MZWord *> *)translations {
-	self.countTranslationsLabel.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)translations.count, NSLocalizedString(@" translations", nil)];
+	self.countTranslationsLabel.text = [NSString stringWithFormat:@"%lu %@", (unsigned long)[word numberTranslationsInLanguage:[MZUser currentUser].knownLanguage.integerValue], NSLocalizedString(@" translations", nil)];
 }
 
 @end

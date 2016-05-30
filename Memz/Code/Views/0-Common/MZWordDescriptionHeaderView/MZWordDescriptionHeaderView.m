@@ -46,8 +46,8 @@ const CGFloat kCountDownSectionHeightConstraint = 35.0f;
 	self.learnedStatusView.word = word;
 
 	// (3) Update Statistics (Right)
-	NSUInteger numberTranslations = [self.word numberTranslationsInLanguage:[MZUser currentUser].newLanguage.integerValue];
-	CGFloat percentageSuccess = [self.word percentageSuccessTranslationsInLanguage:[MZUser currentUser].newLanguage.integerValue];
+	NSUInteger numberTranslations = [self.word numberQuizTranslationsInLanguage:[MZUser currentUser].newLanguage.integerValue];
+	CGFloat percentageSuccess = [self.word percentageSuccessQuizTranslationsInLanguage:[MZUser currentUser].newLanguage.integerValue];
 	NSString *numberOfTranslationsString, *percentageSuccessString;
 
 	if (numberTranslations == 0) {

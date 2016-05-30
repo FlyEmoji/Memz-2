@@ -68,7 +68,7 @@ MZEmptyStateViewProtocol>
 - (void)setupTableViewData {
 	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZWord entityName]];
 
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN users", [MZUser currentUser].newLanguage.integerValue, [MZUser currentUser].objectID];
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d AND %@ IN users AND SUBQUERY(translations, $translation, $translation.language = %d AND %@ IN $translation.users).@count > 0", [MZUser currentUser].newLanguage.integerValue, [MZUser currentUser].objectID, [MZUser currentUser].knownLanguage.integerValue, [MZUser currentUser].objectID];
 	request.predicate = predicate;
 
 	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"learningIndex" ascending:NO];
@@ -137,22 +137,20 @@ MZEmptyStateViewProtocol>
 			newIndexPath:(NSIndexPath *)newIndexPath {
 	switch (type) {
 		case NSFetchedResultsChangeInsert: {
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeDelete: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeUpdate: {
-			MZMyDictionaryTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-			MZWord *word = [anObject safeCastToClass:[MZWord class]];
-			cell.word = word;
+			[self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 		case NSFetchedResultsChangeMove: {
-			[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-			[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
 			break;
 		}
 	}

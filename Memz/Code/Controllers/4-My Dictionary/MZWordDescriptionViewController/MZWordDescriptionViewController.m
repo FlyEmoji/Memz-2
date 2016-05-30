@@ -10,6 +10,7 @@
 #import "MZWordDescriptionHeaderView.h"
 #import "MZWordDescriptionTableViewCell.h"
 #import "MZWordAdditionTableViewHeader.h"
+#import "NSManagedObject+MemzCoreData.h"
 #import "UIImage+MemzAdditions.h"
 #import "UIView+MemzAdditions.h"
 #import "MZShareManager.h"
@@ -26,24 +27,27 @@ const NSTimeInterval kEditAnimationDuration = 0.3;
 
 @interface MZWordDescriptionViewController () <UITableViewDataSource,
 UITableViewDelegate,
+NSFetchedResultsControllerDelegate,
 MZWordDescriptionHeaderViewDelegate,
 MZTableViewTransitionDelegate>
 
 @property (nonatomic, strong) IBOutlet MZTableView *tableView;
-@property (nonatomic, strong) NSMutableArray<MZWord *> *tableViewData;
-
 @property (nonatomic, strong) IBOutlet MZWordDescriptionHeaderView *tableViewHeader;
+
 @property (nonatomic, strong) IBOutlet UIButton *bottomButton;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *bottomButtonHeightConstraint;
 
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 @end
 
-@implementation MZWordDescriptionViewController		// TODO: See if NSFetchRequestController applicable
+@implementation MZWordDescriptionViewController	
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	[self setupTableView];
+	[self setupTableViewData];
 }
 
 - (void)setWord:(MZWord *)word {
@@ -64,15 +68,36 @@ MZTableViewTransitionDelegate>
 	self.tableViewHeader.headerType = MZWordDescriptionHeaderTypeEdit;
 	self.tableViewHeader.frame = CGRectMake(0.0f, 0.0f, self.tableView.frame.size.width, self.tableView.frame.size.height / 4.0f);
 	self.tableViewHeader.word = self.word;
+}
 
-	self.tableViewData = self.word.translations.allObjects.mutableCopy;
-	[self.tableView reloadData];
+- (void)setupTableViewData {
+	NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[MZWord entityName]];
+
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN translations AND %@ IN users", [MZUser currentUser].knownLanguage.integerValue, self.word.objectID, [MZUser currentUser].objectID];
+	request.predicate = predicate;
+
+	NSSortDescriptor *descriptor = [NSSortDescriptor sortDescriptorWithKey:@"word" ascending:NO];
+	request.sortDescriptors = @[descriptor];
+
+	self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+																																			managedObjectContext:[MZDataManager sharedDataManager].managedObjectContext
+																																				sectionNameKeyPath:nil
+																																								 cacheName:nil];
+	self.fetchedResultsController.delegate = self;
+
+	NSError *error = nil;
+	[self.fetchedResultsController performFetch:&error];
+
+	if (error) {
+		NSLog(@"%@, %@", error, error.localizedDescription);
+	}
 }
 
 #pragma mark - Table View DataSource & Delegate Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return self.tableViewData.count;
+	id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
+	return sectionInfo.numberOfObjects;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -89,36 +114,66 @@ MZTableViewTransitionDelegate>
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	MZWordDescriptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kWordDescriptionTableViewCellIdentifier
 																																				 forIndexPath:indexPath];
-	cell.wordLabel.text = self.tableViewData[indexPath.row].word;
-	cell.flagImageView.image = [UIImage flagImageForLanguage:self.tableViewData[indexPath.row].language.integerValue];
+	MZWord *word = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
+	cell.wordLabel.text = word.word;
+	cell.flagImageView.image = [UIImage flagImageForLanguage:word.language.integerValue];
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (self.tableViewData.count <= 1) {
+	id<NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:indexPath.section];
+	MZWord *word = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
+
+	if (sectionInfo.numberOfObjects <= 1) {
 		[self removeWordWithCompletionHandler:^{
 			[self dismissViewControllerWithCompletion:nil];
 		}];
 	} else {
-		[self removeTranslation:self.tableViewData[indexPath.row] completionHandler:nil];
+		[self removeTranslation:word completionHandler:nil];
 	}
 }
+
+#pragma mark - Fetched Results Controller Delegate Methods
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller
+	 didChangeObject:(id)anObject
+			 atIndexPath:(NSIndexPath *)indexPath
+		 forChangeType:(NSFetchedResultsChangeType)type
+			newIndexPath:(NSIndexPath *)newIndexPath {
+	switch (type) {
+		case NSFetchedResultsChangeInsert: {
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeDelete: {
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeUpdate: {
+			[self.tableView reloadRowsAtIndexPaths: @[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+		case NSFetchedResultsChangeMove: {
+			[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+			break;
+		}
+	}
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView endUpdates];
+}
+
 
 #pragma mark - Edition Helpers
 
 - (void)removeTranslation:(MZWord *)translation completionHandler:(void (^ __nullable)(void))completionHandler {
-	NSUInteger index = [self.tableViewData indexOfObject:translation];
-
-	[self.tableViewData removeObjectAtIndex:index];
-	[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:index inSection:0]]
-												withRowAnimation:UITableViewRowAnimationRight];
-
-	NSMutableArray *translationStrings = [[NSMutableArray alloc] initWithCapacity:self.tableViewData.count];
-	[self.tableViewData enumerateObjectsUsingBlock:^(MZWord *word, NSUInteger idx, BOOL *stop) {
-		[translationStrings addObject:word.word];
-	}];
-	[self.word updateTranslations:translationStrings inLanguage:[MZUser currentUser].knownLanguage.integerValue forUser:nil inContext:nil];
-
+	[self.word removeTranslationsObject:translation];
 	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
 }
 

@@ -40,4 +40,6 @@
 + (void)deleteAllObjectsMatchingPredicate:(NSPredicate *)predicate;
 + (void)deleteAllObjectsMatchingPredicate:(NSPredicate *)predicate context:(NSManagedObjectContext *)context;
 
+- (void)deleteObject;
+
 @end

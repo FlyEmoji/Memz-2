@@ -11,6 +11,8 @@
 
 @implementation NSManagedObject (MemzCoreData)
 
+#pragma mark - Private 
+
 - (BOOL)hasBeenDeleted {
 	NSManagedObjectContext *context;
 	NSManagedObjectID *objectID;
@@ -20,6 +22,8 @@
 	NSManagedObject *me = [context objectRegisteredForID:objectID];
 	return me == nil;
 }
+
+#pragma mark - Public Class Methods
 
 + (instancetype)newInstance {
 	return [self newInstanceInContext:nil];
@@ -148,6 +152,12 @@
 	for (NSManagedObject * object in [self allObjectsMatchingPredicate:predicate context:context]) {
 		[context deleteObject:object];
 	}
+}
+
+#pragma mark - Public Instance Methods
+
+- (void)deleteObject {
+	[self.managedObjectContext deleteObject:self];
 }
 
 @end

@@ -68,7 +68,7 @@
 						 "en": "glass",
 						 "fr": "verre",
 						 "es": "vidrio",
-						 "it": "coltello",
+						 "it": "bicchiere",
 						 "pr": "vidro"
 						 },
 						 {
@@ -89,7 +89,7 @@
 						 "en": "microwave",
 						 "fr": "micro-ondes",
 						 "es": "microondas",
-						 "it": "mestolo",
+						 "it": "microonde",
 						 "pr": "microondas"
 						 },
 						 {
@@ -504,7 +504,7 @@
 						 {
 						 "en": "pea",
 						 "fr": "petit pois",
-						 "es": "perejil",
+						 "es": "guisante",
 						 "it": "pisello",
 						 "pr": "ervilha"
 						 },
