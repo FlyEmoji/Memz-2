@@ -15,9 +15,12 @@ static NSString * const MZTrackScreenWordAdditionIdentifier = @"Word Addition Sc
 static NSString * const MZTrackScreenSettingsIdentifier = @"Settings Screen";
 static NSString * const MZTrackScreenStatisticsIdentifier = @"Statistics Screen";
 static NSString * const MZTrackScreenQuizIdentifier = @"Quiz Screen";
+static NSString * const MZTrackScreenArticleIdentifier = @"Article Screen";
 
 static NSString * const MZTrackEventWordAdditionIdentifier = @"Word Addition";
 static NSString * const MZTrackEventNewQuizIdentifier = @"New Quiz";
+static NSString * const MZTrackEventReadArticleIdentifier = @"Open Article";
+static NSString * const MZTrackEventAddArticleWordSuggestedIdentifier = @"Article Suggestion Word Addition";
 
 static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
 static NSString * const MZTrackWordIdentifier = @"Word Added";
@@ -25,6 +28,7 @@ static NSString * const MZTrackKnownLanguageIdentifier = @"Known Language";
 static NSString * const MZTrackNewLanguageIdentifier = @"New Language";
 static NSString * const MZTrackNumberTranslationsIdentifier = @"Number Translations";
 static NSString * const MZTrackIsInitiatedByUserIdentifier = @"Is Initiated By User";
+static NSString * const MZTrackAddedAllArticleSuggestedWordsIdentifier = @"Addition All Suggested Words At Once";
 
 @implementation MZAnalyticsManager
 
@@ -70,6 +74,9 @@ static NSString * const MZTrackIsInitiatedByUserIdentifier = @"Is Initiated By U
 		case MZAnalyticsScreenQuiz:
 			trackIdentifier = MZTrackScreenQuizIdentifier;
 			break;
+		case MZAnalyticsScreenArticle:
+			trackIdentifier = MZTrackScreenArticleIdentifier;
+			break;
 	}
 	[[SEGAnalytics sharedAnalytics] screen:trackIdentifier];
 }
@@ -90,6 +97,15 @@ static NSString * const MZTrackIsInitiatedByUserIdentifier = @"Is Initiated By U
 - (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser {
 	[[SEGAnalytics sharedAnalytics] track:MZTrackEventNewQuizIdentifier
 														 properties:@{MZTrackIsInitiatedByUserIdentifier: isInitiatedByUser ? @"YES" : @"NO"}];
+}
+
+- (void)trackReadArticle {
+	[[SEGAnalytics sharedAnalytics] track:MZTrackEventReadArticleIdentifier];
+}
+
+- (void)trackArticleWordSuggestionAddition:(BOOL)didAddAll {
+	[[SEGAnalytics sharedAnalytics] track:MZTrackEventAddArticleWordSuggestedIdentifier
+														 properties:@{MZTrackAddedAllArticleSuggestedWordsIdentifier: didAddAll ? @"YES" : @"NO"}];
 }
 
 @end

@@ -60,6 +60,8 @@ MZArticleShareTableViewCellDelegate>
 	self.tableView.estimatedRowHeight = kArticleTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
+
+	[[MZAnalyticsManager sharedManager] trackReadArticle];
 }
 
 - (void)setupTableViewData {
@@ -169,7 +171,9 @@ MZArticleShareTableViewCellDelegate>
 		[[MZUser currentUser] addTranslationsObject:word];
 	}
 
+	[[MZAnalyticsManager sharedManager] trackArticleWordSuggestionAddition:YES];
 	[[MZDataManager sharedDataManager] saveChanges];
+
 	for (UITableViewCell *cell in self.tableView.visibleCells) {
 		[[cell safeCastToClass:[MZArticleSuggestedWordTableViewCell class]] forceUpdate];
 	}
@@ -184,6 +188,7 @@ MZArticleShareTableViewCellDelegate>
 		[[MZUser currentUser] removeTranslationsObject:cell.word];
 	}
 
+	[[MZAnalyticsManager sharedManager] trackArticleWordSuggestionAddition:NO];
 	[[MZDataManager sharedDataManager] saveChanges];
 	[cell forceUpdate];
 }

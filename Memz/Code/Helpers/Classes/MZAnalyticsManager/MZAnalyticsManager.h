@@ -14,7 +14,8 @@ typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 	MZAnalyticsScreenWordAddition,
 	MZAnalyticsScreenSettings,
 	MZAnalyticsScreenStatistics,
-	MZAnalyticsScreenQuiz
+	MZAnalyticsScreenQuiz,
+	MZAnalyticsScreenArticle
 };
 
 @interface MZAnalyticsManager : NSObject
@@ -31,5 +32,8 @@ typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 							newLanguage:(MZLanguage)newLanguage;
 
 - (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser;
+
+- (void)trackReadArticle;
+- (void)trackArticleWordSuggestionAddition:(BOOL)didAddAll;
 
 @end
