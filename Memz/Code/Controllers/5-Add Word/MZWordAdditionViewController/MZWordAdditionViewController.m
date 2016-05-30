@@ -478,6 +478,11 @@ MZWordAdditionViewHeaderProtocol>
 
 	[[MZUser currentUser] addWord:self.wordToTranslate translations:self.wordTranslations inContext:nil];
 
+	[[MZAnalyticsManager sharedManager] trackWordAddition:self.wordToTranslate
+																					 translations:self.wordTranslations
+																					knownLanguage:[MZUser currentUser].knownLanguage.integerValue
+																						newLanguage:[MZUser currentUser].newLanguage.integerValue];
+	
 	[[MZDataManager sharedDataManager] saveChanges];
 	[self dismissViewControllerWithCompletion:nil];
 }

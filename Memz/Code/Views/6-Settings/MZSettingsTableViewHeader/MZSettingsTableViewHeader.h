@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MZLanguageDefinition.h"
 #import "MZNibView.h"
 
 @protocol MZSettingsTableViewHeaderDelegate;

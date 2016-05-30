@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MZLanguageDefinition.h"
 
 typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 	MZAnalyticsScreenUserEntrance,
@@ -24,4 +25,8 @@ typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 
 - (void)trackScreen:(MZAnalyticsScreen)screen;
 
+- (void)trackWordAddition:(NSString *)word
+						 translations:(NSArray<NSString *> *)translations
+						knownLanguage:(MZLanguage)knownLanguage
+							newLanguage:(MZLanguage)newLanguage;
 @end

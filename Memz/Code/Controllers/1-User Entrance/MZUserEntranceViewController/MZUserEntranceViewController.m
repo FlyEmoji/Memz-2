@@ -8,7 +8,6 @@
 
 #import "MZUserEntranceViewController.h"
 #import "UILabel+MemzAdditions.h"
-#import "MZLanguageDefinition.h"
 #import "MZPageControl.h"
 #import "MZDataManager.h"
 #import "MZUser.h"

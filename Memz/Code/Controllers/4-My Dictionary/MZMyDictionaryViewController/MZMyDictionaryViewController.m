@@ -12,7 +12,6 @@
 #import "MZMyDictionaryTableViewCell.h"
 #import "MZWordDescriptionViewController.h"
 #import "MZWord+CoreDataProperties.h"
-#import "MZLanguageDefinition.h"
 #import "MZEmptyStateView.h"
 #import "MZDataManager.h"
 

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MZLanguageDefinition.h"
 
 @interface MZStatisticsViewController : UIViewController
 

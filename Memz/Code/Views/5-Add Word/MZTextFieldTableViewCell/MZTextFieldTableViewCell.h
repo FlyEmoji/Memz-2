@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MZTableViewCell.h"
-#import "MZLanguageDefinition.h"
 
 typedef NS_ENUM(NSInteger, MZTextFieldTableViewCellType) {
 	MZTextFieldTableViewCellTypeRegular,

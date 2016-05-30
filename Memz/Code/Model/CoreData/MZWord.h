@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "MZLanguageDefinition.h"
 #import "MZUser.h"
 
 NS_ASSUME_NONNULL_BEGIN

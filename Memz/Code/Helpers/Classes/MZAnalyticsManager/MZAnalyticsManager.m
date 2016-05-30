@@ -8,6 +8,7 @@
 
 #import <Analytics/SEGAnalytics.h>
 #import "MZAnalyticsManager.h"
+#import "NSString+MemzAdditions.h"
 
 static NSString * const MZTrackScreenUserEntranceIdentifier = @"User Entrance Screen";
 static NSString * const MZTrackScreenWordAdditionIdentifier = @"Word Addition Screen";
@@ -15,7 +16,13 @@ static NSString * const MZTrackScreenSettingsIdentifier = @"Settings Screen";
 static NSString * const MZTrackScreenStatisticsIdentifier = @"Statistics Screen";
 static NSString * const MZTrackScreenQuizIdentifier = @"Quiz Screen";
 
+static NSString * const MZTrackEventWordAdditionIdentifier = @"Word Addition";
+
 static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
+static NSString * const MZTrackWordIdentifier = @"Word Added";
+static NSString * const MZTrackKnownLanguageIdentifier = @"Known Language";
+static NSString * const MZTrackNewLanguageIdentifier = @"New Language";
+static NSString * const MZTrackNumberTranslationsIdentifier = @"Number Translations";
 
 @implementation MZAnalyticsManager
 
@@ -35,7 +42,7 @@ static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
 	configuration.trackApplicationLifecycleEvents = YES;
 	configuration.recordScreenViews = YES;
 	[SEGAnalytics setupWithConfiguration:configuration];
-	
+
 	[[SEGAnalytics sharedAnalytics] identify:[[UIDevice currentDevice] identifierForVendor].UUIDString
 																		traits:@{MZTrackPhoneIdentifier: [[UIDevice currentDevice] identifierForVendor].UUIDString}];
 }
@@ -66,5 +73,16 @@ static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
 }
 
 #pragma mark - Track Events
+
+- (void)trackWordAddition:(NSString *)word
+						 translations:(NSArray<NSString *> *)translations
+						knownLanguage:(MZLanguage)knownLanguage
+							newLanguage:(MZLanguage)newLanguage {
+	[[SEGAnalytics sharedAnalytics] track:MZTrackEventWordAdditionIdentifier
+														 properties:@{MZTrackWordIdentifier: word,
+																					MZTrackNumberTranslationsIdentifier: [NSString stringWithFormat:@"%lu", (unsigned long)translations.count],
+																					MZTrackKnownLanguageIdentifier: [NSString languageNameForLanguage:knownLanguage],
+																					MZTrackNewLanguageIdentifier: [NSString languageNameForLanguage:newLanguage]}];
+}
 
 @end

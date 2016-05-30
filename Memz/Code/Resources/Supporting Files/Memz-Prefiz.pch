@@ -14,6 +14,7 @@
 #import "UIColor+MemzColors.h"
 #import "UIImage+AssetIdentifiers.h"
 #import "MZAnalyticsManager.h"
+#import "MZLanguageDefinition.h"
 #import "MZErrorCreator.h"
 
 #endif

@@ -7,7 +7,6 @@
 //
 
 #import "MZNibView.h"
-#import "MZLanguageDefinition.h"
 
 typedef void (^ MZFlightPickerCompletionHandler)(NSUInteger selectedIndex);
 
