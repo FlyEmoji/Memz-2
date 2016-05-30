@@ -30,6 +30,8 @@ static NSString * const MZTrackNumberTranslationsIdentifier = @"Number Translati
 static NSString * const MZTrackIsInitiatedByUserIdentifier = @"Is Initiated By User";
 static NSString * const MZTrackAddedAllArticleSuggestedWordsIdentifier = @"Addition All Suggested Words At Once";
 
+const NSUInteger kFlushValue = 10;
+
 @implementation MZAnalyticsManager
 
 + (MZAnalyticsManager *)sharedManager {
@@ -44,9 +46,10 @@ static NSString * const MZTrackAddedAllArticleSuggestedWordsIdentifier = @"Addit
 #pragma mark - Setups
 
 - (void)setupAnalytics {
-	SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"YOUR_WRITE_KEY"];
+	SEGAnalyticsConfiguration *configuration = [SEGAnalyticsConfiguration configurationWithWriteKey:@"EMCAdThjAGa6mYPiewkPzfvTAcErlgpT"];
 	configuration.trackApplicationLifecycleEvents = YES;
 	configuration.recordScreenViews = YES;
+	configuration.flushAt = kFlushValue;
 	[SEGAnalytics setupWithConfiguration:configuration];
 
 	[[SEGAnalytics sharedAnalytics] identify:[[UIDevice currentDevice] identifierForVendor].UUIDString
