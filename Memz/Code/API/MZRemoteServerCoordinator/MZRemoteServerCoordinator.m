@@ -73,6 +73,7 @@
 					continue;
 				}
 
+				// TODO: fix fact that removes other potential existing translations and keep only this new one
 				MZWord *suggestedWord = [MZWord addWord:newLanguageWord
 																		 inLanguage:[MZUser currentUser].newLanguage.integerValue
 																	 translations:@[knownLanguageWord]
