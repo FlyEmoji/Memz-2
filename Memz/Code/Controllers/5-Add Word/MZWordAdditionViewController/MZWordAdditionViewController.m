@@ -96,6 +96,8 @@ MZWordAdditionViewHeaderProtocol>
 
 	[self setupTableView];
 	[self.tableView reloadData];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenWordAddition];
 }
 
 #pragma mark - Setups

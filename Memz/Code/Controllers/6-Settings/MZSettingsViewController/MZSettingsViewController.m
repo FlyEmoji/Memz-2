@@ -103,6 +103,9 @@ UIScrollViewDelegate>
 
 	// (4) Reload Data
 	[self.tableView reloadData];
+
+	// (5) Track screen event
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenSettings];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

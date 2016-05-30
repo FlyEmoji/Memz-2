@@ -37,6 +37,8 @@
 	[self.descriptionLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
 		[label applyParagraphStyle];
 	}];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenUserEntrance];
 }
 
 - (BOOL)prefersStatusBarHidden {

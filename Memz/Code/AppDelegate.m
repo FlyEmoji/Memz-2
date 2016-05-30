@@ -7,17 +7,17 @@
 //
 
 #import "AppDelegate.h"
+#import "UIAlertController+MemzAdditions.h"
 #import "MZPushNotificationManager.h"
 #import "MZMainViewController.h"
 #import "MZPageControl.h"
 #import "MZQuizManager.h"
 #import "MZUser.h"
-#import "UIAlertController+MemzAdditions.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// (1) Setup appearance designs throughout
+	// (1) Setup common designs
 	[self setupCommonDesigns];
 
 	// (2) Recover and handle last push notification if exists
@@ -30,6 +30,9 @@
 		[pendingQuizDates removeObjectAtIndex:pendingQuizDates.count - 1];
 	}
 	[[MZUser currentUser] addPendingQuizzesForCreationDates:pendingQuizDates];
+
+	// (4) Setup analytics
+	[[MZAnalyticsManager sharedManager] setupAnalytics];
 
 	return YES;
 }

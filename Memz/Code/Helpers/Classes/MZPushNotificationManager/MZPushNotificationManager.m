@@ -91,7 +91,7 @@ NSString * const MZQuizKey = @"MZQuizKey";
 			}
 
 			[[MZDataManager sharedDataManager] saveChanges];
-			
+
 			dispatch_async(dispatch_get_main_queue(),^{
 				if (applicationState == UIApplicationStateActive) {
 					[self showAlertForNotificationType:notificationType

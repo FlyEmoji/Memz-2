@@ -13,6 +13,7 @@
 #import "NSObject+MemzAdditions.h"
 #import "UIColor+MemzColors.h"
 #import "UIImage+AssetIdentifiers.h"
+#import "MZAnalyticsManager.h"
 #import "MZErrorCreator.h"
 
 #endif
