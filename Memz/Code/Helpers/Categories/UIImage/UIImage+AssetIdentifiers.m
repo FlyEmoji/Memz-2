@@ -30,6 +30,8 @@
 			return [UIImage imageNamed:@"Common-Icon-Blue"];
 		case MZAssetIdentifierCommonIconBlueShadows:
 			return [UIImage imageNamed:@"Common-Icon-Blue-Shadows"];
+		case MZAssetIdentifierCommonTitleIcon:
+			return [UIImage imageNamed:@"Common-Titled-Logo"];
 		case MZAssetIdentifierCommonCross:
 			return [UIImage imageNamed:@"Common-Cross"];
 		case MZAssetIdentifierCommonTick:

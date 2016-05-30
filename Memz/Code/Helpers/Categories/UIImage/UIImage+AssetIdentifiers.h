@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, MZAssetIdentifier) {
 	MZAssetIdentifierCommonIconWhiteShadows,
 	MZAssetIdentifierCommonIconBlue,
 	MZAssetIdentifierCommonIconBlueShadows,
+	MZAssetIdentifierCommonTitleIcon,
 	MZAssetIdentifierCommonCross,
 	MZAssetIdentifierCommonTick,
 	MZAssetIdentifierCommonSocialTwitter,
