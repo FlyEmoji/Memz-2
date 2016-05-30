@@ -55,6 +55,7 @@
 		0C429E961CD1A28600AB7029 /* MZLoaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C429E951CD1A28600AB7029 /* MZLoaderView.m */; };
 		0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */; };
 		0C454D861CFCD336007EFB81 /* Settings-Privacy-Policy.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */; };
+		0C454D881CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */; };
 		0C49A4871CFCCD4F00C1A51A /* MZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
 		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
@@ -278,6 +279,7 @@
 		0C429E951CD1A28600AB7029 /* MZLoaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZLoaderView.m; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.m"; sourceTree = SOURCE_ROOT; };
 		0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZLoaderView.xib; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.xib"; sourceTree = SOURCE_ROOT; };
 		0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "Settings-Privacy-Policy.htm"; path = "Code/Resources/Web/Settings-Privacy-Policy.htm"; sourceTree = SOURCE_ROOT; };
+		0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "Settings-Terms-And-Conditions.htm"; path = "Code/Resources/Web/Settings-Terms-And-Conditions.htm"; sourceTree = SOURCE_ROOT; };
 		0C49A4851CFCCD4F00C1A51A /* MZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWebViewController.h; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWebViewController.m; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
@@ -980,6 +982,7 @@
 		0C454D821CFCD302007EFB81 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */,
 				0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */,
 			);
 			name = Web;
@@ -2195,6 +2198,7 @@
 			files = (
 				0C95C18E1C8943C200FEAB49 /* feed.json in Resources */,
 				0CD699311CF28F280030BDCB /* MZTutorialView.xib in Resources */,
+				0C454D881CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm in Resources */,
 				0CDA4AAC1C867625005BDA3B /* MaisonNeue-Bold.ttf in Resources */,
 				0CDA4AAD1C867625005BDA3B /* MaisonNeue-BoldItalic.ttf in Resources */,
 				0CDA4AAE1C867625005BDA3B /* MaisonNeue-Book.ttf in Resources */,

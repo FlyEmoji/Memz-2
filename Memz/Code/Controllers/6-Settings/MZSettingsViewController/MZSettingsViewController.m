@@ -315,6 +315,7 @@ UIScrollViewDelegate>
 		case MZSettingsTableViewRowTypeStatistics:
 			[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
 			break;
+		case MZSettingsTableViewRowTypeTermsAndConditions:
 		case MZSettingsTableViewRowTypePrivacyPolicy:
 			[self performSegueWithIdentifier:kShowWebViewControllerSegueIdentifier sender:indexPath];
 			break;
