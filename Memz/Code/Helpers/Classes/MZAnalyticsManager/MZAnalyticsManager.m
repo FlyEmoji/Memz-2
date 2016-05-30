@@ -15,6 +15,8 @@ static NSString * const MZTrackScreenSettingsIdentifier = @"Settings Screen";
 static NSString * const MZTrackScreenStatisticsIdentifier = @"Statistics Screen";
 static NSString * const MZTrackScreenQuizIdentifier = @"Quiz Screen";
 
+static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
+
 @implementation MZAnalyticsManager
 
 + (MZAnalyticsManager *)sharedManager {
@@ -33,6 +35,9 @@ static NSString * const MZTrackScreenQuizIdentifier = @"Quiz Screen";
 	configuration.trackApplicationLifecycleEvents = YES;
 	configuration.recordScreenViews = YES;
 	[SEGAnalytics setupWithConfiguration:configuration];
+	
+	[[SEGAnalytics sharedAnalytics] identify:[[UIDevice currentDevice] identifierForVendor].UUIDString
+																		traits:@{MZTrackPhoneIdentifier: [[UIDevice currentDevice] identifierForVendor].UUIDString}];
 }
 
 #pragma mark - Track Screen
