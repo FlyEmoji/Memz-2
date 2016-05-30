@@ -138,14 +138,19 @@
 	}
 }
 
+- (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language == %d AND %@ IN translations AND %@ IN users", [MZUser currentUser].knownLanguage.integerValue, self.objectID, [MZUser currentUser].objectID];
+	return [MZWord countOfObjectsMatchingPredicate:predicate];
+}
+
 #pragma mark - Statistics
 
-- (NSUInteger)numberTranslationsInLanguage:(MZLanguage)language {
+- (NSUInteger)numberQuizTranslationsInLanguage:(MZLanguage)language {
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 	return [MZResponse countOfObjectsMatchingPredicate:predicate];
 }
 
-- (CGFloat)percentageSuccessTranslationsInLanguage:(MZLanguage)language {
+- (CGFloat)percentageSuccessQuizTranslationsInLanguage:(MZLanguage)language {
 	NSPredicate *successCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND result = true AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 	NSPredicate *allObjectsCountPredicate = [NSPredicate predicateWithFormat:@"word = %@ AND quiz.newLanguage = %ld AND quiz.isAnswered = true", self, language];
 

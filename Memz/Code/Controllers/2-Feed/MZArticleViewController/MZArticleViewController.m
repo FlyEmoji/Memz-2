@@ -181,9 +181,6 @@ MZArticleShareTableViewCellDelegate>
 - (void)articleSuggestedWordTableViewCellDidTap:(MZArticleSuggestedWordTableViewCell *)cell {
 	if (![[MZUser currentUser].translations containsObject:cell.word]) {
 		[[MZUser currentUser] addTranslationsObject:cell.word];
-		for (MZWord *translation in cell.word.translations) {
-			
-		}
 	} else {
 		[[MZUser currentUser] removeTranslationsObject:cell.word];
 	}
