@@ -169,11 +169,10 @@ MZArticleShareTableViewCellDelegate>
 		[[MZUser currentUser] addTranslationsObject:word];
 	}
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		for (UITableViewCell *cell in self.tableView.visibleCells) {
-			[[cell safeCastToClass:[MZArticleSuggestedWordTableViewCell class]] forceUpdate];
-		}
-	}];
+	[[MZDataManager sharedDataManager] saveChanges];
+	for (UITableViewCell *cell in self.tableView.visibleCells) {
+		[[cell safeCastToClass:[MZArticleSuggestedWordTableViewCell class]] forceUpdate];
+	}
 }
 
 #pragma mark - Add Suggested Word Cell Delegate
@@ -185,7 +184,7 @@ MZArticleShareTableViewCellDelegate>
 		[[MZUser currentUser] removeTranslationsObject:cell.word];
 	}
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+	[[MZDataManager sharedDataManager] saveChanges];
 	[cell forceUpdate];
 }
 

@@ -476,9 +476,8 @@ MZWordAdditionViewHeaderProtocol>
 
 	[[MZUser currentUser] addWord:self.wordToTranslate translations:self.wordTranslations inContext:nil];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[self dismissViewControllerWithCompletion:nil];
-	}];
+	[[MZDataManager sharedDataManager] saveChanges];
+	[self dismissViewControllerWithCompletion:nil];
 }
 
 #pragma mark - Table View Header Delegate

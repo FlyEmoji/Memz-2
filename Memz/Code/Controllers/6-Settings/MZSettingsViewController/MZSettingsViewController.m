@@ -355,12 +355,11 @@ UIScrollViewDelegate>
 															 self.tableViewHeader.knownLanguage = selectedIndex;
 
 															 // (3) Update views and rest of the application via notification center
-															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
-																																										 object:@(selectedIndex)];
-																 [self showOverlayView:NO withDuration:kFadeDuration];
-																 [self.languagePickerView dismissWithDuration:kFadeDuration];
-															 }];
+															 [[MZDataManager sharedDataManager] saveChanges];
+															 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
+																																									 object:@(selectedIndex)];
+															 [self showOverlayView:NO withDuration:kFadeDuration];
+															 [self.languagePickerView dismissWithDuration:kFadeDuration];
 														 }];
 }
 
@@ -389,12 +388,11 @@ UIScrollViewDelegate>
 															 self.tableViewHeader.newLanguage = selectedIndex;
 
 															 // (3) Update views and rest of the application via notification center
-															 [[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-																 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
-																																										 object:@(selectedIndex)];
-																 [self showOverlayView:NO withDuration:kFadeDuration];
-																 [self.languagePickerView dismissWithDuration:kFadeDuration];
-															 }];
+															 [[MZDataManager sharedDataManager] saveChanges];
+															 [[NSNotificationCenter defaultCenter] postNotificationName:MZSettingsDidChangeLanguageNotification
+																																									 object:@(selectedIndex)];
+															 [self showOverlayView:NO withDuration:kFadeDuration];
+															 [self.languagePickerView dismissWithDuration:kFadeDuration];
 														 }];
 }
 

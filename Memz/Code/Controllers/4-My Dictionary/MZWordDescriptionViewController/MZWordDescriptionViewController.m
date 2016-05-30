@@ -125,11 +125,10 @@ MZTableViewTransitionDelegate>
 	MZWord *word = [[self.fetchedResultsController objectAtIndexPath:indexPath] safeCastToClass:[MZWord class]];
 
 	if (sectionInfo.numberOfObjects <= 1) {
-		[self removeWordWithCompletionHandler:^{
-			[self dismissViewControllerWithCompletion:nil];
-		}];
+		[self removeWord];
+		[self dismissViewControllerWithCompletion:nil];
 	} else {
-		[self removeTranslation:word completionHandler:nil];
+		[self removeTranslation:word];
 	}
 }
 
@@ -172,14 +171,14 @@ MZTableViewTransitionDelegate>
 
 #pragma mark - Edition Helpers
 
-- (void)removeTranslation:(MZWord *)translation completionHandler:(void (^ __nullable)(void))completionHandler {
+- (void)removeTranslation:(MZWord *)translation {
 	[self.word removeTranslationsObject:translation];
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
+	[[MZDataManager sharedDataManager] saveChanges];
 }
 
-- (void)removeWordWithCompletionHandler:(void (^ __nullable)(void))completionHandler {
+- (void)removeWord {
 	[[MZUser currentUser] removeTranslationsObject:self.word];
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:completionHandler];
+	[[MZDataManager sharedDataManager] saveChanges];
 }
 
 #pragma mark - Table View Header Delegate Methods
@@ -213,9 +212,8 @@ MZTableViewTransitionDelegate>
 #pragma mark - Test Methods
 
 - (IBAction)bottomButtonTapped:(id)sender {
-	[self removeWordWithCompletionHandler:^{
-		[self dismissViewControllerWithCompletion:nil];
-	}];
+	[self removeWord];
+	[self dismissViewControllerWithCompletion:nil];
 }
 
 @end

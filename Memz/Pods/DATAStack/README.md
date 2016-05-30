@@ -1,15 +1,21 @@
 ![DATAStack](https://raw.githubusercontent.com/3lvis/DATAStack/master/Images/datastack-logo.png)
 
+[![Version](https://img.shields.io/cocoapods/v/DATAStack.svg?style=flat)](https://cocoapods.org/pods/DATAStack)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/3lvis/DATAStack)
+![Swift 2.2.x](https://img.shields.io/badge/Swift-2.2.x-orange.svg)
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
+[![License](https://img.shields.io/cocoapods/l/DATAStack.svg?style=flat)](https://cocoapods.org/pods/DATAStack)
+
 **DATAStack** helps you to alleviate the Core Data boilerplate. Now you can go to your AppDelegate remove all the Core Data related code and replace it with an instance of DATAStack ([ObjC](DemoObjectiveC/AppDelegate.m), [Swift](DemoSwift/AppDelegate.swift)).
 
-- [x] Easier thread safety
-- [x] Runs synchronously in testing enviroments
-- [x] No singletons
-- [x] SQLite and InMemory support out of the box
-- [x] Easy database drop method
-- [x] Swift
-- [x] Objective-C support
-- [x] Free
+- Easier thread safety
+- Runs synchronously in testing enviroments
+- No singletons
+- SQLite and InMemory support out of the box
+- Easy database drop method
+- Swift
+- Objective-C support
+- Free
 
 ## Initialization
 
@@ -23,32 +29,6 @@ let dataStack = DATAStack(modelName:"MyAppModel")
 **Objective-C**
 ``` objc
 DATAStack *dataStack = [[DATAStack alloc] initWithModelName:@"MyAppModel"];
-```
-
-## Set up
-
-It is recommended that **DATAStack** gets persisted when these two methods are called in your `AppDelegate`.
-
-**Swift**
-```swift
-func applicationDidEnterBackground(application: UIApplication) {
-    self.dataStack.persistWithCompletion(nil)
-}
-
-func applicationWillTerminate(application: UIApplication) {
-    self.dataStack.persistWithCompletion(nil)
-}
-```
-
-**Objective-C**
-``` objc
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    [self.dataStack persistWithCompletion:nil];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [self.dataStack persistWithCompletion:nil];
-}
 ```
 
 ## Main Thread NSManagedObjectContext
@@ -97,12 +77,12 @@ Deleting the `.sqlite` file and resetting the state of your **DATAStack** is as 
 
 **Swift**
 ```swift
-self.dataStack.drop()
+try self.dataStack.drop()
 ```
 
 **Objective-C**
 ```objc
-[self.dataStack drop];
+[self.dataStack forceDrop];
 ```
 
 ## Testing
@@ -151,6 +131,13 @@ If `DATAStack` has troubles creating your persistent coordinator because a migra
 use_frameworks!
 
 pod 'DATAStack'
+```
+
+**DATAStack** is also available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+
+```ruby
+github '3lvis/DATAStack'
 ```
 
 ## Be Awesome

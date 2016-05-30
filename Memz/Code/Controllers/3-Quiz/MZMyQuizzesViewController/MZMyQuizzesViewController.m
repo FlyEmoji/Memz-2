@@ -118,7 +118,7 @@ MZEmptyStateViewProtocol>
 	}
 
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+		[[MZDataManager sharedDataManager] saveChanges];
 	}];
 }
 
@@ -166,7 +166,7 @@ MZEmptyStateViewProtocol>
 		// TODO: Show quiz in view mode
 	} else {
 		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+			[[MZDataManager sharedDataManager] saveChanges];
 		}];
 	}
 }

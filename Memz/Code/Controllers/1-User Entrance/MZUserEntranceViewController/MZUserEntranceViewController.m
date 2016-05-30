@@ -46,9 +46,8 @@
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
 	[MZUser signUpUserKnownLanguage:MZLanguageEnglish newLanguage:MZLanguageFrench];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[self dismissViewControllerAnimated:YES completion:nil];
-	}];
+	[[MZDataManager sharedDataManager] saveChanges];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Scroll View Delegate Methods

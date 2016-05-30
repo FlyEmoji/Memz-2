@@ -54,8 +54,10 @@
 
 #pragma mark - Public Methods
 
-- (void)saveChangesWithCompletionHandler:(void(^)(void))completionHandler {
-	[self.dataStack persistWithCompletion:completionHandler];
+- (NSError *)saveChanges {
+	NSError *error = nil;
+	[self.managedObjectContext save:&error];
+	return error;
 }
 
 - (void)saveChangesInBackground:(NSManagedObjectContext *)backgroundContext

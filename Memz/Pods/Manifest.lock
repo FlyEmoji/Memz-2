@@ -1,21 +1,21 @@
 PODS:
-  - DATAStack (4.2.0):
-    - TestCheck (~> 0.3.0)
+  - Analytics (3.1.1)
+  - DATAStack (5.2.1)
   - NMRangeSlider (1.2.1)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
-  - TestCheck (0.3.0)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
 
 DEPENDENCIES:
+  - Analytics (~> 3.0)
   - DATAStack
   - NMRangeSlider
   - SDWebImage (~> 3.6)
 
 SPEC CHECKSUMS:
-  DATAStack: b831724a52d67cc0cf098cf53774b8fdeab22a25
+  Analytics: 96ad217bd99f5c87d16cc97c1f0039231d935f99
+  DATAStack: c6432c89d0bd2b1d2a17c947ca8a2c81f389f06d
   NMRangeSlider: 317ded652431eb90501c8421d9cddc3930d891e6
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  TestCheck: 42c1343664986c0cbfaa20a62622d6f6fb70a407
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
