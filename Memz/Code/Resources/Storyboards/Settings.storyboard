@@ -219,11 +219,47 @@
                         <outlet property="tableView" destination="5u5-4G-Ao8" id="9KX-DC-Gsc"/>
                         <outlet property="tableViewHeader" destination="IKM-GF-Fd0" id="yO7-vW-Ge3"/>
                         <segue destination="B3Q-a8-bhg" kind="presentation" identifier="MZPresentStatisticsViewControllerSegueIdentifier" id="tI6-ax-1VB"/>
+                        <segue destination="5Xu-ff-6Ci" kind="show" identifier="MZShowWebViewControllerSegueIdentifier" id="Pbr-fD-76o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wox-S7-Lul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="1160"/>
+            <point key="canvasLocation" x="2103" y="1160"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="cJi-kY-Os2">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Xu-ff-6Ci" customClass="MZWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t7r-ES-AYi"/>
+                        <viewControllerLayoutGuide type="bottom" id="SUW-nK-nAn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nky-1T-vCM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgx-3W-CYZ">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" red="0.89411764705882346" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="deviceRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sgx-3W-CYZ" firstAttribute="leading" secondItem="Nky-1T-vCM" secondAttribute="leading" id="1S8-BJ-Ni3"/>
+                            <constraint firstItem="sgx-3W-CYZ" firstAttribute="top" secondItem="t7r-ES-AYi" secondAttribute="bottom" id="ipf-9c-LwN"/>
+                            <constraint firstItem="SUW-nK-nAn" firstAttribute="top" secondItem="sgx-3W-CYZ" secondAttribute="bottom" id="nSZ-s7-TEI"/>
+                            <constraint firstAttribute="trailing" secondItem="sgx-3W-CYZ" secondAttribute="trailing" id="xJp-iv-U7c"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="webView" destination="sgx-3W-CYZ" id="xmq-8r-mOR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kE4-T1-fCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2839" y="1160"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="pLI-Ax-Dh3">
@@ -231,7 +267,7 @@
                 <viewControllerPlaceholder storyboardName="Statistics" id="B3Q-a8-bhg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4j-cW-5fU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="1621"/>
+            <point key="canvasLocation" x="2103" y="1619"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h5B-p9-GUZ">

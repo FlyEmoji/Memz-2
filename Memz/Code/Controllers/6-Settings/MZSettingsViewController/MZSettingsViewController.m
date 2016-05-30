@@ -13,6 +13,7 @@
 #import "MZSettingsSliderTableViewCell.h"
 #import "MZPushNotificationManager.h"
 #import "UIImage+MemzAdditions.h"
+#import "MZWebViewController.h"
 #import "MZFlightPickerView.h"
 #import "MZDataManager.h"
 #import "MZQuizManager.h"
@@ -20,6 +21,7 @@
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
+	MZSettingsTableViewSectionTypeLegal,
 	MZSettingsTableViewSectionTypeOthers
 };
 
@@ -27,13 +29,15 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	MZSettingsTableViewRowTypeNotificationMain,
 	MZSettingsTableViewRowTypeNotificationNumber,
 	MZSettingsTableViewRowTypeNotificationHours,
-	MZSettingsTableViewRowTypeStatistics
-	// TODO: MZSettingsTableViewRowTypeTermsAndConditions
+	MZSettingsTableViewRowTypeStatistics,
+	MZSettingsTableViewRowTypeTermsAndConditions,
+	MZSettingsTableViewRowTypePrivacyPolicy
 };
 
 NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
 
 NSString * const kPresentStatisticsViewControllerSegueIdentifier = @"MZPresentStatisticsViewControllerSegueIdentifier";
+NSString * const kShowWebViewControllerSegueIdentifier = @"MZShowWebViewControllerSegueIdentifier";
 
 NSString * const kSettingsTableViewHeaderIdentifier = @"MZSettingsTableViewHeaderIdentifier";
 NSString * const kSettingsSwitchTableViewCellIdentifier = @"MZSettingsSwitchTableViewCellIdentifier";
@@ -52,6 +56,7 @@ NSString * const kTimeStartKey = @"TimeStartKey";
 NSString * const kTimeEndKey = @"TimeEndKey";
 NSString * const kMinimumValueKey = @"MinimumValueKey";
 NSString * const kMaximumValueKey = @"MaximumValueKey";
+NSString * const kWebViewTypeKey = @"WebViewTypeKey";
 
 const CGFloat kSettingsTableViewHeaderHeight = 180.0f;
 const CGFloat kCellRegularHeight = 50.0f;
@@ -83,8 +88,6 @@ UIScrollViewDelegate>
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	self.navigationController.navigationBarHidden = YES;
-
 	// (1) Register custom Table View Header
 	[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([MZSettingsTableViewHeader class]) bundle:nil] forHeaderFooterViewReuseIdentifier:kSettingsTableViewHeaderIdentifier];
 
@@ -98,8 +101,22 @@ UIScrollViewDelegate>
 	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
 	[self.overlayView addGestureRecognizer:tapGestureRecognizer];
 
-	// (3) Reload Data
+	// (4) Reload Data
 	[self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kShowWebViewControllerSegueIdentifier]) {
+		MZWebViewController *controller = [segue.destinationViewController safeCastToClass:[MZWebViewController class]];
+		NSIndexPath *indexPath = [sender safeCastToClass:[NSIndexPath class]];
+		controller.webViewType = [self.tableViewData[indexPath.section][kDataKey][indexPath.row][kWebViewTypeKey] integerValue];
+	}
 }
 
 - (NSMutableArray<NSMutableDictionary *> *)tableViewData {
@@ -123,13 +140,23 @@ UIScrollViewDelegate>
 																			 kMaximumValueKey: @(24)}.mutableCopy];
 	}
 
-	// (2) Setup Table View Data: Others
+	// (2) Setup Table View Data: Legal
+	NSMutableArray *legal = @[@{kRowKey: @(MZSettingsTableViewRowTypeTermsAndConditions),
+															kTitleKey: NSLocalizedString(@"SettingsLegalTermsAndConditions", nil),
+															kWebViewTypeKey: @(MZWebViewTypeTermsAndConditions)}.mutableCopy,
+														@{kRowKey: @(MZSettingsTableViewRowTypePrivacyPolicy),
+															kTitleKey: NSLocalizedString(@"SettingsLegalPrivacyPolicy", nil),
+															kWebViewTypeKey: @(MZWebViewTypePrivacyPolicy)}.mutableCopy].mutableCopy;
+
+	// (3) Setup Table View Data: Others
 	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
 															 kTitleKey: NSLocalizedString(@"SettingsOthersStatisticsTitle", nil)}.mutableCopy].mutableCopy;
 
-	// (3) Unify Table View Data and Return
+	// (4) Unify Table View Data and Return
 	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
 						 kDataKey: notificationsSettings},
+					 @{kSectionKey: @(MZSettingsTableViewSectionTypeLegal),
+						 kDataKey: legal},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeOthers),
 						 kDataKey: others}].mutableCopy;
 }
@@ -179,6 +206,8 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationSectionTitle", nil);
+		case MZSettingsTableViewSectionTypeLegal:
+			return NSLocalizedString(@"SettingsLegalSectionTitle", nil);
 		case MZSettingsTableViewSectionTypeOthers:
 			return NSLocalizedString(@"SettingsOthersSectionTitle", nil);
 	}
@@ -189,6 +218,8 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationsSectionFooterTitle", nil);
+		case MZSettingsTableViewSectionTypeLegal:
+			return NSLocalizedString(@"SettingsLegalSectionFooterTitle", nil);
 	}
 	return nil;
 }
@@ -272,14 +303,24 @@ UIScrollViewDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 
 		case MZSettingsTableViewRowTypeStatistics:
+		case MZSettingsTableViewRowTypeTermsAndConditions:
+		case MZSettingsTableViewRowTypePrivacyPolicy:
 			return buildTitleCell(data[kTitleKey]);
 	}
 	return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue] == MZSettingsTableViewRowTypeStatistics) {
-		[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
+	switch ([self.tableViewData[indexPath.section][kDataKey][indexPath.row][kRowKey] integerValue]) {
+		case MZSettingsTableViewRowTypeStatistics:
+			[self performSegueWithIdentifier:kPresentStatisticsViewControllerSegueIdentifier sender:self];
+			break;
+		case MZSettingsTableViewRowTypeTermsAndConditions:
+		case MZSettingsTableViewRowTypePrivacyPolicy:
+			[self performSegueWithIdentifier:kShowWebViewControllerSegueIdentifier sender:indexPath];
+			break;
+		default:
+			break;
 	}
 }
 

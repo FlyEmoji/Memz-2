@@ -55,11 +55,14 @@
 "SettingsNotificationsHoursTitle" = "Daily Quizzes Time Frame";
 "SettingsQuizSetionTitle" = "Quizzes";
 "SettingsQuizReverseTitle" = "Random Language Order";
+"SettingsLegalSectionTitle" = "Legal";
+"SettingsLegalTermsAndConditions" = "Terms & Conditions";
+"SettingsLegalPrivacyPolicy" = "Privacy Policy";
 "SettingsOthersSectionTitle" = "Others";
 "SettingsOthersStatisticsTitle" = "Statistics";
 
 "SettingsNotificationsSectionFooterTitle" = "Activate automatic quizzes if you want them delivered every day and receive a notification when it happens.";
-"SettingsQuizSectionFooterTitle" = "Activate if you want the targeted translation language to be randomly switched in your quizzes.";
+"SettingsLegalSectionFooterTitle" = "Legal mentions and privacy policy clauses.";
 
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";
