@@ -20,6 +20,7 @@
 
 typedef NS_ENUM(NSUInteger, MZSettingsTableViewSectionType) {
 	MZSettingsTableViewSectionTypeNotifications,
+	MZSettingsTableViewSectionTypeLegal,
 	MZSettingsTableViewSectionTypeOthers
 };
 
@@ -27,8 +28,9 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	MZSettingsTableViewRowTypeNotificationMain,
 	MZSettingsTableViewRowTypeNotificationNumber,
 	MZSettingsTableViewRowTypeNotificationHours,
-	MZSettingsTableViewRowTypeStatistics
-	// TODO: MZSettingsTableViewRowTypeTermsAndConditions
+	MZSettingsTableViewRowTypeStatistics,
+	MZSettingsTableViewRowTypeTermsAndConditions,
+	MZSettingsTableViewRowTypePrivacyPolicy
 };
 
 NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
@@ -98,7 +100,7 @@ UIScrollViewDelegate>
 	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapView:)];
 	[self.overlayView addGestureRecognizer:tapGestureRecognizer];
 
-	// (3) Reload Data
+	// (4) Reload Data
 	[self.tableView reloadData];
 }
 
@@ -123,13 +125,21 @@ UIScrollViewDelegate>
 																			 kMaximumValueKey: @(24)}.mutableCopy];
 	}
 
-	// (2) Setup Table View Data: Others
+	// (2) Setup Table View Data: Legal
+	NSMutableArray *legal = @[@{kRowKey: @(MZSettingsTableViewRowTypeTermsAndConditions),
+															kTitleKey: NSLocalizedString(@"SettingsLegalTermsAndConditions", nil)}.mutableCopy,
+														@{kRowKey: @(MZSettingsTableViewRowTypePrivacyPolicy),
+															kTitleKey: NSLocalizedString(@"SettingsLegalPrivacyPolicy", nil)}.mutableCopy].mutableCopy;
+
+	// (3) Setup Table View Data: Others
 	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
 															 kTitleKey: NSLocalizedString(@"SettingsOthersStatisticsTitle", nil)}.mutableCopy].mutableCopy;
 
-	// (3) Unify Table View Data and Return
+	// (4) Unify Table View Data and Return
 	return @[@{kSectionKey: @(MZSettingsTableViewSectionTypeNotifications),
 						 kDataKey: notificationsSettings},
+					 @{kSectionKey: @(MZSettingsTableViewSectionTypeLegal),
+						 kDataKey: legal},
 					 @{kSectionKey: @(MZSettingsTableViewSectionTypeOthers),
 						 kDataKey: others}].mutableCopy;
 }
@@ -179,6 +189,8 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationSectionTitle", nil);
+		case MZSettingsTableViewSectionTypeLegal:
+			return NSLocalizedString(@"SettingsLegalSectionTitle", nil);
 		case MZSettingsTableViewSectionTypeOthers:
 			return NSLocalizedString(@"SettingsOthersSectionTitle", nil);
 	}
@@ -189,6 +201,8 @@ UIScrollViewDelegate>
 	switch ([self.tableViewData[section][kSectionKey] integerValue]) {
 		case MZSettingsTableViewSectionTypeNotifications:
 			return NSLocalizedString(@"SettingsNotificationsSectionFooterTitle", nil);
+		case MZSettingsTableViewSectionTypeLegal:
+			return NSLocalizedString(@"SettingsLegalSectionFooterTitle", nil);
 	}
 	return nil;
 }
@@ -272,6 +286,8 @@ UIScrollViewDelegate>
 														 [data[kMaximumValueKey] integerValue]);
 
 		case MZSettingsTableViewRowTypeStatistics:
+		case MZSettingsTableViewRowTypeTermsAndConditions:
+		case MZSettingsTableViewRowTypePrivacyPolicy:
 			return buildTitleCell(data[kTitleKey]);
 	}
 	return nil;
