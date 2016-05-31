@@ -96,6 +96,8 @@ MZWordAdditionViewHeaderProtocol>
 
 	[self setupTableView];
 	[self.tableView reloadData];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenWordAddition];
 }
 
 #pragma mark - Setups
@@ -476,9 +478,13 @@ MZWordAdditionViewHeaderProtocol>
 
 	[[MZUser currentUser] addWord:self.wordToTranslate translations:self.wordTranslations inContext:nil];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[self dismissViewControllerWithCompletion:nil];
-	}];
+	[[MZAnalyticsManager sharedManager] trackWordAddition:self.wordToTranslate
+																					 translations:self.wordTranslations
+																					knownLanguage:[MZUser currentUser].knownLanguage.integerValue
+																						newLanguage:[MZUser currentUser].newLanguage.integerValue];
+	
+	[[MZDataManager sharedDataManager] saveChanges];
+	[self dismissViewControllerWithCompletion:nil];
 }
 
 #pragma mark - Table View Header Delegate

@@ -8,7 +8,6 @@
 
 #import "MZUserEntranceViewController.h"
 #import "UILabel+MemzAdditions.h"
-#import "MZLanguageDefinition.h"
 #import "MZPageControl.h"
 #import "MZDataManager.h"
 #import "MZUser.h"
@@ -37,6 +36,8 @@
 	[self.descriptionLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
 		[label applyParagraphStyle];
 	}];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenUserEntrance];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -46,9 +47,8 @@
 - (IBAction)didTapEnterNavigationButton:(UIButton *)button {
 	[MZUser signUpUserKnownLanguage:MZLanguageEnglish newLanguage:MZLanguageFrench];
 
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-		[self dismissViewControllerAnimated:YES completion:nil];
-	}];
+	[[MZDataManager sharedDataManager] saveChanges];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Scroll View Delegate Methods

@@ -56,6 +56,7 @@
 		0C429E981CD1A2A900AB7029 /* MZLoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */; };
 		0C454D861CFCD336007EFB81 /* Settings-Privacy-Policy.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */; };
 		0C454D881CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */; };
+		0C454D8C1CFCF042007EFB81 /* MZAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */; };
 		0C49A4871CFCCD4F00C1A51A /* MZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
 		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
@@ -175,7 +176,7 @@
 		0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CA1C3CB74500EB60DE /* UIViewController+MemzAdditions.m */; };
 		0CEFD1CE1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CD1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m */; };
 		0CEFD1D11C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */; };
-		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +281,8 @@
 		0C429E971CD1A2A900AB7029 /* MZLoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZLoaderView.xib; path = "Code/Views/0-Common/MZLoaderView/MZLoaderView.xib"; sourceTree = SOURCE_ROOT; };
 		0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "Settings-Privacy-Policy.htm"; path = "Code/Resources/Web/Settings-Privacy-Policy.htm"; sourceTree = SOURCE_ROOT; };
 		0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "Settings-Terms-And-Conditions.htm"; path = "Code/Resources/Web/Settings-Terms-And-Conditions.htm"; sourceTree = SOURCE_ROOT; };
+		0C454D8A1CFCF042007EFB81 /* MZAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAnalyticsManager.h; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.h; sourceTree = SOURCE_ROOT; };
+		0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnalyticsManager.m; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.m; sourceTree = SOURCE_ROOT; };
 		0C49A4851CFCCD4F00C1A51A /* MZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWebViewController.h; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWebViewController.m; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
@@ -988,6 +991,15 @@
 			name = Web;
 			sourceTree = "<group>";
 		};
+		0C454D891CFCF009007EFB81 /* MZAnalyticsManager */ = {
+			isa = PBXGroup;
+			children = (
+				0C454D8A1CFCF042007EFB81 /* MZAnalyticsManager.h */,
+				0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */,
+			);
+			name = MZAnalyticsManager;
+			sourceTree = "<group>";
+		};
 		0C49A4841CFCCD1F00C1A51A /* MZWebViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1417,12 +1429,13 @@
 		0CA58BE01C204FED000E19D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0CE624471C8FC16000F7B9EB /* MZShareManager */,
 				0C74E6991C4DD5D500184C94 /* MZProtocolInterceptor */,
 				0C5FC1561C3A057800FF83E7 /* MZResponseComparator */,
 				0CDB82F11C30A4BC00EADB05 /* MZQuizManager */,
 				0CDB82F51C30AB3D00EADB05 /* MZPushNotificationManager */,
 				0CAFF3801CEEB8DB00F2860B /* MZApplicationSessionManager */,
+				0CE624471C8FC16000F7B9EB /* MZShareManager */,
+				0C454D891CFCF009007EFB81 /* MZAnalyticsManager */,
 				0C5042271C59CBA90045E6FC /* MZStoryboardSegue */,
 				0CDFDA0A1C57216F007EBCA6 /* MZTransitioningDefaultBehavior */,
 				0C57F5851C4B2E050055532E /* MZPresentViewControllerTransition */,
@@ -2429,6 +2442,7 @@
 				0CEFD1CE1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m in Sources */,
 				0C1231D71CD6EB57006BB20D /* MZUser+StatisticsProvider.m in Sources */,
 				0CDB82F81C30ABB300EADB05 /* MZPushNotificationManager.m in Sources */,
+				0C454D8C1CFCF042007EFB81 /* MZAnalyticsManager.m in Sources */,
 				0CEFD1D11C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

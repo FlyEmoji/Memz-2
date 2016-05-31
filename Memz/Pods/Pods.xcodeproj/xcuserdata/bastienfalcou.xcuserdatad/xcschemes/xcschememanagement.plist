@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Analytics.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DATAStack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Mixpanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,7 +34,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TestCheck.xcscheme</key>
+		<key>Segment-Mixpanel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,37 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>60BEEA8D2975A0BBF731259A4E2E45BF</key>
+		<key>2644D58E374306BCC921D6CB94B9A953</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>632F66E06D543CA265FFCA5C7A2A1EEB</key>
+		<key>3392DAA9C94BC7D170DDA6A4533C8A0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E00154D66D75192031C9D75808A284D</key>
+		<key>4CD6D7203D25FEB744791E2449F88C96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>832B3397BF83A65B3641BE4AAA9AF7D7</key>
+		<key>721DFA59A5F5F4A80DE906573B84E47C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9666688CB41B38A9914616144C9C7A3E</key>
+		<key>7A915ACA63649CB4CB3C844599BDF8F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BC92DA298813E8868DFF9D3949EE6FC4</key>
+		<key>A35F61DF26A860373A3532912B8A7696</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C78C1D5BD97A223920C38FDEF0CA99C4</key>
+		<key>D4366019FDFD4968B0EE7D6057DFCEF3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

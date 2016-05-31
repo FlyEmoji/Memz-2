@@ -11,7 +11,6 @@
 #import "UIAlertController+MemzAdditions.h"
 #import "MZQuizViewController.h"
 #import "MZMainViewController.h"
-#import "MZLanguageDefinition.h"
 #import "MZDataManager.h"
 #import "MZQuiz.h"
 
@@ -90,19 +89,19 @@ NSString * const MZQuizKey = @"MZQuizKey";
 				return;
 			}
 
-			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:^{
-				dispatch_async(dispatch_get_main_queue(),^{
-					if (applicationState == UIApplicationStateActive) {
-						[self showAlertForNotificationType:notificationType
-															inViewController:[UIViewController topMostViewController]
-																			userInfo:@{MZQuizKey: quiz}];
-					} else {
-						[MZQuizViewController askQuiz:quiz
-											 fromViewController:[UIViewController topMostViewController]
-													completionBlock:nil];
-					}
-				});
-			}];
+			[[MZDataManager sharedDataManager] saveChanges];
+
+			dispatch_async(dispatch_get_main_queue(),^{
+				if (applicationState == UIApplicationStateActive) {
+					[self showAlertForNotificationType:notificationType
+														inViewController:[UIViewController topMostViewController]
+																		userInfo:@{MZQuizKey: quiz}];
+				} else {
+					[MZQuizViewController askQuiz:quiz
+										 fromViewController:[UIViewController topMostViewController]
+												completionBlock:nil];
+				}
+			});
 			break;
 		}
 		default:

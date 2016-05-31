@@ -102,6 +102,8 @@ MZCountDownDelegate>
 	[self configureTapEndEditing];
 
 	[self setupResponse];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenQuiz];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

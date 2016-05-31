@@ -51,7 +51,7 @@ NSString * const MZUserDidAuthenticateNotification = @"MZUserDidAuthenticateNoti
 			[self addQuizzesObject:quiz];
 		}
 	}];
-	[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+	[[MZDataManager sharedDataManager] saveChanges];
 }
 
 #pragma mark - Custom Overrides

@@ -8,4 +8,4 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const MVMixpanelToken;
+extern NSString * const MZSegmentToken;

@@ -49,6 +49,8 @@ UITableViewDelegate>
 	self.tableView.tableFooterView = [[UIView alloc] init];
 	self.tableView.contentInset = UIEdgeInsetsMake(kTableViewTopInset, 0.0f, 0.0f, 0.0f);
 	[self.tableView reloadData];
+
+	[[MZAnalyticsManager sharedManager] trackScreen:MZAnalyticsScreenStatistics];
 }
 
 #pragma mark - Navigation Bar & Extension UI Setup

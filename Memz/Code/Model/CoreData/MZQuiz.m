@@ -9,7 +9,6 @@
 #import "MZQuiz.h"
 #import "MZWord.h"
 #import "NSManagedObject+MemzCoreData.h"
-#import "MZLanguageDefinition.h"
 
 @implementation MZQuiz
 

@@ -118,7 +118,7 @@ MZEmptyStateViewProtocol>
 	}
 
 	[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-		[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+		[[MZDataManager sharedDataManager] saveChanges];
 	}];
 }
 
@@ -165,8 +165,9 @@ MZEmptyStateViewProtocol>
 	if (quiz.isAnswered) {
 		// TODO: Show quiz in view mode
 	} else {
+		[[MZAnalyticsManager sharedManager] trackNewQuizUserInitiated:NO];
 		[MZQuizViewController askQuiz:quiz fromViewController:self completionBlock:^{
-			[[MZDataManager sharedDataManager] saveChangesWithCompletionHandler:nil];
+			[[MZDataManager sharedDataManager] saveChanges];
 		}];
 	}
 }
@@ -262,6 +263,7 @@ MZEmptyStateViewProtocol>
 #pragma mark - Quiz Info View Delegate Methods
 
 - (void)quizInfoViewDidRequestNewQuiz:(MZQuizInfoView *)quizInfoView {
+	[[MZAnalyticsManager sharedManager] trackNewQuizUserInitiated:YES];
 	[self createAndPresentQuiz];
 }
 

@@ -19,7 +19,7 @@
 
 + (instancetype)sharedDataManager;
 
-- (void)saveChangesWithCompletionHandler:(void(^)(void))completionHandler;
+- (NSError *)saveChanges;
 
 - (void)saveChangesInBackground:(NSManagedObjectContext *)backgroundContext
 							completionHandler:(MZDataTaskCompletionBlock)completionHandler;
