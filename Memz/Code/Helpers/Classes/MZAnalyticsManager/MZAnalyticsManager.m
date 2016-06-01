@@ -19,7 +19,6 @@ static NSString * const MZTrackScreenArticleIdentifier = @"Article Screen";
 
 static NSString * const MZTrackEventWordAdditionIdentifier = @"Word Addition";
 static NSString * const MZTrackEventNewQuizIdentifier = @"New Quiz";
-static NSString * const MZTrackEventReadArticleIdentifier = @"Open Article";
 static NSString * const MZTrackEventAddArticleWordSuggestedIdentifier = @"Article Suggestion Word Addition";
 
 static NSString * const MZTrackPhoneIdentifier = @"Type Phone";
@@ -98,10 +97,6 @@ const NSUInteger kFlushValue = 10;
 - (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser {
 	[[SEGAnalytics sharedAnalytics] track:MZTrackEventNewQuizIdentifier
 														 properties:@{MZTrackIsInitiatedByUserIdentifier: isInitiatedByUser ? @"YES" : @"NO"}];
-}
-
-- (void)trackReadArticle {
-	[[SEGAnalytics sharedAnalytics] track:MZTrackEventReadArticleIdentifier];
 }
 
 - (void)trackArticleWordSuggestionAddition:(BOOL)didAddAll {

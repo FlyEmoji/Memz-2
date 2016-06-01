@@ -33,7 +33,6 @@ typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 
 - (void)trackNewQuizUserInitiated:(BOOL)isInitiatedByUser;
 
-- (void)trackReadArticle;
 - (void)trackArticleWordSuggestionAddition:(BOOL)didAddAll;
 
 @end

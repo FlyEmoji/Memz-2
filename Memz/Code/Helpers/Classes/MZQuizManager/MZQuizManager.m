@@ -11,7 +11,7 @@
 #import "MZApplicationSessionManager.h"
 #import "NSDate+MemzAdditions.h"
 
-const NSUInteger kDefaultQuizPerDay = 3;
+const NSUInteger kDefaultQuizPerDay = 5;
 
 const NSUInteger kDefaultStartTimeHour = 8;
 const NSUInteger kDefaultEndTimeHour = 20;
