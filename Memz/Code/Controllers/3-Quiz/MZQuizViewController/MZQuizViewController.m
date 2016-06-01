@@ -144,8 +144,11 @@ MZCountDownDelegate>
 
 	self.translating = YES;
 
-	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:self.response.word.translations.count];
-	for (NSUInteger i = 0; i < self.response.word.translations.count; i++) {
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"language = %d", [MZUser currentUser].knownLanguage.integerValue];
+	NSUInteger wordsCount = [self.response.word.translations.allObjects filteredArrayUsingPredicate:predicate].count;
+
+	self.tableViewEnteredData = [[NSMutableArray alloc] initWithCapacity:wordsCount];
+	for (NSUInteger i = 0; i < wordsCount; i++) {
 		[self.tableViewEnteredData addObject:buildTranslation(MZTranslationResponseTableViewCellTypeUnaswered, @"", @"", NO)];
 	}
 
