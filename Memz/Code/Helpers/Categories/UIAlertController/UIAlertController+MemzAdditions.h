@@ -35,6 +35,7 @@ typedef void (^ UIAlertControllerButtonClickedBlock)(UIAlertController *alertCon
 
 /*
  * This category provides with convenience methods that show an alert controller view and handle the button tapped in its block.
+ * Leave block nil and buttons will automatically dismiss the alert when tapped.
  */
 + (void)showWithStyle:(UIAlertControllerStyle)style
 								title:(NSString *)title
