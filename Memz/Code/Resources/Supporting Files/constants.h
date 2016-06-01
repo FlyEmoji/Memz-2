@@ -15,6 +15,8 @@
 const NSUInteger MZWordIndexLearned = 5;
 const NSUInteger MZQuizNumberTranslations = 3;
 
+extern NSString * const MZContactEmail;
+
 // Storyboards
 
 extern NSString * const MZLauchScreenStoryboard;

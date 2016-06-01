@@ -8,6 +8,10 @@
 
 #import "constants.h"
 
+// Global Variables
+
+NSString * const MZContactEmail = @"memzcreativestudio@gmail.com";
+
 // Storyboards
 
 NSString * const MZLauchScreenStoryboard = @"LaunchScreen";

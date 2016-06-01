@@ -6,11 +6,14 @@
 //  Copyright © 2016 Falcou. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 #import "MZSettingsViewController.h"
 #import "MZSettingsTableViewHeader.h"
 #import "MZSettingsTitleTableViewCell.h"
 #import "MZSettingsStepperTableViewCell.h"
 #import "MZSettingsSliderTableViewCell.h"
+#import "UIViewController+MemzAdditions.h"
+#import "UIAlertController+MemzAdditions.h"
 #import "MZPushNotificationManager.h"
 #import "UIImage+MemzAdditions.h"
 #import "MZWebViewController.h"
@@ -31,7 +34,8 @@ typedef NS_ENUM(NSUInteger, MZSettingsTableViewRowType) {
 	MZSettingsTableViewRowTypeNotificationHours,
 	MZSettingsTableViewRowTypeStatistics,
 	MZSettingsTableViewRowTypeTermsAndConditions,
-	MZSettingsTableViewRowTypePrivacyPolicy
+	MZSettingsTableViewRowTypePrivacyPolicy,
+	MZSettingsTableViewRowTypeContact
 };
 
 NSString * const MZSettingsDidChangeLanguageNotification = @"MZSettingsDidChangeLanguageNotification";
@@ -70,7 +74,8 @@ MZSettingsTitleTableViewCellDelegate,
 MZSettingsStepperTableViewCellDelegate,
 MZSettingsSliderTableViewCellDelegate,
 MZTableViewTransitionDelegate,
-UIScrollViewDelegate>
+UIScrollViewDelegate,
+MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet MZTableView *tableView;
 @property (nonatomic, weak) IBOutlet MZSettingsTableViewHeader *tableViewHeader;
@@ -149,7 +154,9 @@ UIScrollViewDelegate>
 															kWebViewTypeKey: @(MZWebViewTypeTermsAndConditions)}.mutableCopy,
 														@{kRowKey: @(MZSettingsTableViewRowTypePrivacyPolicy),
 															kTitleKey: NSLocalizedString(@"SettingsLegalPrivacyPolicy", nil),
-															kWebViewTypeKey: @(MZWebViewTypePrivacyPolicy)}.mutableCopy].mutableCopy;
+															kWebViewTypeKey: @(MZWebViewTypePrivacyPolicy)}.mutableCopy,
+														@{kRowKey: @(MZSettingsTableViewRowTypeContact),
+															kTitleKey: NSLocalizedString(@"SettingsLegalContact", nil)}.mutableCopy].mutableCopy;
 
 	// (3) Setup Table View Data: Others
 	NSMutableArray *others = @[@{kRowKey: @(MZSettingsTableViewRowTypeStatistics),
@@ -182,6 +189,21 @@ UIScrollViewDelegate>
 
 - (void)didTapView:(UITapGestureRecognizer *)tapGestureRecognizer {
 	[self dismissLanguagePickerViewIfNeeded];
+}
+
+#pragma mark - Contact Email Handling
+
+- (void)presentEmailContactNativeController {
+	if ([MFMailComposeViewController canSendMail]) {
+		MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+		mail.mailComposeDelegate = self;
+
+		[mail setSubject:NSLocalizedString(@"ContactEmailSubject", nil)];
+		[mail setMessageBody:NSLocalizedString(@"ContactEmailBody", nil) isHTML:NO];
+		[mail setToRecipients:@[MZContactEmail]];
+		
+		[self presentViewController:mail animated:YES completion:NULL];
+	}
 }
 
 #pragma mark - Helpers
@@ -308,6 +330,7 @@ UIScrollViewDelegate>
 		case MZSettingsTableViewRowTypeStatistics:
 		case MZSettingsTableViewRowTypeTermsAndConditions:
 		case MZSettingsTableViewRowTypePrivacyPolicy:
+		case MZSettingsTableViewRowTypeContact:
 			return buildTitleCell(data[kTitleKey]);
 	}
 	return nil;
@@ -321,6 +344,9 @@ UIScrollViewDelegate>
 		case MZSettingsTableViewRowTypeTermsAndConditions:
 		case MZSettingsTableViewRowTypePrivacyPolicy:
 			[self performSegueWithIdentifier:kShowWebViewControllerSegueIdentifier sender:indexPath];
+			break;
+		case MZSettingsTableViewRowTypeContact:
+			[self presentEmailContactNativeController];
 			break;
 		default:
 			break;
@@ -441,6 +467,30 @@ UIScrollViewDelegate>
 														endHour:(NSUInteger)endHour {
 	[MZQuizManager sharedManager].startHour = startHour;
 	[MZQuizManager sharedManager].endHour = endHour;
+}
+
+#pragma mark - Email Composer Delegate Methods
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+					didFinishWithResult:(MFMailComposeResult)result
+												error:(NSError *)error {
+	[self dismissViewControllerAnimated:YES completion:^{
+		switch (result) {
+			case MFMailComposeResultSent:
+				[UIAlertController showWithStyle:UIAlertControllerStyleAlert
+																	 title:NSLocalizedString(@"CommonThankYou", nil)
+																 message:NSLocalizedString(@"ContactEmailConfirmation", nil)
+																	 block:nil
+											 cancelButtonTitle:NSLocalizedString(@"CommonOk", nil)
+											 otherButtonTitles:nil];
+				break;
+			case MFMailComposeResultFailed:
+				[self presentError:error];
+				break;
+			default:
+				break;
+		}
+	}];
 }
 
 @end

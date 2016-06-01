@@ -17,6 +17,7 @@
 "CommonActivate" = "Activate";
 "CommonSave" = "Save";
 "CommonWarning" = "Warning";
+"CommonThankYou" = "Thank You!";
 
 "NavigationFeedTitle" = "Feed";
 "NavigationQuizzesTitle" = "My Quizzes";
@@ -58,11 +59,16 @@
 "SettingsLegalSectionTitle" = "Legal";
 "SettingsLegalTermsAndConditions" = "Terms & Conditions";
 "SettingsLegalPrivacyPolicy" = "Privacy Policy";
+"SettingsLegalContact" = "Contact Us";
 "SettingsOthersSectionTitle" = "Others";
 "SettingsOthersStatisticsTitle" = "Statistics";
 
 "SettingsNotificationsSectionFooterTitle" = "Activate automatic quizzes if you want them delivered every day and receive a notification when it happens.";
 "SettingsLegalSectionFooterTitle" = "Legal mentions and privacy policy clauses.";
+
+"ContactEmailSubject" = "Contact Us";
+"ContactEmailBody" = "Suggestions, bugs, queries? Give us your feedback here!";
+"ContactEmailConfirmation" = "Thank you for sending us feedback!";
 
 "LanguageNameEnglish" = "English";
 "LanguageNameFrench" = "French";
