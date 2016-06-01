@@ -194,8 +194,8 @@ MZArticleShareTableViewCellDelegate>
 #pragma mark - Social Media Cell Delegate 
 
 - (void)articleShareTableViewCell:(MZArticleShareTableViewCell *)cell didTapShareOption:(MZShareOption)shareOption {
-	[MZShareManager shareForType:shareOption title:self.article.title images:nil urls:nil completionHandler:nil];
-	// TODO: Might want to populate with Memz URL or image
+	UIImage *image = [UIImage imageWithAssetIdentifier:MZAssetIdentifierCommonTitleIcon];
+	[MZShareManager shareForType:shareOption title:self.article.title images:@[image] urls:nil completionHandler:nil];
 }
 
 @end
