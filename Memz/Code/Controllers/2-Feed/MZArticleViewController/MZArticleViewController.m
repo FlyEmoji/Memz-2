@@ -60,8 +60,6 @@ MZArticleShareTableViewCellDelegate>
 	self.tableView.estimatedRowHeight = kArticleTableViewEstimatedRowHeight;
 	self.tableView.rowHeight = UITableViewAutomaticDimension;
 	self.tableView.tableFooterView = [[UIView alloc] init];
-
-	[[MZAnalyticsManager sharedManager] trackReadArticle];
 }
 
 - (void)setupTableViewData {
