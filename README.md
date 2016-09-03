@@ -56,7 +56,7 @@ The application is devided in **several user flows** described in details below.
 
 The main interaction flow is composed by **three horizontally scrollage views**. Highlighted by a page indicator, they will redirect the user towards **secondary flows** upon interaction. 
 
-![General Navigation](README_Files/General-Navigation.gif)
+![General Navigation](README_Files/General-Navigation.gif =250x450)
 
 The navigation bar will be visible at all times while on the main flow, allowing a **quick interaction** to **add a Word** (navigation bar right button) or **access the Settings** (left). This whichever the current scrollable view is. 
 
@@ -65,7 +65,7 @@ This is the **entrance point** of the application. Presented as a paginated scro
 
 Note that for now **no authentication is required**. Indeed, the application does not communicate with a server yet. This flow is displayed only once.
 
-![User Entrance](README_Files/User-Entrance.gif)
+![User Entrance](README_Files/User-Entrance.gif =250x450)
 
 ##### Feed
 This is the **first screen** seen after User Entrance, and when the application is opened / brought back to foreground (except notifications deep linking). This is the **first out of three** scrollable views in the general navigation.
@@ -74,14 +74,14 @@ Provides **various articles** giving tips on **how to learn** a language, **cult
 
 Relatively simple, this flow is devided in two screens: list of articles and article details.
 
-![Feed](README_Files/Article-Detail.gif)
+![Feed](README_Files/Article-Detail.gif =250x450)
 
 ##### My Quizzes
 Represented by the **second scrollable screen** in the general navigation, this flow will allow to see at a glance your **past** / **pending quizzes** as well as **create a spontaneous new quiz**.  
 
 The application will also **deep link** to the "Answer a quiz" view when a Push Notification is received.
 
-![Feed](README_Files/Quiz-Answer-Multi-Responses.gif)
+![Feed](README_Files/Quiz-Answer-Multi-Responses.gif =250x450)
 
 ##### My Dictionary
 **Third** and **last scrollable screen**, this flow will display you all the words and expressions you have entered in the application. Sorted by "learning index" from the most learned to the least ones. 
@@ -93,17 +93,17 @@ Accessible at all times from the general navigation tapping the right navigation
 
 Allows to **type in the new word learned** and all its **known translations**. A **suggestion of translation** is fetched from the server. If the word as already been added, it will also be suggested and the view auto-populated accordingly: will **edit the existing word**.
 
-![Feed](README_Files/Add-Word-Multiple-Translations.gif)
+![Feed](README_Files/Add-Word-Multiple-Translations.gif =250x450)
 
 ##### Settings
 Also always accessible from general navigation, will naturally allow to **control the settings** of the application: learned and known languages, frequency of quizzes, etc.  
 
-![Feed](README_Files/Settings.gif)
+![Feed](README_Files/Settings.gif =250x450)
 
 ##### Statistics
 Separate flow reachable from the Settings screen that will present to the user useful statistics about **their performances by language**, **by word**, as well as tell them how good they have been at **answering quizzes**.
 
-![Feed](README_Files/Statistics.gif)
+![Feed](README_Files/Statistics.gif =250x450)
 
 ### Application Architecture
 
