@@ -1,8 +1,9 @@
 ![Memz](README_Files/Banner.png)
 
-## Summary
-
-### Purpose
+[![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
+[![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
+[![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Pod License](https://img.shields.io/badge/codecov-20%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Memz is a foreign **language learning assistant** allowing to create your **own dictionary** and be asked periodically to answer **ludic quizes** based on your content. 
 
@@ -10,13 +11,35 @@ The particularity of Memz is its **custom** dictionary populated by the user thr
 
 Quick and easy to add a new word or expression while abroad **discussing with people**, while **reading a book** or even for a student **working on his lessons**, Memz will help you to learn your content by notifying you via Push Notification every day. 
 
+- [x] Create your own dictionary
+- [x] Consult your word / expression translations 
+- [x] Learn with daily quizzes
+
 With **various languages supported**, Memz will even be perfectly suited to users willing to **learn several new languages at a time**, and follow their **progress** consulting their **statistics**.
+
+## Table of Contents
+
+* [Set-up and Configuration](#set-up-and-configuration)
+  * [Deployment Targets](#deployment-targets)
+  * [Toolset](#toolset)
+  * [Build Schemes and Configurations](#build-schemes-and-configurations)
+* [Project Architecture](#project-architecture)
+  * [User Interaction Flow](#user-interaction-flow)
+  * [Application Architecture](#application-architecture)
+  * [Persistent Storage](#persistent-storage)
+  * [Remote Services](#remote-services)
+* [Resources and Frameworks](#resources-and-frameworks)
+  * [Bundled Resources](#bundled-resources)
+  * [Third-Party Libraries and Frameworks](#third-party-libraries-and-frameworks)
+* [System Integrations](#system-integrations)
+  * [Analytics](#analytics)
+  * [Automated Tests](#automated-tests)
+
+## Set-up and Configuration
 
 ### Deployment Targets
 
 Memz uses one unique target `Memz` for **iOS**.
-
-## Set-up and Configuration
 
 ### Toolset
 
@@ -35,18 +58,6 @@ All of those configurations are defined in the `Configuration.m` file:
   * `Segment Token` - `Y24rfqCbuUWtuP5uQnhbGr8foM9Rsipe`
 3. **Production** is signed using Distribution Certificate.
   * `Segment Token` - `EMCAdThjAGa6mYPiewkPzfvTAcErlgpT`
-  
-## Dependency Management 
- 
-### Setting up the project
-
-Memz relies on **CocoaPods** to manage dependencies. 
-
-There is no need to update the **pods** after cloning the repository as they are already included in the workspace.
-
-### Adding additional carthage dependencies
-
-Like for every project, you can add your own dependencies in the `Podfile` using your favorite text editor, and run `pod update`. You can expect a number of updates to break the project, which might need to be updated accordingly.
    
 ## Project Architecture
 
@@ -56,7 +67,7 @@ The application is devided in **several user flows** described in details below.
 
 The main interaction flow is composed by **three horizontally scrollage views**. Highlighted by a page indicator, they will redirect the user towards **secondary flows** upon interaction. 
 
-![General Navigation](README_Files/General-Navigation.gif =250x450)
+![General Navigation](README_Files/General-Navigation.gif)
 
 The navigation bar will be visible at all times while on the main flow, allowing a **quick interaction** to **add a Word** (navigation bar right button) or **access the Settings** (left). This whichever the current scrollable view is. 
 
@@ -65,7 +76,7 @@ This is the **entrance point** of the application. Presented as a paginated scro
 
 Note that for now **no authentication is required**. Indeed, the application does not communicate with a server yet. This flow is displayed only once.
 
-![User Entrance](README_Files/User-Entrance.gif =250x450)
+![User Entrance](README_Files/User-Entrance.gif)
 
 ##### Feed
 This is the **first screen** seen after User Entrance, and when the application is opened / brought back to foreground (except notifications deep linking). This is the **first out of three** scrollable views in the general navigation.
@@ -74,14 +85,12 @@ Provides **various articles** giving tips on **how to learn** a language, **cult
 
 Relatively simple, this flow is devided in two screens: list of articles and article details.
 
-![Feed](README_Files/Article-Detail.gif =250x450)
-
 ##### My Quizzes
 Represented by the **second scrollable screen** in the general navigation, this flow will allow to see at a glance your **past** / **pending quizzes** as well as **create a spontaneous new quiz**.  
 
 The application will also **deep link** to the "Answer a quiz" view when a Push Notification is received.
 
-![Feed](README_Files/Quiz-Answer-Multi-Responses.gif =250x450)
+![My Quizzes](README_Files/Quiz-Answer-Multi-Responses.gif)
 
 ##### My Dictionary
 **Third** and **last scrollable screen**, this flow will display you all the words and expressions you have entered in the application. Sorted by "learning index" from the most learned to the least ones. 
@@ -93,17 +102,25 @@ Accessible at all times from the general navigation tapping the right navigation
 
 Allows to **type in the new word learned** and all its **known translations**. A **suggestion of translation** is fetched from the server. If the word as already been added, it will also be suggested and the view auto-populated accordingly: will **edit the existing word**.
 
-![Feed](README_Files/Add-Word-Multiple-Translations.gif =250x450)
+![Add Word](README_Files/Add-Word-Multiple-Translations.gif)
 
 ##### Settings
 Also always accessible from general navigation, will naturally allow to **control the settings** of the application: learned and known languages, frequency of quizzes, etc.  
 
-![Feed](README_Files/Settings.gif =250x450)
+![Settings](README_Files/Settings.gif)
 
 ##### Statistics
 Separate flow reachable from the Settings screen that will present to the user useful statistics about **their performances by language**, **by word**, as well as tell them how good they have been at **answering quizzes**.
 
-![Feed](README_Files/Statistics.gif =250x450)
+![Statistics](README_Files/Statistics.gif)
+
+#### Learning Experience
+
+The **learning experience** is a major aspect of the application. Depending on the user settings, **Push Notifications** will be sent several times a day inviting him to answer a Quiz of up to **3 questions**.
+
+Each question will require the user to translate one word he has entered in his dictionary (or added from article suggestions). A **learning index** will allow to keep track of the progress. Every time a word is **correctly translated**, this index will be **incremented**. Every time the word will be **wrongly translated**, **decremented**. 
+
+WHen the user reaches the **learning index** of **5**, the word will be considered as **learned** and will not be asked in the quizzes anymore.
 
 ### Application Architecture
 
@@ -164,31 +181,81 @@ Note that the same pattern is followed for the **MemzTests** and **MemzUITests**
 
 ### Persistent Storage
 
-*TBD*
+Memz uses **Core Data** to store all data generated by the user. This notably allows to seamlessly populate the view controllers using `NSFetchedResultsController`, provide the application with an **offline mode** (will be useful when the application will rely on a remote service, to populate view controllers even if offline as long as data has been fetched at least once before) and allow for better filtering and testing of the data received.
+
+// NEED SHCEMA AND DESCRIPTION
 
 ### Remote Services
 
-Treblemaker communicates with a **Restful API** whose documentation is available separately, and address is provided above in the Configurations part.
+#### Microsoft Translator API
 
-The project implements all API calls following a **decentralized architecture**. Extensions are created on each entity object and implement all calls regarding this entity. For instance, User+API implements all calls regarding User object (register, sign in, update profile, etc.).
+In order to provide with **suggested translations** as the user types a new word or sentense, Memz hits the Microsoft Bing Translator API.
+
+The file `MZBingTranslatorCoordinator` encapsulates **submission** of requests and handling of the **response**, exposing a very handy and easy to use interface. All languages supported by the application are also supported by this API.
+
+We can note the file `MZBingTranslatorToken` handling expiration of the tokens and `MZBingTranslationWrapper` wrapping each request separately (notably each completion handler) needed given the numerous requests sent successively, sometimes without waiting for the previous response to be received, as the user is writing (one request every time the text changes).
+
+#### Memz Back-End
+
+Memz does not communicate yet with a **Restful API**. It will, in the long run, sync the data entered by the user and allow him to recover it from every device. Articles will also benefit from the back-end, allowing to release / remove them freely over time. An authentication system will be required at that point. The server address will be provided above in the Configurations part, as well as in the file `Constants.h`.
 
 The carthage framework **Alamofire** is used to make this API Integration easier. See also the file `TreblemakerServices` that implement a whole list of hightly convenient and reusable methods to request the API.
 
-The link to the back-end documentation is visible [here](http://fueled.github.io/treblemaker-web/).
-
-## Resources and Frameworks
+## Resources and Dependency Management
 
 ### Bundled Resources
 
-All the sounds that the application can play upon receiving Push Notifications are stored in the bundle. You will find them in the repertory `Resources/Sounds`.
+#### Feed Articles
+
+Given the Memz back-end not in place yet, **feed articles** have to be embedded in the **application bundle**. A JSON file `feed.json` contains all the articles and their meta-data that needs to be handled by the application.
+
+#### Terms & COnditions and Privacy Policy
+
+The web pages providing **Terms & Conditions** and **Privacy Policy** not being hosted yet, they have been embedded in the application with the names: `Settings-Terms-And-Conditions.htm` and `Settings-Privacy-Policy.htm`. 
 
 ### Third-Party Libraries and Frameworks
 
-Ela relies on both [`carthage`](https://github.com/Carthage/Carthage "Carthage Homepage") and  [`cocoapods`](https://cocoapods.org "Cocoapods Homepage") for Library dependency management. Here is their exhaustive list of libraries this project uses: 
+Memz relies on [`cocoapods`](https://cocoapods.org "Cocoapods Homepage") for Library dependency management. Here is their exhaustive list of libraries this project uses: 
 
-1. [**ReactiveCocoa**](https://github.com/ReactiveCocoa/ReactiveCocoa) (carthage) -  Functional Reactive Programming framework.
-2. [**DataSource**](https://github.com/Vadim-Yelagin/DataSource) (carthage) - MVVM-oriented table/collection view handling. 
-3. [**Alamofire**](https://github.com/Alamofire/Alamofire) (carthage) - HTTP networking library.
-4. [**JSONParsing**](https://github.com/Vadim-Yelagin/JSONParsing) (carthage) - JSON data handling.
-5. **Ethanol** - developed and managed by **Fueled**. Ethanol is used in many places throughout the project for utility functions and reusable code.
-6. [**HockeySDK**](https://github.com/bitstadium/HockeySDK-iOS) (cocoapods) - HockeyApp Distribution and Crash logs.
+1. [**SDWebImage**](https://github.com/rs/SDWebImage) - Remote images loading and caching.
+2. [**DATAStack**](https://github.com/3lvis/DATASource) - Core Data basic handling encapsulation.
+3. [**NMRangeSlider**](https://github.com/muZZkat/NMRangeSlider) - Double dotted Range Slider. 
+4. [**Analytics**](https://github.com/segmentio/analytics-ios) - Segment Analytics. 
+
+## System Integrations
+
+### Analytics
+
+**Segment** has been chosen to handle Analytics, notably for the number of other relevant Analytics it gathers and its flexability. From the large choice **Mixpanel** has been integrated in Memz.
+
+#### Events tracked
+
+Three main **events** are being tracked with various attached properties:
+
+- [x] Word Addition (number translations)
+- [x] New Quiz (is initiated by user, known language, new language)
+- [x] Article Suggestion Word Addition (addition all suggested words at once)
+
+#### Screens tracked
+
+Some **screens** are tracked in order to know **how long** and with which **frequence** each flow has been consulted by our users.
+
+- [x] User Entrance Screen
+- [x] Word Addition Screen
+- [x] Settings Screen
+- [x] Statistics Screen
+- [x] Quiz Screen
+- [x] Article Screen
+
+### Automated Tests
+
+An imporant effort has been dedicated to the **unit tests**. Most of the **central classes**, **managers** and **helpers** used throughout the application have particularly been carefully covered.
+
+The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.  
+
+## License
+
+Memz is released under the MIT license. See license shield above for details.
+
+
+
