@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="MaisonNeue-Book.ttf">
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+            <string>MaisonNeue-Book</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MZWordDescriptionHeaderView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="i2m-Bl-RTE"/>
+                <outlet property="countDownBottomSeparatorConstraint" destination="En2-cb-yZI" id="Wlk-uA-jC6"/>
+                <outlet property="countDownLabel" destination="8iP-KV-QO6" id="iqk-Qu-PMB"/>
+                <outlet property="countDownSectionHeightConstraint" destination="oUE-iJ-Up6" id="hz1-c9-FdR"/>
+                <outlet property="editButton" destination="jeU-yJ-rSf" id="GuC-1e-5xU"/>
+                <outlet property="flagImageView" destination="q6l-Ta-NRQ" id="ZSN-EM-UJN"/>
+                <outlet property="learnedStatusLabel" destination="uRz-3K-GHM" id="Afi-1x-ggF"/>
+                <outlet property="learnedStatusView" destination="4fV-N3-6tE" id="qWj-gP-eFI"/>
+                <outlet property="numberOfTranslationsLabel" destination="7T1-cQ-5xi" id="o13-gL-Xfr"/>
+                <outlet property="percentageSuccessLabel" destination="kaf-o4-xq0" id="6on-0I-YAR"/>
+                <outlet property="wordLabel" destination="MeT-IM-0fN" id="8wY-jg-sge"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="496" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fV-N3-6tE" userLabel="Status View" customClass="MZWordStatusView">
+                    <rect key="frame" x="4" y="4" width="10" height="10"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4fV-N3-6tE" secondAttribute="height" multiplier="1:1" id="B5F-ry-YFj"/>
+                        <constraint firstAttribute="width" constant="10" id="SsU-ua-3bV"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Not learned" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRz-3K-GHM">
+                    <rect key="frame" x="18" y="3" width="70" height="13"/>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="13"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Translated x times" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7T1-cQ-5xi">
+                    <rect key="frame" x="382" y="4" width="110" height="13"/>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="13"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="x% success" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaf-o4-xq0">
+                    <rect key="frame" x="419" y="19" width="73" height="13"/>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="13"/>
+                    <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPi-zw-B3o" userLabel="Word Container View">
+                    <rect key="frame" x="204" y="27" width="89" height="100"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Quiz-Chronometer-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="tqn-eu-04Z">
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="tqn-eu-04Z" secondAttribute="height" multiplier="35:32" id="FeO-Hl-LC6"/>
+                                <constraint firstAttribute="width" constant="30" id="oUE-iJ-Up6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Word" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeT-IM-0fN">
+                            <rect key="frame" x="0.0" y="36" width="89" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flag-United-Kingdom" translatesAutoresizingMaskIntoConstraints="NO" id="q6l-Ta-NRQ" userLabel="Flag Image View">
+                            <rect key="frame" x="20" y="68" width="50" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="q6l-Ta-NRQ" secondAttribute="height" multiplier="17:11" id="SOS-ph-2TE"/>
+                                <constraint firstAttribute="width" constant="50" id="knA-mT-nzT"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-KV-QO6">
+                            <rect key="frame" x="30" y="0.0" width="59" height="28"/>
+                            <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="15"/>
+                            <color key="textColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="8iP-KV-QO6" firstAttribute="leading" secondItem="tqn-eu-04Z" secondAttribute="trailing" id="5nl-YB-meI"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="q6l-Ta-NRQ" secondAttribute="trailing" id="9Y0-F9-Dha"/>
+                        <constraint firstAttribute="bottom" secondItem="q6l-Ta-NRQ" secondAttribute="bottom" id="9g2-NK-gD1"/>
+                        <constraint firstItem="MeT-IM-0fN" firstAttribute="top" secondItem="tqn-eu-04Z" secondAttribute="bottom" constant="8" id="En2-cb-yZI"/>
+                        <constraint firstItem="tqn-eu-04Z" firstAttribute="top" secondItem="aPi-zw-B3o" secondAttribute="top" id="KI1-ZM-dyS"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aPi-zw-B3o" secondAttribute="leading" id="Kag-xQ-yoB"/>
+                        <constraint firstItem="8iP-KV-QO6" firstAttribute="height" secondItem="tqn-eu-04Z" secondAttribute="height" id="UOj-Wz-TzI"/>
+                        <constraint firstItem="tqn-eu-04Z" firstAttribute="leading" secondItem="aPi-zw-B3o" secondAttribute="leading" id="WTn-fj-eYX"/>
+                        <constraint firstAttribute="trailing" secondItem="MeT-IM-0fN" secondAttribute="trailing" id="c87-Aa-H5X"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="top" secondItem="MeT-IM-0fN" secondAttribute="bottom" constant="8" id="dgX-Iz-ea1"/>
+                        <constraint firstItem="8iP-KV-QO6" firstAttribute="centerY" secondItem="tqn-eu-04Z" secondAttribute="centerY" id="hrR-oE-dc3"/>
+                        <constraint firstItem="MeT-IM-0fN" firstAttribute="leading" secondItem="aPi-zw-B3o" secondAttribute="leading" id="opf-6o-27i"/>
+                        <constraint firstItem="8iP-KV-QO6" firstAttribute="top" secondItem="aPi-zw-B3o" secondAttribute="top" id="qJp-Yh-MSL"/>
+                        <constraint firstItem="q6l-Ta-NRQ" firstAttribute="centerX" secondItem="aPi-zw-B3o" secondAttribute="centerX" id="vnx-vA-jW1"/>
+                        <constraint firstAttribute="trailing" secondItem="8iP-KV-QO6" secondAttribute="trailing" id="vwV-r8-LcM"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-yJ-rSf">
+                    <rect key="frame" x="4" y="19" width="95" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="Brx-t0-BWk"/>
+                        <constraint firstAttribute="height" constant="42" id="aCL-In-LLM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="MaisonNeue-Book" family="Maison Neue" pointSize="14"/>
+                    <state key="normal" title="EDIT">
+                        <color key="titleColor" red="0.29803921570000003" green="0.32156862749999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="editButtonTapped:" destination="-1" eventType="touchUpInside" id="qKT-wG-TdW"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kaf-o4-xq0" secondAttribute="trailing" constant="4" id="0td-Oz-vZq"/>
+                <constraint firstItem="kaf-o4-xq0" firstAttribute="top" secondItem="7T1-cQ-5xi" secondAttribute="bottom" constant="2" id="3p4-DE-7Az"/>
+                <constraint firstItem="uRz-3K-GHM" firstAttribute="leading" secondItem="4fV-N3-6tE" secondAttribute="trailing" constant="4" id="5zt-Bj-frW"/>
+                <constraint firstItem="aPi-zw-B3o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.1" id="SN6-3g-9ma"/>
+                <constraint firstItem="uRz-3K-GHM" firstAttribute="centerY" secondItem="4fV-N3-6tE" secondAttribute="centerY" id="Y3r-In-MHu"/>
+                <constraint firstItem="aPi-zw-B3o" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="epb-yX-xfV"/>
+                <constraint firstItem="jeU-yJ-rSf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="g1K-1B-Vjl"/>
+                <constraint firstAttribute="trailing" secondItem="7T1-cQ-5xi" secondAttribute="trailing" constant="4" id="qnR-8B-Dhe"/>
+                <constraint firstItem="jeU-yJ-rSf" firstAttribute="top" secondItem="uRz-3K-GHM" secondAttribute="bottom" constant="3" id="saU-u4-yVQ"/>
+                <constraint firstItem="4fV-N3-6tE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="smY-8X-yAk"/>
+                <constraint firstItem="4fV-N3-6tE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="xCe-7k-fZp"/>
+                <constraint firstItem="7T1-cQ-5xi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="zDt-fB-fIj"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="384" y="85"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Flag-United-Kingdom" width="48" height="36"/>
+        <image name="Quiz-Chronometer-Icon" width="70" height="81"/>
+    </resources>
+</document>
