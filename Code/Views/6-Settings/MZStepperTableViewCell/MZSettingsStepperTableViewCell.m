@@ -35,7 +35,7 @@ const NSUInteger kStepperDefaultMaximumValue = 10;
 	_currentValue = currentValue;
 
 	self.stepper.value = currentValue;
-	self.numberLabel.text = [NSString stringWithFormat:@"%ld", currentValue];
+	self.numberLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)currentValue];
 }
 
 - (void)setMinimumValue:(NSUInteger)minimumValue {
