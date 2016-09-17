@@ -108,6 +108,7 @@
 		0CAFF3831CEEB91600F2860B /* MZApplicationSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */; };
 		0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7ABD1C217BA400F5D91B /* MZNibView.m */; };
 		0CC3726F1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */; };
+		0CC9B9B91D7CAE1400EF619A /* MZResponseComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */; };
 		0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */; };
 		0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607A1C66BC83008D70BF /* MZLanguageCollectionViewCell.m */; };
 		0CCE607F1C66BCEF008D70BF /* MZGraphicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607E1C66BCEF008D70BF /* MZGraphicView.m */; };
@@ -379,6 +380,7 @@
 		0CBF7ABD1C217BA400F5D91B /* MZNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibView.m; path = Code/Helpers/Classes/MZNibView/MZNibView.m; sourceTree = SOURCE_ROOT; };
 		0CC3726D1CDFBDAD0034E1AE /* NSArray+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+MemzAdditions.h"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MemzAdditions.m"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparatorTest.m; path = Helpers/Classes/MZResponseComparatorTest/MZResponseComparatorTest.m; sourceTree = "<group>"; };
 		0CCE60761C66BC67008D70BF /* MZGraphicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZGraphicTableViewCell.h; path = "Code/Views/7-Statistics/MZGraphicTableViewCell/MZGraphicTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZGraphicTableViewCell.m; path = "Code/Views/7-Statistics/MZGraphicTableViewCell/MZGraphicTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CCE60791C66BC83008D70BF /* MZLanguageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageCollectionViewCell.h; path = "Code/Views/7-Statistics/MZLanguageCollectionViewCell/MZLanguageCollectionViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -940,6 +942,7 @@
 		0C40A5061CF1626500BD7F9B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0CC9B9B71D7CAE0C00EF619A /* MZResponseComparatorTest */,
 				0CAFF3921CF0F53400F2860B /* MZQuizManager */,
 				0C40A5091CF1628D00BD7F9B /* MZNibView */,
 			);
@@ -1618,6 +1621,14 @@
 				0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */,
 			);
 			name = NSArray;
+			sourceTree = "<group>";
+		};
+		0CC9B9B71D7CAE0C00EF619A /* MZResponseComparatorTest */ = {
+			isa = PBXGroup;
+			children = (
+				0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */,
+			);
+			name = MZResponseComparatorTest;
 			sourceTree = "<group>";
 		};
 		0CCE60751C66BBF5008D70BF /* MZGraphicTableViewCell */ = {
@@ -2457,6 +2468,7 @@
 				0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,
 				0C40A50B1CF162EA00BD7F9B /* MZNibViewTests.m in Sources */,
+				0CC9B9B91D7CAE1400EF619A /* MZResponseComparatorTest.m in Sources */,
 				0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
