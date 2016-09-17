@@ -29,6 +29,7 @@
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
+		0C1DADD21D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */; };
 		0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */; };
 		0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */; };
 		0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */; };
@@ -238,6 +239,7 @@
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
 		0C13AC1E1C247196007A1AD5 /* MZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDataManager.m; path = Code/Model/MZDataManager/MZDataManager.m; sourceTree = SOURCE_ROOT; };
 		0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memz.xcdatamodel; sourceTree = "<group>"; };
+		0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateMemzAdditionsTest.m; path = Helpers/Categories/NSDate/NSDateMemzAdditionsTest.m; sourceTree = "<group>"; };
 		0C1EF48C1C9795890076526B /* UIScrollView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
 		0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
 		0C1EF48F1C97A4100076526B /* UIView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
@@ -726,6 +728,22 @@
 				0C0740D61C8CCCA100676A22 /* MZArticle+CoreDataProperties.m */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		0C1DADCF1D8DA79800D17AA3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0C1DADD01D8DA7B200D17AA3 /* NSDate */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		0C1DADD01D8DA7B200D17AA3 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */,
+			);
+			name = NSDate;
 			sourceTree = "<group>";
 		};
 		0C1EF48B1C9795260076526B /* UIScrollView */ = {
@@ -1582,6 +1600,7 @@
 		0CAFF3911CF0F52A00F2860B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C1DADCF1D8DA79800D17AA3 /* Categories */,
 				0C40A5061CF1626500BD7F9B /* Classes */,
 			);
 			name = Helpers;
@@ -2470,6 +2489,7 @@
 				0C40A50B1CF162EA00BD7F9B /* MZNibViewTests.m in Sources */,
 				0CC9B9B91D7CAE1400EF619A /* MZResponseComparatorTest.m in Sources */,
 				0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */,
+				0C1DADD21D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

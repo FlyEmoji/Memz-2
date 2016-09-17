@@ -3,7 +3,7 @@
 [![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Pod License](https://img.shields.io/badge/codecov-20%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Pod License](https://img.shields.io/badge/codecov-17%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Memz is a foreign **language learning assistant** allowing to create your **own dictionary** and be asked periodically to answer **ludic quizes** based on your content. 
 
@@ -28,6 +28,7 @@ With **various languages supported**, Memz will even be perfectly suited to user
   * [Application Architecture](#application-architecture)
   * [Persistent Storage](#persistent-storage)
   * [Remote Services](#remote-services)
+  * [Technical Details](#technical-details)
 * [Resources and Frameworks](#resources-and-frameworks)
   * [Bundled Resources](#bundled-resources)
   * [Third-Party Libraries and Frameworks](#third-party-libraries-and-frameworks)
@@ -295,7 +296,12 @@ Some **screens** are tracked in order to know **how long** and with which **freq
 
 An imporant effort has been dedicated to the **unit tests**. Most of the **central classes**, **managers** and **helpers** used throughout the application have particularly been carefully covered.
 
-The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.  
+The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.
+
+**Currenty**: 
+
+- [x] 17% Code Coverage
+- [x] 117 Unit Tests
 
 ## License
 
