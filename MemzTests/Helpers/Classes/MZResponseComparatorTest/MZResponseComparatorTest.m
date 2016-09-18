@@ -10,7 +10,6 @@
 
 #import "MZResponseComparator.h"
 #import "NSManagedObject+MemzCoreData.h"
-#import "MZLanguageDefinition.h"
 #import "MZResponse.h"
 #import "MZWord.h"
 
@@ -56,7 +55,7 @@
 	MZResponseComparatorDelegateObjectTest *delegateObject = [[MZResponseComparatorDelegateObjectTest alloc] init];
 	responseComparator.delegate = delegateObject;
 
-	[responseComparator checkTranslations:@[@"test"] inLanguage:@(MZLanguageFrench)];
+	[responseComparator checkTranslations:@[@"test"] inLanguage:MZLanguageFrench];
 
 	XCTAssertEqual([delegateObject.wordsDictionary[@"test"] boolValue], YES);
 }
@@ -77,7 +76,7 @@
 	MZResponseComparatorDelegateObjectTest *delegateObject = [[MZResponseComparatorDelegateObjectTest alloc] init];
 	responseComparator.delegate = delegateObject;
 
-	[responseComparator checkTranslations:@[@"implique"] inLanguage:@(MZLanguageFrench)];
+	[responseComparator checkTranslations:@[@"implique"] inLanguage:MZLanguageFrench];
 
 	XCTAssertEqual([delegateObject.wordsDictionary[@"implique"] boolValue], YES);
 }
@@ -98,7 +97,7 @@
 	MZResponseComparatorDelegateObjectTest *delegateObject = [[MZResponseComparatorDelegateObjectTest alloc] init];
 	responseComparator.delegate = delegateObject;
 
-	[responseComparator checkTranslations:@[@"wrong answer"] inLanguage:@(MZLanguageFrench)];
+	[responseComparator checkTranslations:@[@"wrong answer"] inLanguage:MZLanguageFrench];
 
 	XCTAssertEqual([delegateObject.wordsDictionary[@"wrong answer"] boolValue], YES);
 }

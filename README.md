@@ -3,7 +3,7 @@
 [![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Pod License](https://img.shields.io/badge/codecov-20%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Pod License](https://img.shields.io/badge/codecov-23%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Memz is a foreign **language learning assistant** allowing to create your **own dictionary** and be asked periodically to answer **ludic quizes** based on your content. 
 
@@ -300,10 +300,10 @@ An imporant effort has been dedicated to the **unit tests**. Most of the **centr
 
 The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.
 
-**Currenty**: 
+_Currenty_: 
 
-- [x] 20% Code Coverage
-- [x] 139 Unit Tests
+- [x] 23% Code Coverage
+- [x] 145 Unit Tests
 
 #### UI Tests
 

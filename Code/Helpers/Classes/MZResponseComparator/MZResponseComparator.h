@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MZLanguageDefinition.h"
+#import "MZBingTranslatorCoordinator.h"
 
 @class MZResponse;
 @class MZWord;

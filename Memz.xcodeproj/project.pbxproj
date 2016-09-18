@@ -59,6 +59,7 @@
 		0C454D881CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */; };
 		0C454D8C1CFCF042007EFB81 /* MZAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */; };
 		0C4589FF1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */; };
+		0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */; };
 		0C49A4871CFCCD4F00C1A51A /* MZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
 		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
@@ -251,7 +252,6 @@
 		0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnimatedArrow.m; path = "Code/Views/0-Common/MZAnimatedArrow/MZAnimatedArrow.m"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0C1CD69ED300E766A5 /* MZUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZUser+CoreDataProperties.h"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZUser+CoreDataProperties.m"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		0C2C5E111CD6A92F00E766A5 /* MZLanguageDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MZLanguageDefinition.h; path = Code/Helpers/Headers/MZLanguageDefinition/MZLanguageDefinition.h; sourceTree = SOURCE_ROOT; };
 		0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableView.h; path = "Code/Views/0-Common/MZTableView/MZTableView.h"; sourceTree = SOURCE_ROOT; };
 		0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableView.m; path = "Code/Views/0-Common/MZTableView/MZTableView.m"; sourceTree = SOURCE_ROOT; };
 		0C3726E31C255A7800C9879F /* MZMyDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyDictionaryViewController.h; path = "Code/Controllers/4-My Dictionary/MZMyDictionaryViewController/MZMyDictionaryViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -288,6 +288,7 @@
 		0C454D8A1CFCF042007EFB81 /* MZAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAnalyticsManager.h; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.h; sourceTree = SOURCE_ROOT; };
 		0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnalyticsManager.m; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.m; sourceTree = SOURCE_ROOT; };
 		0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinatorTests.m; path = API/MZRemoteServerCoordinator/MZRemoteServerCoordinatorTests.m; sourceTree = "<group>"; };
+		0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorCoordinator.m; path = API/MZBingTranslatorCoordinator/MZBingTranslatorCoordinator.m; sourceTree = "<group>"; };
 		0C49A4851CFCCD4F00C1A51A /* MZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWebViewController.h; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWebViewController.m; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
@@ -766,22 +767,6 @@
 			name = MZAnimatedArrow;
 			sourceTree = "<group>";
 		};
-		0C2C5E0F1CD6A8D100E766A5 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				0C2C5E101CD6A91E00E766A5 /* MZLanguageDefinition */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
-		0C2C5E101CD6A91E00E766A5 /* MZLanguageDefinition */ = {
-			isa = PBXGroup;
-			children = (
-				0C2C5E111CD6A92F00E766A5 /* MZLanguageDefinition.h */,
-			);
-			name = MZLanguageDefinition;
-			sourceTree = "<group>";
-		};
 		0C2DC8721C4BE596005B11F5 /* MZTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1027,6 +1012,7 @@
 			isa = PBXGroup;
 			children = (
 				0C4589FD1D8EC4FD00FA4795 /* MZRemoteServerCoordinator */,
+				0C458A001D8ECE9200FA4795 /* MZBingTranslatorCoordinator */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -1037,6 +1023,14 @@
 				0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */,
 			);
 			name = MZRemoteServerCoordinator;
+			sourceTree = "<group>";
+		};
+		0C458A001D8ECE9200FA4795 /* MZBingTranslatorCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */,
+			);
+			name = MZBingTranslatorCoordinator;
 			sourceTree = "<group>";
 		};
 		0C49A4841CFCCD1F00C1A51A /* MZWebViewController */ = {
@@ -1415,7 +1409,6 @@
 			children = (
 				0CA58BE11C204FF4000E19D4 /* Categories */,
 				0CA58BE01C204FED000E19D4 /* Classes */,
-				0C2C5E0F1CD6A8D100E766A5 /* Headers */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -2502,6 +2495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */,
 				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
 				0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,

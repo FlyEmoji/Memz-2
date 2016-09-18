@@ -215,6 +215,8 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 
 #pragma mark - Language Parser
 
+// Source: https://msdn.microsoft.com/en-us/library/hh456380.aspx
+
 - (NSString *)APILanguageCodeForLanguage:(MZLanguage)language {
 	switch (language) {
 		case MZLanguageEnglish:
@@ -225,8 +227,8 @@ const NSInteger kMaximumNumberConcurrentTasks = 5;
 			return @"ES";
 		case MZLanguageItalian:
 			return @"IT";
-		case MZLanguagePortuguese:		// TODO: Only one wrong in the list
-			return @"PR";
+		case MZLanguagePortuguese:
+			return @"PT";
 	}
 }
 
