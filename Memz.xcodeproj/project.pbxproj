@@ -89,6 +89,7 @@
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0C7CEB761CF5380600FB8617 /* UILabel+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */; };
+		0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
 		0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */; };
@@ -340,6 +341,7 @@
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C7CEB741CF5380600FB8617 /* UILabel+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MemzAdditions.h"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MemzAdditions.m"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMyDictionaryViewControllerTests.m; path = "Controllers/4-My Dictionary/MZMyDictionaryViewController/MZMyDictionaryViewControllerTests.m"; sourceTree = "<group>"; };
 		0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableViewCell.h; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
@@ -922,6 +924,7 @@
 		0C40A5001CF150AE00BD7F9B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0C7FAC931D8EE10E009B8361 /* 4-My Dictionary */,
 				0C40A5011CF150BB00BD7F9B /* 8-Tests */,
 			);
 			name = Controllers;
@@ -1247,6 +1250,22 @@
 				0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */,
 			);
 			name = UILabel;
+			sourceTree = "<group>";
+		};
+		0C7FAC931D8EE10E009B8361 /* 4-My Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				0C7FAC941D8EE11C009B8361 /* MZMyDictionaryViewController */,
+			);
+			name = "4-My Dictionary";
+			sourceTree = "<group>";
+		};
+		0C7FAC941D8EE11C009B8361 /* MZMyDictionaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */,
+			);
+			name = MZMyDictionaryViewController;
 			sourceTree = "<group>";
 		};
 		0C8FD8D11CE2C84900FFC0A9 /* MZTableViewCell */ = {
@@ -2496,6 +2515,7 @@
 			files = (
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
 				0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */,
+				0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */,
 				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
 				0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,
@@ -2604,6 +2624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
@@ -2686,6 +2707,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
@@ -2768,6 +2790,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
