@@ -36,7 +36,7 @@
 #pragma mark - Granular Accessors
 
 - (void)testMonth {
-	XCTAssertTrue([[self.globalTestsDate month] isEqualToString:@"MAY"]);
+	XCTAssertTrue([[self.globalTestsDate month].uppercaseString isEqualToString:@"MAY"]);
 }
 
 - (void)testDay {
@@ -52,11 +52,11 @@
 }
 
 - (void)testTime {
-	XCTAssertTrue([[self.globalTestsDate time] isEqualToString:@"6:25"]);
+	XCTAssertTrue([[self.globalTestsDate time].uppercaseString isEqualToString:@"6:25AM"]);
 }
 
 - (void)testWeekday {
-	XCTAssertTrue([[self.globalTestsDate weekDay] isEqualToString:@"MONDAY"]);
+	XCTAssertTrue([[self.globalTestsDate weekDay].uppercaseString isEqualToString:@"W"]);
 }
 
 #pragma mark - Day for days in the past 
