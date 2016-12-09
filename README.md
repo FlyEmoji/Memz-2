@@ -1,5 +1,6 @@
 ![Memz](README_Files/Banner.png)
 
+[![CI Status](http://img.shields.io/travis/bastienFalcou/Memz.svg?style=flat)](https://travis-ci.org/bastienFalcou/SoundWave)
 [![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
@@ -20,8 +21,7 @@ With **various languages supported**, Memz will even be perfectly suited to user
 ## Table of Contents
 
 * [Set-up and Configuration](#set-up-and-configuration)
-  * [Deployment Targets](#deployment-targets)
-  * [Toolset](#toolset)
+  * [Requirements](#requirements)
   * [Build Schemes and Configurations](#build-schemes-and-configurations)
 * [Project Architecture](#project-architecture)
   * [User Interaction Flow](#user-interaction-flow)
@@ -38,14 +38,11 @@ With **various languages supported**, Memz will even be perfectly suited to user
 
 ## Set-up and Configuration
 
-### Deployment Targets
+### Requirements
 
-Memz uses one unique target `Memz` for **iOS**.
-
-### Toolset
-
-The project has been developed in **Objectve-c** using **Xcode 7.3.x**.
-No other specific tool has beed needed for the front-end implementation of Memz.
+- iOS 9.1+
+- Xcode 7.3
+- Objective-c
 
 ### Build Schemes and Configurations
 
