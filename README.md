@@ -41,7 +41,7 @@ With **various languages supported**, Memz will even be perfectly suited to user
 ### Requirements
 
 - iOS 9.1+
-- Xcode 7.3
+- Xcode 8.0+
 - Objective-c
 
 ### Build Schemes and Configurations

@@ -1,0 +1,10 @@
+EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Analytics" "$PODS_CONFIGURATION_BUILD_DIR/DATAStack" "$PODS_CONFIGURATION_BUILD_DIR/Mixpanel" "$PODS_CONFIGURATION_BUILD_DIR/NMRangeSlider" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/Segment-Mixpanel"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Analytics/Analytics.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DATAStack/DATAStack.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Mixpanel/Mixpanel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NMRangeSlider/NMRangeSlider.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage/SDWebImage.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Segment-Mixpanel/Segment_Mixpanel.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "Analytics" -framework "DATAStack" -framework "Mixpanel" -framework "NMRangeSlider" -framework "SDWebImage" -framework "Segment_Mixpanel"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods
