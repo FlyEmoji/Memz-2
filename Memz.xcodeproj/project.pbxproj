@@ -181,6 +181,7 @@
 		0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CA1C3CB74500EB60DE /* UIViewController+MemzAdditions.m */; };
 		0CEFD1CE1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CD1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m */; };
 		0CEFD1D11C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */; };
+		0CF23ED91DFB2B8B00430782 /* MZUserStatisticsProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */; };
 		F3D0BC4CB9B3D009B75ADB38 /* Pods_Memz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AB98143EE95C0120FC6CAE /* Pods_Memz.framework */; };
 /* End PBXBuildFile section */
 
@@ -510,6 +511,7 @@
 		0CEFD1CD1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+MemzAdditions.m"; path = "Code/Helpers/Categories/UINavigationItem/UINavigationItem+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1CF1C3CB75F00EB60DE /* UINavigationController+MemzTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MemzTransitions.h"; path = "Code/Helpers/Categories/UINavigationController/UINavigationController+MemzTransitions.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MemzTransitions.m"; path = "Code/Helpers/Categories/UINavigationController/UINavigationController+MemzTransitions.m"; sourceTree = SOURCE_ROOT; };
+		0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserStatisticsProviderTest.m; path = Helpers/Categories/MZUser/MZUserStatisticsProviderTest.m; sourceTree = "<group>"; };
 		16BB5BC5CA43BB68094D936B /* Pods-Memz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memz/Pods-Memz.debug.xcconfig"; sourceTree = "<group>"; };
 		62AB98143EE95C0120FC6CAE /* Pods_Memz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				0C1DADD01D8DA7B200D17AA3 /* NSDate */,
+				0CF23ED71DFB2B5700430782 /* MZUser */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -2156,6 +2159,14 @@
 			name = UIViewController;
 			sourceTree = "<group>";
 		};
+		0CF23ED71DFB2B5700430782 /* MZUser */ = {
+			isa = PBXGroup;
+			children = (
+				0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */,
+			);
+			name = MZUser;
+			sourceTree = "<group>";
+		};
 		D0B7255BD900C535A1644E00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2516,6 +2527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0CF23ED91DFB2B8B00430782 /* MZUserStatisticsProviderTest.m in Sources */,
 				0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */,
 				0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */,
 				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
