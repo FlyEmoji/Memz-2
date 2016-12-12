@@ -550,7 +550,7 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 	NSString *sumValuesString;
 
 	if (self.values.lastObject.floatValue == floorf(self.values.lastObject.floatValue)) {
-		sumValuesString = [NSString stringWithFormat:@"%ld", self.values.lastObject.integerValue];
+		sumValuesString = [NSString stringWithFormat:@"%d", self.values.lastObject.integerValue];
 	} else {
 		sumValuesString = [NSString stringWithFormat:@"%.2f", self.values.lastObject.floatValue];
 	}

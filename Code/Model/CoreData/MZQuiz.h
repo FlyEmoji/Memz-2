@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "MZBingTranslatorCoordinator.h"
 #import "MZUser.h"
 
 @class MZWord;

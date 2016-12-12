@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MZLanguageDefinition.h"
+#import "MZBingTranslatorCoordinator.h"
 
 typedef NS_ENUM(NSInteger, MZAnalyticsScreen) {
 	MZAnalyticsScreenUserEntrance,

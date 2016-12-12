@@ -1,9 +1,10 @@
 ![Memz](README_Files/Banner.png)
 
+[![CI Status](http://img.shields.io/travis/bastienFalcou/Memz.svg?style=flat)](https://travis-ci.org/bastienFalcou/SoundWave)
 [![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Pod License](https://img.shields.io/badge/codecov-20%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Pod License](https://img.shields.io/badge/codecov-24%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
 Memz is a foreign **language learning assistant** allowing to create your **own dictionary** and be asked periodically to answer **ludic quizes** based on your content. 
 
@@ -20,14 +21,14 @@ With **various languages supported**, Memz will even be perfectly suited to user
 ## Table of Contents
 
 * [Set-up and Configuration](#set-up-and-configuration)
-  * [Deployment Targets](#deployment-targets)
-  * [Toolset](#toolset)
+  * [Requirements](#requirements)
   * [Build Schemes and Configurations](#build-schemes-and-configurations)
 * [Project Architecture](#project-architecture)
   * [User Interaction Flow](#user-interaction-flow)
   * [Application Architecture](#application-architecture)
   * [Persistent Storage](#persistent-storage)
   * [Remote Services](#remote-services)
+  * [Technical Details](#technical-details)
 * [Resources and Frameworks](#resources-and-frameworks)
   * [Bundled Resources](#bundled-resources)
   * [Third-Party Libraries and Frameworks](#third-party-libraries-and-frameworks)
@@ -37,14 +38,11 @@ With **various languages supported**, Memz will even be perfectly suited to user
 
 ## Set-up and Configuration
 
-### Deployment Targets
+### Requirements
 
-Memz uses one unique target `Memz` for **iOS**.
-
-### Toolset
-
-The project has been developed in **Objectve-c** using **Xcode 7.3.x**.
-No other specific tool has beed needed for the front-end implementation of Memz.
+- iOS 9.1+
+- Xcode 7.3
+- Objective-c
 
 ### Build Schemes and Configurations
 
@@ -201,6 +199,50 @@ Memz does not communicate yet with a **Restful API**. It will, in the long run, 
 
 The carthage framework **Alamofire** is used to make this API Integration easier. See also the file `TreblemakerServices` that implement a whole list of hightly convenient and reusable methods to request the API.
 
+### Technical Details
+
+#### Reusable Classes
+
+A large number of **reusable controls** and **classes** have been implemented in order to leverage the impact of code and requirement changes. Some of the most noticeable are described below. A special effort has been put in their **encapsulation** and the **clarity** and **straight-forward nature** of their **header file**. Note that **units tests** have been implemented in order to watch potential **regressions**.
+
+* **MZSwitch**
+
+The native Apple **switch** shows some **limitations** such as inability to set a background off color to replace the native grey one. This subclass allows a lot of **customizations** such as **background colors and pictures** for any state with the possibility of changing them at any time.
+
+* **MZPageControl**
+
+Re-implemented from scratch and **fully customizable**, this page control allows to do in just a few lines what would take hundreds if subclassing the native page control (not to mention the dirty overrides usually implied). 
+
+Specify notably your **custom active/inactive dot images** (with possibly most-left and most-right ones different) and **space between them (animatable)** - and retrieve the whole same API as the native page control one.
+
+* **MZGraphicView**
+
+Based on the native graphic view seen in Health app, a **fully custom** and **dynamic graphic view** has been implemented in Memz.
+
+Based on an array of **numeric values**, the graphic will automatically render depending on two main options for its `yOriginType` variable (calculates y origin value for optimal display based on the set of values, or take value 0).
+
+A lot of properties will be specified, such as background **gradient start and end colors**, **title** and **metrics titles**, show **average line**, etc.
+
+* **MZFlightPickerView**
+
+Used in the Settings flow in order to select the language, this **expendable table view** will provide with a **quick and visible way** to select a value in a **drop-down** like list. 
+
+Takes an array of images in entry, a future improvement could allow for more various types in data source.
+
+* **MZAnimatedArrow**
+
+Although presenting a very **straight-forward API** to the rest of the world, this class implements a complex and mask based **core graphics** representation of **arrows**, **moving throughout the time**. This is especally usefull for the **tutorial views** in order to catch the attention of the user to the most relevant areas of the screen.
+
+* **MZWordDescriptionHeaderView**
+
+Reused in multiple flows (Dictionary and Quiz), this **header** view will be mostly used as table header view. It notably shows a **handful of useful characteristics** for a **given word** (that its light API takes in entry).
+
+#### Reusable Classes
+
+* **MZWordDescriptionHeaderView**
+
+// TODO
+
 ## Resources and Dependency Management
 
 ### Bundled Resources
@@ -249,9 +291,20 @@ Some **screens** are tracked in order to know **how long** and with which **freq
 
 ### Automated Tests
 
+#### Unit Tests
+
 An imporant effort has been dedicated to the **unit tests**. Most of the **central classes**, **managers** and **helpers** used throughout the application have particularly been carefully covered.
 
-The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.  
+The general goal is to reach a codebase as **reliable** as possible, to monitor and highlight **regressions** as the project grows and to provide some additional **documentation**.
+
+_Currenty_: 
+
+- [x] 24% Code Coverage
+- [x] 151 Unit Tests
+
+#### UI Tests
+
+Will be implemented soon.
 
 ## License
 

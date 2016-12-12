@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "MZBingTranslationWrapper.h"
 
+typedef NS_ENUM(NSInteger, MZLanguage) {
+	MZLanguageEnglish,
+	MZLanguageFrench,
+	MZLanguageSpanish,
+	MZLanguageItalian,
+	MZLanguagePortuguese
+};
+
 @interface MZBingTranslatorCoordinator : NSObject
 
 + (nonnull MZBingTranslatorCoordinator *)sharedManager;

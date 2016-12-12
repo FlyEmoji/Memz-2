@@ -29,6 +29,7 @@
 		0C13AC1B1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1A1C24611D007A1AD5 /* MZTranslatedWordTableViewCell.m */; };
 		0C13AC1F1C247196007A1AD5 /* MZDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC1E1C247196007A1AD5 /* MZDataManager.m */; };
 		0C13AC301C2488CC007A1AD5 /* Memz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C13AC2E1C2488CC007A1AD5 /* Memz.xcdatamodeld */; };
+		0C1DADD21D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */; };
 		0C1EF48E1C9795890076526B /* UIScrollView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */; };
 		0C1EF4911C97A4100076526B /* UIView+KeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4901C97A4100076526B /* UIView+KeyboardHelper.m */; };
 		0C1EF4941C97A68E0076526B /* NSObject+ExecuteOnDealloc.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1EF4931C97A68E0076526B /* NSObject+ExecuteOnDealloc.m */; };
@@ -57,6 +58,8 @@
 		0C454D861CFCD336007EFB81 /* Settings-Privacy-Policy.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D851CFCD336007EFB81 /* Settings-Privacy-Policy.htm */; };
 		0C454D881CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm in Resources */ = {isa = PBXBuildFile; fileRef = 0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */; };
 		0C454D8C1CFCF042007EFB81 /* MZAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */; };
+		0C4589FF1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */; };
+		0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */; };
 		0C49A4871CFCCD4F00C1A51A /* MZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */; };
 		0C5042221C59ACD80045E6FC /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042211C59ACD80045E6FC /* Feed.storyboard */; };
 		0C5042241C59AD690045E6FC /* Dictionary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C5042231C59AD690045E6FC /* Dictionary.storyboard */; };
@@ -86,6 +89,7 @@
 		0C7A22EA1C20CC4600774B95 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C7A22E91C20CC4600774B95 /* Navigation.storyboard */; };
 		0C7B5C4D1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */; };
 		0C7CEB761CF5380600FB8617 /* UILabel+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */; };
+		0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */; };
 		0C8FD8D41CE2C89E00FFC0A9 /* MZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */; };
 		0C8FD8F21CE7AB3D00FFC0A9 /* Configurations.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */; };
 		0C8FD9021CE7CCB200FFC0A9 /* MZFlightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */; };
@@ -108,6 +112,7 @@
 		0CAFF3831CEEB91600F2860B /* MZApplicationSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFF3821CEEB91600F2860B /* MZApplicationSessionManager.m */; };
 		0CBF7ABE1C217BA400F5D91B /* MZNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CBF7ABD1C217BA400F5D91B /* MZNibView.m */; };
 		0CC3726F1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */; };
+		0CC9B9B91D7CAE1400EF619A /* MZResponseComparatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */; };
 		0CCE60781C66BC67008D70BF /* MZGraphicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */; };
 		0CCE607B1C66BC83008D70BF /* MZLanguageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607A1C66BC83008D70BF /* MZLanguageCollectionViewCell.m */; };
 		0CCE607F1C66BCEF008D70BF /* MZGraphicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCE607E1C66BCEF008D70BF /* MZGraphicView.m */; };
@@ -237,6 +242,7 @@
 		0C13AC1D1C247196007A1AD5 /* MZDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZDataManager.h; path = Code/Model/MZDataManager/MZDataManager.h; sourceTree = SOURCE_ROOT; };
 		0C13AC1E1C247196007A1AD5 /* MZDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZDataManager.m; path = Code/Model/MZDataManager/MZDataManager.m; sourceTree = SOURCE_ROOT; };
 		0C13AC2F1C2488CC007A1AD5 /* Memz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memz.xcdatamodel; sourceTree = "<group>"; };
+		0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDateMemzAdditionsTest.m; path = Helpers/Categories/NSDate/NSDateMemzAdditionsTest.m; sourceTree = "<group>"; };
 		0C1EF48C1C9795890076526B /* UIScrollView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
 		0C1EF48D1C9795890076526B /* UIScrollView+KeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+KeyboardHelper.m"; path = "Code/Helpers/Categories/UIScrollView/UIScrollView+KeyboardHelper.m"; sourceTree = SOURCE_ROOT; };
 		0C1EF48F1C97A4100076526B /* UIView+KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+KeyboardHelper.h"; path = "Code/Helpers/Categories/UIView/UIView+KeyboardHelper.h"; sourceTree = SOURCE_ROOT; };
@@ -247,7 +253,6 @@
 		0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnimatedArrow.m; path = "Code/Views/0-Common/MZAnimatedArrow/MZAnimatedArrow.m"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0C1CD69ED300E766A5 /* MZUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MZUser+CoreDataProperties.h"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
 		0C2C5E0D1CD69ED300E766A5 /* MZUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MZUser+CoreDataProperties.m"; path = "Code/Model/CoreData/MZUser+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		0C2C5E111CD6A92F00E766A5 /* MZLanguageDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MZLanguageDefinition.h; path = Code/Helpers/Headers/MZLanguageDefinition/MZLanguageDefinition.h; sourceTree = SOURCE_ROOT; };
 		0C2DC8731C4BE5D1005B11F5 /* MZTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableView.h; path = "Code/Views/0-Common/MZTableView/MZTableView.h"; sourceTree = SOURCE_ROOT; };
 		0C2DC8741C4BE5D1005B11F5 /* MZTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableView.m; path = "Code/Views/0-Common/MZTableView/MZTableView.m"; sourceTree = SOURCE_ROOT; };
 		0C3726E31C255A7800C9879F /* MZMyDictionaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZMyDictionaryViewController.h; path = "Code/Controllers/4-My Dictionary/MZMyDictionaryViewController/MZMyDictionaryViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -283,6 +288,8 @@
 		0C454D871CFCE435007EFB81 /* Settings-Terms-And-Conditions.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = "Settings-Terms-And-Conditions.htm"; path = "Code/Resources/Web/Settings-Terms-And-Conditions.htm"; sourceTree = SOURCE_ROOT; };
 		0C454D8A1CFCF042007EFB81 /* MZAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZAnalyticsManager.h; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.h; sourceTree = SOURCE_ROOT; };
 		0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZAnalyticsManager.m; path = Code/Helpers/Classes/MZAnalyticsManager/MZAnalyticsManager.m; sourceTree = SOURCE_ROOT; };
+		0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZRemoteServerCoordinatorTests.m; path = API/MZRemoteServerCoordinator/MZRemoteServerCoordinatorTests.m; sourceTree = "<group>"; };
+		0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZBingTranslatorCoordinator.m; path = API/MZBingTranslatorCoordinator/MZBingTranslatorCoordinator.m; sourceTree = "<group>"; };
 		0C49A4851CFCCD4F00C1A51A /* MZWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWebViewController.h; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C49A4861CFCCD4F00C1A51A /* MZWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWebViewController.m; path = "Code/Controllers/6-Settings/MZWebViewController/MZWebViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C5042211C59ACD80045E6FC /* Feed.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Feed.storyboard; path = Code/Resources/Storyboards/Feed.storyboard; sourceTree = SOURCE_ROOT; };
@@ -334,6 +341,7 @@
 		0C7B5C4C1C82CD9000C7B051 /* UIAlertController+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+MemzAdditions.m"; path = "Code/Helpers/Categories/UIAlertController/UIAlertController+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0C7CEB741CF5380600FB8617 /* UILabel+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+MemzAdditions.h"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0C7CEB751CF5380600FB8617 /* UILabel+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+MemzAdditions.m"; path = "Code/Helpers/Categories/UILabel/UILabel+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZMyDictionaryViewControllerTests.m; path = "Controllers/4-My Dictionary/MZMyDictionaryViewController/MZMyDictionaryViewControllerTests.m"; sourceTree = "<group>"; };
 		0C8FD8D21CE2C89E00FFC0A9 /* MZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZTableViewCell.h; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
@@ -379,6 +387,7 @@
 		0CBF7ABD1C217BA400F5D91B /* MZNibView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZNibView.m; path = Code/Helpers/Classes/MZNibView/MZNibView.m; sourceTree = SOURCE_ROOT; };
 		0CC3726D1CDFBDAD0034E1AE /* NSArray+MemzAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+MemzAdditions.h"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.h"; sourceTree = SOURCE_ROOT; };
 		0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MemzAdditions.m"; path = "Code/Helpers/Categories/NSArray/NSArray+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
+		0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZResponseComparatorTest.m; path = Helpers/Classes/MZResponseComparatorTest/MZResponseComparatorTest.m; sourceTree = "<group>"; };
 		0CCE60761C66BC67008D70BF /* MZGraphicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZGraphicTableViewCell.h; path = "Code/Views/7-Statistics/MZGraphicTableViewCell/MZGraphicTableViewCell.h"; sourceTree = SOURCE_ROOT; };
 		0CCE60771C66BC67008D70BF /* MZGraphicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZGraphicTableViewCell.m; path = "Code/Views/7-Statistics/MZGraphicTableViewCell/MZGraphicTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0CCE60791C66BC83008D70BF /* MZLanguageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZLanguageCollectionViewCell.h; path = "Code/Views/7-Statistics/MZLanguageCollectionViewCell/MZLanguageCollectionViewCell.h"; sourceTree = SOURCE_ROOT; };
@@ -726,6 +735,22 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		0C1DADCF1D8DA79800D17AA3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0C1DADD01D8DA7B200D17AA3 /* NSDate */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		0C1DADD01D8DA7B200D17AA3 /* NSDate */ = {
+			isa = PBXGroup;
+			children = (
+				0C1DADD11D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m */,
+			);
+			name = NSDate;
+			sourceTree = "<group>";
+		};
 		0C1EF48B1C9795260076526B /* UIScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,22 +767,6 @@
 				0C26104E1CF3D38D0080DB2C /* MZAnimatedArrow.m */,
 			);
 			name = MZAnimatedArrow;
-			sourceTree = "<group>";
-		};
-		0C2C5E0F1CD6A8D100E766A5 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				0C2C5E101CD6A91E00E766A5 /* MZLanguageDefinition */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
-		0C2C5E101CD6A91E00E766A5 /* MZLanguageDefinition */ = {
-			isa = PBXGroup;
-			children = (
-				0C2C5E111CD6A92F00E766A5 /* MZLanguageDefinition.h */,
-			);
-			name = MZLanguageDefinition;
 			sourceTree = "<group>";
 		};
 		0C2DC8721C4BE596005B11F5 /* MZTableView */ = {
@@ -915,6 +924,7 @@
 		0C40A5001CF150AE00BD7F9B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0C7FAC931D8EE10E009B8361 /* 4-My Dictionary */,
 				0C40A5011CF150BB00BD7F9B /* 8-Tests */,
 			);
 			name = Controllers;
@@ -940,6 +950,7 @@
 		0C40A5061CF1626500BD7F9B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0CC9B9B71D7CAE0C00EF619A /* MZResponseComparatorTest */,
 				0CAFF3921CF0F53400F2860B /* MZQuizManager */,
 				0C40A5091CF1628D00BD7F9B /* MZNibView */,
 			);
@@ -998,6 +1009,31 @@
 				0C454D8B1CFCF042007EFB81 /* MZAnalyticsManager.m */,
 			);
 			name = MZAnalyticsManager;
+			sourceTree = "<group>";
+		};
+		0C4589FC1D8EC4ED00FA4795 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0C4589FD1D8EC4FD00FA4795 /* MZRemoteServerCoordinator */,
+				0C458A001D8ECE9200FA4795 /* MZBingTranslatorCoordinator */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		0C4589FD1D8EC4FD00FA4795 /* MZRemoteServerCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C4589FE1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m */,
+			);
+			name = MZRemoteServerCoordinator;
+			sourceTree = "<group>";
+		};
+		0C458A001D8ECE9200FA4795 /* MZBingTranslatorCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				0C458A011D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m */,
+			);
+			name = MZBingTranslatorCoordinator;
 			sourceTree = "<group>";
 		};
 		0C49A4841CFCCD1F00C1A51A /* MZWebViewController */ = {
@@ -1216,6 +1252,22 @@
 			name = UILabel;
 			sourceTree = "<group>";
 		};
+		0C7FAC931D8EE10E009B8361 /* 4-My Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				0C7FAC941D8EE11C009B8361 /* MZMyDictionaryViewController */,
+			);
+			name = "4-My Dictionary";
+			sourceTree = "<group>";
+		};
+		0C7FAC941D8EE11C009B8361 /* MZMyDictionaryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C7FAC951D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m */,
+			);
+			name = MZMyDictionaryViewController;
+			sourceTree = "<group>";
+		};
 		0C8FD8D11CE2C84900FFC0A9 /* MZTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1327,6 +1379,7 @@
 				0C40A5001CF150AE00BD7F9B /* Controllers */,
 				0C40A4F21CF14DC000BD7F9B /* Views */,
 				0CAFF3911CF0F52A00F2860B /* Helpers */,
+				0C4589FC1D8EC4ED00FA4795 /* API */,
 				0C40A4F61CF14E0A00BD7F9B /* Ressources */,
 				0CA58BBF1C204C7F000E19D4 /* Info.plist */,
 			);
@@ -1375,7 +1428,6 @@
 			children = (
 				0CA58BE11C204FF4000E19D4 /* Categories */,
 				0CA58BE01C204FED000E19D4 /* Classes */,
-				0C2C5E0F1CD6A8D100E766A5 /* Headers */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1579,6 +1631,7 @@
 		0CAFF3911CF0F52A00F2860B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0C1DADCF1D8DA79800D17AA3 /* Categories */,
 				0C40A5061CF1626500BD7F9B /* Classes */,
 			);
 			name = Helpers;
@@ -1618,6 +1671,14 @@
 				0CC3726E1CDFBDAD0034E1AE /* NSArray+MemzAdditions.m */,
 			);
 			name = NSArray;
+			sourceTree = "<group>";
+		};
+		0CC9B9B71D7CAE0C00EF619A /* MZResponseComparatorTest */ = {
+			isa = PBXGroup;
+			children = (
+				0CC9B9B81D7CAE1400EF619A /* MZResponseComparatorTest.m */,
+			);
+			name = MZResponseComparatorTest;
 			sourceTree = "<group>";
 		};
 		0CCE60751C66BBF5008D70BF /* MZGraphicTableViewCell */ = {
@@ -2453,11 +2514,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */,
+				0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */,
 				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
 				0C40A5081CF1628700BD7F9B /* MZQuizManagerTest.m in Sources */,
 				0C40A4FD1CF14F3400BD7F9B /* MZPageControlTests.m in Sources */,
 				0C40A50B1CF162EA00BD7F9B /* MZNibViewTests.m in Sources */,
+				0C4589FF1D8EC53B00FA4795 /* MZRemoteServerCoordinatorTests.m in Sources */,
+				0CC9B9B91D7CAE1400EF619A /* MZResponseComparatorTest.m in Sources */,
 				0C40A5051CF1513200BD7F9B /* MZTestControlsViewController.m in Sources */,
+				0C1DADD21D8DA7E600D17AA3 /* NSDateMemzAdditionsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2558,6 +2624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
@@ -2640,6 +2707,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;
@@ -2722,6 +2790,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MemzTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Falcou.com.MemzTests;

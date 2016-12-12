@@ -109,7 +109,7 @@ const NSTimeInterval kCallbackDelayerFrequency = 2.0;
 		_startValue = startValue;
 	}
 
-	self.startValueLabel.text = [NSString stringWithFormat:@"%ld", self.startValue];
+	self.startValueLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.startValue];
 	self.slider.lowerValue = self.startValue;
 }
 
@@ -122,7 +122,7 @@ const NSTimeInterval kCallbackDelayerFrequency = 2.0;
 		_endValue = endValue;
 	}
 
-	self.endValueLabel.text = [NSString stringWithFormat:@"%ld", self.endValue];
+	self.endValueLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)self.endValue];
 	self.slider.upperValue = self.endValue;
 }
 
@@ -132,8 +132,8 @@ const NSTimeInterval kCallbackDelayerFrequency = 2.0;
 	_startValue = slider.lowerValue;
 	_endValue = slider.upperValue;
 
-	self.startValueLabel.text = [NSString stringWithFormat:@"%ld", (NSUInteger)slider.lowerValue];
-	self.endValueLabel.text = [NSString stringWithFormat:@"%ld", (NSUInteger)slider.upperValue];
+	self.startValueLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)slider.lowerValue];
+	self.endValueLabel.text = [NSString stringWithFormat:@"%ld", (unsigned long)slider.upperValue];
 
 	self.shouldUpdate = YES;
 }
