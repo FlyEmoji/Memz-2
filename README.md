@@ -1,8 +1,8 @@
 ![Memz](README_Files/Banner.png)
 
 [![CI Status](http://img.shields.io/travis/bastienFalcou/Memz.svg?style=flat)](https://travis-ci.org/bastienFalcou/SoundWave)
-[![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
+[![Pod Platform](https://img.shields.io/badge/version-1.0-brightgreen.svg?style=flat)](https://itunes.apple.com/tz/app/memz-learn-new-languages!/id1119391015?mt=8)
 [![Pod License](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![Pod License](https://img.shields.io/badge/codecov-24%25-orange.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
