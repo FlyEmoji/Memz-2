@@ -181,7 +181,8 @@
 		0CEFD1CB1C3CB74500EB60DE /* UIViewController+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CA1C3CB74500EB60DE /* UIViewController+MemzAdditions.m */; };
 		0CEFD1CE1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1CD1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m */; };
 		0CEFD1D11C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */; };
-		C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69505ABEE0BABF5EE5DA1831 /* Pods.framework */; };
+		0CF23ED91DFB2B8B00430782 /* MZUserStatisticsProviderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */; };
+		F3D0BC4CB9B3D009B75ADB38 /* Pods_Memz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AB98143EE95C0120FC6CAE /* Pods_Memz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02CE49F16BA1647E7B15A608 /* Pods-Memz.snapshot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memz.snapshot.xcconfig"; path = "Pods/Target Support Files/Pods-Memz/Pods-Memz.snapshot.xcconfig"; sourceTree = "<group>"; };
 		0C01CD1C1C21990C00F604A2 /* MZWordAdditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZWordAdditionViewController.h; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.h"; sourceTree = SOURCE_ROOT; };
 		0C01CD1D1C21990C00F604A2 /* MZWordAdditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZWordAdditionViewController.m; path = "Code/Controllers/5-Add Word/MZWordAdditionViewController/MZWordAdditionViewController.m"; sourceTree = SOURCE_ROOT; };
 		0C0550801C585442005924A9 /* AddWord.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddWord.storyboard; path = Code/Resources/Storyboards/AddWord.storyboard; sourceTree = SOURCE_ROOT; };
@@ -346,7 +348,6 @@
 		0C8FD8D31CE2C89E00FFC0A9 /* MZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZTableViewCell.m; path = "Code/Views/0-Common/MZTableViewCell/MZTableViewCell.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F01CE7AB1900FFC0A9 /* Configurations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Configurations.h; path = "Code/Resources/Supporting Files/Configurations.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD8F11CE7AB3D00FFC0A9 /* Configurations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Configurations.m; path = "Code/Resources/Supporting Files/Configurations.m"; sourceTree = SOURCE_ROOT; };
-		0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.production.xcconfig; path = "Pods/Target Support Files/Pods/Pods.production.xcconfig"; sourceTree = "<group>"; };
 		0C8FD9001CE7CCB200FFC0A9 /* MZFlightPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MZFlightPickerView.h; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.h"; sourceTree = SOURCE_ROOT; };
 		0C8FD9011CE7CCB200FFC0A9 /* MZFlightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZFlightPickerView.m; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.m"; sourceTree = SOURCE_ROOT; };
 		0C8FD9031CE7CCD300FFC0A9 /* MZFlightPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MZFlightPickerView.xib; path = "Code/Views/0-Common/MZFlightPickerView/MZFlightPickerView.xib"; sourceTree = SOURCE_ROOT; };
@@ -510,9 +511,11 @@
 		0CEFD1CD1C3CB75200EB60DE /* UINavigationItem+MemzAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationItem+MemzAdditions.m"; path = "Code/Helpers/Categories/UINavigationItem/UINavigationItem+MemzAdditions.m"; sourceTree = SOURCE_ROOT; };
 		0CEFD1CF1C3CB75F00EB60DE /* UINavigationController+MemzTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+MemzTransitions.h"; path = "Code/Helpers/Categories/UINavigationController/UINavigationController+MemzTransitions.h"; sourceTree = SOURCE_ROOT; };
 		0CEFD1D01C3CB75F00EB60DE /* UINavigationController+MemzTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+MemzTransitions.m"; path = "Code/Helpers/Categories/UINavigationController/UINavigationController+MemzTransitions.m"; sourceTree = SOURCE_ROOT; };
+		0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MZUserStatisticsProviderTest.m; path = Helpers/Categories/MZUser/MZUserStatisticsProviderTest.m; sourceTree = "<group>"; };
+		16BB5BC5CA43BB68094D936B /* Pods-Memz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memz/Pods-Memz.debug.xcconfig"; sourceTree = "<group>"; };
+		62AB98143EE95C0120FC6CAE /* Pods_Memz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69505ABEE0BABF5EE5DA1831 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.snapshot.xcconfig; path = "Pods/Target Support Files/Pods/Pods.snapshot.xcconfig"; sourceTree = "<group>"; };
+		A492ADB4077FAA3720AC6E89 /* Pods-Memz.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memz.production.xcconfig"; path = "Pods/Target Support Files/Pods-Memz/Pods-Memz.production.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,7 +523,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C53362A8C8476E7A5B46E1FE /* Pods.framework in Frameworks */,
+				F3D0BC4CB9B3D009B75ADB38 /* Pods_Memz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				0C1DADD01D8DA7B200D17AA3 /* NSDate */,
+				0CF23ED71DFB2B5700430782 /* MZUser */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1341,8 +1345,8 @@
 				0CA58BBC1C204C7F000E19D4 /* MemzTests */,
 				0CA58BC71C204C7F000E19D4 /* MemzUITests */,
 				0CA58B9E1C204C7F000E19D4 /* Products */,
-				44DFB1CF8393D3A69FE59971 /* Pods */,
 				D0B7255BD900C535A1644E00 /* Frameworks */,
+				0CAF85FDCE37A76C26E7B8A0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1617,6 +1621,16 @@
 				0CD0CD971C8CAFBE0091CE1E /* MZFeedViewController.m */,
 			);
 			name = MZFeedViewController;
+			sourceTree = "<group>";
+		};
+		0CAF85FDCE37A76C26E7B8A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16BB5BC5CA43BB68094D936B /* Pods-Memz.debug.xcconfig */,
+				A492ADB4077FAA3720AC6E89 /* Pods-Memz.production.xcconfig */,
+				02CE49F16BA1647E7B15A608 /* Pods-Memz.snapshot.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		0CAFF3801CEEB8DB00F2860B /* MZApplicationSessionManager */ = {
@@ -2145,20 +2159,19 @@
 			name = UIViewController;
 			sourceTree = "<group>";
 		};
-		44DFB1CF8393D3A69FE59971 /* Pods */ = {
+		0CF23ED71DFB2B5700430782 /* MZUser */ = {
 			isa = PBXGroup;
 			children = (
-				8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */,
-				E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */,
-				0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */,
+				0CF23ED81DFB2B8B00430782 /* MZUserStatisticsProviderTest.m */,
 			);
-			name = Pods;
+			name = MZUser;
 			sourceTree = "<group>";
 		};
 		D0B7255BD900C535A1644E00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				69505ABEE0BABF5EE5DA1831 /* Pods.framework */,
+				62AB98143EE95C0120FC6CAE /* Pods_Memz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2170,12 +2183,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CA58BCD1C204C7F000E19D4 /* Build configuration list for PBXNativeTarget "Memz" */;
 			buildPhases = (
-				1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */,
+				D7D65CF52CBF73279BC095BA /* [CP] Check Pods Manifest.lock */,
 				0CA58B991C204C7F000E19D4 /* Sources */,
 				0CA58B9A1C204C7F000E19D4 /* Frameworks */,
 				0CA58B9B1C204C7F000E19D4 /* Resources */,
-				DD7536AA3755DD17187C88FC /* Copy Pods Resources */,
-				EDB97B5A0B0EE1A353D851C4 /* Embed Pods Frameworks */,
+				142B9B74A1BEF7F25F0149AC /* [CP] Embed Pods Frameworks */,
+				6DF945B9201A78ED0EA7A37E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2229,7 +2242,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MZ;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Falcou;
 				TargetAttributes = {
 					0CA58B9C1C204C7F000E19D4 = {
@@ -2329,49 +2342,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1B6B3EA6183B401F8C4561D6 /* Check Pods Manifest.lock */ = {
+		142B9B74A1BEF7F25F0149AC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Memz/Pods-Memz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DD7536AA3755DD17187C88FC /* Copy Pods Resources */ = {
+		6DF945B9201A78ED0EA7A37E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Memz/Pods-Memz-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EDB97B5A0B0EE1A353D851C4 /* Embed Pods Frameworks */ = {
+		D7D65CF52CBF73279BC095BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2514,6 +2527,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C40A4FF1CF14F3B00BD7F9B /* MZSwitchTests.m in Sources */,
+				0CF23ED91DFB2B8B00430782 /* MZUserStatisticsProviderTest.m in Sources */,
 				0C458A021D8ECEAF00FA4795 /* MZBingTranslatorCoordinator.m in Sources */,
 				0C7FAC961D8EE13C009B8361 /* MZMyDictionaryViewControllerTests.m in Sources */,
 				0C40A5111CF163DB00BD7F9B /* MZNibViewTest.m in Sources */,
@@ -2575,8 +2589,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2604,12 +2620,14 @@
 		};
 		0C8FD8F41CE7BFF700FFC0A9 /* Snapshot */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6443E2A240E3D88A2BFCFF6 /* Pods.snapshot.xcconfig */;
+			baseConfigurationReference = 02CE49F16BA1647E7B15A608 /* Pods-Memz.snapshot.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
@@ -2658,8 +2676,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2671,7 +2691,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION=1 ";
+				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION=1  ";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2687,12 +2707,14 @@
 		};
 		0C8FD8F81CE7C09700FFC0A9 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C8FD8FD1CE7C3A700FFC0A9 /* Pods.production.xcconfig */;
+			baseConfigurationReference = A492ADB4077FAA3720AC6E89 /* Pods-Memz.production.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
@@ -2741,8 +2763,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2754,7 +2778,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 ";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1  ";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -2770,12 +2794,14 @@
 		};
 		0CA58BCE1C204C7F000E19D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8EB1EA0ADF6AC46E4C2E3448 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 16BB5BC5CA43BB68094D936B /* Pods-Memz.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_TESTABILITY = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Code/Resources/Supporting Files/Memz-Prefiz.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Code/Resources/Supporting Files/Info.plist";
