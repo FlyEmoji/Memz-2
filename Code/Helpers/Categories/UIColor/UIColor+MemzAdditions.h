@@ -10,9 +10,10 @@
 
 @interface UIColor (MemzAdditions)
 
-+ (UIColor *)averageColorBetweenColor:(UIColor *)startColor andColor:(UIColor *)endColor;
++ (UIColor *)combineColor:(UIColor *)startColor withColor:(UIColor *)endColor percentage:(CGFloat)percentage;
 
-- (UIColor *)makeBrighterWithCount:(NSUInteger)count;
-- (UIColor *)makeDarkerWithCount:(NSUInteger)count;
+- (UIColor *)combineWith:(UIColor *)color percentage:(CGFloat)percentage;
+- (UIColor *)makeBrighterWithPercentage:(CGFloat)percentage;
+- (UIColor *)makeDarkerWithPercentage:(CGFloat)percentage;
 
 @end

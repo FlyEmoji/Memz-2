@@ -368,7 +368,7 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 																																									kInnerPointRadius,
 																																									kInnerPointRadius)];
 
-		[[UIColor averageColorBetweenColor:self.gradientStartColor andColor:self.gradientEndColor] setFill];
+		[[UIColor combineColor:self.gradientStartColor withColor:self.gradientEndColor percentage:1.0f] setFill];
 		[innerCircle fill];
 	}
 }
@@ -462,7 +462,7 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 	self.topBoundaryLabel = [[UILabel alloc] init];
 	self.topBoundaryLabel.text = yTopString;
 	self.topBoundaryLabel.font = [self.textFont fontWithSize:10.0f];
-	self.topBoundaryLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	self.topBoundaryLabel.textColor = [self.tintColor makeBrighterWithPercentage:0.7f];
 	[self.topBoundaryLabel sizeToFit];
 
 	CGFloat x = self.frame.size.width - kHorizontalInsets - self.topBoundaryLabel.frame.size.width / 2.0f;
@@ -495,9 +495,9 @@ const CGFloat kGradientUnderGraphStartColorAlpha = 0.8f;
 - (void)updateLabelsStyle {
 	self.titleLabel.textColor = self.textColor;
 	self.totalValuesLabel.textColor = self.textColor;
-	self.averageLabel.textColor = [self.tintColor makeBrighterWithCount:2];
-	self.timeStampLabel.textColor = [self.tintColor makeBrighterWithCount:2];
-	self.noDataLabel.textColor = [self.tintColor makeBrighterWithCount:2];
+	self.averageLabel.textColor = [self.tintColor makeBrighterWithPercentage:0.7f];
+	self.timeStampLabel.textColor = [self.tintColor makeBrighterWithPercentage:0.7f];
+	self.noDataLabel.textColor = [self.tintColor makeBrighterWithPercentage:0.7f];
 
 	self.titleLabel.font = [self.textFont fontWithSize:self.titleLabel.font.pointSize];
 	self.totalValuesLabel.attributedText = [self totalValuesAttributedString];
